@@ -33,8 +33,8 @@ This command takes two args: the root (parent folder) of the unzipped files, and
 
 ## Tracking Changes for reporting
 There is a method in called "trackEdit" in _editDOCX.py_ that is logging every change made to the xml, for use in reporting later.
-The structure, naming etc is up-for-grabs, but I think something like this can be translated into user-facing reports.
+The structure, naming etc is up-for-grabs, but this is hopefully a reasonable prototype for a tool to track edits to the document.xml.
 
-Right now it takes 3 parameters for every change: a paragraph element, a description, and an 'action' (a member of this set: ['insert', 'edit', 'remove']).  The function finds the paragraph-id value from the xml (if the action is 'remove', it gets the para-id of the previous paragraph since the current one will be gone), and writes the para-id description and action as a new dict in the changelog list.
+Right now it takes 3 parameters for every change: a paragraph element, a description, and an 'action' (a member of this set: ['insert', 'edit', 'remove']).  The function finds the paraId value from the xml (with action 'remove', it gets the paraId of the previous paragraph, since the current one will be gone), and writes the para-id, description, and action as a new dict in the changelog list.
 
 At the end of the script, once all transformations are finished, the paragraph index for each change in the changelog list is found and and added to the dict. The paragraph index should allow us to find the page number in Word with VBA for user-facing reporting.

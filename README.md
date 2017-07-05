@@ -13,6 +13,8 @@ The xml processing requires the lxml library for python, install like so:
 The command takes two args: the .docx file and the output dir for the root of the unzipped docx:
 `python /path/to/unzipDOCX.py /path/to/file.docx /path/to/target/dir`
 
+(This is a copy of the unzipDOX.py script from our [Wordmaker](https://github.com/macmillanpublishers/wordmaker) repo.)
+
 
 #### Edit unzipped (zip_root)/word/document.xml
 This command takes one args: the root (parent folder) of the unzipped files:

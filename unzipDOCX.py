@@ -1,11 +1,10 @@
-# this is a copy of the script from our Wordmaker repo
-
 from sys import argv
 
-filename = argv[1]
-finaldir = argv[2]
-print filename
-print finaldir
+if __name__ == '__main__':
+    filename = argv[1]
+    finaldir = argv[2]
+    print filename
+    print finaldir
 
 import os
 import zipfile
@@ -13,13 +12,13 @@ import shutil
 import re
 import xml.etree.ElementTree as ET
 
-def unzip_manuscript(self):
+def unzip_manuscript(self, finaldir):
 
     # must be .docx or .docm
     extension = os.path.splitext(self)[1]
 
     if extension in ('.docx', '.docm', '.doc'):
-        print "unzipping %s" % filename
+        print "unzipping %s" % self
         # get the contents of the Word file
         # filenames = zipfile.namelist(self)
         # print filenames
@@ -30,4 +29,5 @@ def unzip_manuscript(self):
 
         return
 
-unzip_manuscript( filename )
+if __name__ == '__main__':
+    unzip_manuscript(filename, finaldir)

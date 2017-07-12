@@ -25,7 +25,8 @@ tree = etree.parse(docxml)
 root = tree.getroot()
 pagebreakstring = ".//*w:br[@w:type='page']"
 changelog = []
-changelogjson = ""
+ziproot_basename = os.path.basename(ziproot)
+changelogfile = "%s_edits.json" % ziproot
 
 
 #---------------------  METHODS
@@ -125,7 +126,7 @@ def deletePrecedingPageBreak(para):
 def changeStyle(parastyle,replacestyle,searchstyle,para):
     attrib_style_key = '{%s}val' % wnamespace
     parastyle.set(attrib_style_key, replacestyle)
-    trackEdit(para,'edit','changed paragraph style from "%s" to "%s"' % (searchstyle,replacestyle))
+    trackEdit(para,'edit',"changed paragraph style from '%s' to '%s'" % (searchstyle,replacestyle))
 
 # generate ar random id
 def generate_id():
@@ -183,9 +184,9 @@ def insertStyledParaBefore(para,searchstyle,insertstyle,contents=''):
         new_para_run_text.text = contents
         new_para_run.append(new_para_run_text)
         new_para.append(new_para_run)
-        logtext = 'inserted paragraph with style "%s" and text "%s"' % (insertstyle,contents)
+        logtext = "inserted paragraph with style '%s' and text '%s'" % (insertstyle,contents)
     else:
-        logtext = 'inserted paragraph with style "%s"' % (insertstyle)
+        logtext = "inserted paragraph with style '%s'" % (insertstyle)
 
     # append insert new paragraph before the selected para element
     para.addprevious(new_para)
@@ -237,6 +238,13 @@ def writeXMLtoFile(file):
         f.write(etree.tostring(root, xml_declaration=True, encoding="utf-8", standalone="yes"))
         f.close()
 
+def dumpJSON(changelog, changelogfile):
+    # write json to console:
+    json.dump(changelog, sys.stdout, sort_keys=True, indent=4)
+    # and write json to file
+    with open(changelogfile, 'w') as outfile:
+        json.dump(changelog, outfile, sort_keys=True, indent=4)
+
 #--------------------- RUN
 
 # test function 1
@@ -255,5 +263,6 @@ calcParaIndexForEditLog(changelog)
 # overwrite content to document.xml file
 writeXMLtoFile(docxml)
 
-# dump our changelog to json outfile
-json.dump(changelog, sys.stdout)
+# dump our changelog to json outfile & console
+# json.dump(changelog, sys.stdout)
+dumpJSON(changelog, changelogfile)

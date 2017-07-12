@@ -1,9 +1,10 @@
 from sys import argv
 
-ziproot = argv[1]
-finaldocx = argv[2]
-print ziproot
-print finaldocx
+if __name__ == '__main__':
+	ziproot = argv[1]
+	finaldocx = argv[2]
+	print ziproot
+	print finaldocx
 
 import os
 import zipfile
@@ -23,7 +24,7 @@ def get_zip_files(self):
 				# get the path of file (relative to ziproot) and add to zip manifest
 				zipmanifest.append(os.path.relpath(fullpath, self))
 
-	return zipmanifest	
+	return zipmanifest
 
 
 def zip_docx(ziproot, zipmanifest, finaldocx):
@@ -34,7 +35,6 @@ def zip_docx(ziproot, zipmanifest, finaldocx):
 		for filename in zipmanifest:
 			docx.write(os.path.join(ziproot,filename), filename)
 
-
-zipmanifest = get_zip_files( ziproot )
-
-zip_docx(ziproot, zipmanifest, finaldocx)
+if __name__ == '__main__':
+	zipmanifest = get_zip_files( ziproot )
+	zip_docx(ziproot, zipmanifest, finaldocx)

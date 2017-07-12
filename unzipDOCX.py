@@ -17,7 +17,7 @@ def unzip_manuscript(self, finaldir):
     # must be .docx or .docm
     extension = os.path.splitext(self)[1]
 
-    if extension in ('.docx', '.docm', '.doc'):
+    if extension in ('.docx', '.docm', '.doc', '.dotx', '.dotm'):
         print "unzipping %s" % self
         # get the contents of the Word file
         # filenames = zipfile.namelist(self)

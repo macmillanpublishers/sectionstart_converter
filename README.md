@@ -35,5 +35,9 @@ This command takes two args: the root (parent folder) of the unzipped files, and
 `python /path/to/zipDOCX.py /path/to/unzip_root /path/to/new/file.docx`
 
 #### reporter_main.py or converter_main.py
-Either of these commands takes one arg: the root (parent folder) of the unzipped files, and path and name of the output .docx:
+Either of these commands takes one arg: the manuscript being evaluated / edited:
 `python /path/to/reporter_main.py /path/to/file.docx`
+
+#### validator_main.py
+This command takes two args: the manuscript to be edited and the existing logfile in use by bookmaker_validator, so we can append to it instead of writing our own.
+`python /path/to/validator_main.py /path/to/file.docx /path/to/existing/logfile.txt`

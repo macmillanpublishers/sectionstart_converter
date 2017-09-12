@@ -53,41 +53,41 @@ def generate_para_id(doc_root):
         print iduniq + " already exists, generating another id"
         iduniq = generate_id()
         idsearchstring = './/*w:p[@w14:paraId="%s"]' % iduniq
-    logger.debug("generated unique para-id: '%s'" % iduniq)    
+    logger.debug("generated unique para-id: '%s'" % iduniq)
     return str(iduniq)
+#
+# def getParaStyle(para):      # move to lxml_utils?
+#     try:
+#         pstyle = para.find(".//*w:pStyle", wordnamespaces)
+#         stylename = pstyle.get('{%s}val' % wnamespace)
+#     except:
+#         stylename = ""
+#     return stylename
 
-def getParaStyle(para):      # move to lxml_utils?
-    try:
-        pstyle = para.find(".//*w:pStyle", wordnamespaces)
-        stylename = pstyle.get('{%s}val' % wnamespace)
-    except:
-        stylename = ""
-    return stylename
-
-# return a dict of neighboring para elements and their text
-def getNeighborParas(para):          # move to lxml_utils?
-    pneighbors = {}
-    try:
-        # the 'len' call is what generates the error and kicks to the except statement, I think?
-        pneighbors['prev'] = para.getprevious()
-        len(pneighbors['prev'].tag)
-        pneighbors['prevtext'] = lxml_utils.getParaTxt(pneighbors['prev'])
-        pneighbors['prevstyle'] = getParaStyle(pneighbors['prev'])
-    except:
-        pneighbors['prev'] = ""
-        pneighbors['prevtext'] = ""
-        pneighbors['prevstyle'] = ""
-    try:
-        # the 'len' call is what generates the error and kicks to the except statement, I think?
-        pneighbors['next'] = para.getnext()
-        len(pneighbors['next'].tag)
-        pneighbors['nexttext'] = lxml_utils.getParaTxt(pneighbors['next'])
-        pneighbors['nextstyle'] = getParaStyle(pneighbors['next'])
-    except:
-        pneighbors['next'] = ""
-        pneighbors['nexttext'] = ""
-        pneighbors['nextstyle'] = ""
-    return pneighbors
+# # return a dict of neighboring para elements and their text
+# def getNeighborParas(para):          # move to lxml_utils?
+#     pneighbors = {}
+#     try:
+#         # the 'len' call is what generates the error and kicks to the except statement, I think?
+#         pneighbors['prev'] = para.getprevious()
+#         len(pneighbors['prev'].tag)
+#         pneighbors['prevtext'] = lxml_utils.getParaTxt(pneighbors['prev'])
+#         pneighbors['prevstyle'] = lxml_utils.getParaStyle(pneighbors['prev'])
+#     except:
+#         pneighbors['prev'] = ""
+#         pneighbors['prevtext'] = ""
+#         pneighbors['prevstyle'] = ""
+#     try:
+#         # the 'len' call is what generates the error and kicks to the except statement, I think?
+#         pneighbors['next'] = para.getnext()
+#         len(pneighbors['next'].tag)
+#         pneighbors['nexttext'] = lxml_utils.getParaTxt(pneighbors['next'])
+#         pneighbors['nextstyle'] = lxml_utils.getParaStyle(pneighbors['next'])
+#     except:
+#         pneighbors['next'] = ""
+#         pneighbors['nexttext'] = ""
+#         pneighbors['nextstyle'] = ""
+#     return pneighbors
 
 def findSectionBegin(sectionname, section_start_rules, doc_root, versatileblockparas, para, cbstring):
     # set header lists
@@ -95,12 +95,12 @@ def findSectionBegin(sectionname, section_start_rules, doc_root, versatileblockp
     if "optional_heading_styles" in section_start_rules[sectionname][cbstring]:
         optheaders = [lxml_utils.transformStylename(s) for s in section_start_rules[sectionname][cbstring]["optional_heading_styles"]]
         allheaders = headers + optheaders
-    else: 
-        allheaders = headers   
+    else:
+        allheaders = headers
     allheaders_plus_versatileparas = allheaders + versatileblockparas
 
     # set vars for our loop & output
-    pneighbors = getNeighborParas(para)
+    pneighbors = lxml_utils.getNeighborParas(para)
     sectionbegin_para = para
     sectionbegin_tmp = para
     firstStyleOfBlock = True
@@ -110,17 +110,17 @@ def findSectionBegin(sectionname, section_start_rules, doc_root, versatileblockp
         logger.debug("found leading header/versatile styled para:'%s'" % pneighbors['prevstyle'])
         # increment the loop upwards
         sectionbegin_tmp = pneighbors['prev']
-        pneighbors = getNeighborParas(sectionbegin_tmp)
-        sectionbegin_tmp_style = getParaStyle(sectionbegin_tmp)
+        pneighbors = lxml_utils.getNeighborParas(sectionbegin_tmp)
+        sectionbegin_tmp_style = lxml_utils.getParaStyle(sectionbegin_tmp)
         # adjust matching & leadingParas if we found optional header or para with style from
         #  style list directly preceding a versatile block para
         if sectionbegin_tmp_style in allheaders:
             sectionbegin_para = sectionbegin_tmp
             # this is to help us save time, now we can stop processing this particular style-match
             if sectionbegin_tmp_style in headers:
-                firstStyleOfBlock = False    
+                firstStyleOfBlock = False
 
-    return sectionbegin_para, firstStyleOfBlock      
+    return sectionbegin_para, firstStyleOfBlock
 
 def getCBStrings(counter):
     logger.debug("incrementing contiguous-block counter")
@@ -139,8 +139,8 @@ def getMatchingParas(sectionname, section_start_rules, doc_root, cbstring):
         for pstyle in doc_root.findall(searchstring, wordnamespaces):
             para = pstyle.getparent().getparent()
             matchingParas.append(para)
-    logger.debug("found '%s' matchingParas" % len(matchingParas))        
-    return matchingParas            
+    logger.debug("found '%s' matchingParas" % len(matchingParas))
+    return matchingParas
     # if section_start_rules[sectionname][cbstring]["multiple"] == True:
     #     for stylename in section_start_rules[sectionname][cbstring]["styles"]:
     #         stylename = lxml_utils.transformStylename(stylename)
@@ -153,7 +153,7 @@ def getMatchingParas(sectionname, section_start_rules, doc_root, cbstring):
     # elif section_start_rules[sectionname][cbstring]["multiple"] == False:
     #     # we need ot collect first paras found from each style in a dict with para index,
     #     #   and find out which comes first!
-    #     para_dict = {}            
+    #     para_dict = {}
     #     for stylename in section_start_rules[sectionname][cbstring]["styles"]:
     #         stylename = lxml_utils.transformStylename(stylename)
     #         searchstring = ".//*w:pStyle[@w:val='%s']" % stylename
@@ -166,7 +166,7 @@ def getMatchingParas(sectionname, section_start_rules, doc_root, cbstring):
     #         para_dict = collections.OrderedDict(sorted(para_dict.items()))
     #         para = para_dict[next(iter(para_dict))]
     #         matchingParas.append(para)
-    #         # findSectionBegin(sectionname, section_start_rules, doc_root, para, cbstring)    
+    #         # findSectionBegin(sectionname, section_start_rules, doc_root, para, cbstring)
 
 def evalFirstChild(sectionname, section_start_rules, cbstring, sectionbegin_para):
     logger.debug("evaluating first-child rule...")
@@ -188,21 +188,21 @@ def evalFirstChild(sectionname, section_start_rules, cbstring, sectionbegin_para
     if matchrule == True and textmatch == True:
         logger.debug("found 1st child positive match: '%s'" % matchedtext)
         return True
-    elif matchrule == False and textmatch == False:   
+    elif matchrule == False and textmatch == False:
         logger.debug("found 1st child negative match: '%s'" % textarray)
         return True
     else:
         logger.debug("1st child match criteria not met: '%s'" % textarray)
-        return False    
+        return False
 
-# evaluate previous sibling (see if there's already a section start or acceptable prevSibling style) 
+# evaluate previous sibling (see if there's already a section start or acceptable prevSibling style)
 def precedingStyleCheck(sectionname, section_start_rules, cbstring, sectionbegin_para, sectiontypes):
     logger.debug("checking prev-sibling for existing acceptable style...")
     # get acceptable previous sibling style list:
     requiredStyles = [lxml_utils.transformStylename(s) for s in section_start_rules[sectionname][cbstring]["previous_sibling"]["required_styles"]]
     required_plus_section_styles = requiredStyles + sectiontypes["all"]
     # get preceding para style
-    pneighbors = getNeighborParas(sectionbegin_para)
+    pneighbors = lxml_utils.getNeighborParas(sectionbegin_para)
     # check to see if previous para style is already acceptable
     if pneighbors["prevstyle"] in required_plus_section_styles:
         logger.debug("previous style already has section start style: '%s'" % pneighbors["prevstyle"])
@@ -214,49 +214,49 @@ def evalPrevUntil(sectionname, section_start_rules, cbstring, sectionbegin_para)
     logger.debug("evaluating previous until rule...")
     requiredstyles = [lxml_utils.transformStylename(style) for style in section_start_rules[sectionname][cbstring]["previous_sibling"]["required_styles"]]
     prevuntil_styles = [lxml_utils.transformStylename(style) for style in section_start_rules[sectionname][cbstring]["previous_until"]]
-    required_plus_prevuntil_styles = requiredstyles + prevuntil_styles    
-    
-    # get previous para style then scan upwards with while loop    
-    pneighbors = getNeighborParas(sectionbegin_para)
+    required_plus_prevuntil_styles = requiredstyles + prevuntil_styles
+
+    # get previous para style then scan upwards with while loop
+    pneighbors = lxml_utils.getNeighborParas(sectionbegin_para)
     para_tmp = sectionbegin_para
 
     while pneighbors['prevstyle'] not in required_plus_prevuntil_styles:
         # increment para upwards
         para_tmp = pneighbors['prev']
-        pneighbors = getNeighborParas(para_tmp)
-    
+        pneighbors = lxml_utils.getNeighborParas(para_tmp)
+
     # figure out whether we matched a prevuntil style or required style
     if pneighbors['prevstyle'] in requiredstyles:
         logger.debug("false: found required-style before prev_until-style:'%s'" % pneighbors['prevstyle'])
         return False
     elif pneighbors['prevstyle'] in prevuntil_styles:
         logger.debug("true: found required-style before prev_until-style:'%s'" % pneighbors['prevstyle'])
-        return True        
+        return True
 
 def evalPosition(sectionname, section_start_rules, cbstring, sectionbegin_para, sectiontypes):
     logger.debug("evaluate 'position' rule...")
     # get previous para style then scan upwards with while loop
-    pneighbors = getNeighborParas(sectionbegin_para)
+    pneighbors = lxml_utils.getNeighborParas(sectionbegin_para)
     while pneighbors['prevstyle'] and pneighbors['prevstyle'] not in sectiontypes["all"]:
         # increment para upwards
         para_tmp = pneighbors['prev']
-        pneighbors = getNeighborParas(para_tmp)    
+        pneighbors = lxml_utils.getNeighborParas(para_tmp)
     last_sectionstart = pneighbors['prevstyle']
     # in case there were no preceding section starts:
     if last_sectionstart not in sectiontypes["all"]:
         last_sectionstart = sectiontypes["frontmatter"][0]
 
     # get next SectionStart style
-    pneighbors = getNeighborParas(sectionbegin_para)
+    pneighbors = lxml_utils.getNeighborParas(sectionbegin_para)
     # para_tmp = sectionbegin_para
     while pneighbors['nextstyle'] and pneighbors['nextstyle'] not in sectiontypes["all"]:
         # increment para (down)
         para_tmp = pneighbors['next']
-        pneighbors = getNeighborParas(para_tmp)
-    next_sectionstart = pneighbors['nextstyle']    
+        pneighbors = lxml_utils.getNeighborParas(para_tmp)
+    next_sectionstart = pneighbors['nextstyle']
     # in case there were no follwoing section starts:
     if next_sectionstart not in sectiontypes["all"]:
-        next_sectionstart = sectiontypes["backmatter"][0]    
+        next_sectionstart = sectiontypes["backmatter"][0]
 
     # the desired 'position':
     position = section_start_rules[sectionname]["position"]
@@ -264,16 +264,16 @@ def evalPosition(sectionname, section_start_rules, cbstring, sectionbegin_para, 
     # evaluate desired position vs. position as determined by Seciton start position
     if position == "frontmatter" and last_sectionstart in sectiontypes["frontmatter"]:
         logger.debug("'frontmatter' criteria matched- prev_sectionstart: '%s'" % last_sectionstart)
-        return True  
+        return True
     elif position == "main" and ((last_sectionstart in sectiontypes["main"]) or (next_sectionstart in sectiontypes["main"])):
-        logger.debug("'main' criteria matched- betweem '%s' and '%s'" % (last_sectionstart, next_sectionstart))              
+        logger.debug("'main' criteria matched- betweem '%s' and '%s'" % (last_sectionstart, next_sectionstart))
         return True
     elif position == "backmatter" and next_sectionstart in sectiontypes["backmatter"]:
-        logger.debug("'backmatter' criteria matched- next_sectionstart: '%s'" % next_sectionstart)        
+        logger.debug("'backmatter' criteria matched- next_sectionstart: '%s'" % next_sectionstart)
         return True
     else:
-        logger.debug("'%s' criteria not matched- betweem '%s' and '%s'" % (position, last_sectionstart, next_sectionstart))                
-        return False     
+        logger.debug("'%s' criteria not matched- betweem '%s' and '%s'" % (position, last_sectionstart, next_sectionstart))
+        return False
 
 def getSectionTypes(section_start_rules):
     logger.debug("getting section type lists")
@@ -283,9 +283,9 @@ def getSectionTypes(section_start_rules):
         if section_start_rules[sectionname]["section_type"] == "frontmatter":
             sectiontypes["frontmatter"].append(lxml_utils.transformStylename(sectionname))
         elif section_start_rules[sectionname]["section_type"] == "main":
-            sectiontypes["main"].append(lxml_utils.transformStylename(sectionname))   
+            sectiontypes["main"].append(lxml_utils.transformStylename(sectionname))
         elif section_start_rules[sectionname]["section_type"] == "backmatter":
-            sectiontypes["backmatter"].append(lxml_utils.transformStylename(sectionname))                      
+            sectiontypes["backmatter"].append(lxml_utils.transformStylename(sectionname))
     return sectiontypes
 
 def checkForParaStyle(sectionname, doc_root):
@@ -295,8 +295,8 @@ def checkForParaStyle(sectionname, doc_root):
         logger.debug("para style does not exist")
         return False
     else:
-        logger.debug("para style exists")        
-        return True    
+        logger.debug("para style exists")
+        return True
 
 def evalSectionRequired(sectionname, section_start_rules, doc_root, titlestylename):
     logger.debug("evaluate section-required rule...")
@@ -306,7 +306,7 @@ def evalSectionRequired(sectionname, section_start_rules, doc_root, titlestylena
     if checkForParaStyle(lxml_utils.transformStylename(sectionname), doc_root) == False:
         # get insert_before styles
         insertstyles = [lxml_utils.transformStylename(s) for s in section_start_rules[sectionname]["section_required"]["insert_before"]]
-        # two find the first insert style, I can either find the first occurrence of each 
+        # two find the first insert style, I can either find the first occurrence of each
         #   insertstyle and compare para indexes, or start at the top of the document (titlepage) and scan downwards
         # For the only section_required style in use at time of writing this, (section-chapter),
         #   the latter seems less resource intensive.
@@ -316,13 +316,13 @@ def evalSectionRequired(sectionname, section_start_rules, doc_root, titlestylena
         if titlestyle is not None:
             titlepara = titlestyle.getparent().getparent()
             # get next SectionStart style
-            pneighbors = getNeighborParas(titlepara)
+            pneighbors = lxml_utils.getNeighborParas(titlepara)
             # para_tmp = titlepara
             while pneighbors['nextstyle'] and pneighbors['nextstyle'] not in insertstyles:
                 # increment para (down)
                 para_tmp = pneighbors['next']
-                pneighbors = getNeighborParas(para_tmp)
-            next_sectionstart = pneighbors['nextstyle']    
+                pneighbors = lxml_utils.getNeighborParas(para_tmp)
+            next_sectionstart = pneighbors['nextstyle']
             # this needs a conditional in case there were no following insertstyles ever:
             if next_sectionstart in insertstyles:
                 sectionbegin_para = pneighbors['next']
@@ -331,7 +331,7 @@ def evalSectionRequired(sectionname, section_start_rules, doc_root, titlestylena
                 logger.debug("no 'insert_before' styles found, cannot insert sectionstart")
         else:
             logger.debug("no titlepageTitle para, cannot process sectionrequired")
-    
+
     return sectionbegin_para
 
 # Should revisit this using lxml builder
@@ -371,7 +371,7 @@ def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents='
 # logging these is not absolutely necessary, building it in for troubleshooting
 def deletePrecedingPageBreak(para, report_dict):
     logger.debug("checking for page break in preceding para...")
-    pneighbors = getNeighborParas(para)
+    pneighbors = lxml_utils.getNeighborParas(para)
     if len(pneighbors['prev']):
         # find all pagebreaks in the preceding paragraph
         pagebreakstring = ".//*w:br[@w:type='page']"
@@ -423,14 +423,14 @@ def runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sec
                 logger.debug("disqualified: not the first para in its own style block! next match")
                 continue
 
-            # evaluate 1st child if criteria is present    
+            # evaluate 1st child if criteria is present
             if "first_child" in section_start_rules[sectionname][cbstring]:
                 firstchild_results = evalFirstChild(sectionname, section_start_rules, cbstring, sectionbegin_para)
                 if firstchild_results == False:
                     logger.debug("disqualified: firstchild criteria not met. next match")
-                    continue  
+                    continue
 
-            # evaluate previous sibling (see if there's already a section start) 
+            # evaluate previous sibling (see if there's already a section start)
             if precedingStyleCheck(sectionname, section_start_rules, cbstring, sectionbegin_para, sectiontypes) == True:
                 logger.debug("disqualified: previous_style is acceptable. next match")
                 continue
@@ -441,14 +441,14 @@ def runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sec
                 position_results = evalPosition(sectionname, section_start_rules, cbstring, sectionbegin_para, sectiontypes)
                 if position_results == False:
                     logger.debug("disqualified: position criteria not met. next match")
-                    continue  
+                    continue
 
             # // check criteria for previous until
             if "previous_until" in section_start_rules[sectionname][cbstring]:
                 prev_until_results = evalPrevUntil(sectionname, section_start_rules, cbstring, sectionbegin_para)
                 if prev_until_results == False:
                     print "disqualified: prev_until criteria not met. next match!"
-                    continue  
+                    continue
 
             # if we made it this far, go ahead and insert our section start &/or log it for style report!
             logger.info("All criteria met for '%s' rule!  %sing para" % (sectionname, call_type))
@@ -477,23 +477,23 @@ def runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sec
                 report_dict = deletePrecedingPageBreak(sectionbegin_para, report_dict)
                 insertSectionStart(lxml_utils.transformStylename(sectionname), sectionbegin_para, doc_root, sectionname)
 
-    return report_dict        
+    return report_dict
 
 def setRulesPriority(section_start_rules):
     logger.debug("adding rule priorities")
     for sectionname, sectionvalues in section_start_rules.iteritems():
         if "order" in sectionvalues and sectionvalues["order"] == "first":
-            section_start_rules[sectionname]["priority"] = 1        
+            section_start_rules[sectionname]["priority"] = 1
         elif "section_required" in sectionvalues and "value" in sectionvalues["section_required"]:
             section_start_rules[sectionname]["priority"] = 2
         elif "position" in sectionvalues:
             section_start_rules[sectionname]["priority"] = 4
         elif "order" in sectionvalues and sectionvalues["order"] == "last":
             section_start_rules[sectionname]["priority"] = 5
-        else:            
-            section_start_rules[sectionname]["priority"] = 3     
+        else:
+            section_start_rules[sectionname]["priority"] = 3
     return section_start_rules
-                
+
 def sectionStartCheck(call_type, report_dict):
     logger.info("* * * commencing sectionStartCheck function...")
     # local vars
@@ -508,7 +508,7 @@ def sectionStartCheck(call_type, report_dict):
     # read rules & versatile block para list from JSONs
     section_start_rules = os_utils.readJSON(section_start_rules_json)
     styleconfig_dict = os_utils.readJSON(styleconfig_json)
-    # "list comprehension!" https://stackoverflow.com/questions/7126916/perform-a-string-operation-for-every-element-in-a-python-list    
+    # "list comprehension!" https://stackoverflow.com/questions/7126916/perform-a-string-operation-for-every-element-in-a-python-list
     versatileblockparas = [classname[1:] for classname in styleconfig_dict["versatileblockparas"]]
 
     # get section types (by position, + all sections)
@@ -531,7 +531,7 @@ def sectionStartCheck(call_type, report_dict):
 
     # add/update para index numbers
     logger.debug("Update all report_dict records with para_index-")
-    report_dict = lxml_utils.calcParaIndexesForLog(report_dict, doc_root)
+    report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectiontypes["all"])
 
     logger.info("* * * ending sectionStartCheck function.")
 

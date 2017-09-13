@@ -90,6 +90,13 @@ def getNeighborParas(para):          # move to lxml_utils?
         pneighbors['nextstyle'] = ""
     return pneighbors
 
+# creating a dict for secitonnames: SectionStart stylenames as keys, their 'longnames' as values
+def getAllSectionNames(section_start_rules):
+    sectionnames = {}
+    for sectionname in section_start_rules:
+        sectionnames[transformStylename(sectionname)] = sectionname
+    return sectionnames
+
 # return the last SectionStart para's content
 def getSectionName(para, sectionnames):
     if para is not None:
@@ -110,12 +117,56 @@ def getSectionName(para, sectionnames):
         sectionpara_contents = 'n-a'
     return sectionpara_name, sectionpara_contents
 
+def getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, sectionname, sectionnames):
+    # get para style. If not in heading styles or sectiontypes["all"], get next (while)
+    tmp_para = sectionbegin_para
+    stylename = getParaStyle(tmp_para)
+    while stylename and stylename not in headingstyles and stylename not in sectionnames:
+        pneighbors = getNeighborParas(tmp_para)
+        tmp_para = pneighbors['next']
+        stylename = pneighbors['nextstyle']
+    # set content equal to the content of the first heading-styled para in the section
+    if stylename in headingstyles:
+        newcontent = getParaTxt(tmp_para).strip()
+    else:   # there was no heading-styled para
+        sectionLongName = sectionnames[sectionname]
+        sectionshortname = sectionLongName[8:].split()[0]
+        newcontent = sectionshortname
+    # newcontent = "HALLOOOOOO"  (debug)
+    return newcontent
+
+def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingstyles = []):
+    logger.info("writing all paras with SectionStart styles to report_dict")
+    for sectionname in sectionnames:
+        paras = findParasWithStyle(sectionname, doc_root)
+        for para in paras:
+            # log the section start para
+            #   (we can run this before content is added to paras, b/c that content is captured later in the 'calcLocationInfoForLog' method
+            report_dict = logForReport(report_dict, para, "section_start_found", sectionname)
+            # check to see ifthe para is empty (no contents) and if so log it, and, if 'call_type' is insert, fix it.
+            if not getParaTxt(para).strip():
+                report_dict = logForReport(report_dict,para,"empty_section_start_para",sectionname)
+                if call_type == "insert":
+                    # delete any existing run(s) that may contain whitespace items.
+                    runs = para.findall(".//w:r", wordnamespaces)
+                    for run in runs:
+                        run.getparent().remove(run)
+                    # find / create contents for Section start para
+                    pneighbors = getNeighborParas(para)
+                    content = getContentsForSectionStart(pneighbors['next'], doc_root, headingstyles, sectionname, sectionnames)
+                    # create new run element with new content & append to our para!
+                    new_para_run = etree.Element("{%s}r" % wnamespace)
+                    new_para_run_text = etree.Element("{%s}t" % wnamespace)
+                    new_para_run_text.text = content
+                    new_para_run.append(new_para_run_text)
+                    para.append(new_para_run)
+    return report_dict
+
 # a method to log paragraph id for style report etc
 def logForReport(report_dict,para,category,description):
     para_dict = {}
     para_dict["para_id"] = getParaId(para)
     para_dict["description"] = description
-
     if category not in report_dict:
         report_dict[category] = []
 
@@ -130,29 +181,6 @@ def findParasWithStyle(stylename, doc_root):
         para = pstyle.getparent().getparent()
         paras.append(para)
     return paras
-
-# # once all changes havebeen made, call this to add paragraph index numbers to the changelog dicts
-# def calcParaIndexesForLog(report_dict, root):
-#     logger.info("calculating para_index numbers for all para_ids in 'report_dict'")
-#     try:
-#         # make sure we have contents in the dict
-#         if report_dict:
-#             for category, entries in report_dict.iteritems():
-#                 for entry in entries:
-#                     for key in entry.keys():
-#                         if key == "para_id":
-#                             # seach for the value
-#                             searchstring = ".//*w:p[@w14:paraId='%s']" % entry[key]
-#                             para = root.find(searchstring, wordnamespaces)
-#                             entry['para_index'] = getParaIndex(para)
-#                             if entry['para_index'] == 'n-a':
-#                                 logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
-#         else:
-#             logger.warn("report_dict is empty")
-#         return report_dict
-#     except Exception, e:
-#         logger.error('Failed calculating para_indexes for para_ids, exiting', exc_info=True)
-#         sys.exit(1)
 
 # once all changes havebeen made, call this to add location info for users to the changelog dicts
 def calcLocationInfoForLog(report_dict, root, sectionnames):
@@ -172,8 +200,8 @@ def calcLocationInfoForLog(report_dict, root, sectionnames):
                             if entry['para_index'] == 'n-a':
                                 logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
                             # # # Get Section Name
-                            entry['parent_section_start'], entry['parent_section_content']  = getSectionName(para, sectionnames)
-                            if entry['parent_section_start'] == 'n-a' or entry['parent_section_content'] == 'n-a':
+                            entry['parent_section_start_type'], entry['parent_section_start_content']  = getSectionName(para, sectionnames)
+                            if entry['parent_section_start_type'] == 'n-a' or entry['parent_section_start_content'] == 'n-a':
                                 logger.warn("couldn't get section start info for %s para (value was set to n-a)" % category)
                             # # # Get 1st 10 words of para text
                             entry['para_string'] = ' '.join(getParaTxt(para).split(' ')[:10])

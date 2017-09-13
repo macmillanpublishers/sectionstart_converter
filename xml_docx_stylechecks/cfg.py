@@ -8,9 +8,9 @@ import platform
 import json
 import logging.config
 
-import shared_utils.os_utils as os_utils
+# import shared_utils.os_utils as os_utils
 
-# NOTE: The tmpdir needs to be manually set.  Everything else here is dynamically spun off based on 
+# NOTE: The tmpdir needs to be manually set.  Everything else here is dynamically spun off based on
 # 	which script is invoked and the location of the dropbox folder
 # 	I guess we could dynamically set tmpdir it if we used standard sys tmp locations that are garbage collected
 
@@ -40,9 +40,8 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 ### Folders
 if script_name == "validator":
 	tmpdir = os.path.dirname(inputfile)
-else:	
-	tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","1708_2_python_ssconvertertests"," tmpdir",inputfilename_noext)
-tmpdir = os_utils.setupTmpfolder(tmpdir)
+else:
+	tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","1708_2_python_ssconvertertests","tmpdir",inputfilename_noext)
 if hostOS == "Windows":
 	dropboxfolder = os.path.join("C:",os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
 else:
@@ -68,8 +67,8 @@ if scripts_dir:
 	macmillanstyles_json = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
 	vbastyleconfig_json = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","vba_style_config.json")
 	section_start_rules_json = os.path.join(scripts_dir, "bookmaker_validator","section_start_rules.json")
-	styleconfig_json = os.path.join(scripts_dir, "htmlmaker_js","style_config.json")	
-else: 	
+	styleconfig_json = os.path.join(scripts_dir, "htmlmaker_js","style_config.json")
+else:
 	macmillan_template = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.dotx")
 	macmillanstyles_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
 	vbastyleconfig_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","vba_style_config.json")
@@ -81,8 +80,8 @@ else:
 ### xml filepaths relative to ziproot
 docxml_relpath = os.path.join("word","document.xml")
 stylesxml_relpath = os.path.join("word","styles.xml")
-settingsxml_relpath = os.path.join("word","settings.xml")  # for rsid index 
-custompropsxml_relpath = os.path.join("docProps","custom.xml")  # for version document property 
+settingsxml_relpath = os.path.join("word","settings.xml")  # for rsid index
+custompropsxml_relpath = os.path.join("docProps","custom.xml")  # for version document property
 numberingxml_relpath = os.path.join("word","numbering.xml")  # for replacing or preserving wholesale
 rels_relpath = os.path.join("_rels",".rels")
 contenttypes_relpath = os.path.join(".","[Content_Types].xml")
@@ -118,34 +117,34 @@ wordnamespaces = {'w': wnamespace, 'w14': w14namespace, 'vt': vtnamespace}
 
 
 # # # # # # # LOGGING SETUP via dictConfig
-# loglevel can be globally set at the top of this script. 
+# loglevel can be globally set at the top of this script.
 # FYI the loglevel for a handler will be whichever setting is more restrictive: handler setting or logger setting
 # So to log DEBUG in console and INFO for file, set logger & stream handler to "DEBUG" and file handler to "INFO"
 def defineLogger(logfile, loglevel):
-    logging.config.dictConfig({ 
+    logging.config.dictConfig({
         'version': 1,
         'disable_existing_loggers': False,
-        'formatters': { 
-            'console': { 
+        'formatters': {
+            'console': {
                 'format': '[%(levelname)s] %(name)s.%(funcName)s : %(message)s'
             },
-            'file': { 
+            'file': {
                 'format': '%(asctime)s [%(levelname)s] %(name)s.%(funcName)s : %(message)s',
                 'datefmt': '%y-%m-%d %H:%M:%S'
             # },
             # 'warnings': {
             # 	'format': '%(message)s'
-            }            
+            }
         },
-        'handlers': { 
-            'stream': { 
+        'handlers': {
+            'stream': {
                 'class': 'logging.StreamHandler',
                 'formatter': 'console',
                 # 'level': 'DEBUG'
             },
             'file':{
                 'class': 'logging.FileHandler',
-                'formatter': 'file',       
+                'formatter': 'file',
                 'filename': logfile
                 # 'level': 'DEBUG'
             # },
@@ -155,8 +154,8 @@ def defineLogger(logfile, loglevel):
             # 	'filename' : warnings_json
             }
         },
-        'loggers': { 
-            '': { 
+        'loggers': {
+            '': {
                 'handlers': ['stream', 'file'],
                 'level': loglevel,
                 'propagate': True
@@ -164,9 +163,9 @@ def defineLogger(logfile, loglevel):
             # 'w_logger':{
             #      'handlers': ['stream', 'secondfile'],
             #     'level': loglevel,
-            #     'propagate': True           	
+            #     'propagate': True
             }
-        } 
+        }
     })
 
 
@@ -181,17 +180,13 @@ def defineLogger(logfile, loglevel):
 # _ = StructuredMessage   # optional, to improve readability
 
 
-# TODO:  
+# TODO:
 # standardize headings and sections
 # 1) look at flow control for crashes, figure out how we finish the process and return what we need to
-	# (nested tries?)  Try inserting junk at top level locations too. 
+	# (nested tries?)  Try inserting junk at top level locations too.
 	# for now surface errors in text files, we'll add that for emails later
 # 2) the validator
 # possibly consolidate setup and cleanup scripts in lib as bundled calls
 # for stylereporter: got a unicode encoding for special char in authorname
 # commenting out pagebreak logging to json, reinstate depending on macro / pagenumber count speed is good (also custom styles revert)
 # python logger is not the easiest way to create a json of only warnings; should probably just setup a separate function for that.
-
-
-
-

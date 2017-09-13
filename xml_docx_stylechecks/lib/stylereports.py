@@ -38,19 +38,6 @@ logger = logging.getLogger(__name__)
 
 
 # #---------------------  METHODS
-def sectionStartTally(report_dict, section_start_rules, doc_root):
-    logger.info("writing all paras with SectionStart styles to report_dict")
-    sectionnames = []
-    for sectionname in section_start_rules:
-        # transform section start name
-        sectionname = lxml_utils.transformStylename(sectionname)
-        # collect section start names to return for use in another function:
-        sectionnames.append(sectionname)
-        paras = lxml_utils.findParasWithStyle(sectionname, doc_root)
-        for para in paras:
-            report_dict = lxml_utils.logForReport(report_dict,para,"section_start_found",sectionname)
-    return report_dict, sectionnames
-
 # the "Run" here would be a span / character style.
 # This method is identical to the one in lxmlutils for paras except varnames and the xml keyname
 def findRunsWithStyle(stylename, doc_root):
@@ -176,13 +163,14 @@ def styleReports(report_dict):
     vbastyleconfig_dict = os_utils.readJSON(vbastyleconfig_json)
     bookmakerstyles = vbastyleconfig_dict["bookmakerstyles"]
 
-    # get section start stylenames (transformed) in a list
+    # get Section Start names & styles from sectionstartrules
+    sectionnames = lxml_utils.getAllSectionNames(section_start_rules)
 
     # get all Section Starts in the doc:
-    report_dict, sectionnames = sectionStartTally(report_dict, section_start_rules, doc_root)
+    report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "report")
 
     # log texts of illustation-holder paras
-    report_dict = logTextOfParasWithStyle(report_dict, doc_root, illustrationholder_stylename, "illustration-holders")
+    report_dict = logTextOfParasWithStyle(report_dict, doc_root, illustrationholder_stylename, "illustration_holders")
 
     # log texts of titlepage-author paras
     report_dict = logTextOfParasWithStyle(report_dict, doc_root, authorstylename, "author_paras")

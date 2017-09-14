@@ -64,6 +64,9 @@ def docPrepare(report_dict):
     # get all Section Starts paras in the doc, add content to each para as needed:
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "insert", headingstyles)
 
+    # autonumber contents for chapter, Appendix, Part
+    report_dict = lxml_utils.autoNumberSectionParaContent(report_dict, sectionnames, cfg.autonumber_sections, doc_root)
+
     # write our changes back to doc.xml
     logger.debug("writing changes out to doc_xml file")
     os_utils.writeXMLtoFile(doc_root, doc_xml)

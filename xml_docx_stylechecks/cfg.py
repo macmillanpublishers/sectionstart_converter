@@ -108,6 +108,11 @@ contenttypes_xml = os.path.join(ziproot, contenttypes_relpath)
 sectionstart_versionstring = '4.7.0'
 # TitlepageTitle style
 titlestylename = "Titlepage Book Title (tit)"
+chapnumstyle = "Chap Number (cn)"
+chaptitlestyle = "Chap Title (ct)"
+partnumstyle = "Part Number (pn)"
+parttitlestyle = "Part Title (pt)"
+autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
 
 # Word namespace vars
 wnamespace = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'

@@ -295,7 +295,8 @@ def insertSectionStart(sectionname, sectionbegin_para, doc_root, headingstyles, 
     new_para.append(new_para_props)
     contents = lxml_utils.getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, sectionstylename, sectionnames)
 
-    # create run and text elements, add text, and append to para
+    # # create run and text elements, add text, and append to para
+    #   Tried using "addRunToPara" function here, but returning newpara did not return new nested items
     new_para_run = etree.Element("{%s}r" % wnamespace)
     new_para_run_text = etree.Element("{%s}t" % wnamespace)
     new_para_run_text.text = contents
@@ -434,7 +435,7 @@ def setRulesPriority(section_start_rules):
             section_start_rules[sectionname]["priority"] = 3
     return section_start_rules
 
-def sectionStartCheck(call_type, report_dict):
+def sectionStartCheck(call_type, report_dict, autonumber=False):
     logger.info("* * * commencing sectionStartCheck function...")
     # local vars
     section_start_rules_json = cfg.section_start_rules_json
@@ -467,9 +468,12 @@ def sectionStartCheck(call_type, report_dict):
             if section_start_rules[sectionname]["priority"] == n:
                 report_dict = runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sectiontypes, call_type, report_dict, titlestylename, headingstyles, sectionnames)
 
-    # if 'converting', write our changes back to doc.xml
+    # if 'converting', add autonumbering to sectionstart para contents where applicable, write our changes back to doc.xml
     if call_type == "insert":
         logger.info("writing changes out to doc_xml file")
+        # autonumber contents for chapter, Appendix, Part
+        if autonumber == True:
+            report_dict = lxml_utils.autoNumberSectionParaContent(report_dict, sectionnames, cfg.autonumber_sections, doc_root)
         os_utils.writeXMLtoFile(doc_root, doc_xml)
 
     # add/update para index numbers
@@ -479,6 +483,7 @@ def sectionStartCheck(call_type, report_dict):
     logger.info("* * * ending sectionStartCheck function.")
 
     return report_dict
+
 
 #---------------------  MAIN
 # only run if this script is being invoked directly

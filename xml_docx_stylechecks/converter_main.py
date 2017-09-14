@@ -15,6 +15,7 @@ import lib.addsectionstarts as addsectionstarts
 import shared_utils.unzipDOCX as unzipDOCX
 import shared_utils.zipDOCX as zipDOCX
 import shared_utils.os_utils as os_utils
+import shared_utils.lxml_utils as lxml_utils
 import shared_utils.check_docx as check_docx
 
 
@@ -79,8 +80,8 @@ if __name__ == '__main__':
 
         # # # add section starts!
         logger.info("Adding SectionStart styles to the document.xml!")
-        # report_dict = addsectionstarts.sectionStartCheck("report", report_dict)
-        report_dict = addsectionstarts.sectionStartCheck("insert", report_dict)
+        # report_dict = addsectionstarts.sectionStartCheck("report", report_dict).  The true is to enable autnumbering section-start para content
+        report_dict = addsectionstarts.sectionStartCheck("insert", report_dict, True)
 
         ### zip ziproot up as a docx into outfolder
         logger.info("Zipping updated xml into a .docx")

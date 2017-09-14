@@ -22,6 +22,17 @@ logger = logging.getLogger(__name__)
 
 
 ######### METHODS
+# taken from: https://stackoverflow.com/questions/42875103/integer-to-roman-number
+def int_to_Roman(num):
+   val = (1000, 900,  500, 400, 100,  90, 50,  40, 10,  9,   5,  4,   1)
+   syb = ('M',  'CM', 'D', 'CD','C', 'XC','L','XL','X','IX','V','IV','I')
+   roman_num = ""
+   for i in range(len(val)):
+      count = int(num / val[i])
+      roman_num += syb[i] * count
+      num -= val[i] * count
+   return roman_num
+
 def transformStylename(stylename):
     # in js we needed to escape pound signs.  Come back and test that here
     # yep, cause Word strips em out for the style-shortname
@@ -126,17 +137,39 @@ def getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, secti
         tmp_para = pneighbors['next']
         stylename = pneighbors['nextstyle']
     # set content equal to the content of the first heading-styled para in the section
+    #   if heading para is chapnumber or partnumber, join it with the following Chap Title / Part title para(s?)
     if stylename in headingstyles:
-        newcontent = getParaTxt(tmp_para).strip()
-    else:   # there was no heading-styled para
+        if stylename == cfg.chapnumstyle or stylename == cfg.partnumstyle:
+            pneighbors = getNeighborParas(tmp_para)
+            if (stylename == cfg.chapnumstyle and pneighbors['nextstyle'] == cfg.chaptitlestyle) or (stylename == cfg.partnumstyle and pneighbors['nextstyle'] == cfg.parttitlestyle):
+                newcontent = "{}: {}".format(getParaTxt(tmp_para).strip(), pneighbors['nexttext'].strip())
+        else:
+            newcontent = getParaTxt(tmp_para).strip()
+    else:   # if there was no heading-styled para
         sectionLongName = sectionnames[sectionname]
         sectionshortname = sectionLongName[8:].split()[0]
         newcontent = sectionshortname
     # newcontent = "HALLOOOOOO"  (debug)
     return newcontent
 
+def addRunToPara(content, para, bool_rm_existing_contents=False):
+    if bool_rm_existing_contents == True:
+        # delete any existing run(s) in para
+        runs = para.findall(".//w:r", wordnamespaces)
+        for run in runs:
+            run.getparent().remove(run)
+        # create new run element with new content & append to our para!
+        new_para_run = etree.Element("{%s}r" % wnamespace)
+        new_para_run_text = etree.Element("{%s}t" % wnamespace)
+        new_para_run_text.text = content
+        new_para_run.append(new_para_run_text)
+        para.append(new_para_run)
+
+# we don't really need doc_root here do we?
 def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingstyles = []):
-    logger.info("writing all paras with SectionStart styles to report_dict")
+    logger.info("logging all paras with SectionStart styles, and any 'empty' sectionStart paras (no content)")
+    if call_type == "insert":
+        logger.info("writing contents to any empty sectionstart paras")
     for sectionname in sectionnames:
         paras = findParasWithStyle(sectionname, doc_root)
         for para in paras:
@@ -147,19 +180,51 @@ def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingsty
             if not getParaTxt(para).strip():
                 report_dict = logForReport(report_dict,para,"empty_section_start_para",sectionname)
                 if call_type == "insert":
-                    # delete any existing run(s) that may contain whitespace items.
-                    runs = para.findall(".//w:r", wordnamespaces)
-                    for run in runs:
-                        run.getparent().remove(run)
                     # find / create contents for Section start para
                     pneighbors = getNeighborParas(para)
                     content = getContentsForSectionStart(pneighbors['next'], doc_root, headingstyles, sectionname, sectionnames)
-                    # create new run element with new content & append to our para!
-                    new_para_run = etree.Element("{%s}r" % wnamespace)
-                    new_para_run_text = etree.Element("{%s}t" % wnamespace)
-                    new_para_run_text.text = content
-                    new_para_run.append(new_para_run_text)
-                    para.append(new_para_run)
+                    # add new content to Para! ()'True' = remove existing run(s) from para that may contain whitespace)
+                    addRunToPara(content, para, True)
+    return report_dict
+
+def autoNumberSectionParaContent(report_dict, sectionnames, autonumber_sections, doc_root):
+    logger.info("check if autonumbering is necessary for Section Start para contents")
+    autonumber_section_counts = {}
+    for sectionlongname in autonumber_sections:
+        autonumber_section_counts[sectionlongname] = 0
+    # count the occurences of generic naming for sections above
+    for sectionlongname in autonumber_section_counts:
+        logger.debug("SECTION: %s" % sectionlongname)
+        paras = findParasWithStyle(transformStylename(sectionlongname), doc_root)
+        for para in paras:
+            logger.debug("PARATXT: %s, SHORTNAME: %s" % (getParaTxt(para).strip(), sectionlongname[8:].split()[0]))
+            if getParaTxt(para).strip() == sectionlongname[8:].split()[0]:     # sectionlabel[8:].split()[0] gives the 'shortname' of a given section from its full Seciton style name
+                autonumber_section_counts[sectionlongname] += 1
+            elif getParaTxt(para).strip():      # if we find a seciton with one of these types that already has non-generic contents, we bypass auto-numbering
+                autonumber_section_counts[sectionlongname] = 0
+                break
+    logger.debug("autonumber_section_counts: %s" % autonumber_section_counts) # debug
+
+    # apply autonumbering for each section in "autonumber_section_counts" as applicable
+    for sectionlongname, count in autonumber_section_counts.iteritems():
+        if count > 1:
+            logger.info("Found %s '%s's with generic names in ssparas, adding autonumbering to sspara contents" % (count, sectionlongname))
+            autonum = 1
+            paras = findParasWithStyle(transformStylename(sectionlongname), doc_root)
+            for para in paras:
+                number = autonum
+                if autonumber_sections[sectionlongname] == "alpha":
+                    number = chr(number+64)
+                if autonumber_sections[sectionlongname] == "roman":
+                    number = int_to_Roman(number)
+                newcontent = "{} {}".format(sectionlongname[8:].split()[0], number)
+                # add new content to Para! ()'True' = remove existing run(s) from para that may contain whitespace)
+                addRunToPara(newcontent, para, True)
+                # increment autonum
+                autonum += 1
+                # optional logging:
+                logForReport(report_dict,para,"autonumbering_applied",sectionlongname)
+
     return report_dict
 
 # a method to log paragraph id for style report etc

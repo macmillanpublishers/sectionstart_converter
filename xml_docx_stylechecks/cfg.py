@@ -107,18 +107,31 @@ contenttypes_xml = os.path.join(ziproot, contenttypes_relpath)
 # The first document version in history with section starts
 sectionstart_versionstring = '4.7.0'
 # TitlepageTitle style
-titlestylename = "Titlepage Book Title (tit)"
+titlestyle = "Titlepage Book Title (tit)"
 chapnumstyle = "Chap Number (cn)"
 chaptitlestyle = "Chap Title (ct)"
 partnumstyle = "Part Number (pn)"
 parttitlestyle = "Part Title (pt)"
+isbnstyle = "span ISBN (isbn)"
+authorstyle = "Titlepage Author Name (au)"
+illustrationholder_style = "Illustration holder (ill)"
+titlesection_stylename = "Section-Titlepagesti"
+copyrightsection_stylename = "Section-Copyrightscr"
+
 autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
+# the first 3 are shapes, the 4th is a section break
+objects_to_delete = ["mc:AlternateContent", "w:pict", "w:drawing", "w:sectPr"]
+nocharstyle_headingstyles = ["FMHeadfmh", "BMHeadbmh", "ChapNumbercn", "PartNumberpn"]
+nonprintingheads = ["ChapTitleNonprintingctnp", "BMHeadNonprintingbmhnp", "FMHeadNonprintingfmhnp"]
+copyrightstyles = ["CopyrightTextdoublespacecrtxd", "CopyrightTextsinglespacecrtx"]
 
 # Word namespace vars
 wnamespace = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
 w14namespace = 'http://schemas.microsoft.com/office/word/2010/wordml'
 vtnamespace = "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"
-wordnamespaces = {'w': wnamespace, 'w14': w14namespace, 'vt': vtnamespace}
+mcnamespace = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlnamespace = "http://www.w3.org/XML/1998/namespace"
+wordnamespaces = {'w': wnamespace, 'w14': w14namespace, 'vt': vtnamespace, 'mc': mcnamespace}
 
 
 # # # # # # # LOGGING SETUP via dictConfig

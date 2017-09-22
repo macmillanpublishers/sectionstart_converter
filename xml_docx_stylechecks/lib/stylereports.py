@@ -38,20 +38,10 @@ logger = logging.getLogger(__name__)
 
 
 # #---------------------  METHODS
-# the "Run" here would be a span / character style.
-# This method is identical to the one in lxmlutils for paras except varnames and the xml keyname
-def findRunsWithStyle(stylename, doc_root):
-    runs = []
-    searchstring = ".//*w:rStyle[@w:val='%s']" % stylename
-    for rstyle in doc_root.findall(searchstring, wordnamespaces):
-        run = rstyle.getparent().getparent()
-        runs.append(run)
-    return runs
-
 # this is mostly identical to the function below for paras, with some varnames changed and 2 other tweaks
 def logTextOfRunsWithStyle(report_dict, doc_root, stylename, report_category):
     logger.info("Logging runs styled as %s to report_dict['%s']" % (stylename, report_category))
-    runs = findRunsWithStyle(lxml_utils.transformStylename(stylename), doc_root)
+    runs = lxml_utils.findRunsWithStyle(lxml_utils.transformStylename(stylename), doc_root)
     for run in runs:
         runtxt = lxml_utils.getParaTxt(run)
         para = run.getparent()
@@ -151,11 +141,6 @@ def styleReports(report_dict):
     doc_tree = etree.parse(doc_xml)
     doc_root = doc_tree.getroot()
     styles_xml = cfg.styles_xml
-    # static styles for search      # move to cfg? for report output
-    isbnstylename = "span ISBN (isbn)"
-    titlestylename = cfg.titlestylename
-    authorstylename = "Titlepage Author Name (au)"
-    illustrationholder_stylename = "Illustration holder (ill)"
 
     # read rules & macmillan styles from JSONs
     section_start_rules = os_utils.readJSON(section_start_rules_json)
@@ -170,16 +155,16 @@ def styleReports(report_dict):
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "report")
 
     # log texts of illustation-holder paras
-    report_dict = logTextOfParasWithStyle(report_dict, doc_root, illustrationholder_stylename, "illustration_holders")
+    report_dict = logTextOfParasWithStyle(report_dict, doc_root, cfg.illustrationholder_style, "illustration_holders")
 
     # log texts of titlepage-author paras
-    report_dict = logTextOfParasWithStyle(report_dict, doc_root, authorstylename, "author_paras")
+    report_dict = logTextOfParasWithStyle(report_dict, doc_root, cfg.authorstyle, "author_paras")
 
     # log texts of titlepage-title paras
-    report_dict = logTextOfParasWithStyle(report_dict, doc_root, titlestylename, "title_paras")
+    report_dict = logTextOfParasWithStyle(report_dict, doc_root, cfg.titlestyle, "title_paras")
 
     # log texts of isbn-span runs
-    report_dict = logTextOfRunsWithStyle(report_dict, doc_root, isbnstylename, "isbn_spans")
+    report_dict = logTextOfRunsWithStyle(report_dict, doc_root, cfg.isbnstyle, "isbn_spans")
 
     # list all styles used in the doc
     report_dict, doc_root = getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report")

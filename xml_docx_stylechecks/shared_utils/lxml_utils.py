@@ -3,6 +3,7 @@
 import sys
 import os
 import shutil
+import uuid
 import re
 import json
 import logging
@@ -22,6 +23,24 @@ logger = logging.getLogger(__name__)
 
 
 ######### METHODS
+# generate ar random id
+def generate_id():
+    idbase = uuid.uuid4().hex
+    idshort = idbase[:8]
+    idupper = idshort.upper()
+    return str(idupper)
+
+# take a random id and make sure it is unique in the document, otherwise generate a new one, forever
+def generate_para_id(doc_root):
+    iduniq = generate_id()
+    idsearchstring = './/*w:p[@w14:paraId="%s"]' % iduniq
+    while len(doc_root.findall(idsearchstring, wordnamespaces)) > 0:
+        print iduniq + " already exists, generating another id"
+        iduniq = generate_id()
+        idsearchstring = './/*w:p[@w14:paraId="%s"]' % iduniq
+    logger.debug("generated unique para-id: '%s'" % iduniq)
+    return str(iduniq)
+
 # taken from: https://stackoverflow.com/questions/42875103/integer-to-roman-number
 def int_to_Roman(num):
    val = (1000, 900,  500, 400, 100,  90, 50,  40, 10,  9,   5,  4,   1)
@@ -67,6 +86,16 @@ def getParaStyle(para):      # move to lxml_utils?
     except:
         stylename = ""
     return stylename
+
+# the "Run" here would be a span / character style.
+# This method is identical to the one in lxmlutils for paras except varnames and the xml keyname
+def findRunsWithStyle(stylename, doc_root):
+    runs = []
+    searchstring = ".//*w:rStyle[@w:val='%s']" % stylename
+    for rstyle in doc_root.findall(searchstring, wordnamespaces):
+        run = rstyle.getparent().getparent()
+        runs.append(run)
+    return runs
 
 # return the index value of a paragraph (within the body/root)
 def getParaIndex(para):
@@ -186,6 +215,74 @@ def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingsty
                     # add new content to Para! ()'True' = remove existing run(s) from para that may contain whitespace)
                     addRunToPara(content, para, True)
     return report_dict
+
+# # Should revisit this using lxml builder
+# # def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents=''):
+# def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents, sectionnames):
+#     logger.debug("commencing insert Section Start style: '%s'..." % sectionstylename)
+#     # create new para element
+#     new_para_id = generate_para_id(doc_root)
+#     new_para = etree.Element("{%s}p" % wnamespace)
+#     new_para.attrib["{%s}paraId" % w14namespace] = new_para_id
+#
+#     # create new para properties element
+#     new_para_props = etree.Element("{%s}pPr" % wnamespace)
+#     new_para_props_style = etree.Element("{%s}pStyle" % wnamespace)
+#     new_para_props_style.attrib["{%s}val" % wnamespace] = sectionstylename
+#
+#     # append props element to para element
+#     new_para_props.append(new_para_props_style)
+#     new_para.append(new_para_props)
+#     # contents = lxml_utils.getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, sectionstylename, sectionnames)
+#
+#     # # create run and text elements, add text, and append to para
+#     #   Tried using "addRunToPara" function here, but returning newpara did not return new nested items
+#     new_para_run = etree.Element("{%s}r" % wnamespace)
+#     new_para_run_text = etree.Element("{%s}t" % wnamespace)
+#     new_para_run_text.text = contents
+#     new_para_run.append(new_para_run_text)
+#     new_para.append(new_para_run)
+#     # logtext = "inserted paragraph with style '%s' and text '%s'" % (sectionstylename,contents)
+#
+#     # append insert new paragraph before the selected para element
+#     sectionbegin_para.addprevious(new_para)
+#     logger.info("inserted '%s' paragraph with contents: '%s'" % (sectionstylename,contents))
+
+# Should revisit this using lxml builder
+# def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents=''):
+def insertPara(sectionstylename, existing_para, doc_root, contents, insert_before_or_after):
+    logger.debug("commencing insertPara '%s' with style: '%s' and contents: '%s'" % (insert_before_or_after, sectionstylename, contents))
+    # create new para element
+    new_para_id = generate_para_id(doc_root)
+    new_para = etree.Element("{%s}p" % wnamespace)
+    new_para.attrib["{%s}paraId" % w14namespace] = new_para_id
+
+    # create new para properties element
+    new_para_props = etree.Element("{%s}pPr" % wnamespace)
+    new_para_props_style = etree.Element("{%s}pStyle" % wnamespace)
+    new_para_props_style.attrib["{%s}val" % wnamespace] = sectionstylename
+
+    # append props element to para element
+    new_para_props.append(new_para_props_style)
+    new_para.append(new_para_props)
+
+    # # create run and text elements, add text, and append to para
+    #   Tried using "addRunToPara" function here, but returning newpara did not return new nested items
+    new_para_run = etree.Element("{%s}r" % wnamespace)
+    new_para_run_text = etree.Element("{%s}t" % wnamespace)
+    new_para_run_text.text = contents
+    new_para_run.append(new_para_run_text)
+    new_para.append(new_para_run)
+    # logtext = "inserted paragraph with style '%s' and text '%s'" % (sectionstylename,contents)
+
+    # append insert new paragraph before the selected para element
+    if insert_before_or_after == "before":
+        existing_para.addprevious(new_para)
+    elif insert_before_or_after == "after":
+        existing_para.addnext(new_para)
+
+    logger.info("inserted '%s' paragraph." % sectionstylename)
+
 
 def autoNumberSectionParaContent(report_dict, sectionnames, autonumber_sections, doc_root):
     logger.info("check if autonumbering is necessary for Section Start para contents")

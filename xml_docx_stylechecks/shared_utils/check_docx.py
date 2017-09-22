@@ -13,12 +13,12 @@ from distutils.version import StrictVersion as Version
 ######### IMPORT LOCAL MODULES
 
 if __name__ == '__main__':
-    # to go up a level to read cfg when invoking from this script (for testing).
-    import imp
-    parentpath = os.path.join(sys.path[0], '..', 'cfg.py')
-    cfg = imp.load_source('cfg', parentpath)
+	# to go up a level to read cfg when invoking from this script (for testing).
+	import imp
+	parentpath = os.path.join(sys.path[0], '..', 'cfg.py')
+	cfg = imp.load_source('cfg', parentpath)
 else:
-    import cfg
+	import cfg
 
 ######### LOCAL DECLARATIONS
 
@@ -50,7 +50,7 @@ def get_docxVersion(customprops_xml):
 
 		# get root / tree of docx customProps.xml
 		customprops_tree = etree.parse(customprops_xml)
-		customprops_root = customprops_tree.getroot()	
+		customprops_root = customprops_tree.getroot()
 
 		# check for version element in docx customProps.xml
 		version_el = customprops_tree.xpath(".//*[@name='Version']", namespaces=wordnamespaces)
@@ -74,11 +74,11 @@ def compare_docxVersions(current_version, template_version, sectionstart_version
 		else:
 			version_compare = "no_version"
 
-		logger.debug("version_compare value: '%s'" %  version_compare)	
+		logger.debug("version_compare value: '%s'" %  version_compare)
 		return version_compare
-	except Exception, e:	
+	except Exception, e:
 		logger.error('Failed version compare, exiting', exc_info=True)
-		sys.exit(1)	
+		sys.exit(1)
 
 def macmillanStyleCount(doc_xml, styles_xml):
 	logger.debug("Counting total paras, Macmillan styled paras...")
@@ -88,7 +88,7 @@ def macmillanStyleCount(doc_xml, styles_xml):
 	styles_tree = etree.parse(styles_xml)
 	styles_root = styles_tree.getroot()
 
-	total_paras = len(doc_tree.xpath(".//w:p/w:pPr/w:pStyle", namespaces=wordnamespaces))
+	total_paras = len(doc_tree.xpath(".//w:p", namespaces=wordnamespaces))
 	macmillan_styled_paras = 0
 
 	for para_style in doc_root.findall(".//*w:pStyle", wordnamespaces):
@@ -121,7 +121,7 @@ def version_test(customprops_xml, template_customprops_xml, sectionstart_version
 	version_result = compare_docxVersions(current_version, template_version, sectionstart_version)
 	return version_result, current_version, template_version
 
-# to test trackchanges and doc protection, and existence of any other top level param in settings 
+# to test trackchanges and doc protection, and existence of any other top level param in settings
 def checkSettingsXML(settings_xml, settingstring):
 	logger.debug("checking settings_xml for '%s'..." % settingstring)
 	value = ""
@@ -134,14 +134,14 @@ def checkSettingsXML(settings_xml, settingstring):
 		value = True
 	else:
 		value = False
-	logger.debug("value for '%s' is '%s'" % (settingstring, value))		
+	logger.debug("value for '%s' is '%s'" % (settingstring, value))
 	return value
 
 #---------------------  MAIN
 
 # only run if this script is being invoked directly
 if __name__ == '__main__':
-    # set up debug log to console
+	# set up debug log to console
 	logging.basicConfig(level=logging.DEBUG)
 
 	# Testing
@@ -149,4 +149,3 @@ if __name__ == '__main__':
 	logger.debug("protection: '%s'" % protection)
 	trackchanges = checkSettingsXML(settings_xml, "trackRevisions")
 	logger.debug("trackchanges: '%s'" % trackchanges)
-

@@ -12,6 +12,7 @@ import time
 import cfg
 import lib.addsectionstarts as addsectionstarts
 import lib.stylereports as stylereports
+import lib.generate_report as generate_report
 import shared_utils.unzipDOCX as unzipDOCX
 import shared_utils.os_utils as os_utils
 import shared_utils.check_docx as check_docx
@@ -23,7 +24,8 @@ inputfilename_noext = cfg.inputfilename_noext
 workingfile = cfg.workingfile
 ziproot = cfg.ziproot
 this_outfolder = cfg.this_outfolder
-newdocxfile = cfg.newdocxfile
+# newdocxfile = cfg.newdocxfile
+stylereport_txt = cfg.stylereport_txt
 report_dict = {}
 template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
@@ -76,9 +78,13 @@ if __name__ == '__main__':
         logger.info("Running other style report functions")
         report_dict = stylereports.styleReports(report_dict)
 
-        # write our json for style report
+        # write our stylereport.json with all edits etc for
         logger.debug("Writing stylereport.json")
         os_utils.dumpJSON(report_dict, cfg.stylereport_json)
+
+        # write our stylereport.txt
+        logger.debug("Writing stylereport.txt to outfolder")
+        generate_report.generateReport(report_dict, stylereport_txt)
 
     else:
         logger.warn("* * Skipping Style Report:")

@@ -13,6 +13,7 @@ import cfg
 import lib.attachtemplate as attachtemplate
 import lib.addsectionstarts as addsectionstarts
 import lib.doc_prepare as doc_prepare
+import lib.generate_report as generate_report
 import shared_utils.unzipDOCX as unzipDOCX
 import shared_utils.zipDOCX as zipDOCX
 import shared_utils.os_utils as os_utils
@@ -24,7 +25,11 @@ inputfilename_noext = cfg.inputfilename_noext
 workingfile = cfg.inputfile
 ziproot = cfg.ziproot
 tmpdir = cfg.tmpdir
-this_newdocxfile = os.path.join(tmpdir, "{}_validated.docx".format(inputfilename_noext))
+# this_outfolder, newdocxfile, stylereport_txt are customizations for this script; since we are working inside validator.rb
+#   the outfolder is the tmpfolder
+this_outfolder = tmpdir
+newdocxfile = os.path.join(this_outfolder, "{}_validated.docx".format(inputfilename_noext))
+stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
 report_dict = {}
 template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
@@ -76,14 +81,22 @@ if __name__ == '__main__':
         # # # run docPrepare function(s)
         report_dict = doc_prepare.docPrepare(report_dict)
 
+        # # # # run other style report stuff for report!
+        # logger.info("Running other style report functions")
+        # report_dict = stylereports.styleReports(report_dict)
+
         ### zip ziproot up as a docx
         logger.info("Zipping updated xml into a .docx in the tmpfolder")
-        os_utils.rm_existing_os_object(this_newdocxfile, 'validated_docx')            # < --- this should get replaced with our fancy folder rename
-        zipDOCX.zipDOCX(ziproot, this_newdocxfile)
+        os_utils.rm_existing_os_object(newdocxfile, 'validated_docx')            # < --- this should get replaced with our fancy folder rename
+        zipDOCX.zipDOCX(ziproot, newdocxfile)
 
         # write our json for style report to tmpdir
         logger.debug("Writing stylereport.json")
         os_utils.dumpJSON(report_dict, cfg.stylereport_json)
+
+        # write our stylereport.txt
+        logger.debug("Writing stylereport.txt to outfolder")
+        generate_report.generateReport(report_dict, stylereport_txt)
 
     # Doc is not styled or has protection enabled, skip python validation
     else:

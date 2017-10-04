@@ -58,6 +58,7 @@ ziproot = os.path.join(tmpdir, "{}_unzipped".format(inputfilename_noext))		# the
 template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
 stylereport_json = os.path.join(tmpdir, "stylereport.json")
+stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
 warnings_json = os.path.join(tmpdir, "warnings.json")
 
 ### Resources in other Repos

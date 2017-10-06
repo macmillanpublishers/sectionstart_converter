@@ -12,6 +12,7 @@ import time
 import cfg
 import lib.attachtemplate as attachtemplate
 import lib.addsectionstarts as addsectionstarts
+import lib.generate_report as generate_report
 import shared_utils.unzipDOCX as unzipDOCX
 import shared_utils.zipDOCX as zipDOCX
 import shared_utils.os_utils as os_utils
@@ -22,6 +23,7 @@ import shared_utils.check_docx as check_docx
 ######### LOCAL DECLARATIONS
 inputfile = cfg.inputfile
 inputfilename_noext = cfg.inputfilename_noext
+tmpdir = cfg.tmpdir
 workingfile = cfg.workingfile
 ziproot = cfg.ziproot
 this_outfolder = cfg.this_outfolder
@@ -42,10 +44,8 @@ logger = logging.getLogger(__name__)
 # only run if this script is being invoked directly
 if __name__ == '__main__':
 
-
-    # create & cleanup tmpfolder, outfolder if they do not exist:
+    # create & cleanup outfolder if it does not exist:
     logger.info("Create tmpdir, create & cleanup project outfolder")
-    tmpdir = os_utils.setupTmpfolder(cfg.tmpdir)
     os_utils.setupOutfolder(this_outfolder)
 
     logger.info('Moving input file ({}) and template to tmpdir and unzipping'.format(inputfilename_noext))
@@ -88,22 +88,47 @@ if __name__ == '__main__':
         os_utils.rm_existing_os_object(newdocxfile, 'newdocxfile')	# < --- this should get replaced with our fancy folder rename
         zipDOCX.zipDOCX(ziproot, newdocxfile)
 
+        # # debug test:
+        # os_utils.logAlerttoJSON(cfg.alerts_json, "error", "You really messed up")
+        # os_utils.logAlerttoJSON(cfg.alerts_json, "warning", "You  messed up a little")
+        # os_utils.logAlerttoJSON(cfg.alerts_json, "notice", "You might want to stop messing up")
+
         # write our json for style report
         logger.debug("Writing stylereport.json")
         os_utils.dumpJSON(report_dict, cfg.stylereport_json)
+
+        # write our stylereport.txt
+        logger.debug("Writing stylereport.txt to outfolder")
+        generate_report.generateReport(report_dict, cfg.stylereport_txt)
+
+        # write our alertfile.txt if necessary (are we using this for converter? I guess so?)
+        logger.debug("Writing alerts.txt to outfolder")
+        os_utils.writeAlertstoTxtfile(cfg.alerts_json, this_outfolder)
 
     # Doc is not styled or has section start styles already
     # skip attach template and skip adding section starts
     else:
         logger.warn("* * Skipping Converter:")
         if percent_styled < 50:
-            logger.warn("* This .docx has {} percent of paragraphs styled with Macmillan styles".format(percent_styled))
+            errstring = "This .docx has {} percent of paragraphs styled with Macmillan styles".format(percent_styled)
+            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+            logger.warn("* {}".format(errstring))
         if version_result != "no_version":
-            logger.warn("* This document has already has a template attached with section_start styles")
+            errstring = "This document has already has a template attached with section_start styles"
+            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+            logger.warn("* {}".format(errstring))
             if version_result == "has_section_starts":
-                logger.warn("* NOTE: Newer available version of the macmillan style template (this .docx's version: {}, template version: {})".format(current_version, template_version))
+                noticestring = "Newer available version of the macmillan style template (this .docx's version: {}, template version: {})".format(current_version, template_version)
+                os_utils.logAlerttoJSON(cfg.alerts_json, "error", noticestring)
+                logger.warn("* NOTE: {}".format(noticestring))
         if protection == True:
-            logger.warn("* This .docx has protection enabled.")
+            errstring = "* This .docx has protection enabled."
+            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+            logger.warn("* {}".format(errstring))
+
+
+
+
 
     # here: call some piece of the reporter_main
     # to generate a style_report.txt from this json

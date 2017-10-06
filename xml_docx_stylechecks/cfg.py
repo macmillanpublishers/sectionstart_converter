@@ -8,11 +8,7 @@ import platform
 import json
 import logging.config
 
-# import shared_utils.os_utils as os_utils
-
-# NOTE: The tmpdir needs to be manually set.  Everything else here is dynamically spun off based on
-# 	which script is invoked and the location of the dropbox folder
-# 	I guess we could dynamically set tmpdir it if we used standard sys tmp locations that are garbage collected
+import shared_utils.os_utils as os_utils
 
 # #	# # # # # # ARGS
 script_name = os.path.basename(sys.argv[0]).replace("_main.py","")
@@ -20,7 +16,7 @@ inputfile = sys.argv[1]
 inputfilename = os.path.basename(inputfile)
 inputfilename_noext = os.path.splitext(inputfilename)[0]
 # so we can log to the validator logfile if we need to. Could replace or could try to add a handler on the fly
-# to log to both places
+#   to log to both places
 if script_name == "validator" and sys.argv[2:]:
 	validator_logfile = sys.argv[2]
 else:
@@ -30,26 +26,36 @@ else:
 loglevel = "INFO"		# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info
 hostOS = platform.system()
 currentuser = getpass.getuser()
-scripts_dir = ""	# we use realtive paths based on location of this file (cfg.py) unless scripts_dir has a value
 # the path of this file: setting '__location__' allows this relative path to adhere to this file, even when invoked from a different path:
 # 	https://stackoverflow.com/questions/4060221/how-to-reliably-open-a-file-in-the-same-directory-as-a-python-script
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 
+# # # # # # # # CONFIGURE BASED ON ENVIRONMENT:
+# The parent tmpdir needs to be manually set.  Everything else here is dynamically spun off based on
+# 	which script is invoked and the location of the dropbox folder
+# 	we could dynamically set tmpdir it if we used standard sys tmp locations that are garbage collected (by OS)
+main_tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","1708_2_python_ssconvertertests","tmpdir")
+scripts_dir = ""	# we use realtive paths based on __location__ of this file (cfg.py) unless scripts_dir has a value
+
 # # # # # # # # PATHS
 ### Folders
-if script_name == "validator":
-	tmpdir = os.path.dirname(inputfile)
-else:
-	tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","1708_2_python_ssconvertertests","tmpdir",inputfilename_noext)
+# dropbox folder (for in and out folders)
 if hostOS == "Windows":
 	dropboxfolder = os.path.join("C:",os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
 else:
 	dropboxfolder = os.path.join(os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
+# tmpfolder and outfolder
+if script_name == "validator":
+	tmpdir = os.path.dirname(inputfile)
+	this_outfolder = tmpdir
+else:
+	tmpdir = os.path.join(main_tmpdir,inputfilename_noext)
+	tmpdir = os_utils.setupTmpfolder(tmpdir)
+	out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
+	this_outfolder = os.path.join(out_folder, inputfilename_noext)
+# log folder
 logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck")
-# in_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "IN")  # not necessary?
-out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
-this_outfolder = os.path.join(out_folder, inputfilename_noext)
 
 ### Files
 workingfile = os.path.join(tmpdir, inputfilename)
@@ -59,7 +65,8 @@ template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
 stylereport_json = os.path.join(tmpdir, "stylereport.json")
 stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
-warnings_json = os.path.join(tmpdir, "warnings.json")
+alerts_json = os.path.join(tmpdir, "alerts.json")
+# alerts_txt = os.path.join(this_outfolder,"ALERTS.txt")
 
 ### Resources in other Repos
 macmillan_template_name = "macmillan.dotx"
@@ -140,52 +147,52 @@ wordnamespaces = {'w': wnamespace, 'w14': w14namespace, 'vt': vtnamespace, 'mc':
 # FYI the loglevel for a handler will be whichever setting is more restrictive: handler setting or logger setting
 # So to log DEBUG in console and INFO for file, set logger & stream handler to "DEBUG" and file handler to "INFO"
 def defineLogger(logfile, loglevel):
-    logging.config.dictConfig({
-        'version': 1,
-        'disable_existing_loggers': False,
-        'formatters': {
-            'console': {
-                'format': '[%(levelname)s] %(name)s.%(funcName)s : %(message)s'
-            },
-            'file': {
-                'format': '%(asctime)s [%(levelname)s] %(name)s.%(funcName)s : %(message)s',
-                'datefmt': '%y-%m-%d %H:%M:%S'
-            # },
-            # 'warnings': {
-            # 	'format': '%(message)s'
-            }
-        },
-        'handlers': {
-            'stream': {
-                'class': 'logging.StreamHandler',
-                'formatter': 'console',
-                # 'level': 'DEBUG'
-            },
-            'file':{
-                'class': 'logging.FileHandler',
-                'formatter': 'file',
-                'filename': logfile
-                # 'level': 'DEBUG'
-            # },
-            # 'secondfile':{
-            # 	'class':'logging.FileHandler',
-            # 	'formatter':'warnings',
-            # 	'filename' : warnings_json
-            }
-        },
-        'loggers': {
-            '': {
-                'handlers': ['stream', 'file'],
-                'level': loglevel,
-                'propagate': True
-            # },
-            # 'w_logger':{
-            #      'handlers': ['stream', 'secondfile'],
-            #     'level': loglevel,
-            #     'propagate': True
-            }
-        }
-    })
+	logging.config.dictConfig({
+		'version': 1,
+		'disable_existing_loggers': False,
+		'formatters': {
+			'console': {
+				'format': '[%(levelname)s] %(name)s.%(funcName)s : %(message)s'
+			},
+			'file': {
+				'format': '%(asctime)s [%(levelname)s] %(name)s.%(funcName)s : %(message)s',
+				'datefmt': '%y-%m-%d %H:%M:%S'
+			# },
+			# 'warnings': {
+			# 	'format': '%(message)s'
+			}
+		},
+		'handlers': {
+			'stream': {
+				'class': 'logging.StreamHandler',
+				'formatter': 'console',
+				# 'level': 'DEBUG'
+			},
+			'file':{
+				'class': 'logging.FileHandler',
+				'formatter': 'file',
+				'filename': logfile
+				# 'level': 'DEBUG'
+			# },
+			# 'secondfile':{
+			# 	'class':'logging.FileHandler',
+			# 	'formatter':'warnings',
+			# 	'filename' : warnings_json
+			}
+		},
+		'loggers': {
+			'': {
+				'handlers': ['stream', 'file'],
+				'level': loglevel,
+				'propagate': True
+			# },
+			# 'w_logger':{
+			#      'handlers': ['stream', 'secondfile'],
+			#     'level': loglevel,
+			#     'propagate': True
+			}
+		}
+	})
 
 
 # class StructuredMessage(object):

@@ -31,8 +31,7 @@ import report_recipe
 
 ######### LOCAL DECLARATIONS
 styles_xml = cfg.styles_xml
-styles_tree = etree.parse(styles_xml)
-styles_root = styles_tree.getroot()
+
 # Local namespace vars
 wnamespace = cfg.wnamespace
 w14namespace = cfg.w14namespace
@@ -46,6 +45,8 @@ logger = logging.getLogger(__name__)
 # lookup longname of style in styles.xml of file.
 #  save looked up values in a dict to speed up repeat lookups
 def getStyleLongname(styleshortname, stylenamemap):
+    styles_tree = etree.parse(styles_xml)
+    styles_root = styles_tree.getroot()
     if styleshortname in stylenamemap:
         stylelongname = stylenamemap[styleshortname]
         # print "in the map!"

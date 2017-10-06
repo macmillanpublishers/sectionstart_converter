@@ -134,3 +134,36 @@ def dumpJSON(dictname, filename):
     except Exception, e:
         logger.error('Failed write JSON file, exiting', exc_info=True)
         sys.exit(1)
+
+# expecting alert_type of "error", "warning", or "notice", but will accept anything.
+def logAlerttoJSON(alerts_json, alert_category, new_errtext):
+    if os.path.exists(alerts_json):
+        alerts_dict = readJSON(alerts_json)
+    else:
+        alerts_dict = {}
+    if alert_category in alerts_dict:
+        alerts_dict[alert_category].append(new_errtext)
+    else:
+        alerts_dict[alert_category] = []
+        alerts_dict[alert_category].append(new_errtext)
+    dumpJSON(alerts_dict, alerts_json)
+
+def writeAlertstoTxtfile(alerts_json, this_outfolder):
+    alerts_dict = readJSON(alerts_json)
+    alerttxt_list = []
+    if os.path.exists(alerts_json):
+        # get all the alert text in a list
+        for alert_category, alerts in sorted(alerts_dict.iteritems()):
+            alerttxt_list.append("{}(s):".format(alert_category.upper()))
+            for alert in alerts:
+                alerttxt_list.append("- {}".format(alert))
+            alerttxt_list.append("")
+        # if we found any alerts at all
+        if alerttxt_list:
+            # figure out appropriate filename
+            if "error" in alerts_dict:
+                alertfile = os.path.join(this_outfolder, "ERROR.txt")
+            else:
+                alertfile = os.path.join(this_outfolder, "WARNING.txt")
+            # write our file
+            writeListToFileByLine(alerttxt_list, alertfile)

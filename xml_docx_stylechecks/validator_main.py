@@ -27,9 +27,12 @@ ziproot = cfg.ziproot
 tmpdir = cfg.tmpdir
 # this_outfolder, newdocxfile, stylereport_txt are customizations for this script; since we are working inside validator.rb
 #   the outfolder is the tmpfolder
-this_outfolder = tmpdir
-newdocxfile = os.path.join(this_outfolder, "{}_validated.docx".format(inputfilename_noext))
-stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
+# this_outfolder = tmpdir
+# newdocxfile = os.path.join(this_outfolder, "{}_validated.docx".format(inputfilename_noext))
+# stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
+this_outfolder = cfg.this_outfolder
+newdocxfile = cfg.newdocxfile
+# stylereport_txt = cfg.stylereport_txt
 report_dict = {}
 template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
@@ -81,6 +84,11 @@ if __name__ == '__main__':
         # # # run docPrepare function(s)
         report_dict = doc_prepare.docPrepare(report_dict)
 
+        # # debug test:
+        # os_utils.logAlerttoJSON(cfg.alerts_json, "error", "You really messed up")
+        # os_utils.logAlerttoJSON(cfg.alerts_json, "warning", "You  messed up a little")
+        # os_utils.logAlerttoJSON(cfg.alerts_json, "notice", "You might want to stop messing up")
+
         # # # # run other style report stuff for report!
         # logger.info("Running other style report functions")
         # report_dict = stylereports.styleReports(report_dict)
@@ -96,12 +104,20 @@ if __name__ == '__main__':
 
         # write our stylereport.txt
         logger.debug("Writing stylereport.txt to outfolder")
-        generate_report.generateReport(report_dict, stylereport_txt)
+        generate_report.generateReport(report_dict, cfg.stylereport_txt)
+
+        # write our alertfile.txt if necessary - (for validator, we may just want to read the err.json into validator errors. But for now, putting this in here.)
+        logger.debug("Writing alerts.txt to outfolder")
+        os_utils.writeAlertstoTxtfile(cfg.alerts_json, this_outfolder)
 
     # Doc is not styled or has protection enabled, skip python validation
     else:
         logger.warn("* * Skipping Validation:")
         if percent_styled < 50:
-            logger.warn("* This .docx has {} percent of paragraphs styled with Macmillan styles".format(percent_styled))
+            errstring = "This .docx has {} percent of paragraphs styled with Macmillan styles".format(percent_styled)
+            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+            logger.warn("* {}".format(errstring))
         if protection == True:
-            logger.warn("* This .docx has protection enabled.")
+            errstring = "This .docx has protection enabled."
+            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+            logger.warn("* {}".format(errstring))

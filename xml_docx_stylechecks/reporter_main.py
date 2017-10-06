@@ -25,7 +25,7 @@ workingfile = cfg.workingfile
 ziproot = cfg.ziproot
 this_outfolder = cfg.this_outfolder
 # newdocxfile = cfg.newdocxfile
-stylereport_txt = cfg.stylereport_txt
+tmpdir = cfg.tmpdir
 report_dict = {}
 template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
@@ -41,8 +41,7 @@ logger = logging.getLogger(__name__)
 # only run if this script is being invoked directly
 if __name__ == '__main__':
 
-    # create & cleanup tmpfolder, outfolder if they do not exist:
-    tmpdir = os_utils.setupTmpfolder(cfg.tmpdir)
+    # create & cleanup outfolder if it does not exist:
     logger.info("Create & cleanup project outfolder")
     os_utils.setupOutfolder(this_outfolder)
 
@@ -74,6 +73,11 @@ if __name__ == '__main__':
         logger.info("Checking section starts")
         report_dict = addsectionstarts.sectionStartCheck("report", report_dict)
 
+        # # debug test:
+        # os_utils.logAlerttoJSON(cfg.alerts_json, "error", "You really messed up")
+        # os_utils.logAlerttoJSON(cfg.alerts_json, "warning", "You  messed up a little")
+        # os_utils.logAlerttoJSON(cfg.alerts_json, "notice", "You might want to stop messing up")
+
         # # # run otherstyle report stuff!
         logger.info("Running other style report functions")
         report_dict = stylereports.styleReports(report_dict)
@@ -84,16 +88,26 @@ if __name__ == '__main__':
 
         # write our stylereport.txt
         logger.debug("Writing stylereport.txt to outfolder")
-        generate_report.generateReport(report_dict, stylereport_txt)
+        generate_report.generateReport(report_dict, cfg.stylereport_txt)
+
+        # write our alertfile.txt if necessary
+        logger.debug("Writing alerts.txt to outfolder")
+        os_utils.writeAlertstoTxtfile(cfg.alerts_json, this_outfolder)
 
     else:
         logger.warn("* * Skipping Style Report:")
         if percent_styled < 50:
-            logger.warn("* This .docx has {} percent of paragraphs styled with Macmillan styles".format(percent_styled))
+            errstring = "This .docx has {} percent of paragraphs styled with Macmillan styles".format(percent_styled)
+            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+            logger.warn("* {}".format(errstring))
         if version_result != "up_to_date":
-            logger.warn("* You must attach the newest version of the macmillan style template before running the Style Report: (this .docx's version: {}, template version: {})".format(current_version, template_version))
+            errstring = "You must attach the newest version of the macmillan style template before running the Style Report: (this .docx's version: {}, template version: {})".format(current_version, template_version)
+            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+            logger.warn("* {}".format(errstring))
         if protection == True:
-            logger.warn("* This .docx has protection enabled.")
+            errstring = "* This .docx has protection enabled."
+            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+            logger.warn("* {}".format(errstring))
 
     # here I guess we call some piece of the reporter_main?
     # to generate a style_report.txt from this json?

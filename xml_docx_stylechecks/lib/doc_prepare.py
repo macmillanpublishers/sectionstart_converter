@@ -281,7 +281,7 @@ def insertBookinfo(report_dict, doc_root, stylename, leadingpara_style, bookinfo
         else:
             if not bookinfo_item:
                 lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s'" % bookinfo_item)
-                logger.warn("'%S' was missing from the manuscript but could not be auto-inserted because %s lookup value was empty." % (stylename, bookinfo_item))
+                logger.warn("'%s' was missing from the manuscript but could not be auto-inserted because %s lookup value was empty." % (stylename, bookinfo_item))
             if leadingpara is None:
                 logger.warn("Could not find required %s styled 'leading_para' to insert bookinfo field: '%s'" % (leadingpara_style, bookinfo_item))
     return report_dict

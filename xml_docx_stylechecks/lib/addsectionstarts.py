@@ -2,7 +2,7 @@
 import os
 import shutil
 import re
-import uuid
+# import uuid
 import json
 import sys
 import collections
@@ -38,56 +38,6 @@ logger = logging.getLogger(__name__)
 
 
 # #---------------------  METHODS
-# generate ar random id
-def generate_id():
-    idbase = uuid.uuid4().hex
-    idshort = idbase[:8]
-    idupper = idshort.upper()
-    return str(idupper)
-
-# take a random id and make sure it is unique in the document, otherwise generate a new one, forever
-def generate_para_id(doc_root):
-    iduniq = generate_id()
-    idsearchstring = './/*w:p[@w14:paraId="%s"]' % iduniq
-    while len(doc_root.findall(idsearchstring, wordnamespaces)) > 0:
-        print iduniq + " already exists, generating another id"
-        iduniq = generate_id()
-        idsearchstring = './/*w:p[@w14:paraId="%s"]' % iduniq
-    logger.debug("generated unique para-id: '%s'" % iduniq)
-    return str(iduniq)
-#
-# def getParaStyle(para):      # move to lxml_utils?
-#     try:
-#         pstyle = para.find(".//*w:pStyle", wordnamespaces)
-#         stylename = pstyle.get('{%s}val' % wnamespace)
-#     except:
-#         stylename = ""
-#     return stylename
-
-# # return a dict of neighboring para elements and their text
-# def getNeighborParas(para):          # move to lxml_utils?
-#     pneighbors = {}
-#     try:
-#         # the 'len' call is what generates the error and kicks to the except statement, I think?
-#         pneighbors['prev'] = para.getprevious()
-#         len(pneighbors['prev'].tag)
-#         pneighbors['prevtext'] = lxml_utils.getParaTxt(pneighbors['prev'])
-#         pneighbors['prevstyle'] = lxml_utils.getParaStyle(pneighbors['prev'])
-#     except:
-#         pneighbors['prev'] = ""
-#         pneighbors['prevtext'] = ""
-#         pneighbors['prevstyle'] = ""
-#     try:
-#         # the 'len' call is what generates the error and kicks to the except statement, I think?
-#         pneighbors['next'] = para.getnext()
-#         len(pneighbors['next'].tag)
-#         pneighbors['nexttext'] = lxml_utils.getParaTxt(pneighbors['next'])
-#         pneighbors['nextstyle'] = lxml_utils.getParaStyle(pneighbors['next'])
-#     except:
-#         pneighbors['next'] = ""
-#         pneighbors['nexttext'] = ""
-#         pneighbors['nextstyle'] = ""
-#     return pneighbors
 
 def findSectionBegin(sectionname, section_start_rules, doc_root, versatileblockparas, para, cbstring):
     # set header lists
@@ -141,32 +91,6 @@ def getMatchingParas(sectionname, section_start_rules, doc_root, cbstring):
             matchingParas.append(para)
     logger.debug("found '%s' matchingParas" % len(matchingParas))
     return matchingParas
-    # if section_start_rules[sectionname][cbstring]["multiple"] == True:
-    #     for stylename in section_start_rules[sectionname][cbstring]["styles"]:
-    #         stylename = lxml_utils.transformStylename(stylename)
-    #         # print stylename
-    #         searchstring = ".//*w:pStyle[@w:val='%s']" % stylename
-    #         for pstyle in doc_root.findall(searchstring, wordnamespaces):
-    #             para = pstyle.getparent().getparent()
-    #             # findSectionBegin(sectionname, section_start_rules, doc_root, para, cbstring)
-    #             matchingParas.append(para)
-    # elif section_start_rules[sectionname][cbstring]["multiple"] == False:
-    #     # we need ot collect first paras found from each style in a dict with para index,
-    #     #   and find out which comes first!
-    #     para_dict = {}
-    #     for stylename in section_start_rules[sectionname][cbstring]["styles"]:
-    #         stylename = lxml_utils.transformStylename(stylename)
-    #         searchstring = ".//*w:pStyle[@w:val='%s']" % stylename
-    #         pstyle = doc_root.find(searchstring, wordnamespaces)
-    #         if pstyle is not None:
-    #             para = pstyle.getparent().getparent()
-    #             para_index = getParaIndex(para)
-    #             para_dict[para_index] = para
-    #     if len(para_dict) != 0:
-    #         para_dict = collections.OrderedDict(sorted(para_dict.items()))
-    #         para = para_dict[next(iter(para_dict))]
-    #         matchingParas.append(para)
-    #         # findSectionBegin(sectionname, section_start_rules, doc_root, para, cbstring)
 
 def evalFirstChild(sectionname, section_start_rules, cbstring, sectionbegin_para):
     logger.debug("evaluating first-child rule...")
@@ -298,7 +222,7 @@ def checkForParaStyle(sectionname, doc_root):
         logger.debug("para style exists")
         return True
 
-def evalSectionRequired(sectionname, section_start_rules, doc_root, titlestylename):
+def evalSectionRequired(sectionname, section_start_rules, doc_root, titlestyle):
     logger.debug("evaluate section-required rule...")
     # set default return to None
     sectionbegin_para = None
@@ -311,7 +235,7 @@ def evalSectionRequired(sectionname, section_start_rules, doc_root, titlestylena
         # For the only section_required style in use at time of writing this, (section-chapter),
         #   the latter seems less resource intensive.
         # It's possible we would encounter a doc wihtout a titlepage, but then we have bigger problems
-        searchstring = ".//*w:pStyle[@w:val='%s']" % transformStylename(titlestylename)
+        searchstring = ".//*w:pStyle[@w:val='%s']" % lxml_utils.transformStylename(titlestyle)
         titlestyle = doc_root.find(searchstring, wordnamespaces)
         if titlestyle is not None:
             titlepara = titlestyle.getparent().getparent()
@@ -335,37 +259,36 @@ def evalSectionRequired(sectionname, section_start_rules, doc_root, titlestylena
     return sectionbegin_para
 
 # Should revisit this using lxml builder
-def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents=''):
-    logger.debug("commencing insert Section Start style: '%s'..." % sectionstylename)
-    # create new para element
-    new_para_id = generate_para_id(doc_root)
-    new_para = etree.Element("{%s}p" % wnamespace)
-    new_para.attrib["{%s}paraId" % w14namespace] = new_para_id
-
-    # create new para properties element
-    new_para_props = etree.Element("{%s}pPr" % wnamespace)
-    new_para_props_style = etree.Element("{%s}pStyle" % wnamespace)
-    new_para_props_style.attrib["{%s}val" % wnamespace] = sectionstylename
-
-    # append props element to para element
-    new_para_props.append(new_para_props_style)
-    new_para.append(new_para_props)
-
-    if contents:
-        # if text included, create run and text elements, add text, and append to para
-        new_para_run = etree.Element("{%s}r" % wnamespace)
-        new_para_run_text = etree.Element("{%s}t" % wnamespace)
-        new_para_run_text.text = contents
-        new_para_run.append(new_para_run_text)
-        new_para.append(new_para_run)
-    #     logtext = "inserted paragraph with style '%s' and text '%s'" % (sectionstylename,contents)
-    # else:
-    #     logtext = "inserted paragraph with style '%s'" % (sectionstylename)
-
-    # append insert new paragraph before the selected para element
-    sectionbegin_para.addprevious(new_para)
-    logger.info("inserted '%s' paragraph with contents: '%s'" % (sectionstylename,contents))
-
+# def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents=''):
+# def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents, sectionnames):
+#     logger.debug("commencing insert Section Start style: '%s'..." % sectionstylename)
+#     # create new para element
+#     new_para_id = lxml_utils.generate_para_id(doc_root)
+#     new_para = etree.Element("{%s}p" % wnamespace)
+#     new_para.attrib["{%s}paraId" % w14namespace] = new_para_id
+#
+#     # create new para properties element
+#     new_para_props = etree.Element("{%s}pPr" % wnamespace)
+#     new_para_props_style = etree.Element("{%s}pStyle" % wnamespace)
+#     new_para_props_style.attrib["{%s}val" % wnamespace] = sectionstylename
+#
+#     # append props element to para element
+#     new_para_props.append(new_para_props_style)
+#     new_para.append(new_para_props)
+#     # contents = lxml_utils.getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, sectionstylename, sectionnames)
+#
+#     # # create run and text elements, add text, and append to para
+#     #   Tried using "addRunToPara" function here, but returning newpara did not return new nested items
+#     new_para_run = etree.Element("{%s}r" % wnamespace)
+#     new_para_run_text = etree.Element("{%s}t" % wnamespace)
+#     new_para_run_text.text = contents
+#     new_para_run.append(new_para_run_text)
+#     new_para.append(new_para_run)
+#     # logtext = "inserted paragraph with style '%s' and text '%s'" % (sectionstylename,contents)
+#
+#     # append insert new paragraph before the selected para element
+#     sectionbegin_para.addprevious(new_para)
+#     logger.info("inserted '%s' paragraph with contents: '%s'" % (sectionstylename,contents))
 
 # check paragraph directly preceding the selected (passed) para to get rid of pagebreaks/pb-paras where approrpiate
 # logging these is not absolutely necessary, building it in for troubleshooting
@@ -397,12 +320,13 @@ def deletePrecedingPageBreak(para, report_dict):
 
 # adding a parameter so this can be run to add section styles or just report on where they should be added:
 #   param name is 'call_type', expects strin :"insert" or "report"
-def runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sectiontypes, call_type, report_dict, titlestylename):
+def runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sectiontypes, call_type, report_dict, titlestyle, headingstyles, sectionnames):
     # cycle through for multiple contiguous blocks, apply 'last' key=True, run the rule!
     counter = 1
     cbstring, nextcbstring = getCBStrings(counter)
     while cbstring in section_start_rules[sectionname]:
         logger.debug("* Running sectionstart rule for: '%s', contiguous_block_criteria_%s" % (sectionname, counter))
+        sectionstylename = lxml_utils.transformStylename(sectionname)
         # see if the section already exists ; if so and multiple is False we can move on to the next section
         sectionpresent = checkForParaStyle(lxml_utils.transformStylename(sectionname), doc_root)
         if sectionpresent == True and section_start_rules[sectionname][cbstring]["multiple"] == False:
@@ -454,7 +378,8 @@ def runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sec
             logger.info("All criteria met for '%s' rule!  %sing para" % (sectionname, call_type))
             if call_type == "insert":
                 report_dict = deletePrecedingPageBreak(sectionbegin_para, report_dict)
-                insertSectionStart(lxml_utils.transformStylename(sectionname), sectionbegin_para, doc_root, sectionname)
+                contents = lxml_utils.getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, sectionstylename, sectionnames)
+                lxml_utils.insertPara(sectionstylename, sectionbegin_para, doc_root, contents, "before")
             report_dict = lxml_utils.logForReport(report_dict,sectionbegin_para,"section_start_needed",sectionname)
 
             # break the loop for this rule if 'multiple' value is False
@@ -469,13 +394,14 @@ def runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sec
     # evaluate section_required rule if present (could move this into 'main', does not need to be in this function)
     if "section_required" in section_start_rules[sectionname] and section_start_rules[sectionname]["section_required"]["value"] == True:
         logger.info("section_required is true, evaluating for %s" % sectionname)
-        sectionbegin_para = evalSectionRequired(sectionname, section_start_rules, doc_root, titlestylename)
+        sectionbegin_para = evalSectionRequired(sectionname, section_start_rules, doc_root, titlestyle)
         #  if we have an insertion point for Section_Required, insert Section Start styled para
         if sectionbegin_para is not None:
             report_dict = lxml_utils.logForReport(report_dict, sectionbegin_para,"section_start_needed","{}".format(sectionname))
             if call_type == "insert":
                 report_dict = deletePrecedingPageBreak(sectionbegin_para, report_dict)
-                insertSectionStart(lxml_utils.transformStylename(sectionname), sectionbegin_para, doc_root, sectionname)
+                contents = lxml_utils.getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, sectionstylename, sectionnames)
+                lxml_utils.insertPara(sectionstylename, sectionbegin_para, doc_root, contents, "before")
 
     return report_dict
 
@@ -494,7 +420,7 @@ def setRulesPriority(section_start_rules):
             section_start_rules[sectionname]["priority"] = 3
     return section_start_rules
 
-def sectionStartCheck(call_type, report_dict):
+def sectionStartCheck(call_type, report_dict, autonumber=False):
     logger.info("* * * commencing sectionStartCheck function...")
     # local vars
     section_start_rules_json = cfg.section_start_rules_json
@@ -502,7 +428,7 @@ def sectionStartCheck(call_type, report_dict):
     doc_xml = cfg.doc_xml
     doc_tree = etree.parse(doc_xml)
     doc_root = doc_tree.getroot()
-    titlestylename = cfg.titlestylename
+    titlestyle = cfg.titlestyle
 
     logger.info("reading in json resource files")
     # read rules & versatile block para list from JSONs
@@ -510,9 +436,12 @@ def sectionStartCheck(call_type, report_dict):
     styleconfig_dict = os_utils.readJSON(styleconfig_json)
     # "list comprehension!" https://stackoverflow.com/questions/7126916/perform-a-string-operation-for-every-element-in-a-python-list
     versatileblockparas = [classname[1:] for classname in styleconfig_dict["versatileblockparas"]]
+    headingstyles = [classname[1:] for classname in styleconfig_dict["headingparas"]]
 
     # get section types (by position, + all sections)
     sectiontypes = getSectionTypes(section_start_rules)
+    # get Section Start names & styles from sectionstartrules
+    sectionnames = lxml_utils.getAllSectionNames(section_start_rules)
 
     # add priorities to rules
     section_start_rules = setRulesPriority(section_start_rules)
@@ -522,11 +451,14 @@ def sectionStartCheck(call_type, report_dict):
     for n in range(1,11):
         for sectionname, sectionvalues in section_start_rules.iteritems():
             if section_start_rules[sectionname]["priority"] == n:
-                report_dict = runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sectiontypes, call_type, report_dict, titlestylename)
+                report_dict = runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sectiontypes, call_type, report_dict, titlestyle, headingstyles, sectionnames)
 
-    # if 'converting', write our changes back to doc.xml
+    # if 'converting', add autonumbering to sectionstart para contents where applicable, write our changes back to doc.xml
     if call_type == "insert":
-        logger.debug("writing changes out to doc_xml file")
+        logger.info("writing changes out to doc_xml file")
+        # autonumber contents for chapter, Appendix, Part
+        if autonumber == True:
+            report_dict = lxml_utils.autoNumberSectionParaContent(report_dict, sectionnames, cfg.autonumber_sections, doc_root)
         os_utils.writeXMLtoFile(doc_root, doc_xml)
 
     # add/update para index numbers
@@ -536,6 +468,7 @@ def sectionStartCheck(call_type, report_dict):
     logger.info("* * * ending sectionStartCheck function.")
 
     return report_dict
+
 
 #---------------------  MAIN
 # only run if this script is being invoked directly

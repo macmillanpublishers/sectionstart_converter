@@ -6,6 +6,7 @@ import shutil
 import re
 import logging
 import time
+import inspect
 
 
 ######### IMPORT LOCAL MODULES
@@ -13,7 +14,8 @@ import cfg
 import lib.addsectionstarts as addsectionstarts
 import lib.stylereports as stylereports
 import lib.generate_report as generate_report
-import shared_utils.unzipDOCX as unzipDOCX
+import lib.setup_cleanup as setup_cleanup
+# import shared_utils.unzipDOCX as unzipDOCX
 import shared_utils.os_utils as os_utils
 import shared_utils.check_docx as check_docx
 
@@ -32,7 +34,7 @@ macmillan_template = cfg.macmillan_template
 
 
 ######### SETUP LOGGING
-logfile = os.path.join(cfg.logdir, "reporter_{}_{}.txt".format(inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
+logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
 cfg.defineLogger(logfile, cfg.loglevel)
 logger = logging.getLogger(__name__)
 
@@ -40,92 +42,142 @@ logger = logging.getLogger(__name__)
 ######### RUN!
 # only run if this script is being invoked directly
 if __name__ == '__main__':
+    try:
+        ########## SETUP
+        # setup & create tmpdir, cleanup outfolder (archive existing), copy infile to tmpdir
+        tmpdir, workingfile = setup_cleanup.setupFolders(tmpdir, inputfile, cfg.inputfilename, this_outfolder)
 
-    # create & cleanup outfolder if it does not exist:
-    logger.info("Create & cleanup project outfolder")
-    os_utils.setupOutfolder(this_outfolder)
+        # copy template to tmpdir, unzip infile and tmpdir
+        setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
 
-    logger.info('Moving input file ({}) and template to tmpdir and unzipping'.format(inputfilename_noext))
 
-    # move file to the tmpdir
-    # os_utils.movefile()            # for production
-    os_utils.copyFiletoFile(inputfile, workingfile)        # debug/testing only
+        # ##old setup
+        # # create & cleanup outfolder if it does not exist:
+        # logger.info("Create & cleanup project outfolder")
+        # os_utils.setupOutfolder(this_outfolder)
+        #
+        # logger.info('Moving input file ({}) and template to tmpdir and unzipping'.format(inputfilename_noext))
+        #
+        # # move file to the tmpdir
+        # # os_utils.movefile()            # for production
+        # os_utils.copyFiletoFile(inputfile, workingfile)        # debug/testing only
+        #
+        # # move template to the tmpdir
+        # os_utils.copyFiletoFile(macmillan_template, os.path.join(tmpdir, os.path.basename(macmillan_template)))
+        #
+        # ### unzip the manuscript to ziproot, template to template_ziproot
+        # os_utils.rm_existing_os_object(ziproot, 'ziproot')
+        # os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
+        # unzipDOCX.unzipDOCX(workingfile, ziproot)
+        # unzipDOCX.unzipDOCX(macmillan_template, template_ziproot)
 
-    # move template to the tmpdir
-    os_utils.copyFiletoFile(macmillan_template, os.path.join(tmpdir, os.path.basename(macmillan_template)))
+        ########## CHECK DOCUMENT
+        ### check and compare versions, styling percentage, doc protection
+        logger.info('Comparing docx version to template, checking percent styled, checking if protected doc...')
+        version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.sectionstart_versionstring)
+        percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
+        protection = check_docx.checkSettingsXML(cfg.settings_xml, "documentProtection")
 
-    ### unzip the manuscript to ziproot, template to template_ziproot
-    os_utils.rm_existing_os_object(ziproot, 'ziproot')
-    os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
-    unzipDOCX.unzipDOCX(workingfile, ziproot)
-    unzipDOCX.unzipDOCX(macmillan_template, template_ziproot)
+        ########## RUN STUFF
+        if version_result == "up_to_date" and percent_styled >= 50 and protection == False:
+            logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
 
-    ### check and compare versions, styling percentage, doc protection
-    logger.info('Comparing docx version to template, checking percent styled, checking if protected doc...')
-    version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.sectionstart_versionstring)
-    percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
-    protection = check_docx.checkSettingsXML(cfg.settings_xml, "documentProtection")
+            # # # check section starts!
+            logger.info("Checking section starts")
+            report_dict = addsectionstarts.sectionStartCheck("report", report_dict)
 
-    if version_result == "up_to_date" and percent_styled >= 50 and protection == False:
-        logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
+            # # debug test:
+            # os_utils.logAlerttoJSON(cfg.alerts_json, "error", "You really messed up")
+            # os_utils.logAlerttoJSON(cfg.alerts_json, "warning", "You  messed up a little")
+            # os_utils.logAlerttoJSON(cfg.alerts_json, "notice", "You might want to stop messing up")
 
-        # # # check section starts!
-        logger.info("Checking section starts")
-        report_dict = addsectionstarts.sectionStartCheck("report", report_dict)
+            # # # run otherstyle report stuff!
+            logger.info("Running other style report functions")
+            report_dict = stylereports.styleReports(report_dict)
 
-        # # debug test:
-        # os_utils.logAlerttoJSON(cfg.alerts_json, "error", "You really messed up")
-        # os_utils.logAlerttoJSON(cfg.alerts_json, "warning", "You  messed up a little")
-        # os_utils.logAlerttoJSON(cfg.alerts_json, "notice", "You might want to stop messing up")
+            # write our stylereport.json with all edits etc for
+            logger.debug("Writing stylereport.json")
+            os_utils.dumpJSON(report_dict, cfg.stylereport_json)
 
-        # # # run otherstyle report stuff!
-        logger.info("Running other style report functions")
-        report_dict = stylereports.styleReports(report_dict)
+            # write our stylereport.txt
+            logger.debug("Writing stylereport.txt to outfolder")
+            generate_report.generateReport(report_dict, cfg.stylereport_txt)
 
-        # write our stylereport.json with all edits etc for
-        logger.debug("Writing stylereport.json")
-        os_utils.dumpJSON(report_dict, cfg.stylereport_json)
+        ########## SKIP RUNNING STUFF, LOG ALERTS
+        else:
+            logger.warn("* * Skipping Style Report:")
+            if percent_styled < 50:
+                errstring = "This .docx has {} percent of paragraphs styled with Macmillan styles".format(percent_styled)
+                os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+                logger.warn("* {}".format(errstring))
+            if version_result != "up_to_date":
+                errstring = "You must attach the newest version of the macmillan style template before running the Style Report: (this .docx's version: {}, template version: {})".format(current_version, template_version)
+                os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+                logger.warn("* {}".format(errstring))
+            if protection == True:
+                errstring = "* This .docx has protection enabled."
+                os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+                logger.warn("* {}".format(errstring))
 
-        # write our stylereport.txt
-        logger.debug("Writing stylereport.txt to outfolder")
-        generate_report.generateReport(report_dict, cfg.stylereport_txt)
+        # here I guess we call some piece of the reporter_main?
+        # to generate a style_report.txt from this json?
+        # and write it to the outfolder
+        # and maybe send an email?
+
+        # this is where we would also capture the above errors form a structured error.json and output them
+        # as part of stylereport, or separate
+
+        ########## CLEANUP
+        setup_cleanup.cleanupforReporterOrConverter(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, cfg.alerts_json, tmpdir)
+
+        # ##old cleanup:
+        # Return original file to user
+        logger.info("Copying original file to outfolder/original_file dir")
+        if not os.path.isdir(os.path.join(this_outfolder, "original_file")):
+            os.makedirs(os.path.join(this_outfolder, "original_file"))
+        os_utils.copyFiletoFile(workingfile, os.path.join(this_outfolder, "original_file", cfg.inputfilename))
 
         # write our alertfile.txt if necessary
         logger.debug("Writing alerts.txt to outfolder")
         os_utils.writeAlertstoTxtfile(cfg.alerts_json, this_outfolder)
 
-    else:
-        logger.warn("* * Skipping Style Report:")
-        if percent_styled < 50:
-            errstring = "This .docx has {} percent of paragraphs styled with Macmillan styles".format(percent_styled)
-            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
-            logger.warn("* {}".format(errstring))
-        if version_result != "up_to_date":
-            errstring = "You must attach the newest version of the macmillan style template before running the Style Report: (this .docx's version: {}, template version: {})".format(current_version, template_version)
-            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
-            logger.warn("* {}".format(errstring))
-        if protection == True:
-            errstring = "* This .docx has protection enabled."
-            os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
-            logger.warn("* {}".format(errstring))
+        # Rm tmpdir
+        logger.debug("deleting tmp folder")
+        # os_utils.rm_existing_os_object(tmpdir, 'tmpdir')		# comment out for testing / debug
 
-    # here I guess we call some piece of the reporter_main?
-    # to generate a style_report.txt from this json?
-    # and write it to the outfolder
-    # and maybe send an email?
+    except:
+        ########## LOG ERROR INFO
+        # log to logfile for dev
+        logger.exception("ERROR ------------------ :")
+        # log to errfile_json for user
+        invokedby_script = os.path.splitext(os.path.basename(inspect.stack()[0][1]))[0]
+        os_utils.logAlerttoJSON(cfg.alerts_json, "error", "A fatal error was encountered while running '%s'.\n\nPlease email workflows@macmillan.com for assistance." % invokedby_script)
 
-    # this is where we would also capture the above errors form a structured error.json and output them
-    # as part of stylereport, or separate
+        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, cfg.alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name)
 
-    ##### CLEANUP
-    # Return original file to user
-    logger.info("Copying original file to outfolder/original_file dir")
-    if not os.path.isdir(os.path.join(this_outfolder, "original_file")):
-        os.makedirs(os.path.join(this_outfolder, "original_file"))
-    os_utils.copyFiletoFile(workingfile, os.path.join(this_outfolder, "original_file", cfg.inputfilename))
-
-    # write stylereport to outfolder, + any separate warn_notices, if we didn't do it above
-
-    # Rm tmpdir
-    logger.debug("deleting tmp folder")
-    # os_utils.rm_existing_os_object(tmpdir, 'tmpdir')        # comment out for testing / debug
+        # try:
+        #     logger.warn("SENDING EMAIL ALERT RE: EXCEPTION:")
+        #     # send an email to us!...
+        #     # TK
+        #
+        #     #  save a copy of tmpdir to logdir for troubleshooting (since it will be deleted)
+        #     logger.info("Backing up tmpdir to logfolder")
+        #     os_utils.copyDir(tmpdir, os.path.join(cfg.logdir, "tmpdir_%s" % inputfilename_noext))
+        #
+        #     ########## ATTEMPT CLEANUP (same cleanup as in try block above)
+        #     logger.warn("RUNNING CLEANUP FROM EXCEPTION:")
+        #     # Return original file to user
+        #     logger.info("Copying original file to outfolder/original_file dir")
+        #     if not os.path.isdir(os.path.join(this_outfolder, "original_file")):
+        #         os.makedirs(os.path.join(this_outfolder, "original_file"))
+        #     os_utils.copyFiletoFile(workingfile, os.path.join(this_outfolder, "original_file", cfg.inputfilename))
+        #
+        #     # write our alertfile.txt if necessary (are we using this for converter? I guess so?)
+        #     logger.info("Writing alerts.txt to outfolder")
+        #     os_utils.writeAlertstoTxtfile(cfg.alerts_json, this_outfolder)
+        #
+        #     # Rm tmpdir
+        #     logger.info("deleting tmp folder")
+        #     # os_utils.rm_existing_os_object(tmpdir, 'tmpdir')		# comment out for testing / debug
+        # except:
+        #     logger.exception("ERROR during exception cleanup :")

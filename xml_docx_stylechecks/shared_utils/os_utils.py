@@ -6,6 +6,7 @@ import shutil
 import re
 import json
 import logging
+import time
 from lxml import etree
 
 
@@ -37,6 +38,15 @@ def copyFiletoFile(pathtofile, dest_file):
         shutil.copyfile(pathtofile, dest_file)
     except Exception, e:
         logger.error('Failed copyfile, exiting', exc_info=True)
+        sys.exit(1)
+
+def copyDir(pathtodir, dest_dir):
+    if os.path.isdir(os.path.dirname(dest_dir)):
+        dest_dir="%s_%s" % (dest_dir, time.strftime("%y%m%d-%H%M%S"))
+    try:
+        shutil.copytree(pathtodir, dest_dir)
+    except Exception, e:
+        logger.error('Failed copydir, exiting', exc_info=True)
         sys.exit(1)
 
 def incrementToUniquePath(init_path):

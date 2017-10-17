@@ -15,7 +15,6 @@ import lib.addsectionstarts as addsectionstarts
 import lib.stylereports as stylereports
 import lib.generate_report as generate_report
 import lib.setup_cleanup as setup_cleanup
-# import shared_utils.unzipDOCX as unzipDOCX
 import shared_utils.os_utils as os_utils
 import shared_utils.check_docx as check_docx
 
@@ -26,7 +25,6 @@ inputfilename_noext = cfg.inputfilename_noext
 workingfile = cfg.workingfile
 ziproot = cfg.ziproot
 this_outfolder = cfg.this_outfolder
-# newdocxfile = cfg.newdocxfile
 tmpdir = cfg.tmpdir
 report_dict = {}
 template_ziproot = cfg.template_ziproot
@@ -50,27 +48,6 @@ if __name__ == '__main__':
         # copy template to tmpdir, unzip infile and tmpdir
         setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
 
-
-        # ##old setup
-        # # create & cleanup outfolder if it does not exist:
-        # logger.info("Create & cleanup project outfolder")
-        # os_utils.setupOutfolder(this_outfolder)
-        #
-        # logger.info('Moving input file ({}) and template to tmpdir and unzipping'.format(inputfilename_noext))
-        #
-        # # move file to the tmpdir
-        # # os_utils.movefile()            # for production
-        # os_utils.copyFiletoFile(inputfile, workingfile)        # debug/testing only
-        #
-        # # move template to the tmpdir
-        # os_utils.copyFiletoFile(macmillan_template, os.path.join(tmpdir, os.path.basename(macmillan_template)))
-        #
-        # ### unzip the manuscript to ziproot, template to template_ziproot
-        # os_utils.rm_existing_os_object(ziproot, 'ziproot')
-        # os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
-        # unzipDOCX.unzipDOCX(workingfile, ziproot)
-        # unzipDOCX.unzipDOCX(macmillan_template, template_ziproot)
-
         ########## CHECK DOCUMENT
         ### check and compare versions, styling percentage, doc protection
         logger.info('Comparing docx version to template, checking percent styled, checking if protected doc...')
@@ -86,11 +63,6 @@ if __name__ == '__main__':
             logger.info("Checking section starts")
             report_dict = addsectionstarts.sectionStartCheck("report", report_dict)
 
-            # # debug test:
-            # os_utils.logAlerttoJSON(cfg.alerts_json, "error", "You really messed up")
-            # os_utils.logAlerttoJSON(cfg.alerts_json, "warning", "You  messed up a little")
-            # os_utils.logAlerttoJSON(cfg.alerts_json, "notice", "You might want to stop messing up")
-
             # # # run otherstyle report stuff!
             logger.info("Running other style report functions")
             report_dict = stylereports.styleReports(report_dict)
@@ -98,10 +70,6 @@ if __name__ == '__main__':
             # write our stylereport.json with all edits etc for
             logger.debug("Writing stylereport.json")
             os_utils.dumpJSON(report_dict, cfg.stylereport_json)
-
-            # write our stylereport.txt
-            logger.debug("Writing stylereport.txt to outfolder")
-            generate_report.generateReport(report_dict, cfg.stylereport_txt)
 
         ########## SKIP RUNNING STUFF, LOG ALERTS
         else:
@@ -119,31 +87,8 @@ if __name__ == '__main__':
                 os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
 
-        # here I guess we call some piece of the reporter_main?
-        # to generate a style_report.txt from this json?
-        # and write it to the outfolder
-        # and maybe send an email?
-
-        # this is where we would also capture the above errors form a structured error.json and output them
-        # as part of stylereport, or separate
-
         ########## CLEANUP
         setup_cleanup.cleanupforReporterOrConverter(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, cfg.alerts_json, tmpdir)
-
-        # ##old cleanup:
-        # Return original file to user
-        logger.info("Copying original file to outfolder/original_file dir")
-        if not os.path.isdir(os.path.join(this_outfolder, "original_file")):
-            os.makedirs(os.path.join(this_outfolder, "original_file"))
-        os_utils.copyFiletoFile(workingfile, os.path.join(this_outfolder, "original_file", cfg.inputfilename))
-
-        # write our alertfile.txt if necessary
-        logger.debug("Writing alerts.txt to outfolder")
-        os_utils.writeAlertstoTxtfile(cfg.alerts_json, this_outfolder)
-
-        # Rm tmpdir
-        logger.debug("deleting tmp folder")
-        # os_utils.rm_existing_os_object(tmpdir, 'tmpdir')		# comment out for testing / debug
 
     except:
         ########## LOG ERROR INFO
@@ -154,30 +99,3 @@ if __name__ == '__main__':
         os_utils.logAlerttoJSON(cfg.alerts_json, "error", "A fatal error was encountered while running '%s'.\n\nPlease email workflows@macmillan.com for assistance." % invokedby_script)
 
         setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, cfg.alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name)
-
-        # try:
-        #     logger.warn("SENDING EMAIL ALERT RE: EXCEPTION:")
-        #     # send an email to us!...
-        #     # TK
-        #
-        #     #  save a copy of tmpdir to logdir for troubleshooting (since it will be deleted)
-        #     logger.info("Backing up tmpdir to logfolder")
-        #     os_utils.copyDir(tmpdir, os.path.join(cfg.logdir, "tmpdir_%s" % inputfilename_noext))
-        #
-        #     ########## ATTEMPT CLEANUP (same cleanup as in try block above)
-        #     logger.warn("RUNNING CLEANUP FROM EXCEPTION:")
-        #     # Return original file to user
-        #     logger.info("Copying original file to outfolder/original_file dir")
-        #     if not os.path.isdir(os.path.join(this_outfolder, "original_file")):
-        #         os.makedirs(os.path.join(this_outfolder, "original_file"))
-        #     os_utils.copyFiletoFile(workingfile, os.path.join(this_outfolder, "original_file", cfg.inputfilename))
-        #
-        #     # write our alertfile.txt if necessary (are we using this for converter? I guess so?)
-        #     logger.info("Writing alerts.txt to outfolder")
-        #     os_utils.writeAlertstoTxtfile(cfg.alerts_json, this_outfolder)
-        #
-        #     # Rm tmpdir
-        #     logger.info("deleting tmp folder")
-        #     # os_utils.rm_existing_os_object(tmpdir, 'tmpdir')		# comment out for testing / debug
-        # except:
-        #     logger.exception("ERROR during exception cleanup :")

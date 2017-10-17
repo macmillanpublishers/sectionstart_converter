@@ -16,7 +16,6 @@ import lib.addsectionstarts as addsectionstarts
 import lib.doc_prepare as doc_prepare
 import lib.generate_report as generate_report
 import lib.setup_cleanup as setup_cleanup
-# import shared_utils.unzipDOCX as unzipDOCX
 import shared_utils.zipDOCX as zipDOCX
 import shared_utils.os_utils as os_utils
 import shared_utils.check_docx as check_docx
@@ -27,14 +26,8 @@ inputfilename_noext = cfg.inputfilename_noext
 workingfile = cfg.inputfile
 ziproot = cfg.ziproot
 tmpdir = cfg.tmpdir
-# this_outfolder, newdocxfile, stylereport_txt are customizations for this script; since we are working inside validator.rb
-#   the outfolder is the tmpfolder
-# this_outfolder = tmpdir
-# newdocxfile = os.path.join(this_outfolder, "{}_validated.docx".format(inputfilename_noext))
-# stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
 this_outfolder = cfg.this_outfolder
 newdocxfile = cfg.newdocxfile
-# stylereport_txt = cfg.stylereport_txt
 report_dict = {}
 template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
@@ -53,18 +46,6 @@ if __name__ == '__main__':
         ########## SETUP
         # copy template to tmpdir, unzip infile and tmpdir
         setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
-
-        # ## old setup:
-        # logger.info('Moving template to tmpdir and unzipping it and input file ({})'.format(inputfilename_noext))
-        #
-        # # move template to the tmpdir
-        # os_utils.copyFiletoFile(macmillan_template, os.path.join(tmpdir, os.path.basename(macmillan_template)))
-        #
-        # ### unzip the manuscript to ziproot, template to template_ziproot
-        # os_utils.rm_existing_os_object(ziproot, 'ziproot')
-        # os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
-        # unzipDOCX.unzipDOCX(workingfile, ziproot)
-        # unzipDOCX.unzipDOCX(macmillan_template, template_ziproot)
 
         ########## CHECK DOCUMENT
         ### check and compare versions, styling percentage, doc protection
@@ -93,11 +74,6 @@ if __name__ == '__main__':
             # # # run docPrepare function(s)
             report_dict = doc_prepare.docPrepare(report_dict)
 
-            # # debug test:
-            # os_utils.logAlerttoJSON(cfg.alerts_json, "error", "You really messed up")
-            # os_utils.logAlerttoJSON(cfg.alerts_json, "warning", "You  messed up a little")
-            # os_utils.logAlerttoJSON(cfg.alerts_json, "notice", "You might want to stop messing up")
-
             # # # # run other style report stuff for report!
             # logger.info("Running other style report functions")
             # report_dict = stylereports.styleReports(report_dict)
@@ -110,11 +86,6 @@ if __name__ == '__main__':
             # write our json for style report to tmpdir
             logger.debug("Writing stylereport.json")
             os_utils.dumpJSON(report_dict, cfg.stylereport_json)
-
-            # # write our stylereport.txt
-            # logger.debug("Writing stylereport.txt to outfolder")
-            # generate_report.generateReport(report_dict, cfg.stylereport_txt)
-
 
         ########## SKIP RUNNING STUFF, LOG ALERTS
         # Doc is not styled or has protection enabled, skip python validation
@@ -132,11 +103,6 @@ if __name__ == '__main__':
         ########## CLEANUP
         setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, cfg.alerts_json)
 
-        # ##old cleanup:
-        # # write our alertfile.txt if necessary - (for validator, we may just want to read the err.json into validator errors. But for now, putting this in here.)
-        # logger.debug("Writing alerts.txt to outfolder")
-        # os_utils.writeAlertstoTxtfile(cfg.alerts_json, this_outfolder)
-
     except:
         ########## LOG ERROR INFO
         # log to logfile for dev
@@ -146,21 +112,3 @@ if __name__ == '__main__':
         os_utils.logAlerttoJSON(cfg.alerts_json, "error", "A fatal error was encountered while running '%s'.\n\nPlease email workflows@macmillan.com for assistance." % invokedby_script)
 
         setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, cfg.alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name)
-
-        # try:
-        #     logger.warn("SENDING EMAIL ALERT RE: EXCEPTION:")
-        #     # send an email to us!...
-        #     # TK
-        #
-        #     #  save a copy of tmpdir to logdir for troubleshooting (since it will be deleted)
-        #     logger.info("Backing up tmpdir to logfolder")
-        #     os_utils.copyDir(tmpdir, os.path.join(cfg.logdir, "tmpdir_%s" % inputfilename_noext))
-        #
-        #     ########## ATTEMPT CLEANUP (same cleanup as in try block above)
-        #     logger.warn("RUNNING CLEANUP FROM EXCEPTION:")
-        #     # write our alertfile.txt if necessary (are we using this for converter? I guess so?)
-        #     logger.info("Writing alerts.txt to outfolder")
-        #     os_utils.writeAlertstoTxtfile(cfg.alerts_json, this_outfolder)
-        #
-        # except:
-        #     logger.exception("ERROR during exception cleanup :")

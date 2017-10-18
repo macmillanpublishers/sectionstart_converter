@@ -27,13 +27,23 @@ username = "username"
 password = "password"
 
 #---------------------  METHODS
-def sendmail(from_addr, to_addr, subject, bodytxt):
+def sendmail(from_addr, to_addr, subject, bodytxt, attachfiles=[]):
     try:
         msg = MIMEMultipart()
         msg['From'] = from_addr
         msg['To'] = to_addr
         msg['Subject'] = subject
         msg.attach(MIMEText(bodytxt, 'plain'))
+
+        if attachfiles:
+            for attachfile in attachfiles:
+                filename = "%s" % os.path.basename(attachfile)
+                attachment = open("attachfile", "rb")
+                part = MIMEBase('application', 'octet-stream')
+                part.set_payload((attachment).read())
+                encoders.encode_base64(part)
+                part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+                msg.attach(part)
 
         server = smtplib.SMTP(smtp_address, port)
         # server.starttls()
@@ -56,3 +66,5 @@ if __name__ == '__main__':
     bodytxt = "Did this work???!?!??\n\n\t(I hope?)"
 
     sendmail(from_addr, to_addr, subject, bodytxt)
+
+    sendmail(from_addr, to_addr, subject, bodytxt, [cfg.inputfile])

@@ -52,6 +52,7 @@ if script_name == "validator":
 else:
     tmpdir = os.path.join(main_tmpdir,inputfilename_noext)
     # tmpdir = os_utils.setupTmpfolder(tmpdir)
+    # in_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "IN")
     out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
     this_outfolder = os.path.join(out_folder, inputfilename_noext)
 # log folder
@@ -60,12 +61,13 @@ logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck")
 ### Files
 workingfile = os.path.join(tmpdir, inputfilename)
 # originalfile_copy = os.path.join(tmp_original_dir, inputfilename)
+# these tmpdir dependent paths are getting reset in setup methods in some scripts
 ziproot = os.path.join(tmpdir, "{}_unzipped".format(inputfilename_noext))		# the location where we unzip the input file
 template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
-newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
 stylereport_json = os.path.join(tmpdir, "stylereport.json")
-stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
 alerts_json = os.path.join(tmpdir, "alerts.json")
+newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
+stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
 # alerts_txt = os.path.join(this_outfolder,"ALERTS.txt")
 
 ### Resources in other Repos
@@ -77,6 +79,7 @@ if scripts_dir:
     section_start_rules_json = os.path.join(scripts_dir, "bookmaker_validator","section_start_rules.json")
     styleconfig_json = os.path.join(scripts_dir, "htmlmaker_js","style_config.json")
     smtp_txt = os.path.join(scripts_dir, "bookmaker_authkeys","smtp.txt")
+    db_access_token_txt = os.path.join(scripts_dir, "bookmaker_authkeys","access_token.txt")
 else:
     macmillan_template = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.dotx")
     macmillanstyles_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
@@ -84,6 +87,7 @@ else:
     section_start_rules_json = os.path.join(__location__,'..','..',"bookmaker_validator","section_start_rules.json")
     styleconfig_json = os.path.join(__location__,'..','..',"htmlmaker_js","style_config.json")
     smtp_txt = os.path.join(__location__,'..','..',"bookmaker_authkeys","smtp.txt")
+    db_access_token_txt = os.path.join(__location__,'..','..',"bookmaker_authkeys","access_token.txt")
 
 # # # # # # # # RELATIVE PATHS for unzipping and zipping docx files
 ### xml filepaths relative to ziproot
@@ -113,6 +117,10 @@ contenttypes_xml = os.path.join(ziproot, contenttypes_relpath)
 
 
 # # # # # # # GLOBAL VARS
+# alert email address:
+alert_email_address = "workflows@macmillan.com"
+support_email_address = "workflows@macmillan.com"
+from_email_address = "workflows@macmillan.com"
 # The first document version in history with section starts
 sectionstart_versionstring = '4.7.0'
 # TitlepageTitle style

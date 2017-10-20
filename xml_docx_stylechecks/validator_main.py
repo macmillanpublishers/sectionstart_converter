@@ -16,6 +16,7 @@ import lib.addsectionstarts as addsectionstarts
 import lib.doc_prepare as doc_prepare
 import lib.generate_report as generate_report
 import lib.setup_cleanup as setup_cleanup
+import lib.usertext_templates as usertext_templates
 import shared_utils.zipDOCX as zipDOCX
 import shared_utils.os_utils as os_utils
 import shared_utils.check_docx as check_docx
@@ -92,11 +93,11 @@ if __name__ == '__main__':
         else:
             logger.warn("* * Skipping Validation:")
             if percent_styled < 50:
-                errstring = "This .docx has {} percent of paragraphs styled with Macmillan styles".format(percent_styled)
+                errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
                 os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
             if protection == True:
-                errstring = "This .docx has protection enabled."
+                errstring = usertext_templates.alerts()["protected"]
                 os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
 
@@ -108,7 +109,7 @@ if __name__ == '__main__':
         # log to logfile for dev
         logger.exception("ERROR ------------------ :")
         # log to errfile_json for user
-        invokedby_script = os.path.splitext(os.path.basename(inspect.stack()[0][1]))[0]
-        os_utils.logAlerttoJSON(cfg.alerts_json, "error", "A fatal error was encountered while running '%s'.\n\nPlease email workflows@macmillan.com for assistance." % invokedby_script)
+        # invokedby_script = os.path.splitext(os.path.basename(inspect.stack()[0][1]))[0]
+        # os_utils.logAlerttoJSON(cfg.alerts_json, "error", "A fatal error was encountered while running '%s'.\n\nPlease email workflows@macmillan.com for assistance." % invokedby_script)
 
-        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, cfg.alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name)
+        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, cfg.alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile)

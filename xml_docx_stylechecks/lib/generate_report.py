@@ -170,26 +170,30 @@ def generateReport(report_dict, outputtxt_path):
     for line in textreport_list:    # for debug
         print line
 
+    # create email_ready string
+    email_text = "\n".join(textreport_list)
+
     # write report to file
     os_utils.writeListToFileByLine(textreport_list, outputtxt_path)
 
     logger.info("* * * ending buildReport function.")
+    return email_text
 
 #---------------------  MAIN
-# only run if this script is being invoked directly
-if __name__ == '__main__':
-
-    # set up debug log to console
-    logging.basicConfig(level=logging.DEBUG)
-
-    report_dict = {}
-    # for debug:
-    txtfile = '/Users/matthew.retzer/Documents/programming_projects/1710_1_makereport/etstB.txt'
-    report_dict = os_utils.readJSON('/Users/matthew.retzer/Documents/programming_projects/1708_2_python_ssconvertertests/tmpdir_validatepy/stylereport.json')
-
-    generateReport(report_dict, txtfile)
-
-    # concerns / next steps.  Will have to look at if we can scrape authors titles and isbns pre combination.
-    # should add illustration holder spans too
-    # character styles in use are not in order - check Erica's?. Changed them to separate category.
-    # could have also sorte so they were mixed in with orig category.
+# # only run if this script is being invoked directly
+# if __name__ == '__main__':
+#
+#     # set up debug log to console
+#     logging.basicConfig(level=logging.DEBUG)
+#
+#     report_dict = {}
+#     # for debug:
+#     txtfile = '/Users/matthew.retzer/Documents/programming_projects/1710_1_makereport/etstB.txt'
+#     report_dict = os_utils.readJSON('/Users/matthew.retzer/Documents/programming_projects/1708_2_python_ssconvertertests/tmpdir_validatepy/stylereport.json')
+#
+#     generateReport(report_dict, txtfile)
+#
+#     # concerns / next steps.  Will have to look at if we can scrape authors titles and isbns pre combination.
+#     # should add illustration holder spans too
+#     # character styles in use are not in order - check Erica's?. Changed them to separate category.
+#     # could have also sorte so they were mixed in with orig category.

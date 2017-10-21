@@ -100,6 +100,10 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     logger.info("Putting together email to submitter... ")
     # adding this var so we know whether to re:email user if processing error comes up
     report_emailed = False
+    if display_name:
+        firstname=display_name.split()[0]
+    else:
+        firstname="Sir or Madam"
     # salutation = "Hello %s,\n\n" % display_name.split()[0]
     # contactus = "If you are unsure how to go about fixing these errors, check our Confluence page (), or email '%s' to reach out to the workflows team!\n" % cfg.support_email_address
     if os.path.exists(stylereport_txt):
@@ -108,10 +112,10 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
             # alert_intro = "Stylecheck-%s has successfully run on your file, '%s', with the following Warning(s) &/or Notice(s):\n\n" % (scriptname, inputfilename)
             alert_text = "\n".join(alerttxt_list)
             # preheader = salutation + alert_intro + contactus + alert_text
-            bodytxt = usertext_templates.emailtxt()["success_with_alerts"].format(firstname=display_name.split()[0], scriptname=scriptname, inputfilename=inputfilename,
+            bodytxt = usertext_templates.emailtxt()["success_with_alerts"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
                 report_string=report_string, helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
         else:
-            bodytxt = usertext_templates.emailtxt()["success"].format(firstname=display_name.split()[0], scriptname=scriptname, inputfilename=inputfilename,
+            bodytxt = usertext_templates.emailtxt()["success"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
                 report_string=report_string, helpurl="", support_email_address=cfg.support_email_address)
 
         # send our email!
@@ -125,7 +129,7 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     elif alerttxt_list:
         alert_text = "\n".join(alerttxt_list)
         subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
-        bodytxt = usertext_templates.emailtxt()["error"].format(firstname=display_name.split()[0], scriptname=scriptname, inputfilename=inputfilename,
+        bodytxt = usertext_templates.emailtxt()["error"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
             report_string=report_string, helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
 
         # send our email!
@@ -264,9 +268,13 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
         if report_emailed == False and submitter_email:
             logger.info("trying: notify submitter")
             try:
+                if display_name:
+                    firstname=display_name.split()[0]
+                else:
+                    firstname="Sir or Madam"
                 subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
                 alert_text = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname, support_email_address=cfg.support_email_address)
-                bodytxt = usertext_templates.emailtxt()["success"].format(firstname=display_name.split()[0], scriptname=scriptname, inputfilename=inputfilename,
+                bodytxt = usertext_templates.emailtxt()["success"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
                     helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
                 sendmail.sendMail([submitter_email], subject, bodytxt)
             except:

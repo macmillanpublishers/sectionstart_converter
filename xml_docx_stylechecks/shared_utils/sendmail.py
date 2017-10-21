@@ -30,31 +30,31 @@ from_email_address = cfg.from_email_address
 # cc_addresses and attachments are optional arguments
 def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=None):
     try:
-        print "EMAIL!: ",to_addr_list, subject, bodytxt
-        # msg = MIMEMultipart()
-        # msg['From'] = from_email_address
-        # msg['To'] = ','.join(to_addr_list)
-        # msg['Subject'] = subject
-        # if cc_addr_list:
-        #     msg['Cc'] = ','.join(cc_addr_list)
-		# 	# the to_addr_list is used inthe sendmail cmd below and includes all recipients (including cc)
-        #     to_addr_list = to_addr_list + cc_addr_list
-        # msg.attach(MIMEText(bodytxt, 'plain'))
-        #
-        # if attachfile_list:
-        #     for attachfile in attachfile_list:
-        #         filename = "%s" % os.path.basename(attachfile)
-        #         attachment = open(attachfile, "rb")
-        #         part = MIMEBase('application', 'octet-stream')
-        #         part.set_payload((attachment).read())
-        #         encoders.encode_base64(part)
-        #         part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
-        #         msg.attach(part)
-        #
-        # server = smtplib.SMTP(smtp_address, port)
-        # text = msg.as_string()
-        # server.sendmail(from_addr, to_addr_list, text)
-        # server.quit()
+        # print "EMAIL!: ",to_addr_list, subject, bodytxt # debug only
+        msg = MIMEMultipart()
+        msg['From'] = from_email_address
+        msg['To'] = ','.join(to_addr_list)
+        msg['Subject'] = subject
+        if cc_addr_list:
+            msg['Cc'] = ','.join(cc_addr_list)
+			# the to_addr_list is used inthe sendmail cmd below and includes all recipients (including cc)
+            to_addr_list = to_addr_list + cc_addr_list
+        msg.attach(MIMEText(bodytxt, 'plain'))
+
+        if attachfile_list:
+            for attachfile in attachfile_list:
+                filename = "%s" % os.path.basename(attachfile)
+                attachment = open(attachfile, "rb")
+                part = MIMEBase('application', 'octet-stream')
+                part.set_payload((attachment).read())
+                encoders.encode_base64(part)
+                part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+                msg.attach(part)
+
+        server = smtplib.SMTP(smtp_address, port)
+        text = msg.as_string()
+        server.sendmail(from_email_address, to_addr_list, text)
+        server.quit()
     except:
         logger.exception("MAILER ERROR ------------------ :")
 

@@ -16,10 +16,12 @@ def emailtxt():
             Hello {firstname},
 
             Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!
-            For help interpreting any errors that may appear below, try the guide on this Confluence page: {helpurl}, or email {support_email_address} to reach out to the workflows team!
+            You can view the StyleReport below in this email, or download the attached file for a more formatted version.
+            For help interpreting any errors, try the guide on this Confluence page: {helpurl}, or email {support_email_address} to reach out to the workflows team!
+
 
             STYLREPORT FOR {inputfilename}:
-            --------------------------------------------------------------------------------
+            ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
             {report_string}
             """),
@@ -34,10 +36,11 @@ def emailtxt():
 
 
             Below is the stylereport output
-            For help interpreting any errors that may be listed, try the guide on this Confluence page: {helpurl}, or email '{support_email_address}' to reach out to the workflows team!
+            For help interpreting any errors, try the guide on this Confluence page: {helpurl}, or email '{support_email_address}' to reach out to the workflows team!
+
 
             STYLREPORT FOR {inputfilename}:
-            --------------------------------------------------------------------------------
+            ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
             {report_string}
             """),

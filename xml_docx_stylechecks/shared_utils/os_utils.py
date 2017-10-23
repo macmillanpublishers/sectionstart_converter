@@ -61,7 +61,8 @@ def incrementToUniquePath(init_path):
 
 def setupTmpfolder(tmpfolderpath):
     if os.path.isdir(tmpfolderpath):
-        tmpfolderpath = incrementToUniquePath("%s_01" % tmpfolderpath)
+        # tmpfolderpath = incrementToUniquePath("%s_01" % tmpfolderpath)
+        tmpfolderpath = "%s_%s" % (tmpfolderpath, time.strftime("%y%m%d-%H%M%S"))
     # make new dir
     if not os.path.isdir(tmpfolderpath):
         os.makedirs(tmpfolderpath)
@@ -117,22 +118,6 @@ def writeXMLtoFile(root, filename):
         logger.error('Failed write xml to file, exiting', exc_info=True)
         sys.exit(1)
 
-# https://stackoverflow.com/questions/10821083/writing-nicely-formatted-text-in-python - we'll see if we need to write line by line
-def writeListToFileByLine(text, filename):
-    try:
-        newfile = open(filename, 'w')
-        with newfile as f:
-            # for line in text:
-            #     f.write("%s\n" % line)
-            for item in text:
-                print>>f, item
-                # f.write(line)
-            f.close()
-        logger.info("wrote text to file '%s'" % filename)
-    except Exception, e:
-        logger.error('Failed write text to file, exiting', exc_info=True)
-        sys.exit(1)
-
 def dumpJSON(dictname, filename):
     # # write json to console:
     # json.dump(dictname, sys.stdout, sort_keys=True, indent=4)        # debug
@@ -158,6 +143,22 @@ def logAlerttoJSON(alerts_json, alert_category, new_errtext):
         alerts_dict[alert_category].append(new_errtext)
     dumpJSON(alerts_dict, alerts_json)
 
+# https://stackoverflow.com/questions/10821083/writing-nicely-formatted-text-in-python - we'll see if we need to write line by line
+def writeListToFileByLine(text, filename):
+    try:
+        newfile = open(filename, 'w')
+        with newfile as f:
+            # for line in text:
+            #     f.write("%s\n" % line)
+            for item in text:
+                print>>f, item
+                # f.write(line)
+            f.close()
+        logger.info("wrote text to file '%s'" % filename)
+    except Exception, e:
+        logger.error('Failed write text to file, exiting', exc_info=True)
+        sys.exit(1)
+
 def writeAlertstoTxtfile(alerts_json, this_outfolder):
     alerts_dict = readJSON(alerts_json)
     alerttxt_list = []
@@ -177,3 +178,4 @@ def writeAlertstoTxtfile(alerts_json, this_outfolder):
                 alertfile = os.path.join(this_outfolder, "WARNING.txt")
             # write our file
             writeListToFileByLine(alerttxt_list, alertfile)
+    return alerttxt_list

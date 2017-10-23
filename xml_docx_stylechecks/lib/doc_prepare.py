@@ -375,8 +375,10 @@ def docPrepare(report_dict):
     # get all Section Starts paras in the doc, add content to each para as needed:
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "insert", headingstyles)
 
+    # # # Commenting this out until we have alternate padding in place for these items.
+    # # # See Asana task: https://app.asana.com/0/405970099375554/453275643539715
     # now that we captured their contents (where needed), we can get rid of Nonprinting head paras
-    report_dict = rmNonPrintingHeads(report_dict, doc_root, cfg.nonprintingheads)
+    # report_dict = rmNonPrintingHeads(report_dict, doc_root, cfg.nonprintingheads)
 
     # autonumber contents for chapter, Appendix, Part
     report_dict = lxml_utils.autoNumberSectionParaContent(report_dict, sectionnames, cfg.autonumber_sections, doc_root)

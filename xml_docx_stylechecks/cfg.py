@@ -8,7 +8,7 @@ import platform
 import json
 import logging.config
 
-import shared_utils.os_utils as os_utils
+# import shared_utils.os_utils as os_utils
 
 # #	# # # # # # ARGS
 script_name = os.path.basename(sys.argv[0]).replace("_main.py","")
@@ -18,9 +18,9 @@ inputfilename_noext = os.path.splitext(inputfilename)[0]
 # so we can log to the validator logfile if we need to. Could replace or could try to add a handler on the fly
 #   to log to both places
 if script_name == "validator" and sys.argv[2:]:
-	validator_logfile = sys.argv[2]
+    validator_logfile = sys.argv[2]
 else:
-	validator_logfile = ''
+    validator_logfile = ''
 
 # # # # # # # # ENV
 loglevel = "INFO"		# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info
@@ -42,18 +42,18 @@ scripts_dir = ""	# we use realtive paths based on __location__ of this file (cfg
 ### Folders
 # dropbox folder (for in and out folders)
 if hostOS == "Windows":
-	dropboxfolder = os.path.join("C:",os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
+    dropboxfolder = os.path.join("C:",os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
 else:
-	dropboxfolder = os.path.join(os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
+    dropboxfolder = os.path.join(os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
 # tmpfolder and outfolder
 if script_name == "validator":
-	tmpdir = os.path.dirname(inputfile)
-	this_outfolder = tmpdir
+    tmpdir = os.path.dirname(inputfile)
+    this_outfolder = tmpdir
 else:
-	tmpdir = os.path.join(main_tmpdir,inputfilename_noext)
-	tmpdir = os_utils.setupTmpfolder(tmpdir)
-	out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
-	this_outfolder = os.path.join(out_folder, inputfilename_noext)
+    tmpdir = os.path.join(main_tmpdir,inputfilename_noext)
+    # tmpdir = os_utils.setupTmpfolder(tmpdir)
+    out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
+    this_outfolder = os.path.join(out_folder, inputfilename_noext)
 # log folder
 logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck")
 
@@ -71,18 +71,19 @@ alerts_json = os.path.join(tmpdir, "alerts.json")
 ### Resources in other Repos
 macmillan_template_name = "macmillan.dotx"
 if scripts_dir:
-	macmillan_template = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","macmillan.dotx")
-	macmillanstyles_json = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
-	vbastyleconfig_json = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","vba_style_config.json")
-	section_start_rules_json = os.path.join(scripts_dir, "bookmaker_validator","section_start_rules.json")
-	styleconfig_json = os.path.join(scripts_dir, "htmlmaker_js","style_config.json")
+    macmillan_template = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","macmillan.dotx")
+    macmillanstyles_json = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
+    vbastyleconfig_json = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","vba_style_config.json")
+    section_start_rules_json = os.path.join(scripts_dir, "bookmaker_validator","section_start_rules.json")
+    styleconfig_json = os.path.join(scripts_dir, "htmlmaker_js","style_config.json")
+    smtp_txt = os.path.join(scripts_dir, "bookmaker_authkeys","smtp.txt")
 else:
-	macmillan_template = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.dotx")
-	macmillanstyles_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
-	vbastyleconfig_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","vba_style_config.json")
-	section_start_rules_json = os.path.join(__location__,'..','..',"bookmaker_validator","section_start_rules.json")
-	styleconfig_json = os.path.join(__location__,'..','..',"htmlmaker_js","style_config.json")
-
+    macmillan_template = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.dotx")
+    macmillanstyles_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
+    vbastyleconfig_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","vba_style_config.json")
+    section_start_rules_json = os.path.join(__location__,'..','..',"bookmaker_validator","section_start_rules.json")
+    styleconfig_json = os.path.join(__location__,'..','..',"htmlmaker_js","style_config.json")
+    smtp_txt = os.path.join(__location__,'..','..',"bookmaker_authkeys","smtp.txt")
 
 # # # # # # # # RELATIVE PATHS for unzipping and zipping docx files
 ### xml filepaths relative to ziproot
@@ -147,52 +148,52 @@ wordnamespaces = {'w': wnamespace, 'w14': w14namespace, 'vt': vtnamespace, 'mc':
 # FYI the loglevel for a handler will be whichever setting is more restrictive: handler setting or logger setting
 # So to log DEBUG in console and INFO for file, set logger & stream handler to "DEBUG" and file handler to "INFO"
 def defineLogger(logfile, loglevel):
-	logging.config.dictConfig({
-		'version': 1,
-		'disable_existing_loggers': False,
-		'formatters': {
-			'console': {
-				'format': '[%(levelname)s] %(name)s.%(funcName)s : %(message)s'
-			},
-			'file': {
-				'format': '%(asctime)s [%(levelname)s] %(name)s.%(funcName)s : %(message)s',
-				'datefmt': '%y-%m-%d %H:%M:%S'
-			# },
-			# 'warnings': {
-			# 	'format': '%(message)s'
-			}
-		},
-		'handlers': {
-			'stream': {
-				'class': 'logging.StreamHandler',
-				'formatter': 'console',
-				# 'level': 'DEBUG'
-			},
-			'file':{
-				'class': 'logging.FileHandler',
-				'formatter': 'file',
-				'filename': logfile
-				# 'level': 'DEBUG'
-			# },
-			# 'secondfile':{
-			# 	'class':'logging.FileHandler',
-			# 	'formatter':'warnings',
-			# 	'filename' : warnings_json
-			}
-		},
-		'loggers': {
-			'': {
-				'handlers': ['stream', 'file'],
-				'level': loglevel,
-				'propagate': True
-			# },
-			# 'w_logger':{
-			#      'handlers': ['stream', 'secondfile'],
-			#     'level': loglevel,
-			#     'propagate': True
-			}
-		}
-	})
+    logging.config.dictConfig({
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'console': {
+                'format': '[%(levelname)s] %(name)s.%(funcName)s : %(message)s'
+            },
+            'file': {
+                'format': '%(asctime)s [%(levelname)s] %(name)s.%(funcName)s : %(message)s',
+                'datefmt': '%y-%m-%d %H:%M:%S'
+            # },
+            # 'warnings': {
+            # 	'format': '%(message)s'
+            }
+        },
+        'handlers': {
+            'stream': {
+                'class': 'logging.StreamHandler',
+                'formatter': 'console',
+                # 'level': 'DEBUG'
+            },
+            'file':{
+                'class': 'logging.FileHandler',
+                'formatter': 'file',
+                'filename': logfile
+                # 'level': 'DEBUG'
+            # },
+            # 'secondfile':{
+            # 	'class':'logging.FileHandler',
+            # 	'formatter':'warnings',
+            # 	'filename' : warnings_json
+            }
+        },
+        'loggers': {
+            '': {
+                'handlers': ['stream', 'file'],
+                'level': loglevel,
+                'propagate': True
+            # },
+            # 'w_logger':{
+            #      'handlers': ['stream', 'secondfile'],
+            #     'level': loglevel,
+            #     'propagate': True
+            }
+        }
+    })
 
 
 # class StructuredMessage(object):
@@ -209,8 +210,8 @@ def defineLogger(logfile, loglevel):
 # TODO:
 # standardize headings and sections
 # 1) look at flow control for crashes, figure out how we finish the process and return what we need to
-	# (nested tries?)  Try inserting junk at top level locations too.
-	# for now surface errors in text files, we'll add that for emails later
+    # (nested tries?)  Try inserting junk at top level locations too.
+    # for now surface errors in text files, we'll add that for emails later
 # 2) the validator
 # possibly consolidate setup and cleanup scripts in lib as bundled calls
 # for stylereporter: got a unicode encoding for special char in authorname

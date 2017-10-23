@@ -57,6 +57,7 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
         server.quit()
     except:
         logger.exception("MAILER ERROR ------------------ :")
+        raise
 
 #---------------------  MAIN
 # only run if this script is being invoked directly

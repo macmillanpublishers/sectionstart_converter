@@ -9,6 +9,7 @@ import collections
 import logging
 import dropbox
 import textwrap
+import time
 
 
 ######### IMPORT LOCAL MODULES
@@ -49,7 +50,8 @@ def getSubmitterViaAPI(inputfile):
     submitter_email = ""
     display_name = ""
     try:
-        dropbox_relpath = inputfile.replace(dropboxfolder,"")
+        # dropbox api requires forward slash in path, and is a relative path (in relation to Dropbox folder) 
+        dropbox_relpath = inputfile.replace(dropboxfolder,"").replace("\\","/")
         dbx = dropbox.Dropbox(db_access_token)
         submitter = (dbx.files_get_metadata(dropbox_relpath).sharing_info.modified_by)
         display_name = dbx.users_get_account(submitter).name.display_name
@@ -205,18 +207,20 @@ def sendAlertEmail(scriptname, logfile, inputfilename, errs_duringcleanup=[]):
         if errs_duringcleanup:
             logger.debug("this alert is for an error during exception cleanup")
             cleanup_errs = '\n'.join(errs_duringcleanup)
-            subject = "Error cleaning up after Exception: running %s on %s" % (scriptname, inputfilename)
+            subject = "Error cleaning up after Exception: Stylecheck-%s, file: '%s'" % (scriptname, inputfilename)
             bodytxt = textwrap.dedent("""\
+            Date/Time: %s
+
             Error encountered cleaning up after an Exception: running '%s' on %s.
-            The following items failed during 'cleanupException' method:
+            The following item(s) failed during 'cleanupException' method:
             %s
-            """ % (scriptname, inputfilename, cleanup_errs))
+            """ % (time.strftime("%y%m%d-%H%M%S"), scriptname, inputfilename, cleanup_errs))
             # send the mail!
             sendmail.sendMail(cfg.alert_email_address, subject, bodytxt)
         # just a normal alert email, including attached logfile
         else:
             subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
-            bodytxt = "Error encountered while running '%s' on %s.\n\nSee attached logfile for details." % (scriptname, inputfilename)
+            bodytxt = "Date/Time: %s\n\nError encountered while running '%s' on file '%s'.\n\nSee attached logfile for details." % (time.strftime("%y%m%d-%H%M%S"), scriptname, inputfilename)
             # send the mail!
             sendmail.sendMail(cfg.alert_email_address, subject, bodytxt, None, [logfile])
     except:
@@ -240,7 +244,7 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
     logger.info("trying: Writing error to alerts.json, and posting alerts.txt to outfolder")
     try:
         errstring = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname, support_email_address=cfg.support_email_address)
-        os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+        os_utils.logAlerttoJSON(alerts_json, "error", errstring)
         alerttxt_list = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
     except:
         logger.exception("* writing alert to json and posting alertfile Traceback:")

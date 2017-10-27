@@ -27,14 +27,14 @@ wnamespace = cfg.wnamespace
 wordnamespaces = cfg.wordnamespaces
 
 # Template dirs & files
-template_customprops_xml = cfg.template_customprops_xml
+# template_customprops_xml = cfg.template_customprops_xml
 
 # doc files
-doc_xml = cfg.doc_xml
-styles_xml = cfg.styles_xml
-customprops_xml = cfg.customprops_xml
-sectionstart_versionstring = cfg.sectionstart_versionstring
-settings_xml = cfg.settings_xml
+# doc_xml = cfg.doc_xml
+# styles_xml = cfg.styles_xml
+# customprops_xml = cfg.customprops_xml
+# sectionstart_versionstring = cfg.sectionstart_versionstring
+# settings_xml = cfg.settings_xml
 
 # initialize logger
 logger = logging.getLogger(__name__)
@@ -143,7 +143,8 @@ def checkSettingsXML(settings_xml, settingstring):
 if __name__ == '__main__':
 	# set up debug log to console
 	logging.basicConfig(level=logging.DEBUG)
-
+    settings_xml = cfg.settings_xml
+    
 	# Testing
 	protection = checkSettingsXML(settings_xml, "documentProtection")
 	logger.debug("protection: '%s'" % protection)

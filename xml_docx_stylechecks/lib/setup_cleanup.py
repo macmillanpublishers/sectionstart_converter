@@ -50,8 +50,9 @@ def getSubmitterViaAPI(inputfile):
     submitter_email = ""
     display_name = ""
     try:
-        # dropbox api requires forward slash in path, and is a relative path (in relation to Dropbox folder) 
-        dropbox_relpath = inputfile.replace(dropboxfolder,"").replace("\\","/")
+        # dropbox api requires forward slash in path, and is a relative path (in relation to Dropbox folder)
+        # the decode(cp1252) is to unencode unicode chars that were encoded by the batch file
+        dropbox_relpath = inputfile.replace(dropboxfolder,"").replace("\\","/").decode("cp1252")
         dbx = dropbox.Dropbox(db_access_token)
         submitter = (dbx.files_get_metadata(dropbox_relpath).sharing_info.modified_by)
         display_name = dbx.users_get_account(submitter).name.display_name
@@ -61,25 +62,40 @@ def getSubmitterViaAPI(inputfile):
     finally:
         return submitter_email, display_name
 
-def setupFolders(tmpdir, inputfile, inputfilename, this_outfolder, inputfilename_noext):
-    logger.info("Create tmpdir, create & cleanup project outfolder")
-
-    # create new tmpdir, reset value for working file
-    tmpdir = os_utils.setupTmpfolder(tmpdir)
-    workingfile = os.path.join(tmpdir, inputfilename)
-    os_utils.setupOutfolder(this_outfolder)
+def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outfolder):
+    # get submitter name, email
+    submitter_email, display_name = getSubmitterViaAPI(inputfile)
+    logger.info("Submitter name:'%s', email: '%s'" % (submitter_email, display_name))
 
     # move inputfile to tmpdir as workingfile
     logger.info('Moving input file ({}) and template to tmpdir'.format(inputfilename))
-    # os_utils.movefile(inputfile, workingfile)			# for production
-    os_utils.copyFiletoFile(inputfile, workingfile)		# debug/testing only
+    os_utils.moveFile(inputfile, workingfile)
 
-    ziproot = os.path.join(tmpdir, "{}_unzipped".format(inputfilename_noext))		# the location where we unzip the input file
-    template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
-    stylereport_json = os.path.join(tmpdir, "stylereport.json")
-    alerts_json = os.path.join(tmpdir, "alerts.json")
+    # cleanup outfolder (archive existing)
+    logger.info("Cleaning up existing outfolder")
+    os_utils.setupOutfolder(this_outfolder)
 
-    return tmpdir, workingfile, ziproot, template_ziproot, stylereport_json, alerts_json
+    return submitter_email, display_name
+
+# def setupFolders(tmpdir, inputfile, inputfilename, this_outfolder, inputfilename_noext):
+#     logger.info("Create tmpdir, create & cleanup project outfolder")
+#
+#     # create new tmpdir, reset value for working file
+#     # tmpdir = os_utils.setupTmpfolder(tmpdir)
+#     # workingfile = os.path.join(tmpdir, inputfilename)
+#     os_utils.setupOutfolder(this_outfolder)
+#
+#     # move inputfile to tmpdir as workingfile
+#     logger.info('Moving input file ({}) and template to tmpdir'.format(inputfilename))
+#     os_utils.moveFile(inputfile, workingfile)			# for production
+#     # os_utils.copyFiletoFile(inputfile, workingfile)		# debug/testing only
+#
+#     ziproot = os.path.join(tmpdir, "{}_unzipped".format(inputfilename_noext))		# the location where we unzip the input file
+#     template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
+#     stylereport_json = os.path.join(tmpdir, "stylereport.json")
+#     alerts_json = os.path.join(tmpdir, "alerts.json")
+#
+#     return tmpdir, workingfile, ziproot, template_ziproot, stylereport_json, alerts_json
 
 def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot):
     # move template to the tmpdir
@@ -102,32 +118,30 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     logger.info("Putting together email to submitter... ")
     # adding this var so we know whether to re:email user if processing error comes up
     report_emailed = False
+    # set display_name for teh greeting
     if display_name:
         firstname=display_name.split()[0]
     else:
         firstname="Sir or Madam"
-    # salutation = "Hello %s,\n\n" % display_name.split()[0]
-    # contactus = "If you are unsure how to go about fixing these errors, check our Confluence page (), or email '%s' to reach out to the workflows team!\n" % cfg.support_email_address
+    # Build email via this path if we have a style_report
     if os.path.exists(stylereport_txt):
         subject = usertext_templates.subjects()["success"].format(inputfilename=inputfilename)
+        # if we have alerts / warnings /notices, include them
         if alerttxt_list:
-            # alert_intro = "Stylecheck-%s has successfully run on your file, '%s', with the following Warning(s) &/or Notice(s):\n\n" % (scriptname, inputfilename)
             alert_text = "\n".join(alerttxt_list)
-            # preheader = salutation + alert_intro + contactus + alert_text
             bodytxt = usertext_templates.emailtxt()["success_with_alerts"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
                 report_string=report_string, helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
+        # no alerts, printing just the report
         else:
             bodytxt = usertext_templates.emailtxt()["success"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
                 report_string=report_string, helpurl="", support_email_address=cfg.support_email_address)
-
         # send our email!
         try:
             sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt])
             report_emailed = True
         except:
             raise
-        # header = preheader + "\n\n________ STYLREPORT FOR '%s': _________\n\n" % inputfilename
-        # bodytxt = header + report_string
+    # Build email via this path if we have NO style_report but YES alerts
     elif alerttxt_list:
         alert_text = "\n".join(alerttxt_list)
         subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
@@ -140,20 +154,18 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
             report_emailed = True
         except:
             raise
-        # alert_text = "\n".join(alerttxt_list)
-        # err_intro = "There was a problem running Stylecheck-%s on your file '%s'.\n Please review any errors listed below for more information:\n\n" % (scriptname, inputfilename)
-        # bodytxt = salutation + err_intro + alert_text + "\n\n" + contactus
+    # nothing to send, skipping
     else:
         logger.warn("no style report or alerts fouund, so no email to send.")
 
     return report_emailed# exit function before mailing
 
 
-def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json, tmpdir, submitter_email, display_name):
+def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename):
     logger.info("Running cleanup, 'cleanupforReporterOrConverter'...")
 
     # 1 return original_file to outfolder
-    returnOriginal(this_outfolder, workingfile, inputfilename)
+    returnOriginal(this_outfolder, workingfile, original_inputfilename)
 
     # 2 write our alertfile.txt if necessary
     if os.path.exists(alerts_json):
@@ -177,7 +189,7 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
 
     # 5 Rm tmpdir
     logger.debug("deleting tmp folder")
-    # os_utils.rm_existing_os_object(tmpdir, 'tmpdir')		# comment out for testing / debug
+    os_utils.rm_existing_os_object(tmpdir, 'tmpdir')		# comment out for testing / debug
 
     return report_emailed
 
@@ -227,7 +239,7 @@ def sendAlertEmail(scriptname, logfile, inputfilename, errs_duringcleanup=[]):
         logger.exception("ERROR sendAlertEmail function :(")
         raise   # is this necessary?
 
-def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tmpdir, logdir, inputfilename_noext, scriptname, logfile, report_emailed, submitter_email, display_name):
+def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tmpdir, logdir, inputfilename_noext, scriptname, logfile, report_emailed, submitter_email, display_name, original_inputfilename):
     logger.warn("POST-ERROR: Running cleanup, 'cleanupException'...")
     # setting defaults in case we encounter an exception during cleanup
     errs_duringcleanup = []
@@ -263,7 +275,7 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
         # 4 return original_file to outfolder
         logger.info("trying: return original file to OUT folder")
         try:
-            returnOriginal(this_outfolder, workingfile, inputfilename)
+            returnOriginal(this_outfolder, workingfile, original_inputfilename)
         except:
             logger.exception("* returning original to outfolder Traceback:")
             errs_duringcleanup.append("-returning original file to OUT folder")

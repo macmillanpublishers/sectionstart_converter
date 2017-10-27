@@ -6,7 +6,6 @@ import shutil
 import re
 import logging
 import time
-# import inspect
 
 
 ######### IMPORT LOCAL MODULES
@@ -22,14 +21,18 @@ import shared_utils.check_docx as check_docx
 
 ######### LOCAL DECLARATIONS
 inputfile = cfg.inputfile
+inputfilename = cfg.inputfilename
 inputfilename_noext = cfg.inputfilename_noext
-# workingfile = cfg.workingfile
-# ziproot = cfg.ziproot
-this_outfolder = cfg.this_outfolder
+original_inputfilename = cfg.original_inputfilename
 tmpdir = cfg.tmpdir
-report_dict = {}
-# template_ziproot = cfg.template_ziproot
+workingfile = cfg.workingfile
+ziproot = cfg.ziproot
+this_outfolder = cfg.this_outfolder
+stylereport_json = cfg.stylereport_json
+alerts_json = cfg.alerts_json
+template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
+report_dict = {}
 report_emailed = False
 
 
@@ -44,12 +47,8 @@ logger = logging.getLogger(__name__)
 if __name__ == '__main__':
     try:
         ########## SETUP
-        # get submitter name, email
-        submitter_email, display_name = setup_cleanup.getSubmitterViaAPI(cfg.inputfile)
-        logger.info("Submitter name:'%s', email: '%s'" % (submitter_email, display_name))
-
-        # setup & create tmpdir, cleanup outfolder (archive existing), copy infile to tmpdir
-        tmpdir, workingfile, ziproot, template_ziproot, stylereport_json, alerts_json = setup_cleanup.setupFolders(tmpdir, inputfile, cfg.inputfilename, this_outfolder, inputfilename_noext)
+        # get file submitter via api, copy infile to tmpdir, setup outfolder
+        submitter_email, display_name = setup_cleanup.setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outfolder)
 
         # copy template to tmpdir, unzip infile and tmpdir
         setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
@@ -95,14 +94,13 @@ if __name__ == '__main__':
 
         ########## CLEANUP
         # includes writing files to outfolder, sending mail to submitter, rm'ing tmpdir
-        report_emailed = setup_cleanup.cleanupforReporterOrConverter(cfg.script_name, this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, alerts_json, tmpdir, submitter_email, display_name)
+        report_emailed = setup_cleanup.cleanupforReporterOrConverter(cfg.script_name, this_outfolder, workingfile, inputfilename, report_dict, cfg.stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename)
 
     except:
         ########## LOG ERROR INFO
         # log to logfile for dev
         logger.exception("ERROR ------------------ :")
-        # # log to errfile_json for user
         # # invokedby_script = os.path.splitext(os.path.basename(inspect.stack()[0][1]))[0]
-        # os_utils.logAlerttoJSON(alerts_json, "error", "A fatal error was encountered while running '%s'_main.py.\n\nPlease email workflows@macmillan.com for assistance." % invokedby_script)
 
-        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile, report_emailed, submitter_email, display_name)
+        # go cleanup after this exception!
+        setup_cleanup.cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile, report_emailed, submitter_email, display_name, original_inputfilename)

@@ -72,7 +72,7 @@ def alerts():
     	"notstyled": "This .docx has {percent_styled} percent of paragraphs styled with Macmillan styles",
     	"protected": "This .docx has protection enabled.",
     	"r_err_oldtemplate": "You must attach the newest version of the macmillan style template before running the Style Report: (this .docx's version: {current_version}, template version: {template_version})",
-        "v_has_template": "This document has already has a template attached with section_start styles.",
+        "v_has_template": "This document already has a template attached with section_start styles.",
         "v_newertemplate_avail": "Newer available version of the macmillan style template (this .docx's version: {current_version}, template version: {template_version})",
         "processing_alert": textwrap.dedent("""\
             An error was encountered while running '{scriptname}'_main.py. The workflows team has been notified of this error.

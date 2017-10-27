@@ -140,13 +140,13 @@ def checkSettingsXML(settings_xml, settingstring):
 #---------------------  MAIN
 
 # only run if this script is being invoked directly
-if __name__ == '__main__':
-	# set up debug log to console
-	logging.basicConfig(level=logging.DEBUG)
-    settings_xml = cfg.settings_xml
-    
-	# Testing
-	protection = checkSettingsXML(settings_xml, "documentProtection")
-	logger.debug("protection: '%s'" % protection)
-	trackchanges = checkSettingsXML(settings_xml, "trackRevisions")
-	logger.debug("trackchanges: '%s'" % trackchanges)
+# if __name__ == '__main__':
+# 	# set up debug log to console
+# 	logging.basicConfig(level=logging.DEBUG)
+# 	settings_xml = cfg.settings_xml
+#
+# 	# Testing
+# 	protection = checkSettingsXML(settings_xml, "documentProtection")
+# 	logger.debug("protection: '%s'" % protection)
+# 	trackchanges = checkSettingsXML(settings_xml, "trackRevisions")
+# 	logger.debug("trackchanges: '%s'" % trackchanges)

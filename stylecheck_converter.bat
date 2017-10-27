@@ -1,7 +1,7 @@
 @echo off
 REM configured for each .bat:
-set scriptname=reporter_main.py
-set processwatch_seconds=120
+set scriptname=converter_main.py
+set processwatch_seconds=360
 
 REM semi-static items
 set scriptpath="S:\resources\bookmaker_scripts\sectionstart_converter\xml_docx_stylechecks\%scriptname%"

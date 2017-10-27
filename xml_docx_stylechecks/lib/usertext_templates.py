@@ -56,6 +56,17 @@ def emailtxt():
             --------------------------------------
 
             If you are unsure how to go about fixing these errors, try the guide on this Confluence page: {helpurl}, or email '{support_email_address}' to reach out to the workflows team!
+            """),
+    	"processing_error": textwrap.dedent("""\
+            Hello {firstname},
+
+            There was a problem running Stylecheck-{scriptname} on your file '{inputfilename}'.
+
+            Please review Error(s) listed below:
+
+            --------------------------------------
+            {alert_text}
+            --------------------------------------
             """)
     }
     return templates

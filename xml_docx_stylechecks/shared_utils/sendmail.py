@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 #---------------------  METHODS
 # Note: the to-address, cc-address and attachments need to be list objects.
 # cc_addresses and attachments are optional arguments
-def sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=None):
+def sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list):
     try:
         # print "EMAIL!: ",to_addr_list, subject, bodytxt # debug only
         msg = MIMEMultipart()
@@ -65,7 +65,7 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
     port = 25
     from_email_address = cfg.from_email_address
 
-    sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=None)
+    sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list)
 
 #---------------------  MAIN
 # only run if this script is being invoked directly

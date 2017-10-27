@@ -48,6 +48,7 @@ processwatch_file = cfg.processwatch_file
 #---------------------  METHODS
 def getSubmitterViaAPI(inputfile):
     logger.info("Retrieve submitter info via Dropbox api...")
+    time.sleep(5) # pausing to make sure db has synced
     submitter_email = ""
     display_name = ""
     try:
@@ -56,8 +57,8 @@ def getSubmitterViaAPI(inputfile):
         dropbox_relpath = inputfile.replace(dropboxfolder,"").replace("\\","/").decode("cp1252")
         dbx = dropbox.Dropbox(db_access_token)
         submitter = (dbx.files_get_metadata(dropbox_relpath).sharing_info.modified_by)
-        display_name = dbx.users_get_account(submitter).name.display_name
-        submitter_email = dbx.users_get_account(submitter).email
+        display_name = dbx.users_get_account(submitter).name.display_name.encode("utf-8")
+        submitter_email = dbx.users_get_account(submitter).email.encode("utf-8")
     except:
         logger.exception("ERROR with Dropbox api:")
     finally:
@@ -233,13 +234,13 @@ def sendAlertEmail(scriptname, logfile, inputfilename, errs_duringcleanup=[]):
             %s
             """ % (time.strftime("%y%m%d-%H%M%S"), scriptname, inputfilename, cleanup_errs))
             # send the mail!
-            sendmail.sendMail(cfg.alert_email_address, subject, bodytxt)
+            sendmail.sendMail([cfg.alert_email_address], subject, bodytxt)
         # just a normal alert email, including attached logfile
         else:
             subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
             bodytxt = "Date/Time: %s\n\nError encountered while running '%s' on file '%s'.\n\nSee attached logfile for details." % (time.strftime("%y%m%d-%H%M%S"), scriptname, inputfilename)
             # send the mail!
-            sendmail.sendMail(cfg.alert_email_address, subject, bodytxt, None, [logfile])
+            sendmail.sendMail([cfg.alert_email_address], subject, bodytxt, None, [logfile])
     except:
         logger.exception("ERROR sendAlertEmail function :(")
         raise   # is this necessary?
@@ -295,7 +296,7 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
                     firstname="Sir or Madam"
                 subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
                 alert_text = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname, support_email_address=cfg.support_email_address)
-                bodytxt = usertext_templates.emailtxt()["success"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
+                bodytxt = usertext_templates.emailtxt()["processing_error"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
                     helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
                 sendmail.sendMail([submitter_email], subject, bodytxt)
             except:

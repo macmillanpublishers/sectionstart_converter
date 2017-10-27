@@ -47,7 +47,7 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 # # # # # # # # CONFIGURE BASED ON ENVIRONMENT:
 # The parent tmpdir needs to be manually set.  Everything else here is dynamically spun off based on
 # 	which script is invoked and the location of the dropbox folder
-main_tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","tmpdir") # debug-change for prod
+main_tmpdir = os.path.join("S:",os.sep,"pythonxml_tmp") # debug-change for prod
 scripts_dir = ""	# we use realtive paths based on __location__ of this file (cfg.py) unless scripts_dir has a value
 
 # # # # # # # # PATHS
@@ -57,6 +57,7 @@ if hostOS == "Windows":
     dropboxfolder = os.path.join("C:",os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
 else:
     dropboxfolder = os.path.join(os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
+    main_tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","tmpdir") # debug, for testing on MacOS
 # tmpfolder and outfolder
 if script_name == "validator":
     tmpdir = os.path.dirname(inputfile)

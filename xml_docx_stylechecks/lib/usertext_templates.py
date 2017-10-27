@@ -80,7 +80,8 @@ def subjects():
 
 def alerts():
     alerts = {
-    	"notstyled": "This .docx has {percent_styled} percent of paragraphs styled with Macmillan styles",
+        "notdocx": "This file is not a '.docx'. Only .docx files can be run through Stylecheck-{scriptname}.",
+        "notstyled": "This .docx has {percent_styled} percent of paragraphs styled with Macmillan styles",
     	"protected": "This .docx has protection enabled.",
     	"r_err_oldtemplate": "You must attach the newest version of the macmillan style template before running the Style Report: (this .docx's version: {current_version}, template version: {template_version})",
         "v_has_template": "This document already has a template attached with section_start styles.",

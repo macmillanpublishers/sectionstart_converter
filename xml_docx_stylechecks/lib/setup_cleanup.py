@@ -64,7 +64,7 @@ def getSubmitterViaAPI(inputfile):
     finally:
         return submitter_email, display_name
 
-def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outfolder):
+def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outfolder, inputfile_ext):
     # get submitter name, email
     submitter_email, display_name = getSubmitterViaAPI(inputfile)
     logger.info("Submitter name:'%s', email: '%s'" % (submitter_email, display_name))
@@ -77,7 +77,13 @@ def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outf
     logger.info("Cleaning up existing outfolder")
     os_utils.setupOutfolder(this_outfolder)
 
-    return submitter_email, display_name
+    if inputfile_ext != ".docx":
+        logger.warning("This file is not a .docx :(")
+        notdocx = True
+    else:
+        notdocx = False
+
+    return submitter_email, display_name, notdocx
 
 # def setupFolders(tmpdir, inputfile, inputfilename, this_outfolder, inputfilename_noext):
 #     logger.info("Create tmpdir, create & cleanup project outfolder")

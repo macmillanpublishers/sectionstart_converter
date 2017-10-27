@@ -22,6 +22,7 @@ import shared_utils.check_docx as check_docx
 ######### LOCAL DECLARATIONS
 inputfile = cfg.inputfile
 inputfilename = cfg.inputfilename
+inputfile_ext = cfg.inputfile_ext
 inputfilename_noext = cfg.inputfilename_noext
 original_inputfilename = cfg.original_inputfilename
 tmpdir = cfg.tmpdir
@@ -48,49 +49,54 @@ if __name__ == '__main__':
     try:
         ########## SETUP
         # get file submitter via api, copy infile to tmpdir, setup outfolder
-        submitter_email, display_name = setup_cleanup.setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outfolder)
+        submitter_email, display_name, notdocx = setup_cleanup.setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outfolder, inputfile_ext)
 
-        # copy template to tmpdir, unzip infile and tmpdir
-        setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
-
-        ########## CHECK DOCUMENT
-        ### check and compare versions, styling percentage, doc protection
-        logger.info('Comparing docx version to template, checking percent styled, checking if protected doc...')
-        version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.sectionstart_versionstring)
-        percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
-        protection = check_docx.checkSettingsXML(cfg.settings_xml, "documentProtection")
-
-        ########## RUN STUFF
-        if version_result == "up_to_date" and percent_styled >= 50 and protection == False:
-            logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
-
-            # # # check section starts!
-            logger.info("Checking section starts")
-            report_dict = addsectionstarts.sectionStartCheck("report", report_dict)
-
-            # # # run otherstyle report stuff!
-            logger.info("Running other style report functions")
-            report_dict = stylereports.styleReports(report_dict)
-
-            # write our stylereport.json with all edits etc for
-            logger.debug("Writing stylereport.json")
-            os_utils.dumpJSON(report_dict, stylereport_json)
-
-        ########## SKIP RUNNING STUFF, LOG ALERTS
+        if notdocx == True:
+            errstring = usertext_templates.alerts()["notdocx"].format(scriptname=cfg.script_name)
+            os_utils.logAlerttoJSON(alerts_json, "error", errstring)
+            logger.warn("* {}".format(errstring))
         else:
-            logger.warn("* * Skipping Style Report:")
-            if percent_styled < 50:
-                errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
-                os_utils.logAlerttoJSON(alerts_json, "error", errstring)
-                logger.warn("* {}".format(errstring))
-            if version_result != "up_to_date":
-                errstring = usertext_templates.alerts()["notstyled"].format(current_version=current_version, template_version=template_version)
-                os_utils.logAlerttoJSON(alerts_json, "error", errstring)
-                logger.warn("* {}".format(errstring))
-            if protection == True:
-                errstring = usertext_templates.alerts()["protected"]
-                os_utils.logAlerttoJSON(alerts_json, "error", errstring)
-                logger.warn("* {}".format(errstring))
+            # copy template to tmpdir, unzip infile and tmpdir
+            setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
+
+            ########## CHECK DOCUMENT
+            ### check and compare versions, styling percentage, doc protection
+            logger.info('Comparing docx version to template, checking percent styled, checking if protected doc...')
+            version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.sectionstart_versionstring)
+            percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
+            protection = check_docx.checkSettingsXML(cfg.settings_xml, "documentProtection")
+
+            ########## RUN STUFF
+            if version_result == "up_to_date" and percent_styled >= 50 and protection == False:
+                logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
+
+                # # # check section starts!
+                logger.info("Checking section starts")
+                report_dict = addsectionstarts.sectionStartCheck("report", report_dict)
+
+                # # # run otherstyle report stuff!
+                logger.info("Running other style report functions")
+                report_dict = stylereports.styleReports(report_dict)
+
+                # write our stylereport.json with all edits etc for
+                logger.debug("Writing stylereport.json")
+                os_utils.dumpJSON(report_dict, stylereport_json)
+
+            ########## SKIP RUNNING STUFF, LOG ALERTS
+            else:
+                logger.warn("* * Skipping Style Report:")
+                if percent_styled < 50:
+                    errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
+                    os_utils.logAlerttoJSON(alerts_json, "error", errstring)
+                    logger.warn("* {}".format(errstring))
+                if version_result != "up_to_date":
+                    errstring = usertext_templates.alerts()["notstyled"].format(current_version=current_version, template_version=template_version)
+                    os_utils.logAlerttoJSON(alerts_json, "error", errstring)
+                    logger.warn("* {}".format(errstring))
+                if protection == True:
+                    errstring = usertext_templates.alerts()["protected"]
+                    os_utils.logAlerttoJSON(alerts_json, "error", errstring)
+                    logger.warn("* {}".format(errstring))
 
         ########## CLEANUP
         # includes writing files to outfolder, sending mail to submitter, rm'ing tmpdir

@@ -10,10 +10,12 @@ import logging.config
 import time
 
 
-# #	# # # # # # ARGS - FILENAME
+# #	# # # # # # ARGS
 ### Arg 1 - Filename
 script_name = os.path.basename(sys.argv[0]).replace("_main.py","")
 inputfile = sys.argv[1]
+### Arg 2 - Filename
+processwatch_file = sys.argv[2]
 # strip out surrounding double quotes if passed from batch file.
 if inputfile[0] == '"':
     inputfile = inputfile[1:]
@@ -28,8 +30,8 @@ inputfilename_noext = re.sub('\W','',original_inputfilename_noext)
 inputfilename = inputfilename_noext + inputfile_ext
 ### Arg 2 - alt log location
 # so we can log to the validator logfile if we need to. Could replace or could try to add a handler on the fly to log to both places
-if script_name == "validator" and sys.argv[2:]:
-    validator_logfile = sys.argv[2]
+if script_name == "validator" and sys.argv[3:]:
+    validator_logfile = sys.argv[3]
 else:
     validator_logfile = ''
 

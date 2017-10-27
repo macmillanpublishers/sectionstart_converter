@@ -42,6 +42,7 @@ logger = logging.getLogger(__name__)
 with open(cfg.db_access_token_txt) as f:
     db_access_token = f.readline()
 dropboxfolder = cfg.dropboxfolder
+processwatch_file = cfg.processwatch_file
 
 
 #---------------------  METHODS
@@ -191,6 +192,10 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
     logger.debug("deleting tmp folder")
     os_utils.rm_existing_os_object(tmpdir, 'tmpdir')		# comment out for testing / debug
 
+    # 6 Rm processwatch_file
+    logger.debug("deleting processwatch_file")
+    os_utils.rm_existing_os_object(processwatch_file, 'processwatch_file')
+
     return report_emailed
 
 def cleanupforValidator(this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json):
@@ -306,6 +311,14 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
         except:
             logger.exception("* deleting tmp folder Traceback:")
             errs_duringcleanup.append("-deleting tmp folder")
+
+        # 6 Rm processwatch_file
+        logger.debug("deleting processwatch_file")
+        try:
+            os_utils.rm_existing_os_object(processwatch_file, 'processwatch_file')
+        except:
+            logger.exception("* deleting processwatch_file Traceback:")
+            errs_duringcleanup.append("-deleting processwatch_file")
 
     # try once more to send alert if we encountered cleanup errors
     if errs_duringcleanup:

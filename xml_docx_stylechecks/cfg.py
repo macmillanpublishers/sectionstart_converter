@@ -146,6 +146,7 @@ parttitlestyle = "Part Title (pt)"
 isbnstyle = "span ISBN (isbn)"
 authorstyle = "Titlepage Author Name (au)"
 illustrationholder_style = "Illustration holder (ill)"
+inline_illustrationholder_style = "span illustration holder (illi)"
 titlesection_stylename = "Section-Titlepagesti"
 copyrightsection_stylename = "Section-Copyrightscr"
 

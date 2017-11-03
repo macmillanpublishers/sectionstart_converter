@@ -91,8 +91,8 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
             "exclude_from": ["converter"],
     		"title": "ILLUSTRATION LIST",
     		"text": "Verify that this list of illustrations includes only the filenames of your illustrations.\n",
-    		"dict_category_name": "illustration_holders",
-    		"line_template": "{para_string}\n    -located in {parent_section_start_type}: {parent_section_start_content}. (Paragraph {para_index})",
+    		"dict_category_name": "illustration_holders__sort_by_index",
+    		"line_template": "{description}\n    -located in {parent_section_start_type}: {parent_section_start_content}. (Paragraph {para_index})",
             "alternate_content": {
                 "text": "no illustrations detected."
             }
@@ -150,14 +150,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     	"25_corrections_heading(validator)": {
             "exclude_from": ["converter","reporter"],
     		"title": " ************************** UNSUPPORTED STYLES FOUND ************************* ",
-    		"text": "If any non-Macmillan or non-Bookmaker styles were detected in the manuscript, they are noted here:"
+    		"text": "If any non-Macmillan or non-Bookmaker styles were detected in the manuscript, they are displayed here:"
     	},
     	"26_non-Macmillan_styles(validator)": {
             "exclude_from": ["reporter", "converter"],
     		"title": "NON-MACMILLAN STYLES",
     		"text": "Non-Macmillan styles detected.\nContent styled with non-Macmillan styles may not appear properly-styled in your egalley:\n",
     		"dict_category_name": "non-Macmillan_style_used",
-    		"line_template": "Style '{description}' found in section: '{parent_section_start_type}' (with content: {parent_section_start_content})",
+    		"line_template": "- Rogue style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},
@@ -166,7 +166,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "NON-BOOKMAKER STYLES",
     		"text": "Non-Bookmaker styles detected.\nContent styled with non-Bookmaker styles may not appear properly-styled in your egalley:\n",
     		"dict_category_name": "non_bookmaker_macmillan_style",
-    		"line_template": "Style '{description}' found in section: '{parent_section_start_type}' (with content: {parent_section_start_content})",
+    		"line_template": "- Rogue style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},
@@ -189,7 +189,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "ADDED CONTENT TO SECTION START PARA",
     		"text": "Section-Start paras cannot be empty. Content was auto-added to the following Section-Start paras:\n",
     		"dict_category_name": "empty_section_start_para",
-    		"line_template": "'{description}', new content: '{para_string}'",
+    		"line_template": "{description:.<40} New text: {para_string}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},
@@ -198,7 +198,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "REMOVED EMPTY FIRST OR LAST PARA",
     		"text": "An empty first or last paragraph causes problems with bookmaker: one (or both) were found and removed.\n",
     		"dict_category_name": "removed_empty_firstlast_para",
-    		"line_template": "{description}",
+    		"line_template": "- {description}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},
@@ -207,7 +207,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "CHARACTER STYLES REMOVED FROM HEADINGS",
     		"text": "Character styles in headings cause problems with ebook TOC creation... some were found and removed:\n",
     		"dict_category_name": "rm_charstyle_from_heading",
-    		"line_template": "{description} from '{parent_section_start_type}' (with content: {parent_section_start_content})",
+    		"line_template": "- {description} from '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},
@@ -216,7 +216,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "ADDED TITLEPAGE AND/OR COPYRIGHT PAGE",
     		"text": "Titlepage and Copyright-page are required. One or both was missing and had to be added:\n",
     		"dict_category_name": "added_required_section_start",
-    		"line_template": "{description}",
+    		"line_template": "- {description}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},
@@ -225,7 +225,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "ADDED METADATA TO TITLEPAGE",
     		"text": "The Titlepage section must contain styled Title and Author paras. One or both was missing and had to be added:\n",
     		"dict_category_name": "added_required_book_info",
-    		"line_template": "{description}",
+    		"line_template": "- {description}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},
@@ -234,7 +234,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "SECTION BREAKS, SHAPES AND GRAPHICS REMOVED",
     		"text": "Section Break(s) and or inserted graphics were removed in the following sections:\n",
     		"dict_category_name": "deleted_shapes_and_sectionbreaks",
-    		"line_template": "{description} from section '{parent_section_start_type}' (content: {parent_section_start_content})",
+    		"line_template": "- {description} from '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},

@@ -85,7 +85,8 @@ def rmCharStylesFromHeads(report_dict, doc_root, nocharstyle_headingstyles):
             rstyle = para.find(".//*w:rStyle", wordnamespaces)
             if rstyle is not None:
                 # optional; log to report_dict
-                lxml_utils.logForReport(report_dict,para,"rm_charstyle_from_heading",headingstyle)
+                rstylename = rstyle.get('{%s}val' % wnamespace)
+                lxml_utils.logForReport(report_dict,para,"rm_charstyle_from_heading","Removed '%s' charstyle from '%s' heading." % (rstylename, headingstyle))
                 # delete the runstyle!
                 rstyle.getparent().remove(rstyle)
     return report_dict
@@ -277,10 +278,10 @@ def insertBookinfo(report_dict, doc_root, stylename, leadingpara_style, bookinfo
         leadingpara = lxml_utils.findParasWithStyle(leadingpara_style, doc_root)[0]
         if leadingpara is not None and bookinfo_item:
             lxml_utils.insertPara(stylename, leadingpara, doc_root, bookinfo_item, "after")
-            lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s'" % bookinfo_item)
+            lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (stylename, bookinfo_item))
         else:
             if not bookinfo_item:
-                lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s'" % bookinfo_item)
+                lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (stylename, bookinfo_item))
                 logger.warn("'%s' was missing from the manuscript but could not be auto-inserted because %s lookup value was empty." % (stylename, bookinfo_item))
             if leadingpara is None:
                 logger.warn("Could not find required %s styled 'leading_para' to insert bookinfo field: '%s'" % (leadingpara_style, bookinfo_item))

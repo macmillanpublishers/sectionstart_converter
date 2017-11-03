@@ -461,9 +461,14 @@ def sectionStartCheck(call_type, report_dict, autonumber=False):
             report_dict = lxml_utils.autoNumberSectionParaContent(report_dict, sectionnames, cfg.autonumber_sections, doc_root)
         os_utils.writeXMLtoFile(doc_root, doc_xml)
 
+    report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "report")
+
     # add/update para index numbers
     logger.debug("Update all report_dict records with para_index-")
     report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectiontypes["all"])
+
+    # create sorted version of "section_start_needed" list in reportdict based on para_index: for validator report
+    report_dict["section_start_needed__sort_by_index"] = sorted(report_dict["section_start_needed"], key=lambda x: x['para_index'])
 
     logger.info("* * * ending sectionStartCheck function.")
 

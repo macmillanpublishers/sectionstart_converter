@@ -7,7 +7,7 @@ import os
 # import json
 import sys
 import logging
-import inspect
+# import inspect
 # make sure to install lxml: sudo pip install lxml
 from lxml import etree
 
@@ -59,9 +59,9 @@ def getStyleLongname(styleshortname, stylenamemap):
         stylenamemap[styleshortname] = stylelongname
     return stylelongname
 
-def buildReport(report_dict, textreport_list, invokedby_script, stylenamemap, recipe_item, errorlist):
+def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_item, errorlist, validator_warnings):
     # make sure we're not supposed to skip this recipe_item as per "exclude_from" key
-    if not("exclude_from" in recipe_item and invokedby_script in recipe_item["exclude_from"]):
+    if not("exclude_from" in recipe_item and scriptname in recipe_item["exclude_from"]):
         tmptextlist = []
         tmptextlist.append("")  # start with a blank line
         # add formatted title if present
@@ -71,6 +71,8 @@ def buildReport(report_dict, textreport_list, invokedby_script, stylenamemap, re
         # add text if present
         if "text" in recipe_item and recipe_item["text"]:
             tmptextlist.append(recipe_item["text"])
+        if "apply_warning_banner" in recipe_item and recipe_item["apply_warning_banner"] == True:
+            validator_warnings = True
         # see if "dict_category_name" is present
         if "dict_category_name" in recipe_item and recipe_item["dict_category_name"]:
             # if the category is in report_dict and has contents, proceed, else, print an alternate & log err as needed
@@ -110,7 +112,7 @@ def buildReport(report_dict, textreport_list, invokedby_script, stylenamemap, re
                     tmptextlist =[]
 
         textreport_list += tmptextlist
-    # return errorlist
+    return validator_warnings
 
 def addErrorList(textreport_list, errorlist):
     if errorlist:
@@ -131,7 +133,7 @@ def addErrorList(textreport_list, errorlist):
         textreport_list = tmperrorlist + textreport_list
     return textreport_list
 
-def addReportSuccessFailBanner(textreport_list, errorlist):
+def addReporterBanner(textreport_list, errorlist):
     # could set this  width value globallty.
     banner = "{:^80}\n{:^80}"
     if errorlist:
@@ -141,30 +143,57 @@ def addReportSuccessFailBanner(textreport_list, errorlist):
         banner = banner.format("CONGRATULATIONS! YOU PASSED!", "But you're not done yet. Please check the info listed below.")
     textreport_list.insert(0,banner)
 
-def generateReport(report_dict, outputtxt_path):
+def addConverterBanner(textreport_list, errorlist):
+    if errorlist:
+        banner = "{:^80}\n{:^80}"
+        banner = banner.format("OOPS!", "No criteria for Section-Start insertion was found in this manuscript.")
+        banner = banner + "\n"
+    else:
+        banner = "{:^80}\n{:^80}\n\n{}\n\n{}"
+        banner = banner.format("CONGRATULATIONS!","Section-Start paragraphs have been inserted into your file!", \
+            "PLEASE REVIEW the new Section-Starts list below, you may want to edit some auto-inserted styles or content*.",\
+            "(*Section-Start paragraph contents are non-printing, but are used for the TOC and NCX in the egalley.)")
+    textreport_list.insert(0,banner)
+
+def addValidatorBanner(textreport_list, validator_warnings):
+    if validator_warnings == False:
+        banner = "{:^80}\n\n{:^80}"
+        banner = banner.format("NOTES FROM EGALLEY VALIDATION","Please peruse items below to verify metadata, Sections, and illustrations your manuscript.")
+    else:
+        banner = "{:^80}\n{:^80}\n\n{}"
+        banner = banner.format("NOTES FROM EGALLEY VALIDATION","Please peruse items below to verify document info.","WARNING: Document validation turned up unsupported styles, &/or edits were made prior to creating egalley.\nSee below for details")
+    textreport_list.insert(0,banner)
+
+def generateReport(report_dict, outputtxt_path, scriptname):
     logger.info("* * * commencing buildreport function...")
-    # this reports the name of ths script that called this function, capturing so we can customize report output per product
-    invokedby_scriptpath = inspect.stack()[1][1]
-    invokedby_script = os.path.splitext(os.path.basename(invokedby_scriptpath))[0]
+    # # this reports the name of ths script that called this function, capturing so we can customize report output per product
+    # invokedby_scriptpath = inspect.stack()[1][2]
+    # invokedby_script = os.path.splitext(os.path.basename(invokedby_scriptpath))[0]
 
     # using this shortname:longname 'stylenamemap' to prevent repeat lookups in styles.xml
     stylenamemap = {}
     textreport = ""
     textreport_list = []
     errorlist = []
+    validator_warnings = False
 
     # get the report recipe
     recipe = report_recipe.getReportRecipe(cfg.titlestyle, cfg.authorstyle, cfg.isbnstyle)
 
     # build our style report as a list of strings
     for item in sorted(recipe):
-        buildReport(report_dict, textreport_list, invokedby_script, stylenamemap, recipe[item], errorlist)
+        validator_warnings = buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe[item], errorlist, validator_warnings)
 
     # add Error List, errheader & footer to
     textreport_list = addErrorList(textreport_list, errorlist)
 
     # add success/fail banner based on whether errorlist is empty
-    addReportSuccessFailBanner(textreport_list, errorlist)
+    if scriptname == "converter":
+        addConverterBanner(textreport_list, errorlist)
+    elif scriptname == "reporter":
+        addReporterBanner(textreport_list, errorlist)
+    elif scriptname == "validator":
+        addValidatorBanner(textreport_list, validator_warnings)
 
     # print report to console
     for line in textreport_list:    # for debug

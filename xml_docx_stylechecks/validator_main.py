@@ -17,6 +17,7 @@ import lib.doc_prepare as doc_prepare
 import lib.generate_report as generate_report
 import lib.setup_cleanup as setup_cleanup
 import lib.usertext_templates as usertext_templates
+import lib.stylereports as stylereports
 import shared_utils.zipDOCX as zipDOCX
 import shared_utils.os_utils as os_utils
 import shared_utils.check_docx as check_docx
@@ -75,9 +76,9 @@ if __name__ == '__main__':
             # # # run docPrepare function(s)
             report_dict = doc_prepare.docPrepare(report_dict)
 
-            # # # # run other style report stuff for report!
-            # logger.info("Running other style report functions")
-            # report_dict = stylereports.styleReports(report_dict)
+            # # # # run style report stuff for report!
+            logger.info("Running style report functions")
+            report_dict = stylereports.styleReports(report_dict)
 
             ### zip ziproot up as a docx
             logger.info("Zipping updated xml into a .docx in the tmpfolder")
@@ -102,14 +103,11 @@ if __name__ == '__main__':
                 logger.warn("* {}".format(errstring))
 
         ########## CLEANUP
-        setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, cfg.alerts_json)
+        setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, cfg.alerts_json, cfg.script_name)
 
     except:
         ########## LOG ERROR INFO
         # log to logfile for dev
         logger.exception("ERROR ------------------ :")
-        # log to errfile_json for user
-        # invokedby_script = os.path.splitext(os.path.basename(inspect.stack()[0][1]))[0]
-        # os_utils.logAlerttoJSON(cfg.alerts_json, "error", "A fatal error was encountered while running '%s'.\n\nPlease email workflows@macmillan.com for assistance." % invokedby_script)
-
-        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, cfg.alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile)
+        # the last 4 parameters only apply to reporter and converter
+        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, cfg.alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile, "", "", "", "")

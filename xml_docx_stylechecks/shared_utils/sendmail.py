@@ -7,28 +7,15 @@ from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 
-######### IMPORT LOCAL MODULES
-if __name__ == '__main__':
-	# to go up a level to read cfg when invoking from this script (for testing).
-	import imp
-	parentpath = os.path.join(sys.path[0], '..', 'cfg.py')
-	cfg = imp.load_source('cfg', parentpath)
-else:
-	import cfg
 
 # initialize logger
 logger = logging.getLogger(__name__)
 
-######### LOCAL DECLARATIONS
-with open(cfg.smtp_txt) as f:
-    smtp_address = f.readline()
-port = 25
-from_email_address = cfg.from_email_address
 
 #---------------------  METHODS
 # Note: the to-address, cc-address and attachments need to be list objects.
 # cc_addresses and attachments are optional arguments
-def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=None):
+def sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list):
     try:
         # print "EMAIL!: ",to_addr_list, subject, bodytxt # debug only
         msg = MIMEMultipart()
@@ -59,18 +46,39 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
         logger.exception("MAILER ERROR ------------------ :")
         raise
 
+def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=None):
+    # moving common dependencies for this file for converter/reporter/validator sute of scripts into an outer method...
+    #   so I can reuse this script for the independent process_watcher.
+
+    ######### IMPORT LOCAL MODULES
+    if __name__ == '__main__':
+    	# to go up a level to read cfg when invoking from this script (for testing).
+    	import imp
+    	parentpath = os.path.join(sys.path[0], '..', 'cfg.py')
+    	cfg = imp.load_source('cfg', parentpath)
+    else:
+    	import cfg
+
+    ######### LOCAL DECLARATIONS
+    with open(cfg.smtp_txt) as f:
+        smtp_address = f.readline()
+    port = 25
+    from_email_address = cfg.from_email_address
+
+    sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list)
+
 #---------------------  MAIN
 # only run if this script is being invoked directly
-if __name__ == '__main__':
-    # set up debug log to console
-    logging.basicConfig(level=logging.DEBUG)
-
-    # from_addr = "workflows@macmillan.com"
-    to_addr_list = ["your email address here"]
-    subject = "Test email"
-    bodytxt = "Did this work?\n\n\t(I hope?)"
-    cc_addr_list = ["cc address 1", "cc address 2"]
-
-    sendmail(to_addr_list, subject, bodytxt)
-
-    sendmail(to_addr_list, subject, bodytxt, cc_addr_list, [cfg.inputfile])
+# if __name__ == '__main__':
+    # # set up debug log to console
+    # logging.basicConfig(level=logging.DEBUG)
+    #
+    # # from_addr = "workflows@macmillan.com"
+    # to_addr_list = ["your email address here"]
+    # subject = "Test email"
+    # bodytxt = "Did this work?\n\n\t(I hope?)"
+    # cc_addr_list = ["cc address 1", "cc address 2"]
+    #
+    # sendmail(to_addr_list, subject, bodytxt)
+    #
+    # sendmail(to_addr_list, subject, bodytxt, cc_addr_list, [cfg.inputfile])

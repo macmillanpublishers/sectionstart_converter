@@ -59,14 +59,14 @@ def incrementToUniquePath(init_path):
         new_path = "%s_%02d" % (current_name, new_int)
     return new_path
 
-def setupTmpfolder(tmpfolderpath):
-    if os.path.isdir(tmpfolderpath):
-        # tmpfolderpath = incrementToUniquePath("%s_01" % tmpfolderpath)
-        tmpfolderpath = "%s_%s" % (tmpfolderpath, time.strftime("%y%m%d-%H%M%S"))
-    # make new dir
-    if not os.path.isdir(tmpfolderpath):
-        os.makedirs(tmpfolderpath)
-    return tmpfolderpath
+# def setupTmpfolder(tmpfolderpath):
+#     if os.path.isdir(tmpfolderpath):
+#         # tmpfolderpath = incrementToUniquePath("%s_01" % tmpfolderpath)
+#         tmpfolderpath = "%s_%s" % (tmpfolderpath, time.strftime("%y%m%d-%H%M%S"))
+#     # make new dir
+#     if not os.path.isdir(tmpfolderpath):
+#         os.makedirs(tmpfolderpath)
+#     return tmpfolderpath
 
 def setupOutfolder(outfolderpath):
     # make the dir if it does not  exist

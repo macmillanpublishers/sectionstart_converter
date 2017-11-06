@@ -7,18 +7,31 @@ import getpass
 import platform
 import json
 import logging.config
+import time
 
-# import shared_utils.os_utils as os_utils
 
 # #	# # # # # # ARGS
+### Arg 1 - Filename
 script_name = os.path.basename(sys.argv[0]).replace("_main.py","")
 inputfile = sys.argv[1]
-inputfilename = os.path.basename(inputfile)
-inputfilename_noext = os.path.splitext(inputfilename)[0]
-# so we can log to the validator logfile if we need to. Could replace or could try to add a handler on the fly
-#   to log to both places
-if script_name == "validator" and sys.argv[2:]:
-    validator_logfile = sys.argv[2]
+### Arg 2 - Filename
+processwatch_file = sys.argv[2]
+# strip out surrounding double quotes if passed from batch file.
+if inputfile[0] == '"':
+    inputfile = inputfile[1:]
+if inputfile[-1:] == '"':
+    inputfile = inputfile[:-1]
+# get just basename
+original_inputfilename = os.path.basename(inputfile)
+# separate filename and extension
+original_inputfilename_noext, inputfile_ext = os.path.splitext(original_inputfilename)
+# clean out non-alphanumeric chars
+inputfilename_noext = re.sub('\W','',original_inputfilename_noext)
+inputfilename = inputfilename_noext + inputfile_ext
+### Arg 2 - alt log location
+# so we can log to the validator logfile if we need to. Could replace or could try to add a handler on the fly to log to both places
+if script_name == "validator" and sys.argv[3:]:
+    validator_logfile = sys.argv[3]
 else:
     validator_logfile = ''
 
@@ -34,24 +47,23 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 # # # # # # # # CONFIGURE BASED ON ENVIRONMENT:
 # The parent tmpdir needs to be manually set.  Everything else here is dynamically spun off based on
 # 	which script is invoked and the location of the dropbox folder
-# 	we could dynamically set tmpdir it if we used standard sys tmp locations that are garbage collected (by OS)
-main_tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","1708_2_python_ssconvertertests","tmpdir")
+main_tmpdir = os.path.join("S:",os.sep,"pythonxml_tmp") # debug-change for prod
 scripts_dir = ""	# we use realtive paths based on __location__ of this file (cfg.py) unless scripts_dir has a value
 
 # # # # # # # # PATHS
-### Folders
+### Top level Folders
 # dropbox folder (for in and out folders)
 if hostOS == "Windows":
     dropboxfolder = os.path.join("C:",os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
 else:
     dropboxfolder = os.path.join(os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
+    main_tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","tmpdir") # debug, for testing on MacOS
 # tmpfolder and outfolder
 if script_name == "validator":
     tmpdir = os.path.dirname(inputfile)
     this_outfolder = tmpdir
 else:
-    tmpdir = os.path.join(main_tmpdir,inputfilename_noext)
-    # tmpdir = os_utils.setupTmpfolder(tmpdir)
+    tmpdir = os.path.join(main_tmpdir,"%s_%s" % (inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
     # in_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "IN")
     out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
     this_outfolder = os.path.join(out_folder, inputfilename_noext)
@@ -59,16 +71,13 @@ else:
 logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck")
 
 ### Files
+newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
+stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
 workingfile = os.path.join(tmpdir, inputfilename)
-# originalfile_copy = os.path.join(tmp_original_dir, inputfilename)
-# these tmpdir dependent paths are getting reset in setup methods in some scripts
 ziproot = os.path.join(tmpdir, "{}_unzipped".format(inputfilename_noext))		# the location where we unzip the input file
 template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
 stylereport_json = os.path.join(tmpdir, "stylereport.json")
 alerts_json = os.path.join(tmpdir, "alerts.json")
-newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
-stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
-# alerts_txt = os.path.join(this_outfolder,"ALERTS.txt")
 
 ### Resources in other Repos
 macmillan_template_name = "macmillan.dotx"
@@ -216,12 +225,6 @@ def defineLogger(logfile, loglevel):
 
 
 # TODO:
-# standardize headings and sections
-# 1) look at flow control for crashes, figure out how we finish the process and return what we need to
-    # (nested tries?)  Try inserting junk at top level locations too.
-    # for now surface errors in text files, we'll add that for emails later
 # 2) the validator
-# possibly consolidate setup and cleanup scripts in lib as bundled calls
 # for stylereporter: got a unicode encoding for special char in authorname
 # commenting out pagebreak logging to json, reinstate depending on macro / pagenumber count speed is good (also custom styles revert)
-# python logger is not the easiest way to create a json of only warnings; should probably just setup a separate function for that.

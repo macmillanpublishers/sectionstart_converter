@@ -223,6 +223,8 @@ def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingsty
     logger.info("logging all paras with SectionStart styles, and fixing any 'empty' sectionStart paras (no content)")
     # reset from any previous tallies:
     report_dict["section_start_found"] = []
+    report_dict["empty_section_start_para"] = []
+    # report_dict["empty_section_start_para"] = []
     # logger.warn("start = %s" % time.strftime("%y%m%d-%H%M%S"))
     if call_type == "insert":
         logger.info("writing contents to any empty sectionstart paras")
@@ -238,13 +240,17 @@ def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingsty
 
             # check to see ifthe para is empty (no contents) and if so log it, and, if 'call_type' is insert, fix it.
             if not getParaTxt(para).strip():
-                report_dict = logForReport(report_dict,para,"empty_section_start_para",sectionname)
                 if call_type == "insert":
                     # find / create contents for Section start para
                     pneighbors = getNeighborParas(para)
                     content = getContentsForSectionStart(pneighbors['next'], doc_root, headingstyles, sectionname, sectionnames)
                     # add new content to Para! ()'True' = remove existing run(s) from para that may contain whitespace)
                     addRunToPara(content, para, True)
+                    # log it for report
+                    report_dict = logForReport(report_dict,para,"wrote_to_empty_section_start_para",sectionname)
+                else:
+                    # log it for report
+                    report_dict = logForReport(report_dict,para,"empty_section_start_para",sectionname)
     # logger.warn("finish = %s" % time.strftime("%y%m%d-%H%M%S"))
     return report_dict
 

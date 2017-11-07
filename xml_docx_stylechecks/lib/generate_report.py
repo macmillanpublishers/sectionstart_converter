@@ -45,9 +45,12 @@ logger = logging.getLogger(__name__)
 # lookup longname of style in styles.xml of file.
 #  save looked up values in a dict to speed up repeat lookups
 def getStyleLongname(styleshortname, stylenamemap):
+    # print styleshortname#, stylenamemap
     styles_tree = etree.parse(styles_xml)
     styles_root = styles_tree.getroot()
-    if styleshortname in stylenamemap:
+    if styleshortname == "n-a":
+        stylelongname = "not avaliable"
+    elif styleshortname in stylenamemap:
         stylelongname = stylenamemap[styleshortname]
         # print "in the map!"
     else:
@@ -71,15 +74,17 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
         # add text if present
         if "text" in recipe_item and recipe_item["text"]:
             tmptextlist.append(recipe_item["text"])
-        if "apply_warning_banner" in recipe_item and recipe_item["apply_warning_banner"] == True:
-            validator_warnings = True
         # see if "dict_category_name" is present
         if "dict_category_name" in recipe_item and recipe_item["dict_category_name"]:
             # if the category is in report_dict and has contents, proceed, else, print an alternate & log err as needed
             if recipe_item["dict_category_name"] in report_dict and report_dict[recipe_item["dict_category_name"]]:
+                if "apply_warning_banner" in recipe_item and recipe_item["apply_warning_banner"] == True:
+                    validator_warnings = True
                 for item in report_dict[recipe_item["dict_category_name"]]:
                     # line = "{:<40}:{:>30}".format("parent_section_start_type","'parent_section_start_content'")
-                    newline = recipe_item["line_template"].format(description=item['description'], para_string='"'+item['para_string'].encode('utf-8')+'"', parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', parent_section_start_type=getStyleLongname(item['parent_section_start_type'], stylenamemap), para_index=item['para_index'])
+                    newline = recipe_item["line_template"].format(description=item['description'], para_string='"'+item['para_string'].encode('utf-8')+'"', \
+                        parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', \
+                        parent_section_start_type=getStyleLongname(item['parent_section_start_type'], stylenamemap), para_index=item['para_index'])
                     # newline = line.replace("zdescription", item['description']).replace("para_string", item['para_string']).replace("parent_section_start_content", item['parent_section_start_content'])
                     # newline = newline.replace("parent_section_start_type", getStyleLongname(item['parent_section_start_type'], stylenamemap))
                     tmptextlist.append(newline)
@@ -158,7 +163,7 @@ def addConverterBanner(textreport_list, errorlist):
 def addValidatorBanner(textreport_list, validator_warnings):
     if validator_warnings == False:
         banner = "{:^80}\n\n{:^80}"
-        banner = banner.format("NOTES FROM EGALLEY VALIDATION","Please peruse items below to verify metadata, Sections, and illustrations your manuscript.")
+        banner = banner.format("NOTES FROM EGALLEY VALIDATION","Please peruse items below to verify metadata, Sections, and illustrations in your manuscript.")
     else:
         banner = "{:^80}\n{:^80}\n\n{}"
         banner = banner.format("NOTES FROM EGALLEY VALIDATION","Please peruse items below to verify document info.","WARNING: Document validation turned up unsupported styles, &/or edits were made prior to creating egalley.\nSee below for details")

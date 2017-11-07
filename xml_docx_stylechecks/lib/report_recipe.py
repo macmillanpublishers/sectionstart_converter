@@ -112,8 +112,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     	"07_macmillan_style_1st_use": {
             "exclude_from": ["converter","validator"],
     		"title": "MACMILLAN STYLES IN USE",
-    		# "text": "{:^48} {:_^50}".format("\033[4mstyles_in_order_of_appearance\033[0m","styled_content_excerpt_from_first_use"),
-    		"text": "{:_^40} {:_^40}".format("styles-in_order_of_first_use","excerpt_from_first_use"),
+    		"text": "{:_^40} {:_^40}".format("para_styles-in_order_of_use","excerpt_from_first_use"),
     		"dict_category_name": "Macmillan_style_first_use",
     		"line_template": "{description:.<40} {para_string:50}",
     		"required": True,
@@ -157,7 +156,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "NON-MACMILLAN STYLES",
     		"text": "Non-Macmillan styles detected.\nContent styled with non-Macmillan styles may not appear properly-styled in your egalley:\n",
     		"dict_category_name": "non-Macmillan_style_used",
-    		"line_template": "- Rogue style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
+    		"line_template": "- '{parent_section_start_type}': {parent_section_start_content}style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},
@@ -166,17 +165,17 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "NON-BOOKMAKER STYLES",
     		"text": "Non-Bookmaker styles detected.\nContent styled with non-Bookmaker styles may not appear properly-styled in your egalley:\n",
     		"dict_category_name": "non_bookmaker_macmillan_style",
-    		"line_template": "- Rogue style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
+    		"line_template": "- '{parent_section_start_type}': {parent_section_start_content}style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},
     	"29_corrections_heading(validator)": {
             "exclude_from": ["converter","reporter"],
-    		"title": " ************************ EDITS MADE DURING DOCUMENT VALIDATION *********************** ",
+    		"title": " ******************** EDITS MADE DURING DOCUMENT VALIDATION ******************* ",
     		"text": "Egalleymaker makes some automatic adjustments and corrections to your manuscript to help make better egalleys.\nIf any changes were made, they are noted below:"
     	},
     	"30_section_start_added(validator)": {
-            "exclude_from": ["reporter", "validator"],
+            "exclude_from": ["reporter", "converter"],
     		"title": "SECTION START PARAS AUTO-INSERTED",
     		"text": "{:_^40} {:_^40}".format("Section-Start_style","paragraph_content"),
     		"dict_category_name": "section_start_needed__sort_by_index",
@@ -188,7 +187,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
             "exclude_from": ["reporter", "converter"],
     		"title": "ADDED CONTENT TO SECTION START PARA",
     		"text": "Section-Start paras cannot be empty. Content was auto-added to the following Section-Start paras:\n",
-    		"dict_category_name": "empty_section_start_para",
+    		"dict_category_name": "wrote_to_empty_section_start_para",
     		"line_template": "{description:.<40} New text: {para_string}",
     		"required": "n-a",
             "apply_warning_banner": True
@@ -207,7 +206,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "CHARACTER STYLES REMOVED FROM HEADINGS",
     		"text": "Character styles in headings cause problems with ebook TOC creation... some were found and removed:\n",
     		"dict_category_name": "rm_charstyle_from_heading",
-    		"line_template": "- {description} from '{parent_section_start_type}': {parent_section_start_content}",
+    		"line_template": "- {description}: from '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
             "apply_warning_banner": True
     	},

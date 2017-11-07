@@ -468,7 +468,8 @@ def sectionStartCheck(call_type, report_dict, autonumber=False):
     report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectiontypes["all"])
 
     # create sorted version of "section_start_needed" list in reportdict based on para_index: for validator report
-    report_dict["section_start_needed__sort_by_index"] = sorted(report_dict["section_start_needed"], key=lambda x: x['para_index'])
+    if "section_start_needed" in report_dict:
+        report_dict["section_start_needed__sort_by_index"] = sorted(report_dict["section_start_needed"], key=lambda x: x['para_index'])
 
     logger.info("* * * ending sectionStartCheck function.")
 

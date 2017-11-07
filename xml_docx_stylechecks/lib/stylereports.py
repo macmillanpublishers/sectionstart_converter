@@ -177,7 +177,8 @@ def styleReports(report_dict):
     report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectionnames)
 
     # create sorted version of "illustration_holders" list in reportdict based on para_index; for reports
-    report_dict["illustration_holders__sort_by_index"] = sorted(report_dict["illustration_holders"], key=lambda x: x['para_index'])
+    if "illustration_holders" in report_dict:
+        report_dict["illustration_holders__sort_by_index"] = sorted(report_dict["illustration_holders"], key=lambda x: x['para_index'])
 
     return report_dict
 

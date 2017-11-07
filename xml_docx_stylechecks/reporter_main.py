@@ -90,7 +90,7 @@ if __name__ == '__main__':
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
                 if version_result != "up_to_date":
-                    errstring = usertext_templates.alerts()["notstyled"].format(current_version=current_version, template_version=template_version)
+                    errstring = usertext_templates.alerts()["r_err_oldtemplate"].format(current_version=current_version, template_version=template_version)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
                 if protection == True:

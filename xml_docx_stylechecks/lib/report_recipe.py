@@ -14,7 +14,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
         # # # # # # # # # # # # #  SAMPLE RECIPE ENTRY:
         # # # # # # # # # # # # # # # # # # # # # # # # # #
     	# "00_example": {                            # < The leading digits are to set the order of appearance on the report
-        #   "exclude_from": ["reporter_main"],       # < Add the parent script basename to this list if you want to suppress
+        #   "exclude_from": ["reporter"],       # < Add the parent script basename to this list if you want to suppress
         #                                            #   it when generateReport() is invoked from that parent script.
     	# 	"title": "TEST",                         # < This is title of a section on the report: centered and surrounded by hyphens
     	# 	"text": "Example {}".format("test"),     # < This is a line of text that will under title if present.
@@ -25,6 +25,8 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
         #                                                       #   (the trailing colons etc are are extra formatting)
     	# 	"required": True,       # < If it's an error if a report_dict category is empty or not present, mark this True
     	# 	                        #   (If this is true you will need an "errstring" entry too)
+        #   "apply_warning_banner": True,   # this is for validator only scripts - if any edits were made or unsupported styles were found, we want to surface
+        #                                       a different banner on the report output. Including this key=True signals that we want that warning.
         #   "badnews": True,        # < If you want each entry from this report_dict category in the Error List,mark this True
         #   "errstring": "No paragraphs."   # < The base string you want used to appear in the report's Error list
         #   "alternate_content": {          # < If you want an alternate title or text element to appear when
@@ -33,12 +35,12 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
         #    }
     	# },
     	"01_metadata_heading": {
-            # "exclude_from": ["generate_report"],      # debug test, remove
+            "exclude_from": ["converter"],
     		"title": "METADATA",
     		"text": "If any of the information below is wrong, please fix the associated styles in the manuscript."
     	},
     	"02_metadata_title": {
-            # "exclude_from": ["reporter_main"],      # debug test, remove
+            "exclude_from": ["converter"],
     		"title": "",
     		"text": "** {} **".format(titlestyle),
     		"dict_category_name": "title_paras",
@@ -50,6 +52,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
             }
     	},
     	"03_metadata_author": {
+            "exclude_from": ["converter"],
     		"title": "",
     		"text": "** {} **".format(authorstyle),
     		"dict_category_name": "author_paras",
@@ -61,6 +64,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
             }
     	},
     	"04_metadata_isbn": {
+            "exclude_from": ["converter","validator"],
     		"title": "",
     		"text": "** {} **".format(isbnstyle),
     		"dict_category_name": "isbn_spans",
@@ -71,16 +75,30 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
                 "text": "** {} **\nNo styled isbns detected.".format(isbnstyle)
             }
     	},
+    	"04_metadata_isbn(validator)": {
+            "exclude_from": ["converter","reporter"],
+    		"title": "",
+    		"text": "** {} **".format(isbnstyle),
+    		"dict_category_name": "isbn_spans",
+    		"line_template": "{para_string}  <---- (This is the ebook ISBN)",
+    		"required": True,
+            "errstring": "No ISBN styled with '{}' detected".format(isbnstyle),
+            "alternate_content": {
+                "text": "** {} **\nNo styled isbns detected.".format(isbnstyle)
+            }
+    	},
     	"05_illustration_holders": {
+            "exclude_from": ["converter"],
     		"title": "ILLUSTRATION LIST",
     		"text": "Verify that this list of illustrations includes only the filenames of your illustrations.\n",
-    		"dict_category_name": "illustration_holders",
-    		"line_template": "{para_string}\n    -located in {parent_section_start_type}: {parent_section_start_content}. (Paragraph {para_index})",
+    		"dict_category_name": "illustration_holders__sort_by_index",
+    		"line_template": "{description}\n    -located in {parent_section_start_type}: {parent_section_start_content}. (Paragraph {para_index})",
             "alternate_content": {
                 "text": "no illustrations detected."
             }
     	},
     	"06_section_start_list": {
+            "exclude_from": ["converter"],
     		"title": "SECTIONS FOUND",
     		"text": "",#"Here is a list of all sections detected in your manuscript",
     		"dict_category_name": "section_start_found",
@@ -92,9 +110,9 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
             }
     	},
     	"07_macmillan_style_1st_use": {
+            "exclude_from": ["converter","validator"],
     		"title": "MACMILLAN STYLES IN USE",
-    		# "text": "{:^48} {:_^50}".format("\033[4mstyles_in_order_of_appearance\033[0m","styled_content_excerpt_from_first_use"),
-    		"text": "{:_^40} {:_^40}".format("styles-in_order_of_first_use","excerpt_from_first_use"),
+    		"text": "{:_^40} {:_^40}".format("para_styles-in_order_of_use","excerpt_from_first_use"),
     		"dict_category_name": "Macmillan_style_first_use",
     		"line_template": "{description:.<40} {para_string:50}",
     		"required": True,
@@ -104,6 +122,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
             }
         },       #
     	"08_macmillan_character_style_1st_use": {
+            "exclude_from": ["converter","validator"],
     		"text": "{:_^40}".format("character_styles_in_use"),
     		"dict_category_name": "Macmillan_charstyle_first_use",
     		"line_template": "{description}",
@@ -112,19 +131,137 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
                 "text": "{:_^40}\nNo character styles detected.".format("character_styles_in_use")
             }
     	},
+        # re-setting count at 20 for coverter-specific items to make renumbering simpler
+    	"20_section_start_added(converter)": {
+            "exclude_from": ["reporter", "validator"],
+    		"title": "SECTION START PARAS INSERTED",
+    		# "text": "{:^48} {:_^50}".format("\033[4mstyles_in_order_of_appearance\033[0m","styled_content_excerpt_from_first_use"),
+    		"text": "{:_^40} {:_^40}".format("Section-Start_style","paragraph_content"),
+    		"dict_category_name": "section_start_found",
+    		"line_template": "{description:.<40} {para_string:50}",
+    		"required": True,
+            "errstring": "No Section-Start insertion points detected.",
+            "alternate_content": {
+                "text": "No Section-Start insertion points detected; so no Section-Start paras have been added."
+            }
+    	},
+        # re-setting count at 25 for validator-specific items to make renumbering simpler
+    	"25_corrections_heading(validator)": {
+            "exclude_from": ["converter","reporter"],
+    		"title": " ************************** UNSUPPORTED STYLES FOUND ************************* ",
+    		"text": "If any non-Macmillan or non-Bookmaker styles were detected in the manuscript, they are displayed here:"
+    	},
+    	"26_non-Macmillan_styles(validator)": {
+            "exclude_from": ["reporter", "converter"],
+    		"title": "NON-MACMILLAN STYLES",
+    		"text": "Non-Macmillan styles detected.\nContent styled with non-Macmillan styles may not appear properly-styled in your egalley:\n",
+    		"dict_category_name": "non-Macmillan_style_used",
+    		"line_template": "- '{parent_section_start_type}': {parent_section_start_content}style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
+    		"required": "n-a",
+            "apply_warning_banner": True
+    	},
+    	"27_non-Bookmaker_styles(validator)": {
+            "exclude_from": ["reporter", "converter"],
+    		"title": "NON-BOOKMAKER STYLES",
+    		"text": "Non-Bookmaker styles detected.\nContent styled with non-Bookmaker styles may not appear properly-styled in your egalley:\n",
+    		"dict_category_name": "non_bookmaker_macmillan_style",
+    		"line_template": "- '{parent_section_start_type}': {parent_section_start_content}style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
+    		"required": "n-a",
+            "apply_warning_banner": True
+    	},
+    	"29_corrections_heading(validator)": {
+            "exclude_from": ["converter","reporter"],
+    		"title": " ******************** EDITS MADE DURING DOCUMENT VALIDATION ******************* ",
+    		"text": "Egalleymaker makes some automatic adjustments and corrections to your manuscript to help make better egalleys.\nIf any changes were made, they are noted below:"
+    	},
+    	"30_section_start_added(validator)": {
+            "exclude_from": ["reporter", "converter"],
+    		"title": "SECTION START PARAS AUTO-INSERTED",
+    		"text": "{:_^40} {:_^40}".format("Section-Start_style","paragraph_content"),
+    		"dict_category_name": "section_start_needed__sort_by_index",
+    		"line_template": "{description:.<40} {para_string:50}",
+    		"required": "n-a",
+            "apply_warning_banner": True
+    	},
+    	"31_added_content_to_sectionstart_para(validator)": {
+            "exclude_from": ["reporter", "converter"],
+    		"title": "ADDED CONTENT TO SECTION START PARA",
+    		"text": "Section-Start paras cannot be empty. Content was auto-added to the following Section-Start paras:\n",
+    		"dict_category_name": "wrote_to_empty_section_start_para",
+    		"line_template": "{description:.<40} New text: {para_string}",
+    		"required": "n-a",
+            "apply_warning_banner": True
+    	},
+    	"32_removed_empty_firstlast_para(validator)": {
+            "exclude_from": ["reporter", "converter"],
+    		"title": "REMOVED EMPTY FIRST OR LAST PARA",
+    		"text": "An empty first or last paragraph causes problems with bookmaker: one (or both) were found and removed.\n",
+    		"dict_category_name": "removed_empty_firstlast_para",
+    		"line_template": "- {description}",
+    		"required": "n-a",
+            "apply_warning_banner": True
+    	},
+    	"33_rm_charstyles_in_headings(validator)": {
+            "exclude_from": ["reporter", "converter"],
+    		"title": "CHARACTER STYLES REMOVED FROM HEADINGS",
+    		"text": "Character styles in headings cause problems with ebook TOC creation... some were found and removed:\n",
+    		"dict_category_name": "rm_charstyle_from_heading",
+    		"line_template": "- {description}: from '{parent_section_start_type}': {parent_section_start_content}",
+    		"required": "n-a",
+            "apply_warning_banner": True
+    	},
+    	"34_added_reqrd_sectionstart(validator)": {
+            "exclude_from": ["reporter", "converter"],
+    		"title": "ADDED TITLEPAGE AND/OR COPYRIGHT PAGE",
+    		"text": "Titlepage and Copyright-page are required. One or both was missing and had to be added:\n",
+    		"dict_category_name": "added_required_section_start",
+    		"line_template": "- {description}",
+    		"required": "n-a",
+            "apply_warning_banner": True
+    	},
+    	"35_added_bookinfo_to_titlepage(validator)": {
+            "exclude_from": ["reporter", "converter"],
+    		"title": "ADDED METADATA TO TITLEPAGE",
+    		"text": "The Titlepage section must contain styled Title and Author paras. One or both was missing and had to be added:\n",
+    		"dict_category_name": "added_required_book_info",
+    		"line_template": "- {description}",
+    		"required": "n-a",
+            "apply_warning_banner": True
+    	},
+    	"36_rm_shapesandbreaks(validator)": {
+            "exclude_from": ["reporter", "converter"],
+    		"title": "SECTION BREAKS, SHAPES AND GRAPHICS REMOVED",
+    		"text": "Section Break(s) and or inserted graphics were removed in the following sections:\n",
+    		"dict_category_name": "deleted_shapes_and_sectionbreaks",
+    		"line_template": "- {description} from '{parent_section_start_type}': {parent_section_start_content}",
+    		"required": "n-a",
+            "apply_warning_banner": True
+    	},
+    	"37_get_oneline_titlepara(validator)": {
+            "exclude_from": ["reporter", "converter"],
+    		"title": "COMBINED MULTILINE TITLE",
+    		"text": "The Title must not contain softbreaks or multiple paragraphs. This was corrected in your manuscript.\n",
+    		"dict_category_name": "concatenated_extra_titlepara_and_removed",
+    		"line_template": "New title: '{description}'",
+    		"required": "n-a",
+            "apply_warning_banner": True
+    	},
     	"90_non_macmillan_styles": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "exclude_from": ["validator", "converter"],
     		"dict_category_name": "non-Macmillan_style_used",
     		"line_template": "",
     		"badnews": True,
             "errstring": "Non-Macmillan style '{description}' in {parent_section_start_type}: {parent_section_start_content}. (Paragraph {para_index})"
     	},
     	"91_non_bookmaker_style": {
+            "exclude_from": ["validator", "converter"],
     		"dict_category_name": "non_bookmaker_macmillan_style",
     		"line_template": "",
     		"badnews": True,
             "errstring": "Non-Bookmaker style: '{description}' in {parent_section_start_type}: {parent_section_start_content}. (Paragraph {para_index})"
     	},
     	"92_empty_section_start_para": {
+            "exclude_from": ["validator", "converter"],
     		"dict_category_name": "empty_section_start_para",
     		"line_template": "",
     		"badnews": True,
@@ -136,7 +273,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
 
 # #---------------------  MAIN
 # # only run if this script is being invoked directly (for testing)
-if __name__ == '__main__':
+if __name__ == '___':
     # hardcoding values, just for testing
     titlestyle = "Titlepage Book Title (tit)"
     isbnstyle = "span ISBN (isbn)"

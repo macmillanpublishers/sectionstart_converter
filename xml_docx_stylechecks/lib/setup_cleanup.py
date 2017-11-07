@@ -122,7 +122,7 @@ def returnOriginal(this_outfolder, workingfile, inputfilename):
         os.makedirs(os.path.join(this_outfolder, "original_file"))
     os_utils.copyFiletoFile(workingfile, os.path.join(this_outfolder, "original_file", inputfilename))
 
-def emailStyleReport(submitter_email, display_name, report_string, stylereport_txt, alerttxt_list, inputfilename, scriptname):
+def emailStyleReport(submitter_email, display_name, report_string, stylereport_txt, alerttxt_list, inputfilename, scriptname, newdocxfile):
     logger.info("Putting together email to submitter... ")
     # adding this var so we know whether to re:email user if processing error comes up
     report_emailed = False
@@ -145,7 +145,10 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
                 report_string=report_string, helpurl="", support_email_address=cfg.support_email_address)
         # send our email!
         try:
-            sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt])
+            if os.path.exists(newdocxfile):
+                sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt, newdocxfile])
+            else:
+                sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt])
             report_emailed = True
         except:
             raise
@@ -169,7 +172,7 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     return report_emailed# exit function before mailing
 
 
-def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename):
+def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename, newdocxfile=""):
     logger.info("Running cleanup, 'cleanupforReporterOrConverter'...")
 
     # 1 return original_file to outfolder
@@ -186,14 +189,14 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
     # 3 if report_dict has contents, write stylereport file & send email!:
     if report_dict:
         logger.debug("Writing stylereport.txt to outfolder")
-        report_string = generate_report.generateReport(report_dict, stylereport_txt)
+        report_string = generate_report.generateReport(report_dict, stylereport_txt, scriptname)
     else:
         logger.debug("Skipping write stylereport.txt to outfolder (empty report_dict)")
         report_string = ""
 
     # 4 and send stylereport and/or alerts as mail
     logger.debug("emailing stylereport &/or alerts ")
-    report_emailed = emailStyleReport(submitter_email, display_name, report_string, stylereport_txt, alerttxt_list, inputfilename, scriptname)
+    report_emailed = emailStyleReport(submitter_email, display_name, report_string, stylereport_txt, alerttxt_list, inputfilename, scriptname, newdocxfile)
 
     # 5 Rm tmpdir
     logger.debug("deleting tmp folder")
@@ -205,13 +208,13 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
 
     return report_emailed
 
-def cleanupforValidator(this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json):
+def cleanupforValidator(this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json, scriptname):
     logger.info("Running cleanup, 'cleanupforValidator'...")
 
     # 1 if report_dict has contents, write stylereport file:
     logger.debug("Writing stylereport.txt to outfolder")
     if report_dict:
-        generate_report.generateReport(report_dict, stylereport_txt)
+        generate_report.generateReport(report_dict, stylereport_txt, scriptname)
         # and send stylereport as mail
 
     # 2 write our alertfile.txt if necessary

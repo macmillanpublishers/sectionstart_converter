@@ -14,8 +14,7 @@ import time
 ### Arg 1 - Filename
 script_name = os.path.basename(sys.argv[0]).replace("_main.py","")
 inputfile = sys.argv[1]
-### Arg 2 - Filename
-processwatch_file = sys.argv[2]
+
 # strip out surrounding double quotes if passed from batch file.
 if inputfile[0] == '"':
     inputfile = inputfile[1:]
@@ -28,12 +27,18 @@ original_inputfilename_noext, inputfile_ext = os.path.splitext(original_inputfil
 # clean out non-alphanumeric chars
 inputfilename_noext = re.sub('\W','',original_inputfilename_noext)
 inputfilename = inputfilename_noext + inputfile_ext
-### Arg 2 - alt log location
-# so we can log to the validator logfile if we need to. Could replace or could try to add a handler on the fly to log to both places
-if script_name == "validator" and sys.argv[3:]:
-    validator_logfile = sys.argv[3]
+
+### Arg 2 - processwatch file for standalones, or alternate logfile if validator (embedded run)
+#   Could replace existing logging or could try to add a handler on the fly to log to both places
+if sys.argv[2:]:
+    if script_name == "validator":
+        validator_logfile = sys.argv[2]
+    else:
+        processwatch_file = sys.argv[2]
 else:
     validator_logfile = ''
+    processwatch_file = ''
+
 
 # # # # # # # # ENV
 loglevel = "INFO"		# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info
@@ -141,6 +146,7 @@ parttitlestyle = "Part Title (pt)"
 isbnstyle = "span ISBN (isbn)"
 authorstyle = "Titlepage Author Name (au)"
 illustrationholder_style = "Illustration holder (ill)"
+inline_illustrationholder_style = "span illustration holder (illi)"
 titlesection_stylename = "Section-Titlepagesti"
 copyrightsection_stylename = "Section-Copyrightscr"
 

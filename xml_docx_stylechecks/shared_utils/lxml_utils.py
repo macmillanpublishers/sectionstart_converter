@@ -8,6 +8,7 @@ import re
 import json
 import logging
 from lxml import etree
+# import time
 
 # ######### IMPORT LOCAL MODULES
 import cfg
@@ -194,26 +195,63 @@ def addRunToPara(content, para, bool_rm_existing_contents=False):
         new_para_run.append(new_para_run_text)
         para.append(new_para_run)
 
-# we don't really need doc_root here do we?
+# # we don't really need doc_root here do we?
+# def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingstyles = []):
+#     logger.info("logging all paras with SectionStart styles, and any 'empty' sectionStart paras (no content)")
+#     logger.warn("start = %s" % time.strftime("%y%m%d-%H%M%S"))
+#     if call_type == "insert":
+#         logger.info("writing contents to any empty sectionstart paras")
+#     for sectionname in sectionnames:
+#         paras = findParasWithStyle(sectionname, doc_root)
+#         for para in paras:
+#             # log the section start para
+#             #   (we can run this before content is added to paras, b/c that content is captured later in the 'calcLocationInfoForLog' method
+#             report_dict = logForReport(report_dict, para, "section_start_found", sectionname)
+#             # check to see ifthe para is empty (no contents) and if so log it, and, if 'call_type' is insert, fix it.
+#             if not getParaTxt(para).strip():
+#                 report_dict = logForReport(report_dict,para,"empty_section_start_para",sectionname)
+#                 if call_type == "insert":
+#                     # find / create contents for Section start para
+#                     pneighbors = getNeighborParas(para)
+#                     content = getContentsForSectionStart(pneighbors['next'], doc_root, headingstyles, sectionname, sectionnames)
+#                     # add new content to Para! ()'True' = remove existing run(s) from para that may contain whitespace)
+#                     addRunToPara(content, para, True)
+#     logger.warn("finish = %s" % time.strftime("%y%m%d-%H%M%S"))
+#     return report_dict
+
 def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingstyles = []):
-    logger.info("logging all paras with SectionStart styles, and any 'empty' sectionStart paras (no content)")
+    logger.info("logging all paras with SectionStart styles, and fixing any 'empty' sectionStart paras (no content)")
+    # reset from any previous tallies:
+    report_dict["section_start_found"] = []
+    report_dict["empty_section_start_para"] = []
+    # report_dict["empty_section_start_para"] = []
+    # logger.warn("start = %s" % time.strftime("%y%m%d-%H%M%S"))
     if call_type == "insert":
         logger.info("writing contents to any empty sectionstart paras")
-    for sectionname in sectionnames:
-        paras = findParasWithStyle(sectionname, doc_root)
-        for para in paras:
+    for pstyle in doc_root.findall(".//*w:pStyle", wordnamespaces):
+        stylename = pstyle.get('{%s}val' % wnamespace)
+        # logger.info(stylename) # debug
+        if stylename in sectionnames:
+            para = pstyle.getparent().getparent()
+            sectionname = stylename
             # log the section start para
             #   (we can run this before content is added to paras, b/c that content is captured later in the 'calcLocationInfoForLog' method
             report_dict = logForReport(report_dict, para, "section_start_found", sectionname)
+
             # check to see ifthe para is empty (no contents) and if so log it, and, if 'call_type' is insert, fix it.
             if not getParaTxt(para).strip():
-                report_dict = logForReport(report_dict,para,"empty_section_start_para",sectionname)
                 if call_type == "insert":
                     # find / create contents for Section start para
                     pneighbors = getNeighborParas(para)
                     content = getContentsForSectionStart(pneighbors['next'], doc_root, headingstyles, sectionname, sectionnames)
                     # add new content to Para! ()'True' = remove existing run(s) from para that may contain whitespace)
                     addRunToPara(content, para, True)
+                    # log it for report
+                    report_dict = logForReport(report_dict,para,"wrote_to_empty_section_start_para",sectionname)
+                else:
+                    # log it for report
+                    report_dict = logForReport(report_dict,para,"empty_section_start_para",sectionname)
+    # logger.warn("finish = %s" % time.strftime("%y%m%d-%H%M%S"))
     return report_dict
 
 # # Should revisit this using lxml builder

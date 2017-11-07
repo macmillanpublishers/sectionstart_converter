@@ -166,12 +166,19 @@ def styleReports(report_dict):
     # log texts of isbn-span runs
     report_dict = logTextOfRunsWithStyle(report_dict, doc_root, cfg.isbnstyle, "isbn_spans")
 
+    # log texts of inline illustration-holder runs
+    report_dict = logTextOfRunsWithStyle(report_dict, doc_root, cfg.inline_illustrationholder_style, "illustration_holders")
+
     # list all styles used in the doc
     report_dict, doc_root = getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report")
 
     # add/update para index numbers
     logger.debug("Update all report_dict records with para_index")
     report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectionnames)
+
+    # create sorted version of "illustration_holders" list in reportdict based on para_index; for reports
+    if "illustration_holders" in report_dict:
+        report_dict["illustration_holders__sort_by_index"] = sorted(report_dict["illustration_holders"], key=lambda x: x['para_index'])
 
     return report_dict
 

@@ -58,7 +58,7 @@ def rmEmptyFirstLastParas(doc_root, report_dict):
     firstpara = allparas[0+i]
     while not lxml_utils.getParaTxt(firstpara).strip():
         # print "lastpara", lxml_utils.getParaIndex(lastpara)
-        lxml_utils.logForReport(report_dict,firstpara,"removed_empty_firstlast_para","(first)")
+        lxml_utils.logForReport(report_dict,firstpara,"removed_empty_firstlast_para","first para")
         firstpara.getparent().remove(firstpara)
         # increment firstpara & recalculate
         i+=1
@@ -70,7 +70,7 @@ def rmEmptyFirstLastParas(doc_root, report_dict):
     # print lxml_utils.getParaIndex(lastpara)
     while not lxml_utils.getParaTxt(lastpara).strip():
         # print "lastpara", lxml_utils.getParaIndex(lastpara)
-        lxml_utils.logForReport(report_dict,lastpara,"removed_empty_firstlast_para","(last)")
+        lxml_utils.logForReport(report_dict,lastpara,"removed_empty_firstlast_para","last para")
         lastpara.getparent().remove(lastpara)
         # increment lastpara & recalculate
         j+=1
@@ -85,7 +85,8 @@ def rmCharStylesFromHeads(report_dict, doc_root, nocharstyle_headingstyles):
             rstyle = para.find(".//*w:rStyle", wordnamespaces)
             if rstyle is not None:
                 # optional; log to report_dict
-                lxml_utils.logForReport(report_dict,para,"rm_charstyle_from_heading",headingstyle)
+                rstylename = rstyle.get('{%s}val' % wnamespace)
+                lxml_utils.logForReport(report_dict,para,"rm_charstyle_from_heading","Removed '%s' charstyle from '%s' heading." % (rstylename, headingstyle))
                 # delete the runstyle!
                 rstyle.getparent().remove(rstyle)
     return report_dict
@@ -277,10 +278,10 @@ def insertBookinfo(report_dict, doc_root, stylename, leadingpara_style, bookinfo
         leadingpara = lxml_utils.findParasWithStyle(leadingpara_style, doc_root)[0]
         if leadingpara is not None and bookinfo_item:
             lxml_utils.insertPara(stylename, leadingpara, doc_root, bookinfo_item, "after")
-            lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s'" % bookinfo_item)
+            lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (stylename, bookinfo_item))
         else:
             if not bookinfo_item:
-                lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s'" % bookinfo_item)
+                lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (stylename, bookinfo_item))
                 logger.warn("'%s' was missing from the manuscript but could not be auto-inserted because %s lookup value was empty." % (stylename, bookinfo_item))
             if leadingpara is None:
                 logger.warn("Could not find required %s styled 'leading_para' to insert bookinfo field: '%s'" % (leadingpara_style, bookinfo_item))
@@ -344,11 +345,9 @@ def docPrepare(report_dict):
     # delete shapes, pictures, clip art etc
     report_dict = deleteShapesAndBreaks(report_dict, doc_root, cfg.objects_to_delete)
 
-    # remove first or last paras if they contain only white space
-    report_dict = rmEmptyFirstLastParas(doc_root, report_dict)
-
     # remove character styles from headings in list
     report_dict = rmCharStylesFromHeads(report_dict, doc_root, cfg.nocharstyle_headingstyles)
+    report_dict = rmCharStylesFromHeads(report_dict, doc_root, headingstyles)
 
     # # # setup required frontmatter
     # remove non-isbn chars from ISBN span
@@ -374,6 +373,10 @@ def docPrepare(report_dict):
     # # # tally and repair section start paras & their contents
     # get all Section Starts paras in the doc, add content to each para as needed:
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "insert", headingstyles)
+
+    # remove first or last paras if they contain only white space
+    #   (this has to come after sectionStartTally function, otherwise it may rip out empty Section Start para at beginning of doc)
+    report_dict = rmEmptyFirstLastParas(doc_root, report_dict)
 
     # # # Commenting this out until we have alternate padding in place for these items.
     # # # See Asana task: https://app.asana.com/0/405970099375554/453275643539715

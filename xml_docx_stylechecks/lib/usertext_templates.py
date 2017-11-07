@@ -20,7 +20,7 @@ def emailtxt():
             For help interpreting any errors, try the guide on this Confluence page: {helpurl}, or email {support_email_address} to reach out to the workflows team!
 
 
-            STYLREPORT FOR {inputfilename}:
+            REPORT FOR {inputfilename}:
             ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
             {report_string}
@@ -39,7 +39,7 @@ def emailtxt():
             For help interpreting any errors, try the guide on this Confluence page: {helpurl}, or email '{support_email_address}' to reach out to the workflows team!
 
 
-            STYLREPORT FOR {inputfilename}:
+            REPORT FOR {inputfilename}:
             ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
             {report_string}

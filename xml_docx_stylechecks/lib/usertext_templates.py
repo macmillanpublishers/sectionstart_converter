@@ -19,11 +19,11 @@ def emailtxt():
             <p>Hello {firstname},</p>
             <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!</p>
             <p>You can view the StyleReport below in this email, or download the attached StyleReport.txt file if you prefer.</p>
-            <p>For help interpreting any errors, check <a href="{helpurl}">this Confluence page</a>, or email {support_email_address} to reach out to the workflows team!</p>
+            <p>For help interpreting any errors, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
             <p>&nbsp;</p>
             <p>Report for '{inputfilename}':</p>
             <hr/>
-            <font size=3em>
+            <font size=2em>
             <pre>
             {report_string}
             </pre></font>
@@ -37,17 +37,17 @@ def emailtxt():
             <p>Hello {firstname},</p>
             <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):</p>
             <p>You can view the StyleReport below in this email, or download the attached StyleReport.txt file if you prefer.</p>
-            <p>For help interpreting any errors, check <a href="{helpurl}">this Confluence page</a>, or email {support_email_address} to reach out to the workflows team!</p>
+            <p>For help interpreting any errors, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
             <p>&nbsp;</p>
             <p>Warning(s) / Notice(s):<br/>
             --------------------------------------<p>
-            <font size=3em>
+            <font size=2em>
             <pre>{alert_text}</pre></font>
             <p>--------------------------------------</p>
             <p>&nbsp;</p>
             <p>Report for '{inputfilename}':</p>
             <hr/>
-            <font size=3em>
+            <font size=2em>
             <pre>
             {report_string}
             </pre></font>
@@ -113,12 +113,19 @@ def subjects():
 
 def alerts():
     alerts = {
+        # Error - self explanatory
         "notdocx": "This file is not a '.docx'. Only .docx files can be run through Stylecheck-{scriptname}.",
-        "notstyled": "This .docx has {percent_styled} percent of paragraphs styled with Macmillan styles",
-    	"protected": "This .docx has protection enabled.",
-    	"r_err_oldtemplate": "You must attach the newest version of the macmillan style template before running the Style Report: (this .docx's version: {current_version}, template version: {template_version})",
-        "v_has_template": "This document already has a template attached with section_start styles.",
-        "v_newertemplate_avail": "Newer available version of the macmillan style template (this .docx's version: {current_version}, template version: {template_version})",
+        # Error - self explanatory. The extra percent sign is to escape the othe r% (it's a wildcard in python)
+        "notstyled": "This .docx has less than 50%% of paragraphs styled with Macmillan styles, so cannot be preocessed.",
+        # Error - self explanatory
+    	"protected": "This .docx has protection enabled. Please disable protection and try again!",
+        # Error - for 'Reporter' only
+    	"r_err_oldtemplate": "You must attach the most recent macmillan style template before running the Style Report: (this .docx's version: {current_version}, current version: {template_version})",
+        # Error - Converter only.
+        "c_has_template": "This document already has the most recent style template attached, if you think this does need conversion, contact workflows@macmillan.com.",
+        # Notice - Converter only
+        "c_newertemplate_avail": "There is a newer version of the macmillan style template available (this .docx's version: {current_version}, template version: {template_version})",
+        # Fatal error (untrapped crash)
         "processing_alert": textwrap.dedent("""\
             An error was encountered while running '{scriptname}'_main.py. The workflows team has been notified of this error.
             If you don't hear from us within 2 hours, please email {support_email_address} for assistance.""")

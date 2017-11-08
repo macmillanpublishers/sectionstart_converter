@@ -129,8 +129,10 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     # set display_name for teh greeting
     if display_name:
         firstname=display_name.split()[0]
+        to_string = "%s <%s>" % (display_name, submitter_email)
     else:
         firstname="Sir or Madam"
+        to_string = submitter_email
     # Build email via this path if we have a style_report
     if os.path.exists(stylereport_txt):
         subject = usertext_templates.subjects()["success"].format(inputfilename=inputfilename)
@@ -150,11 +152,11 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
         # send our email!
         try:
             if os.path.exists(newdocxfile):
-                # sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt, newdocxfile])
-                sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt, newdocxfile], htmltxt)
+                # sendmail.sendMail([to_string], subject, bodytxt, [], [stylereport_txt, newdocxfile])
+                sendmail.sendMail([to_string], subject, bodytxt, [], [stylereport_txt, newdocxfile], htmltxt)
             else:
-                # sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt])
-                sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt], htmltxt)
+                # sendmail.sendMail([to_string], subject, bodytxt, [], [stylereport_txt])
+                sendmail.sendMail([to_string], subject, bodytxt, [], [stylereport_txt], htmltxt)
             report_emailed = True
         except:
             raise
@@ -167,7 +169,7 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
 
         # send our email!
         try:
-            sendmail.sendMail([submitter_email], subject, bodytxt)
+            sendmail.sendMail([to_string], subject, bodytxt)
             report_emailed = True
         except:
             raise
@@ -175,7 +177,7 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     else:
         logger.warn("no style report or alerts fouund, so no email to send.")
 
-    return report_emailed# exit function before mailing
+    return report_emailed
 
 
 def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename, newdocxfile=""):

@@ -18,8 +18,9 @@ def emailtxt():
             <body>
             <p>Hello {firstname},</p>
             <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!</p>
-            <p>You can view the StyleReport in this email, below, or download the attached StyleReport.txt file if you prefer.</p>
-            <p>For help interpreting any errors, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
+            <p>You can view the StyleReport in this email, below, or download the attached StyleReport.txt file if you prefer.<br/>
+            (If you ran the 'converter', you should find your converted .docx attached as well!)</p>
+            <p>For help interpreting any errors in the report, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
             <p>&nbsp;</p>
             <p>Report for '{inputfilename}':</p>
             <hr/>
@@ -36,7 +37,8 @@ def emailtxt():
             <body>
             <p>Hello {firstname},</p>
             <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):</p>
-            <p>You can view the StyleReport in this email, below, or download the attached StyleReport.txt file if you prefer.</p>
+            <p>You can view the StyleReport in this email, below, or download the attached StyleReport.txt file if you prefer.<br/>
+            (If you ran the 'converter', you should find your converted .docx attached as well!)</p>
             <p>For help interpreting any errors, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
             <p>&nbsp;</p>
             <p>Warning(s) / Notice(s):<br/>
@@ -60,6 +62,7 @@ def emailtxt():
             Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!
 
             Please download and view the attached StyleReport.txt file to view info on your file.
+            (If you ran the 'converter', you should find your converted .docx attached as well!)
 
 
             For help interpreting any errors, try the guide on this Confluence page: {helpurl}, or email {support_email_address} to reach out to the workflows team!
@@ -70,6 +73,7 @@ def emailtxt():
             Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):
 
             Please download and view the attached StyleReport.txt file to view info on your file.
+            (If you ran the 'converter', you should find your converted .docx attached as well!)
 
             --------------------------------------
             {alert_text}
@@ -88,7 +92,7 @@ def emailtxt():
             {alert_text}
             --------------------------------------
 
-            If you are unsure how to go about fixing these errors, try the guide on this Confluence page: {helpurl}, or email '{support_email_address}' to reach out to the workflows team!
+            If you are unsure how to go about fixing the above item(s), try the guide on this Confluence page: {helpurl}, or email '{support_email_address}' to reach out to the workflows team!
             """),
     	"processing_error": textwrap.dedent("""\
             Hello {firstname},

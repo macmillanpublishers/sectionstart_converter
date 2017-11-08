@@ -151,7 +151,8 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
                 # sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt, newdocxfile])
                 sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt, newdocxfile], htmltxt)
             else:
-                sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt])
+                # sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt])
+                sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt], htmltxt)
             report_emailed = True
         except:
             raise

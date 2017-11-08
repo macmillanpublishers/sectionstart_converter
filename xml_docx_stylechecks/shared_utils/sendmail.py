@@ -18,7 +18,10 @@ logger = logging.getLogger(__name__)
 def sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt=""):
     try:
         # print "EMAIL!: ",to_addr_list, subject, bodytxt # debug only
-        msg = MIMEMultipart()
+        if htmltxt:
+            msg = MIMEMultipart('alternative')
+        else:
+            msg = MIMEMultipart()
         msg['From'] = from_email_address
         msg['To'] = ','.join(to_addr_list)
         msg['Subject'] = subject

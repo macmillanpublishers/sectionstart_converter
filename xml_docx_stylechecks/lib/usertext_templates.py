@@ -13,6 +13,9 @@ logger = logging.getLogger(__name__)
 def emailtxt():
     templates = {
     	"success_html": textwrap.dedent("""\
+            <html>
+            <head></head>
+            <body>
             <p>Hello {firstname},</p>
 
             <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!</p>
@@ -25,6 +28,8 @@ def emailtxt():
             <pre>
             {report_string}
             </pre>
+            </body>
+            </html>
             """),
     	"success": textwrap.dedent("""\
             Hello {firstname},

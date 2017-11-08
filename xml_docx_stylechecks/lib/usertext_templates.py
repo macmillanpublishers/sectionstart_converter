@@ -18,7 +18,7 @@ def emailtxt():
             <body>
             <p>Hello {firstname},</p>
             <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!</p>
-            <p>You can view the StyleReport below in this email, or download the attached StyleReport.txt file if you prefer.</p>
+            <p>You can view the StyleReport in this email, below, or download the attached StyleReport.txt file if you prefer.</p>
             <p>For help interpreting any errors, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
             <p>&nbsp;</p>
             <p>Report for '{inputfilename}':</p>
@@ -36,7 +36,7 @@ def emailtxt():
             <body>
             <p>Hello {firstname},</p>
             <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):</p>
-            <p>You can view the StyleReport below in this email, or download the attached StyleReport.txt file if you prefer.</p>
+            <p>You can view the StyleReport in this email, below, or download the attached StyleReport.txt file if you prefer.</p>
             <p>For help interpreting any errors, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
             <p>&nbsp;</p>
             <p>Warning(s) / Notice(s):<br/>

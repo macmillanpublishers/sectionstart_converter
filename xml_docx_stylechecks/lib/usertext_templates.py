@@ -12,6 +12,20 @@ logger = logging.getLogger(__name__)
 #   though text, title or dict_category_name must be present for something to print
 def emailtxt():
     templates = {
+    	"success_html": textwrap.dedent("""\
+            <p>Hello {firstname},</p>
+
+            <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!</p>
+            <p>You can view the StyleReport below in this email, or download the attached file for a more formatted version.</p>
+            <p>For help interpreting any errors, check <a href="{helpurl}">this Confluence page</a>, or email {support_email_address} to reach out to the workflows team!</p>
+
+
+            <p>REPORT FOR {inputfilename}:</p>
+            <hr/>
+            <pre>
+            {report_string}
+            </pre>
+            """),
     	"success": textwrap.dedent("""\
             Hello {firstname},
 

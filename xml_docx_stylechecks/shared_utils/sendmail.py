@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 #---------------------  METHODS
 # Note: the to-address, cc-address and attachments need to be list objects.
 # cc_addresses and attachments are optional arguments
-def sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list):
+def sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt=""):
     try:
         # print "EMAIL!: ",to_addr_list, subject, bodytxt # debug only
         msg = MIMEMultipart()
@@ -27,6 +27,8 @@ def sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject,
 			# the to_addr_list is used inthe sendmail cmd below and includes all recipients (including cc)
             to_addr_list = to_addr_list + cc_addr_list
         msg.attach(MIMEText(bodytxt, 'plain'))
+        if htmltxt:
+            msg.attach(MIMEText(htmltxt, 'html'))
 
         if attachfile_list:
             for attachfile in attachfile_list:
@@ -46,7 +48,7 @@ def sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject,
         logger.exception("MAILER ERROR ------------------ :")
         raise
 
-def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=None):
+def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=None, htmltxt=""):
     # moving common dependencies for this file for converter/reporter/validator sute of scripts into an outer method...
     #   so I can reuse this script for the independent process_watcher.
 
@@ -65,7 +67,7 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
     port = 25
     from_email_address = cfg.from_email_address
 
-    sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list)
+    sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt)
 
 #---------------------  MAIN
 # only run if this script is being invoked directly

@@ -47,6 +47,7 @@ currentuser = getpass.getuser()
 # the path of this file: setting '__location__' allows this relative path to adhere to this file, even when invoked from a different path:
 # 	https://stackoverflow.com/questions/4060221/how-to-reliably-open-a-file-in-the-same-directory-as-a-python-script
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+staging_file = os.path.join("C:",os.sep,"staging.txt")
 
 
 # # # # # # # # CONFIGURE BASED ON ENVIRONMENT:
@@ -72,8 +73,12 @@ else:
     # in_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "IN")
     out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
     this_outfolder = os.path.join(out_folder, inputfilename_noext)
-# log folder
-logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck")
+# log folder (differs on staging server)
+if os.path.exists(staging_file):
+    logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck_stg")
+else:
+    logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck")
+
 
 ### Files
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator

@@ -71,7 +71,10 @@ if script_name == "validator":
 else:
     tmpdir = os.path.join(main_tmpdir,"%s_%s" % (inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
     # in_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "IN")
-    out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
+    if os.path.exists(staging_file):
+        out_folder = os.path.join(dropboxfolder, "stylecheck_stg", script_name, "OUT")
+    else:
+        out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
     this_outfolder = os.path.join(out_folder, inputfilename_noext)
 # log folder (differs on staging server)
 if os.path.exists(staging_file):

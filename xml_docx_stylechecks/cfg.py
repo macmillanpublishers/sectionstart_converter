@@ -140,9 +140,11 @@ contenttypes_xml = os.path.join(ziproot, contenttypes_relpath)
 
 # # # # # # # GLOBAL VARS
 # alert email address:
-alert_email_address = "workflows@macmillan.com"
-support_email_address = "workflows@macmillan.com"
-from_email_address = "workflows@macmillan.com"
+alert_email_address = "Publishing Workflows <workflows@macmillan.com>"
+support_email_address = "Publishing Workflows <workflows@macmillan.com>"
+from_email_address = "Publishing Workflows <workflows@macmillan.com>"
+always_bcc_address = "wfnotifications@macmillan.com"
+helpurl = "https://confluence.macmillan.com/display/EB/Egalleymaker+Errors+Explained"
 # The first document version in history with section starts
 sectionstart_versionstring = '4.7.0'
 # TitlepageTitle style

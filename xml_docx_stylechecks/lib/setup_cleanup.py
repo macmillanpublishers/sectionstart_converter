@@ -138,13 +138,15 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
         if alerttxt_list:
             alert_text = "\n".join(alerttxt_list)
             bodytxt = usertext_templates.emailtxt()["success_with_alerts"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                report_string=report_string, helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
+            htmltxt = usertext_templates.emailtxt()["success_with_alerts_html"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
         # no alerts, printing just the report
         else:
             bodytxt = usertext_templates.emailtxt()["success"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                report_string=report_string, helpurl="", support_email_address=cfg.support_email_address)
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address)
             htmltxt = usertext_templates.emailtxt()["success_html"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                report_string=report_string, helpurl="", support_email_address=cfg.support_email_address)
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address)
         # send our email!
         try:
             if os.path.exists(newdocxfile):
@@ -161,7 +163,7 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
         alert_text = "\n".join(alerttxt_list)
         subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
         bodytxt = usertext_templates.emailtxt()["error"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-            report_string=report_string, helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
+            report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
 
         # send our email!
         try:
@@ -310,7 +312,7 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
                 subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
                 alert_text = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname, support_email_address=cfg.support_email_address)
                 bodytxt = usertext_templates.emailtxt()["processing_error"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                    helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
+                    helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
                 sendmail.sendMail([submitter_email], subject, bodytxt)
             except:
                 logger.exception("* returning original to outfolder Traceback")

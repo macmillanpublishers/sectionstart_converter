@@ -15,11 +15,11 @@ logger = logging.getLogger(__name__)
 #---------------------  METHODS
 # Note: the to-address, cc-address and attachments need to be list objects.
 # cc_addresses and attachments are optional arguments
-def sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt=""):
+def sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt=""):
     try:
         # print "EMAIL!: ",to_addr_list, subject, bodytxt # debug only
         if htmltxt:
-            msg = MIMEMultipart('alternative')
+            msg = MIMEMultipart('related')
         else:
             msg = MIMEMultipart()
         msg['From'] = from_email_address
@@ -29,9 +29,17 @@ def sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject,
             msg['Cc'] = ','.join(cc_addr_list)
 			# the to_addr_list is used inthe sendmail cmd below and includes all recipients (including cc)
             to_addr_list = to_addr_list + cc_addr_list
-        msg.attach(MIMEText(bodytxt, 'plain'))
+            # add bcc:
+            if always_bcc_address:
+                to_addr_list = to_addr_list + [always_bcc_address]
+        # setup handling for html-email with alternative text
         if htmltxt:
-            msg.attach(MIMEText(htmltxt, 'html'))
+            msgAlternative = MIMEMultipart('alternative')
+            msg.attach(msgAlternative)
+            msgAlternative.attach(MIMEText(bodytxt, 'plain'))
+            msgAlternative.attach(MIMEText(htmltxt, 'html'))
+        else:
+            msg.attach(MIMEText(bodytxt, 'plain'))
 
         if attachfile_list:
             for attachfile in attachfile_list:
@@ -69,8 +77,9 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
         smtp_address = f.readline()
     port = 25
     from_email_address = cfg.from_email_address
+    always_bcc_address = cfg.always_bcc_address
 
-    sendMailBasic(port, smtp_address, from_email_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt)
+    sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt)
 
 #---------------------  MAIN
 # only run if this script is being invoked directly

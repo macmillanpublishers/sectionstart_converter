@@ -17,17 +17,40 @@ def emailtxt():
             <head></head>
             <body>
             <p>Hello {firstname},</p>
-
             <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!</p>
-            <p>You can view the StyleReport below in this email, or download the attached file for a more formatted version.</p>
+            <p>You can view the StyleReport below in this email, or download the attached StyleReport.txt file if you prefer.</p>
             <p>For help interpreting any errors, check <a href="{helpurl}">this Confluence page</a>, or email {support_email_address} to reach out to the workflows team!</p>
-
-
-            <p>REPORT FOR {inputfilename}:</p>
+            <p>&nbsp;</p>
+            <p>Report for '{inputfilename}':</p>
             <hr/>
+            <font size=3em>
             <pre>
             {report_string}
-            </pre>
+            </pre></font>
+            </body>
+            </html>
+            """),
+    	"success_with_alerts_html": textwrap.dedent("""\
+            <html>
+            <head></head>
+            <body>
+            <p>Hello {firstname},</p>
+            <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):</p>
+            <p>You can view the StyleReport below in this email, or download the attached StyleReport.txt file if you prefer.</p>
+            <p>For help interpreting any errors, check <a href="{helpurl}">this Confluence page</a>, or email {support_email_address} to reach out to the workflows team!</p>
+            <p>&nbsp;</p>
+            <p>Warning(s) / Notice(s):<br/>
+            --------------------------------------<p>
+            <font size=3em>
+            <pre>{alert_text}</pre></font>
+            <p>--------------------------------------</p>
+            <p>&nbsp;</p>
+            <p>Report for '{inputfilename}':</p>
+            <hr/>
+            <font size=3em>
+            <pre>
+            {report_string}
+            </pre></font>
             </body>
             </html>
             """),
@@ -35,33 +58,24 @@ def emailtxt():
             Hello {firstname},
 
             Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!
-            You can view the StyleReport below in this email, or download the attached file for a more formatted version.
+
+            Please download and view the attached StyleReport.txt file to view info on your file.
+
+
             For help interpreting any errors, try the guide on this Confluence page: {helpurl}, or email {support_email_address} to reach out to the workflows team!
-
-
-            REPORT FOR {inputfilename}:
-            ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-            {report_string}
             """),
     	"success_with_alerts": textwrap.dedent("""\
             Hello {firstname},
 
-            "Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the following Warning(s) &/or Notice(s):
+            Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):
+
+            Please download and view the attached StyleReport.txt file to view info on your file.
 
             --------------------------------------
             {alert_text}
             --------------------------------------
 
-
-            Below is the stylereport output
             For help interpreting any errors, try the guide on this Confluence page: {helpurl}, or email '{support_email_address}' to reach out to the workflows team!
-
-
-            REPORT FOR {inputfilename}:
-            ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-            {report_string}
             """),
     	"error": textwrap.dedent("""\
             Hello {firstname},

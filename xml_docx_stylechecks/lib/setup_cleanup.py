@@ -143,10 +143,13 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
         else:
             bodytxt = usertext_templates.emailtxt()["success"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
                 report_string=report_string, helpurl="", support_email_address=cfg.support_email_address)
+            htmltxt = usertext_templates.emailtxt()["success_html"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
+                report_string=report_string, helpurl="", support_email_address=cfg.support_email_address)
         # send our email!
         try:
             if os.path.exists(newdocxfile):
-                sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt, newdocxfile])
+                # sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt, newdocxfile])
+                sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt, newdocxfile], htmltxt)
             else:
                 sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt])
             report_emailed = True

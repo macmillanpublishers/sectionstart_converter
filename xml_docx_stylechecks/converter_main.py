@@ -104,11 +104,11 @@ if __name__ == '__main__':
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
                 if version_result != "no_version":
-                    errstring = usertext_templates.alerts()["v_has_template"]
+                    errstring = usertext_templates.alerts()["c_has_template"]
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
                     if version_result == "has_section_starts":
-                        noticestring = usertext_templates.alerts()["v_newertemplate_avail"].format(current_version=current_version, template_version=template_version)
+                        noticestring = usertext_templates.alerts()["c_newertemplate_avail"].format(current_version=current_version, template_version=template_version)
                         os_utils.logAlerttoJSON(alerts_json, "notice", noticestring)
                         logger.warn("* NOTE: {}".format(noticestring))
                 if protection == True:

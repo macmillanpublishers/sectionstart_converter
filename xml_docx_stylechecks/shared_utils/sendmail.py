@@ -30,8 +30,8 @@ def sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to
 			# the to_addr_list is used inthe sendmail cmd below and includes all recipients (including cc)
             to_addr_list = to_addr_list + cc_addr_list
             # add bcc:
-            if always_bcc_address:
-                to_addr_list = to_addr_list + [always_bcc_address]
+        if always_bcc_address:
+            to_addr_list = to_addr_list + [always_bcc_address]
         # setup handling for html-email with alternative text
         if htmltxt:
             msgAlternative = MIMEMultipart('alternative')

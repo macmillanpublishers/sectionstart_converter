@@ -120,7 +120,7 @@ def alerts():
         # Error - self explanatory
         "notdocx": "This file is not a '.docx'. Only .docx files can be run through Stylecheck-{scriptname}.",
         # Error - self explanatory. The extra percent sign is to escape the othe r% (it's a wildcard in python)
-        "notstyled": "This .docx has less than 50%% of paragraphs styled with Macmillan styles, so cannot be preocessed.",
+        "notstyled": "This .docx has less than 50%% of paragraphs styled with Macmillan styles, so cannot be processed.",
         # Error - self explanatory
     	"protected": "This .docx has protection enabled. Please disable protection and try again!",
         # Error - for 'Reporter' only

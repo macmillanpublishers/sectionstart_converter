@@ -8,8 +8,6 @@ logger = logging.getLogger(__name__)
 
 # #---------------------  METHODS
 # This method defines what goes in the StyleReport txt and mail outputs, in what order, + formatting.
-# See the commented "SAMPLE RECIPE ENTRY" below for details on each field.  All fields should be optional,
-#   though text, title or dict_category_name must be present for something to print
 def emailtxt():
     templates = {
     	"success_html": textwrap.dedent("""\

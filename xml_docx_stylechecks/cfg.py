@@ -26,6 +26,9 @@ original_inputfilename = os.path.basename(inputfile)
 original_inputfilename_noext, inputfile_ext = os.path.splitext(original_inputfilename)
 # clean out non-alphanumeric chars
 inputfilename_noext = re.sub('\W','',original_inputfilename_noext)
+# cut down extraordinarily long filenames to 47 char, + timestamp
+if len(inputfilename_noext) > 60:
+    inputfilename_noext = "%s_%s" % (str[:47],time.strftime("%y%m%d%H%M%S"))
 inputfilename = inputfilename_noext + inputfile_ext
 
 ### Arg 2 - processwatch file for standalones, or alternate logfile if validator (embedded run)

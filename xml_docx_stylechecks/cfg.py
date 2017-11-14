@@ -70,6 +70,7 @@ if script_name == "validator":
     this_outfolder = tmpdir
 else:
     tmpdir = os.path.join(main_tmpdir,"%s_%s" % (inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
+    # tmpdir = os.path.join(main_tmpdir,"%s_%s" % (inputfilename_noext, 'debug'))     # for debug
     # in_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "IN")
     if os.path.exists(staging_file):
         out_folder = os.path.join(dropboxfolder, "stylecheck_stg", script_name, "OUT")
@@ -175,6 +176,32 @@ mcnamespace = "http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlnamespace = "http://www.w3.org/XML/1998/namespace"
 wordnamespaces = {'w': wnamespace, 'w14': w14namespace, 'vt': vtnamespace, 'mc': mcnamespace}
 
+# track changes elements:
+collapse_trackchange_tags = ["ins", "moveTo"]
+del_trackchange_tags = ["cellDel",
+"cellIns",
+"cellMerge",
+"customXmlDelRangeEnd",
+"customXmlDelRangeStart",
+"customXmlInsRangeEnd",
+"customXmlInsRangeStart",
+"del",
+"delInstrText",
+"delText",
+"moveFromRangeEnd",
+"moveFromRangeStart",
+"moveFrom",
+"moveToRangeStart",
+"moveToRangeEnd",
+"numberingChange",
+"pPrChange",
+"rPrChange",
+"sectPrChange",
+"tblGridChange",
+"tblPrChange",
+"tblPrExChange",
+"tcPrChange",
+"trPrChange"]
 
 # # # # # # # LOGGING SETUP via dictConfig
 # loglevel can be globally set at the top of this script.

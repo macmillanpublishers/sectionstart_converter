@@ -51,23 +51,33 @@ if __name__ == '__main__':
 
         ########## CHECK DOCUMENT
         ### check and compare versions, styling percentage, doc protection
-        logger.info('Comparing docx version to template, checking percent styled, checking if protected doc...')
+        logger.info('Comparing docx version to template, checking percent styled, checking if protection, trackchanges...')
         version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.sectionstart_versionstring)
         percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
-        protection = check_docx.checkSettingsXML(cfg.settings_xml, "documentProtection")
+        protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml)
 
         ########## RUN STUFF
         # Basic requirements passed, proceed with validation & cleanup
-        if percent_styled >= 50 and protection == False:
+        if percent_styled >= 50 and protection == "":
             logger.info("Proceeding! (percent_styled='%s', protection='%s')" % (percent_styled, protection))
+
+            # note and accept all track changes
+            if tc_marker_found == True:
+                errstring = usertext_templates.alerts()["v_unaccepted_tcs"]
+                os_utils.logAlerttoJSON(alerts_json, "warn", errstring)
+                logger.warn("* {}".format(errstring))
+                check_docx.acceptTrackChanges(doc_xml)
 
             # # # Attach the template as needed
             if version_result == "no_version":
                 logger.info("'Attaching' macmillan template (updating styles in styles.xml, etc)")
                 # print "* This .docx did not have section start styles, attaching up-to-date template"
                 docx_uptodate = attachtemplate.attachTemplate()
-            elif version_result == "has_section_starts":
-                logger.warn("* NOTE: Newer available version of the macmillan style template (this .docx's version: {}, template version: {})".format(current_version, template_version))
+            elif version_result == "newer_template_avail":
+                noticestring = usertext_templates.alerts()["v_newertemplate_avail"].format(current_version=current_version, template_version=template_version)
+                os_utils.logAlerttoJSON(alerts_json, "notice", noticestring)
+                logger.warn("* NOTE: {}".format(noticestring))
+                docx_uptodate = attachtemplate.attachTemplate()
 
             # # # add section starts!
             logger.info("Adding SectionStart styles to the document.xml!")
@@ -97,7 +107,7 @@ if __name__ == '__main__':
                 errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
                 os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
-            if protection == True:
+            if protection:
                 errstring = usertext_templates.alerts()["protected"]
                 os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))

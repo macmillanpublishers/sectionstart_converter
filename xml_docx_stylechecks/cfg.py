@@ -47,6 +47,7 @@ currentuser = getpass.getuser()
 # the path of this file: setting '__location__' allows this relative path to adhere to this file, even when invoked from a different path:
 # 	https://stackoverflow.com/questions/4060221/how-to-reliably-open-a-file-in-the-same-directory-as-a-python-script
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+staging_file = os.path.join("C:",os.sep,"staging.txt")
 
 
 # # # # # # # # CONFIGURE BASED ON ENVIRONMENT:
@@ -70,10 +71,17 @@ if script_name == "validator":
 else:
     tmpdir = os.path.join(main_tmpdir,"%s_%s" % (inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
     # in_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "IN")
-    out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
+    if os.path.exists(staging_file):
+        out_folder = os.path.join(dropboxfolder, "stylecheck_stg", script_name, "OUT")
+    else:
+        out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
     this_outfolder = os.path.join(out_folder, inputfilename_noext)
-# log folder
-logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck")
+# log folder (differs on staging server)
+if os.path.exists(staging_file):
+    logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck_stg")
+else:
+    logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck")
+
 
 ### Files
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
@@ -132,9 +140,11 @@ contenttypes_xml = os.path.join(ziproot, contenttypes_relpath)
 
 # # # # # # # GLOBAL VARS
 # alert email address:
-alert_email_address = "workflows@macmillan.com"
-support_email_address = "workflows@macmillan.com"
-from_email_address = "workflows@macmillan.com"
+alert_email_address = "Publishing Workflows <workflows@macmillan.com>"
+support_email_address = "workflows@macmillan.com" # if the display name is present it comes out weird in user-messaging.. and not required for emails via smtplib
+from_email_address = "Publishing Workflows <workflows@macmillan.com>"
+always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
+helpurl = "https://confluence.macmillan.com/display/EB/Egalleymaker+Errors+Explained"
 # The first document version in history with section starts
 sectionstart_versionstring = '4.7.0'
 # TitlepageTitle style

@@ -129,8 +129,10 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     # set display_name for teh greeting
     if display_name:
         firstname=display_name.split()[0]
+        to_string = "%s <%s>" % (display_name, submitter_email)
     else:
         firstname="Sir or Madam"
+        to_string = submitter_email
     # Build email via this path if we have a style_report
     if os.path.exists(stylereport_txt):
         subject = usertext_templates.subjects()["success"].format(inputfilename=inputfilename)
@@ -138,17 +140,23 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
         if alerttxt_list:
             alert_text = "\n".join(alerttxt_list)
             bodytxt = usertext_templates.emailtxt()["success_with_alerts"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                report_string=report_string, helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
+            htmltxt = usertext_templates.emailtxt()["success_with_alerts_html"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
         # no alerts, printing just the report
         else:
             bodytxt = usertext_templates.emailtxt()["success"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                report_string=report_string, helpurl="", support_email_address=cfg.support_email_address)
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address)
+            htmltxt = usertext_templates.emailtxt()["success_html"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address)
         # send our email!
         try:
             if os.path.exists(newdocxfile):
-                sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt, newdocxfile])
+                # sendmail.sendMail([to_string], subject, bodytxt, [], [stylereport_txt, newdocxfile])
+                sendmail.sendMail([to_string], subject, bodytxt, [], [stylereport_txt, newdocxfile], htmltxt)
             else:
-                sendmail.sendMail([submitter_email], subject, bodytxt, [], [stylereport_txt])
+                # sendmail.sendMail([to_string], subject, bodytxt, [], [stylereport_txt])
+                sendmail.sendMail([to_string], subject, bodytxt, [], [stylereport_txt], htmltxt)
             report_emailed = True
         except:
             raise
@@ -157,11 +165,11 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
         alert_text = "\n".join(alerttxt_list)
         subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
         bodytxt = usertext_templates.emailtxt()["error"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-            report_string=report_string, helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
+            report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
 
         # send our email!
         try:
-            sendmail.sendMail([submitter_email], subject, bodytxt)
+            sendmail.sendMail([to_string], subject, bodytxt)
             report_emailed = True
         except:
             raise
@@ -169,7 +177,7 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     else:
         logger.warn("no style report or alerts fouund, so no email to send.")
 
-    return report_emailed# exit function before mailing
+    return report_emailed
 
 
 def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename, newdocxfile=""):
@@ -306,7 +314,7 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
                 subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
                 alert_text = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname, support_email_address=cfg.support_email_address)
                 bodytxt = usertext_templates.emailtxt()["processing_error"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                    helpurl="", support_email_address=cfg.support_email_address, alert_text=alert_text)
+                    helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
                 sendmail.sendMail([submitter_email], subject, bodytxt)
             except:
                 logger.exception("* returning original to outfolder Traceback")

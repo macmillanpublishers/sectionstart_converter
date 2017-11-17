@@ -65,14 +65,25 @@ if __name__ == '__main__':
 
             ########## CHECK DOCUMENT
             ### check and compare versions, styling percentage, doc protection
-            logger.info('Comparing docx version to template, checking percent styled, checking if protected doc...')
+            logger.info('Comparing docx version to template, checking percent styled, checking if protection, trackchanges...')
             version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.sectionstart_versionstring)
             percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
-            protection = check_docx.checkSettingsXML(cfg.settings_xml, "documentProtection")
+            protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml)
+
+            # create warnings re: track changes:
+            if tc_marker_found == True:
+                errstring = usertext_templates.alerts()["c_unaccepted_tcs"]
+                os_utils.logAlerttoJSON(alerts_json, "warning", errstring)
+                logger.warn("* {}".format(errstring))
+            if trackchange_status == True:
+                errstring = usertext_templates.alerts()["trackchange_enabled"]
+                os_utils.logAlerttoJSON(alerts_json, "notice", errstring)
+                logger.warn("* {}".format(errstring))
+
 
             ########## RUN STUFF
             # Doc is styled and has no version: attach template and add section starts!
-            if version_result == "no_version" and percent_styled >= 50 and protection == False:
+            if version_result == "no_version" and percent_styled >= 50 and protection == "":
                 logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
 
                 # # # attach the template
@@ -104,15 +115,15 @@ if __name__ == '__main__':
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
                 if version_result != "no_version":
-                    errstring = usertext_templates.alerts()["c_has_template"]
+                    errstring = usertext_templates.alerts()["c_has_template"].format(support_email_address=cfg.support_email_address)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
-                    if version_result == "has_section_starts":
+                    if version_result == "newer_template_avail":
                         noticestring = usertext_templates.alerts()["c_newertemplate_avail"].format(current_version=current_version, template_version=template_version)
                         os_utils.logAlerttoJSON(alerts_json, "notice", noticestring)
                         logger.warn("* NOTE: {}".format(noticestring))
-                if protection == True:
-                    errstring = usertext_templates.alerts()["protected"]
+                if protection:
+                    errstring = usertext_templates.alerts()["protected"].format(protection=protection)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
 

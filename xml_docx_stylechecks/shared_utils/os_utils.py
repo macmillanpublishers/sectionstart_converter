@@ -174,8 +174,10 @@ def writeAlertstoTxtfile(alerts_json, this_outfolder):
             # figure out appropriate filename
             if "error" in alerts_dict:
                 alertfile = os.path.join(this_outfolder, "ERROR.txt")
-            else:
+            elif "warning" in alerts_dict:
                 alertfile = os.path.join(this_outfolder, "WARNING.txt")
+            else:
+                alertfile = os.path.join(this_outfolder, "NOTICE.txt")
             # write our file
             writeListToFileByLine(alerttxt_list, alertfile)
     return alerttxt_list

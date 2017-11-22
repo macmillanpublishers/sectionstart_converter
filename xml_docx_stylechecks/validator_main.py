@@ -38,7 +38,10 @@ macmillan_template = cfg.macmillan_template
 
 ######### SETUP LOGGING
 logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
-cfg.defineLogger(logfile, cfg.loglevel)
+if cfg.validator_logfile:
+    cfg.defineLogger(cfg.validator_logfile, cfg.loglevel)
+else:
+    cfg.defineLogger(logfile, cfg.loglevel)
 logger = logging.getLogger(__name__)
 
 
@@ -101,6 +104,7 @@ if __name__ == '__main__':
 
             # write our json for style report to tmpdir
             logger.debug("Writing stylereport.json")
+            report_dict["validator_py_complete"] = True
             os_utils.dumpJSON(report_dict, cfg.stylereport_json)
 
         ########## SKIP RUNNING STUFF, LOG ALERTS
@@ -118,8 +122,6 @@ if __name__ == '__main__':
 
         ########## CLEANUP
         setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, cfg.alerts_json, cfg.script_name)
-
-        report_dict["validator_py_complete"] = True
 
     except:
         ########## LOG ERROR INFO

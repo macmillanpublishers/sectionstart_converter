@@ -389,24 +389,26 @@ def calcLocationInfoForLog(report_dict, root, sectionnames):
         # make sure we have contents in the dict
         if report_dict:
             for category, entries in report_dict.iteritems():
-                for entry in entries:
-                    for key in entry.keys():
-                        if key == "para_id":
-                            # Get the para object
-                            searchstring = ".//*w:p[@w14:paraId='%s']" % entry[key]
-                            para = root.find(searchstring, wordnamespaces)
-                            # # # Get para index
-                            entry['para_index'] = getParaIndex(para)
-                            if entry['para_index'] == 'n-a':
-                                logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
-                            # # # Get Section Name
-                            entry['parent_section_start_type'], entry['parent_section_start_content']  = getSectionName(para, sectionnames)
-                            if entry['parent_section_start_type'] == 'n-a' or entry['parent_section_start_content'] == 'n-a':
-                                logger.warn("couldn't get section start info for %s para (value was set to n-a)" % category)
-                            # # # Get 1st 10 words of para text
-                            entry['para_string'] = ' '.join(getParaTxt(para).split(' ')[:10])
-                            if entry['para_string'] == 'n-a':
-                                logger.warn("couldn't get para_string for %s para (value was set to n-a)" % category)
+                # exclude hard-coded 'marker' attributes for validator_main
+                if category != 'validator_py_complete' and category != 'percent_styled':
+                    for entry in entries:
+                        for key in entry.keys():
+                            if key == "para_id":
+                                # Get the para object
+                                searchstring = ".//*w:p[@w14:paraId='%s']" % entry[key]
+                                para = root.find(searchstring, wordnamespaces)
+                                # # # Get para index
+                                entry['para_index'] = getParaIndex(para)
+                                if entry['para_index'] == 'n-a':
+                                    logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
+                                # # # Get Section Name
+                                entry['parent_section_start_type'], entry['parent_section_start_content']  = getSectionName(para, sectionnames)
+                                if entry['parent_section_start_type'] == 'n-a' or entry['parent_section_start_content'] == 'n-a':
+                                    logger.warn("couldn't get section start info for %s para (value was set to n-a)" % category)
+                                # # # Get 1st 10 words of para text
+                                entry['para_string'] = ' '.join(getParaTxt(para).split(' ')[:10])
+                                if entry['para_string'] == 'n-a':
+                                    logger.warn("couldn't get para_string for %s para (value was set to n-a)" % category)
 
         else:
             logger.warn("report_dict is empty")

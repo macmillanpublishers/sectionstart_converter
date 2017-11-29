@@ -102,11 +102,6 @@ if __name__ == '__main__':
             os_utils.rm_existing_os_object(newdocxfile, 'validated_docx')            # < --- this should get replaced with our fancy folder rename
             zipDOCX.zipDOCX(ziproot, newdocxfile)
 
-            # write our json for style report to tmpdir
-            logger.debug("Writing stylereport.json")
-            report_dict["validator_py_complete"] = True
-            os_utils.dumpJSON(report_dict, cfg.stylereport_json)
-
         ########## SKIP RUNNING STUFF, LOG ALERTS
         # Doc is not styled or has protection enabled, skip python validation
         else:
@@ -121,6 +116,11 @@ if __name__ == '__main__':
                 logger.warn("* {}".format(errstring))
 
         ########## CLEANUP
+        # write our json for style report to tmpdir
+        logger.debug("Writing stylereport.json")
+        report_dict["validator_py_complete"] = True
+        os_utils.dumpJSON(report_dict, cfg.stylereport_json)
+
         setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, cfg.alerts_json, cfg.script_name)
 
     except:

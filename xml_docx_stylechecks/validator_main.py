@@ -31,13 +31,17 @@ tmpdir = cfg.tmpdir
 this_outfolder = cfg.this_outfolder
 newdocxfile = cfg.newdocxfile
 report_dict = {}
+report_dict["validator_py_complete"] = False
 template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
 
 
 ######### SETUP LOGGING
 logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
-cfg.defineLogger(logfile, cfg.loglevel)
+if cfg.validator_logfile:
+    cfg.defineLogger(cfg.validator_logfile, cfg.loglevel)
+else:
+    cfg.defineLogger(logfile, cfg.loglevel)
 logger = logging.getLogger(__name__)
 
 
@@ -55,6 +59,9 @@ if __name__ == '__main__':
         version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.sectionstart_versionstring)
         percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
         protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml)
+
+        # log for the rest o the validator suite:
+        report_dict["percent_styled"] = percent_styled
 
         ########## RUN STUFF
         # Basic requirements passed, proceed with validation & cleanup
@@ -95,10 +102,6 @@ if __name__ == '__main__':
             os_utils.rm_existing_os_object(newdocxfile, 'validated_docx')            # < --- this should get replaced with our fancy folder rename
             zipDOCX.zipDOCX(ziproot, newdocxfile)
 
-            # write our json for style report to tmpdir
-            logger.debug("Writing stylereport.json")
-            os_utils.dumpJSON(report_dict, cfg.stylereport_json)
-
         ########## SKIP RUNNING STUFF, LOG ALERTS
         # Doc is not styled or has protection enabled, skip python validation
         else:
@@ -113,6 +116,11 @@ if __name__ == '__main__':
                 logger.warn("* {}".format(errstring))
 
         ########## CLEANUP
+        # write our json for style report to tmpdir
+        logger.debug("Writing stylereport.json")
+        report_dict["validator_py_complete"] = True
+        os_utils.dumpJSON(report_dict, cfg.stylereport_json)
+
         setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, cfg.alerts_json, cfg.script_name)
 
     except:

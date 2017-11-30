@@ -33,14 +33,13 @@ inputfilename = inputfilename_noext + inputfile_ext
 
 ### Arg 2 - processwatch file for standalones, or alternate logfile if validator (embedded run)
 #   Could replace existing logging or could try to add a handler on the fly to log to both places
+validator_logfile = ''
+processwatch_file = ''
 if sys.argv[2:]:
     if script_name == "validator":
         validator_logfile = sys.argv[2]
     else:
         processwatch_file = sys.argv[2]
-else:
-    validator_logfile = ''
-    processwatch_file = ''
 
 
 # # # # # # # # ENV

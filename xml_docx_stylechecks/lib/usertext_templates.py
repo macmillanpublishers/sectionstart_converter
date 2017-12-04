@@ -134,9 +134,9 @@ def alerts():
         # Notice: trackchange_enabled
         "trackchange_enabled": "'Track Changes' feature is currently enabled for this document.",
         # Notice - Converter only
-        "c_newertemplate_avail": "There is a newer version of the macmillan style template available (this .docx's version: {current_version}, template version: {template_version})",
+        "c_newertemplate_avail": "There is a newer version of the macmillan style template available (this .docx's version: {current_version}, latest version: {template_version})",
         # Notice - Validator only
-        "v_newertemplate_avail": "There was a newer version of the macmillan style template available, attached during processing (this .docx's version: {current_version}, template version: {template_version})",
+        "v_newertemplate_avail": "There was a newer version of the macmillan style template available, attached during processing (this .docx's version: {current_version}, latest version: {template_version})",
         # Fatal error (untrapped crash)
         "processing_alert": textwrap.dedent("""\
             An error was encountered while running 'Stylecheck-{scriptname}'. The workflows team has been notified of this error.

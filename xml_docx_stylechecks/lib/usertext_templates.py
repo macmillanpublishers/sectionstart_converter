@@ -139,7 +139,7 @@ def alerts():
         "v_newertemplate_avail": "There was a newer version of the macmillan style template available, attached during processing (this .docx's version: {current_version}, template version: {template_version})",
         # Fatal error (untrapped crash)
         "processing_alert": textwrap.dedent("""\
-            An error was encountered while running '{scriptname}'_main.py. The workflows team has been notified of this error.
+            An error was encountered while running 'Stylecheck-{scriptname}'. The workflows team has been notified of this error.
             If you don't hear from us within 2 hours, please email {support_email_address} for assistance.""")
     }
     return alerts

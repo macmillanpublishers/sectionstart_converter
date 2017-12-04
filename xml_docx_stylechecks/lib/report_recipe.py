@@ -32,7 +32,8 @@ def getBanners():
             (2) the text that it added to the section-start paragraph (for the ebook TOC and NCX links).
 
             IF ANY SECTION-START PARAGRAPHS ARE INCORRECT OR MISSING, IT IS YOUR RESPONSIBILITY TO MAKE THE CORRECTIONS.
-            (Need help with the next step? Try {helpurl})
+
+            (For assistance visit {helpurl})
         """),
         "reporter_noerr": textwrap.dedent("""\
             CONGRATULATIONS! YOU PASSED!
@@ -154,7 +155,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     	"07_macmillan_style_1st_use": {
             "exclude_from": ["converter","validator"],
     		"title": "MACMILLAN STYLES IN USE (BY SECTION)",
-    		"text": "\n{:_^45} {:_^55}".format("paragraph styles in order of first use","excerpt from first use"),
+    		"text": "\n{:_^45} {:_^55}".format("PARAGRAPH STYLES IN ORDER OF FIRST USE","EXCERPT FROM FIRST USE"),
     		# "text": "\n{:_^40} {:_^50}".format("PARAGRAPH STYLES IN ORDER OF FIRST USE","EXCERPT FROM FIRST USE"),
     		"dict_category_name": "Macmillan_style_first_use",
     		"new_section_text": "\n* {parent_section_start_type}: {parent_section_start_content}",
@@ -167,7 +168,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
         },       #
     	"08_macmillan_character_style_1st_use": {
             "exclude_from": ["converter","validator"],
-    		"text": "{:_^45}".format("character styles in use"),
+    		"text": "{:_^45}".format("CHARACTER STYLES IN USE"),
     		# "text": "{:_^40}".format("CHARACTER STYLES IN USE"),
     		"dict_category_name": "Macmillan_charstyle_first_use",
     		"line_template": "{description}",

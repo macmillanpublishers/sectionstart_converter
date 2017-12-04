@@ -71,7 +71,7 @@ if __name__ == '__main__':
             # note and accept all track changes
             if tc_marker_found == True:
                 errstring = usertext_templates.alerts()["v_unaccepted_tcs"]
-                os_utils.logAlerttoJSON(alerts_json, "warn", errstring)
+                os_utils.logAlerttoJSON(alerts_json, "warning", errstring)
                 logger.warn("* {}".format(errstring))
                 check_docx.acceptTrackChanges(doc_xml)
 

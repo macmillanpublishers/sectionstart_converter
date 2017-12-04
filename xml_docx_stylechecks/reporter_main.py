@@ -69,7 +69,7 @@ if __name__ == '__main__':
             # create warnings re: track changes:
             if tc_marker_found == True:
                 errstring = usertext_templates.alerts()["r_unaccepted_tcs"]
-                os_utils.logAlerttoJSON(alerts_json, "warn", errstring)
+                os_utils.logAlerttoJSON(alerts_json, "warning", errstring)
                 logger.warn("* {}".format(errstring))
             if trackchange_status == True:
                 errstring = usertext_templates.alerts()["trackchange_enabled"]

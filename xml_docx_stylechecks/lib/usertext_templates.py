@@ -124,9 +124,9 @@ def alerts():
         # Error - for 'Reporter' only
     	"r_err_oldtemplate": "You must attach the most recent macmillan style template before running the Style Report: (this .docx's version: {current_version}, current version: {template_version})",
         # Error - Converter only.
-        "c_has_template": "This document already has the most recent style template attached, if you think this does need conversion, contact {support_email_address}.",
+        "c_has_template": "This document already has the most recent style template attached. If you think this still needs conversion, contact {support_email_address}.",
         # Warning / Notice: unaccepted_tcs
-        "c_unaccepted_tcs": "We found un-reviewed tracked changes in this document. We went ahead and inserted section-starts, but if things look significantly off, accept/reject tracked changes and run converter again!",
+        "c_unaccepted_tcs": "We found un-reviewed tracked changes in this document. We went ahead and inserted section-starts, but if anything looks wrong, please review tracked changes in your original manuscript and run converter again!",
         # Warning: unaccepted_tcs
         "v_unaccepted_tcs": "We found un-reviewed tracked changes in this document. All tracked-changes were accepted",
         # Warning: unaccepted_tcs

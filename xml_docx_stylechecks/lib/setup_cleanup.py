@@ -72,6 +72,7 @@ def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outf
     # move inputfile to tmpdir as workingfile
     logger.info('Moving input file ({}) and template to tmpdir'.format(inputfilename))
     os_utils.moveFile(inputfile, workingfile)
+    # os_utils.copyFiletoFile(inputfile, workingfile) # debug
 
     # cleanup outfolder (archive existing)
     logger.info("Cleaning up existing outfolder")
@@ -84,26 +85,6 @@ def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outf
         notdocx = False
 
     return submitter_email, display_name, notdocx
-
-# def setupFolders(tmpdir, inputfile, inputfilename, this_outfolder, inputfilename_noext):
-#     logger.info("Create tmpdir, create & cleanup project outfolder")
-#
-#     # create new tmpdir, reset value for working file
-#     # tmpdir = os_utils.setupTmpfolder(tmpdir)
-#     # workingfile = os.path.join(tmpdir, inputfilename)
-#     os_utils.setupOutfolder(this_outfolder)
-#
-#     # move inputfile to tmpdir as workingfile
-#     logger.info('Moving input file ({}) and template to tmpdir'.format(inputfilename))
-#     os_utils.moveFile(inputfile, workingfile)			# for production
-#     # os_utils.copyFiletoFile(inputfile, workingfile)		# debug/testing only
-#
-#     ziproot = os.path.join(tmpdir, "{}_unzipped".format(inputfilename_noext))		# the location where we unzip the input file
-#     template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
-#     stylereport_json = os.path.join(tmpdir, "stylereport.json")
-#     alerts_json = os.path.join(tmpdir, "alerts.json")
-#
-#     return tmpdir, workingfile, ziproot, template_ziproot, stylereport_json, alerts_json
 
 def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot):
     # move template to the tmpdir
@@ -136,19 +117,24 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     # Build email via this path if we have a style_report
     if os.path.exists(stylereport_txt):
         subject = usertext_templates.subjects()["success"].format(inputfilename=inputfilename)
+        if scriptname == 'converter':
+            converter_txt = usertext_templates.emailtxt()["converter_txt"]
+        else:
+            converter_txt = ""
+
         # if we have alerts / warnings /notices, include them
         if alerttxt_list:
             alert_text = "\n".join(alerttxt_list)
-            bodytxt = usertext_templates.emailtxt()["success_with_alerts"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
-            htmltxt = usertext_templates.emailtxt()["success_with_alerts_html"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
+            bodytxt = usertext_templates.emailtxt()["success_with_alerts"].format(firstname=firstname, scriptname=scriptname.title(), inputfilename=inputfilename,
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text, converter_txt=converter_txt)
+            htmltxt = usertext_templates.emailtxt()["success_with_alerts_html"].format(firstname=firstname, scriptname=scriptname.title(), inputfilename=inputfilename,
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text, converter_txt=converter_txt)
         # no alerts, printing just the report
         else:
-            bodytxt = usertext_templates.emailtxt()["success"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address)
-            htmltxt = usertext_templates.emailtxt()["success_html"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
-                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address)
+            bodytxt = usertext_templates.emailtxt()["success"].format(firstname=firstname, scriptname=scriptname.title(), inputfilename=inputfilename,
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, converter_txt=converter_txt)
+            htmltxt = usertext_templates.emailtxt()["success_html"].format(firstname=firstname, scriptname=scriptname.title(), inputfilename=inputfilename,
+                report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, converter_txt=converter_txt)
         # send our email!
         try:
             if os.path.exists(newdocxfile):
@@ -163,8 +149,8 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     # Build email via this path if we have NO style_report but YES alerts
     elif alerttxt_list:
         alert_text = "\n".join(alerttxt_list)
-        subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
-        bodytxt = usertext_templates.emailtxt()["error"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
+        subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname.title())
+        bodytxt = usertext_templates.emailtxt()["error"].format(firstname=firstname, scriptname=scriptname.title(), inputfilename=inputfilename,
             report_string=report_string, helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
 
         # send our email!
@@ -175,7 +161,7 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
             raise
     # nothing to send, skipping
     else:
-        logger.warn("no style report or alerts fouund, so no email to send.")
+        logger.warn("no style report or alerts found, so no email to send.")
 
     return report_emailed
 
@@ -254,7 +240,7 @@ def sendAlertEmail(scriptname, logfile, inputfilename, errs_duringcleanup=[]):
             sendmail.sendMail([cfg.alert_email_address], subject, bodytxt)
         # just a normal alert email, including attached logfile
         else:
-            subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
+            subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname.title())
             bodytxt = "Date/Time: %s\n\nError encountered while running '%s' on file '%s'.\n\nSee attached logfile for details." % (time.strftime("%y%m%d-%H%M%S"), scriptname, inputfilename)
             # send the mail!
             sendmail.sendMail([cfg.alert_email_address], subject, bodytxt, None, [logfile])
@@ -278,7 +264,7 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
     # 2 write error to alerts json, write alertfile
     logger.info("trying: Writing error to alerts.json, and posting alerts.txt to outfolder")
     try:
-        errstring = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname, support_email_address=cfg.support_email_address)
+        errstring = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname.title(), support_email_address=cfg.support_email_address)
         os_utils.logAlerttoJSON(alerts_json, "error", errstring)
         alerttxt_list = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
     except:
@@ -311,9 +297,9 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
                     firstname=display_name.split()[0]
                 else:
                     firstname="Sir or Madam"
-                subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname)
-                alert_text = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname, support_email_address=cfg.support_email_address)
-                bodytxt = usertext_templates.emailtxt()["processing_error"].format(firstname=firstname, scriptname=scriptname, inputfilename=inputfilename,
+                subject = usertext_templates.subjects()["err"].format(inputfilename=inputfilename, scriptname=scriptname.title())
+                alert_text = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname.title(), support_email_address=cfg.support_email_address)
+                bodytxt = usertext_templates.emailtxt()["processing_error"].format(firstname=firstname, scriptname=scriptname.title(), inputfilename=inputfilename,
                     helpurl=cfg.helpurl, support_email_address=cfg.support_email_address, alert_text=alert_text)
                 sendmail.sendMail([submitter_email], subject, bodytxt)
             except:

@@ -66,6 +66,7 @@ if hostOS == "Windows":
 else:
     dropboxfolder = os.path.join(os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
     main_tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","tmpdir") # debug, for testing on MacOS
+    staging_file = os.path.join(os.sep,"Users",currentuser,"staging.txt")
 # tmpfolder and outfolder
 if script_name == "validator":
     tmpdir = os.path.dirname(inputfile)
@@ -89,6 +90,8 @@ else:
 ### Files
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
 stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
+if script_name == "validator":
+    stylereport_txt = os.path.join(this_outfolder,"{}_ValidationReport.txt".format(inputfilename_noext))
 workingfile = os.path.join(tmpdir, inputfilename)
 ziproot = os.path.join(tmpdir, "{}_unzipped".format(inputfilename_noext))		# the location where we unzip the input file
 template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
@@ -147,7 +150,7 @@ alert_email_address = "Publishing Workflows <workflows@macmillan.com>"
 support_email_address = "workflows@macmillan.com" # if the display name is present it comes out weird in user-messaging.. and not required for emails via smtplib
 from_email_address = "Publishing Workflows <workflows@macmillan.com>"
 always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
-helpurl = "https://confluence.macmillan.com/display/EB/Egalleymaker+Errors+Explained"
+helpurl = "https://confluence.macmillan.com/display/PWG/Stylecheck+Help"
 # The first document version in history with section starts
 sectionstart_versionstring = '4.7.0'
 # TitlepageTitle style

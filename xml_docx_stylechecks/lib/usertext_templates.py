@@ -15,9 +15,9 @@ def emailtxt():
             <head></head>
             <body>
             <p>Hello {firstname},</p>
-            <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!</p>
+            <p>Stylecheck-{scriptname} has processed your file, '{inputfilename}'!</p>
             <p>You can view the StyleReport in this email (below), or download the attached StyleReport.txt file if you prefer.<br/>
-            (If you ran the 'converter', you should find your converted .docx attached as well!)</p>
+            {converter_txt}</p>
             <p>For help interpreting any errors in the report, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
             <p>&nbsp;</p>
             <p>Report for '{inputfilename}':</p>
@@ -34,9 +34,9 @@ def emailtxt():
             <head></head>
             <body>
             <p>Hello {firstname},</p>
-            <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):</p>
+            <p>Stylecheck-{scriptname} has processed your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):</p>
             <p>You can view the StyleReport in this email (below), or download the attached StyleReport.txt file if you prefer.<br/>
-            (If you ran the 'converter', you should find your converted .docx attached as well!)</p>
+            {converter_txt}</p>
             <p>For help interpreting any errors, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
             <p>&nbsp;</p>
             <p>Warning(s) / Notice(s):<br/>
@@ -57,21 +57,20 @@ def emailtxt():
     	"success": textwrap.dedent("""\
             Hello {firstname},
 
-            Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!
+            Stylecheck-{scriptname} has processed your file, '{inputfilename}'!
 
             Please download and view the attached StyleReport.txt file to view info on your file.
-            (If you ran the 'converter', you should find your converted .docx attached as well!)
-
+            {converter_txt}
 
             For help interpreting any errors, try the guide on this Confluence page: {helpurl}, or email {support_email_address} to reach out to the workflows team!
             """),
     	"success_with_alerts": textwrap.dedent("""\
             Hello {firstname},
 
-            Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):
+            Stylecheck-{scriptname} has processed your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):
 
             Please download and view the attached StyleReport.txt file to view info on your file.
-            (If you ran the 'converter', you should find your converted .docx attached as well!)
+            {converter_txt}
 
             --------------------------------------
             {alert_text}
@@ -82,7 +81,7 @@ def emailtxt():
     	"error": textwrap.dedent("""\
             Hello {firstname},
 
-            There was a problem running Stylecheck-{scriptname} on your file '{inputfilename}'.
+            Stylecheck-{scriptname} could not process your file: '{inputfilename}'.
 
             Please review Error(s) listed below:
 
@@ -95,14 +94,15 @@ def emailtxt():
     	"processing_error": textwrap.dedent("""\
             Hello {firstname},
 
-            There was a problem running Stylecheck-{scriptname} on your file '{inputfilename}'.
+            Stylecheck-{scriptname} could not process your file: '{inputfilename}'.
 
             Please review Error(s) listed below:
 
             --------------------------------------
             {alert_text}
             --------------------------------------
-            """)
+            """),
+    	"converter_txt": "You should find the 'converted' version of your .docx attached as well (if not, check the Stylecheck-Converter OUT folder)."
     }
     return templates
 

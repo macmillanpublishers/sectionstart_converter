@@ -78,10 +78,11 @@ if __name__ == '__main__':
 
             # # # Attach the template as needed
             if version_result == "no_version":
-                logger.info("'Attaching' macmillan template (updating styles in styles.xml, etc)")
+                logger.info("'version_result' = '%s'. Attaching macmillan template (updating styles in styles.xml, etc)" % version_result)
                 # print "* This .docx did not have section start styles, attaching up-to-date template"
                 docx_uptodate = attachtemplate.attachTemplate()
             elif version_result == "newer_template_avail":
+                logger.info("'version_result' = '%s'. Attaching macmillan template and adding 'Notice' alert." % version_result)                
                 noticestring = usertext_templates.alerts()["v_newertemplate_avail"].format(current_version=current_version, template_version=template_version)
                 os_utils.logAlerttoJSON(alerts_json, "notice", noticestring)
                 logger.warn("* NOTE: {}".format(noticestring))

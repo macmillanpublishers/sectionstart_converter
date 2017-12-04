@@ -74,7 +74,7 @@ if __name__ == '__main__':
                 errstring = usertext_templates.alerts()["v_unaccepted_tcs"]
                 os_utils.logAlerttoJSON(alerts_json, "warning", errstring)
                 logger.warn("* {}".format(errstring))
-                check_docx.acceptTrackChanges(doc_xml)
+                check_docx.acceptTrackChanges(cfg.doc_xml)
 
             # # # Attach the template as needed
             if version_result == "no_version":

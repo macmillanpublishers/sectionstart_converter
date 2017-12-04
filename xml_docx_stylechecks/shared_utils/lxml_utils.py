@@ -195,30 +195,6 @@ def addRunToPara(content, para, bool_rm_existing_contents=False):
         new_para_run.append(new_para_run_text)
         para.append(new_para_run)
 
-# # we don't really need doc_root here do we?
-# def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingstyles = []):
-#     logger.info("logging all paras with SectionStart styles, and any 'empty' sectionStart paras (no content)")
-#     logger.warn("start = %s" % time.strftime("%y%m%d-%H%M%S"))
-#     if call_type == "insert":
-#         logger.info("writing contents to any empty sectionstart paras")
-#     for sectionname in sectionnames:
-#         paras = findParasWithStyle(sectionname, doc_root)
-#         for para in paras:
-#             # log the section start para
-#             #   (we can run this before content is added to paras, b/c that content is captured later in the 'calcLocationInfoForLog' method
-#             report_dict = logForReport(report_dict, para, "section_start_found", sectionname)
-#             # check to see ifthe para is empty (no contents) and if so log it, and, if 'call_type' is insert, fix it.
-#             if not getParaTxt(para).strip():
-#                 report_dict = logForReport(report_dict,para,"empty_section_start_para",sectionname)
-#                 if call_type == "insert":
-#                     # find / create contents for Section start para
-#                     pneighbors = getNeighborParas(para)
-#                     content = getContentsForSectionStart(pneighbors['next'], doc_root, headingstyles, sectionname, sectionnames)
-#                     # add new content to Para! ()'True' = remove existing run(s) from para that may contain whitespace)
-#                     addRunToPara(content, para, True)
-#     logger.warn("finish = %s" % time.strftime("%y%m%d-%H%M%S"))
-#     return report_dict
-
 def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingstyles = []):
     logger.info("logging all paras with SectionStart styles, and fixing any 'empty' sectionStart paras (no content)")
     # reset from any previous tallies:
@@ -253,38 +229,6 @@ def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingsty
                     report_dict = logForReport(report_dict,para,"empty_section_start_para",sectionname)
     # logger.warn("finish = %s" % time.strftime("%y%m%d-%H%M%S"))
     return report_dict
-
-# # Should revisit this using lxml builder
-# # def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents=''):
-# def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents, sectionnames):
-#     logger.debug("commencing insert Section Start style: '%s'..." % sectionstylename)
-#     # create new para element
-#     new_para_id = generate_para_id(doc_root)
-#     new_para = etree.Element("{%s}p" % wnamespace)
-#     new_para.attrib["{%s}paraId" % w14namespace] = new_para_id
-#
-#     # create new para properties element
-#     new_para_props = etree.Element("{%s}pPr" % wnamespace)
-#     new_para_props_style = etree.Element("{%s}pStyle" % wnamespace)
-#     new_para_props_style.attrib["{%s}val" % wnamespace] = sectionstylename
-#
-#     # append props element to para element
-#     new_para_props.append(new_para_props_style)
-#     new_para.append(new_para_props)
-#     # contents = lxml_utils.getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, sectionstylename, sectionnames)
-#
-#     # # create run and text elements, add text, and append to para
-#     #   Tried using "addRunToPara" function here, but returning newpara did not return new nested items
-#     new_para_run = etree.Element("{%s}r" % wnamespace)
-#     new_para_run_text = etree.Element("{%s}t" % wnamespace)
-#     new_para_run_text.text = contents
-#     new_para_run.append(new_para_run_text)
-#     new_para.append(new_para_run)
-#     # logtext = "inserted paragraph with style '%s' and text '%s'" % (sectionstylename,contents)
-#
-#     # append insert new paragraph before the selected para element
-#     sectionbegin_para.addprevious(new_para)
-#     logger.info("inserted '%s' paragraph with contents: '%s'" % (sectionstylename,contents))
 
 # Should revisit this using lxml builder
 # def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents=''):

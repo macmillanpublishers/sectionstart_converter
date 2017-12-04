@@ -1,11 +1,52 @@
 ######### IMPORT PY LIBRARIES
 import logging
+import textwrap
 
 # # initialize logger
 logger = logging.getLogger(__name__)
 
 
 # #---------------------  METHODS
+def getBanners():
+    banners = {
+        "validator_noerr": textwrap.dedent("""\
+            EGALLEY VALIDATION REPORT
+
+            The metadata, sections, and illustrations that Egalleymaker identified in your manuscript are listed below. If you discover incorrect information, correct the manuscript and run it through Egalleymaker again.
+        """),
+        "validator_err": textwrap.dedent("""\
+            EGALLEY VALIDATION REPORT
+
+            Please peruse items below to verify document info.
+
+            ATTN: Document validation made edits prior to creating an egalley, &/or turned up unsupported styles. See below for details:
+            (Need help understanding this report? Go to {helpurl})
+        """),
+        "converter": textwrap.dedent("""\
+            The Style Converter has processed your manuscript. The revised file is attached here.
+
+            YOU ARE RESPONSIBLE FOR VERIFYING THAT THE SECTION-START PARAGRAPHS HAVE BEEN INSERTED CORRECTLY.
+
+            The table below lists:
+            (1) every section that the Style Converter identified based on correct rules for using styles, and
+            (2) the text that it added to the section-start paragraph (for the ebook TOC and NCX links).
+
+            IF ANY SECTION-START PARAGRAPHS ARE INCORRECT OR MISSING, IT IS YOUR RESPONSIBILITY TO MAKE THE CORRECTIONS.
+            (Need help with the next step? Try {helpurl})
+        """),
+        "reporter_noerr": textwrap.dedent("""\
+            CONGRATULATIONS! YOU PASSED!
+
+            But you're not done yet. Please check the info listed below.
+        """),
+        "reporter_err": textwrap.dedent("""\
+            OOPS!
+
+            Problems were found with the styles in your document.
+        """)
+    }
+    return banners
+
 # This method defines what goes in the StyleReport txt and mail outputs, in what order, + formatting.
 # See the commented "SAMPLE RECIPE ENTRY" below for details on each field.  All fields should be optional,
 #   though text, title or dict_category_name must be present for something to print
@@ -92,7 +133,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "ILLUSTRATION LIST",
     		"text": "Verify that this list of illustrations includes only the filenames of your illustrations.\n",
     		"dict_category_name": "illustration_holders__sort_by_index",
-    		"line_template": "{description}\n    -located in {parent_section_start_type}: {parent_section_start_content}. (Paragraph {para_index})",
+    		"line_template": "{description}\n    -located in {parent_section_start_type}: {parent_section_start_content}.",# (Paragraph {para_index})",
             "alternate_content": {
                 "text": "no illustrations detected."
             }
@@ -100,7 +141,8 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     	"06_section_start_list": {
             "exclude_from": ["converter"],
     		"title": "SECTIONS FOUND",
-    		"text": "",#"Here is a list of all sections detected in your manuscript",
+    		"text": "{:90}\n".format("The Style Report identified the following sections; note that the content of each\nSection-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,\nedit the manuscript file to add or remove incorrect Section-Start styles or content."),
+    		# "text": "",""#"Here is a list of all sections detected in your manuscript",
     		"dict_category_name": "section_start_found",
     		"line_template": "{parent_section_start_type:.<33} {parent_section_start_content:57}",
     		"required": True,
@@ -111,10 +153,12 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     	},
     	"07_macmillan_style_1st_use": {
             "exclude_from": ["converter","validator"],
-    		"title": "MACMILLAN STYLES IN USE",
-    		"text": "{:_^40} {:_^40}".format("para_styles-in_order_of_use","excerpt_from_first_use"),
+    		"title": "MACMILLAN STYLES IN USE (BY SECTION)",
+    		"text": "\n{:_^45} {:_^55}".format("paragraph styles in order of first use","excerpt from first use"),
+    		# "text": "\n{:_^40} {:_^50}".format("PARAGRAPH STYLES IN ORDER OF FIRST USE","EXCERPT FROM FIRST USE"),
     		"dict_category_name": "Macmillan_style_first_use",
-    		"line_template": "{description:.<40} {para_string:50}",
+    		"new_section_text": "\n* {parent_section_start_type}: {parent_section_start_content}",
+    		"line_template": "{description:.<45} {para_string:60}",
     		"required": True,
             "errstring": "No Macmillan styled paragraphs were found in the manuscript.",
             "alternate_content": {
@@ -123,22 +167,23 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
         },       #
     	"08_macmillan_character_style_1st_use": {
             "exclude_from": ["converter","validator"],
-    		"text": "{:_^40}".format("character_styles_in_use"),
+    		"text": "{:_^45}".format("character styles in use"),
+    		# "text": "{:_^40}".format("CHARACTER STYLES IN USE"),
     		"dict_category_name": "Macmillan_charstyle_first_use",
     		"line_template": "{description}",
     		"required": "n-a",
             "alternate_content": {
-                "text": "{:_^40}\nNo character styles detected.".format("character_styles_in_use")
+                "text": "{:_^45}\nNo character styles detected.".format("character_styles_in_use")
             }
     	},
         # re-setting count at 20 for coverter-specific items to make renumbering simpler
     	"20_section_start_added(converter)": {
             "exclude_from": ["reporter", "validator"],
-    		"title": "SECTION START PARAS INSERTED",
+    		"title": "SECTION START PARAGRAPHS INSERTED",
     		# "text": "{:^48} {:_^50}".format("\033[4mstyles_in_order_of_appearance\033[0m","styled_content_excerpt_from_first_use"),
-    		"text": "{:_^40} {:_^40}".format("Section-Start_style","paragraph_content"),
+    		"text": "{:_^40} {:_^40}".format("Section-Start style","paragraph content"),
     		"dict_category_name": "section_start_found",
-    		"line_template": "{description:.<40} {para_string:50}",
+    		"line_template": "{parent_section_start_type:.<40} {para_string:50}",#description
     		"required": True,
             "errstring": "No Section-Start insertion points detected.",
             "alternate_content": {
@@ -179,7 +224,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"title": "SECTION START PARAS AUTO-INSERTED",
     		"text": "{:_^40} {:_^40}".format("Section-Start_style","paragraph_content"),
     		"dict_category_name": "section_start_needed__sort_by_index",
-    		"line_template": "{description:.<40} {para_string:50}",
+    		"line_template": "{parent_section_start_type:.<40} {para_string:50}", #description
     		"required": "n-a",
             "apply_warning_banner": True
     	},
@@ -251,21 +296,21 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"dict_category_name": "non-Macmillan_style_used",
     		"line_template": "",
     		"badnews": True,
-            "errstring": "Non-Macmillan style '{description}' in {parent_section_start_type}: {parent_section_start_content}. (Paragraph {para_index})"
+            "errstring": "Non-Macmillan style '{description}' in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
     	},
     	"91_non_bookmaker_style": {
             "exclude_from": ["validator", "converter"],
     		"dict_category_name": "non_bookmaker_macmillan_style",
     		"line_template": "",
     		"badnews": True,
-            "errstring": "Non-Bookmaker style: '{description}' in {parent_section_start_type}: {parent_section_start_content}. (Paragraph {para_index})"
+            "errstring": "Non-Bookmaker style: '{description}' in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
     	},
     	"92_empty_section_start_para": {
             "exclude_from": ["validator", "converter"],
     		"dict_category_name": "empty_section_start_para",
     		"line_template": "",
     		"badnews": True,
-            "errstring": "Empty Section-Start paragraph: found a '{description}' para with no text. (Paragraph {para_index})"
+            "errstring": "Empty Section-Start paragraph: found a '{description}' para with no text."# (Paragraph {para_index})"
     	}
     }
     # print report_recipe

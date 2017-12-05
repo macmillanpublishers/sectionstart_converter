@@ -21,6 +21,7 @@ def getBanners():
 
             ATTN: One or more items of note turned up during document validation:
             {v_warning_banner}
+            
             See below for details.
 
             (Need help reviewing this report? Visit {helpurl})

@@ -19,8 +19,11 @@ def getBanners():
 
             Please peruse items below to verify document info.
 
-            ATTN: Document validation made edits prior to creating an egalley, &/or turned up unsupported styles. See below for details:
-            (Need help understanding this report? Go to {helpurl})
+            ATTN: One or more items of note turned up during document validation:
+            {v_warning_banner}
+            See below for details.
+
+            (Need help reviewing this report? Visit {helpurl})
         """),
         "converter": textwrap.dedent("""\
             The Style Converter has processed your manuscript. The revised file is attached here.
@@ -67,7 +70,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
         #                                                       #   (the trailing colons etc are are extra formatting)
     	# 	"required": True,       # < If it's an error if a report_dict category is empty or not present, mark this True
     	# 	                        #   (If this is true you will need an "errstring" entry too)
-        #   "apply_warning_banner": True,   # this is for validator only scripts - if any edits were made or unsupported styles were found, we want to surface
+        #   "v_warning_banner": "Alert string",   # this is for validator only scripts - if any edits were made or unsupported styles were found, we want to surface
         #                                       a different banner on the report output. Including this key=True signals that we want that warning.
         #   "badnews": True,        # < If you want each entry from this report_dict category in the Error List,mark this True
         #   "errstring": "No paragraphs."   # < The base string you want used to appear in the report's Error list
@@ -200,20 +203,20 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     	"26_non-Macmillan_styles(validator)": {
             "exclude_from": ["reporter", "converter"],
     		"title": "NON-MACMILLAN STYLES",
-    		"text": "Non-Macmillan styles detected.\nContent styled with non-Macmillan styles may not appear properly-styled in your egalley:\n",
+    		"text": "Non-Macmillan styles detected.\nContent styled with non-Macmillan styles may not appear properly-styled in your egalley.\n",
     		"dict_category_name": "non-Macmillan_style_used",
-    		"line_template": "- '{parent_section_start_type}': {parent_section_start_content}style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
+    		"line_template": "- style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
-            "apply_warning_banner": True
+            "v_warning_banner": "Unsupported (non-Macmillan) style(s) found."
     	},
     	"27_non-Bookmaker_styles(validator)": {
             "exclude_from": ["reporter", "converter"],
     		"title": "NON-BOOKMAKER STYLES",
-    		"text": "Non-Bookmaker styles detected.\nContent styled with non-Bookmaker styles may not appear properly-styled in your egalley:\n",
+    		"text": "Non-Bookmaker styles detected.\nContent styled with non-Bookmaker styles may not appear properly-styled in your egalley.\n",
     		"dict_category_name": "non_bookmaker_macmillan_style",
-    		"line_template": "- '{parent_section_start_type}': {parent_section_start_content}style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
+    		"line_template": "- style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
-            "apply_warning_banner": True
+            "v_warning_banner": "Unsupported (non-Bookmaker) style(s) found."
     	},
     	"29_corrections_heading(validator)": {
             "exclude_from": ["converter","reporter"],
@@ -227,16 +230,16 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"dict_category_name": "section_start_needed__sort_by_index",
     		"line_template": "{parent_section_start_type:.<40} {para_string:50}", #description
     		"required": "n-a",
-            "apply_warning_banner": True
+            "v_warning_banner": "Edit(s) made during document validation: Section Start paragraph(s) inserted."
     	},
     	"31_added_content_to_sectionstart_para(validator)": {
             "exclude_from": ["reporter", "converter"],
-    		"title": "ADDED CONTENT TO SECTION START PARA",
-    		"text": "Section-Start paras cannot be empty. Content was auto-added to the following Section-Start paras:\n",
+    		"title": "ADDED CONTENT TO SECTION START PARAGRAPH(S)",
+    		"text": "Section-Start paragraphs cannot be empty. Content was auto-added to the following Section-Start paragraph(s):\n",
     		"dict_category_name": "wrote_to_empty_section_start_para",
-    		"line_template": "{description:.<40} New text: {para_string}",
+    		"line_template": "{parent_section_start_type:.<40} New text: {para_string}",
     		"required": "n-a",
-            "apply_warning_banner": True
+            "v_warning_banner": "Edit(s) made during document validation: content was added to empty Section-Start paragraph(s)."
     	},
     	"32_removed_empty_firstlast_para(validator)": {
             "exclude_from": ["reporter", "converter"],
@@ -245,16 +248,16 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"dict_category_name": "removed_empty_firstlast_para",
     		"line_template": "- {description}",
     		"required": "n-a",
-            "apply_warning_banner": True
+            "v_warning_banner": "Edit(s) made during document validation: removed empty first/last paragraph(s)."
     	},
     	"33_rm_charstyles_in_headings(validator)": {
             "exclude_from": ["reporter", "converter"],
     		"title": "CHARACTER STYLES REMOVED FROM HEADINGS",
     		"text": "Character styles in headings cause problems with ebook TOC creation... some were found and removed:\n",
     		"dict_category_name": "rm_charstyle_from_heading",
-    		"line_template": "- {description}: from '{parent_section_start_type}': {parent_section_start_content}",
+    		"line_template": "- {description} (from '{parent_section_start_type}': {parent_section_start_content})",
     		"required": "n-a",
-            "apply_warning_banner": True
+            "v_warning_banner": "Edit(s) made during document validation: removed character styles from Heading(s)."
     	},
     	"34_added_reqrd_sectionstart(validator)": {
             "exclude_from": ["reporter", "converter"],
@@ -263,7 +266,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"dict_category_name": "added_required_section_start",
     		"line_template": "- {description}",
     		"required": "n-a",
-            "apply_warning_banner": True
+            "v_warning_banner": "Edit(s) made during document validation: added required book section(s) (Titlepage or Copyright page)."
     	},
     	"35_added_bookinfo_to_titlepage(validator)": {
             "exclude_from": ["reporter", "converter"],
@@ -272,7 +275,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"dict_category_name": "added_required_book_info",
     		"line_template": "- {description}",
     		"required": "n-a",
-            "apply_warning_banner": True
+            "v_warning_banner": "Edit(s) made during document validation: added missing title &/or author info to Titlepage."
     	},
     	"36_rm_shapesandbreaks(validator)": {
             "exclude_from": ["reporter", "converter"],
@@ -281,7 +284,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"dict_category_name": "deleted_shapes_and_sectionbreaks",
     		"line_template": "- {description} from '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
-            "apply_warning_banner": True
+            "v_warning_banner": "Edit(s) made during document validation: removed section break(s) &/or shape(s)."
     	},
     	"37_get_oneline_titlepara(validator)": {
             "exclude_from": ["reporter", "converter"],
@@ -290,7 +293,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     		"dict_category_name": "concatenated_extra_titlepara_and_removed",
     		"line_template": "New title: '{description}'",
     		"required": "n-a",
-            "apply_warning_banner": True
+            "v_warning_banner": "Edit(s) made during document validation: combined multiline Title."
     	},
     	"90_non_macmillan_styles": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
             "exclude_from": ["validator", "converter"],

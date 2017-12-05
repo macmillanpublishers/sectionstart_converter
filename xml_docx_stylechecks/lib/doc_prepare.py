@@ -124,8 +124,6 @@ def concatTitleParas(titlestyle, report_dict, doc_root):
         # set newtitlestring
         newtitlestring = "%s %s" % (newtitlestring, lxml_utils.getParaTxt(pneighbors['next']))
         # newtitlestring = "{} {}".format(newtitlestring, nexttext)  # should review why this failed with unicode
-        # log for report (optional)
-        lxml_utils.logForReport(report_dict,pneighbors['next'],"concatenated_extra_titlepara_and_removed",newtitlestring)
         # increment, and delete this para
         tmp_para = pneighbors['next']
         pneighbors = lxml_utils.getNeighborParas(pneighbors['next'])
@@ -133,6 +131,8 @@ def concatTitleParas(titlestyle, report_dict, doc_root):
     # if we have changes in the titlestring, remove existing contents and write the new full title as a new run
     if newtitlestring != titlestring:
         lxml_utils.addRunToPara(newtitlestring, firsttitlepara, True)
+        # log for report (optional)
+        lxml_utils.logForReport(report_dict,pneighbors['next'],"concatenated_extra_titlepara_and_removed",newtitlestring)
     return report_dict
 
 def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnregex):
@@ -211,7 +211,7 @@ def insertRequiredSectionStart(sectionstartstyle, doc_root, contents, report_dic
         # insert my sspara at the beginnig of the doc
         lxml_utils.insertPara(sectionstartstyle, first_para, doc_root, contents, "before")
         # log that we added this!
-        lxml_utils.logForReport(report_dict,first_para.getprevious(),"added_required_section_start","added '%s' to the beginning of the manuscript" % sectionstartstyle)
+        lxml_utils.logForReport(report_dict,first_para.getprevious(),"added_required_section_start","added '%s' to the beginning of the manuscript" % lxml_utils.getStyleLongname(sectionstartstyle))
     return report_dict
 
 def removeTextWithCharacterStyle(report_dict, doc_root, style):
@@ -278,10 +278,10 @@ def insertBookinfo(report_dict, doc_root, stylename, leadingpara_style, bookinfo
         leadingpara = lxml_utils.findParasWithStyle(leadingpara_style, doc_root)[0]
         if leadingpara is not None and bookinfo_item:
             lxml_utils.insertPara(stylename, leadingpara, doc_root, bookinfo_item, "after")
-            lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (stylename, bookinfo_item))
+            lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (lxml_utils.getStyleLongname(stylename), bookinfo_item))
         else:
             if not bookinfo_item:
-                lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (stylename, bookinfo_item))
+                lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (lxml_utils.getStyleLongname(stylename), bookinfo_item))
                 logger.warn("'%s' was missing from the manuscript but could not be auto-inserted because %s lookup value was empty." % (stylename, bookinfo_item))
             if leadingpara is None:
                 logger.warn("Could not find required %s styled 'leading_para' to insert bookinfo field: '%s'" % (leadingpara_style, bookinfo_item))

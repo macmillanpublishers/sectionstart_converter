@@ -13,6 +13,8 @@ from lxml import etree
 # ######### IMPORT LOCAL MODULES
 import cfg
 
+######### LOCAL DECLARATIONS
+styles_xml = cfg.styles_xml
 
 # Local namespace vars
 wnamespace = cfg.wnamespace
@@ -87,6 +89,26 @@ def getParaStyle(para):      # move to lxml_utils?
     except:
         stylename = ""
     return stylename
+
+# lookup longname of style in styles.xml of file.
+#  save looked up values in a dict to speed up repeat lookups if desired
+def getStyleLongname(styleshortname, stylenamemap={}):
+    # print styleshortname#, stylenamemap
+    styles_tree = etree.parse(styles_xml)
+    styles_root = styles_tree.getroot()
+    if styleshortname == "n-a":
+        stylelongname = "not avaliable"
+    elif styleshortname in stylenamemap:
+        stylelongname = stylenamemap[styleshortname]
+        # print "in the map!"
+    else:
+        # print "not in tht emap!"
+        searchstring = ".//w:style[@w:styleId='%s']/w:name" % styleshortname
+        stylematch = styles_root.find(searchstring, wordnamespaces)
+        # get fullname value and test against Macmillan style list
+        stylelongname = stylematch.get('{%s}val' % wnamespace)
+        stylenamemap[styleshortname] = stylelongname
+    return stylelongname
 
 # the "Run" here would be a span / character style.
 # This method is identical to the one in lxmlutils for paras except varnames and the xml keyname

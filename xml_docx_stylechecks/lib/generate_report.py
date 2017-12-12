@@ -21,11 +21,11 @@ if __name__ == '__main__':
     import imp
     cfg = imp.load_source('cfg', cfgpath)
     os_utils = imp.load_source('os_utils', osutilspath)
-    # lxml_utils = imp.load_source('lxml_utils', lxmlutilspath)
+    lxml_utils = imp.load_source('lxml_utils', lxmlutilspath)
 else:
     import cfg
     import shared_utils.os_utils as os_utils
-    # import shared_utils.lxml_utils as lxml_utils
+    import shared_utils.lxml_utils as lxml_utils
 import report_recipe
 
 
@@ -42,26 +42,6 @@ logger = logging.getLogger(__name__)
 
 
 # #---------------------  METHODS
-# lookup longname of style in styles.xml of file.
-#  save looked up values in a dict to speed up repeat lookups
-def getStyleLongname(styleshortname, stylenamemap):
-    # print styleshortname#, stylenamemap
-    styles_tree = etree.parse(styles_xml)
-    styles_root = styles_tree.getroot()
-    if styleshortname == "n-a":
-        stylelongname = "not avaliable"
-    elif styleshortname in stylenamemap:
-        stylelongname = stylenamemap[styleshortname]
-        # print "in the map!"
-    else:
-        # print "not in tht emap!"
-        searchstring = ".//w:style[@w:styleId='%s']/w:name" % styleshortname
-        stylematch = styles_root.find(searchstring, wordnamespaces)
-        # get fullname value and test against Macmillan style list
-        stylelongname = stylematch.get('{%s}val' % wnamespace)
-        stylenamemap[styleshortname] = stylelongname
-    return stylelongname
-
 def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_item, errorlist, validator_warnings):
     # make sure we're not supposed to skip this recipe_item as per "exclude_from" key
     if not("exclude_from" in recipe_item and scriptname in recipe_item["exclude_from"]):
@@ -78,18 +58,25 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
         if "dict_category_name" in recipe_item and recipe_item["dict_category_name"]:
             # if the category is in report_dict and has contents, proceed, else, print an alternate & log err as needed
             if recipe_item["dict_category_name"] in report_dict and report_dict[recipe_item["dict_category_name"]]:
-                if "apply_warning_banner" in recipe_item and recipe_item["apply_warning_banner"] == True:
-                    validator_warnings = True
+                if "v_warning_banner" in recipe_item and recipe_item["v_warning_banner"]:
+                    if recipe_item["v_warning_banner"] not in validator_warnings:
+                        validator_warnings.append("- %s" % recipe_item['v_warning_banner'])
+                    # validator_warnings = True
                 for item in report_dict[recipe_item["dict_category_name"]]:
+                    if recipe_item["dict_category_name"] == "Macmillan_style_first_use":
+                        new_section_text = recipe_item["new_section_text"].format(parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', \
+                            parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap))
+                        if new_section_text not in tmptextlist:
+                            tmptextlist.append(new_section_text)
                     # line = "{:<40}:{:>30}".format("parent_section_start_type","'parent_section_start_content'")
                     newline = recipe_item["line_template"].format(description=item['description'], para_string='"'+item['para_string'].encode('utf-8')+'"', \
                         parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', \
-                        parent_section_start_type=getStyleLongname(item['parent_section_start_type'], stylenamemap), para_index=item['para_index'])
+                        parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap), para_index=item['para_index'])
                     # newline = line.replace("zdescription", item['description']).replace("para_string", item['para_string']).replace("parent_section_start_content", item['parent_section_start_content'])
-                    # newline = newline.replace("parent_section_start_type", getStyleLongname(item['parent_section_start_type'], stylenamemap))
+                    # newline = newline.replace("parent_section_start_type", lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap))
                     tmptextlist.append(newline)
                     if "badnews" in recipe_item and recipe_item["badnews"] == True:
-                        new_errstring = recipe_item["errstring"].format(description=item['description'], para_string='"'+item['para_string'].encode('utf-8')+'"', parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', parent_section_start_type=getStyleLongname(item['parent_section_start_type'], stylenamemap),  para_index=item['para_index'])
+                        new_errstring = recipe_item["errstring"].format(description=item['description'], para_string='"'+item['para_string'].encode('utf-8')+'"', parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap),  para_index=item['para_index'])
                         # new_errstring = "** ERROR: {}\n".format(new_errstring)
                         errorlist.append(new_errstring)
                         tmptextlist =[]
@@ -131,42 +118,27 @@ def addErrorList(textreport_list, errorlist):
             tmperrorlist.append(new_errstring)
 
         # add footer with our contact info to tmplist
-        errfooter = "\nIf you have any questions about how to handle these errors,\nplease contact workflows@macmillan.com."
+        errfooter = "\nIf you have any questions about how to handle these errors,\nplease contact %s." % cfg.support_email_address
         tmperrorlist.append(errfooter)
 
         # add this to list for output
         textreport_list = tmperrorlist + textreport_list
     return textreport_list
 
-def addReporterBanner(textreport_list, errorlist):
-    # could set this  width value globallty.
-    banner = "{:^80}\n{:^80}"
-    if errorlist:
-        banner = banner.format("OOPS!", "Problems were found with the styles in your document.")
-        banner = banner + "\n"
-    else:
-        banner = banner.format("CONGRATULATIONS! YOU PASSED!", "But you're not done yet. Please check the info listed below.")
-    textreport_list.insert(0,banner)
-
-def addConverterBanner(textreport_list, errorlist):
-    if errorlist:
-        banner = "{:^80}\n{:^80}"
-        banner = banner.format("OOPS!", "No criteria for Section-Start insertion was found in this manuscript.")
-        banner = banner + "\n"
-    else:
-        banner = "{:^80}\n{:^80}\n\n{}\n\n{}"
-        banner = banner.format("CONGRATULATIONS!","Section-Start paragraphs have been inserted into your file!", \
-            "PLEASE REVIEW the new Section-Starts list below, you may want to edit some auto-inserted styles or content*.",\
-            "(*Section-Start paragraph contents are non-printing, but are used for the TOC and NCX in the egalley.)")
-    textreport_list.insert(0,banner)
-
-def addValidatorBanner(textreport_list, validator_warnings):
-    if validator_warnings == False:
-        banner = "{:^80}\n\n{:^80}"
-        banner = banner.format("NOTES FROM EGALLEY VALIDATION","Please peruse items below to verify metadata, Sections, and illustrations in your manuscript.")
-    else:
-        banner = "{:^80}\n{:^80}\n\n{}"
-        banner = banner.format("NOTES FROM EGALLEY VALIDATION","Please peruse items below to verify document info.","WARNING: Document validation turned up unsupported styles, &/or edits were made prior to creating egalley.\nSee below for details")
+def addBanner(textreport_list, errorlist, validator_warnings, scriptname):
+    if scriptname == "converter":
+        banner = report_recipe.getBanners()['converter'].format(helpurl=cfg.helpurl)
+    elif scriptname == "reporter":
+        if errorlist:
+            banner = report_recipe.getBanners()['reporter_err']
+        else:
+            banner = report_recipe.getBanners()['reporter_noerr']
+    elif scriptname == "validator":
+        if validator_warnings:
+            vwarningstring = '\n'.join(validator_warnings)
+            banner = report_recipe.getBanners()['validator_err'].format(helpurl=cfg.helpurl, v_warning_banner=vwarningstring)
+        else:
+            banner = report_recipe.getBanners()['validator_noerr']
     textreport_list.insert(0,banner)
 
 def generateReport(report_dict, outputtxt_path, scriptname):
@@ -180,7 +152,7 @@ def generateReport(report_dict, outputtxt_path, scriptname):
     textreport = ""
     textreport_list = []
     errorlist = []
-    validator_warnings = False
+    validator_warnings = []
 
     # get the report recipe
     recipe = report_recipe.getReportRecipe(cfg.titlestyle, cfg.authorstyle, cfg.isbnstyle)
@@ -192,13 +164,8 @@ def generateReport(report_dict, outputtxt_path, scriptname):
     # add Error List, errheader & footer to
     textreport_list = addErrorList(textreport_list, errorlist)
 
-    # add success/fail banner based on whether errorlist is empty
-    if scriptname == "converter":
-        addConverterBanner(textreport_list, errorlist)
-    elif scriptname == "reporter":
-        addReporterBanner(textreport_list, errorlist)
-    elif scriptname == "validator":
-        addValidatorBanner(textreport_list, validator_warnings)
+    # add success/fail banner based script & presence of alerts
+    addBanner(textreport_list, errorlist, validator_warnings, scriptname)
 
     # print report to console
     for line in textreport_list:    # for debug

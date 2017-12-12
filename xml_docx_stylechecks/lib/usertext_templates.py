@@ -15,9 +15,9 @@ def emailtxt():
             <head></head>
             <body>
             <p>Hello {firstname},</p>
-            <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!</p>
+            <p>Stylecheck-{scriptname} has processed your file, '{inputfilename}'!</p>
             <p>You can view the StyleReport in this email (below), or download the attached StyleReport.txt file if you prefer.<br/>
-            (If you ran the 'converter', you should find your converted .docx attached as well!)</p>
+            {converter_txt}</p>
             <p>For help interpreting any errors in the report, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
             <p>&nbsp;</p>
             <p>Report for '{inputfilename}':</p>
@@ -34,9 +34,9 @@ def emailtxt():
             <head></head>
             <body>
             <p>Hello {firstname},</p>
-            <p>Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):</p>
+            <p>Stylecheck-{scriptname} has processed your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):</p>
             <p>You can view the StyleReport in this email (below), or download the attached StyleReport.txt file if you prefer.<br/>
-            (If you ran the 'converter', you should find your converted .docx attached as well!)</p>
+            {converter_txt}</p>
             <p>For help interpreting any errors, take a look at <a href="{helpurl}">this page</a> on Confluence, or email {support_email_address} to reach out to the workflows team!</p>
             <p>&nbsp;</p>
             <p>Warning(s) / Notice(s):<br/>
@@ -57,21 +57,20 @@ def emailtxt():
     	"success": textwrap.dedent("""\
             Hello {firstname},
 
-            Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}'!
+            Stylecheck-{scriptname} has processed your file, '{inputfilename}'!
 
             Please download and view the attached StyleReport.txt file to view info on your file.
-            (If you ran the 'converter', you should find your converted .docx attached as well!)
-
+            {converter_txt}
 
             For help interpreting any errors, try the guide on this Confluence page: {helpurl}, or email {support_email_address} to reach out to the workflows team!
             """),
     	"success_with_alerts": textwrap.dedent("""\
             Hello {firstname},
 
-            Stylecheck-{scriptname} has successfully run on your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):
+            Stylecheck-{scriptname} has processed your file, '{inputfilename}', with the below Warning(s) &/or Notice(s):
 
             Please download and view the attached StyleReport.txt file to view info on your file.
-            (If you ran the 'converter', you should find your converted .docx attached as well!)
+            {converter_txt}
 
             --------------------------------------
             {alert_text}
@@ -82,7 +81,7 @@ def emailtxt():
     	"error": textwrap.dedent("""\
             Hello {firstname},
 
-            There was a problem running Stylecheck-{scriptname} on your file '{inputfilename}'.
+            Stylecheck-{scriptname} could not process your file: '{inputfilename}'.
 
             Please review Error(s) listed below:
 
@@ -95,14 +94,15 @@ def emailtxt():
     	"processing_error": textwrap.dedent("""\
             Hello {firstname},
 
-            There was a problem running Stylecheck-{scriptname} on your file '{inputfilename}'.
+            Stylecheck-{scriptname} could not process your file: '{inputfilename}'.
 
             Please review Error(s) listed below:
 
             --------------------------------------
             {alert_text}
             --------------------------------------
-            """)
+            """),
+    	"converter_txt": "You should find the 'converted' version of your .docx attached as well (if not, check the Stylecheck-Converter OUT folder)."
     }
     return templates
 
@@ -124,9 +124,9 @@ def alerts():
         # Error - for 'Reporter' only
     	"r_err_oldtemplate": "You must attach the most recent macmillan style template before running the Style Report: (this .docx's version: {current_version}, current version: {template_version})",
         # Error - Converter only.
-        "c_has_template": "This document already has the most recent style template attached, if you think this does need conversion, contact {support_email_address}.",
+        "c_has_template": "This document already has the most recent style template attached. If you think this still needs conversion, contact {support_email_address}.",
         # Warning / Notice: unaccepted_tcs
-        "c_unaccepted_tcs": "We found un-reviewed tracked changes in this document. We went ahead and inserted section-starts, but if things look significantly off, accept/reject tracked changes and run converter again!",
+        "c_unaccepted_tcs": "We found un-reviewed tracked changes in this document. We went ahead and inserted section-starts, but if anything looks wrong, please review tracked changes in your original manuscript and run converter again!",
         # Warning: unaccepted_tcs
         "v_unaccepted_tcs": "We found un-reviewed tracked changes in this document. All tracked-changes were accepted",
         # Warning: unaccepted_tcs
@@ -134,12 +134,12 @@ def alerts():
         # Notice: trackchange_enabled
         "trackchange_enabled": "'Track Changes' feature is currently enabled for this document.",
         # Notice - Converter only
-        "c_newertemplate_avail": "There is a newer version of the macmillan style template available (this .docx's version: {current_version}, template version: {template_version})",
+        "c_newertemplate_avail": "There is a newer version of the macmillan style template available (this .docx's version: {current_version}, latest version: {template_version})",
         # Notice - Validator only
-        "v_newertemplate_avail": "There was a newer version of the macmillan style template available, attached during processing (this .docx's version: {current_version}, template version: {template_version})",
+        "v_newertemplate_avail": "There was a newer version of the macmillan style template available, attached during processing (this .docx's version: {current_version}, latest version: {template_version})",
         # Fatal error (untrapped crash)
         "processing_alert": textwrap.dedent("""\
-            An error was encountered while running '{scriptname}'_main.py. The workflows team has been notified of this error.
+            An error was encountered while running 'Stylecheck-{scriptname}'. The workflows team has been notified of this error.
             If you don't hear from us within 2 hours, please email {support_email_address} for assistance.""")
     }
     return alerts

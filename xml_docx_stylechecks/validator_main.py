@@ -34,6 +34,7 @@ report_dict = {}
 report_dict["validator_py_complete"] = False
 template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
+alerts_json = cfg.alerts_json
 
 
 ######### SETUP LOGGING
@@ -71,16 +72,17 @@ if __name__ == '__main__':
             # note and accept all track changes
             if tc_marker_found == True:
                 errstring = usertext_templates.alerts()["v_unaccepted_tcs"]
-                os_utils.logAlerttoJSON(alerts_json, "warn", errstring)
+                os_utils.logAlerttoJSON(alerts_json, "warning", errstring)
                 logger.warn("* {}".format(errstring))
-                check_docx.acceptTrackChanges(doc_xml)
+                check_docx.acceptTrackChanges(cfg.doc_xml)
 
             # # # Attach the template as needed
             if version_result == "no_version":
-                logger.info("'Attaching' macmillan template (updating styles in styles.xml, etc)")
+                logger.info("'version_result' = '%s'. Attaching macmillan template (updating styles in styles.xml, etc)" % version_result)
                 # print "* This .docx did not have section start styles, attaching up-to-date template"
                 docx_uptodate = attachtemplate.attachTemplate()
             elif version_result == "newer_template_avail":
+                logger.info("'version_result' = '%s'. Attaching macmillan template and adding 'Notice' alert." % version_result)                
                 noticestring = usertext_templates.alerts()["v_newertemplate_avail"].format(current_version=current_version, template_version=template_version)
                 os_utils.logAlerttoJSON(alerts_json, "notice", noticestring)
                 logger.warn("* NOTE: {}".format(noticestring))
@@ -108,11 +110,11 @@ if __name__ == '__main__':
             logger.warn("* * Skipping Validation:")
             if percent_styled < 50:
                 errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
-                os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+                os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
             if protection:
                 errstring = usertext_templates.alerts()["protected"]
-                os_utils.logAlerttoJSON(cfg.alerts_json, "error", errstring)
+                os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
 
         ########## CLEANUP
@@ -121,11 +123,11 @@ if __name__ == '__main__':
         report_dict["validator_py_complete"] = True
         os_utils.dumpJSON(report_dict, cfg.stylereport_json)
 
-        setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, cfg.alerts_json, cfg.script_name)
+        setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, alerts_json, cfg.script_name)
 
     except:
         ########## LOG ERROR INFO
         # log to logfile for dev
         logger.exception("ERROR ------------------ :")
         # the last 4 parameters only apply to reporter and converter
-        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, cfg.alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile, "", "", "", "")
+        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile, "", "", "", "")

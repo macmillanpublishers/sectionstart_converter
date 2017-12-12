@@ -17,7 +17,6 @@ logger = logging.getLogger(__name__)
 # cc_addresses and attachments are optional arguments
 def sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt=""):
     try:
-        # print "EMAIL!: ",to_addr_list, subject, bodytxt # debug only
         if htmltxt:
             msg = MIMEMultipart('related')
         else:
@@ -62,24 +61,34 @@ def sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to
 def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=None, htmltxt=""):
     # moving common dependencies for this file for converter/reporter/validator sute of scripts into an outer method...
     #   so I can reuse this script for the independent process_watcher.
+    try:
+        ######### IMPORT LOCAL MODULES
+        if __name__ == '__main__':
+        	# to go up a level to read cfg when invoking from this script (for testing).
+        	import imp
+        	parentpath = os.path.join(sys.path[0], '..', 'cfg.py')
+        	cfg = imp.load_source('cfg', parentpath)
+        else:
+        	import cfg
 
-    ######### IMPORT LOCAL MODULES
-    if __name__ == '__main__':
-    	# to go up a level to read cfg when invoking from this script (for testing).
-    	import imp
-    	parentpath = os.path.join(sys.path[0], '..', 'cfg.py')
-    	cfg = imp.load_source('cfg', parentpath)
-    else:
-    	import cfg
+        ######### LOCAL DECLARATIONS
+        with open(cfg.smtp_txt) as f:
+            smtp_address = f.readline()
+        port = 25
+        from_email_address = cfg.from_email_address
+        always_bcc_address = cfg.always_bcc_address
 
-    ######### LOCAL DECLARATIONS
-    with open(cfg.smtp_txt) as f:
-        smtp_address = f.readline()
-    port = 25
-    from_email_address = cfg.from_email_address
-    always_bcc_address = cfg.always_bcc_address
+        sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt)
 
-    sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt)
+    except smtplib.SMTPConnectError:
+        errstring = "Email send fail: 'SMTPConnectError' -- Email subject: '%s'" % subject
+        logger.warn(errstring)
+        logger.info("Email info: '%s', '%s'\n  '%s'" % (to_addr_list, subject, bodytxt))
+        import os_utils as os_utils
+        # write err to file
+        os_utils.logAlerttoJSON(cfg.alerts_json, 'warning', errstring)
+        alerttxt_list = os_utils.writeAlertstoTxtfile(cfg.alerts_json, cfg.this_outfolder)
+        # print "LOG THIS EMAIL!: ",to_addr_list, subject, bodytxt # debug only
 
 #---------------------  MAIN
 # only run if this script is being invoked directly

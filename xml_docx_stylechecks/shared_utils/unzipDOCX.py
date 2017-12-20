@@ -19,20 +19,20 @@ def unzipDOCX(filename, finaldir):
         extension = os.path.splitext(filename)[1]
 
         if extension in ('.docx', '.docm', '.doc', '.dotx', '.dotm'):
-            print "unzipping %s" % filename
+            # print "unzipping %s" % filename   # debug
             # get the contents of the Word file
             # filenames = zipfile.namelist(filename)
             # print filenames
             document = zipfile.ZipFile(filename, 'a')
-            print document.namelist(), len(document.namelist())
+            # print document.namelist(), len(document.namelist()) # debug
             document.extractall(finaldir)
             document.close()
             return
         else:
-            logger.error("Could not unzip %s, not a Word doctype" % filename)   
+            logger.error("Could not unzip %s, not a Word doctype" % filename)
             raise
-            sys.exit(1)     
-    except Exception, e:    
+            sys.exit(1)
+    except Exception, e:
         logger.error('Failed to unzip .doc', exc_info=True)
         sys.exit(1)
 

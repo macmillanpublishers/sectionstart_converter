@@ -100,6 +100,7 @@ ziproot = os.path.join(tmpdir, "{}_unzipped".format(inputfilename_noext))		# the
 template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
 stylereport_json = os.path.join(tmpdir, "stylereport.json")
 alerts_json = os.path.join(tmpdir, "alerts.json")
+isbn_check_json = os.path.join(tmpdir, "isbn_check.json")
 
 ### Resources in other Repos
 macmillan_template_name = "macmillan.dotx"

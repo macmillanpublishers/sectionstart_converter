@@ -13,13 +13,9 @@ from lxml import etree
 
 ######### IMPORT LOCAL MODULES
 import cfg
-# import lib.attachtemplate as attachtemplate
-# import lib.addsectionstarts as addsectionstarts
 import lib.doc_prepare as doc_prepare
-# import lib.generate_report as generate_report
 import lib.setup_cleanup as setup_cleanup
 import lib.usertext_templates as usertext_templates
-# import lib.stylereports as stylereports
 import shared_utils.zipDOCX as zipDOCX
 import shared_utils.os_utils as os_utils
 import shared_utils.check_docx as check_docx
@@ -33,8 +29,8 @@ ziproot = cfg.ziproot
 tmpdir = cfg.tmpdir
 this_outfolder = cfg.this_outfolder
 newdocxfile = cfg.newdocxfile
-report_dict = {}
-report_dict["validator_py_complete"] = False
+isbn_dict = {}
+isbn_dict["completed"] = False
 template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
 alerts_json = cfg.alerts_json
@@ -65,7 +61,7 @@ if __name__ == '__main__':
         protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml)
 
         # log for the rest o the validator suite:
-        report_dict["protection"] = protection
+        isbn_dict["password_protected"] = protection
 
         ########## RUN STUFF
         # Basic requirements passed, proceed with validation & cleanup
@@ -80,23 +76,22 @@ if __name__ == '__main__':
             hyperlinkstyle = lxml_utils.transformStylename(cfg.hyperlinkstyle)
 
             # # # scan for styled ISBNs and strip non-ISBN chars
-            report_dict, report_dict["found_isbns"] = doc_prepare.removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, cfg.isbnspanregex)
+            isbn_dict, isbn_dict["manuscript_isbns"] = doc_prepare.removeNonISBNsfromISBNspans(isbn_dict, doc_root, isbnstyle, cfg.isbnspanregex)
 
             # # # scan for unstyled ISBNs and style them. Also captures properly styled isbns that may have spanned multiple 'runs' in xml
-            report_dict, report_dict["loose_isbns"] = doc_prepare.styleLooseISBNs(report_dict, cfg.isbnregex, cfg.isbnspanregex, doc_root, isbnstyle, hyperlinkstyle)
+            isbn_dict, isbn_dict["programatically_styled_isbns"] = doc_prepare.styleLooseISBNs(isbn_dict, cfg.isbnregex, cfg.isbnspanregex, doc_root, isbnstyle, hyperlinkstyle)
 
             # # # run it again, to clean up any isbn-styled leading/trailing txt created incidentally from the last method
-            report_dict, report_dict["found_isbns"] = doc_prepare.removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, cfg.isbnspanregex)
-
-############################## will need to update the following so we are zipping up in place:
+            isbn_dict, isbn_dict["manuscript_isbns"] = doc_prepare.removeNonISBNsfromISBNspans(isbn_dict, doc_root, isbnstyle, cfg.isbnspanregex)
 
             ### write updated stuff to file:
             os_utils.writeXMLtoFile(doc_root, doc_xml)
 
             ### zip ziproot up as a docx
-            logger.info("Zipping updated xml into a .docx in the tmpfolder")
-            os_utils.rm_existing_os_object(newdocxfile, 'validated_docx')            # < --- this should get replaced with our fancy folder rename
-            zipDOCX.zipDOCX(ziproot, newdocxfile)
+            logger.info("Zipping updated xml to replae workingfile .docx in the tmpfolder")
+            # os_utils.rm_existing_os_object(newdocxfile, 'validated_docx') <-- shouldnt be necessary, zipfile.py should overwrite
+            zipDOCX.zipDOCX(ziproot, workingfile) # < for prod
+            # zipDOCX.zipDOCX(ziproot, newdocxfile)  # < for testing
 
         ########## SKIP RUNNING STUFF, LOG ALERTS
         # Doc is not styled or has protection enabled, skip python validation
@@ -109,16 +104,15 @@ if __name__ == '__main__':
 
         ########## CLEANUP
         # write our json for style report to tmpdir
-        # logger.debug("Writing stylereport.json")
-        # report_dict["validator_py_complete"] = True
-        # os_utils.dumpJSON(report_dict, cfg.stylereport_json)
+        logger.debug("Writing isbn_check.json")
+        isbn_dict["completed"] = True
+        os_utils.dumpJSON(isbn_dict, cfg.isbn_check_json)
 
-        # setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, report_dict, cfg.stylereport_txt, alerts_json, cfg.script_name)
-############################## review exception handling!
+        setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, '', cfg.stylereport_txt, alerts_json, cfg.script_name)
 
     except:
         ########## LOG ERROR INFO
         # log to logfile for dev
         logger.exception("ERROR ------------------ :")
         # the last 4 parameters only apply to reporter and converter
-        # setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile, "", "", "", "")
+        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile, "", "", "", "")

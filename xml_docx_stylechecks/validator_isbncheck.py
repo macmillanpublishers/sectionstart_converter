@@ -98,7 +98,7 @@ if __name__ == '__main__':
         else:
             logger.warn("* * Skipping ISBN_check:")
             if protection:
-                errstring = usertext_templates.alerts()["protected"]
+                errstring = usertext_templates.alerts()["protected"].format(protection=protection)
                 os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
 

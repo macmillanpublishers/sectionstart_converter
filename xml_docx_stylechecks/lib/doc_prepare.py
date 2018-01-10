@@ -137,6 +137,7 @@ def concatTitleParas(titlestyle, report_dict, doc_root):
 
 # where target run is the run we are appending after & before
 def appendRunWithEditedCopy(original_run, text, preserveSpace, style):
+    logger.debug("* running appendRunWithEditedCopy function for text %s" % text)
     attrib_space_key = '{%s}space' % xmlnamespace
     if text:
         # copy the run
@@ -209,215 +210,44 @@ def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnspanregex)
     logger.debug("trimmed isbns %s " % isbns)
     return report_dict, isbns
 
-# def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, hyperlinkstyle):
-#     styled_loose_isbns = []
-#     attrib_space_key = '{%s}space' % xmlnamespace
-#     for para in doc_root.findall(".//w:p", wordnamespaces):
-#         paratext = lxml_utils.getParaTxt(para).strip()
-#         loose_isbns = isbnregex.findall(paratext)
-#         for isbn_string in loose_isbns:
-#             isbn_string = isbn_string[0]
-#             logger.info("found loose isbn: %s" % isbn_string)
-#
-#             runs = para.findall(".//w:r", wordnamespaces)
-#             run_count = len(runs)
-#             for run in runs:
-#                 print "here 1"
-#                 # Here we handle instances where the whole loose_isbn is in a single run
-#                 runtxt = lxml_utils.getParaTxt(run)
-#                 runstyle = lxml_utils.getRunStyle(run)
-#                 fullmatch = isbnspanregex.findall(runtxt)
-#                 if len(fullmatch):
-#                     logger.info("%s is all in one run... " % isbn_string)
-#                     rstyle = lxml_utils.getRunStyle(run)
-#                     if rstyle == isbnstyle or rstyle == hyperlinkstyle or rstyle == "Hyperlink": # the latter is Word's builtin hyperlink style
-#                         logger.info("%s already styled as isbn or part of hyperlink, rstyle is: '%s'" % (isbn_string, rstyle))
-#                     else:
-#                         logger.info("yess! proceeding!")
-#                         leadingtxt = str([x[0] for x in fullmatch][0])
-#                         isbntxt = str([x[1] for x in fullmatch][0])
-#                         followingtxt = str([x[3] for x in fullmatch][0])
-#                         print "LT", leadingtxt, "IT", isbntxt, "FT",followingtxt
-#                         # copy the original run for followingtxt, include only following txt, append.
-#                         if followingtxt:
-#                             following_run = copy.deepcopy(run)
-#                             following_text_el = following_run.find(".//w:t",wordnamespaces)
-#                             following_text_el.text = followingtxt
-#                             following_text_el.set(attrib_space_key,"preserve")
-#                             run.addnext(following_run)
-#                         # copy the original run
-#                         isbn_run = copy.deepcopy(run)
-#                         # edit existing runstyle if present,
-#                         isbn_style_el = isbn_run.find(".//w:rPr/w:rStyle",wordnamespaces)
-#                         if isbn_style_el is not None:
-#                             # isbn_style_el.getparent().remove(isbn_oldstyle_el)
-#                             isbn_style_el.attrib["{%s}val" % wnamespace] = isbnstyle
-#                         # else create runstyle and append to run element
-#                         else:
-#                             isbn_new_rPr_el = etree.Element("{%s}rPr" % wnamespace)
-#                             isbn_new_rStyle_el = etree.Element("{%s}rStyle" % wnamespace)
-#                             isbn_new_rStyle_el.attrib["{%s}val" % wnamespace] = isbnstyle
-#                             isbn_new_rPr_el.append(isbn_new_rStyle_el)
-#                             isbn_run.insert(0,isbn_new_rPr_el)
-#                         # find text el, set the text to the isbntext only
-#                         isbn_text_el = isbn_run.find(".//w:t",wordnamespaces)
-#                         isbn_text_el.text = isbntxt
-#                         # append isbn run el
-#                         run.addnext(isbn_run)
-#                         # copy the original run, include only leadingtxt, append.
-#                         if leadingtxt:
-#                             leading_run = copy.deepcopy(run)
-#                             leading_text_el = leading_run.find(".//w:t",wordnamespaces)
-#                             leading_text_el.text = leadingtxt
-#                             leading_text_el.set(attrib_space_key,"preserve")
-#                             run.addnext(leading_run)
-#                         # remove the original run
-#                         run.getparent().remove(run)
-#                         # add it to list for report
-#                         styled_loose_isbns.append(isbn_string)
-#                 # Now for cases where the loose_isbn is split amongst runs:
-#                 #   (skip if this run is styled as a hyperlink)
-#                 elif runstyle != hyperlinkstyle and runstyle != 'Hyperlink':
-#                     i=1
-#                     match_head = False
-#                     match = ''
-#                     leadingtxt = ''
-#                     followingtxt = ''
-#                     # print run_count
-#                     # cycle through runs looking for the beginning of this ISBN string, shortening ISBN string each loop.
-#                     while i < len(isbn_string) and match_head == False:
-#                         print i
-#                         isbn_head = isbn_string[:-i]
-#                         if runtxt.endswith(isbn_head):
-#                             match_head = True
-#                             print "found a match for isbnhead: %s!" % isbn_head
-#                             leadingtxt = re.sub(r'%s$' % isbn_head,'',runtxt)
-#                             if leadingtxt:
-#                                 print "found leadingtxt: %s" % leadingtxt
-#                             # if isbn_head == runtxt:
-#                             #     leadingtxt = False
-#                             #     print "& there is no leading txt!"
-#                             # runstyle = lxml_utils.getRunStyle(run)
-#                             isbndict=collections.OrderedDict([(isbn_head,run)])    # if this doesn't work we'll get index
-#                             temp_run = run
-#                         i+=1
-#                         if match_head == True:
-#                             while ''.join(isbndict.keys()) != isbn_string and match == '':
-#                                 nextrun = temp_run.getnext()
-#                                 if nextrun is not None:
-#                                     print "here2", nextrun.tag
-#                                     nextruntxt = lxml_utils.getParaTxt(nextrun)
-#                                     # >tail plus other<  >tail< >t<
-#                                     isbntail = isbn_string.replace(''.join(isbndict.keys()),'')
-#                                     print "isbntail is: %s" % isbntail
-#                                     if nextruntxt.startswith(isbntail):
-#                                         print "found a match for isbntail!"
-#                                         nextrunstyle = lxml_utils.getRunStyle(nextrun)
-#                                         if nextrunstyle != hyperlinkstyle and nextrunstyle != 'Hyperlink':
-#                                             match = True
-#                                             isbndict[isbntail]=nextrun
-#                                             followingtxt = re.sub(r'%s$' % isbntail,'',nextruntxt)
-#                                             if followingtxt:
-#                                                 print "found followingtxt: %s" % followingtxt
-#                                             # if isbntail == nextruntxt:
-#                                             #     trailingtxt = False
-#                                             #     print "& there is no trailing txt!"
-#                                         else:
-#                                             print "match was part of a hyperlink :("
-#                                             match = False
-#                                     elif isbn_string.startswith(''.join(isbndict.keys()) + nextruntxt):
-#                                         print "found partial match for isbn tail."
-#                                         nextrunstyle = lxml_utils.getRunStyle(nextrun)
-#                                         isbndict[nextruntxt]=nextrun
-#                                         if nextrunstyle == hyperlinkstyle and nextrunstyle == 'Hyperlink':
-#                                             match = False
-#                                             print "partial match was part of a hyperlink :("
-#                                     else:
-#                                         print "bad match for our isbn tail"
-#                                         match = False
-#                                     temp_run = nextrun
-#                                 else:
-#                                     match = False
-#                                     print "reached last run in para, isbn wasnot matched"
-#                     if match == True:
-#                         # copy the original run for followingtxt, include only following txt, append.
-#                         if followingtxt:
-#                             following_run = copy.deepcopy(isbndict[isbndict.keys()[-1]])
-#                             following_text_el = following_run.find(".//w:t",wordnamespaces)
-#                             following_text_el.text = followingtxt
-#                             following_text_el.set(attrib_space_key,"preserve")
-#                             run.addnext(following_run)
-#
-#                         # copy the original run again for isbn_run (faster than creating one from scratch)
-#                         isbn_run = copy.deepcopy(run)
-#                         # edit existing runstyle if present,
-#                         isbn_style_el = isbn_run.find(".//w:rPr/w:rStyle",wordnamespaces)
-#                         if isbn_style_el is not None:
-#                             # isbn_style_el.getparent().remove(isbn_oldstyle_el)
-#                             isbn_style_el.attrib["{%s}val" % wnamespace] = isbnstyle
-#                         # else create runstyle and append to run element
-#                         else:
-#                             isbn_new_rPr_el = etree.Element("{%s}rPr" % wnamespace)
-#                             isbn_new_rStyle_el = etree.Element("{%s}rStyle" % wnamespace)
-#                             isbn_new_rStyle_el.attrib["{%s}val" % wnamespace] = isbnstyle
-#                             isbn_new_rPr_el.append(isbn_new_rStyle_el)
-#                             isbn_run.insert(0,isbn_new_rPr_el)
-#                         # find text el, set the text to the isbntext only
-#                         isbn_text_el = isbn_run.find(".//w:t",wordnamespaces)
-#                         isbn_text_el.text = isbn_string
-#                         # append isbn run el
-#                         run.addnext(isbn_run)
-#
-#                         # copy the original run for leadingtxt, include only leadingtxt as text, append.
-#                         if leadingtxt:
-#                             leading_run = copy.deepcopy(isbndict[isbndict.keys()[0]])
-#                             leading_text_el = leading_run.find(".//w:t",wordnamespaces)
-#                             leading_text_el.text = leadingtxt
-#                             leading_text_el.set(attrib_space_key,"preserve")
-#                             run.addnext(leading_run)
-#
-#                         # remove the original run(s)
-#                         for key, value in isbndict.iteritems():
-#                             value.getparent().remove(value)
-#
-#                         # add this isbn to list for report
-#                         styled_loose_isbns.append(isbn_string)
-#
-#     return report_dict, styled_loose_isbns
-
+# this is a bit of a beastly method, b/c it has to check for isbns accross multiple w:r containers in Word, and they may be split multiple ways
 def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, hyperlinkstyle):
+    logger.info("* * * commencing styleLooseISBNs function...")
     styled_loose_isbns = []
+    # capture paragraphs with isbns matching isbnregex in their text
     for para in doc_root.findall(".//w:p", wordnamespaces):
         paratext = lxml_utils.getParaTxt(para).strip()
         loose_isbns = isbnregex.findall(paratext)
+        # cycle through each isbn
         for isbn_string in loose_isbns:
             isbn_string = isbn_string[0]
-            logger.info("********************* found loose isbn: %s" % isbn_string)
+            logger.debug("* found loose isbn: %s" % isbn_string)
             runs = para.findall(".//w:r", wordnamespaces)
             run_count = len(runs)
+            # cycle through each run in the para
             for run in runs:
                 runtxt = lxml_utils.getParaTxt(run)
                 runstyle = lxml_utils.getRunStyle(run)
-                # (skip if this run is styled as a hyperlink)
+                # skip this run if styled as a hyperlink, we don't want isbns that are contained in hyperlinks
                 if runstyle != hyperlinkstyle and runstyle != 'Hyperlink':
                     match_head = False
                     match = ''
                     leadingtxt = ''
                     followingtxt = ''
                     isbn_head = isbn_string
-                    # cycle through runs looking for the beginning of this ISBN string, shortening ISBN string each loop.
+                    # Look for beginning of this ISBN string, iterating through shortening the isbnstring (isbn_head)
                     while len(isbn_head) > 0 and match_head == False:
-                        # print len(isbn_head), isbn_head #debug
+                        logger.debug("isbn_head: %s" % isbn_head)
                         if runtxt.endswith(isbn_head):
                             match_head = True
-                            print "found a match for isbnhead: %s!" % isbn_head
+                            logger.debug("found a match for isbnhead: %s!" % isbn_head)
                             leadingtxt = re.sub(r'%s$' % isbn_head,'',runtxt)
                             if leadingtxt:
-                                print "found leadingtxt: %s" % leadingtxt
-                            isbndict=collections.OrderedDict([(isbn_head,run)])    # if this doesn't work we'll get index
+                                logger.debug("found leadingtxt: %s" % leadingtxt)
+                            isbndict=collections.OrderedDict([(isbn_head,run)])
                             temp_run = run
                         isbn_head = isbn_head[:-1]
-                        # once we've found a match:
+                        # if we have a match: first check if it's the whole isbn, get leading/trailing text
                         if match_head == True:
                             if isbn_head == isbn_string and runstyle == isbnstyle:
                                 logger.info("%s already properly styled as isbn" % isbn_string)
@@ -427,41 +257,45 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                                 leadingtxt = str([x[0] for x in re_result][0])
                                 followingtxt = str([x[3] for x in re_result][0])
                                 match = True
+                            # if it's not the whole isbn, we'll cycle through consecutive runs, capturing partial and whole matches
+                            #   of the isbn 'tail', and logging them into a dict. If things stop matching or we hit a hyperlink style, exit
                             else:
                                 while ''.join(isbndict.keys()) != isbn_string and match == '':
                                     nextrun = temp_run.getnext()
                                     if nextrun is not None:
-                                        print "here2", nextrun.tag
                                         nextruntxt = lxml_utils.getParaTxt(nextrun)
-                                        # >tail plus other<  >tail< >t<
                                         isbntail = isbn_string.replace(''.join(isbndict.keys()),'')
-                                        print "isbntail is: %s" % isbntail
+                                        logger.debug("next run tag is %s, isbntail is: %s" % (nextrun.tag, isbntail))
+                                        # if we have a full match for isbn tail, we're done, log the run to dict and capture the followingtxt
                                         if nextruntxt.startswith(isbntail):
-                                            print "found a match for isbntail!"
+                                            logger.debug("found a match for isbntail!")
                                             nextrunstyle = lxml_utils.getRunStyle(nextrun)
                                             if nextrunstyle != hyperlinkstyle and nextrunstyle != 'Hyperlink':
                                                 match = True
                                                 isbndict[isbntail]=nextrun
                                                 followingtxt = re.sub(r'%s$' % isbntail,'',nextruntxt)
                                                 if followingtxt:
-                                                    print "found followingtxt: %s" % followingtxt
+                                                    logger.debug("found followingtxt: %s" % followingtxt)
                                             else:
-                                                print "match was part of a hyperlink :("
+                                                logger.debug("false match, was styled as hyperlink")
                                                 match = False
+                                        # if we have a partial match, add it to the dict, we'll cycle back through
                                         elif isbn_string.startswith(''.join(isbndict.keys()) + nextruntxt):
-                                            print "found partial match for isbn tail."
+                                            logger.debug("found partial match for isbn tail.")
                                             nextrunstyle = lxml_utils.getRunStyle(nextrun)
                                             isbndict[nextruntxt]=nextrun
                                             if nextrunstyle == hyperlinkstyle and nextrunstyle == 'Hyperlink':
                                                 match = False
-                                                print "partial match was part of a hyperlink :("
+                                                logger.debug("false partial match, was styled as hyperlink")
                                         else:
-                                            print "bad match for our isbn tail"
+                                            logger.debug("bad match for our isbn tail")
                                             match = False
                                         temp_run = nextrun
                                     else:
                                         match = False
-                                        print "reached last run in para, isbn wasnot matched"
+                                        logger.debug("reached last run in para, isbn wasnot matched")
+                    # we had a full isbn match, reconstructing any runs involved to leading, (styled) isbntext and following run,
+                    #   and deleting previous versions of the content
                     if match == True:
                         # append run for following text
                         appendRunWithEditedCopy(isbndict[isbndict.keys()[-1]], followingtxt, True, '')
@@ -469,44 +303,6 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                         appendRunWithEditedCopy(run, isbn_string, False, isbnstyle)
                         # append run for leading text
                         appendRunWithEditedCopy(isbndict[isbndict.keys()[0]], leadingtxt, True, '')
-
-
-                        # attrib_space_key = '{%s}space' % xmlnamespace
-                        # # copy the original run for followingtxt, include only following txt, append.
-                        # if followingtxt:
-                        #     following_run = copy.deepcopy(isbndict[isbndict.keys()[-1]])
-                        #     following_text_el = following_run.find(".//w:t",wordnamespaces)
-                        #     following_text_el.text = followingtxt
-                        #     following_text_el.set(attrib_space_key,"preserve")
-                        #     run.addnext(following_run)
-                        #
-                        # # copy the original run again for isbn_run (faster than creating one from scratch)
-                        # isbn_run = copy.deepcopy(run)
-                        # # edit existing runstyle if present,
-                        # isbn_style_el = isbn_run.find(".//w:rPr/w:rStyle",wordnamespaces)
-                        # if isbn_style_el is not None:
-                        #     # isbn_style_el.getparent().remove(isbn_oldstyle_el)
-                        #     isbn_style_el.attrib["{%s}val" % wnamespace] = isbnstyle
-                        # # else create runstyle and append to run element
-                        # else:
-                        #     isbn_new_rPr_el = etree.Element("{%s}rPr" % wnamespace)
-                        #     isbn_new_rStyle_el = etree.Element("{%s}rStyle" % wnamespace)
-                        #     isbn_new_rStyle_el.attrib["{%s}val" % wnamespace] = isbnstyle
-                        #     isbn_new_rPr_el.append(isbn_new_rStyle_el)
-                        #     isbn_run.insert(0,isbn_new_rPr_el)
-                        # # find text el, set the text to the isbntext only
-                        # isbn_text_el = isbn_run.find(".//w:t",wordnamespaces)
-                        # isbn_text_el.text = isbn_string
-                        # # append isbn run el
-                        # run.addnext(isbn_run)
-                        #
-                        # # copy the original run for leadingtxt, include only leadingtxt as text, append.
-                        # if leadingtxt:
-                        #     leading_run = copy.deepcopy(isbndict[isbndict.keys()[0]])
-                        #     leading_text_el = leading_run.find(".//w:t",wordnamespaces)
-                        #     leading_text_el.text = leadingtxt
-                        #     leading_text_el.set(attrib_space_key,"preserve")
-                        #     run.addnext(leading_run)
 
                         # remove the original run(s)
                         for key, value in isbndict.iteritems():

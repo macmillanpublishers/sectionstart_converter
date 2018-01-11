@@ -160,7 +160,7 @@ sectionstart_versionstring = '4.7.0'
 # regex for finding ISBNS
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
-# HArdcoded stylenames
+# Hardcoded stylenames
 titlestyle = "Titlepage Book Title (tit)"
 chapnumstyle = "Chap Number (cn)"
 chaptitlestyle = "Chap Title (ct)"

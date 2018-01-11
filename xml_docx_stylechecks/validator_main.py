@@ -38,11 +38,11 @@ alerts_json = cfg.alerts_json
 
 
 ######### SETUP LOGGING
-logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
 if cfg.validator_logfile:
-    cfg.defineLogger(cfg.validator_logfile, cfg.loglevel)
+    logfile = cfg.validator_logfile
 else:
-    cfg.defineLogger(logfile, cfg.loglevel)
+    logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
+cfg.defineLogger(logfile, cfg.loglevel)
 logger = logging.getLogger(__name__)
 
 

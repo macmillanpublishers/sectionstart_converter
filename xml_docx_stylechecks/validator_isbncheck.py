@@ -2,11 +2,8 @@
 import sys
 import os
 import zipfile
-import shutil
-import re
 import logging
 import time
-import inspect
 # make sure to install lxml: sudo pip install lxml
 from lxml import etree
 
@@ -54,10 +51,8 @@ if __name__ == '__main__':
         setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
 
         ########## CHECK DOCUMENT
-        ### check and compare versions, styling percentage, doc protection
-        logger.info('Comparing docx version to template, checking percent styled, checking if protection, trackchanges...')
-        # version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.sectionstart_versionstring)
-        # percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
+        ### check doc protection
+        logger.info('Checking doc protection, trackchanges...')
         protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml)
 
         # log for the rest o the validator suite:

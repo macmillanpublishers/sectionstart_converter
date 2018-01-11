@@ -38,11 +38,11 @@ alerts_json = cfg.alerts_json
 
 
 ######### SETUP LOGGING
+logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
 if cfg.validator_logfile:
-    logfile = cfg.validator_logfile
+    cfg.defineLogger(cfg.validator_logfile, cfg.loglevel)
 else:
-    logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
-cfg.defineLogger(logfile, cfg.loglevel)
+    cfg.defineLogger(logfile, cfg.loglevel)
 logger = logging.getLogger(__name__)
 
 
@@ -130,4 +130,4 @@ if __name__ == '__main__':
         # log to logfile for dev
         logger.exception("ERROR ------------------ :")
         # the last 4 parameters only apply to reporter and converter
-        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile, "", "", "", "")
+        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, cfg.validator_logfile, "", "", "", "")

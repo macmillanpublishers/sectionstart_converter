@@ -163,6 +163,9 @@ def styleReports(report_dict):
     # log texts of titlepage-title paras
     report_dict = logTextOfParasWithStyle(report_dict, doc_root, cfg.titlestyle, "title_paras")
 
+    # log texts of titlepage-logo paras
+    report_dict = logTextOfParasWithStyle(report_dict, doc_root, cfg.logostyle, "logo_paras")
+
     # log texts of isbn-span runs
     report_dict = logTextOfRunsWithStyle(report_dict, doc_root, cfg.isbnstyle, "isbn_spans")
 

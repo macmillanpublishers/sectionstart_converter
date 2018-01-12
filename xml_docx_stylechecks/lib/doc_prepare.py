@@ -135,7 +135,7 @@ def concatTitleParas(titlestyle, report_dict, doc_root):
         lxml_utils.logForReport(report_dict,pneighbors['next'],"concatenated_extra_titlepara_and_removed",newtitlestring)
     return report_dict
 
-# where original_run is the run we are appending after & before
+# where original_run is the run we clone & append after
 def appendRunWithEditedCopy(original_run, text, preserveSpace, style):
     logger.debug("* running appendRunWithEditedCopy function for text %s" % text)
     attrib_space_key = '{%s}space' % xmlnamespace
@@ -187,7 +187,7 @@ def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnspanregex)
             # let's keep track of found isbns:
             isbns.append(isbntxt)
 
-            ### Now let's update the xml with new / edited runs (this method will do nothing if it's there's no the text param is empty)
+            ### Now let's update the xml with new / edited runs (this method will do nothing if the text param is empty)
             # append run for following text
             appendRunWithEditedCopy(run, followingtxt, True, 'remove')
             # append new run for just the isbn
@@ -234,6 +234,7 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                     leadingtxt = ''
                     followingtxt = ''
                     isbn_head = isbn_string
+                    isbndict=collections.OrderedDict([])
                     # Here we handle instances where the whole loose_isbn is in a single run; if already properly styled, leave it alone
                     fullmatch = isbnspanregex.findall(runtxt)
                     if len(fullmatch) and runstyle == isbnstyle:
@@ -241,8 +242,9 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                         match = False
                     elif len(fullmatch):
                         logger.debug("%s is all in one run... " % isbn_string)
-                        leadingtxt = str([x[0] for x in re_result][0])
-                        followingtxt = str([x[3] for x in re_result][0])
+                        leadingtxt = str([x[0] for x in fullmatch][0])
+                        followingtxt = str([x[3] for x in fullmatch][0])
+                        isbndict[isbn_string]=run
                         match = True
                     # Now we look for partial matches:
                     #   Check for beginning of this ISBN string, shortening the isbnstring (isbn_head) until found (or goto next run)
@@ -255,7 +257,7 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                                 leadingtxt = re.sub(r'%s$' % isbn_head,'',runtxt)
                                 if leadingtxt:
                                     logger.debug("found leadingtxt: %s" % leadingtxt)
-                                isbndict=collections.OrderedDict([(isbn_head,run)])
+                                isbndict[isbn_head]=run
                                 temp_run = run
                             isbn_head = isbn_head[:-1]
                             # if we have a match: check if we matched the whole isbn, see if its already styled:
@@ -290,22 +292,22 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                                                 logger.debug("bad match for our isbn tail")
                                                 match = False
                                         temp_run = nextrun
-                        # we had a full isbn match, now we build new runs as needed: leading, isbntext and following run;
-                        #   and deleting previous versions of runs with same content
-                        if match == True:
-                            # append run for following text
-                            appendRunWithEditedCopy(isbndict[isbndict.keys()[-1]], followingtxt, True, '')
-                            # append new run for just the isbn
-                            appendRunWithEditedCopy(run, isbn_string, False, isbnstyle)
-                            # append run for leading text
-                            appendRunWithEditedCopy(isbndict[isbndict.keys()[0]], leadingtxt, True, '')
+                    # we had a full isbn match, now we build new runs as needed: leading, isbntext and following run;
+                    #   and deleting previous versions of runs with same content
+                    if match == True:
+                        # append run for following text
+                        appendRunWithEditedCopy(isbndict[isbndict.keys()[-1]], followingtxt, True, '')
+                        # append new run for just the isbn
+                        appendRunWithEditedCopy(run, isbn_string, False, isbnstyle)
+                        # append run for leading text
+                        appendRunWithEditedCopy(isbndict[isbndict.keys()[0]], leadingtxt, True, '')
 
-                            # remove the original run(s)
-                            for key, value in isbndict.iteritems():
-                                value.getparent().remove(value)
+                        # remove the original run(s)
+                        for key, value in isbndict.iteritems():
+                            value.getparent().remove(value)
 
-                            # add this isbn to list for report
-                            styled_loose_isbns.append(isbn_string)
+                        # add this isbn to list for report
+                        styled_loose_isbns.append(isbn_string)
 
     return report_dict, styled_loose_isbns
 

@@ -90,6 +90,17 @@ def getParaStyle(para):      # move to lxml_utils?
         stylename = ""
     return stylename
 
+def getRunStyle(run):
+    try:
+        rstyle = run.find(".//*w:rStyle", wordnamespaces)
+        if rstyle is not None:
+            stylename = rstyle.get('{%s}val' % wnamespace)
+        else:
+            stylename = ""    # Default paragraph style
+    except:
+        stylename = ""
+    return stylename
+
 # lookup longname of style in styles.xml of file.
 #  save looked up values in a dict to speed up repeat lookups if desired
 def getStyleLongname(styleshortname, stylenamemap={}):

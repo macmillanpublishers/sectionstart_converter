@@ -280,7 +280,7 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
         errs_duringcleanup.append("-back up tmpdir to logfolder")
 
     # these two items only apply to converter and reporter
-    if scriptname != "validator":
+    if not scriptname.startswith("validator"):
         # 4 return original_file to outfolder
         logger.info("trying: return original file to OUT folder")
         try:

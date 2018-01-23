@@ -1,13 +1,8 @@
 ######### IMPORT PY LIBRARIES
 
 import os
-# import shutil
-# import re
-# import uuid
-# import json
 import sys
 import logging
-# import inspect
 # make sure to install lxml: sudo pip install lxml
 from lxml import etree
 
@@ -42,7 +37,7 @@ logger = logging.getLogger(__name__)
 
 
 # #---------------------  METHODS
-def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_item, errorlist, validator_warnings):
+def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_item, errorlist, warninglist, validator_warnings):
     # make sure we're not supposed to skip this recipe_item as per "exclude_from" key
     if not("exclude_from" in recipe_item and scriptname in recipe_item["exclude_from"]):
         tmptextlist = []
@@ -75,15 +70,23 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                     # newline = line.replace("zdescription", item['description']).replace("para_string", item['para_string']).replace("parent_section_start_content", item['parent_section_start_content'])
                     # newline = newline.replace("parent_section_start_type", lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap))
                     tmptextlist.append(newline)
-                    if "badnews" in recipe_item and recipe_item["badnews"] == True:
+                    if "badnews" in recipe_item and recipe_item["badnews"] == 'any':
                         new_errstring = recipe_item["errstring"].format(description=item['description'], para_string='"'+item['para_string'].encode('utf-8')+'"', parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap),  para_index=item['para_index'])
                         # new_errstring = "** ERROR: {}\n".format(new_errstring)
                         errorlist.append(new_errstring)
                         tmptextlist =[]
+                if "badnews" in recipe_item and recipe_item["badnews"] == 'one_allowed' and len(recipe_item["dict_category_name"]) > 1:
+                    new_errstring = recipe_item["errstring"].format(stylecount=len(recipe_item["dict_category_name"]))
+                    errorlist.append(new_errstring)
+                    tmptextlist =[]
+                    print "DEBUG!", len(recipe_item["dict_category_name"])
             else:
                 # if this is required content and is absent from report_dict, we have an error.
                 if "required" in recipe_item and recipe_item["required"] == True:
                     errorlist.append(recipe_item["errstring"])
+                # if this is required content and is absent from report_dict, we have a warning.
+                if "suggested" in recipe_item and recipe_item["suggested"] == True:
+                    warninglist.append(recipe_item["errstring"])
                 # if we have alternate content, add it in (if we continue using this item)
                 if "alternate_content" in recipe_item:
                     tmptextlist = []
@@ -106,7 +109,7 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
         textreport_list += tmptextlist
     return validator_warnings
 
-def addErrorList(textreport_list, errorlist):
+def addErrorList(textreport_list, errorlist, warninglist):
     if errorlist:
         tmperrorlist = []
         # add header to tmplist
@@ -115,6 +118,9 @@ def addErrorList(textreport_list, errorlist):
         # add errors to tmplist
         for errstring in errorlist:
             new_errstring = "** ERROR: {}\n".format(errstring)
+            tmperrorlist.append(new_errstring)
+        for errstring in warninglist:
+            new_errstring = "** WARNING: {}\n".format(errstring)
             tmperrorlist.append(new_errstring)
 
         # add footer with our contact info to tmplist
@@ -125,11 +131,11 @@ def addErrorList(textreport_list, errorlist):
         textreport_list = tmperrorlist + textreport_list
     return textreport_list
 
-def addBanner(textreport_list, errorlist, validator_warnings, scriptname):
+def addBanner(textreport_list, errorlist, warninglist, validator_warnings, scriptname):
     if scriptname == "converter":
         banner = report_recipe.getBanners()['converter'].format(helpurl=cfg.helpurl)
     elif scriptname == "reporter":
-        if errorlist:
+        if errorlist or warninglist:
             banner = report_recipe.getBanners()['reporter_err']
         else:
             banner = report_recipe.getBanners()['reporter_noerr']
@@ -152,20 +158,21 @@ def generateReport(report_dict, outputtxt_path, scriptname):
     textreport = ""
     textreport_list = []
     errorlist = []
+    warninglist = []
     validator_warnings = []
 
     # get the report recipe
-    recipe = report_recipe.getReportRecipe(cfg.titlestyle, cfg.authorstyle, cfg.isbnstyle)
+    recipe = report_recipe.getReportRecipe(cfg.titlestyle, cfg.authorstyle, cfg.isbnstyle, cfg.logostyle)
 
     # build our style report as a list of strings
     for item in sorted(recipe):
-        validator_warnings = buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe[item], errorlist, validator_warnings)
+        validator_warnings = buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe[item], errorlist, warninglist, validator_warnings)
 
     # add Error List, errheader & footer to
-    textreport_list = addErrorList(textreport_list, errorlist)
+    textreport_list = addErrorList(textreport_list, errorlist, warninglist)
 
     # add success/fail banner based script & presence of alerts
-    addBanner(textreport_list, errorlist, validator_warnings, scriptname)
+    addBanner(textreport_list, errorlist, warninglist, validator_warnings, scriptname)
 
     # print report to console
     for line in textreport_list:    # for debug

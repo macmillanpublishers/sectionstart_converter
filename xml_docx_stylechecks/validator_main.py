@@ -82,7 +82,7 @@ if __name__ == '__main__':
                 # print "* This .docx did not have section start styles, attaching up-to-date template"
                 docx_uptodate = attachtemplate.attachTemplate()
             elif version_result == "newer_template_avail":
-                logger.info("'version_result' = '%s'. Attaching macmillan template and adding 'Notice' alert." % version_result)                
+                logger.info("'version_result' = '%s'. Attaching macmillan template and adding 'Notice' alert." % version_result)
                 noticestring = usertext_templates.alerts()["v_newertemplate_avail"].format(current_version=current_version, template_version=template_version)
                 os_utils.logAlerttoJSON(alerts_json, "notice", noticestring)
                 logger.warn("* NOTE: {}".format(noticestring))
@@ -113,7 +113,7 @@ if __name__ == '__main__':
                 os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
             if protection:
-                errstring = usertext_templates.alerts()["protected"]
+                errstring = usertext_templates.alerts()["protected"].format(protection=protection)
                 os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
 
@@ -130,4 +130,4 @@ if __name__ == '__main__':
         # log to logfile for dev
         logger.exception("ERROR ------------------ :")
         # the last 4 parameters only apply to reporter and converter
-        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, logfile, "", "", "", "")
+        setup_cleanup.cleanupException(this_outfolder, workingfile, cfg.inputfilename, alerts_json, tmpdir, cfg.logdir, inputfilename_noext, cfg.script_name, cfg.validator_logfile, "", "", "", "")

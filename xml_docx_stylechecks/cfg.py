@@ -36,7 +36,8 @@ inputfilename = inputfilename_noext + inputfile_ext
 validator_logfile = ''
 processwatch_file = ''
 if sys.argv[2:]:
-    if script_name == "validator":
+    if script_name.startswith("validator"):
+    # if script_name == "validator":
         validator_logfile = sys.argv[2]
     else:
         processwatch_file = sys.argv[2]
@@ -68,7 +69,8 @@ else:
     main_tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","tmpdir") # debug, for testing on MacOS
     staging_file = os.path.join(os.sep,"Users",currentuser,"staging.txt")
 # tmpfolder and outfolder
-if script_name == "validator":
+if script_name.startswith("validator"):
+# if script_name == "validator":
     tmpdir = os.path.dirname(inputfile)
     this_outfolder = tmpdir
 else:
@@ -90,13 +92,15 @@ else:
 ### Files
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
 stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
-if script_name == "validator":
+# if script_name == "validator":
+if script_name.startswith("validator"):
     stylereport_txt = os.path.join(this_outfolder,"{}_ValidationReport.txt".format(inputfilename_noext))
 workingfile = os.path.join(tmpdir, inputfilename)
 ziproot = os.path.join(tmpdir, "{}_unzipped".format(inputfilename_noext))		# the location where we unzip the input file
 template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
 stylereport_json = os.path.join(tmpdir, "stylereport.json")
 alerts_json = os.path.join(tmpdir, "alerts.json")
+isbn_check_json = os.path.join(tmpdir, "isbn_check.json")
 
 ### Resources in other Repos
 macmillan_template_name = "macmillan.dotx"
@@ -153,7 +157,10 @@ always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
 helpurl = "https://confluence.macmillan.com/display/PWG/Stylecheck+Help"
 # The first document version in history with section starts
 sectionstart_versionstring = '4.7.0'
-# TitlepageTitle style
+# regex for finding ISBNS
+isbnregex = re.compile(r"(97[89](\D?\d){10})")
+isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
+# Hardcoded stylenames
 titlestyle = "Titlepage Book Title (tit)"
 chapnumstyle = "Chap Number (cn)"
 chaptitlestyle = "Chap Title (ct)"
@@ -162,6 +169,7 @@ parttitlestyle = "Part Title (pt)"
 isbnstyle = "span ISBN (isbn)"
 authorstyle = "Titlepage Author Name (au)"
 logostyle = "Titlepage Logo (logo)"
+hyperlinkstyle = "span hyperlink (url)"
 illustrationholder_style = "Illustration holder (ill)"
 inline_illustrationholder_style = "span illustration holder (illi)"
 titlesection_stylename = "Section-Titlepagesti"

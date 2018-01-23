@@ -21,7 +21,7 @@ def getBanners():
 
             ATTN: One or more items of note turned up during document validation:
             {v_warning_banner}
-            
+
             See below for details.
 
             (Need help reviewing this report? Visit {helpurl})
@@ -55,7 +55,7 @@ def getBanners():
 # This method defines what goes in the StyleReport txt and mail outputs, in what order, + formatting.
 # See the commented "SAMPLE RECIPE ENTRY" below for details on each field.  All fields should be optional,
 #   though text, title or dict_category_name must be present for something to print
-def getReportRecipe(titlestyle, authorstyle, isbnstyle):
+def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
     report_recipe = {
         # # # # # # # # # # # # #  SAMPLE RECIPE ENTRY:
         # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -73,7 +73,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
     	# 	                        #   (If this is true you will need an "errstring" entry too)
         #   "v_warning_banner": "Alert string",   # this is for validator only scripts - if any edits were made or unsupported styles were found, we want to surface
         #                                       a different banner on the report output. Including this key=True signals that we want that warning.
-        #   "badnews": True,        # < If you want each entry from this report_dict category in the Error List,mark this True
+        #   "badnews": 'any',        # < If you want any entry from this report_dict category in the Error List,mark this True.. if one entry is ok but more are errors, use value 'one_allowed'
         #   "errstring": "No paragraphs."   # < The base string you want used to appear in the report's Error list
         #   "alternate_content": {          # < If you want an alternate title or text element to appear when
         #       "title": "TEST FAIL"        #   report_dict category is empty or not present, set them here. If you
@@ -300,22 +300,36 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
             "exclude_from": ["validator", "converter"],
     		"dict_category_name": "non-Macmillan_style_used",
     		"line_template": "",
-    		"badnews": True,
+    		"badnews": 'any',
             "errstring": "Non-Macmillan style '{description}' in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
     	},
     	"91_non_bookmaker_style": {
             "exclude_from": ["validator", "converter"],
     		"dict_category_name": "non_bookmaker_macmillan_style",
     		"line_template": "",
-    		"badnews": True,
+    		"badnews": 'any',
             "errstring": "Non-Bookmaker style: '{description}' in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
     	},
     	"92_empty_section_start_para": {
             "exclude_from": ["validator", "converter"],
     		"dict_category_name": "empty_section_start_para",
     		"line_template": "",
-    		"badnews": True,
+    		"badnews": 'any',
             "errstring": "Empty Section-Start paragraph: found a '{description}' para with no text."# (Paragraph {para_index})"
+    	},
+    	"93_too_many_title_paras": {
+            "exclude_from": ["validator", "converter"],
+    		"dict_category_name": "title_paras",
+    		"line_template": "",
+    		"badnews": 'one_allowed',
+            "errstring": "Too many '{}' paragraphs detected, only one is allowed.".format(titlestyle)
+    	},
+    	"94_no_logo_paras": {
+            "exclude_from": ["validator", "converter"],
+    		"dict_category_name": "logo_paras",
+    		"line_template": "",
+    		"suggested": True,
+            "errstring": "No styled '{}' line detected. If you would like a logo included on your titlepage, please add this style.".format(logostyle)
     	}
     }
     # print report_recipe
@@ -326,6 +340,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle):
 if __name__ == '___':
     # hardcoding values, just for testing
     titlestyle = "Titlepage Book Title (tit)"
+    logostyle = "Titlepage Book Title (tit)"
     isbnstyle = "span ISBN (isbn)"
     authorstyle = "Titlepage Author Name (au)"
 

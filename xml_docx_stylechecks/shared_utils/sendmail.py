@@ -73,7 +73,7 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
 
         ######### LOCAL DECLARATIONS
         with open(cfg.smtp_txt) as f:
-            smtp_address = f.readline()
+            smtp_address = f.readline().strip()
         port = 25
         from_email_address = cfg.from_email_address
         always_bcc_address = cfg.always_bcc_address

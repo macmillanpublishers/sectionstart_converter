@@ -22,6 +22,8 @@ if inputfile[-1:] == '"':
     inputfile = inputfile[:-1]
 # get just basename
 original_inputfilename = os.path.basename(inputfile)
+# get project_dir (eg, 'stylecheck/converter', 'stylecheck_stg/reporter')
+project_dir = os.path.dirname(os.path.dirname(inputfile))
 # separate filename and extension
 original_inputfilename_noext, inputfile_ext = os.path.splitext(original_inputfilename)
 # clean out non-alphanumeric chars
@@ -76,11 +78,8 @@ if script_name.startswith("validator"):
 else:
     tmpdir = os.path.join(main_tmpdir,"%s_%s_%s" % (script_name[0], inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
     # tmpdir = os.path.join(main_tmpdir,"%s_%s" % (inputfilename_noext, 'debug'))     # for debug
-    # in_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "IN")
-    if os.path.exists(staging_file):
-        out_folder = os.path.join(dropboxfolder, "stylecheck_stg", script_name, "OUT")
-    else:
-        out_folder = os.path.join(dropboxfolder, "stylecheck", script_name, "OUT")
+    # in_folder = os.path.join(project_dir, 'IN')
+    out_folder = os.path.join(project_dir, 'OUT')
     this_outfolder = os.path.join(out_folder, inputfilename_noext)
 # log folder (differs on staging server)
 if os.path.exists(staging_file):
@@ -154,7 +153,7 @@ alert_email_address = "Publishing Workflows <workflows@macmillan.com>"
 support_email_address = "workflows@macmillan.com" # if the display name is present it comes out weird in user-messaging.. and not required for emails via smtplib
 from_email_address = "Publishing Workflows <workflows@macmillan.com>"
 always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
-helpurl = "https://confluence.macmillan.com/display/PWG/Stylecheck+Help"
+helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
 # The first document version in history with section starts
 sectionstart_versionstring = '4.7.0'
 # regex for finding ISBNS

@@ -126,7 +126,7 @@ def alerts():
         # Error - Converter only.
         "c_has_template": "This document already has the most recent style template attached. If you think this still needs conversion, contact {support_email_address}.",
         # Warning / Notice: unaccepted_tcs
-        "c_unaccepted_tcs": "We found un-reviewed tracked changes in this document. We went ahead and inserted section-starts, but if anything looks wrong, please review tracked changes in your original manuscript and run converter again!",
+        "c_unaccepted_tcs": "We found un-reviewed tracked changes in this document. Barring other errors, section-starts were inserted, but if anything looks wrong, please review tracked changes in your original manuscript and run converter again!",
         # Warning: unaccepted_tcs
         "v_unaccepted_tcs": "We found un-reviewed tracked changes in this document. All tracked-changes were accepted",
         # Warning: unaccepted_tcs

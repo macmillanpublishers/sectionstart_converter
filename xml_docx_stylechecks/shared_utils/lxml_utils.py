@@ -201,7 +201,10 @@ def getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, secti
         stylename = pneighbors['nextstyle']
     # set content equal to the content of the first heading-styled para in the section
     #   if heading para is chapnumber or partnumber, join it with the following Chap Title / Part title para(s?)
-    if stylename in headingstyles:
+    #   (manually setting Copyright section's name)
+    if sectionname == cfg.copyrightsection_stylename:
+        newcontent = 'Copyright'
+    elif stylename in headingstyles:
         if stylename == cfg.chapnumstyle or stylename == cfg.partnumstyle:
             pneighbors = getNeighborParas(tmp_para)
             if (stylename == cfg.chapnumstyle and pneighbors['nextstyle'] == cfg.chaptitlestyle) or (stylename == cfg.partnumstyle and pneighbors['nextstyle'] == cfg.parttitlestyle):

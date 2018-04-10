@@ -75,11 +75,10 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                         # new_errstring = "** ERROR: {}\n".format(new_errstring)
                         errorlist.append(new_errstring)
                         tmptextlist =[]
-                if "badnews" in recipe_item and recipe_item["badnews"] == 'one_allowed' and len(recipe_item["dict_category_name"]) > 1:
+                if "badnews" in recipe_item and recipe_item["badnews"] == 'one_allowed' and len(report_dict[recipe_item["dict_category_name"]]) > 1:
                     new_errstring = recipe_item["errstring"].format(stylecount=len(recipe_item["dict_category_name"]))
                     errorlist.append(new_errstring)
                     tmptextlist =[]
-                    print "DEBUG!", len(recipe_item["dict_category_name"])
             else:
                 # if this is required content and is absent from report_dict, we have an error.
                 if "required" in recipe_item and recipe_item["required"] == True:

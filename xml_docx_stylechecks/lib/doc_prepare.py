@@ -58,7 +58,7 @@ def rmEmptyFirstLastParas(doc_root, report_dict):
     firstpara = allparas[0+i]
     while not lxml_utils.getParaTxt(firstpara).strip():
         # print "lastpara", lxml_utils.getParaIndex(lastpara)
-        lxml_utils.logForReport(report_dict,firstpara,"removed_empty_firstlast_para","first para")
+        lxml_utils.logForReport(report_dict,doc_root,firstpara,"removed_empty_firstlast_para","first para")
         firstpara.getparent().remove(firstpara)
         # increment firstpara & recalculate
         i+=1
@@ -70,7 +70,7 @@ def rmEmptyFirstLastParas(doc_root, report_dict):
     # print lxml_utils.getParaIndex(lastpara)
     while not lxml_utils.getParaTxt(lastpara).strip():
         # print "lastpara", lxml_utils.getParaIndex(lastpara)
-        lxml_utils.logForReport(report_dict,lastpara,"removed_empty_firstlast_para","last para")
+        lxml_utils.logForReport(report_dict,doc_root,lastpara,"removed_empty_firstlast_para","last para")
         lastpara.getparent().remove(lastpara)
         # increment lastpara & recalculate
         j+=1
@@ -86,7 +86,7 @@ def rmCharStylesFromHeads(report_dict, doc_root, nocharstyle_headingstyles):
             if rstyle is not None:
                 # optional; log to report_dict
                 rstylename = rstyle.get('{%s}val' % wnamespace)
-                lxml_utils.logForReport(report_dict,para,"rm_charstyle_from_heading","Removed '%s' charstyle from '%s' heading." % (rstylename, headingstyle))
+                lxml_utils.logForReport(report_dict,doc_root,para,"rm_charstyle_from_heading","Removed '%s' charstyle from '%s' heading." % (rstylename, headingstyle))
                 # delete the runstyle!
                 rstyle.getparent().remove(rstyle)
     return report_dict
@@ -104,7 +104,7 @@ def replaceSoftBreak(para, report_dict):
             softbreak.addnext(new_run_text)
             # rm the break
             softbreak.getparent().remove(softbreak)
-        lxml_utils.logForReport(report_dict,para,"replaced_soft_break","replaced %s softbreaks with replace_string: '%s'" % (len(softbreaks),replace_string))
+        lxml_utils.logForReport(report_dict,doc_root,para,"replaced_soft_break","replaced %s softbreaks with replace_string: '%s'" % (len(softbreaks),replace_string))
     return report_dict
 
 def concatTitleParas(titlestyle, report_dict, doc_root):
@@ -132,7 +132,7 @@ def concatTitleParas(titlestyle, report_dict, doc_root):
     if newtitlestring != titlestring:
         lxml_utils.addRunToPara(newtitlestring, firsttitlepara, True)
         # log for report (optional)
-        lxml_utils.logForReport(report_dict,pneighbors['next'],"concatenated_extra_titlepara_and_removed",newtitlestring)
+        lxml_utils.logForReport(report_dict,doc_root,pneighbors['next'],"concatenated_extra_titlepara_and_removed",newtitlestring)
     return report_dict
 
 # where original_run is the run we clone & append after
@@ -198,14 +198,14 @@ def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnspanregex)
             run.getparent().remove(run)
 
             # and log what we did!
-            lxml_utils.logForReport(report_dict,para,"rmd_nonisbn_from_isbnspan","non-isbn content present in span, split into new runs")
+            lxml_utils.logForReport(report_dict,doc_root,para,"rmd_nonisbn_from_isbnspan","non-isbn content present in span, split into new runs")
         # if no isbn is present, let's remove the rStyle (isbn span)
         else:
             # find the runstyle element and remove it
             rstyle = run.find(".//*w:rStyle", wordnamespaces)
             rstyle.getparent().remove(rstyle)
             # optional - log to report_dict:
-            lxml_utils.logForReport(report_dict,para,"rmd_nonisbn_from_isbnspan","isbn not present in this isbn span, removed the whole thing")
+            lxml_utils.logForReport(report_dict,doc_root,para,"rmd_nonisbn_from_isbnspan","isbn not present in this isbn span, removed the whole thing")
 
     logger.debug("trimmed isbns %s " % isbns)
     return report_dict, isbns
@@ -320,7 +320,7 @@ def insertRequiredSectionStart(sectionstartstyle, doc_root, contents, report_dic
         # insert my sspara at the beginnig of the doc
         lxml_utils.insertPara(sectionstartstyle, first_para, doc_root, contents, "before")
         # log that we added this!
-        lxml_utils.logForReport(report_dict,first_para.getprevious(),"added_required_section_start","added '%s' to the beginning of the manuscript" % lxml_utils.getStyleLongname(sectionstartstyle))
+        lxml_utils.logForReport(report_dict,doc_root,first_para.getprevious(),"added_required_section_start","added '%s' to the beginning of the manuscript" % lxml_utils.getStyleLongname(sectionstartstyle))
     return report_dict
 
 def removeTextWithCharacterStyle(report_dict, doc_root, style):
@@ -332,7 +332,7 @@ def removeTextWithCharacterStyle(report_dict, doc_root, style):
         # remove the run with this style
         run.getparent().remove(run)
         # optional - log to report_dict:
-        lxml_utils.logForReport(report_dict,para,"rmd_styled_runs","removed text (%s) styled with '%s'" % (text, style))
+        lxml_utils.logForReport(report_dict,doc_root,para,"rmd_styled_runs","removed text (%s) styled with '%s'" % (text, style))
     return report_dict
 
 def insertEbookISBN(report_dict, doc_root, copyrightsection_stylename, copyrightstyles, isbn, isbnstyle):
@@ -356,7 +356,7 @@ def insertEbookISBN(report_dict, doc_root, copyrightsection_stylename, copyright
     new_run_props.append(new_run_props_style)
     new_text.addprevious(new_run_props)
     # log for report
-    lxml_utils.logForReport(report_dict,lastpara.getnext(),"added_ebook_isbn","added '%s'" % isbn)
+    lxml_utils.logForReport(report_dict,doc_root,lastpara.getnext(),"added_ebook_isbn","added '%s'" % isbn)
     return report_dict
 
 
@@ -387,10 +387,10 @@ def insertBookinfo(report_dict, doc_root, stylename, leadingpara_style, bookinfo
         leadingpara = lxml_utils.findParasWithStyle(leadingpara_style, doc_root)[0]
         if leadingpara is not None and bookinfo_item:
             lxml_utils.insertPara(stylename, leadingpara, doc_root, bookinfo_item, "after")
-            lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (lxml_utils.getStyleLongname(stylename), bookinfo_item))
+            lxml_utils.logForReport(report_dict,doc_root,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (lxml_utils.getStyleLongname(stylename), bookinfo_item))
         else:
             if not bookinfo_item:
-                lxml_utils.logForReport(report_dict,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (lxml_utils.getStyleLongname(stylename), bookinfo_item))
+                lxml_utils.logForReport(report_dict,doc_root,leadingpara.getnext(),"added_required_book_info","added '%s' paragraph with content: '%s'" % (lxml_utils.getStyleLongname(stylename), bookinfo_item))
                 logger.warn("'%s' was missing from the manuscript but could not be auto-inserted because %s lookup value was empty." % (stylename, bookinfo_item))
             if leadingpara is None:
                 logger.warn("Could not find required %s styled 'leading_para' to insert bookinfo field: '%s'" % (leadingpara_style, bookinfo_item))
@@ -410,7 +410,7 @@ def deleteShapesAndBreaks(report_dict, doc_root, objects_to_delete):
             element.getparent().remove(element)
             # optional - log to report_dict
             if para is not None:
-                lxml_utils.logForReport(report_dict,para,"deleted_shapes_and_sectionbreaks","deleted %s item" % shape)
+                lxml_utils.logForReport(report_dict,doc_root,para,"deleted_shapes_and_sectionbreaks","deleted %s item" % shape)
     return report_dict
 
 def rmNonPrintingHeads(report_dict, doc_root, nonprintingheads):
@@ -421,7 +421,7 @@ def rmNonPrintingHeads(report_dict, doc_root, nonprintingheads):
             # get text for log
             paratxt = lxml_utils.getParaTxt(para)
             # log the para and remove
-            lxml_utils.logForReport(report_dict,para,"removed_nonprintinghead_para","removed a '%s' with contents: '%s'" % (style, paratxt))
+            lxml_utils.logForReport(report_dict,doc_root,para,"removed_nonprintinghead_para","removed a '%s' with contents: '%s'" % (style, paratxt))
             para.getparent().remove(para)
     return report_dict
 

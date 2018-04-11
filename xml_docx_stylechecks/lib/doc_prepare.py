@@ -413,8 +413,10 @@ def deleteShapesAndBreaks(report_dict, doc_root, objects_to_delete):
                 lxml_utils.logForReport(report_dict,doc_root,para,"deleted_shapes_and_sectionbreaks","deleted %s item" % shape)
     return report_dict
 
-def rmNonPrintingHeads(report_dict, doc_root, nonprintingheads):
+def rmNonPrintingHeads(report_dict, doc_xml, nonprintingheads):
     logger.info("* * * commencing rmNonPrintingHeads function...")
+    doc_tree = etree.parse(doc_xml)
+    doc_root = doc_tree.getroot()
     for style in nonprintingheads:
         paras = lxml_utils.findParasWithStyle(style, doc_root)
         for para in paras:
@@ -488,11 +490,6 @@ def docPrepare(report_dict):
     # remove first or last paras if they contain only white space
     #   (this has to come after sectionStartTally function, otherwise it may rip out empty Section Start para at beginning of doc)
     report_dict = rmEmptyFirstLastParas(doc_root, report_dict)
-
-    # # # Commenting this out until we have alternate padding in place for these items.
-    # # # See Asana task: https://app.asana.com/0/405970099375554/453275643539715
-    # now that we captured their contents (where needed), we can get rid of Nonprinting head paras
-    report_dict = rmNonPrintingHeads(report_dict, doc_root, cfg.nonprintingheads)
 
     # autonumber contents for chapter, Appendix, Part
     report_dict = lxml_utils.autoNumberSectionParaContent(report_dict, sectionnames, cfg.autonumber_sections, doc_root)

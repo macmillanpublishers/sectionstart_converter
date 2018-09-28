@@ -296,6 +296,13 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
     		"required": "n-a",
             "v_warning_banner": "Edit(s) made during document validation: combined multiline Title."
     	},
+    	"89_non_section_start_styled_firstpara": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "exclude_from": ["converter"],
+    		"dict_category_name": "non_section_start_styled_firstpara",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "First paragraph of document styled with non-Section Start style ('{description}')."# (Paragraph {para_index})"
+    	},
     	"90_non_macmillan_styles": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
             "exclude_from": ["validator", "converter"],
     		"dict_category_name": "non-Macmillan_style_used",

@@ -99,6 +99,9 @@ if __name__ == '__main__':
             logger.info("Running style report functions")
             report_dict = stylereports.styleReports(report_dict)
 
+            # # # remove non-printing heads:  has to run after style_report or refs for SectionStartneeded info is missing
+            report_dict = doc_prepare.rmNonPrintingHeads(report_dict, cfg.doc_xml, cfg.nonprintingheads)
+
             ### zip ziproot up as a docx
             logger.info("Zipping updated xml into a .docx in the tmpfolder")
             os_utils.rm_existing_os_object(newdocxfile, 'validated_docx')            # < --- this should get replaced with our fancy folder rename

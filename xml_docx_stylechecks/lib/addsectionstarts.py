@@ -144,7 +144,7 @@ def evalPrevUntil(sectionname, section_start_rules, cbstring, sectionbegin_para)
     pneighbors = lxml_utils.getNeighborParas(sectionbegin_para)
     para_tmp = sectionbegin_para
 
-    while pneighbors['prevstyle'] not in required_plus_prevuntil_styles:
+    while pneighbors['prevstyle'] and pneighbors['prevstyle'] not in required_plus_prevuntil_styles:
         # increment para upwards
         para_tmp = pneighbors['prev']
         pneighbors = lxml_utils.getNeighborParas(para_tmp)
@@ -156,6 +156,9 @@ def evalPrevUntil(sectionname, section_start_rules, cbstring, sectionbegin_para)
     elif pneighbors['prevstyle'] in prevuntil_styles:
         logger.debug("true: found required-style before prev_until-style:'%s'" % pneighbors['prevstyle'])
         return True
+    elif not pneighbors['prevstyle']:
+        logger.debug("false: reached the beginning of the document, which indicates erroneous styling")
+        return False
 
 def evalPosition(sectionname, section_start_rules, cbstring, sectionbegin_para, sectiontypes):
     logger.debug("evaluate 'position' rule...")

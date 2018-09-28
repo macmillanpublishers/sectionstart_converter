@@ -75,11 +75,10 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                         # new_errstring = "** ERROR: {}\n".format(new_errstring)
                         errorlist.append(new_errstring)
                         tmptextlist =[]
-                if "badnews" in recipe_item and recipe_item["badnews"] == 'one_allowed' and len(recipe_item["dict_category_name"]) > 1:
+                if "badnews" in recipe_item and recipe_item["badnews"] == 'one_allowed' and len(report_dict[recipe_item["dict_category_name"]]) > 1:
                     new_errstring = recipe_item["errstring"].format(stylecount=len(recipe_item["dict_category_name"]))
                     errorlist.append(new_errstring)
                     tmptextlist =[]
-                    print "DEBUG!", len(recipe_item["dict_category_name"])
             else:
                 # if this is required content and is absent from report_dict, we have an error.
                 if "required" in recipe_item and recipe_item["required"] == True:
@@ -110,11 +109,18 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
     return validator_warnings
 
 def addErrorList(textreport_list, errorlist, warninglist):
-    if errorlist:
+    if errorlist or warninglist:
         tmperrorlist = []
+
+        # define header & footer
+        if errorlist:
+            header = "\n{:-^80}".format(" ERRORS ")
+        elif warninglist:
+            header = "\n{:-^80}".format(" WARNINGS ")
+
         # add header to tmplist
-        errheader = "\n{:-^80}".format(" ERRORS ")
-        tmperrorlist.append(errheader)
+        tmperrorlist.append(header)
+
         # add errors to tmplist
         for errstring in errorlist:
             new_errstring = "** ERROR: {}\n".format(errstring)
@@ -123,9 +129,10 @@ def addErrorList(textreport_list, errorlist, warninglist):
             new_errstring = "** WARNING: {}\n".format(errstring)
             tmperrorlist.append(new_errstring)
 
-        # add footer with our contact info to tmplist
-        errfooter = "\nIf you have any questions about how to handle these errors,\nplease contact %s." % cfg.support_email_address
-        tmperrorlist.append(errfooter)
+        # add footer to tmplist
+        if errorlist:
+            footer = "\nIf you have any questions about how to handle these errors,\nplease contact %s." % cfg.support_email_address
+            tmperrorlist.append(footer)
 
         # add this to list for output
         textreport_list = tmperrorlist + textreport_list
@@ -135,7 +142,7 @@ def addBanner(textreport_list, errorlist, warninglist, validator_warnings, scrip
     if scriptname == "converter":
         banner = report_recipe.getBanners()['converter'].format(helpurl=cfg.helpurl)
     elif scriptname == "reporter":
-        if errorlist or warninglist:
+        if errorlist: #or warninglist:
             banner = report_recipe.getBanners()['reporter_err']
         else:
             banner = report_recipe.getBanners()['reporter_noerr']
@@ -168,7 +175,7 @@ def generateReport(report_dict, outputtxt_path, scriptname):
     for item in sorted(recipe):
         validator_warnings = buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe[item], errorlist, warninglist, validator_warnings)
 
-    # add Error List, errheader & footer to
+    # add Error List, errheader & footer
     textreport_list = addErrorList(textreport_list, errorlist, warninglist)
 
     # add success/fail banner based script & presence of alerts

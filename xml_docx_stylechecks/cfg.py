@@ -68,7 +68,7 @@ if hostOS == "Windows":
     dropboxfolder = os.path.join("C:",os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
 else:
     dropboxfolder = os.path.join(os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
-    main_tmpdir = os.path.join(os.sep,"Users",currentuser,"Documents","programming_projects","tmpdir") # debug, for testing on MacOS
+    main_tmpdir = os.path.join(os.sep,"Users",currentuser,"stylecheck_tmp") # debug, for testing on MacOS
     staging_file = os.path.join(os.sep,"Users",currentuser,"staging.txt")
 # tmpfolder and outfolder
 if script_name.startswith("validator"):

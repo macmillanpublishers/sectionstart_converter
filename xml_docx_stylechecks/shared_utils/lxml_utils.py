@@ -70,11 +70,16 @@ def getParaTxt(para):
     return paratext
 
 # return the w14:paraId attribute's value for a paragraph
-def getParaId(para):
-    # if len(para):
+def getParaId(para, doc_root):
     if para is not None:
         attrib_id_key = '{%s}paraId' % w14namespace
         para_id = para.get(attrib_id_key)
+        if para_id is None:
+            # create a new para_id and set it for the para!
+            new_para_id = generate_para_id(doc_root)
+            logger.warn("no para_id: making & setting our own: %s" % new_para_id)
+            para.attrib["{%s}paraId" % w14namespace] = new_para_id
+            para_id = new_para_id
     else:
         para_id = 'n-a' # this could happen if we are trying to get id of a prev or next para that does not exist
     return para_id
@@ -248,7 +253,7 @@ def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingsty
             sectionname = stylename
             # log the section start para
             #   (we can run this before content is added to paras, b/c that content is captured later in the 'calcLocationInfoForLog' method
-            report_dict = logForReport(report_dict, para, "section_start_found", sectionname)
+            report_dict = logForReport(report_dict,doc_root, para, "section_start_found", sectionname)
 
             # check to see ifthe para is empty (no contents) and if so log it, and, if 'call_type' is insert, fix it.
             if not getParaTxt(para).strip():
@@ -259,10 +264,10 @@ def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingsty
                     # add new content to Para! ()'True' = remove existing run(s) from para that may contain whitespace)
                     addRunToPara(content, para, True)
                     # log it for report
-                    report_dict = logForReport(report_dict,para,"wrote_to_empty_section_start_para",sectionname)
+                    report_dict = logForReport(report_dict,doc_root,para,"wrote_to_empty_section_start_para",sectionname)
                 else:
                     # log it for report
-                    report_dict = logForReport(report_dict,para,"empty_section_start_para",sectionname)
+                    report_dict = logForReport(report_dict,doc_root,para,"empty_section_start_para",sectionname)
     # logger.warn("finish = %s" % time.strftime("%y%m%d-%H%M%S"))
     return report_dict
 
@@ -338,14 +343,14 @@ def autoNumberSectionParaContent(report_dict, sectionnames, autonumber_sections,
                 # increment autonum
                 autonum += 1
                 # optional logging:
-                logForReport(report_dict,para,"autonumbering_applied",sectionlongname)
+                logForReport(report_dict,doc_root,para,"autonumbering_applied",sectionlongname)
 
     return report_dict
 
 # a method to log paragraph id for style report etc
-def logForReport(report_dict,para,category,description):
+def logForReport(report_dict,doc_root,para,category,description):
     para_dict = {}
-    para_dict["para_id"] = getParaId(para)
+    para_dict["para_id"] = getParaId(para, doc_root)
     para_dict["description"] = description
     if category not in report_dict:
         report_dict[category] = []

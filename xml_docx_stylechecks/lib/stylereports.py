@@ -57,6 +57,15 @@ def logTextOfParasWithStyle(report_dict, doc_root, stylename, report_category):
         report_dict = lxml_utils.logForReport(report_dict,doc_root,para,report_category,paratxt)
     return report_dict
 
+def checkFirstPara(report_dict, doc_root, sectionnames):
+    logger.info("Checking first para style to make sure it is a SectionStart..")
+    firstpara = doc_root.find(".//*w:p", wordnamespaces)
+    stylename = lxml_utils.getParaStyle(firstpara)
+    if stylename not in sectionnames:
+        logger.info("first para style is not a Section Start style, instead is: " + stylename)
+        report_dict = lxml_utils.logForReport(report_dict,doc_root,firstpara,"non_section_start_styled_firstpara",stylename)
+    return report_dict
+
 def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, call_type):
     styles_tree = etree.parse(styles_xml)
     styles_root = styles_tree.getroot()
@@ -153,6 +162,9 @@ def styleReports(report_dict):
 
     # get all Section Starts in the doc:
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "report")
+
+    # check first para for non-section-startstyle
+    report_dict = checkFirstPara(report_dict, doc_root, sectionnames)
 
     # log texts of illustation-holder paras
     report_dict = logTextOfParasWithStyle(report_dict, doc_root, cfg.illustrationholder_style, "illustration_holders")

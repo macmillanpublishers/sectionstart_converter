@@ -56,7 +56,7 @@ def generate_rsid():
     idupper = idshort.upper()
     return str(idupper)
 
-# test generated rsid for iuniqueness, re-create as needed
+# test generated rsid for uniqueness, re-create as needed
 def get_unique_rsid(settings_root, wordnamespaces):
 	# generate random id
     rsiduniq = generate_rsid()
@@ -69,20 +69,27 @@ def get_unique_rsid(settings_root, wordnamespaces):
         rsid_searchstring = './/*w:p[@w14:paraId="%s"]' % rsiduniq
     return str(rsiduniq)
 
+## note from rsidtable branch--some types of saves / conversions appear to wipe the rsid table,
+##  wherein at this point we would need to generate a new rsid table, rsidroot value, and record our rsid itself.
+##  since upon further reading, rsids are really only for merging documents, I'm going to try to bypass adding rsid's if the table doesn't exist.
 def setupRSID(settings_root, wordnamespaces, wnamespace, settings_xml):
-	# generate a unique rsid
-	new_rsid = get_unique_rsid(settings_root, wordnamespaces)
-	# create risd etree element
-	new_rsid_el = etree.Element("{%s}rsid" % wnamespace)
-	new_rsid_el.attrib["{%s}val" % wnamespace] = new_rsid
-	# insert rsid in docx's settings.xml rsids table
-	rsids = settings_root.find('.//w:rsids', wordnamespaces)
-	rsids.append(new_rsid_el)
+    # generate a unique rsid
+    new_rsid = get_unique_rsid(settings_root, wordnamespaces)
+    # create risd etree element
+    new_rsid_el = etree.Element("{%s}rsid" % wnamespace)
+    new_rsid_el.attrib["{%s}val" % wnamespace] = new_rsid
+    # insert rsid in docx's settings.xml rsids table
+    rsids = settings_root.find('.//w:rsids', wordnamespaces)
+    # test if rsid table is present:
+    if rsids:
+    	rsids.append(new_rsid_el)
+    	# update the settings.xmlfile
+    	writeXMLtoFile(settings_root, settings_xml)
+    else:
+        #no rsids table present, skipping adding rsids with styles
+        new_rsid = ""
 
-	# update the settings.xmlfile
-	writeXMLtoFile(settings_root, settings_xml)
-
-	return new_rsid
+    return new_rsid
 
 
 def	updateCustomDocProps(customprops_xml, template_customprops_xml):
@@ -192,12 +199,14 @@ def styleWrite(templatestyleID, templatestyle_element, new_rsid, styles_root):
 		if existing_element is not None:
 			styles_root.remove(existing_element)
 
-		# apply newrsid to style before we write
-		for child in templatestyle_element.getchildren():
-			rsid_attr = "{%s}rsid" % wnamespace
-			if child.tag == rsid_attr:
-				rsid_val_key = '{%s}val' % wnamespace
-				child.set(rsid_val_key, new_rsid)
+        # check if rsid table is present:
+        if new_rsid:
+    		# apply newrsid to style before we write
+    		for child in templatestyle_element.getchildren():
+    			rsid_attr = "{%s}rsid" % wnamespace
+    			if child.tag == rsid_attr:
+    				rsid_val_key = '{%s}val' % wnamespace
+    				child.set(rsid_val_key, new_rsid)
 
 		# add new style to the docx
 		styles_root.append(templatestyle_element)

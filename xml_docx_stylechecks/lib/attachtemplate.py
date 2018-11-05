@@ -202,14 +202,17 @@ def styleWrite(templatestyleID, templatestyle_element, new_rsid, styles_root):
         # check if rsid table is present:
         if new_rsid:
     		# apply newrsid to style before we write
+            ## note from rsidtable branch: this may be moot too since the macmillantemplate is auto-generated; the source styles will never have
+            ##  rsid attributes. We are not really dealing in rsids anywhere else, so effectively disabling them here too is fine--
+            ##  and leaving handling in place in case we want to generate rsidtable & bring them back for other scripts (would want to generate rsid attribute if no exist)
     		for child in templatestyle_element.getchildren():
     			rsid_attr = "{%s}rsid" % wnamespace
     			if child.tag == rsid_attr:
     				rsid_val_key = '{%s}val' % wnamespace
     				child.set(rsid_val_key, new_rsid)
 
-		# add new style to the docx
-		styles_root.append(templatestyle_element)
+        # add new style to the docx
+        styles_root.append(templatestyle_element)
 
 def getNewTemplateStyles(new_rsid, template_styles_tree, styles_root, styles_xml):
 	# cycles through all styles in the template with parentheses in the stylename

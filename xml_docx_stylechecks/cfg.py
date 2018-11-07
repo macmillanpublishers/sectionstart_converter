@@ -102,23 +102,29 @@ alerts_json = os.path.join(tmpdir, "alerts.json")
 isbn_check_json = os.path.join(tmpdir, "isbn_check.json")
 
 ### Resources in other Repos
-macmillan_template_name = "macmillan.dotx"
+# use static paths if scripts_dir exists, else try to use relative paths
 if scripts_dir:
-    macmillan_template = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","macmillan.dotx")
-    macmillanstyles_json = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
-    vbastyleconfig_json = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","vba_style_config.json")
-    section_start_rules_json = os.path.join(scripts_dir, "bookmaker_validator","section_start_rules.json")
-    styleconfig_json = os.path.join(scripts_dir, "htmlmaker_js","style_config.json")
-    smtp_txt = os.path.join(scripts_dir, "bookmaker_authkeys","smtp.txt")
-    db_access_token_txt = os.path.join(scripts_dir, "bookmaker_authkeys","access_token.txt")
+    scripts_dir_path = scripts_dir
 else:
-    macmillan_template = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.dotx")
-    macmillanstyles_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
-    vbastyleconfig_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","vba_style_config.json")
-    section_start_rules_json = os.path.join(__location__,'..','..',"bookmaker_validator","section_start_rules.json")
-    styleconfig_json = os.path.join(__location__,'..','..',"htmlmaker_js","style_config.json")
-    smtp_txt = os.path.join(__location__,'..','..',"bookmaker_authkeys","smtp.txt")
-    db_access_token_txt = os.path.join(__location__,'..','..',"bookmaker_authkeys","access_token.txt")
+    scripts_dir_path = os.path.join(__location__,'..','..')
+
+# rsuite versus macmillan template paths. For now mocking up a separate repo locally for rsuite
+if script_name.startswith("rsuite"):
+    templatefiles_path = os.path.join(scripts_dir_path, "Word-template_assets","StyleTemplate_auto-generate")
+    template_name = "macmillan.dotx"
+else:
+    templatefiles_path = os.path.join(scripts_dir_path, "RSuite-Word_assets","StyleTemplate_auto-generate")
+    template_name = "RSuite.dotx"
+
+# paths
+section_start_rules_json = os.path.join(scripts_dir_path, "bookmaker_validator","section_start_rules.json")
+smtp_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","smtp.txt")
+db_access_token_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","access_token.txt")
+macmillan_template = os.path.join(templatefiles_path, template_name)
+macmillanstyles_json = os.path.join(templatefiles_path, "macmillan.json")
+vbastyleconfig_json = os.path.join(templatefiles_path, "vba_style_config.json")
+styleconfig_json = os.path.join(templatefiles_path, "style_config.json")
+
 
 # # # # # # # # RELATIVE PATHS for unzipping and zipping docx files
 ### xml filepaths relative to ziproot

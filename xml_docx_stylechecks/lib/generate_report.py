@@ -38,8 +38,8 @@ logger = logging.getLogger(__name__)
 
 # #---------------------  METHODS
 def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_item, errorlist, warninglist, validator_warnings):
-    # make sure we're not supposed to skip this recipe_item as per "exclude_from" key
-    if not("exclude_from" in recipe_item and scriptname in recipe_item["exclude_from"]):
+    # make sure we're not supposed to skip this recipe_item as per "include_for" key
+    if "include_for" in recipe_item and scriptname in recipe_item["include_for"]:
         tmptextlist = []
         tmptextlist.append("")  # start with a blank line
         # add formatted title if present

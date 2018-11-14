@@ -70,7 +70,8 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
     styles_tree = etree.parse(styles_xml)
     styles_root = styles_tree.getroot()
     macmillanstyle_shortnames = [lxml_utils.transformStylename(s) for s in macmillanstyledata]
-    macmillan_styles_found = []
+    macmillan_styles_found = [] # <- for char styles
+    macmillan_styles_found_plus_sectionname = []   # <- for para styles
     macmillanstyles = []
     logger.info("logging 1st use of every Macmillan para style, and any use of other style")
     # get a list of macmillan stylenames from macmillan json
@@ -79,7 +80,14 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
     for para in doc_root.findall(".//*w:p", wordnamespaces):
         # get stylename from each para
         stylename = lxml_utils.getParaStyle(para)
-        if stylename not in macmillan_styles_found:
+        # get parent section for context
+        sectionpara_name, sectionpara_contents = lxml_utils.getSectionName(para, sectionnames)
+        test_if_present = False
+        for d in macmillan_styles_found_plus_sectionname:
+            if sectionpara_name in d and d[sectionpara_name] == stylename:
+                test_if_present = True
+        # if stylename not in macmillan_styles_found:
+        if test_if_present == False:
 
             # search styles.xlm for corresponding full stylename so we can determine if its a Macmillan style
             stylesearchstring = ".//w:style[@w:styleId='%s']/w:name" % stylename
@@ -89,7 +97,7 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
             stylename_full = stylematch.get('{%s}val' % wnamespace)
             if stylename_full in macmillanstyles:
                 if stylename not in sectionnames:
-                    macmillan_styles_found.append(stylename)
+                    macmillan_styles_found_plus_sectionname.append({sectionpara_name:stylename})
                     report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_style_first_use",stylename_full)
                 if stylename_full not in bookmakerstyles:
                     report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non_bookmaker_macmillan_style",stylename_full)
@@ -123,9 +131,8 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
             # get fullname value and test against Macmillan style list
             stylename_full = stylematch.get('{%s}val' % wnamespace)
             if stylename_full in macmillanstyles:
-                if stylename not in sectionnames:
-                    macmillan_styles_found.append(stylename)
-                    report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_charstyle_first_use",stylename_full)
+                macmillan_styles_found.append(stylename)
+                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_charstyle_first_use",stylename_full)
             elif stylename_full != "annotation reference" and stylename_full != "endnote reference":
                 report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
                 # if we're "validating", revert custom_styles based on Macmillan styles to base_style
@@ -141,24 +148,30 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
     return report_dict, doc_root
 
 
-def styleReports(report_dict):
+def styleReports(call_type, report_dict):
     # local vars
-    section_start_rules_json = cfg.section_start_rules_json
+    # section_start_rules_json = cfg.section_start_rules_json
+    # styleconfig_json = cfg.styleconfig_json
     macmillanstyles_json = cfg.macmillanstyles_json
     vbastyleconfig_json = cfg.vbastyleconfig_json
     doc_xml = cfg.doc_xml
     doc_tree = etree.parse(doc_xml)
     doc_root = doc_tree.getroot()
     styles_xml = cfg.styles_xml
+    endnotes_tree = etree.parse(cfg.endnotes_xml)
+    endnotes_root = endnotes_tree.getroot()
+    footnotes_tree = etree.parse(cfg.footnotes_xml)
+    footnotes_root = footnotes_tree.getroot()
 
     # read rules & macmillan styles from JSONs
-    section_start_rules = os_utils.readJSON(section_start_rules_json)
+    # section_start_rules = os_utils.readJSON(section_start_rules_json)
+    # styleconfig_dict = os_utils.readJSON(styleconfig_json)
     macmillanstyledata = os_utils.readJSON(macmillanstyles_json)
     vbastyleconfig_dict = os_utils.readJSON(vbastyleconfig_json)
     bookmakerstyles = vbastyleconfig_dict["bookmakerstyles"]
 
     # get Section Start names & styles from sectionstartrules
-    sectionnames = lxml_utils.getAllSectionNames(section_start_rules)
+    sectionnames = lxml_utils.getAllSectionNamesFromVSC(vbastyleconfig_dict)
 
     # get all Section Starts in the doc:
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "report")
@@ -185,11 +198,11 @@ def styleReports(report_dict):
     report_dict = logTextOfRunsWithStyle(report_dict, doc_root, cfg.inline_illustrationholder_style, "illustration_holders")
 
     # list all styles used in the doc
-    report_dict, doc_root = getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report")
+    report_dict, doc_root = getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, call_type)
 
     # add/update para index numbers
     logger.debug("Update all report_dict records with para_index")
-    report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectionnames)
+    report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectionnames, [footnotes_root, endnotes_root])
 
     # create sorted version of "illustration_holders" list in reportdict based on para_index; for reports
     if "illustration_holders" in report_dict:
@@ -206,5 +219,5 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
 
     report_dict = {}
-    report_dict = styleReports(report_dict)
+    report_dict = styleReports("report", report_dict)
     logger.debug("report_dict:  %s" % report_dict)

@@ -42,7 +42,7 @@ logger = logging.getLogger(__name__)
 
 def getParaParentofElement(element):
     tmp_element = element
-    while tmp_element.tag != '{%s}p' % wnamespace and tmp_element.tag != '{%s}body' % wnamespace:
+    while tmp_element.tag != '{%s}p' % wnamespace and tmp_element.tag != '{%s}body' % wnamespace and tmp_element.getparent() is not None:
         tmp_element = tmp_element.getparent()
     if tmp_element.tag == '{%s}body' % wnamespace:
         para = None
@@ -399,18 +399,18 @@ def insertBookinfo(report_dict, doc_root, stylename, leadingpara_style, bookinfo
 # Tring to capture shapes, inserted clipart, etc, with two types of elements, as per:
 #   http://officeopenxml.com/drwOverview.php
 # Re: Section breaks, if one is inserted, another one is created at the end of the body (invisible to user). Not reporting this one, bu it's getting rm'd too.
-def deleteShapesAndBreaks(report_dict, doc_root, objects_to_delete):
-    logger.info("* * * commencing deleteShapesAndBreaks function...")
-    for shape in objects_to_delete:
-        searchstring = ".//*{}".format(shape)
-        for element in doc_root.findall(searchstring, wordnamespaces):
+def deleteObjects(report_dict, xml_root, objects_to_delete, object_name):
+    logger.info("* * * commencing deleteObjects function for %s..." % object_name)
+    for object in objects_to_delete:
+        searchstring = ".//{}".format(object)
+        for element in xml_root.findall(searchstring, wordnamespaces):
             # get para for report (before we delete theelement!):
             para = getParaParentofElement(element)
             # remove element
             element.getparent().remove(element)
             # optional - log to report_dict
             if para is not None:
-                lxml_utils.logForReport(report_dict,doc_root,para,"deleted_shapes_and_sectionbreaks","deleted %s item" % shape)
+                lxml_utils.logForReport(report_dict,xml_root,para,"deleted_objects-%s" % object_name ,"deleted %s of type %s" % (object_name, object))
     return report_dict
 
 def rmNonPrintingHeads(report_dict, doc_xml, nonprintingheads):
@@ -453,10 +453,10 @@ def docPrepare(report_dict):
     bookinfo = getBookInfoFromExternalLookups(bookinfo_json, config_json)
 
     # get Section Start names & styles from sectionstartrules
-    sectionnames = lxml_utils.getAllSectionNames(section_start_rules)
+    sectionnames = lxml_utils.getAllSectionNamesFromSSR(section_start_rules)
 
-    # delete shapes, pictures, clip art etc
-    report_dict = deleteShapesAndBreaks(report_dict, doc_root, cfg.objects_to_delete)
+    # delete shapes, pictures, clip art, + section breaks
+    report_dict = deleteObjects(report_dict, doc_root, cfg.shape_objects + cfg.section_break, "shapes_and_section_breaks")
 
     # remove character styles from headings in list
     report_dict = rmCharStylesFromHeads(report_dict, doc_root, cfg.nocharstyle_headingstyles)

@@ -86,7 +86,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
     		"text": "If any of the information below is wrong, please fix the associated styles in the manuscript."
     	},
     	"02_metadata_title": {
-            "include_for": ["reporter", "validator"],
+            "include_for": ["reporter", "validator", "rsuitevalidate"],
     		"title": "",
     		"text": "** {} **".format(titlestyle),
     		"dict_category_name": "title_paras",
@@ -98,7 +98,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
             }
     	},
     	"03_metadata_author": {
-            "include_for": ["reporter", "validator"],
+            "include_for": ["reporter", "validator", "rsuitevalidate"],
     		"title": "",
     		"text": "** {} **".format(authorstyle),
     		"dict_category_name": "author_paras",
@@ -110,7 +110,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
             }
     	},
     	"04_metadata_isbn": {
-            "include_for": ["reporter"],
+            "include_for": ["reporter", "rsuitevalidate"],
     		"title": "",
     		"text": "** {} **".format(isbnstyle),
     		"dict_category_name": "isbn_spans",
@@ -144,7 +144,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
             }
     	},
     	"06_section_start_list": {
-            "include_for": ["reporter", "validator"],
+            "include_for": ["reporter", "validator", "rsuitevalidate"],
     		"title": "SECTIONS FOUND",
     		"text": "{:90}\n".format("The Style Report identified the following sections; note that the content of each\nSection-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,\nedit the manuscript file to add or remove incorrect Section-Start styles or content."),
     		# "text": "",""#"Here is a list of all sections detected in your manuscript",
@@ -157,7 +157,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
             }
     	},
     	"07_macmillan_style_1st_use": {
-            "include_for": ["reporter"],
+            "include_for": ["reporter", "rsuitevalidate"],
     		"title": "MACMILLAN STYLES IN USE (BY SECTION)",
     		"text": "\n{:_^45} {:_^55}".format("PARAGRAPH STYLES IN ORDER OF FIRST USE","EXCERPT FROM FIRST USE"),
     		# "text": "\n{:_^40} {:_^50}".format("PARAGRAPH STYLES IN ORDER OF FIRST USE","EXCERPT FROM FIRST USE"),
@@ -282,7 +282,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
             "include_for": ["validator"],
     		"title": "SECTION BREAKS, SHAPES AND GRAPHICS REMOVED",
     		"text": "Section Break(s) and or inserted graphics were removed in the following sections:\n",
-    		"dict_category_name": "deleted_shapes_and_sectionbreaks",
+    		"dict_category_name": "deleted_objects",
     		"line_template": "- {description} from '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
             "v_warning_banner": "Edit(s) made during document validation: removed section break(s) &/or shape(s)."
@@ -297,14 +297,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
             "v_warning_banner": "Edit(s) made during document validation: combined multiline Title."
     	},
     	"89_non_section_start_styled_firstpara": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
-            "include_for": ["reporter", "validator"],
+            "include_for": ["reporter", "validator", "rsuitevalidate"],
     		"dict_category_name": "non_section_start_styled_firstpara",
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "First paragraph of document styled with non-Section Start style ('{description}')."# (Paragraph {para_index})"
     	},
     	"90_non_macmillan_styles": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
-            "include_for": ["reporter"],
+            "include_for": ["reporter", "rsuitevalidate"],
     		"dict_category_name": "non-Macmillan_style_used",
     		"line_template": "",
     		"badnews": 'any',
@@ -325,14 +325,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
             "errstring": "Empty Section-Start paragraph: found a '{description}' para with no text."# (Paragraph {para_index})"
     	},
     	"93_too_many_title_paras": {
-            "include_for": ["reporter"],
+            "include_for": ["reporter", "rsuitevalidate"],
     		"dict_category_name": "title_paras",
     		"line_template": "",
     		"badnews": 'one_allowed',
             "errstring": "Too many '{}' paragraphs detected, only one is allowed.".format(titlestyle)
     	},
     	"94_no_logo_paras": {
-            "include_for": ["reporter"],
+            "include_for": ["reporter", "rsuitevalidate"],
     		"dict_category_name": "logo_paras",
     		"line_template": "",
     		"suggested": True,

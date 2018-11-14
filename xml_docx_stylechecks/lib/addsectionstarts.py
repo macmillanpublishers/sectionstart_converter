@@ -444,7 +444,7 @@ def sectionStartCheck(call_type, report_dict, autonumber=False):
     # get section types (by position, + all sections)
     sectiontypes = getSectionTypes(section_start_rules)
     # get Section Start names & styles from sectionstartrules
-    sectionnames = lxml_utils.getAllSectionNames(section_start_rules)
+    sectionnames = lxml_utils.getAllSectionNamesFromSSR(section_start_rules)
 
     # add priorities to rules
     section_start_rules = setRulesPriority(section_start_rules)

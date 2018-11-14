@@ -110,11 +110,11 @@ else:
 
 # rsuite versus macmillan template paths. For now mocking up a separate repo locally for rsuite
 if script_name.startswith("rsuite"):
-    templatefiles_path = os.path.join(scripts_dir_path, "Word-template_assets","StyleTemplate_auto-generate")
-    template_name = "macmillan.dotx"
+    templatefiles_path = os.path.join(scripts_dir_path,"RSuite-Word_assets","StyleTemplate_auto-generate")
+    template_name = "Rsuite.dotx"
 else:
-    templatefiles_path = os.path.join(scripts_dir_path, "RSuite-Word_assets","StyleTemplate_auto-generate")
-    template_name = "RSuite.dotx"
+    templatefiles_path = os.path.join(scripts_dir_path,"Word-template_assets","StyleTemplate_auto-generate")
+    template_name = "macmillan.dotx"
 
 # paths
 section_start_rules_json = os.path.join(scripts_dir_path, "bookmaker_validator","section_start_rules.json")
@@ -135,6 +135,9 @@ custompropsxml_relpath = os.path.join("docProps","custom.xml")  # for version do
 numberingxml_relpath = os.path.join("word","numbering.xml")  # for replacing or preserving wholesale
 rels_relpath = os.path.join("_rels",".rels")
 contenttypes_relpath = os.path.join(".","[Content_Types].xml")
+endnotesxml_relpath = os.path.join("word","endnotes.xml")
+footnotesxml_relpath = os.path.join("word","footnotes.xml")
+
 
 # Template dirs & files
 template_customprops_xml = os.path.join(template_ziproot, custompropsxml_relpath)
@@ -151,6 +154,11 @@ settings_xml = os.path.join(ziproot, settingsxml_relpath)
 customprops_xml = os.path.join(ziproot, custompropsxml_relpath)
 rels_file = os.path.join(ziproot, rels_relpath)
 contenttypes_xml = os.path.join(ziproot, contenttypes_relpath)
+endnotes_xml = os.path.join(ziproot, endnotesxml_relpath)
+footnotes_xml = os.path.join(ziproot, footnotesxml_relpath)
+commentsIds_xml = os.path.join(ziproot, "word", "commentsIds.xml")
+comments_xml = os.path.join(ziproot, "word", "comments.xml")
+commentsExtended_xml = os.path.join(ziproot, "word", "commentsExtended.xml")
 
 
 # # # # # # # GLOBAL VARS
@@ -160,8 +168,11 @@ support_email_address = "workflows@macmillan.com" # if the display name is prese
 from_email_address = "Publishing Workflows <workflows@macmillan.com>"
 always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
 helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
-# The first document version in history with section starts
-sectionstart_versionstring = '4.7.0'
+# The first key version of a template-type
+if script_name.startswith("rsuite"):
+    templateversion_cutoff = '5.0.0'
+else:
+    templateversion_cutoff = '4.7.0'
 # regex for finding ISBNS
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
@@ -179,21 +190,31 @@ illustrationholder_style = "Illustration holder (ill)"
 inline_illustrationholder_style = "span illustration holder (illi)"
 titlesection_stylename = "Section-Titlepagesti"
 copyrightsection_stylename = "Section-Copyrightscr"
+# RSuite hardcoded stylenames (can I get these from styleconfig? in some cases)
+footnotestyle = "FootnoteText" #/ "Footnote Text"
+endnotestyle = "EndnoteText" #/ "Endnote Text"
 
-autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
-# the first 3 are shapes, the 4th is a section break
-objects_to_delete = ["mc:AlternateContent", "w:pict", "w:drawing", "w:sectPr"]
+# staticstyle groups (section start)
 nocharstyle_headingstyles = ["FMHeadfmh", "BMHeadbmh", "ChapNumbercn", "PartNumberpn"]
 nonprintingheads = ["ChapTitleNonprintingctnp", "BMHeadNonprintingbmhnp", "FMHeadNonprintingfmhnp"]
 copyrightstyles = ["CopyrightTextdoublespacecrtxd", "CopyrightTextsinglespacecrtx"]
+autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
+
+# objects for deletion
+shape_objects = ["mc:AlternateContent", "w:drawing", "w:pict"]
+section_break = ["w:sectPr"]
+bookmark_objects = ["w:bookmarkStart", "w:bookmarkEnd"]
+comment_objects = ["w:commentRangeStart","w:commentRangeEnd","w:commentReference","w:comment","w15:commentEx", "w16cid:commentId"]
 
 # Word namespace vars
 wnamespace = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
 w14namespace = 'http://schemas.microsoft.com/office/word/2010/wordml'
+w15namespace = 'http://schemas.microsoft.com/office/word/2012/wordml'
+w16cidnamespace = 'http://schemas.microsoft.com/office/word/2016/wordml/cid'
 vtnamespace = "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"
 mcnamespace = "http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlnamespace = "http://www.w3.org/XML/1998/namespace"
-wordnamespaces = {'w': wnamespace, 'w14': w14namespace, 'vt': vtnamespace, 'mc': mcnamespace}
+wordnamespaces = {'w': wnamespace, 'w14': w14namespace, 'vt': vtnamespace, 'mc': mcnamespace, 'w15': w15namespace, "w16cid": w16cidnamespace}
 
 # track changes elements:
 collapse_trackchange_tags = ["ins", "moveTo"]

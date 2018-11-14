@@ -169,23 +169,32 @@ def getNeighborParas(para):          # move to lxml_utils?
         pneighbors['nextstyle'] = ""
     return pneighbors
 
-# creating a dict for secitonnames: SectionStart stylenames as keys, their 'longnames' as values
-def getAllSectionNames(section_start_rules):
-    sectionnames = {}
-    for sectionname in section_start_rules:
-        sectionnames[transformStylename(sectionname)] = sectionname
-    return sectionnames
+# creating a dict for section_names: SectionStart stylenames as keys, their 'longnames' as values
+#   from SectionStartRules file
+def getAllSectionNamesFromSSR(section_start_rules):
+    section_names = {}
+    for section_name in section_start_rules:
+        section_names[transformStylename(section_name)] = section_name
+    return section_names
+
+# creating a dict for section_names: SectionStart stylenames as keys, their 'longnames' as values
+#   from VBA styleconfig file
+def getAllSectionNamesFromVSC(vbastyleconfig_dict):
+    section_names = {}
+    for section_name in vbastyleconfig_dict["sectionstarts"]:
+        section_names[transformStylename(section_name)] = section_name
+    return section_names
 
 # return the last SectionStart para's content
-def getSectionName(para, sectionnames):
+def getSectionName(para, section_names):
     if para is not None:
         tmp_para = para
         stylename = getParaStyle(tmp_para)
-        while stylename and stylename not in sectionnames:
+        while stylename and stylename not in section_names:
             pneighbors = getNeighborParas(tmp_para)
             tmp_para = pneighbors['prev']
             stylename = pneighbors['prevstyle']
-        if stylename in sectionnames:
+        if stylename in section_names:
             sectionpara_name = stylename
             sectionpara_contents = getParaTxt(tmp_para)
         else:
@@ -196,18 +205,18 @@ def getSectionName(para, sectionnames):
         sectionpara_contents = 'n-a'
     return sectionpara_name, sectionpara_contents
 
-def getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, sectionname, sectionnames):
+def getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, section_name, section_names):
     # get para style. If not in heading styles or sectiontypes["all"], get next (while)
     tmp_para = sectionbegin_para
     stylename = getParaStyle(tmp_para)
-    while stylename and stylename not in headingstyles and stylename not in sectionnames:
+    while stylename and stylename not in headingstyles and stylename not in section_names:
         pneighbors = getNeighborParas(tmp_para)
         tmp_para = pneighbors['next']
         stylename = pneighbors['nextstyle']
     # set content equal to the content of the first heading-styled para in the section
     #   if heading para is chapnumber or partnumber, join it with the following Chap Title / Part title para(s?)
     #   (manually setting Copyright section's name)
-    if sectionname == cfg.copyrightsection_stylename:
+    if section_name == cfg.copyrightsection_stylename:
         newcontent = 'Copyright'
     elif stylename in headingstyles:
         if stylename == cfg.chapnumstyle or stylename == cfg.partnumstyle:
@@ -217,7 +226,7 @@ def getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, secti
         else:
             newcontent = getParaTxt(tmp_para).strip()
     else:   # if there was no heading-styled para
-        sectionLongName = sectionnames[sectionname]
+        sectionLongName = section_names[section_name]
         sectionshortname = sectionLongName[8:].split()[0]
         newcontent = sectionshortname
     # newcontent = "HALLOOOOOO"  (debug)
@@ -236,7 +245,7 @@ def addRunToPara(content, para, bool_rm_existing_contents=False):
         new_para_run.append(new_para_run_text)
         para.append(new_para_run)
 
-def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingstyles = []):
+def sectionStartTally(report_dict, section_names, doc_root, call_type, headingstyles = []):
     logger.info("logging all paras with SectionStart styles, and fixing any 'empty' sectionStart paras (no content)")
     # reset from any previous tallies:
     report_dict["section_start_found"] = []
@@ -248,26 +257,26 @@ def sectionStartTally(report_dict, sectionnames, doc_root, call_type, headingsty
     for pstyle in doc_root.findall(".//*w:pStyle", wordnamespaces):
         stylename = pstyle.get('{%s}val' % wnamespace)
         # logger.info(stylename) # debug
-        if stylename in sectionnames:
+        if stylename in section_names:
             para = pstyle.getparent().getparent()
-            sectionname = stylename
+            section_name = stylename
             # log the section start para
             #   (we can run this before content is added to paras, b/c that content is captured later in the 'calcLocationInfoForLog' method
-            report_dict = logForReport(report_dict,doc_root, para, "section_start_found", sectionname)
+            report_dict = logForReport(report_dict,doc_root, para, "section_start_found", section_name)
 
             # check to see ifthe para is empty (no contents) and if so log it, and, if 'call_type' is insert, fix it.
             if not getParaTxt(para).strip():
                 if call_type == "insert":
                     # find / create contents for Section start para
                     pneighbors = getNeighborParas(para)
-                    content = getContentsForSectionStart(pneighbors['next'], doc_root, headingstyles, sectionname, sectionnames)
+                    content = getContentsForSectionStart(pneighbors['next'], doc_root, headingstyles, section_name, section_names)
                     # add new content to Para! ()'True' = remove existing run(s) from para that may contain whitespace)
                     addRunToPara(content, para, True)
                     # log it for report
-                    report_dict = logForReport(report_dict,doc_root,para,"wrote_to_empty_section_start_para",sectionname)
+                    report_dict = logForReport(report_dict,doc_root,para,"wrote_to_empty_section_start_para",section_name)
                 else:
                     # log it for report
-                    report_dict = logForReport(report_dict,doc_root,para,"empty_section_start_para",sectionname)
+                    report_dict = logForReport(report_dict,doc_root,para,"empty_section_start_para",section_name)
     # logger.warn("finish = %s" % time.strftime("%y%m%d-%H%M%S"))
     return report_dict
 
@@ -307,7 +316,7 @@ def insertPara(sectionstylename, existing_para, doc_root, contents, insert_befor
     logger.info("inserted '%s' paragraph." % sectionstylename)
 
 
-def autoNumberSectionParaContent(report_dict, sectionnames, autonumber_sections, doc_root):
+def autoNumberSectionParaContent(report_dict, section_names, autonumber_sections, doc_root):
     logger.info("check if autonumbering is necessary for Section Start para contents")
     autonumber_section_counts = {}
     for sectionlongname in autonumber_sections:
@@ -368,7 +377,7 @@ def findParasWithStyle(stylename, doc_root):
     return paras
 
 # once all changes havebeen made, call this to add location info for users to the changelog dicts
-def calcLocationInfoForLog(report_dict, root, sectionnames):
+def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
     logger.info("calculating para_index numbers for all para_ids in 'report_dict'")
     try:
         # make sure we have contents in the dict
@@ -382,12 +391,18 @@ def calcLocationInfoForLog(report_dict, root, sectionnames):
                                 # Get the para object
                                 searchstring = ".//*w:p[@w14:paraId='%s']" % entry[key]
                                 para = root.find(searchstring, wordnamespaces)
+                                # If we can't find para object, check endnotes.xml and footnotes.xml
+                                if para is None:
+                                    i = 0
+                                    while i < len(alt_roots) and para is None:
+                                        para = alt_roots[i].find(searchstring, wordnamespaces)
+                                        i += 1
                                 # # # Get para index
                                 entry['para_index'] = getParaIndex(para)
                                 if entry['para_index'] == 'n-a':
                                     logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
                                 # # # Get Section Name
-                                entry['parent_section_start_type'], entry['parent_section_start_content']  = getSectionName(para, sectionnames)
+                                entry['parent_section_start_type'], entry['parent_section_start_content']  = getSectionName(para, section_names)
                                 if entry['parent_section_start_type'] == 'n-a' or entry['parent_section_start_content'] == 'n-a':
                                     logger.warn("couldn't get section start info for %s para (value was set to n-a)" % category)
                                 # # # Get 1st 10 words of para text

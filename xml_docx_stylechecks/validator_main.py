@@ -57,7 +57,7 @@ if __name__ == '__main__':
         ########## CHECK DOCUMENT
         ### check and compare versions, styling percentage, doc protection
         logger.info('Comparing docx version to template, checking percent styled, checking if protection, trackchanges...')
-        version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.sectionstart_versionstring)
+        version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.templateversion_cutoff)
         percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
         protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml)
 
@@ -97,7 +97,7 @@ if __name__ == '__main__':
 
             # # # # run style report stuff for report!
             logger.info("Running style report functions")
-            report_dict = stylereports.styleReports(report_dict)
+            report_dict = stylereports.styleReports("validate", report_dict)
 
             # # # remove non-printing heads:  has to run after style_report or refs for SectionStartneeded info is missing
             report_dict = doc_prepare.rmNonPrintingHeads(report_dict, cfg.doc_xml, cfg.nonprintingheads)

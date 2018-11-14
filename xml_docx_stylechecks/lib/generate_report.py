@@ -141,7 +141,7 @@ def addErrorList(textreport_list, errorlist, warninglist):
 def addBanner(textreport_list, errorlist, warninglist, validator_warnings, scriptname):
     if scriptname == "converter":
         banner = report_recipe.getBanners()['converter'].format(helpurl=cfg.helpurl)
-    elif scriptname == "reporter":
+    elif scriptname == "reporter" or scriptname == "rsuitevalidate":
         if errorlist: #or warninglist:
             banner = report_recipe.getBanners()['reporter_err']
         else:

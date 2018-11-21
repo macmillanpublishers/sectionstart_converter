@@ -55,7 +55,7 @@ def getBanners():
 # This method defines what goes in the StyleReport txt and mail outputs, in what order, + formatting.
 # See the commented "SAMPLE RECIPE ENTRY" below for details on each field.  All fields should be optional,
 #   though text, title or dict_category_name must be present for something to print
-def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
+def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_stylename):
     report_recipe = {
         # # # # # # # # # # # # #  SAMPLE RECIPE ENTRY:
         # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -74,6 +74,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
         #   "v_warning_banner": "Alert string",   # this is for validator only scripts - if any edits were made or unsupported styles were found, we want to surface
         #                                       a different banner on the report output. Including this key=True signals that we want that warning.
         #   "badnews": 'any',        # < If you want any entry from this report_dict category in the Error List,mark this True.. if one entry is ok but more are errors, use value 'one_allowed'
+        #   "badnews_type": 'warning' # Specify type of badnews, whether a warning or error. If neither specified, error is presumed
         #   "errstring": "No paragraphs."   # < The base string you want used to appear in the report's Error list
         #   "alternate_content": {          # < If you want an alternate title or text element to appear when
         #       "title": "TEST FAIL"        #   report_dict category is empty or not present, set them here. If you
@@ -133,11 +134,11 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
                 "text": "** {} **\nNo styled isbns detected.".format(isbnstyle)
             }
     	},
-    	"05_illustration_holders": {
+    	"05_image_holders": {
             "include_for": ["reporter", "validator", "rsuitevalidate"],
     		"title": "ILLUSTRATION LIST",
     		"text": "Verify that this list of illustrations includes only the filenames of your illustrations.\n",
-    		"dict_category_name": "illustration_holders__sort_by_index",
+    		"dict_category_name": "image_holders__sort_by_index",
     		"line_template": "{description}\n    -located in {parent_section_start_type}: {parent_section_start_content}.",# (Paragraph {para_index})",
             "alternate_content": {
                 "text": "no illustrations detected."
@@ -171,7 +172,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
             }
         },       #
     	"08_macmillan_character_style_1st_use": {
-            "include_for": ["reporter"],
+            "include_for": ["reporter", "rsuitevalidate"],
     		"text": "{:_^45}".format("CHARACTER STYLES IN USE"),
     		# "text": "{:_^40}".format("CHARACTER STYLES IN USE"),
     		"dict_category_name": "Macmillan_charstyle_first_use",
@@ -296,42 +297,148 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle):
     		"required": "n-a",
             "v_warning_banner": "Edit(s) made during document validation: combined multiline Title."
     	},
-    	"89_non_section_start_styled_firstpara": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
-            "include_for": ["reporter", "validator", "rsuitevalidate"],
+    	"80_non_section_start_styled_firstpara": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["reporter", "validator"],
     		"dict_category_name": "non_section_start_styled_firstpara",
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "First paragraph of document styled with non-Section Start style ('{description}')."# (Paragraph {para_index})"
     	},
-    	"90_non_macmillan_styles": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+    	"81__non_section_BOOK_styled_firstpara": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "non_section_BOOK_styled_firstpara",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "First paragraph of document is styled with '{description}' instead of '%s'." % booksection_stylename
+    	},
+    	"82__non_section_start_styled_secondpara": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "non_section_start_styled_secondpara",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Second paragraph of document styled with non-Section Start style: '{description}'."# (Paragraph {para_index})"
+    	},
+    	"83_non_macmillan_styles": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["reporter", "rsuitevalidate"],
     		"dict_category_name": "non-Macmillan_style_used",
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "Non-Macmillan style '{description}' in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
     	},
-    	"91_non_bookmaker_style": {
+    	"84_non_bookmaker_style": {
             "include_for": ["reporter"],
     		"dict_category_name": "non_bookmaker_macmillan_style",
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "Non-Bookmaker style: '{description}' in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
     	},
-    	"92_empty_section_start_para": {
+    	"85_empty_section_start_para": {
             "include_for": ["reporter"],
     		"dict_category_name": "empty_section_start_para",
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "Empty Section-Start paragraph: found a '{description}' para with no text."# (Paragraph {para_index})"
     	},
-    	"93_too_many_title_paras": {
+    	"86_section_blankpara": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "removed_section_blank_para",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'warning',
+            "errstring": "A blank Section-Start paragraph was removed: '{description}'. The removal of a Section-Start paragraph may have led to other errors with your manuscript."# (Paragraph {para_index})"
+    	},
+    	"87_container_blankpara": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "removed_container_blank_para",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'warning',
+            "errstring": "A blank Container paragraph with style '{descriptionA}' was removed from {descriptionB}. This is being brought to your attention in case it led to other errors with your manuscript."# (Paragraph {para_index})"
+    	},
+    	"88_spacebreak_blankpara": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "removed_spacebreak_blank_para",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'warning',
+            "errstring": "A blank paragraph with style '{descriptionA}' was removed from {descriptionB}. Even a Space-break or Separator paragraph must have content to be processed by RSuite."# (Paragraph {para_index})"
+    	},
+    	"89_container_error": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "container_error",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "No Container END para found for: '{description}', in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
+    	},
+    	"90_list_error": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "list_nesting_err",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Improper list nesting: {description} (in {parent_section_start_type}: {parent_section_start_content})."# (Paragraph {para_index})"
+    	},
+    	"91_endnote_text_misstyled": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "improperly_styled_footnote",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Endnote paragraph styled as '{description}' instead of 'Endnote Text': (Note beginning {para_string})."
+    	},
+    	"92_footnote_text_misstyled": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "improperly_styled_endnote",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Footnote paragraph styled as '{description}' instead of 'Footnote Text' (Note beginning {para_string})."# (Paragraph {para_index})"
+    	},
+    	"93_list_change_warning": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "list_change_warning",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'warning',
+            "errstring": "List type changed in the middle of a list: {description} (in {parent_section_start_type}: {parent_section_start_content})."# (Paragraph {para_index})"
+    	},
+    	"94_deleted_generic_blankpara": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "removed_blank_para",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'note',
+            "errstring": "{count} blank paragraphs were deleted from the manuscript."
+    	},
+    	"95_deleted_shape_summary": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "deleted_objects-shapes",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'note',
+            "errstring": "{count} shape objects were deleted from the manuscript."
+    	},
+    	"96_deleted_bookmark_summary": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "deleted_objects-bookmarks",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'note',
+            "errstring": "{count} bookmarks were deleted from the manuscript."
+    	},
+    	"97_deleted_comment_summary": {   # using high digits for "errror only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "deleted_objects-comments-comment_xml",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'note',
+            "errstring": "{count} comments were deleted from the manuscript."
+    	},
+    	"98_too_many_title_paras": {
             "include_for": ["reporter", "rsuitevalidate"],
     		"dict_category_name": "title_paras",
     		"line_template": "",
     		"badnews": 'one_allowed',
-            "errstring": "Too many '{}' paragraphs detected, only one is allowed.".format(titlestyle)
+            "errstring": "Too many '%s' paragraphs detected ({count}), only one is allowed." % titlestyle
     	},
-    	"94_no_logo_paras": {
+    	"99_no_logo_paras": {
             "include_for": ["reporter", "rsuitevalidate"],
     		"dict_category_name": "logo_paras",
     		"line_template": "",

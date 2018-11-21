@@ -90,6 +90,8 @@ if __name__ == '__main__':
 
                 # # # # run docPrepare function(s)
                 # report_dict = doc_prepare.docPrepare(report_dict)
+
+
                 zerostylecheck = check_docx.stripDuplicateMacmillanStyles(cfg.doc_xml, cfg.styles_xml)
                 if zerostylecheck:
                     logger.warn("duplicate Macmillan styles were found: legacy styles were replaced with new ones")
@@ -98,7 +100,7 @@ if __name__ == '__main__':
 
                 # # # run otherstyle report stuff!
                 # logger.info("Running other style report functions")
-                report_dict = stylereports.styleReports("validate", report_dict)
+                # report_dict = stylereports.styleReports("validate", report_dict)
 
                 ### zip ziproot up as a docx into outfolder
                 logger.info("Zipping updated xml into a .docx")

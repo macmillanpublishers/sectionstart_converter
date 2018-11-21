@@ -177,28 +177,42 @@ else:
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
 # Hardcoded stylenames
-titlestyle = "Titlepage Book Title (tit)"
-chapnumstyle = "Chap Number (cn)"
-chaptitlestyle = "Chap Title (ct)"
-partnumstyle = "Part Number (pn)"
-parttitlestyle = "Part Title (pt)"
-isbnstyle = "span ISBN (isbn)"
-authorstyle = "Titlepage Author Name (au)"
-logostyle = "Titlepage Logo (logo)"
-hyperlinkstyle = "span hyperlink (url)"
-illustrationholder_style = "Illustration holder (ill)"
-inline_illustrationholder_style = "span illustration holder (illi)"
-titlesection_stylename = "Section-Titlepagesti"
-copyrightsection_stylename = "Section-Copyrightscr"
-# RSuite hardcoded stylenames (can I get these from styleconfig? in some cases)
-footnotestyle = "FootnoteText" #/ "Footnote Text"
-endnotestyle = "EndnoteText" #/ "Endnote Text"
-
-# staticstyle groups (section start)
-nocharstyle_headingstyles = ["FMHeadfmh", "BMHeadbmh", "ChapNumbercn", "PartNumberpn"]
-nonprintingheads = ["ChapTitleNonprintingctnp", "BMHeadNonprintingbmhnp", "FMHeadNonprintingfmhnp"]
-copyrightstyles = ["CopyrightTextdoublespacecrtxd", "CopyrightTextsinglespacecrtx"]
-autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
+if script_name.startswith("rsuite"):
+    # RSuite hardcoded stylenames (can I get these from styleconfig? in some cases)
+    titlesection_stylename = "Section-TitlepageSTI"
+    booksection_stylename = "Section-Book (BOOK)"
+    copyrightsection_stylename = "Section-CopyrightSCR"
+    titlestyle = "Title (Ttl)"
+    isbnstyle = "cs-isbn (isbn)"
+    authorstyle = "Author1 (Au1)"
+    logostyle = "Logo-Placement (Logo)"
+    imageholder_style = "Image-Placement (Img)"
+    inline_imageholder_style = "cs-image-placement (cimg)"
+    footnotestyle = "FootnoteText" #/ "Footnote Text"
+    endnotestyle = "EndnoteText" #/ "Endnote Text"
+    spacebreakstyles = ['SeparatorSep','Blank-Space-BreakBsbrk','Ornamental-Space-BreakOsbrk']
+    # for some reason the long-stylenames for these references are lowercase?
+    valid_native_word_styles = ['Hyperlink', 'footnote reference', 'endnote reference', 'annotation reference']
+else:
+    titlestyle = "Titlepage Book Title (tit)"
+    chapnumstyle = "Chap Number (cn)"
+    chaptitlestyle = "Chap Title (ct)"
+    partnumstyle = "Part Number (pn)"
+    parttitlestyle = "Part Title (pt)"
+    isbnstyle = "span ISBN (isbn)"
+    authorstyle = "Titlepage Author Name (au)"
+    logostyle = "Titlepage Logo (logo)"
+    hyperlinkstyle = "span hyperlink (url)"
+    imageholder_style = "Illustration holder (ill)"
+    inline_imageholder_style = "span illustration holder (illi)"
+    titlesection_stylename = "Section-Titlepagesti"
+    copyrightsection_stylename = "Section-Copyrightscr"
+    # staticstyle groups (section start)
+    valid_native_word_styles = ['endnote reference', 'annotation reference']
+    nocharstyle_headingstyles = ["FMHeadfmh", "BMHeadbmh", "ChapNumbercn", "PartNumberpn"]
+    nonprintingheads = ["ChapTitleNonprintingctnp", "BMHeadNonprintingbmhnp", "FMHeadNonprintingfmhnp"]
+    copyrightstyles = ["CopyrightTextdoublespacecrtxd", "CopyrightTextsinglespacecrtx"]
+    autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
 
 # objects for deletion
 shape_objects = ["mc:AlternateContent", "w:drawing", "w:pict"]

@@ -186,6 +186,21 @@ def getAllSectionNamesFromVSC(vbastyleconfig_dict):
     return section_names
 
 # return the last SectionStart para's content
+def getContainerName(para, section_names, container_start_styles, container_end_styles):
+    allcontainerandsections = section_names + container_start_styles + container_end_styles
+    containername = ""
+    if para is not None:
+        tmp_para = para
+        stylename = getParaStyle(tmp_para)
+        while stylename and stylename not in allcontainerandsections:
+            pneighbors = getNeighborParas(tmp_para)
+            tmp_para = pneighbors['prev']
+            stylename = pneighbors['prevstyle']
+        if stylename in container_start_styles:
+            containername = getParaStyle(tmp_para)
+    return containername
+
+# return the last SectionStart para's content
 def getSectionName(para, section_names):
     if para is not None:
         tmp_para = para
@@ -199,10 +214,10 @@ def getSectionName(para, section_names):
             sectionpara_contents = getParaTxt(tmp_para)
         else:
             sectionpara_name = 'n-a' # this could happen if we are trying to get id of a prev or next para that does not exist
-            sectionpara_contents = 'n-a'
+            sectionpara_contents = ''
     else:
         sectionpara_name = 'n-a' # this could happen if we are trying to get id of a prev or next para that does not exist
-        sectionpara_contents = 'n-a'
+        sectionpara_contents = ''
     return sectionpara_name, sectionpara_contents
 
 def getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, section_name, section_names):

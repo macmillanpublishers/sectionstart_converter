@@ -110,18 +110,18 @@ else:
 
 # rsuite versus macmillan template paths. For now mocking up a separate repo locally for rsuite
 if script_name.startswith("rsuite"):
-    templatefiles_path = os.path.join(scripts_dir_path,"RSuite-Word_assets","StyleTemplate_auto-generate")
-    template_name = "Rsuite.dotx"
+    templatefiles_path = os.path.join(scripts_dir_path,"RSuite_Word-template","StyleTemplate_auto-generate")
+    template_name = "Rsuite"
 else:
     templatefiles_path = os.path.join(scripts_dir_path,"Word-template_assets","StyleTemplate_auto-generate")
-    template_name = "macmillan.dotx"
+    template_name = "macmillan"
 
 # paths
 section_start_rules_json = os.path.join(scripts_dir_path, "bookmaker_validator","section_start_rules.json")
 smtp_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","smtp.txt")
 db_access_token_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","access_token.txt")
-macmillan_template = os.path.join(templatefiles_path, template_name)
-macmillanstyles_json = os.path.join(templatefiles_path, "macmillan.json")
+macmillan_template = os.path.join(templatefiles_path, "%s.dotx" % template_name)
+macmillanstyles_json = os.path.join(templatefiles_path, "%s.json" % template_name)
 vbastyleconfig_json = os.path.join(templatefiles_path, "vba_style_config.json")
 styleconfig_json = os.path.join(templatefiles_path, "style_config.json")
 
@@ -170,7 +170,7 @@ always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
 helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
 # The first key version of a template-type
 if script_name.startswith("rsuite"):
-    templateversion_cutoff = '5.0.0'
+    templateversion_cutoff = '6.0.0'
 else:
     templateversion_cutoff = '4.7.0'
 # regex for finding ISBNS

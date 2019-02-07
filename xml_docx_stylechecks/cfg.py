@@ -35,7 +35,7 @@ inputfilename = inputfilename_noext + inputfile_ext
 
 ### Arg 2 - processwatch file for standalones, or alternate logfile if validator (embedded run)
 #   Could replace existing logging or could try to add a handler on the fly to log to both places
-validator_logfile = ''
+validator_logfile = os.path.join(os.path.dirname(inputfile), "{}_{}_{}.txt".format(script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
 processwatch_file = ''
 if sys.argv[2:]:
     if script_name.startswith("validator"):
@@ -81,12 +81,12 @@ else:
     # in_folder = os.path.join(project_dir, 'IN')
     out_folder = os.path.join(project_dir, 'OUT')
     this_outfolder = os.path.join(out_folder, inputfilename_noext)
-# log folder (differs on staging server)
-if os.path.exists(staging_file):
-    logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck_stg")
+# set logdir for non-validator items
+if os.path.basename(project_dir) == "converter" or os.path.basename(project_dir) == "reporter":
+    project_parentdir_name = os.path.basename(os.path.dirname(project_dir))
+    logdir = os.path.join(dropboxfolder, "bookmaker_logs", project_parentdir_name, os.path.basename(project_dir))
 else:
-    logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck")
-
+    logdir = os.path.join(dropboxfolder, "bookmaker_logs", os.path.basename(project_dir))
 
 ### Files
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
@@ -194,6 +194,7 @@ if script_name.startswith("rsuite"):
     # for some reason the long-stylenames for these references are lowercase?
     valid_native_word_styles = ['Hyperlink', 'footnote reference', 'endnote reference', 'annotation reference']
 else:
+    booksection_stylename = ""
     titlestyle = "Titlepage Book Title (tit)"
     chapnumstyle = "Chap Number (cn)"
     chaptitlestyle = "Chap Title (ct)"

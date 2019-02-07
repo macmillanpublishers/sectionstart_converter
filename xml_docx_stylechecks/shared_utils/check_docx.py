@@ -17,8 +17,10 @@ if __name__ == '__main__':
     import imp
     parentpath = os.path.join(sys.path[0], '..', 'cfg.py')
     cfg = imp.load_source('cfg', parentpath)
+    os_utils = imp.load_source('os_utils', osutilspath)
 else:
     import cfg
+    import shared_utils.os_utils as os_utils
 
 ######### LOCAL DECLARATIONS
 
@@ -105,11 +107,11 @@ def macmillanStyleCount(doc_xml, styles_xml):
     return percent_styled, macmillan_styled_paras, total_paras
 
 # This function consolidates version test functions
-def version_test(customprops_xml, template_customprops_xml, sectionstart_versionstring):
+def version_test(customprops_xml, template_customprops_xml, templateversion_cutoff):
 
     current_version = get_docxVersion(customprops_xml)
     template_version = get_docxVersion(template_customprops_xml)
-    sectionstart_version = sectionstart_versionstring
+    sectionstart_version = templateversion_cutoff
 
     version_result = compare_docxVersions(current_version, template_version, sectionstart_version)
     return version_result, current_version, template_version
@@ -223,6 +225,61 @@ def acceptTrackChanges(doc_xml):
             found_el.getparent().remove(found_el)
     return doc_root
 
+def stripDuplicateMacmillanStyles(doc_xml, styles_xml):
+    logger.debug("Checking for old Macmillan duplicate styles, replacing as needed...")
+    zerostylecheck = False
+
+    styles_tree = etree.parse(styles_xml)
+    styles_root = styles_tree.getroot()
+    doc_tree = etree.parse(doc_xml)
+    doc_root = doc_tree.getroot()
+    endnotes_tree = etree.parse(cfg.endnotes_xml)
+    endnotes_root = endnotes_tree.getroot()
+    footnotes_tree = etree.parse(cfg.footnotes_xml)
+    footnotes_root = footnotes_tree.getroot()
+    numbering_tree = etree.parse(cfg.numbering_xml)
+    numbering_root = numbering_tree.getroot()
+    xmlfile_dict = {doc_root:doc_xml, endnotes_root:cfg.endnotes_xml, footnotes_root:cfg.footnotes_xml, numbering_root:cfg.numbering_xml}
+
+    # get styles that end in zero: use xpath b/c lxml find doesn't support wildcard search in attr name
+    stylematches = styles_tree.xpath("w:style[@w:styleId[contains(.,'0') and substring-after(.,'0') = '']]", namespaces=wordnamespaces)
+    # print "stylematch count!!!!!!!:  %s" % len(stylematches) # debug
+    if len(stylematches):
+        for zerostyle in stylematches:
+            # only capture macmillan styles
+            if "(" in zerostyle.find(".//w:name", wordnamespaces).get('{%s}val' % wnamespace):
+                zerostylecheck = True
+                zerostylename = zerostyle.get('{%s}styleId' % wnamespace)
+                nozerostylename = zerostylename[:-1]
+                nozero_downcase_stylename = nozerostylename.lower()
+
+                # # find style with matching stylename. (legacystyle), get its stylename, rm legacy style
+                legacystyle = styles_tree.xpath("w:style[translate(@w:styleId,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz') = '" + nozero_downcase_stylename + "']", namespaces=wordnamespaces)
+                legacystylename = legacystyle[0].get('{%s}styleId' % wnamespace)
+                parent_el = legacystyle[0].getparent()
+                parent_el.remove(legacystyle[0])
+                # go back to zero style & correct its stylename (sans 0)
+                zerostyle.attrib["{%s}styleId" % wnamespace] = nozerostylename
+
+                # cycle through xml files to update relevant stylenames
+                for xml_root in xmlfile_dict:
+                    # search xml file for all references to legacystyle
+                    legacystyle_searchstring = ".//w:pStyle[@w:val='%s']" % legacystylename
+                    legacy_uses = xml_root.findall(legacystyle_searchstring, wordnamespaces)
+                    zerostyle_searchstring = ".//w:pStyle[@w:val='%s']" % zerostylename
+                    zerostyle_uses = xml_root.findall(zerostyle_searchstring, wordnamespaces)
+                    # and update all style references to zerostyle & legacy
+                    for changedstyle_use in zerostyle_uses + legacy_uses:
+                        changedstyle_use.attrib["{%s}val" % wnamespace] = nozerostylename
+
+    if zerostylecheck:  # write out updated xml files if zerostyles were found
+        # write xml out. styles file:
+        os_utils.writeXMLtoFile(styles_root, styles_xml)
+        #   .. and all other xml files:
+        for xml_root in xmlfile_dict:
+            os_utils.writeXMLtoFile(xml_root, xmlfile_dict[xml_root])
+
+    return zerostylecheck
 
 #---------------------  MAIN
 

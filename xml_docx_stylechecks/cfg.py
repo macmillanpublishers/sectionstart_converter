@@ -35,7 +35,7 @@ inputfilename = inputfilename_noext + inputfile_ext
 
 ### Arg 2 - processwatch file for standalones, or alternate logfile if validator (embedded run)
 #   Could replace existing logging or could try to add a handler on the fly to log to both places
-validator_logfile = ''
+validator_logfile = os.path.join(os.path.dirname(inputfile), "{}_{}_{}.txt".format(script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
 processwatch_file = ''
 if sys.argv[2:]:
     if script_name.startswith("validator"):
@@ -81,12 +81,12 @@ else:
     # in_folder = os.path.join(project_dir, 'IN')
     out_folder = os.path.join(project_dir, 'OUT')
     this_outfolder = os.path.join(out_folder, inputfilename_noext)
-# log folder (differs on staging server)
-if os.path.exists(staging_file):
-    logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck_stg")
+# set logdir for non-validator items
+if os.path.basename(project_dir) == "converter" or os.path.basename(project_dir) == "reporter":
+    project_parentdir_name = os.path.basename(os.path.dirname(project_dir))
+    logdir = os.path.join(dropboxfolder, "bookmaker_logs", project_parentdir_name, os.path.basename(project_dir))
 else:
-    logdir = os.path.join(dropboxfolder, "bookmaker_logs", "stylecheck")
-
+    logdir = os.path.join(dropboxfolder, "bookmaker_logs", os.path.basename(project_dir))
 
 ### Files
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
@@ -102,23 +102,29 @@ alerts_json = os.path.join(tmpdir, "alerts.json")
 isbn_check_json = os.path.join(tmpdir, "isbn_check.json")
 
 ### Resources in other Repos
-macmillan_template_name = "macmillan.dotx"
+# use static paths if scripts_dir exists, else try to use relative paths
 if scripts_dir:
-    macmillan_template = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","macmillan.dotx")
-    macmillanstyles_json = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
-    vbastyleconfig_json = os.path.join(scripts_dir, "Word-template_assets","StyleTemplate_auto-generate","vba_style_config.json")
-    section_start_rules_json = os.path.join(scripts_dir, "bookmaker_validator","section_start_rules.json")
-    styleconfig_json = os.path.join(scripts_dir, "htmlmaker_js","style_config.json")
-    smtp_txt = os.path.join(scripts_dir, "bookmaker_authkeys","smtp.txt")
-    db_access_token_txt = os.path.join(scripts_dir, "bookmaker_authkeys","access_token.txt")
+    scripts_dir_path = scripts_dir
 else:
-    macmillan_template = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.dotx")
-    macmillanstyles_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","macmillan.json")
-    vbastyleconfig_json = os.path.join(__location__,'..','..',"Word-template_assets","StyleTemplate_auto-generate","vba_style_config.json")
-    section_start_rules_json = os.path.join(__location__,'..','..',"bookmaker_validator","section_start_rules.json")
-    styleconfig_json = os.path.join(__location__,'..','..',"htmlmaker_js","style_config.json")
-    smtp_txt = os.path.join(__location__,'..','..',"bookmaker_authkeys","smtp.txt")
-    db_access_token_txt = os.path.join(__location__,'..','..',"bookmaker_authkeys","access_token.txt")
+    scripts_dir_path = os.path.join(__location__,'..','..')
+
+# rsuite versus macmillan template paths. For now mocking up a separate repo locally for rsuite
+if script_name.startswith("rsuite"):
+    templatefiles_path = os.path.join(scripts_dir_path,"RSuite_Word-template","StyleTemplate_auto-generate")
+    template_name = "Rsuite"
+else:
+    templatefiles_path = os.path.join(scripts_dir_path,"Word-template_assets","StyleTemplate_auto-generate")
+    template_name = "macmillan"
+
+# paths
+section_start_rules_json = os.path.join(scripts_dir_path, "bookmaker_validator","section_start_rules.json")
+smtp_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","smtp.txt")
+db_access_token_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","access_token.txt")
+macmillan_template = os.path.join(templatefiles_path, "%s.dotx" % template_name)
+macmillanstyles_json = os.path.join(templatefiles_path, "%s.json" % template_name)
+vbastyleconfig_json = os.path.join(templatefiles_path, "vba_style_config.json")
+styleconfig_json = os.path.join(templatefiles_path, "style_config.json")
+
 
 # # # # # # # # RELATIVE PATHS for unzipping and zipping docx files
 ### xml filepaths relative to ziproot
@@ -129,6 +135,9 @@ custompropsxml_relpath = os.path.join("docProps","custom.xml")  # for version do
 numberingxml_relpath = os.path.join("word","numbering.xml")  # for replacing or preserving wholesale
 rels_relpath = os.path.join("_rels",".rels")
 contenttypes_relpath = os.path.join(".","[Content_Types].xml")
+endnotesxml_relpath = os.path.join("word","endnotes.xml")
+footnotesxml_relpath = os.path.join("word","footnotes.xml")
+
 
 # Template dirs & files
 template_customprops_xml = os.path.join(template_ziproot, custompropsxml_relpath)
@@ -145,6 +154,11 @@ settings_xml = os.path.join(ziproot, settingsxml_relpath)
 customprops_xml = os.path.join(ziproot, custompropsxml_relpath)
 rels_file = os.path.join(ziproot, rels_relpath)
 contenttypes_xml = os.path.join(ziproot, contenttypes_relpath)
+endnotes_xml = os.path.join(ziproot, endnotesxml_relpath)
+footnotes_xml = os.path.join(ziproot, footnotesxml_relpath)
+commentsIds_xml = os.path.join(ziproot, "word", "commentsIds.xml")
+comments_xml = os.path.join(ziproot, "word", "comments.xml")
+commentsExtended_xml = os.path.join(ziproot, "word", "commentsExtended.xml")
 
 
 # # # # # # # GLOBAL VARS
@@ -154,40 +168,68 @@ support_email_address = "workflows@macmillan.com" # if the display name is prese
 from_email_address = "Publishing Workflows <workflows@macmillan.com>"
 always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
 helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
-# The first document version in history with section starts
-sectionstart_versionstring = '4.7.0'
+# The first key version of a template-type
+if script_name.startswith("rsuite"):
+    templateversion_cutoff = '6.0.0'
+else:
+    templateversion_cutoff = '4.7.0'
 # regex for finding ISBNS
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
 # Hardcoded stylenames
-titlestyle = "Titlepage Book Title (tit)"
-chapnumstyle = "Chap Number (cn)"
-chaptitlestyle = "Chap Title (ct)"
-partnumstyle = "Part Number (pn)"
-parttitlestyle = "Part Title (pt)"
-isbnstyle = "span ISBN (isbn)"
-authorstyle = "Titlepage Author Name (au)"
-logostyle = "Titlepage Logo (logo)"
-hyperlinkstyle = "span hyperlink (url)"
-illustrationholder_style = "Illustration holder (ill)"
-inline_illustrationholder_style = "span illustration holder (illi)"
-titlesection_stylename = "Section-Titlepagesti"
-copyrightsection_stylename = "Section-Copyrightscr"
+if script_name.startswith("rsuite"):
+    # RSuite hardcoded stylenames (can I get these from styleconfig? in some cases)
+    titlesection_stylename = "Section-TitlepageSTI"
+    booksection_stylename = "Section-Book (BOOK)"
+    copyrightsection_stylename = "Section-CopyrightSCR"
+    titlestyle = "Title (Ttl)"
+    isbnstyle = "cs-isbn (isbn)"
+    authorstyle = "Author1 (Au1)"
+    logostyle = "Logo-Placement (Logo)"
+    imageholder_style = "Image-Placement (Img)"
+    inline_imageholder_style = "cs-image-placement (cimg)"
+    footnotestyle = "FootnoteText" #/ "Footnote Text"
+    endnotestyle = "EndnoteText" #/ "Endnote Text"
+    spacebreakstyles = ['SeparatorSep','Blank-Space-BreakBsbrk','Ornamental-Space-BreakOsbrk']
+    # for some reason the long-stylenames for these references are lowercase?
+    valid_native_word_styles = ['Hyperlink', 'footnote reference', 'endnote reference', 'annotation reference']
+else:
+    booksection_stylename = ""
+    titlestyle = "Titlepage Book Title (tit)"
+    chapnumstyle = "Chap Number (cn)"
+    chaptitlestyle = "Chap Title (ct)"
+    partnumstyle = "Part Number (pn)"
+    parttitlestyle = "Part Title (pt)"
+    isbnstyle = "span ISBN (isbn)"
+    authorstyle = "Titlepage Author Name (au)"
+    logostyle = "Titlepage Logo (logo)"
+    hyperlinkstyle = "span hyperlink (url)"
+    imageholder_style = "Illustration holder (ill)"
+    inline_imageholder_style = "span illustration holder (illi)"
+    titlesection_stylename = "Section-Titlepagesti"
+    copyrightsection_stylename = "Section-Copyrightscr"
+    # staticstyle groups (section start)
+    valid_native_word_styles = ['endnote reference', 'annotation reference']
+    nocharstyle_headingstyles = ["FMHeadfmh", "BMHeadbmh", "ChapNumbercn", "PartNumberpn"]
+    nonprintingheads = ["ChapTitleNonprintingctnp", "BMHeadNonprintingbmhnp", "FMHeadNonprintingfmhnp"]
+    copyrightstyles = ["CopyrightTextdoublespacecrtxd", "CopyrightTextsinglespacecrtx"]
+    autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
 
-autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
-# the first 3 are shapes, the 4th is a section break
-objects_to_delete = ["mc:AlternateContent", "w:pict", "w:drawing", "w:sectPr"]
-nocharstyle_headingstyles = ["FMHeadfmh", "BMHeadbmh", "ChapNumbercn", "PartNumberpn"]
-nonprintingheads = ["ChapTitleNonprintingctnp", "BMHeadNonprintingbmhnp", "FMHeadNonprintingfmhnp"]
-copyrightstyles = ["CopyrightTextdoublespacecrtxd", "CopyrightTextsinglespacecrtx"]
+# objects for deletion
+shape_objects = ["mc:AlternateContent", "w:drawing", "w:pict"]
+section_break = ["w:sectPr"]
+bookmark_objects = ["w:bookmarkStart", "w:bookmarkEnd"]
+comment_objects = ["w:commentRangeStart","w:commentRangeEnd","w:commentReference","w:comment","w15:commentEx", "w16cid:commentId"]
 
 # Word namespace vars
 wnamespace = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
 w14namespace = 'http://schemas.microsoft.com/office/word/2010/wordml'
+w15namespace = 'http://schemas.microsoft.com/office/word/2012/wordml'
+w16cidnamespace = 'http://schemas.microsoft.com/office/word/2016/wordml/cid'
 vtnamespace = "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"
 mcnamespace = "http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlnamespace = "http://www.w3.org/XML/1998/namespace"
-wordnamespaces = {'w': wnamespace, 'w14': w14namespace, 'vt': vtnamespace, 'mc': mcnamespace}
+wordnamespaces = {'w': wnamespace, 'w14': w14namespace, 'vt': vtnamespace, 'mc': mcnamespace, 'w15': w15namespace, "w16cid": w16cidnamespace}
 
 # track changes elements:
 collapse_trackchange_tags = ["ins", "moveTo"]

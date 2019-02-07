@@ -1,5 +1,5 @@
 # sectionstart_converter (IN PROGRESS)
-This tool is being expanded, and now has three main, distinct functions, with a 'main' script for each. They share many of the same functions, logging and dependencies, and key scripts (zipDOCX.py & unzipDOCX.py) can be run independently as standalone processes.
+This tool is being expanded, and now has four primary, distinct functions, with a 'main' script for each. They share many of the same functions, logging and dependencies, and key scripts (zipDOCX.py & unzipDOCX.py) can be run independently as standalone processes.
 
 ##### xml_docx_stylechecks/converter_main.py -
 This tool is to update Microsoft Word documents that were styled with Macmillan styles prior to the release of our new Section Start styling.
@@ -11,11 +11,14 @@ This tool is to run functions formerly handled in our VBA Stylecheck macro(s). I
 ##### xml_docx_stylechecks/validator_main.py -
 This tool is to prepare a manuscript for egalley creation, as part of the bookmaker_validator toolchain; it fixes errors found in the 'Stylecheck' plus some other unique ones.
 
+##### xml_docx_stylechecks/rsuitevalidate_main.py -
+This tool is essentially a Style-Reporter companion for our new RSuite Word styles, with some new checks based on style changes & new requirements
 
 ## Dependencies
 The xml processing requires the lxml library for python, install like so:
 
 `pip install lxml`
+`pip install dropbox`
 
 ## Setup
 Setup items are found in cfg.py. Key items:
@@ -34,7 +37,7 @@ The command takes two args: the .docx file and the output dir for the root of th
 This command takes two args: the root (parent folder) of the unzipped files, and path and name of the output .docx:
 `python /path/to/zipDOCX.py /path/to/unzip_root /path/to/new/file.docx`
 
-#### reporter_main.py or converter_main.py
+#### reporter_main.py, converter_main.py or rsuitevalidate_main.py
 Either of these commands takes one arg: the manuscript being evaluated / edited:
 `python /path/to/reporter_main.py /path/to/file.docx`
 

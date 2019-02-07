@@ -7,15 +7,9 @@ import uuid
 import json
 import sys
 import logging
-# from shutil import copyfile
-
 # make sure to install lxml: sudo pip install lxml
 from lxml import etree
 from distutils.version import StrictVersion as Version
-
-# from lxml.etree import QName
-# from lxml.builder import E
-# from lxml.builder import ElementMaker
 
 
 ######### IMPORT LOCAL MODULES
@@ -26,13 +20,6 @@ import cfg
 logger = logging.getLogger(__name__)
 
 ######### LOCAL DECLARATIONS
-
-# isthis necessary? can I just do cfg.ziproot?
-# if __name__ == '__main__':
-# 	ziproot = sys.argv[1]
-# else:
-# 	ziproot = cfg.ziproot
-# ziproot = cfg.ziproot
 
 # Local namespace vars
 wnamespace = cfg.wnamespace
@@ -81,7 +68,7 @@ def setupRSID(settings_root, wordnamespaces, wnamespace, settings_xml):
     # insert rsid in docx's settings.xml rsids table
     rsids = settings_root.find('.//w:rsids', wordnamespaces)
     # test if rsid table is present:
-    if rsids:
+    if rsids is not None:
     	rsids.append(new_rsid_el)
     	# update the settings.xmlfile
     	writeXMLtoFile(settings_root, settings_xml)
@@ -116,43 +103,6 @@ def	updateCustomDocProps(customprops_xml, template_customprops_xml):
 		customprops_root.append(template_version_el)
 		# update the customProps.xml file
 		writeXMLtoFile(customprops_root, customprops_xml)
-
-
-# def	updateCustomDocProps(customprops_xml, template_customprops_xml):
-# 	# presuming we need to make updates:
-# 	docx_uptodate = False
-# 	# if customProps.xml does not exist, just copy it from the template
-# 	if not os.path.exists(customprops_xml):
-# 		shutil.copyfile(template_customprops_xml, customprops_xml)
-# 	# if it does exist, we have to go in & write the element / update the version
-# 	else:
-# 		template_version_el = template_customprops_tree.xpath(".//*[@name='Version']", namespaces=wordnamespaces)[0]
-# 		template_versionstring = template_customprops_tree.xpath(".//*[@name='Version']/vt:lpwstr", namespaces=wordnamespaces)[0].text
-
-# 		# get root / tree of docx customProps.xml
-# 		customprops_tree = etree.parse(customprops_xml)
-# 		customprops_root = customprops_tree.getroot()
-
-# 		# check for version element in docx customProps.xml
-# 		version_el = customprops_tree.xpath(".//*[@name='Version']", namespaces=wordnamespaces)
-# 		if len(version_el) > 0:
-# 			# if version docProp already exists, see if we're already up to date and should leave this file alone!
-# 			versionstring = customprops_tree.xpath(".//*[@name='Version']/vt:lpwstr", namespaces=wordnamespaces)[0].text
-# 			if versionstring == template_versionstring:
-# 				docx_uptodate = True
-# 			else:
-# 				# if version element exists but its value != current template, remove the element
-# 				customprops_root.remove(version_el[0])
-
-# 			print template_versionstring, versionstring
-
-# 		if docx_uptodate == False:
-# 			# add template's version element to docx
-# 			customprops_root.append(template_version_el)
-# 			# update the customProps.xml file
-# 			writeXMLtoFile(customprops_root, customprops_xml)
-
-# 	return docx_uptodate
 
 
 def	edit_relsFile(rels_tree, template_rels_tree, rels_file):
@@ -277,62 +227,6 @@ def attachTemplate():
 
 	print "template attached!"
 
-
-
-	# def attachTemplate():
-
-	# # # Template dirs & files
-	# template_customprops_xml = cfg.template_customprops_xml
-	# template_numbering_xml = cfg.template_numbering_xml
-
-	# # # doc files
-	# numbering_xml = cfg.numbering_xml
-	# styles_xml = cfg.styles_xml
-	# settings_xml = cfg.settings_xml
-	# customprops_xml = cfg.customprops_xml
-	# rels_file = cfg.rels_file
-	# contenttypes_xml = cfg.contenttypes_xml
-
-	# # etree trees of template files
-	# template_styles_tree = etree.parse(cfg.template_styles_xml)
-	# template_rels_tree = etree.parse(cfg.template_rels_file)
-	# template_contenttypes_tree = etree.parse(cfg.template_contenttypes_xml)
-
-	# # docx etree roots & trees
-	# styles_tree = etree.parse(cfg.styles_xml)
-	# styles_root = styles_tree.getroot()
-	# settings_tree = etree.parse(cfg.settings_xml)
-	# settings_root = settings_tree.getroot()
-	# rels_tree = etree.parse(cfg.rels_file)
-	# contenttypes_tree = etree.parse(cfg.contenttypes_xml)
-
-	# print "attaching style template..."
-
-	# # this checks the current docx template version; if none, return False & proceed with attaching template
-	# # 	otherwise return True and skip template attachment.
-	# docx_uptodate = updateCustomDocProps(customprops_xml, template_customprops_xml)
-
-	# if docx_uptodate == True:
-	# 	print "this docx already appears to have the latest style-template attached, skipping 'attach_template'"
-	# elif docx_uptodate == False:
-	# 	# get a new unique rsid, add it to the settings.xml rsids table
-	# 	new_rsid = setupRSID(settings_root, cfg.wordnamespaces, cfg.wnamespace, settings_xml)
-
-	# 	# get stylesfrom template and write to docx styles.xml
-	# 	getNewTemplateStyles(new_rsid, template_styles_tree, styles_root, styles_xml)
-
-	# 	# copy the numbering.xml from the template to the docx (overwrites if present)
-	# 	shutil.copyfile(template_numbering_xml, numbering_xml)
-
-	# 	# update the _rels/.rels file as needed for customProps.xml handling
-	# 	edit_relsFile(rels_tree, template_rels_tree, rels_file)
-
-	# 	# write / overwrite override entry for customProps.xml to content_types.xml
-	# 	editContentTypes(contenttypes_tree, template_contenttypes_tree, contenttypes_xml)
-
-	# print "template attached!"
-
-	# return docx_uptodate
 
 # only run if this script is being invoked directly
 if __name__ == '__main__':

@@ -436,7 +436,3 @@ def rsuiteValidations(report_dict):
 #     report_dict = rsuiteValidations(report_dict)
 #
 #     logger.debug("report_dict contents:  %s" % report_dict)
-
-# should check on scope of passing and returning reort_dict. it may not need to be returned all the time. Will have to do some scope testing to test calls from other scripts & / or standalone.
-# newtitlestring = "{} {}".format(newtitlestring, nexttext)
-# this line caused issues with a title with ' and ; in it...  where else might I have used 'format' where I may get in trouble?

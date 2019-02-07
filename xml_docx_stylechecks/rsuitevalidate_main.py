@@ -21,7 +21,6 @@ import shared_utils.os_utils as os_utils
 import shared_utils.check_docx as check_docx
 
 
-
 ######### LOCAL DECLARATIONS
 inputfile = cfg.inputfile
 inputfilename = cfg.inputfilename
@@ -88,19 +87,13 @@ if __name__ == '__main__':
             if version_result == "up_to_date" and percent_styled >= 50 and protection == "":
                 logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
 
-                # # # # run docPrepare function(s)
-                # report_dict = doc_prepare.docPrepare(report_dict)
-
-
+                # handle docs where both style-sets exist.
                 zerostylecheck = check_docx.stripDuplicateMacmillanStyles(cfg.doc_xml, cfg.styles_xml)
                 if zerostylecheck:
                     logger.warn("duplicate Macmillan styles were found: legacy styles were replaced with new ones")
 
+                # run our rsuite validations!
                 report_dict = rsuite_validations.rsuiteValidations(report_dict)
-
-                # # # run otherstyle report stuff!
-                # logger.info("Running other style report functions")
-                # report_dict = stylereports.styleReports("validate", report_dict)
 
                 ### zip ziproot up as a docx into outfolder
                 logger.info("Zipping updated xml into a .docx")

@@ -233,13 +233,20 @@ def stripDuplicateMacmillanStyles(doc_xml, styles_xml):
     styles_root = styles_tree.getroot()
     doc_tree = etree.parse(doc_xml)
     doc_root = doc_tree.getroot()
-    endnotes_tree = etree.parse(cfg.endnotes_xml)
-    endnotes_root = endnotes_tree.getroot()
-    footnotes_tree = etree.parse(cfg.footnotes_xml)
-    footnotes_root = footnotes_tree.getroot()
-    numbering_tree = etree.parse(cfg.numbering_xml)
-    numbering_root = numbering_tree.getroot()
-    xmlfile_dict = {doc_root:doc_xml, endnotes_root:cfg.endnotes_xml, footnotes_root:cfg.footnotes_xml, numbering_root:cfg.numbering_xml}
+    # this is for cycling through any of these xml_roots that exist
+    xmlfile_dict = {doc_root:doc_xml}
+    if os.path.exists(cfg.endnotes_xml):
+        endnotes_tree = etree.parse(cfg.endnotes_xml)
+        endnotes_root = endnotes_tree.getroot()
+        xmlfile_dict[endnotes_root]=cfg.endnotes_xml
+    if os.path.exists(cfg.footnotes_xml):
+        footnotes_tree = etree.parse(cfg.footnotes_xml)
+        footnotes_root = footnotes_tree.getroot()
+        xmlfile_dict[footnotes_root]=cfg.footnotes_xml
+    if os.path.exists(cfg.numbering_xml):
+        numbering_tree = etree.parse(cfg.numbering_xml)
+        numbering_root = numbering_tree.getroot()
+        xmlfile_dict[numbering_root]=cfg.numbering_xml
 
     # get styles that end in zero: use xpath b/c lxml find doesn't support wildcard search in attr name
     stylematches = styles_tree.xpath("w:style[@w:styleId[contains(.,'0') and substring-after(.,'0') = '']]", namespaces=wordnamespaces)

@@ -111,7 +111,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
             }
     	},
     	"04_metadata_isbn": {
-            "include_for": ["reporter", "rsuitevalidate"],
+            "include_for": ["reporter"],
     		"title": "",
     		"text": "** {} **".format(isbnstyle),
     		"dict_category_name": "isbn_spans",
@@ -446,7 +446,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
             "errstring": "Too many '%s' paragraphs detected ({count}), only one is allowed." % titlestyle
     	},
     	"99_no_logo_paras": {
-            "include_for": ["reporter", "rsuitevalidate"],
+            "include_for": ["reporter"],
     		"dict_category_name": "logo_paras",
     		"line_template": "",
     		"suggested": True,

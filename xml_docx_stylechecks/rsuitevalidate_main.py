@@ -123,7 +123,7 @@ if __name__ == '__main__':
 
         ########## CLEANUP
         # includes writing files to outfolder, sending mail to submitter, rm'ing tmpdir
-        report_emailed = setup_cleanup.cleanupforReporterOrConverter(cfg.script_name, this_outfolder, workingfile, inputfilename, report_dict, cfg.stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename)
+        report_emailed = setup_cleanup.cleanupforReporterOrConverter(cfg.script_name, this_outfolder, workingfile, inputfilename, report_dict, cfg.stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename, newdocxfile)
 
     except:
         ########## LOG ERROR INFO

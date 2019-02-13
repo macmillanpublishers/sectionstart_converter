@@ -308,27 +308,32 @@ def rsuiteValidations(report_dict):
     doc_xml = cfg.doc_xml
     doc_tree = etree.parse(doc_xml)
     doc_root = doc_tree.getroot()
-    endnotes_tree = etree.parse(cfg.endnotes_xml)
-    endnotes_root = endnotes_tree.getroot()
-    footnotes_tree = etree.parse(cfg.footnotes_xml)
-    footnotes_root = footnotes_tree.getroot()
-    comments_tree = etree.parse(cfg.comments_xml)
-    comments_root = comments_tree.getroot()
-    commentsExtended_tree = etree.parse(cfg.commentsExtended_xml)
-    commentsExtended_root = commentsExtended_tree.getroot()
-    commentsIds_tree = etree.parse(cfg.commentsIds_xml)
-    commentsIds_root = commentsIds_tree.getroot()
-
+    # this is for writing out to any file where the xml_root is edited
     xmlfile_dict = {
-        doc_root:doc_xml,
-        endnotes_root:cfg.endnotes_xml,
-        footnotes_root:cfg.footnotes_xml
+        doc_root:doc_xml
         }
-    commentfiles_dict = {
-        comments_root:cfg.comments_xml,
-        commentsExtended_root:cfg.commentsExtended_xml,
-        commentsIds_root:cfg.commentsIds_xml
-        }
+    # alt_roots is for inclusion in log calculations, as needed
+    alt_roots = []
+    if os.path.exists(cfg.endnotes_xml):
+        endnotes_tree = etree.parse(cfg.endnotes_xml)
+        endnotes_root = endnotes_tree.getroot()
+        xmlfile_dict[endnotes_root]=cfg.endnotes_xml
+        alt_roots.append(endnotes_root)
+    if os.path.exists(cfg.footnotes_xml):
+        footnotes_tree = etree.parse(cfg.footnotes_xml)
+        footnotes_root = footnotes_tree.getroot()
+        xmlfile_dict[footnotes_root]=cfg.footnotes_xml
+        alt_roots.append(footnotes_root)
+    if os.path.exists(cfg.comments_xml):
+        comments_tree = etree.parse(cfg.comments_xml)
+        comments_root = comments_tree.getroot()
+        xmlfile_dict[comments_root]=cfg.comments_xml
+        commentsExtended_tree = etree.parse(cfg.commentsExtended_xml)
+        commentsExtended_root = commentsExtended_tree.getroot()
+        xmlfile_dict[commentsExtended_root]=cfg.commentsExtended_xml
+        commentsIds_tree = etree.parse(cfg.commentsIds_xml)
+        commentsIds_root = commentsIds_tree.getroot()
+        xmlfile_dict[commentsIds_root]=cfg.commentsIds_xml
 
     # get Section Start names & styles from vbastyleconfig_json
     #    Could pull styles from macmillan.json  with "Section-" if I don't want to use vbastyleconfig_json
@@ -351,18 +356,21 @@ def rsuiteValidations(report_dict):
     # delete bookmarks:
     report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.bookmark_objects, "bookmarks")
     # delete comments from docxml, commentsxml, commentsIds & commentsExtended:
-    report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.comment_objects, "comment_ranges")
-    report_dict = doc_prepare.deleteObjects(report_dict, comments_root, cfg.comment_objects, "comments-comment_xml")
-    report_dict = doc_prepare.deleteObjects(report_dict, commentsExtended_root, cfg.comment_objects, "commentEx-commentEx_xml")
-    report_dict = doc_prepare.deleteObjects(report_dict, commentsIds_root, cfg.comment_objects, "commentcid-commentsIds_xml")
+    if os.path.exists(cfg.comments_xml):
+        report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.comment_objects, "comment_ranges")
+        report_dict = doc_prepare.deleteObjects(report_dict, comments_root, cfg.comment_objects, "comments-comment_xml")
+        report_dict = doc_prepare.deleteObjects(report_dict, commentsExtended_root, cfg.comment_objects, "commentEx-commentEx_xml")
+        report_dict = doc_prepare.deleteObjects(report_dict, commentsIds_root, cfg.comment_objects, "commentcid-commentsIds_xml")
 
     # remove blank paras from docxml, endnotes, footnotes -- only if we don't already have a critical blank para err
     # if "blank_container_para" not in report_dict and "blank_list_para" not in report_dict and "empty_section_start_para" not in empty_section_start_para:
     # for xml_root in xmlfile_dict:
     #     report_dict = removeBlankParas(report_dict, xml_root)
     report_dict = removeBlankParas(report_dict, doc_root, sectionnames, container_start_styles, container_end_styles, cfg.spacebreakstyles)
-    report_dict = removeBlankParas(report_dict, endnotes_root, sectionnames, container_start_styles, container_end_styles, cfg.spacebreakstyles, "Endnotes")
-    report_dict = removeBlankParas(report_dict, footnotes_root, sectionnames, container_start_styles, container_end_styles, cfg.spacebreakstyles, "Footnotes")
+    if os.path.exists(cfg.endnotes_xml):
+        report_dict = removeBlankParas(report_dict, endnotes_root, sectionnames, container_start_styles, container_end_styles, cfg.spacebreakstyles, "Endnotes")
+    if os.path.exists(cfg.footnotes_xml):
+        report_dict = removeBlankParas(report_dict, footnotes_root, sectionnames, container_start_styles, container_end_styles, cfg.spacebreakstyles, "Footnotes")
 
     # test / verify Container structures
     report_dict = checkContainers(report_dict, doc_root, sectionnames, container_start_styles, container_end_styles)
@@ -372,11 +380,13 @@ def rsuiteValidations(report_dict):
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "report")
 
     # check footnote / endnote para styles
-    report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
-    report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
     # rm footnote / endnote leading whitespace
-    report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")
-    report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
+    if os.path.exists(cfg.endnotes_xml):
+        report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
+        report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
+    if os.path.exists(cfg.footnotes_xml):
+        report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
+        report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")
 
     # # log texts of titlepage-title paras
     report_dict = logTextOfParasWithStyleInSection(report_dict, doc_root, sectionnames, cfg.titlesection_stylename, cfg.titlestyle, "title_paras")
@@ -404,7 +414,7 @@ def rsuiteValidations(report_dict):
 
     # # add/update para index numbers
     logger.debug("Update all report_dict records with para_index")
-    report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectionnames, [footnotes_root, endnotes_root])
+    report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectionnames, alt_roots)
 
     # create sorted version of "image_holders" list in reportdict based on para_index; for reports
     if "image_holders" in report_dict:
@@ -416,8 +426,6 @@ def rsuiteValidations(report_dict):
     logger.debug("writing changes out to xml files")
     for xml_root in xmlfile_dict:
         os_utils.writeXMLtoFile(xml_root, xmlfile_dict[xml_root])
-    for xml_root in commentfiles_dict:
-        os_utils.writeXMLtoFile(xml_root, commentfiles_dict[xml_root])
 
     logger.info("* * * ending rsuiteValidations function.")
 

@@ -414,7 +414,7 @@ def rsuiteValidations(report_dict):
 
     # # add/update para index numbers
     logger.debug("Update all report_dict records with para_index")
-    report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectionnames, alt_roots)#[footnotes_root, endnotes_root])
+    report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectionnames, alt_roots)
 
     # create sorted version of "image_holders" list in reportdict based on para_index; for reports
     if "image_holders" in report_dict:

@@ -123,18 +123,28 @@ def alerts():
     	"protected": "This .docx has '{protection}' protection enabled. Please disable protection and try again!",
         # Error - for 'Reporter' only
     	"r_err_oldtemplate": "You must attach the most recent macmillan style template before running the Style Report: (this .docx's version: {current_version}, current version: {template_version})",
+        # Error - for 'Reporter' only
+    	"r_err_rsuitetemplate": "This document already has the 'RSuite' style template attached. Style_reporter cannot run on an RSuite-styled document.",
+        # Error - for 'Reporter' only
+    	"v_err_rsuitetemplate": "This document already has the 'RSuite' style template attached. Section Start validation cannot run on an RSuite-styled document.",
+        # Error - Converter only
+        "c_rsuitetemplate": "This document already has the 'RSuite' style template attached. For help with this document, contact {support_email_address}.",
         # Error - Converter only.
-        "c_has_template": "This document already has the most recent style template attached. If you think this still needs conversion, contact {support_email_address}.",
+        "c_has_template": "This document already has the 'section-start' style template attached. If you think this still needs conversion, contact {support_email_address}.",
+        # Error - rsuite_validate only
+        "rs_err_nonrsuite_template": "This document does not have the 'RSuite' style template attached.",
+        # Error - rsuite_validate only
+        "rs_err_oldtemplate": "You must attach the most recent 'RSuite' style template before running rsuite_validate: (this .docx's version: {current_version}, current version: {template_version})",
         # Warning / Notice: unaccepted_tcs
         "c_unaccepted_tcs": "We found un-reviewed tracked changes in this document. Barring other errors, section-starts were inserted, but if anything looks wrong, please review tracked changes in your original manuscript and run converter again!",
         # Warning: unaccepted_tcs
         "v_unaccepted_tcs": "We found un-reviewed tracked changes in this document. All tracked-changes were accepted",
+        # Warning: attached template
+        "v_no_template": "No attached Macmillan style template was found. The latest Section-Start style template was attached during processing",
         # Warning: unaccepted_tcs
         "r_unaccepted_tcs": "We found un-reviewed tracked changes in this document. Accepting or rejecting all pending Tracked Changes helps ensure the accuracy of the StyleReport.",
         # Notice: trackchange_enabled
         "trackchange_enabled": "'Track Changes' feature is currently enabled for this document.",
-        # Notice - Converter only
-        "c_newertemplate_avail": "There is a newer version of the macmillan style template available (this .docx's version: {current_version}, latest version: {template_version})",
         # Notice - Validator only
         "v_newertemplate_avail": "There was a newer version of the macmillan style template available, attached during processing (this .docx's version: {current_version}, latest version: {template_version})",
         # Fatal error (untrapped crash)

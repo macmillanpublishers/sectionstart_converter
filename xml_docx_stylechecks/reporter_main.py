@@ -35,8 +35,8 @@ template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
 report_dict = {}
 report_emailed = False
-doc_version_min = "5"
-doc_version_max = "6"
+doc_version_min = "5.0"
+doc_version_max = "6.0"
 
 
 ######### SETUP LOGGING

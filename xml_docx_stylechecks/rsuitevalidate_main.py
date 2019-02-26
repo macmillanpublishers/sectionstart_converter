@@ -38,7 +38,8 @@ template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
 report_dict = {}
 report_emailed = False
-
+doc_version_min = "6.0"
+doc_version_max = None
 
 ######### SETUP LOGGING
 logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
@@ -66,7 +67,7 @@ if __name__ == '__main__':
             ########## CHECK DOCUMENT
             ### check and compare versions, styling percentage, doc protection
             logger.info('Comparing docx version to template, checking percent styled, checking if protection, trackchanges...')
-            version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.templateversion_cutoff)
+            version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, doc_version_min, doc_version_max)
             percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
             protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml)
 
@@ -112,8 +113,12 @@ if __name__ == '__main__':
                     errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
-                if version_result != "up_to_date":
-                    errstring = usertext_templates.alerts()["r_err_oldtemplate"].format(current_version=current_version, template_version=template_version)
+                if version_result == "newer_template_avail":
+                    errstring = usertext_templates.alerts()["rs_err_oldtemplate"].format(current_version=current_version, template_version=template_version)
+                    os_utils.logAlerttoJSON(alerts_json, "error", errstring)
+                    logger.warn("* {}".format(errstring))
+                else:
+                    errstring = usertext_templates.alerts()["rs_err_nonrsuite_template"].format(current_version=current_version, template_version=template_version)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
                 if protection:

@@ -35,6 +35,8 @@ report_dict["validator_py_complete"] = False
 template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
 alerts_json = cfg.alerts_json
+doc_version_min = "5.0"
+doc_version_max = "6.0"
 
 
 ######### SETUP LOGGING
@@ -57,7 +59,7 @@ if __name__ == '__main__':
         ########## CHECK DOCUMENT
         ### check and compare versions, styling percentage, doc protection
         logger.info('Comparing docx version to template, checking percent styled, checking if protection, trackchanges...')
-        version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.templateversion_cutoff)
+        version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, doc_version_min, doc_version_max)
         percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
         protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml)
 
@@ -66,7 +68,7 @@ if __name__ == '__main__':
 
         ########## RUN STUFF
         # Basic requirements passed, proceed with validation & cleanup
-        if percent_styled >= 50 and protection == "":
+        if percent_styled >= 50 and protection == "" and version_result != "docversion_above_maximum":
             logger.info("Proceeding! (percent_styled='%s', protection='%s')" % (percent_styled, protection))
 
             # note and accept all track changes
@@ -77,9 +79,12 @@ if __name__ == '__main__':
                 check_docx.acceptTrackChanges(cfg.doc_xml)
 
             # # # Attach the template as needed
-            if version_result == "no_version":
-                logger.info("'version_result' = '%s'. Attaching macmillan template (updating styles in styles.xml, etc)" % version_result)
-                # print "* This .docx did not have section start styles, attaching up-to-date template"
+            if version_result == "no_version" or version_result == "docversion_below_minimum":
+                errstring = usertext_templates.alerts()["v_no_template"]
+                os_utils.logAlerttoJSON(alerts_json, "warning", errstring)
+                logger.warn("* {}".format(errstring))
+                # logger.info("'version_result' = '%s'. Attaching macmillan template (updating styles in styles.xml, etc)" % version_result)
+                # # print "* This .docx did not have section start styles, attaching up-to-date template"
                 docx_uptodate = attachtemplate.attachTemplate()
             elif version_result == "newer_template_avail":
                 logger.info("'version_result' = '%s'. Attaching macmillan template and adding 'Notice' alert." % version_result)
@@ -111,6 +116,10 @@ if __name__ == '__main__':
         # Doc is not styled or has protection enabled, skip python validation
         else:
             logger.warn("* * Skipping Validation:")
+            if version_result == "docversion_above_maximum":
+                errstring = usertext_templates.alerts()["v_err_rsuitetemplate"]
+                os_utils.logAlerttoJSON(alerts_json, "error", errstring)
+                logger.warn("* {}".format(errstring))
             if percent_styled < 50:
                 errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
                 os_utils.logAlerttoJSON(alerts_json, "error", errstring)

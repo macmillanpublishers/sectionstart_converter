@@ -37,6 +37,8 @@ template_ziproot = cfg.template_ziproot
 macmillan_template = cfg.macmillan_template
 report_dict = {}
 report_emailed = False
+doc_version_min = None
+doc_version_max = "6.0"
 
 
 ######### SETUP LOGGING
@@ -66,7 +68,7 @@ if __name__ == '__main__':
             ########## CHECK DOCUMENT
             ### check and compare versions, styling percentage, doc protection
             logger.info('Comparing docx version to template, checking percent styled, checking if protection, trackchanges...')
-            version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, cfg.templateversion_cutoff)
+            version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, doc_version_min, doc_version_max)
             percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
             protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml)
 
@@ -114,14 +116,15 @@ if __name__ == '__main__':
                     errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
-                if version_result != "no_version":
+                # 2 cases of versions not applicable
+                if version_result == "docversion_above_maximum":
+                    errstring = usertext_templates.alerts()["c_rsuitetemplate"]
+                    os_utils.logAlerttoJSON(alerts_json, "error", errstring)
+                    logger.warn("* {}".format(errstring))
+                else:
                     errstring = usertext_templates.alerts()["c_has_template"].format(support_email_address=cfg.support_email_address)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
-                    if version_result == "newer_template_avail":
-                        noticestring = usertext_templates.alerts()["c_newertemplate_avail"].format(current_version=current_version, template_version=template_version)
-                        os_utils.logAlerttoJSON(alerts_json, "notice", noticestring)
-                        logger.warn("* NOTE: {}".format(noticestring))
                 if protection:
                     errstring = usertext_templates.alerts()["protected"].format(protection=protection)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)

@@ -58,17 +58,21 @@ def get_docxVersion(customprops_xml):
     logger.debug("versionstring value: '%s'" %  versionstring)
     return versionstring
 
-def compare_docxVersions(current_version, template_version, sectionstart_version):
+def compare_docxVersions(document_version, template_version, doc_version_min, doc_version_max):
     logger.debug("comparing docx version to template...")
     # adding try statement since the Version library can be a little particular.
     try:
-        if Version(current_version) == Version(template_version):
-            version_compare = "up_to_date"
-        elif Version(current_version) >= Version(sectionstart_version):
+        if doc_version_min is not None and Version(document_version) < Version(doc_version_min):
+            version_compare = "docversion_below_minimum"
+        elif Version(document_version) < Version(template_version):
             version_compare = "newer_template_avail"
+        elif doc_version_max is not None and Version(document_version) >= Version(doc_version_max):
+            version_compare = "docversion_above_maximum"
+        elif Version(document_version) >= Version(template_version):
+            version_compare = "up_to_date"
         else:
             version_compare = "no_version"
-
+            
         logger.debug("version_compare value: '%s'" %  version_compare)
         return version_compare
     except Exception, e:
@@ -107,14 +111,14 @@ def macmillanStyleCount(doc_xml, styles_xml):
     return percent_styled, macmillan_styled_paras, total_paras
 
 # This function consolidates version test functions
-def version_test(customprops_xml, template_customprops_xml, templateversion_cutoff):
+def version_test(customprops_xml, template_customprops_xml, doc_version_min, doc_version_max):
 
-    current_version = get_docxVersion(customprops_xml)
+    document_version = get_docxVersion(customprops_xml)
     template_version = get_docxVersion(template_customprops_xml)
-    sectionstart_version = templateversion_cutoff
+    # sectionstart_version = doc_version_min
 
-    version_result = compare_docxVersions(current_version, template_version, sectionstart_version)
-    return version_result, current_version, template_version
+    version_result = compare_docxVersions(document_version, template_version, doc_version_min, doc_version_max)
+    return version_result, document_version, template_version
 
 # # to test trackchanges and doc protection, and existence of any other top level param in settings
 def checkSettingsXML(settings_xml, settingstring):

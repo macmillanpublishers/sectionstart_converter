@@ -168,11 +168,11 @@ support_email_address = "workflows@macmillan.com" # if the display name is prese
 from_email_address = "Publishing Workflows <workflows@macmillan.com>"
 always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
 helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
-# The first key version of a template-type
-if script_name.startswith("rsuite"):
-    templateversion_cutoff = '6.0.0'
-else:
-    templateversion_cutoff = '4.7.0'
+# # The first key version of a template-type < moving this into script specific vars
+# if script_name.startswith("rsuite"):
+#     templateversion_cutoff = '6.0.0'
+# else:
+#     templateversion_cutoff = '4.7.0'
 # regex for finding ISBNS
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")

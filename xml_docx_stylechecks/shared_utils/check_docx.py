@@ -62,7 +62,9 @@ def compare_docxVersions(document_version, template_version, doc_version_min, do
     logger.debug("comparing docx version to template...")
     # adding try statement since the Version library can be a little particular.
     try:
-        if doc_version_min is not None and Version(document_version) < Version(doc_version_min):
+        if document_version == "0.0":
+            version_compare = "no_version"
+        elif doc_version_min is not None and Version(document_version) < Version(doc_version_min):
             version_compare = "docversion_below_minimum"
         elif Version(document_version) < Version(template_version):
             version_compare = "newer_template_avail"
@@ -70,10 +72,8 @@ def compare_docxVersions(document_version, template_version, doc_version_min, do
             version_compare = "docversion_above_maximum"
         elif Version(document_version) >= Version(template_version):
             version_compare = "up_to_date"
-        else:
-            version_compare = "no_version"
-            
-        logger.debug("version_compare value: '%s'" %  version_compare)
+
+        logger.info("version_compare value: '%s'" %  version_compare)
         return version_compare
     except Exception, e:
         logger.error('Failed version compare, exiting', exc_info=True)

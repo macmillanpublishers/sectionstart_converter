@@ -122,13 +122,13 @@ def alerts():
         # Error - self explanatory
     	"protected": "This .docx has '{protection}' protection enabled. Please disable protection and try again!",
         # Error - for 'Reporter' only
-    	"r_err_oldtemplate": "You must attach the most recent macmillan style template before running the Style Report: (this .docx's version: {current_version}, current version: {template_version})",
+    	"r_err_oldtemplate": "You must attach the most recent Macmillan 'section-start' style template before running the Style Report: (this .docx's template version: {current_version}, current version: {template_version})",
         # Error - for 'Reporter' only
-    	"r_err_rsuitetemplate": "This document already has the 'RSuite' style template attached. Style_reporter cannot run on an RSuite-styled document.",
+    	"r_err_rsuitetemplate": "This document has the 'RSuite' style template attached. Style_reporter cannot run on an RSuite-styled document.",
         # Error - for 'Reporter' only
-    	"v_err_rsuitetemplate": "This document already has the 'RSuite' style template attached. Section Start validation cannot run on an RSuite-styled document.",
+    	"v_err_rsuitetemplate": "This document has the 'RSuite' style template attached. Section Start validation cannot run on an RSuite-styled document.",
         # Error - Converter only
-        "c_rsuitetemplate": "This document already has the 'RSuite' style template attached. For help with this document, contact {support_email_address}.",
+        "c_rsuitetemplate": "This document already has the 'RSuite' style template attached. Stylecheck-converter cannot run on an RSuite-styled document.",
         # Error - Converter only.
         "c_has_template": "This document already has the 'section-start' style template attached. If you think this still needs conversion, contact {support_email_address}.",
         # Error - rsuite_validate only

@@ -38,7 +38,7 @@ macmillan_template = cfg.macmillan_template
 report_dict = {}
 report_emailed = False
 doc_version_min = None
-doc_version_max = "6"
+doc_version_max = "6.0"
 
 
 ######### SETUP LOGGING
@@ -118,7 +118,7 @@ if __name__ == '__main__':
                     logger.warn("* {}".format(errstring))
                 # 2 cases of versions not applicable
                 if version_result == "docversion_above_maximum":
-                    noticestring = usertext_templates.alerts()["c_rsuitetemplate"].format(support_email_address=cfg.support_email_address)
+                    errstring = usertext_templates.alerts()["c_rsuitetemplate"]
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
                 else:

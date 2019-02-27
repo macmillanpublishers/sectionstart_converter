@@ -87,7 +87,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"text": "If any of the information below is wrong, please fix the associated styles in the manuscript."
     	},
     	"02_metadata_title": {
-            "include_for": ["reporter", "validator", "rsuitevalidate"],
+            "include_for": ["reporter", "validator"],
     		"title": "",
     		"text": "** {} **".format(titlestyle),
     		"dict_category_name": "title_paras",
@@ -98,14 +98,34 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
                 "text": "** {} **\nNo title paras detected.".format(titlestyle)
             }
     	},
+    	"02_metadata_title(rsuite_validate)": {
+            "include_for": ["rsuitevalidate"],
+    		"title": "",
+    		"text": "** {} **".format(titlestyle),
+    		"dict_category_name": "title_paras",
+    		"line_template": "{para_string}",
+            "alternate_content": {
+                "text": "** {} **\nNo title paras detected.".format(titlestyle)
+            }
+    	},
     	"03_metadata_author": {
-            "include_for": ["reporter", "validator", "rsuitevalidate"],
+            "include_for": ["reporter", "validator"],
     		"title": "",
     		"text": "** {} **".format(authorstyle),
     		"dict_category_name": "author_paras",
     		"line_template": "{para_string}",
     		"required": True,
             "errstring": "No paragraph styled with '{}' found".format(authorstyle),
+            "alternate_content": {
+                "text": "** {} **\nNo author paras detected.".format(authorstyle)
+            }
+    	},
+    	"03_metadata_author(rsuite_validate)": {
+            "include_for": ["rsuitevalidate"],
+    		"title": "",
+    		"text": "** {} **".format(authorstyle),
+    		"dict_category_name": "author_paras",
+    		"line_template": "{para_string}",
             "alternate_content": {
                 "text": "** {} **\nNo author paras detected.".format(authorstyle)
             }
@@ -118,6 +138,16 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "{para_string}",
     		"required": True,
             "errstring": "No ISBN styled with '{}' detected".format(isbnstyle),
+            "alternate_content": {
+                "text": "** {} **\nNo styled isbns detected.".format(isbnstyle)
+            }
+    	},
+    	"04_metadata_isbn(rsuite_validate)": {
+            "include_for": ["rsuitevalidate"],
+    		"title": "",
+    		"text": "** {} **".format(isbnstyle),
+    		"dict_category_name": "isbn_spans",
+    		"line_template": "{para_string}",
             "alternate_content": {
                 "text": "** {} **\nNo styled isbns detected.".format(isbnstyle)
             }
@@ -439,10 +469,18 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
             "errstring": "{count} comments were deleted from the manuscript."
     	},
     	"98_too_many_title_paras": {
-            "include_for": ["reporter", "rsuitevalidate"],
+            "include_for": ["reporter"],
     		"dict_category_name": "title_paras",
     		"line_template": "",
     		"badnews": 'one_allowed',
+            "errstring": "Too many '%s' paragraphs detected ({count}), only one is allowed." % titlestyle
+    	},
+    	"98_too_many_title_paras(rsuite_validate)": {
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "title_paras",
+    		"line_template": "",
+    		"badnews": 'one_allowed',
+            "badnews_type": 'warning',            
             "errstring": "Too many '%s' paragraphs detected ({count}), only one is allowed." % titlestyle
     	},
     	"99_no_logo_paras": {

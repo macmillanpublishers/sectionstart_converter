@@ -167,7 +167,6 @@ alert_email_address = "Publishing Workflows <workflows@macmillan.com>"
 support_email_address = "workflows@macmillan.com" # if the display name is present it comes out weird in user-messaging.. and not required for emails via smtplib
 from_email_address = "Publishing Workflows <workflows@macmillan.com>"
 always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
-helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
 # regex for finding ISBNS
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")

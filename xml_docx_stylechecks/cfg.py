@@ -167,17 +167,12 @@ alert_email_address = "Publishing Workflows <workflows@macmillan.com>"
 support_email_address = "workflows@macmillan.com" # if the display name is present it comes out weird in user-messaging.. and not required for emails via smtplib
 from_email_address = "Publishing Workflows <workflows@macmillan.com>"
 always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
-helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
-# # The first key version of a template-type < moving this into script specific vars
-# if script_name.startswith("rsuite"):
-#     templateversion_cutoff = '6.0.0'
-# else:
-#     templateversion_cutoff = '4.7.0'
 # regex for finding ISBNS
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
-# Hardcoded stylenames
+# Hardcoded stylenames & helpurl -- by script
 if script_name.startswith("rsuite"):
+    helpurl = "https://confluence.macmillan.com/x/R3NPBQ#RSuiteValidation-Reviewingthersuite_validateReport"
     # RSuite hardcoded stylenames (can I get these from styleconfig? in some cases)
     titlesection_stylename = "Section-TitlepageSTI"
     booksection_stylename = "Section-Book (BOOK)"
@@ -194,6 +189,8 @@ if script_name.startswith("rsuite"):
     # for some reason the long-stylenames for these references are lowercase?
     valid_native_word_styles = ['Hyperlink', 'footnote reference', 'endnote reference', 'annotation reference']
 else:
+    helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
+    # stylenames
     booksection_stylename = ""
     titlestyle = "Titlepage Book Title (tit)"
     chapnumstyle = "Chap Number (cn)"

@@ -131,6 +131,8 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
 
         # get parent section for context
         sectionpara_name = lxml_utils.getSectionName(para, sectionnames)[0]
+        if sectionpara_name == lxml_utils.transformStylename(cfg.booksection_stylename):
+            continue
         found_para_context = {sectionpara_name:shortstylename_with_container}
 
         # check index to see if style has already been noted (with section / container context where apropos)

@@ -169,7 +169,7 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
                 if stylename_full != 'annotation reference':
                     report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_charstyle_first_use",stylename_full)
             else: #if stylename_full != "annotation reference" and stylename_full != "endnote reference":
-                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
+                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_used",stylename_full)
                 # if we're "validating", revert custom_styles based on Macmillan styles to base_style
                 if call_type == "validate":
                     report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para, run_style)

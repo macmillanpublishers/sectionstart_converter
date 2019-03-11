@@ -83,6 +83,33 @@ def getContainerStarts(styleconfig_dict):
     container_start_styles = [s[1:] for s in container_start_styles]
     return container_start_styles
 
+def deleteBookmarks(report_dict, xml_root, bookmark_items):
+    logger.info("* * * commencing deleteBookmarks function...")
+    start_searchstring = ".//{}".format(bookmark_items["bookmarkstart_tag"])
+    for bookmark_start in xml_root.findall(start_searchstring, wordnamespaces):
+            w_name = bookmark_start.get('{%s}name' % wnamespace)
+            w_id = bookmark_start.get('{%s}id' % wnamespace)
+            # now we find the paired 'end' that went with our start
+            end_id_searchstring = ".//{}[@w:id='{}']".format(bookmark_items["bookmarkend_tag"], w_id)
+            bookmark_end = xml_root.find(end_id_searchstring, wordnamespaces)
+            # remove element(s) (get para first for logging)
+            para = lxml_utils.getParaParentofElement(bookmark_start)
+            bookmark_start.getparent().remove(bookmark_start)
+            if bookmark_end:
+                bookmark_end.getparent().remove(bookmark_end)
+            # log to report_dict as needed, logger for debug
+            #   Note: we are silently deleting bookmarks of 'auto_bookmark' types, that were not inserted by users
+            logger.debug("deleted bookmark named '%s'" % w_name)
+            if para is not None and w_name not in bookmark_items["autobookmark_names"]:
+                lxml_utils.logForReport(report_dict,xml_root,para,"deleted_objects-bookmarks","deleted bookmark named '%s'" % w_name)
+    # delete any orphaned bookmark_ends silently. (these should not exist, but why not clean-up in case?)
+    end_searchstring = ".//{}".format(bookmark_items["bookmarkend_tag"])
+    for bookmark_end in xml_root.findall(end_searchstring, wordnamespaces):
+        w_name = bookmark_end.get('{%s}name' % wnamespace)
+        bookmark_end.getparent().remove(bookmark_end)
+        logger.debug("deleted orphaned bookmark_end named '%s'" % w_name)
+    return report_dict
+
 # def removeBlankParas(xml_root, report_dict):
 def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles, container_end_styles, spacebreakstyles, alt_xmlname=""):
     logger.info("* * * commencing removeBlankParas function...")
@@ -90,6 +117,14 @@ def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles
     allparas = xml_root.findall(".//w:p", wordnamespaces)
     for para in allparas:
         if not lxml_utils.getParaTxt(para).strip(): # or para.text is None:
+            # check for default paras in endnotes / footnotes, which we can ignore (for now)? Or rm silently if desired
+            if alt_xmlname != "":
+                parent_el = para.getparent()
+                w_id = parent_el.get('{%s}id' % wnamespace)
+                if w_id == '0' or w_id == '-1':
+                    logger.debug("found default blank %s paragraph, id: %s" % (alt_xmlname, w_id))
+                    # para.getparent().remove(para)
+                continue
             parastyle = lxml_utils.getParaStyle(para)
             if parastyle in specialparas:
                 # get section info for report, since we will be unable to retrieve after para is deleted
@@ -250,11 +285,12 @@ def checkEndnoteFootnoteStyles(xml_root, report_dict, note_style, sectionname):
     # first check styles of paras
     allparas = xml_root.findall(".//w:p", wordnamespaces)
     for para in allparas:
-        parastyle = para.find(".//w:pStyle", wordnamespaces).get('{%s}val' % wnamespace)
-        # print parastyle
-        if parastyle != note_style:
-            note_id = para.getparent().get('{%s}id' % wnamespace)
-            lxml_utils.logForReport(report_dict,xml_root,para,"improperly_styled_%s" % sectionname,lxml_utils.getStyleLongname(parastyle))
+        if para.find(".//w:pStyle", wordnamespaces) is not None:    # default separator paras in xml files don't have pStyles
+            parastyle = para.find(".//w:pStyle", wordnamespaces).get('{%s}val' % wnamespace)
+            # print parastyle
+            if parastyle != note_style:
+                note_id = para.getparent().get('{%s}id' % wnamespace)
+                lxml_utils.logForReport(report_dict,xml_root,para,"improperly_styled_%s" % sectionname,lxml_utils.getStyleLongname(parastyle))
     return report_dict
 
 def rmEndnoteFootnoteLeadingWhitespace(xml_root, report_dict, sectionname):
@@ -354,7 +390,7 @@ def rsuiteValidations(report_dict):
     # delete shapes, pictures, clip art etc
     report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.shape_objects, "shapes")
     # delete bookmarks:
-    report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.bookmark_objects, "bookmarks")
+    report_dict = deleteBookmarks(report_dict, doc_root, cfg.bookmark_items)
     # delete comments from docxml, commentsxml, commentsIds & commentsExtended:
     if os.path.exists(cfg.comments_xml):
         report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.comment_objects, "comment_ranges")

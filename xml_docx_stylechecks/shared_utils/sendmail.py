@@ -77,8 +77,11 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
         port = 25
         from_email_address = cfg.from_email_address
         always_bcc_address = cfg.always_bcc_address
+        disable_sendmail = cfg.disable_sendmail
 
-        sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt)
+        # send mails unless we disabled via cfg.disable_sendmail for testing
+        if disable_sendmail == False:
+            sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt)
 
     except smtplib.SMTPConnectError:
         errstring = "Email send fail: 'SMTPConnectError' -- Email subject: '%s'" % subject

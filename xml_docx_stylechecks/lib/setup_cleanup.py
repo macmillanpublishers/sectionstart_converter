@@ -56,9 +56,13 @@ def getSubmitterViaAPI(inputfile):
         # the decode(cp1252) is to unencode unicode chars that were encoded by the batch file
         dropbox_relpath = inputfile.replace(dropboxfolder,"").replace("\\","/").decode("cp1252")
         dbx = dropbox.Dropbox(db_access_token)
-        submitter = (dbx.files_get_metadata(dropbox_relpath).sharing_info.modified_by)
-        display_name = dbx.users_get_account(submitter).name.display_name.encode("utf-8")
-        submitter_email = dbx.users_get_account(submitter).email.encode("utf-8")
+        if cfg.disable_dropboxapi == False:
+            submitter = (dbx.files_get_metadata(dropbox_relpath).sharing_info.modified_by)
+            display_name = dbx.users_get_account(submitter).name.display_name.encode("utf-8")
+            submitter_email = dbx.users_get_account(submitter).email.encode("utf-8")
+        else:   # for local testing
+            submitter_email = 'pretend_address@domain.com'
+            display_name = 'Pat Lastname'
     except:
         logger.exception("ERROR with Dropbox api:")
     finally:
@@ -71,8 +75,10 @@ def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outf
 
     # move inputfile to tmpdir as workingfile
     logger.info('Moving input file ({}) and template to tmpdir'.format(inputfilename))
-    os_utils.moveFile(inputfile, workingfile)
-    # os_utils.copyFiletoFile(inputfile, workingfile) # debug
+    if cfg.leave_infile == False:
+        os_utils.moveFile(inputfile, workingfile)   # cleanup, for production
+    else:
+        os_utils.copyFiletoFile(inputfile, workingfile) # debug/local testing
 
     # cleanup outfolder (archive existing)
     logger.info("Cleaning up existing outfolder")
@@ -194,7 +200,8 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
 
     # 5 Rm tmpdir
     logger.debug("deleting tmp folder")
-    os_utils.rm_existing_os_object(tmpdir, 'tmpdir')		# comment out for testing / debug
+    if cfg.preserve_tmpdir == False:    # leave tmpdir for debug/testing
+        os_utils.rm_existing_os_object(tmpdir, 'tmpdir')
 
     # 6 Rm processwatch_file
     logger.debug("deleting processwatch_file")

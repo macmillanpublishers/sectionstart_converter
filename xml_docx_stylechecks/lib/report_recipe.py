@@ -442,7 +442,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "badnews_type": 'note',
-            "errstring": "{count} blank paragraphs were deleted from the manuscript."
+            "errstring": "{count} blank paragraph(s) were deleted from the manuscript."
     	},
     	"95_deleted_shape_summary": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
@@ -450,7 +450,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "badnews_type": 'note',
-            "errstring": "{count} shape objects were deleted from the manuscript."
+            "errstring": "{count} shape object(s) were deleted from the manuscript."
     	},
     	"96_deleted_bookmark_summary": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
@@ -458,7 +458,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "badnews_type": 'note',
-            "errstring": "{count} bookmarks were deleted from the manuscript."
+            "errstring": "{count} bookmark(s) were deleted from the manuscript."
     	},
     	"97_deleted_comment_summary": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
@@ -466,7 +466,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "badnews_type": 'note',
-            "errstring": "{count} comments were deleted from the manuscript."
+            "errstring": "{count} comment(s) were deleted from the manuscript."
     	},
     	"98_too_many_title_paras": {
             "include_for": ["reporter"],
@@ -480,7 +480,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"dict_category_name": "title_paras",
     		"line_template": "",
     		"badnews": 'one_allowed',
-            "badnews_type": 'warning',            
+            "badnews_type": 'warning',
             "errstring": "Too many '%s' paragraphs detected ({count}), only one is allowed." % titlestyle
     	},
     	"99_no_logo_paras": {

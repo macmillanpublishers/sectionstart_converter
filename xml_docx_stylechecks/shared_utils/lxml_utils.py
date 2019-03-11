@@ -136,6 +136,17 @@ def findRunsWithStyle(stylename, doc_root):
         runs.append(run)
     return runs
 
+# gets returns para of selected element
+def getParaParentofElement(element):
+    tmp_element = element
+    while tmp_element.tag != '{%s}p' % wnamespace and tmp_element.tag != '{%s}body' % wnamespace and tmp_element.getparent() is not None:
+        tmp_element = tmp_element.getparent()
+    if tmp_element.tag == '{%s}body' % wnamespace:
+        para = None
+    else:
+        para = tmp_element
+    return para
+
 # return the index value of a paragraph (within the body/root)
 def getParaIndex(para):
     if para is not None:

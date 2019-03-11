@@ -27,7 +27,7 @@ project_dir = os.path.dirname(os.path.dirname(inputfile))
 # separate filename and extension
 original_inputfilename_noext, inputfile_ext = os.path.splitext(original_inputfilename)
 # clean out non-alphanumeric chars
-inputfilename_noext = re.sub('\W','',original_inputfilename_noext)
+inputfilename_noext = re.sub('\W-','',original_inputfilename_noext)
 # cut down extraordinarily long filenames to 47 char, + timestamp
 if len(inputfilename_noext) > 60:
     inputfilename_noext = "%s_%s" % (str[:47],time.strftime("%y%m%d%H%M%S"))
@@ -47,6 +47,9 @@ if sys.argv[2:]:
 
 # # # # # # # # ENV
 loglevel = "INFO"		# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info
+# variables to quickly setup for testing
+disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = False, False, False, False     # <-- comment out for local testing
+# disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = True, True, True, True      # <-- uncomment for local testing
 hostOS = platform.system()
 currentuser = getpass.getuser()
 # the path of this file: setting '__location__' allows this relative path to adhere to this file, even when invoked from a different path:
@@ -215,7 +218,11 @@ else:
 # objects for deletion
 shape_objects = ["mc:AlternateContent", "w:drawing", "w:pict"]
 section_break = ["w:sectPr"]
-bookmark_objects = ["w:bookmarkStart", "w:bookmarkEnd"]
+bookmark_items = {
+    "bookmarkstart_tag":"w:bookmarkStart",
+    "bookmarkend_tag":"w:bookmarkEnd",
+    "autobookmark_names":["OriginalInsertionPoint", "_GoBack"]
+    }
 comment_objects = ["w:commentRangeStart","w:commentRangeEnd","w:commentReference","w:comment","w15:commentEx", "w16cid:commentId"]
 
 # Word namespace vars

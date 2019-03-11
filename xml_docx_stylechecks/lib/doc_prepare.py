@@ -40,16 +40,6 @@ logger = logging.getLogger(__name__)
 
 # #---------------------  METHODS
 
-def getParaParentofElement(element):
-    tmp_element = element
-    while tmp_element.tag != '{%s}p' % wnamespace and tmp_element.tag != '{%s}body' % wnamespace and tmp_element.getparent() is not None:
-        tmp_element = tmp_element.getparent()
-    if tmp_element.tag == '{%s}body' % wnamespace:
-        para = None
-    else:
-        para = tmp_element
-    return para
-
 def rmEmptyFirstLastParas(doc_root, report_dict):
     logger.info("* * * commencing rmEmptyFirstLastParas function...")
     allparas = doc_root.findall(".//w:p", wordnamespaces)
@@ -176,7 +166,7 @@ def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnspanregex)
         result = isbnspanregex.findall(runtxt)
         logger.debug ("result: %s " % result)
         # capture the para number before we remove or edit:
-        para = getParaParentofElement(run)
+        para = lxml_utils.getParaParentofElement(run)
 
         # if isbn is found but there are extra chars, we need to yank them out
         if result:
@@ -327,7 +317,7 @@ def removeTextWithCharacterStyle(report_dict, doc_root, style):
     styled_runs = lxml_utils.findRunsWithStyle(style, doc_root)
     for run in styled_runs:
         # get para for log
-        para = getParaParentofElement(run)
+        para = lxml_utils.getParaParentofElement(run)
         text = lxml_utils.getParaTxt(run)
         # remove the run with this style
         run.getparent().remove(run)
@@ -405,7 +395,7 @@ def deleteObjects(report_dict, xml_root, objects_to_delete, object_name):
         searchstring = ".//{}".format(object)
         for element in xml_root.findall(searchstring, wordnamespaces):
             # get para for report (before we delete theelement!):
-            para = getParaParentofElement(element)
+            para = lxml_utils.getParaParentofElement(element)
             # remove element
             element.getparent().remove(element)
             # optional - log to report_dict

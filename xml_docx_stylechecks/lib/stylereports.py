@@ -81,7 +81,7 @@ def getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_
             report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"changed_custom_style_to_Macmillan_basestyle", "'%s', based on '%s'" % (stylename_full, basedonstyle))
     return report_dict
 
-def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_root, macmillanstyles, sectionnames, found_para_context, container_ends, container_prefix, macmillan_styles_found_dict, macmillan_styles_found, para, call_type, bookmakerstyles):
+def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_root, macmillanstyles, sectionnames, found_para_context, container_styles, container_prefix, macmillan_styles_found_dict, macmillan_styles_found, para, call_type, bookmakerstyles):
     # search styles.xlm for corresponding full stylename so we can determine if its a Macmillan style
     stylesearchstring = ".//w:style[@w:styleId='%s']/w:name" % stylename
     stylematch = styles_root.find(stylesearchstring, wordnamespaces)
@@ -89,13 +89,13 @@ def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_r
     # get fullname value and test against Macmillan style list
     stylename_full = stylematch.get('{%s}val' % wnamespace)
     if stylename_full in macmillanstyles:
-        if stylename not in sectionnames and stylename not in container_ends:
+        if stylename not in sectionnames and stylename not in container_styles:
             macmillan_styles_found_dict.append(found_para_context)
             macmillan_styles_found.append(stylename)
             fullstylename_with_container = container_prefix + stylename_full
             report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_style_first_use",fullstylename_with_container)
         # skipping this check for rsuitevalidate - since it is moot. Testing by presence of container styles.
-        if not container_ends:
+        if not container_styles:
             if stylename_full not in bookmakerstyles:
                 report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non_bookmaker_macmillan_style",stylename_full)
     else:
@@ -146,7 +146,8 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
 
         # if stylename not in macmillan_styles_found, proceed to process/ log it!:
         if test_if_present == False:
-            report_dict = getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_root, macmillanstyles, sectionnames, found_para_context, container_ends, container_prefix, macmillan_styles_found_dict, macmillan_styles_found, para, call_type, bookmakerstyles)
+            container_styles = container_starts + container_ends
+            report_dict = getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_root, macmillanstyles, sectionnames, found_para_context, container_styles, container_prefix, macmillan_styles_found_dict, macmillan_styles_found, para, call_type, bookmakerstyles)
 
     # Now get runstyles!
     logger.info("logging 1st use of every Macmillan char style, and any use of other char-style")

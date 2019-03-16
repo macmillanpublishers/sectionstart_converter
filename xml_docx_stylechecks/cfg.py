@@ -192,6 +192,7 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite':
     inline_imageholder_style = "cs-image-placement (cimg)"
     footnotestyle = "FootnoteText" #/ "Footnote Text"
     endnotestyle = "EndnoteText" #/ "Endnote Text"
+    hyperlinkstyle = "Hyperlink"
     spacebreakstyles = ['SeparatorSep','Blank-Space-BreakBsbrk','Ornamental-Space-BreakOsbrk']
     # for some reason the long-stylenames for these references are lowercase?
     valid_native_word_styles = ['Hyperlink', 'footnote reference', 'endnote reference', 'annotation reference']

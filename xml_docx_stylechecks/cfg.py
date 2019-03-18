@@ -44,6 +44,12 @@ if sys.argv[2:]:
     else:
         processwatch_file = sys.argv[2]
 
+### Arg 3 - for subprocesses where we want to dictate doctemplatetype
+#   (like isbncheck.py)
+if sys.argv[3:]:
+    templatetype = sys.argv[3]
+else:
+    templatetype = ''
 
 # # # # # # # # ENV
 loglevel = "INFO"		# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info
@@ -174,7 +180,7 @@ always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
 # Hardcoded stylenames & helpurl -- by script
-if script_name.startswith("rsuite"):
+if script_name.startswith("rsuite") or templatetype == 'rsuite':
     helpurl = "https://confluence.macmillan.com/x/R3NPBQ#RSuiteValidation-Reviewingthersuite_validateReport"
     # RSuite hardcoded stylenames (can I get these from styleconfig? in some cases)
     titlesection_stylename = "Section-TitlepageSTI"
@@ -188,6 +194,7 @@ if script_name.startswith("rsuite"):
     inline_imageholder_style = "cs-image-placement (cimg)"
     footnotestyle = "FootnoteText" #/ "Footnote Text"
     endnotestyle = "EndnoteText" #/ "Endnote Text"
+    hyperlinkstyle = "Hyperlink"
     spacebreakstyles = ['SeparatorSep','Blank-Space-BreakBsbrk','Ornamental-Space-BreakOsbrk']
     # for some reason the long-stylenames for these references are lowercase?
     valid_native_word_styles = ['Hyperlink', 'footnote reference', 'endnote reference', 'annotation reference']

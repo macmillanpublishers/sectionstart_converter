@@ -48,6 +48,8 @@ if sys.argv[2:]:
 #   (like isbncheck.py)
 if sys.argv[3:]:
     templatetype = sys.argv[3]
+else:
+    templatetype = ''
 
 # # # # # # # # ENV
 loglevel = "INFO"		# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info

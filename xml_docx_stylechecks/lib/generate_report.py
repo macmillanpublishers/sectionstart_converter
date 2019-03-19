@@ -73,7 +73,7 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                     if "badnews" in recipe_item and recipe_item["badnews"] == 'any':
                         # for complicated descriptions, where we are transferring 2 pieces of info, we have to split them here for the errstring:
                         if "_" in item['description']:
-                            descriptionA, descriptionB=item['description'].split("_")
+                            descriptionA, descriptionB=item['description'].split("_",1)
                         else:
                             descriptionA, descriptionB = "", ""
                         # now we set err strings from report_recipe for toplist items

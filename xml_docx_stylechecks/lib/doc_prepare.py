@@ -159,7 +159,8 @@ def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnspanregex)
     logger.info("* * * commencing removeISBNspanfromNonISBN function...")
     isbnspan_runs = lxml_utils.findRunsWithStyle(isbnstyle, doc_root)
     isbns = []
-    logger.debug ("Number of isbn_span runs found: %s" % len(isbnspan_runs)) # debug
+    logger.info("isbnstyle: %s, isbns %s" % (isbnstyle, isbns))
+    logger.info ("Number of isbn_span runs found: %s" % len(isbnspan_runs)) # debug
     for run in isbnspan_runs:
         runtxt = lxml_utils.getParaTxt(run)
         logger.debug ("runtxt: %s " % runtxt)
@@ -234,7 +235,7 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                         logger.debug("%s is all in one run... " % isbn_string)
                         leadingtxt = str([x[0] for x in fullmatch][0])
                         followingtxt = str([x[3] for x in fullmatch][0])
-                        isbndict[isbn_string]=run
+                        isbndict[run]=isbn_string
                         match = True
                     # Now we look for partial matches:
                     #   Check for beginning of this ISBN string, shortening the isbnstring (isbn_head) until found (or goto next run)
@@ -247,54 +248,54 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                                 leadingtxt = re.sub(r'%s$' % isbn_head,'',runtxt)
                                 if leadingtxt:
                                     logger.debug("found leadingtxt: %s" % leadingtxt)
-                                isbndict[isbn_head]=run
+                                isbndict[run]=isbn_head
                                 temp_run = run
                             isbn_head = isbn_head[:-1]
-                            # if we have a match: check if we matched the whole isbn, see if its already styled:
-                            if match_head == True:
-                                while ''.join(isbndict.keys()) != isbn_string and match == '':
-                                    nextrun = temp_run.getnext()
-                                    if nextrun is None:
+                        # if we have a match: check if we matched the whole isbn, see if its already styled:
+                        if match_head == True:
+                            while ''.join(isbndict.values()) != isbn_string and match == '':
+                                nextrun = temp_run.getnext()
+                                if nextrun is None:
+                                    match = False
+                                    logger.debug("reached last run in para, isbn wasnot matched")
+                                else:
+                                    nextruntxt = lxml_utils.getParaTxt(nextrun)
+                                    nextrunstyle = lxml_utils.getRunStyle(nextrun)
+                                    if nextrunstyle == hyperlinkstyle and nextrunstyle == 'Hyperlink':
                                         match = False
-                                        logger.debug("reached last run in para, isbn wasnot matched")
+                                        logger.debug("false match, nextrun was styled as hyperlink")
                                     else:
-                                        nextruntxt = lxml_utils.getParaTxt(nextrun)
-                                        nextrunstyle = lxml_utils.getRunStyle(nextrun)
-                                        if nextrunstyle == hyperlinkstyle and nextrunstyle == 'Hyperlink':
-                                            match = False
-                                            logger.debug("false match, nextrun was styled as hyperlink")
+                                        isbntail = isbn_string.replace(''.join(isbndict.values()),'')
+                                        logger.debug("next run tag is %s, isbntail is: %s" % (nextrun.tag, isbntail))
+                                        # if we have a full match for isbn tail, we're done, log the run to dict and capture the followingtxt
+                                        if nextruntxt.startswith(isbntail):
+                                            logger.debug("found a match for isbntail!")
+                                            match = True
+                                            isbndict[nextrun]=isbntail
+                                            followingtxt = re.sub(r'^%s' % isbntail,'',nextruntxt)
+                                            if followingtxt:
+                                                logger.debug("found followingtxt: %s" % followingtxt)
+                                        # if we have a partial match, add it to the dict, we'll cycle back through
+                                        elif isbn_string.startswith(''.join(isbndict.values()) + nextruntxt):
+                                            logger.debug("found partial match for isbn tail.")
+                                            isbndict[nextrun]=nextruntxt
                                         else:
-                                            isbntail = isbn_string.replace(''.join(isbndict.keys()),'')
-                                            logger.debug("next run tag is %s, isbntail is: %s" % (nextrun.tag, isbntail))
-                                            # if we have a full match for isbn tail, we're done, log the run to dict and capture the followingtxt
-                                            if nextruntxt.startswith(isbntail):
-                                                logger.debug("found a match for isbntail!")
-                                                match = True
-                                                isbndict[isbntail]=nextrun
-                                                followingtxt = re.sub(r'^%s' % isbntail,'',nextruntxt)
-                                                if followingtxt:
-                                                    logger.debug("found followingtxt: %s" % followingtxt)
-                                            # if we have a partial match, add it to the dict, we'll cycle back through
-                                            elif isbn_string.startswith(''.join(isbndict.keys()) + nextruntxt):
-                                                logger.debug("found partial match for isbn tail.")
-                                                isbndict[nextruntxt]=nextrun
-                                            else:
-                                                logger.debug("bad match for our isbn tail")
-                                                match = False
-                                        temp_run = nextrun
+                                            logger.debug("bad match for our isbn tail")
+                                            match = False
+                                    temp_run = nextrun
                     # we had a full isbn match, now we build new runs as needed: leading, isbntext and following run;
                     #   and deleting previous versions of runs with same content
                     if match == True:
                         # append run for following text
-                        appendRunWithEditedCopy(isbndict[isbndict.keys()[-1]], followingtxt, True, '')
+                        appendRunWithEditedCopy(isbndict.keys()[-1], followingtxt, True, '')
                         # append new run for just the isbn
                         appendRunWithEditedCopy(run, isbn_string, False, isbnstyle)
                         # append run for leading text
-                        appendRunWithEditedCopy(isbndict[isbndict.keys()[0]], leadingtxt, True, '')
+                        appendRunWithEditedCopy(isbndict.keys()[0], leadingtxt, True, '')
 
                         # remove the original run(s)
                         for key, value in isbndict.iteritems():
-                            value.getparent().remove(value)
+                            key.getparent().remove(key)
 
                         # add this isbn to list for report
                         styled_loose_isbns.append(isbn_string)

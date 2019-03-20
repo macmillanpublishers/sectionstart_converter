@@ -29,7 +29,7 @@ original_inputfilename_noext, inputfile_ext = os.path.splitext(original_inputfil
 # clean out non-alphanumeric chars
 inputfilename_noext = re.sub('\W-','',original_inputfilename_noext)
 # cut down extraordinarily long filenames to 47 char, + timestamp
-if len(inputfilename_noext) > 60:
+if len(inputfilename_noext) > 60 and not script_name.startswith("validator"):
     inputfilename_noext = "%s_%s" % (str[:47],time.strftime("%y%m%d%H%M%S"))
 inputfilename = inputfilename_noext + inputfile_ext
 

@@ -53,7 +53,7 @@ def logTextOfParasWithStyleInSection(report_dict, xml_root, sectionnames, sectio
     return report_dict
 
 def logTextOfRunsWithStyleInSection(report_dict, xml_root, sectionnames, sectionname, stylename, report_category):
-    logger.info("* * * commencing logTextOfParasWithStyleInSection: section '%s', style '%s'  ..." % (sectionname, stylename))
+    logger.info("* * * commencing logTextOfRunsWithStyleInSection: section '%s', style '%s'  ..." % (sectionname, stylename))
     runs = lxml_utils.findRunsWithStyle(lxml_utils.transformStylename(stylename), xml_root)
     for run in runs:
         para = run.getparent()
@@ -61,7 +61,16 @@ def logTextOfRunsWithStyleInSection(report_dict, xml_root, sectionnames, section
         current_sectionname = lxml_utils.getSectionName(para, sectionnames)[0]
         if current_sectionname == sectionname:
             runtxt = lxml_utils.getParaTxt(run)
-            report_dict = lxml_utils.logForReport(report_dict,xml_root,para,report_category,runtxt)
+            # check and see if we've already captured this para for other runs
+            already_captured = False
+            this_para_id = lxml_utils.getParaId(para, xml_root)
+            if report_category in report_dict:
+                for x in report_dict[report_category]:
+                    for key,value in x.iteritems():
+                        if x["para_id"] == this_para_id:
+                            already_captured = True
+            if already_captured == False:
+                report_dict = lxml_utils.logForReport(report_dict,xml_root,para,report_category,runtxt)
     return report_dict
 
 def checkSecondPara(report_dict, xml_root, firstpara, sectionnames):

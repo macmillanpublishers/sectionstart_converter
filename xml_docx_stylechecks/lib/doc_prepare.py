@@ -174,6 +174,9 @@ def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnspanregex)
             isbntxt = str([x[1] for x in result][0])
             followingtxt = str([x[3] for x in result][0])
 
+            # strip out hyphens, to facilitate future lookups & comparisons
+            isbntxt = isbntxt.replace('-','')
+
             # let's keep track of found isbns:
             isbns.append(isbntxt)
 

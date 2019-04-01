@@ -159,7 +159,6 @@ def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnspanregex)
     logger.info("* * * commencing removeISBNspanfromNonISBN function...")
     isbnspan_runs = lxml_utils.findRunsWithStyle(isbnstyle, doc_root)
     isbns = []
-    logger.info("isbnstyle: %s, isbns %s" % (isbnstyle, isbns))
     logger.info ("Number of isbn_span runs found: %s" % len(isbnspan_runs)) # debug
     for run in isbnspan_runs:
         runtxt = lxml_utils.getParaTxt(run)

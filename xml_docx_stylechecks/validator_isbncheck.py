@@ -71,7 +71,7 @@ if __name__ == '__main__':
             hyperlinkstyle = lxml_utils.transformStylename(cfg.hyperlinkstyle)
 
             # # # scan for styled ISBNs and strip non-ISBN chars
-            isbn_dict, isbn_dict["manuscript_isbns"] = doc_prepare.removeNonISBNsfromISBNspans(isbn_dict, doc_root, isbnstyle, cfg.isbnspanregex)
+            isbn_dict, isbn_dict["styled_isbns"] = doc_prepare.removeNonISBNsfromISBNspans(isbn_dict, doc_root, isbnstyle, cfg.isbnspanregex)
 
             # # # scan for unstyled ISBNs and style them. Also captures properly styled isbns that may have spanned multiple 'runs' in xml
             isbn_dict, isbn_dict["programatically_styled_isbns"] = doc_prepare.styleLooseISBNs(isbn_dict, cfg.isbnregex, cfg.isbnspanregex, doc_root, isbnstyle, hyperlinkstyle)
@@ -83,7 +83,7 @@ if __name__ == '__main__':
             os_utils.writeXMLtoFile(doc_root, doc_xml)
 
             ### zip ziproot up as a docx
-            logger.info("Zipping updated xml to replae workingfile .docx in the tmpfolder")
+            logger.info("Zipping updated xml to replace workingfile .docx in the tmpfolder")
             # os_utils.rm_existing_os_object(newdocxfile, 'validated_docx') <-- shouldnt be necessary, zipfile.py should overwrite
             zipDOCX.zipDOCX(ziproot, workingfile) # < for prod
             # zipDOCX.zipDOCX(ziproot, newdocxfile)  # < for testing

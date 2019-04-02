@@ -40,6 +40,7 @@ report_dict = {}
 report_emailed = False
 doc_version_min = "6.0"
 doc_version_max = None
+percent_styled_min = 90
 
 ######### SETUP LOGGING
 logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
@@ -85,7 +86,7 @@ if __name__ == '__main__':
 
 
             ########## RUN STUFF
-            if version_result == "up_to_date" and percent_styled >= 50 and protection == "":
+            if version_result == "up_to_date" and percent_styled >= percent_styled_min and protection == "":
                 logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
 
                 # handle docs where both style-sets exist.
@@ -109,8 +110,8 @@ if __name__ == '__main__':
             ########## SKIP RUNNING STUFF, LOG ALERTS
             else:
                 logger.warn("* * Skipping Style Report:")
-                if percent_styled < 50:
-                    errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
+                if percent_styled < percent_styled_min:
+                    errstring = usertext_templates.alerts()["notstyled"].format(percent_styled_min=percent_styled_min)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
                 if version_result == "newer_template_avail":

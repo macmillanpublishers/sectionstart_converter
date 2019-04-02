@@ -79,6 +79,13 @@ def getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_
                 para.find(".//*w:pStyle", wordnamespaces).set(attrib_style_key, basedonstyle)
             # optionally, log to json:
             report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"changed_custom_style_to_Macmillan_basestyle", "'%s', based on '%s'" % (stylename_full, basedonstyle))
+        else:
+            if run_style is not None:
+                # log char styles
+                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_used",stylename_full)
+            else:
+                # log para styles not reverted to base
+                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
     return report_dict
 
 def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_root, macmillanstyles, sectionnames, found_para_context, container_styles, container_prefix, macmillan_styles_found_dict, macmillan_styles_found, para, call_type, bookmakerstyles):
@@ -99,10 +106,11 @@ def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_r
             if stylename_full not in bookmakerstyles:
                 report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non_bookmaker_macmillan_style",stylename_full)
     else:
-        report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
         # if we're "validating", revert custom_styles based on Macmillan styles to base_style
         if call_type == "validate":
             report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para)
+        else:
+            report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
     return report_dict
 
 def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, call_type, valid_native_word_styles, container_starts=[], container_ends=[]):
@@ -116,6 +124,7 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
     for stylename in macmillanstyledata:
         macmillanstyles.append(stylename)
     macmillan_styles_found = [] # <- for char styles, and non-rsuite para styles
+    macmillan_charstyles_found = [] # <- to make sure we don't report charstyles more than once
     macmillan_styles_found_dict = []   # <- for rsuite para styles
 
     for para in doc_root.findall(".//*w:p", wordnamespaces):
@@ -170,11 +179,17 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
                 if stylename_full != 'annotation reference':
                     report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_charstyle_first_use",stylename_full)
             else: #if stylename_full != "annotation reference" and stylename_full != "endnote reference":
-                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_used",stylename_full)
                 # if we're "validating", revert custom_styles based on Macmillan styles to base_style
                 if call_type == "validate":
                     report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para, run_style)
-
+                else:
+                    # we only want to capture each charstyle once, since we are summarizing.
+                    if stylename_full not in macmillan_charstyles_found:
+                        report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_used",stylename_full)
+                        print "%s found!" % stylename_full
+                        print "macmillan_charstyles_found: ", macmillan_charstyles_found
+                    # add to the list of found charstyles:
+                    macmillan_charstyles_found.append(stylename_full)
     return report_dict
 
 

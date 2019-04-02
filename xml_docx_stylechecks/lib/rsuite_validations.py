@@ -104,7 +104,7 @@ def deleteBookmarks(report_dict, xml_root, bookmark_items):
             # remove element(s) (get para first for logging)
             para = lxml_utils.getParaParentofElement(bookmark_start)
             bookmark_start.getparent().remove(bookmark_start)
-            if bookmark_end:
+            if bookmark_end is not None:
                 bookmark_end.getparent().remove(bookmark_end)
             # log to report_dict as needed, logger for debug
             #   Note: we are silently deleting bookmarks of 'auto_bookmark' types, that were not inserted by users
@@ -454,7 +454,7 @@ def rsuiteValidations(report_dict):
     report_dict = checkSecondPara(report_dict, doc_root, firstpara, sectionnames)
 
     # list all styles used in the doc
-    report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "validate", valid_native_word_styles, container_start_styles, container_end_styles)
+    report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report", valid_native_word_styles, container_start_styles, container_end_styles)
     # report_dict, doc_root = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "validate", valid_native_word_styles, container_start_styles, container_end_styles)
 
     # # add/update para index numbers

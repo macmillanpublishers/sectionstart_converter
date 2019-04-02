@@ -234,14 +234,23 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     	},
     	"26_non-Macmillan_styles(validator)": {
             "include_for": ["validator"],
-    		"title": "NON-MACMILLAN STYLES",
+    		"title": "NON-MACMILLAN PARAGRAPH STYLES",
     		"text": "Non-Macmillan styles detected.\nContent styled with non-Macmillan styles may not appear properly-styled in your egalley.\n",
     		"dict_category_name": "non-Macmillan_style_used",
     		"line_template": "- style '{description}': found in section '{parent_section_start_type}': {parent_section_start_content}",
     		"required": "n-a",
             "v_warning_banner": "Unsupported (non-Macmillan) style(s) found."
     	},
-    	"27_non-Bookmaker_styles(validator)": {
+    	"27_non-Macmillan_charstyles(validator)": {
+            "include_for": ["validator"],
+    		"title": "NON-MACMILLAN CHARACTER STYLES",
+    		"text": "Non-Macmillan styles detected.\nContent styled with non-Macmillan styles may not appear properly-styled in your egalley.\n",
+    		"dict_category_name": "non-Macmillan_charstyle_used",
+    		"line_template": "- character style '{description}': found in use.",
+    		"required": "n-a",
+            "v_warning_banner": "Unsupported (non-Macmillan) style(s) found."
+    	},
+    	"28_non-Bookmaker_styles(validator)": {
             "include_for": ["validator"],
     		"title": "NON-BOOKMAKER STYLES",
     		"text": "Non-Bookmaker styles detected.\nContent styled with non-Bookmaker styles may not appear properly-styled in your egalley.\n",
@@ -354,6 +363,13 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "Non-Macmillan style '{description}' in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
+    	},
+    	"73.5_non_macmillan_charstyles": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["reporter", "rsuitevalidate"],
+    		"dict_category_name": "non-Macmillan_charstyle_used",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Non-Macmillan character style found in use: '{description}'."# (Paragraph {para_index})"
     	},
     	"74_non_bookmaker_style": {
             "include_for": ["reporter"],

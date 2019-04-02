@@ -37,6 +37,7 @@ macmillan_template = cfg.macmillan_template
 alerts_json = cfg.alerts_json
 doc_version_min = "5.0"
 doc_version_max = "6.0"
+percent_styled_min = 50
 
 
 ######### SETUP LOGGING
@@ -68,7 +69,7 @@ if __name__ == '__main__':
 
         ########## RUN STUFF
         # Basic requirements passed, proceed with validation & cleanup
-        if percent_styled >= 50 and protection == "" and version_result != "docversion_above_maximum":
+        if percent_styled >= percent_styled_min and protection == "" and version_result != "docversion_above_maximum":
             logger.info("Proceeding! (percent_styled='%s', protection='%s')" % (percent_styled, protection))
 
             # note and accept all track changes
@@ -120,8 +121,8 @@ if __name__ == '__main__':
                 errstring = usertext_templates.alerts()["v_err_rsuitetemplate"]
                 os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
-            if percent_styled < 50:
-                errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
+            if percent_styled < percent_styled_min:
+                errstring = usertext_templates.alerts()["notstyled"].format(percent_styled_min=percent_styled_min)
                 os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                 logger.warn("* {}".format(errstring))
             if protection:

@@ -39,6 +39,7 @@ report_dict = {}
 report_emailed = False
 doc_version_min = None
 doc_version_max = "6.0"
+percent_styled_min = 50
 
 
 ######### SETUP LOGGING
@@ -85,7 +86,7 @@ if __name__ == '__main__':
 
             ########## RUN STUFF
             # Doc is styled and has no version: attach template and add section starts!
-            if version_result == "no_version" and percent_styled >= 50 and protection == "":
+            if version_result == "no_version" and percent_styled >= percent_styled_min and protection == "":
                 logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
 
                 # # # attach the template
@@ -112,8 +113,8 @@ if __name__ == '__main__':
             # skip attach template and skip adding section starts
             else:
                 logger.warn("* * Skipping Converter:")
-                if percent_styled < 50:
-                    errstring = usertext_templates.alerts()["notstyled"].format(percent_styled=percent_styled)
+                if percent_styled < percent_styled_min:
+                    errstring = usertext_templates.alerts()["notstyled"].format(percent_styled_min=percent_styled_min)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
                 # 2 cases of versions not applicable

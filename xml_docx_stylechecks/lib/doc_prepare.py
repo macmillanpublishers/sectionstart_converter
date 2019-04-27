@@ -170,9 +170,9 @@ def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnspanregex)
 
         # if isbn is found but there are extra chars, we need to yank them out
         if result:
-            leadingtxt = str([x[0] for x in result][0])
-            isbntxt = str([x[1] for x in result][0])
-            followingtxt = str([x[3] for x in result][0])
+            leadingtxt = [x[0] for x in result][0]
+            isbntxt = [x[1] for x in result][0]
+            followingtxt = [x[3] for x in result][0]
 
             # strip out hyphens, to facilitate future lookups & comparisons
             isbntxt = isbntxt.replace('-','')
@@ -220,6 +220,8 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
             for run in runs:
                 runtxt = lxml_utils.getParaTxt(run)
                 runstyle = lxml_utils.getRunStyle(run)
+                parastyle = getParaStyle(para)
+                sectionname = getSectionName(para, section_names):
                 # skip this run if styled as a hyperlink, we don't want isbns that are contained in hyperlinks
                 if runstyle != hyperlinkstyle and runstyle != 'Hyperlink':
                     match_head = False
@@ -234,9 +236,11 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                         logger.debug("%s already properly styled as isbn" % isbn_string)
                         match = False
                     elif len(fullmatch):
+                        logger.debug("SKSDSKD")
+                        logger.debug("I got here: fullmatch = %s" % fullmatch)
                         logger.debug("%s is all in one run... " % isbn_string)
-                        leadingtxt = str([x[0] for x in fullmatch][0])
-                        followingtxt = str([x[3] for x in fullmatch][0])
+                        leadingtxt = [x[0] for x in fullmatch][0]
+                        followingtxt = [x[3] for x in fullmatch][0]
                         isbndict[run]=isbn_string
                         match = True
                     # Now we look for partial matches:

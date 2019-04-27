@@ -220,8 +220,6 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
             for run in runs:
                 runtxt = lxml_utils.getParaTxt(run)
                 runstyle = lxml_utils.getRunStyle(run)
-                parastyle = getParaStyle(para)
-                sectionname = getSectionName(para, section_names):
                 # skip this run if styled as a hyperlink, we don't want isbns that are contained in hyperlinks
                 if runstyle != hyperlinkstyle and runstyle != 'Hyperlink':
                     match_head = False

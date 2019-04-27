@@ -234,8 +234,6 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                         logger.debug("%s already properly styled as isbn" % isbn_string)
                         match = False
                     elif len(fullmatch):
-                        logger.debug("SKSDSKD")
-                        logger.debug("I got here: fullmatch = %s" % fullmatch)
                         logger.debug("%s is all in one run... " % isbn_string)
                         leadingtxt = [x[0] for x in fullmatch][0]
                         followingtxt = [x[3] for x in fullmatch][0]

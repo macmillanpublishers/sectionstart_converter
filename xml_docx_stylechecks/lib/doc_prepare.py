@@ -170,9 +170,9 @@ def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnspanregex)
 
         # if isbn is found but there are extra chars, we need to yank them out
         if result:
-            leadingtxt = str([x[0] for x in result][0])
-            isbntxt = str([x[1] for x in result][0])
-            followingtxt = str([x[3] for x in result][0])
+            leadingtxt = [x[0] for x in result][0]
+            isbntxt = [x[1] for x in result][0]
+            followingtxt = [x[3] for x in result][0]
 
             # strip out hyphens, to facilitate future lookups & comparisons
             isbntxt = isbntxt.replace('-','')
@@ -235,8 +235,8 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                         match = False
                     elif len(fullmatch):
                         logger.debug("%s is all in one run... " % isbn_string)
-                        leadingtxt = str([x[0] for x in fullmatch][0])
-                        followingtxt = str([x[3] for x in fullmatch][0])
+                        leadingtxt = [x[0] for x in fullmatch][0]
+                        followingtxt = [x[3] for x in fullmatch][0]
                         isbndict[run]=isbn_string
                         match = True
                     # Now we look for partial matches:

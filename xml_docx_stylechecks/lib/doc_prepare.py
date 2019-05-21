@@ -149,7 +149,8 @@ def appendRunWithEditedCopy(original_run, text, preserveSpace, style):
                 new_run.insert(0, new_rPr_el)
         # find text el, set the text el to contain only our content
         new_text_el = new_run.find(".//w:t",wordnamespaces)
-        new_text_el.text = text
+        if new_text_el is not None:
+            new_text_el.text = text
         if preserveSpace == True:
             new_text_el.set(attrib_space_key,"preserve")
         # append original_run with new_run !

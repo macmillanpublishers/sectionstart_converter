@@ -163,10 +163,10 @@ def checkDocProtection(settings_xml):
 
     return protect_type
 
-def checkDocXMLforUnacceptedTrackChanges(doc_xml):
-    logger.debug
+def checkDocXMLforUnacceptedTrackChanges(xml_file):
+    logger.debug("checking for unaccepted track changes...")
     tc_marker_found = False
-    doc_tree = etree.parse(doc_xml)
+    doc_tree = etree.parse(xml_file)
     doc_root = doc_tree.getroot()
     for element in all_trackchange_tags:
         searchstring = ".//*w:{}".format(element)
@@ -175,12 +175,19 @@ def checkDocXMLforUnacceptedTrackChanges(doc_xml):
             logger.debug("found an '%s' with searchstring" % element)
     return tc_marker_found
 
-def getProtectionAndTrackChangesStatus(doc_xml, settings_xml):
+def getProtectionAndTrackChangesStatus(doc_xml, settings_xml, footnotes_xml, endnotes_xml):
     trackchange_status = False
-    tc_marker_found = checkDocXMLforUnacceptedTrackChanges(doc_xml)
+    tc_marker_found = False
+    tc_marker_doc = checkDocXMLforUnacceptedTrackChanges(doc_xml)
+    tc_marker_footnotes = checkDocXMLforUnacceptedTrackChanges(footnotes_xml)
+    tc_marker_endnotes = checkDocXMLforUnacceptedTrackChanges(endnotes_xml)
+    logger.debug("tc_marker_doc: %s, tc_marker_footnotes: %s, tc_marker_endnotes: %s" %(tc_marker_doc, tc_marker_footnotes, tc_marker_endnotes))
     trackRevisions = checkSettingsXML(settings_xml, "trackRevisions")
     trackRevisionsVal = checkSettingsXML_Attribute(settings_xml, "trackRevisions", "val")
     protect_type = checkDocProtection(settings_xml)
+    # determine whether we have tc_markers
+    if tc_marker_doc == True or tc_marker_footnotes == True or tc_marker_endnotes == True:
+        tc_marker_found = True
     # make sure trackRevisions is present, not set to false, and not superfluous b/c we already have TC protection as on.
     if trackRevisionsVal != "false" and trackRevisions == True and protect_type != "trackedChanges":
         trackchange_status = True
@@ -193,13 +200,15 @@ def getProtectionAndTrackChangesStatus(doc_xml, settings_xml):
 
     return protection, tc_marker_found, trackchange_status
 
-def acceptTrackChanges(doc_xml):
-    doc_tree = etree.parse(doc_xml)
-    doc_root = doc_tree.getroot()
+def acceptTrackChanges(xml_file):
+    logger.debug("accepting tracked changes...")
+    xml_tree = etree.parse(xml_file)
+    xml_root = xml_tree.getroot()
     # delete each tag and any nested contents!
     for tag in del_trackchange_tags:
         searchstring = ".//*w:{}".format(tag)
-        for found_el in doc_root.findall(searchstring, wordnamespaces):
+        for found_el in xml_root.findall(searchstring, wordnamespaces):
+            logger.debug("found del_trackchange_tag!")
             parent_el = found_el.getparent()
             parent_el.remove(found_el)
             # see if parent_el is a p without any child runs, if so let's scrap that too
@@ -214,7 +223,8 @@ def acceptTrackChanges(doc_xml):
     # 'collapse' parent element, raising child elements (where there are any printing contents), then delete parent element
     for tag in collapse_trackchange_tags:
         searchstring = ".//*w:{}".format(tag)
-        for found_el in doc_root.findall(searchstring, wordnamespaces):
+        for found_el in xml_root.findall(searchstring, wordnamespaces):
+            logger.debug("found collapse_trackchange_tag!")
             # print found_el    # debug
             # see if we have any children to move up a level
             run_check = found_el.find(".//w:r", wordnamespaces)
@@ -227,7 +237,9 @@ def acceptTrackChanges(doc_xml):
                     found_el.addprevious(child)
             # get rid of our old parent
             found_el.getparent().remove(found_el)
-    return doc_root
+
+    os_utils.writeXMLtoFile(xml_root, xml_file)
+
 
 def stripDuplicateMacmillanStyles(doc_xml, styles_xml):
     logger.debug("Checking for old Macmillan duplicate styles, replacing as needed...")

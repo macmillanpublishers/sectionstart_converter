@@ -53,7 +53,7 @@ if __name__ == '__main__':
         ########## CHECK DOCUMENT
         ### check doc protection
         logger.info('Checking doc protection, trackchanges...')
-        protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml)
+        protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml, cfg.footnotes_xml, cfg.endnotes_xml)
 
         # log for the rest o the validator suite:
         isbn_dict["password_protected"] = protection

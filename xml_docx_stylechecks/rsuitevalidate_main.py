@@ -78,8 +78,10 @@ if __name__ == '__main__':
                 os_utils.logAlerttoJSON(alerts_json, "warning", errstring)
                 logger.warn("* {}".format(errstring))
                 check_docx.acceptTrackChanges(cfg.doc_xml)
-                check_docx.acceptTrackChanges(cfg.footnotes_xml)
-                check_docx.acceptTrackChanges(cfg.endnotes_xml)
+                if os.path.exists(cfg.footnotes_xml):
+                    check_docx.acceptTrackChanges(cfg.footnotes_xml)
+                if os.path.exists(cfg.endnotes_xml):
+                    check_docx.acceptTrackChanges(cfg.endnotes_xml)
             # create warnings re: track changes:
             if trackchange_status == True:
                 errstring = usertext_templates.alerts()["trackchange_enabled"]

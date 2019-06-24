@@ -176,11 +176,12 @@ def checkDocXMLforUnacceptedTrackChanges(xml_file):
     return tc_marker_found
 
 def getProtectionAndTrackChangesStatus(doc_xml, settings_xml, footnotes_xml, endnotes_xml):
-    trackchange_status = False
-    tc_marker_found = False
+    trackchange_status, tc_marker_found, tc_marker_footnotes, tc_marker_endnotes = False, False, False, False
     tc_marker_doc = checkDocXMLforUnacceptedTrackChanges(doc_xml)
-    tc_marker_footnotes = checkDocXMLforUnacceptedTrackChanges(footnotes_xml)
-    tc_marker_endnotes = checkDocXMLforUnacceptedTrackChanges(endnotes_xml)
+    if os.path.exists(footnotes_xml):
+        tc_marker_footnotes = checkDocXMLforUnacceptedTrackChanges(footnotes_xml)
+    if os.path.exists(endnotes_xml):
+        tc_marker_endnotes = checkDocXMLforUnacceptedTrackChanges(endnotes_xml)
     logger.debug("tc_marker_doc: %s, tc_marker_footnotes: %s, tc_marker_endnotes: %s" %(tc_marker_doc, tc_marker_footnotes, tc_marker_endnotes))
     trackRevisions = checkSettingsXML(settings_xml, "trackRevisions")
     trackRevisionsVal = checkSettingsXML_Attribute(settings_xml, "trackRevisions", "val")

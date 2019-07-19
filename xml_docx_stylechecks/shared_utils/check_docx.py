@@ -55,6 +55,12 @@ def get_docxVersion(customprops_xml):
         if versionstring[0] == 'v':
             versionstring = versionstring[1:]
 
+        try:
+            versionstring = str(float(versionstring))
+        except:
+            logging.error("version_string from doc props cannot be converted to float: '%s'. Reverting to 0.0" % versionstring)
+            versionstring = "0.0"
+
     logger.debug("versionstring value: '%s'" %  versionstring)
     return versionstring
 

@@ -26,6 +26,11 @@ else:
     import shared_utils.os_utils as os_utils
     import shared_utils.lxml_utils as lxml_utils
 
+# # # to import benchmark decorator:
+# decoratorspath = os.path.join(sys.path[0], '..','..','utilities','python_utils','decorators.py')
+# import imp
+# decorators = imp.load_source('decorators', decoratorspath)
+
 
 ######### LOCAL DECLARATIONS
 # Local namespace vars
@@ -127,22 +132,26 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
     macmillan_charstyles_found = [] # <- to make sure we don't report charstyles more than once
     macmillan_styles_found_dict = []   # <- for rsuite para styles
 
+    this_section = ""
+    container_prefix = ""
     for para in doc_root.findall(".//*w:p", wordnamespaces):
         # get stylename from each para
         stylename = lxml_utils.getParaStyle(para)
 
-        # get container section for context
-        container_prefix = ""
-        container_name = lxml_utils.getContainerName(para, sectionnames.keys(), container_starts, container_ends)
-        if container_name and stylename not in container_starts + container_ends:
-            container_prefix = lxml_utils.getStyleLongname(container_name).split()[0] + " > "
-        shortstylename_with_container = container_prefix + stylename  #  < -- this is for the index we're keeping of what's already been found
-
-        # get parent section for context
-        sectionpara_name = lxml_utils.getSectionName(para, sectionnames)[0]
-        if sectionpara_name == lxml_utils.transformStylename(cfg.booksection_stylename):
+        # track current section & container as we loop through styles
+        if stylename in sectionnames:
+            this_section = stylename
+            container_prefix = ""
             continue
-        found_para_context = {sectionpara_name:shortstylename_with_container}
+        elif stylename in container_starts:
+            container_prefix = lxml_utils.getStyleLongname(stylename).split()[0] + " > "
+            continue
+        elif stylename in container_ends:
+            container_prefix = ""
+            continue
+
+        shortstylename_with_container = container_prefix + stylename
+        found_para_context = {this_section:shortstylename_with_container}
 
         # check index to see if style has already been noted (with section / container context where apropos)
         test_if_present = False
@@ -150,7 +159,7 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
             test_if_present = True
         elif container_starts:
             for d in macmillan_styles_found_dict:
-                if sectionpara_name in d and d[sectionpara_name] == shortstylename_with_container:
+                if this_section in d and d[this_section] == shortstylename_with_container:
                     test_if_present = True
 
         # if stylename not in macmillan_styles_found, proceed to process/ log it!:
@@ -191,7 +200,6 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
                     # add to the list of found charstyles:
                     macmillan_charstyles_found.append(stylename_full)
     return report_dict
-
 
 def styleReports(call_type, report_dict):
     # local vars

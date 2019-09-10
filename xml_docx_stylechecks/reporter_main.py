@@ -107,7 +107,7 @@ if __name__ == '__main__':
                     errstring = usertext_templates.alerts()["r_err_rsuitetemplate"]
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
-                else:
+                elif version_result != "up_to_date":
                     errstring = usertext_templates.alerts()["r_err_oldtemplate"].format(current_version=current_version, template_version=template_version)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))

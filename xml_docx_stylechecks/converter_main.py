@@ -122,7 +122,7 @@ if __name__ == '__main__':
                     errstring = usertext_templates.alerts()["c_rsuitetemplate"]
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
-                else:
+                elif version_result == "up_to_date":
                     errstring = usertext_templates.alerts()["c_has_template"].format(support_email_address=cfg.support_email_address)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))

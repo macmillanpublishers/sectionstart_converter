@@ -318,7 +318,8 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
         # 5 Rm tmpdir to avoid interfering with next run
         logger.info("trying: delete tmp folder")
         try:
-            os_utils.rm_existing_os_object(tmpdir, 'tmpdir')		# comment out for testing / debug
+            if cfg.preserve_tmpdir == False:    # leave tmpdir for debug/testing
+                os_utils.rm_existing_os_object(tmpdir, 'tmpdir')
         except:
             logger.exception("* deleting tmp folder Traceback:")
             errs_duringcleanup.append("-deleting tmp folder")

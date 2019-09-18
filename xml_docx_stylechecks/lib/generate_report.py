@@ -64,7 +64,7 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                         if new_section_text not in tmptextlist:
                             tmptextlist.append(new_section_text)
                     # line = "{:<40}:{:>30}".format("parent_section_start_type","'parent_section_start_content'")
-                    newline = recipe_item["line_template"].format(description=item['description'], para_string='"'+item['para_string'].encode('utf-8')+'"', \
+                    newline = recipe_item["line_template"].format(description=item['description'].encode('utf-8'), para_string='"'+item['para_string'].encode('utf-8')+'"', \
                         parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', \
                         parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap), para_index=item['para_index'])
                     # newline = line.replace("zdescription", item['description']).replace("para_string", item['para_string']).replace("parent_section_start_content", item['parent_section_start_content'])

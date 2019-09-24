@@ -179,7 +179,9 @@ always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
 # regex for finding ISBNS
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
-# Hardcoded stylenames & helpurl -- by script
+# Hardcoded stylenames & helpurl -- some by script/template-type
+footnotestyle = "FootnoteText" #/ "Footnote Text"
+endnotestyle = "EndnoteText" #/ "Endnote Text"
 if script_name.startswith("rsuite") or templatetype == 'rsuite':
     helpurl = "https://confluence.macmillan.com/x/R3NPBQ#RSuiteValidation-Reviewingthersuite_validateReport"
     # RSuite hardcoded stylenames (can I get these from styleconfig? in some cases)
@@ -192,12 +194,17 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite':
     logostyle = "Logo-Placement (Logo)"
     imageholder_style = "Image-Placement (Img)"
     inline_imageholder_style = "cs-image-placement (cimg)"
-    footnotestyle = "FootnoteText" #/ "Footnote Text"
-    endnotestyle = "EndnoteText" #/ "Endnote Text"
     hyperlinkstyle = "Hyperlink"
     spacebreakstyles = ['SeparatorSep','Blank-Space-BreakBsbrk','Ornamental-Space-BreakOsbrk']
     # for some reason the long-stylenames for these references are lowercase?
-    valid_native_word_styles = ['Hyperlink', 'footnote reference', 'endnote reference', 'annotation reference']
+    valid_native_word_styles = [
+        'Hyperlink',
+        'footnote reference',
+        'footnote text',
+        'endnote reference',
+        'endnote text',
+        'annotation reference'
+        ]
 else:
     helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
     # stylenames

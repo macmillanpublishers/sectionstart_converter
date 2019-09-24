@@ -118,8 +118,8 @@ def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_r
             report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
     return report_dict
 
-def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, call_type, valid_native_word_styles, container_starts=[], container_ends=[]):
-    logger.info("logging 1st use of every Macmillan para style, and any use of other style")
+def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, call_type, valid_native_word_styles, container_starts=[], container_ends=[], runs_only=False):
+    logger.info("** running function 'getAllStylesUsed'")
     styles_tree = etree.parse(styles_xml)
     styles_root = styles_tree.getroot()
     # macmillanstyle_shortnames = [lxml_utils.transformStylename(s) for s in macmillanstyledata]
@@ -128,44 +128,57 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
     macmillanstyles = valid_native_word_styles
     for stylename in macmillanstyledata:
         macmillanstyles.append(stylename)
-    macmillan_styles_found = [] # <- for char styles, and non-rsuite para styles
-    macmillan_charstyles_found = [] # <- to make sure we don't report charstyles more than once
+    macmillan_styles_found = [] # <- non-rsuite Macmillan para styles
     macmillan_styles_found_dict = []   # <- for rsuite para styles
+    charstyles_found = [] # <- for all Macmillan char styles, to make sure we don't report them more than once (we are summarizing)
+    # now capture / add Macmillan charstyles found in previous runs of other xml files in doc
+    if "Macmillan_charstyle_first_use" in report_dict:
+        for charstyle_dict in report_dict["Macmillan_charstyle_first_use"]:
+            charstyles_found.append(charstyle_dict['description'])
+    if "non-Macmillan_charstyle_used" in report_dict:
+        for charstyle_dict in report_dict["non-Macmillan_charstyle_used"]:
+            charstyles_found.append(charstyle_dict['description'])
 
-    this_section = ""
-    container_prefix = ""
-    for para in doc_root.findall(".//*w:p", wordnamespaces):
-        # get stylename from each para
-        stylename = lxml_utils.getParaStyle(para)
+    # adding "runs_only" option so I can re-use this to capture charstyles for footnotes/endnotes
+    if runs_only == True:
+        logger.info("runs_only set to: %s, we are probably scanning xml other than doc itself, just for charstyles" % runs_only)
+    else:
+        logger.info("logging 1st use of every Macmillan para style, and any use of other style")
+        this_section = ""
+        container_prefix = ""
+        for para in doc_root.findall(".//*w:p", wordnamespaces):
+            # get stylename from each para
+            stylename = lxml_utils.getParaStyle(para)
 
-        # track current section & container as we loop through styles
-        if stylename in sectionnames:
-            this_section = stylename
-            container_prefix = ""
-            continue
-        elif stylename in container_starts:
-            container_prefix = lxml_utils.getStyleLongname(stylename).split()[0] + " > "
-            continue
-        elif stylename in container_ends:
-            container_prefix = ""
-            continue
+            # track current section & container as we loop through styles
+            if stylename in sectionnames:
+                this_section = stylename
+                container_prefix = ""
+                continue
+            elif stylename in container_starts:
+                container_prefix = lxml_utils.getStyleLongname(stylename).split()[0] + " > "
+                continue
+            elif stylename in container_ends:
+                container_prefix = ""
+                continue
 
-        shortstylename_with_container = container_prefix + stylename
-        found_para_context = {this_section:shortstylename_with_container}
+            shortstylename_with_container = container_prefix + stylename
+            found_para_context = {this_section:shortstylename_with_container}
 
-        # check index to see if style has already been noted (with section / container context where apropos)
-        test_if_present = False
-        if not container_starts and stylename in macmillan_styles_found:
-            test_if_present = True
-        elif container_starts:
-            for d in macmillan_styles_found_dict:
-                if this_section in d and d[this_section] == shortstylename_with_container:
-                    test_if_present = True
+            # check index to see if style has already been noted (with section / container context where apropos)
+            test_if_present = False
+            if not container_starts and stylename in macmillan_styles_found:
+                test_if_present = True
+            elif container_starts:
+                for d in macmillan_styles_found_dict:
+                    if this_section in d and d[this_section] == shortstylename_with_container:
+                        test_if_present = True
 
-        # if stylename not in macmillan_styles_found, proceed to process/ log it!:
-        if test_if_present == False:
-            container_styles = container_starts + container_ends
-            report_dict = getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_root, macmillanstyles, sectionnames, found_para_context, container_styles, container_prefix, macmillan_styles_found_dict, macmillan_styles_found, para, call_type, bookmakerstyles)
+            # if stylename not in macmillan_styles_found, proceed to process/ log it!:
+            if test_if_present == False:
+                container_styles = container_starts + container_ends
+                report_dict = getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_root, macmillanstyles, sectionnames, found_para_context, container_styles, container_prefix, macmillan_styles_found_dict, macmillan_styles_found, para, call_type, bookmakerstyles)
+
 
     # Now get runstyles!
     logger.info("logging 1st use of every Macmillan char style, and any use of other char-style")
@@ -174,7 +187,7 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
         attrib_style_key = '{%s}val' % wnamespace
         stylename = run_style.get(attrib_style_key)
         # stylename = run_style.get('{%s}val' % wnamespace)
-        if stylename not in macmillan_styles_found:
+        if stylename not in charstyles_found:
             # get para for report
             para = run_style.getparent().getparent().getparent()
             # search styles.xlm for corresponding full stylename so we can determine if its a Macmillan style
@@ -183,22 +196,20 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
 
             # get fullname value and test against Macmillan style list
             stylename_full = stylematch.get('{%s}val' % wnamespace)
-            if stylename_full in macmillanstyles:
-                macmillan_styles_found.append(stylename)
+            if stylename_full in macmillanstyles and stylename_full not in charstyles_found: #we screen stylename_full here to filter results from prev runs
+                charstyles_found.append(stylename)
                 if stylename_full != 'annotation reference':
                     report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_charstyle_first_use",stylename_full)
             else: #if stylename_full != "annotation reference" and stylename_full != "endnote reference":
                 # if we're "validating", revert custom_styles based on Macmillan styles to base_style
                 if call_type == "validate":
                     report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para, run_style)
-                else:
-                    # we only want to capture each charstyle once, since we are summarizing.
-                    if stylename_full not in macmillan_charstyles_found:
-                        report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_used",stylename_full)
-                        print "%s found!" % stylename_full
-                        print "macmillan_charstyles_found: ", macmillan_charstyles_found
+                elif stylename_full not in charstyles_found:
+                    report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_used",stylename_full)
+                    print "%s found!" % stylename_full
+                    print "charstyles_found: ", charstyles_found
                     # add to the list of found charstyles:
-                    macmillan_charstyles_found.append(stylename_full)
+                    charstyles_found.append(stylename)
     return report_dict
 
 def styleReports(call_type, report_dict):

@@ -110,6 +110,11 @@ def macmillanStyleCount(doc_xml, styles_xml):
             # count paras with parentheses
             macmillan_styled_paras += 1
 
+    for valid_native_style in [cfg.footnotestyle, cfg.endnotestyle]:
+        stylesearchstring = ".//w:style[@w:styleId='%s']/w:name" % valid_native_style
+        count = len(doc_root.findall(".//*w:pStyle", wordnamespaces))
+        macmillan_styled_paras += count
+
     # the multiplying by a factor with '.0' in the numerator forces the result to be a float for python 2.x
     percent_styled = (macmillan_styled_paras * 100.0) / total_paras
 

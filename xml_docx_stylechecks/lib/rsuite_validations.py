@@ -369,16 +369,6 @@ def rsuiteValidations(report_dict):
         footnotes_root = footnotes_tree.getroot()
         xmlfile_dict[footnotes_root]=cfg.footnotes_xml
         alt_roots.append(footnotes_root)
-    if os.path.exists(cfg.comments_xml):
-        comments_tree = etree.parse(cfg.comments_xml)
-        comments_root = comments_tree.getroot()
-        xmlfile_dict[comments_root]=cfg.comments_xml
-        commentsExtended_tree = etree.parse(cfg.commentsExtended_xml)
-        commentsExtended_root = commentsExtended_tree.getroot()
-        xmlfile_dict[commentsExtended_root]=cfg.commentsExtended_xml
-        commentsIds_tree = etree.parse(cfg.commentsIds_xml)
-        commentsIds_root = commentsIds_tree.getroot()
-        xmlfile_dict[commentsIds_root]=cfg.commentsIds_xml
 
     # get Section Start names & styles from vbastyleconfig_json
     #    Could pull styles from macmillan.json  with "Section-" if I don't want to use vbastyleconfig_json
@@ -400,12 +390,21 @@ def rsuiteValidations(report_dict):
     report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.shape_objects, "shapes")
     # delete bookmarks:
     report_dict = deleteBookmarks(report_dict, doc_root, cfg.bookmark_items)
-    # delete comments from docxml, commentsxml, commentsIds & commentsExtended:
-    if os.path.exists(cfg.comments_xml):
-        report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.comment_objects, "comment_ranges")
-        report_dict = doc_prepare.deleteObjects(report_dict, comments_root, cfg.comment_objects, "comments-comment_xml")
-        report_dict = doc_prepare.deleteObjects(report_dict, commentsExtended_root, cfg.comment_objects, "commentEx-commentEx_xml")
-        report_dict = doc_prepare.deleteObjects(report_dict, commentsIds_root, cfg.comment_objects, "commentcid-commentsIds_xml")
+
+    # delete any comments from docxml:
+    report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.comment_objects, "comment_ranges")
+    # delete comments from commentsxml, commentsIds & commentsExtended wher present:
+    comments_xmlfiles = {
+        'comments_xml':cfg.comments_xml,
+        'commentsExtended_xml':cfg.commentsExtended_xml,
+        'commentsIds_xml':cfg.commentsIds_xml
+    }
+    for filename, filexml in comments_xmlfiles.iteritems():
+        if os.path.exists(filexml):
+            comments_tree = etree.parse(filexml)
+            comments_root = comments_tree.getroot()
+            xmlfile_dict[comments_root]=filexml
+            report_dict = doc_prepare.deleteObjects(report_dict, comments_root, cfg.comment_objects, "comments-%s" % filename)
 
     # remove blank paras from docxml, endnotes, footnotes -- only if we don't already have a critical blank para err
     # if "blank_container_para" not in report_dict and "blank_list_para" not in report_dict and "empty_section_start_para" not in empty_section_start_para:
@@ -426,12 +425,12 @@ def rsuiteValidations(report_dict):
 
     # check footnote / endnote para styles
     # rm footnote / endnote leading whitespace
+    if os.path.exists(cfg.footnotes_xml):
+        report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
+        report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")    
     if os.path.exists(cfg.endnotes_xml):
         report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
         report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
-    if os.path.exists(cfg.footnotes_xml):
-        report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
-        report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")
 
     # # log texts of titlepage-title paras
     report_dict = logTextOfParasWithStyleInSection(report_dict, doc_root, sectionnames, cfg.titlesection_stylename, cfg.titlestyle, "title_paras")
@@ -455,7 +454,12 @@ def rsuiteValidations(report_dict):
 
     # list all styles used in the doc
     report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report", valid_native_word_styles, container_start_styles, container_end_styles)
-    # report_dict, doc_root = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "validate", valid_native_word_styles, container_start_styles, container_end_styles)
+    # running getAllStylesUsed on footnotes_root with 'runs_only = True' just to capture charstyles
+    if os.path.exists(cfg.footnotes_xml):
+        report_dict = stylereports.getAllStylesUsed(report_dict, footnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report", valid_native_word_styles, container_start_styles, container_end_styles, True)
+    if os.path.exists(cfg.endnotes_xml):
+        report_dict = stylereports.getAllStylesUsed(report_dict, endnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report", valid_native_word_styles, container_start_styles, container_end_styles, True)
+
 
     # # add/update para index numbers
     logger.debug("Update all report_dict records with para_index")

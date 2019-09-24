@@ -95,6 +95,10 @@ if __name__ == '__main__':
 
                 # handle docs where both style-sets exist.
                 zerostylecheck = check_docx.stripDuplicateMacmillanStyles(cfg.doc_xml, cfg.styles_xml)
+                if os.path.exists(cfg.footnotes_xml) and zerostylecheck == True:
+                    zscheck_fn = check_docx.stripDuplicateMacmillanStyles(cfg.footnotes_xml, cfg.styles_xml)
+                if os.path.exists(cfg.endnotes_xml):
+                        zscheck_fn = check_docx.stripDuplicateMacmillanStyles(cfg.endnotes_xml, cfg.styles_xml)
                 if zerostylecheck:
                     logger.warn("duplicate Macmillan styles were found: legacy styles were replaced with new ones")
 

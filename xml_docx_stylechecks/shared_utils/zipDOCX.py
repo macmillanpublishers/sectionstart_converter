@@ -48,7 +48,8 @@ def zipFiles(ziproot, zipmanifest, finaldocx):
 # combining the prior 2 methods into a single call
 #   adding 'alt_zipmanifest' so I can zip a subset of docs in a dir, sent as a list
 def zipDOCX(ziproot, finaldocx, alt_zipmanifest = []):
-    logger.info("zipping '%s' into '%s'" % (ziproot, finaldocx))
+    if __name__ == '__main__':
+        logger.info("zipping '%s' into '%s'" % (ziproot, finaldocx))
     if alt_zipmanifest:
         zipmanifest = alt_zipmanifest
     else:

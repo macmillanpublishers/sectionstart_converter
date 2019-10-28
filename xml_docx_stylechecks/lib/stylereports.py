@@ -111,8 +111,8 @@ def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_r
             if stylename_full not in bookmakerstyles:
                 report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non_bookmaker_macmillan_style",stylename_full)
     else:
-        # if we're "validating", revert custom_styles based on Macmillan styles to base_style
-        if call_type == "validate":
+        # if we're "validating", revert custom_styles based on Macmillan styles to base_style (for _non_ rsuite styled)
+        if call_type == "validate" and not container_styles:
             report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para)
         else:
             report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
@@ -198,16 +198,22 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
             stylename_full = stylematch.get('{%s}val' % wnamespace)
             if stylename_full in macmillanstyles and stylename_full not in charstyles_found: #we screen stylename_full here to filter results from prev runs
                 charstyles_found.append(stylename)
-                if stylename_full != 'annotation reference':
-                    report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_charstyle_first_use",stylename_full)
-            else: #if stylename_full != "annotation reference" and stylename_full != "endnote reference":
-                # if we're "validating", revert custom_styles based on Macmillan styles to base_style
-                if call_type == "validate":
+                # if stylename_full != 'annotation reference':    # <- as per jyodis, no longer ignoring 'annotation reference'
+                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_charstyle_first_use",stylename_full)
+            else:
+                # validating conditions include writes / edits.
+                if call_type == "validate" and not container_starts: # < if we are validating and _not_ using rsuite styles...
+                    # revert custom_styles based on Macmillan styles to base_style
                     report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para, run_style)
-                elif stylename_full not in charstyles_found:
+                elif call_type == "validate" and container_starts: # < if we are validating and using rsuite styles/
+                    # delete them as we find them:
+                    run_style.getparent().remove(run_style)
+                    # report first encounter for each, then add to list of found charstyles so we don't re-log
+                    if stylename_full not in charstyles_found:
+                        report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_removed",stylename_full)
+                        charstyles_found.append(stylename)
+                elif stylename_full not in charstyles_found: # < not 'validating', only log the first unknown char style
                     report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_used",stylename_full)
-                    print "%s found!" % stylename_full
-                    print "charstyles_found: ", charstyles_found
                     # add to the list of found charstyles:
                     charstyles_found.append(stylename)
     return report_dict

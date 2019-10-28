@@ -427,7 +427,7 @@ def rsuiteValidations(report_dict):
     # rm footnote / endnote leading whitespace
     if os.path.exists(cfg.footnotes_xml):
         report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
-        report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")    
+        report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")
     if os.path.exists(cfg.endnotes_xml):
         report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
         report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
@@ -453,12 +453,15 @@ def rsuiteValidations(report_dict):
     report_dict = checkSecondPara(report_dict, doc_root, firstpara, sectionnames)
 
     # list all styles used in the doc
-    report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report", valid_native_word_styles, container_start_styles, container_end_styles)
+    # toggle 'allstyles_call_type' parameter to 'report' or 'validate' as needed:
+    #   for rsuite styled docs, this means deleting non-Macmillan char styles or not
+    allstyles_call_type = "validate"  # "report"
+    report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles)
     # running getAllStylesUsed on footnotes_root with 'runs_only = True' just to capture charstyles
     if os.path.exists(cfg.footnotes_xml):
-        report_dict = stylereports.getAllStylesUsed(report_dict, footnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report", valid_native_word_styles, container_start_styles, container_end_styles, True)
+        report_dict = stylereports.getAllStylesUsed(report_dict, footnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles, True)
     if os.path.exists(cfg.endnotes_xml):
-        report_dict = stylereports.getAllStylesUsed(report_dict, endnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report", valid_native_word_styles, container_start_styles, container_end_styles, True)
+        report_dict = stylereports.getAllStylesUsed(report_dict, endnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles, True)
 
 
     # # add/update para index numbers

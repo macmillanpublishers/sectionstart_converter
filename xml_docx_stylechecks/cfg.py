@@ -54,8 +54,8 @@ else:
 # # # # # # # # ENV
 loglevel = "INFO"		# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info
 # variables to quickly setup for testing
-disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = False, False, False, False     # <-- comment out for local testing
-# disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = True, True, True, True      # <-- uncomment for local testing
+# disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = False, False, False, False     # <-- comment out for local testing
+disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = True, True, True, True      # <-- uncomment for local testing
 hostOS = platform.system()
 currentuser = getpass.getuser()
 # the path of this file: setting '__location__' allows this relative path to adhere to this file, even when invoked from a different path:
@@ -202,9 +202,12 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite':
         'footnote reference',
         'footnote text',
         'endnote reference',
-        'endnote text',
-        'annotation reference'
+        'endnote text'
         ]
+    note_reference_styles = [
+        'footnote reference',
+        'endnote reference'    
+    ]
 else:
     helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
     # stylenames

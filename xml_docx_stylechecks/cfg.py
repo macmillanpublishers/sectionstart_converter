@@ -54,8 +54,8 @@ else:
 # # # # # # # # ENV
 loglevel = "INFO"		# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info
 # variables to quickly setup for testing
-# disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = False, False, False, False     # <-- comment out for local testing
-disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = True, True, True, True      # <-- uncomment for local testing
+disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = False, False, False, False     # <-- comment out for local testing
+# disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = True, True, True, True      # <-- uncomment for local testing
 hostOS = platform.system()
 currentuser = getpass.getuser()
 # the path of this file: setting '__location__' allows this relative path to adhere to this file, even when invoked from a different path:
@@ -179,9 +179,13 @@ always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
 # regex for finding ISBNS
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
-# Hardcoded stylenames & helpurl -- some by script/template-type
+
+# # # Hardcoded stylenames & helpurl -- some by script/template-type
 footnotestyle = "FootnoteText" #/ "Footnote Text"
 endnotestyle = "EndnoteText" #/ "Endnote Text"
+# \/ These styles apply to 'in-text' reference markers. Markers in the notes section are styled like: <w:vertAlign w:val="superscript"/>
+footnote_ref_style = 'FootnoteReference'
+endnote_ref_style = 'EndnoteReference'
 if script_name.startswith("rsuite") or templatetype == 'rsuite':
     helpurl = "https://confluence.macmillan.com/x/R3NPBQ#RSuiteValidation-Reviewingthersuite_validateReport"
     # RSuite hardcoded stylenames (can I get these from styleconfig? in some cases)
@@ -204,10 +208,6 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite':
         'endnote reference',
         'endnote text'
         ]
-    note_reference_styles = [
-        'footnote reference',
-        'endnote reference'    
-    ]
 else:
     helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
     # stylenames
@@ -232,6 +232,7 @@ else:
     copyrightstyles = ["CopyrightTextdoublespacecrtxd", "CopyrightTextsinglespacecrtx"]
     autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
 
+# # # MSWord XML objects
 # objects for deletion
 shape_objects = ["mc:AlternateContent", "w:drawing", "w:pict"]
 section_break = ["w:sectPr"]
@@ -241,6 +242,9 @@ bookmark_items = {
     "autobookmark_names":["OriginalInsertionPoint", "_GoBack"]
     }
 comment_objects = ["w:commentRangeStart","w:commentRangeEnd","w:commentReference","w:comment","w15:commentEx", "w16cid:commentId"]
+# word note marker objects
+footnote_ref_obj = "w:footnoteReference"    # < in-text reference marker object. In Notes section, equiv is: <w:footnoteRef/>
+endnote_ref_obj = "w:endnoteReference"      # < in-text reference marker object. In Notes section, equiv is: <w:endnoteRef/>
 
 # Word namespace vars
 wnamespace = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'

@@ -377,7 +377,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "badnews_type": 'note',
-            "errstring": "Non-Macmillan character style removed from manuscript: '{description}'."# (Paragraph {para_index})"
+            "errstring": "Found and removed non-Macmillan character style from manuscript: '{description}'."# (Paragraph {para_index})"
     	},
     	"74_non_bookmaker_style": {
             "include_for": ["reporter"],
@@ -459,6 +459,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "badnews_type": 'warning',
             "errstring": "List type changed in the middle of a list: {description} (in {parent_section_start_type}: {parent_section_start_content})."# (Paragraph {para_index})"
+    	},
+    	"93_note_markers_wrong_style": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "note_markers_wrong_style",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'note',
+            "errstring": "Fixed {count} Endnote and/or Footnote markers with incorrect character styles applied."
     	},
     	"94_deleted_generic_blankpara": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],

@@ -179,9 +179,13 @@ always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
 # regex for finding ISBNS
 isbnregex = re.compile(r"(97[89](\D?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
-# Hardcoded stylenames & helpurl -- some by script/template-type
+
+# # # Hardcoded stylenames & helpurl -- some by script/template-type
 footnotestyle = "FootnoteText" #/ "Footnote Text"
 endnotestyle = "EndnoteText" #/ "Endnote Text"
+# \/ These styles apply to 'in-text' reference markers. Markers in the notes section are styled like: <w:vertAlign w:val="superscript"/>
+footnote_ref_style = 'FootnoteReference'
+endnote_ref_style = 'EndnoteReference'
 if script_name.startswith("rsuite") or templatetype == 'rsuite':
     helpurl = "https://confluence.macmillan.com/x/R3NPBQ#RSuiteValidation-Reviewingthersuite_validateReport"
     # RSuite hardcoded stylenames (can I get these from styleconfig? in some cases)
@@ -202,8 +206,7 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite':
         'footnote reference',
         'footnote text',
         'endnote reference',
-        'endnote text',
-        'annotation reference'
+        'endnote text'
         ]
 else:
     helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
@@ -229,6 +232,7 @@ else:
     copyrightstyles = ["CopyrightTextdoublespacecrtxd", "CopyrightTextsinglespacecrtx"]
     autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
 
+# # # MSWord XML objects
 # objects for deletion
 shape_objects = ["mc:AlternateContent", "w:drawing", "w:pict"]
 section_break = ["w:sectPr"]
@@ -238,6 +242,9 @@ bookmark_items = {
     "autobookmark_names":["OriginalInsertionPoint", "_GoBack"]
     }
 comment_objects = ["w:commentRangeStart","w:commentRangeEnd","w:commentReference","w:comment","w15:commentEx", "w16cid:commentId"]
+# word note marker objects
+footnote_ref_obj = "w:footnoteReference"    # < in-text reference marker object. In Notes section, equiv is: <w:footnoteRef/>
+endnote_ref_obj = "w:endnoteReference"      # < in-text reference marker object. In Notes section, equiv is: <w:endnoteRef/>
 
 # Word namespace vars
 wnamespace = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'

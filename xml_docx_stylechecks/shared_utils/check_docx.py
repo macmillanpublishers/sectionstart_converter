@@ -85,18 +85,11 @@ def compare_docxVersions(document_version, template_version, doc_version_min, do
         logger.error('Failed version compare, exiting', exc_info=True)
         sys.exit(1)
 
-def macmillanStyleCount(doc_xml, styles_xml):
-    logger.debug("Counting total paras, Macmillan styled paras...")
-
-    doc_tree = etree.parse(doc_xml)
-    doc_root = doc_tree.getroot()
-    styles_tree = etree.parse(styles_xml)
-    styles_root = styles_tree.getroot()
-
-    total_paras = len(doc_tree.xpath(".//w:p", namespaces=wordnamespaces))
-    macmillan_styled_paras = 0
-
-    for para_style in doc_root.findall(".//*w:pStyle", wordnamespaces):
+def getParaStyleSummary(xml_file, styles_root, valid_native_pstyles, total_paras=0, macmillan_styled_paras=0):
+    xml_tree = etree.parse(xml_file)
+    total_paras += len(xml_tree.xpath(".//w:p", namespaces=wordnamespaces))
+    xml_root = xml_tree.getroot()
+    for para_style in xml_root.findall(".//*w:pStyle", wordnamespaces):
         # get stylename from each para
         stylename = para_style.get('{%s}val' % wnamespace)
 
@@ -106,14 +99,28 @@ def macmillanStyleCount(doc_xml, styles_xml):
 
         # get fullname value and test for parentheses
         stylename_full = stylematch.get('{%s}val' % wnamespace)
-        if '(' in stylename_full:
-            # count paras with parentheses
+        if '(' in stylename_full or stylename in valid_native_pstyles:
+            # count paras with parentheses * FootnoteText/EndnoteText paras
             macmillan_styled_paras += 1
+    return total_paras, macmillan_styled_paras
 
-    for valid_native_style in [cfg.footnotestyle, cfg.endnotestyle]:
-        stylesearchstring = ".//w:style[@w:styleId='%s']/w:name" % valid_native_style
-        count = len(doc_root.findall(".//*w:pStyle", wordnamespaces))
-        macmillan_styled_paras += count
+def macmillanStyleCount(doc_xml, styles_xml):
+    logger.debug("Counting total paras, Macmillan styled paras...")
+
+    styles_tree = etree.parse(styles_xml)
+    styles_root = styles_tree.getroot()
+    valid_native_pstyles = [cfg.footnotestyle, cfg.endnotestyle]
+
+    # main document
+    total_paras, macmillan_styled_paras = getParaStyleSummary(doc_xml, styles_root, valid_native_pstyles)
+    # footnotes
+    if os.path.exists(cfg.footnotes_xml):
+        total_paras, macmillan_styled_paras = getParaStyleSummary(cfg.footnotes_xml, styles_root, valid_native_pstyles, total_paras, macmillan_styled_paras)
+        total_paras -= 2 # for built-in separator paras
+    # endnotes
+    if os.path.exists(cfg.endnotes_xml):
+        total_paras, macmillan_styled_paras = getParaStyleSummary(cfg.endnotes_xml, styles_root, valid_native_pstyles, total_paras, macmillan_styled_paras)
+        total_paras -= 2 # for built-in separator paras
 
     # the multiplying by a factor with '.0' in the numerator forces the result to be a float for python 2.x
     percent_styled = (macmillan_styled_paras * 100.0) / total_paras

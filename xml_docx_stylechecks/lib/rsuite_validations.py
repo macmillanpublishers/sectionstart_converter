@@ -345,6 +345,25 @@ def rmEndnoteFootnoteLeadingWhitespace(xml_root, report_dict, sectionname):
 
     return report_dict
 
+def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_category):
+    logger.info("* * * commencing cleanNoteMarkers function, for %s..." % report_category)
+    noteref_objects = xml_root.findall(".//%s" % noteref_object, wordnamespaces)
+    for noteref in noteref_objects:
+        note_run = noteref.getparent()
+        runstyle = lxml_utils.getRunStyle(note_run)
+        if runstyle != note_style:
+            rstyle_obj = note_run.find(".//*w:rStyle", wordnamespaces)
+            # if there is an incorrect run-style object, re-style
+            if rstyle_obj is not None:
+                attrib_style_key = '{%s}val' % wnamespace
+                rstyle_obj.set(attrib_style_key, note_style)
+                # and report it to log
+                attrib_id_key = '{%s}id' % wnamespace
+                note_id = noteref.get(attrib_id_key)
+                lxml_utils.logForReport(report_dict, xml_root, note_run.getparent(), "note_markers_wrong_style", \
+                    "restyled %s ref: no. %s (was styled as %s)" % (report_category, note_id, runstyle))
+    return report_dict
+
 
 def rsuiteValidations(report_dict):
     vbastyleconfig_json = cfg.vbastyleconfig_json
@@ -427,7 +446,7 @@ def rsuiteValidations(report_dict):
     # rm footnote / endnote leading whitespace
     if os.path.exists(cfg.footnotes_xml):
         report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
-        report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")    
+        report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")
     if os.path.exists(cfg.endnotes_xml):
         report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
         report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
@@ -453,13 +472,21 @@ def rsuiteValidations(report_dict):
     report_dict = checkSecondPara(report_dict, doc_root, firstpara, sectionnames)
 
     # list all styles used in the doc
-    report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report", valid_native_word_styles, container_start_styles, container_end_styles)
+    # toggle 'allstyles_call_type' parameter to 'report' or 'validate' as needed:
+    #   for rsuite styled docs, this means deleting non-Macmillan char styles or not
+    allstyles_call_type = "validate"  # "report"
+    report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles)
     # running getAllStylesUsed on footnotes_root with 'runs_only = True' just to capture charstyles
     if os.path.exists(cfg.footnotes_xml):
-        report_dict = stylereports.getAllStylesUsed(report_dict, footnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report", valid_native_word_styles, container_start_styles, container_end_styles, True)
+        report_dict = stylereports.getAllStylesUsed(report_dict, footnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles, True)
     if os.path.exists(cfg.endnotes_xml):
-        report_dict = stylereports.getAllStylesUsed(report_dict, endnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, "report", valid_native_word_styles, container_start_styles, container_end_styles, True)
+        report_dict = stylereports.getAllStylesUsed(report_dict, endnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles, True)
 
+    # removing any charstyles incorrectly / additionally applied to footnote / endnote reference markers in docxml
+    #   footnotes
+    report_dict = cleanNoteMarkers(report_dict, doc_root, cfg.footnote_ref_obj, cfg.footnote_ref_style, "footnote")
+    #   endnotes
+    report_dict = cleanNoteMarkers(report_dict, doc_root, cfg.endnote_ref_obj, cfg.endnote_ref_style, "endnote")
 
     # # add/update para index numbers
     logger.debug("Update all report_dict records with para_index")

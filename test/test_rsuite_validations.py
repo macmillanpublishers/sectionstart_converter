@@ -90,3 +90,5 @@ class TestBasicFunction(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+# note for future development: have test.docx with static name ('test.docx'), and unzip it on the fly and import document.xml, to save a step on re-building testdoc    

@@ -41,6 +41,7 @@ report_emailed = False
 doc_version_min = "6.0"
 doc_version_max = None
 percent_styled_min = 90
+badchar_array = []
 
 ######### SETUP LOGGING
 logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
@@ -69,8 +70,9 @@ if __name__ == '__main__':
             ### check and compare versions, styling percentage, doc protection
             logger.info('Comparing docx version to template, checking percent styled, checking if protection, trackchanges...')
             version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, doc_version_min, doc_version_max)
-            percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.styles_xml)
+            percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.template_styles_xml)
             protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml, cfg.footnotes_xml, cfg.endnotes_xml)
+            badchar_array = check_docx.checkFilename(cfg.original_inputfilename_noext)
 
             # note and accept all track changes
             if tc_marker_found == True:
@@ -87,10 +89,19 @@ if __name__ == '__main__':
                 errstring = usertext_templates.alerts()["trackchange_enabled"]
                 os_utils.logAlerttoJSON(alerts_json, "notice", errstring)
                 logger.warn("* {}".format(errstring))
-
+            # generate Notice if there is a newer template available
+            if version_result == "newer_template_avail":
+                errstring = usertext_templates.alerts()["rs_notice_oldtemplate"].format(current_version=current_version, template_version=template_version, support_email_address=cfg.support_email_address)
+                os_utils.logAlerttoJSON(alerts_json, "notice", errstring)
+                logger.warn("* {}".format(errstring))
+            # warn if filename contains bad characters
+            if badchar_array:
+                errstring = usertext_templates.alerts()["bad_filename"].format(badchar_array=badchar_array)
+                os_utils.logAlerttoJSON(alerts_json, "warning", errstring)
+                logger.warn("* {}".format(errstring))
 
             ########## RUN STUFF
-            if version_result == "up_to_date" and percent_styled >= percent_styled_min and protection == "":
+            if (version_result=="newer_template_avail" or version_result=="up_to_date") and percent_styled >= percent_styled_min and protection == "":
                 logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
 
                 # handle docs where both style-sets exist.
@@ -120,10 +131,6 @@ if __name__ == '__main__':
                 logger.warn("* * Skipping Style Report:")
                 if percent_styled < percent_styled_min:
                     errstring = usertext_templates.alerts()["notstyled"].format(percent_styled_min=percent_styled_min)
-                    os_utils.logAlerttoJSON(alerts_json, "error", errstring)
-                    logger.warn("* {}".format(errstring))
-                if version_result == "newer_template_avail":
-                    errstring = usertext_templates.alerts()["rs_err_oldtemplate"].format(current_version=current_version, template_version=template_version)
                     os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                     logger.warn("* {}".format(errstring))
                 elif version_result != "up_to_date":

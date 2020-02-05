@@ -1,8 +1,3 @@
-# to run all tests: cd to parent dir of /test and run `python -m unittest discover -v`
-# to run all tests in file: `python -m unittest test.test_rsuite_validations`
-# to run all tests in class: `python -m unittest test.test_rsuite_validations.Tests`
-# to run one test: `python -m unittest test.test_rsuite_validations.Tests.test_deleteObjects_fromNode`
-
 import unittest
 # from mock import patch
 import sys, os, copy, re
@@ -11,6 +6,7 @@ from lxml import etree, objectify
 # key local paths
 mainproject_path = os.path.join(sys.path[0],'xml_docx_stylechecks')
 testfiles_basepath = os.path.join(sys.path[0], 'test', 'files_for_test')
+rsuite_template_path = os.path.join(sys.path[0], '..', 'RSuite_Word-template', 'StyleTemplate_auto-generate', 'RSuite.dotx')
 
 # append main project path to system path for below imports to work
 sys.path.append(mainproject_path)
@@ -20,6 +16,9 @@ import xml_docx_stylechecks.lib.doc_prepare as doc_prepare
 import xml_docx_stylechecks.shared_utils.os_utils as os_utils
 import xml_docx_stylechecks.cfg as cfg
 import xml_docx_stylechecks.shared_utils.lxml_utils as lxml_utils
+import xml_docx_stylechecks.shared_utils.check_docx as check_docx
+import xml_docx_stylechecks.shared_utils.unzipDOCX as unzipDOCX
+
 
 # return xml root node of xml file
 def getRoot(xmlfile):
@@ -65,6 +64,9 @@ class Tests(unittest.TestCase):
         # test_xml = os.path.join(testfiles_basepath, sys._getframe().f_code.co_name, 'expectedxml', 'testing.xml')
         # os_utils.writeXMLtoFile(xml_root, test_xml)
 
+        # unzip current template to files_for_test dir
+        self.template_ziproot = os.path.join(testfiles_basepath, 'template_root')
+        unzipDOCX.unzipDOCX(rsuite_template_path, self.template_ziproot)
 
     # can `pip mock` to use mock lib, then use "patch" to replace a globally scoped a value for a given test/module, as a decorator
     # @patch('xml_docx_stylechecks.lib.doc_prepare.docroot' = {}), xml_root = {})
@@ -97,6 +99,35 @@ class Tests(unittest.TestCase):
         # # # ASSERTION:  assert for basic run on basic constructed xml object
         self.assertEqual(report_dict__basic, {'deleted_objects-bad_object': [{'description': 'deleted bad_object of type unwanted_object','para_id': 'test_id'}]})
         self.assertEqual(normalizeXML(xml_root__basic), normalizeXML(self.expected_root))
+
+    def test_checkFilename_allbadchars(self):
+        filename = "a!@#$''[|]/{ ,.<>\"%^'&}*()-\"\\_=+1"
+        badchar_array = check_docx.checkFilename(filename)
+        badchars = filename.replace('a', '').replace('1', '').replace('-', '').replace('_', '')
+        self.assertEqual(list(badchars), badchar_array)
+
+    def test_checkFilename_nobadchars(self):
+        filename = "Just_a_string-978010928909"
+        badchar_array = check_docx.checkFilename("Just_a_string-978010928909")
+        self.assertEqual([], badchar_array)
+
+    def test_macmillanStyleCount(self):
+        # unzip our test docx. Testdoc includes key para-style-types:
+        #       - RSuite-styled paras
+        #       - built-in (Word) styled paras, including 'Normal (Web)'
+        #       - para with old Macmillan-style:
+        #       - acceptable built-in styles (e.g. 'Footnote Text')
+        testdocx_root = os.path.join(testfiles_basepath, 'test_checkdocx', 'stylecount')
+        unzipDOCX.unzipDOCX('{}{}'.format(testdocx_root,'.docx'), testdocx_root)
+        # set paths & run function
+        template_styles_xml = os.path.join(self.template_ziproot, 'word', 'styles.xml')
+        doc_xml = os.path.join(testdocx_root, 'word', 'document.xml')
+        percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(doc_xml, template_styles_xml)
+        # ASSERTION
+        self.assertEqual(total_paras, 8)
+        self.assertEqual(macmillan_styled_paras, 5)
+
+
 
 if __name__ == '__main__':
     unittest.main()

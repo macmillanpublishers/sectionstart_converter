@@ -1,8 +1,3 @@
-# to run all tests: cd to parent dir of /test and run `python -m unittest discover -v`
-# to run all tests in file: `python -m unittest test.test_rsuite_validations`
-# to run all tests in class: `python -m unittest test.test_rsuite_validations.Tests`
-# to run one test: `python -m unittest test.test_rsuite_validations.Tests.test_deleteObjects_fromNode`
-
 import unittest
 # from mock import patch
 import sys, os, copy, re

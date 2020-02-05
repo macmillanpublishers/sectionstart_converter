@@ -89,7 +89,7 @@ if __name__ == '__main__':
                 errstring = usertext_templates.alerts()["trackchange_enabled"]
                 os_utils.logAlerttoJSON(alerts_json, "notice", errstring)
                 logger.warn("* {}".format(errstring))
-            # warn if there is a newer template available
+            # generate Notice if there is a newer template available
             if version_result == "newer_template_avail":
                 errstring = usertext_templates.alerts()["rs_notice_oldtemplate"].format(current_version=current_version, template_version=template_version, support_email_address=cfg.support_email_address)
                 os_utils.logAlerttoJSON(alerts_json, "notice", errstring)

@@ -85,7 +85,7 @@ def compare_docxVersions(document_version, template_version, doc_version_min, do
         logger.error('Failed version compare, exiting', exc_info=True)
         sys.exit(1)
 
-def getParaStyleSummary(xml_file, styles_root, valid_native_pstyles, total_paras=0, macmillan_styled_paras=0):
+def getParaStyleSummary(xml_file, template_styles_root, valid_native_pstyles, total_paras=0, macmillan_styled_paras=0):
     xml_tree = etree.parse(xml_file)
     total_paras += len(xml_tree.xpath(".//w:p", namespaces=wordnamespaces))
     xml_root = xml_tree.getroot()
@@ -93,39 +93,45 @@ def getParaStyleSummary(xml_file, styles_root, valid_native_pstyles, total_paras
         # get stylename from each para
         stylename = para_style.get('{%s}val' % wnamespace)
 
-        # search styles.xlm for corresponding full stylename
-        stylesearchstring = ".//w:style[@w:styleId='%s']/w:name" % stylename
-        stylematch = styles_root.find(stylesearchstring, wordnamespaces)
+        # lets not count valid native styles as 'styled' or 'not-styled'
+        if stylename in valid_native_pstyles:
+            total_paras -= 1
 
-        # get fullname value and test for parentheses
-        stylename_full = stylematch.get('{%s}val' % wnamespace)
-        if '(' in stylename_full or stylename in valid_native_pstyles:
-            # count paras with parentheses * FootnoteText/EndnoteText paras
-            macmillan_styled_paras += 1
+        # search template_styles.xlm for corresponding full stylename
+        stylesearchstring = ".//w:style[@w:styleId='%s']/w:name" % stylename
+        stylematch = template_styles_root.find(stylesearchstring, wordnamespaces)
+
+        if stylematch is not None:
+            # get fullname value and test for parentheses: if parenthesis we have a Macmillan style
+            #   (with exception of built-in style 'Normal (Web)')
+            stylename_full = stylematch.get('{%s}val' % wnamespace)
+            if '(' in stylename_full and stylename_full != 'Normal (Web)':
+                macmillan_styled_paras += 1
+
     return total_paras, macmillan_styled_paras
 
-def macmillanStyleCount(doc_xml, styles_xml):
+def macmillanStyleCount(doc_xml, template_styles_xml):
     logger.debug("Counting total paras, Macmillan styled paras...")
 
-    styles_tree = etree.parse(styles_xml)
-    styles_root = styles_tree.getroot()
+    template_styles_tree = etree.parse(template_styles_xml)
+    template_styles_root = template_styles_tree.getroot()
     valid_native_pstyles = [cfg.footnotestyle, cfg.endnotestyle]
 
     # main document
-    total_paras, macmillan_styled_paras = getParaStyleSummary(doc_xml, styles_root, valid_native_pstyles)
+    total_paras, macmillan_styled_paras = getParaStyleSummary(doc_xml, template_styles_root, valid_native_pstyles)
     # footnotes
     if os.path.exists(cfg.footnotes_xml):
-        total_paras, macmillan_styled_paras = getParaStyleSummary(cfg.footnotes_xml, styles_root, valid_native_pstyles, total_paras, macmillan_styled_paras)
+        total_paras, macmillan_styled_paras = getParaStyleSummary(cfg.footnotes_xml, template_styles_root, valid_native_pstyles, total_paras, macmillan_styled_paras)
         total_paras -= 2 # for built-in separator paras
     # endnotes
     if os.path.exists(cfg.endnotes_xml):
-        total_paras, macmillan_styled_paras = getParaStyleSummary(cfg.endnotes_xml, styles_root, valid_native_pstyles, total_paras, macmillan_styled_paras)
+        total_paras, macmillan_styled_paras = getParaStyleSummary(cfg.endnotes_xml, template_styles_root, valid_native_pstyles, total_paras, macmillan_styled_paras)
         total_paras -= 2 # for built-in separator paras
 
     # the multiplying by a factor with '.0' in the numerator forces the result to be a float for python 2.x
     percent_styled = (macmillan_styled_paras * 100.0) / total_paras
 
-    logger.debug("total paras:'%s', macmillan styled:'%s', percent_styled:'%s'" % (total_paras, macmillan_styled_paras, percent_styled))
+    logger.info("total paras:'%s', macmillan styled:'%s', percent_styled:'%s'" % (total_paras, macmillan_styled_paras, percent_styled))
     return percent_styled, macmillan_styled_paras, total_paras
 
 # This function consolidates version test functions
@@ -259,6 +265,12 @@ def acceptTrackChanges(xml_file):
 
     os_utils.writeXMLtoFile(xml_root, xml_file)
 
+def checkFilename(inputfilename):
+    logger.debug("Verifying valid filename")
+    filename_regex = re.compile(r"[^\w-]")
+    badchars = re.findall(filename_regex, inputfilename)
+    logger.info("filename badchar check: {} found: {}".format(len(badchars),badchars))
+    return badchars
 
 def stripDuplicateMacmillanStyles(doc_xml, styles_xml):
     logger.debug("Checking for old Macmillan duplicate styles, replacing as needed...")

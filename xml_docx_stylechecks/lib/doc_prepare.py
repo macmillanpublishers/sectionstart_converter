@@ -405,7 +405,7 @@ def deleteObjects(report_dict, xml_root, objects_to_delete, object_name):
             # optional - log to report_dict
             if para is not None:
                 lxml_utils.logForReport(report_dict,xml_root,para,"deleted_objects-%s" % object_name ,"deleted %s of type %s" % (object_name, object))
-    return report_dict
+    return report_dict, xml_root
 
 def rmNonPrintingHeads(report_dict, doc_xml, nonprintingheads):
     logger.info("* * * commencing rmNonPrintingHeads function...")
@@ -450,7 +450,7 @@ def docPrepare(report_dict):
     sectionnames = lxml_utils.getAllSectionNamesFromSSR(section_start_rules)
 
     # delete shapes, pictures, clip art, + section breaks
-    report_dict = deleteObjects(report_dict, doc_root, cfg.shape_objects + cfg.section_break, "shapes_and_section_breaks")
+    report_dict, doc_root = deleteObjects(report_dict, doc_root, cfg.shape_objects + cfg.section_break, "shapes_and_section_breaks")
 
     # remove character styles from headings in list
     report_dict = rmCharStylesFromHeads(report_dict, doc_root, cfg.nocharstyle_headingstyles)

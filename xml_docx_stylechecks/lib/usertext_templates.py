@@ -134,7 +134,9 @@ def alerts():
         # Error - rsuite_validate only
         "rs_err_nonrsuite_template": "This document does not have the 'RSuite' style template attached.",
         # Error - rsuite_validate only
-        "rs_err_oldtemplate": "You must attach the most recent 'RSuite' style template before running rsuite_validate: (this .docx's version: {current_version}, current version: {template_version})",
+        "rs_notice_oldtemplate": "There's a newer vesion of the 'RSuite' style template available (this .docx's version: {current_version}, new version: {template_version}). Please reach out to {support_email_address} for help updating!",
+        # Warning / Notice: bad characters in filename
+        "bad_filename": "This document's filename contains characters that will cause RSuite transforms to fail: {badchar_array}",
         # Warning / Notice: unaccepted_tcs
         "c_unaccepted_tcs": "We found un-reviewed tracked changes in this document. Barring other errors, section-starts were inserted, but if anything looks wrong, please review tracked changes in your original manuscript and run converter again!",
         # Warning: unaccepted_tcs

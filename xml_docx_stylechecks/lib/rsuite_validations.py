@@ -406,12 +406,12 @@ def rsuiteValidations(report_dict):
 
     # These need to come first - otherwise contents (shapes) may keep blank paras from being blank
     # delete shapes, pictures, clip art etc
-    report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.shape_objects, "shapes")
+    report_dict, doc_root = doc_prepare.deleteObjects(report_dict, doc_root, cfg.shape_objects, "shapes")
     # delete bookmarks:
     report_dict = deleteBookmarks(report_dict, doc_root, cfg.bookmark_items)
 
     # delete any comments from docxml:
-    report_dict = doc_prepare.deleteObjects(report_dict, doc_root, cfg.comment_objects, "comment_ranges")
+    report_dict, doc_root = doc_prepare.deleteObjects(report_dict, doc_root, cfg.comment_objects, "comment_ranges")
     # delete comments from commentsxml, commentsIds & commentsExtended wher present:
     comments_xmlfiles = {
         'comments_xml':cfg.comments_xml,
@@ -423,7 +423,7 @@ def rsuiteValidations(report_dict):
             comments_tree = etree.parse(filexml)
             comments_root = comments_tree.getroot()
             xmlfile_dict[comments_root]=filexml
-            report_dict = doc_prepare.deleteObjects(report_dict, comments_root, cfg.comment_objects, "comments-%s" % filename)
+            report_dict, comments_root = doc_prepare.deleteObjects(report_dict, comments_root, cfg.comment_objects, "comments-%s" % filename)
 
     # remove blank paras from docxml, endnotes, footnotes -- only if we don't already have a critical blank para err
     # if "blank_container_para" not in report_dict and "blank_list_para" not in report_dict and "empty_section_start_para" not in empty_section_start_para:

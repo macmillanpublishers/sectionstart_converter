@@ -144,7 +144,7 @@ def alerts():
         # Warning: unaccepted_tcs
         "r_unaccepted_tcs": "We found un-reviewed tracked changes in this document. Accepting or rejecting all pending Tracked Changes helps ensure the accuracy of the StyleReport.",
         # Notice - rsuite_validate only
-        "rs_notice_oldtemplate": "There's a newer vesion of the 'RSuite' style template available (this .docx's version: {current_version}, new version: {template_version}). Please reach out to {support_email_address} for help updating!",
+        "rs_notice_oldtemplate": "There's a newer version of the 'RSuite' style template available (this .docx's version: {current_version}, new version: {template_version}). Please reach out to {support_email_address} for help updating!",
         # Notice: trackchange_enabled
         "trackchange_enabled": "'Track Changes' feature is currently enabled for this document.",
         # Notice - Validator only

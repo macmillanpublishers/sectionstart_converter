@@ -309,22 +309,23 @@ def stripDuplicateMacmillanStyles(doc_xml, styles_xml):
 
                 # # find style with matching stylename. (legacystyle), get its stylename, rm legacy style
                 legacystyle = styles_tree.xpath("w:style[translate(@w:styleId,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz') = '" + nozero_downcase_stylename + "']", namespaces=wordnamespaces)
-                legacystylename = legacystyle[0].get('{%s}styleId' % wnamespace)
-                parent_el = legacystyle[0].getparent()
-                parent_el.remove(legacystyle[0])
-                # go back to zero style & correct its stylename (sans 0)
-                zerostyle.attrib["{%s}styleId" % wnamespace] = nozerostylename
+                if legacystyle:
+                    legacystylename = legacystyle[0].get('{%s}styleId' % wnamespace)
+                    parent_el = legacystyle[0].getparent()
+                    parent_el.remove(legacystyle[0])
+                    # go back to zero style & correct its stylename (sans 0)
+                    zerostyle.attrib["{%s}styleId" % wnamespace] = nozerostylename
 
-                # cycle through xml files to update relevant stylenames
-                for xml_root in xmlfile_dict:
-                    # search xml file for all references to legacystyle
-                    legacystyle_searchstring = ".//w:pStyle[@w:val='%s']" % legacystylename
-                    legacy_uses = xml_root.findall(legacystyle_searchstring, wordnamespaces)
-                    zerostyle_searchstring = ".//w:pStyle[@w:val='%s']" % zerostylename
-                    zerostyle_uses = xml_root.findall(zerostyle_searchstring, wordnamespaces)
-                    # and update all style references to zerostyle & legacy
-                    for changedstyle_use in zerostyle_uses + legacy_uses:
-                        changedstyle_use.attrib["{%s}val" % wnamespace] = nozerostylename
+                    # cycle through xml files to update relevant stylenames
+                    for xml_root in xmlfile_dict:
+                        # search xml file for all references to legacystyle
+                        legacystyle_searchstring = ".//w:pStyle[@w:val='%s']" % legacystylename
+                        legacy_uses = xml_root.findall(legacystyle_searchstring, wordnamespaces)
+                        zerostyle_searchstring = ".//w:pStyle[@w:val='%s']" % zerostylename
+                        zerostyle_uses = xml_root.findall(zerostyle_searchstring, wordnamespaces)
+                        # and update all style references to zerostyle & legacy
+                        for changedstyle_use in zerostyle_uses + legacy_uses:
+                            changedstyle_use.attrib["{%s}val" % wnamespace] = nozerostylename
 
     if zerostylecheck:  # write out updated xml files if zerostyles were found
         # write xml out. styles file:

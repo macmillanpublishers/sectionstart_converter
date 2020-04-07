@@ -13,6 +13,7 @@ sys.path.append(mainproject_path)
 
 # import functions for tests below
 import xml_docx_stylechecks.lib.doc_prepare as doc_prepare
+import xml_docx_stylechecks.lib.stylereports as stylereports
 import xml_docx_stylechecks.shared_utils.os_utils as os_utils
 import xml_docx_stylechecks.cfg as cfg
 import xml_docx_stylechecks.shared_utils.lxml_utils as lxml_utils
@@ -38,6 +39,56 @@ def normalizeXML(xmldata):
     # remove newline chars and their trailing whitespace
     xml_string = re.sub(r'\n\s*', '', xml_string_raw, flags=re.MULTILINE)
     return xml_string
+
+def appendRuntoXMLpara(para, rstylename, runtxt):
+    # create run with text
+    run = etree.Element("{%s}r" % cfg.wnamespace)
+    run_text = etree.Element("{%s}t" % cfg.wnamespace)
+    run_text.text = runtxt
+    run.append(run_text)
+    if rstylename:
+        # create new run properties element
+        run_props = etree.Element("{%s}rPr" % cfg.wnamespace)
+        run_props_style = etree.Element("{%s}rStyle" % cfg.wnamespace)
+        run_props_style.attrib["{%s}val" % cfg.wnamespace] = rstylename
+        # append props element to run element
+        run_props.append(run_props_style)
+        run.append(run_props)
+    para.append(run)
+    return para
+
+# another way to spin up basic xml tree quickly/reproducably without going to file
+def createXMLparaWithRun(pstylename, rstylename, runtxt):
+    root = etree.Element("{%s}document" % cfg.wnamespace, nsmap = cfg.wordnamespaces)
+    body = etree.Element("{%s}body" % cfg.wnamespace)
+    root.append(body)
+    # create para
+    new_para = etree.Element("{%s}p" % cfg.wnamespace)
+    new_para.attrib["{%s}paraId" % cfg.w14namespace] = "test"
+    # create new para properties element
+    new_para_props = etree.Element("{%s}pPr" % cfg.wnamespace)
+    new_para_props_style = etree.Element("{%s}pStyle" % cfg.wnamespace)
+    new_para_props_style.attrib["{%s}val" % cfg.wnamespace] = pstylename
+    # append props element to para element
+    new_para_props.append(new_para_props_style)
+    new_para.append(new_para_props)
+    # create run
+    run = etree.Element("{%s}r" % cfg.wnamespace)
+    run_text = etree.Element("{%s}t" % cfg.wnamespace)
+    run_text.text = runtxt
+    run.append(run_text)
+    if rstylename:
+        # create new run properties element
+        run_props = etree.Element("{%s}rPr" % cfg.wnamespace)
+        run_props_style = etree.Element("{%s}rStyle" % cfg.wnamespace)
+        run_props_style.attrib["{%s}val" % cfg.wnamespace] = rstylename
+        # append props element to run element
+        run_props.append(run_props_style)
+        run.append(run_props)
+    new_para.append(run)
+    body.append(new_para)
+
+    return root, new_para
 
 # this function helps with comparing xmldata that was prettified or manually prepared:
 # reads xml from file and passes to function above
@@ -67,6 +118,7 @@ class Tests(unittest.TestCase):
         # unzip current template to files_for_test dir
         self.template_ziproot = os.path.join(testfiles_basepath, 'template_root')
         unzipDOCX.unzipDOCX(rsuite_template_path, self.template_ziproot)
+        self.maxDiff = None
 
     # can `pip mock` to use mock lib, then use "patch" to replace a globally scoped a value for a given test/module, as a decorator
     # @patch('xml_docx_stylechecks.lib.doc_prepare.docroot' = {}), xml_root = {})
@@ -127,7 +179,101 @@ class Tests(unittest.TestCase):
         self.assertEqual(total_paras, 8)
         self.assertEqual(macmillan_styled_paras, 5)
 
+    def test_validateImageHolders_badchar_basename(self):
+        fullstylename = 'Image-Placement (Img)'
+        badfilename = "file,.!@#*<: name-_3.jpg"
+        # setup
+        root, para = createXMLparaWithRun(fullstylename, '', badfilename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
 
+        expected_rd = {'image_holder_badchar': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_wrongext(self):
+        fullstylename = 'Image-Placement (Img)'
+        bad_ext = '.png'
+        filebasename = "filename-_3"
+        badfilename = '{}{}'.format(filebasename, bad_ext)
+        # setup
+        root, para = createXMLparaWithRun(fullstylename, '', badfilename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+
+        expected_rd = {'image_holder_ext_error': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_noext(self):
+        fullstylename = 'Image-Placement (Img)'
+        badfilename = "filename-_3"
+        # setup
+        root, para = createXMLparaWithRun(fullstylename, '', badfilename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+
+        expected_rd = {'image_holder_ext_error': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_inlineholder(self):
+        fullstylename = 'cs-image-placement (cimg)'
+        badfilename = "file,![ ]@#*<: name-_3.jpg"#"file,.!@#*<: name-_3.jpg"
+        # setup
+        root, para = createXMLparaWithRun('test', fullstylename, badfilename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+
+        expected_rd = {'image_holder_badchar': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_badcharANDnoext(self):
+        fullstylename = 'Image-Placement (Img)'
+        badfilename = "file,!@#*<: name-_3"
+        # setup
+        root, para = createXMLparaWithRun(fullstylename, '', badfilename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+
+        expected_rd = {'image_holder_ext_error': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}], \
+            'image_holder_badchar': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_noproblems(self):
+        fullstylename = 'Image-Placement (Img)'
+        filename = "filename-_3.jpg"
+        # setup
+        root, para = createXMLparaWithRun(fullstylename, '', filename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, filename)
+
+        expected_rd = {}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_logTextOfRunsWithStyle(self):
+        runstylename = 'test-style'
+        run1txt, run2txt, run3txt = "How are ", "you today ", " the end "
+        # setup
+        root, para = createXMLparaWithRun("Pteststyle", '', 'leading non sequitur: ')
+        para = appendRuntoXMLpara(para, runstylename, run1txt)
+        para = appendRuntoXMLpara(para, runstylename, run2txt)
+        para = appendRuntoXMLpara(para, '', ' , trailing non sequitur.')
+        para = appendRuntoXMLpara(para, runstylename, run3txt)
+        # run function
+        report_dict = stylereports.logTextOfRunsWithStyle({}, root, runstylename, 'demo_report_category')
+        expected_rd = {'demo_report_category': [{'description': 'How are you today '.format(run1txt + run2txt), 'para_id': 'test'}, \
+        {'description': run3txt, 'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
 
 if __name__ == '__main__':
     unittest.main()

@@ -43,22 +43,62 @@ logger = logging.getLogger(__name__)
 
 
 # #---------------------  METHODS
-# this is mostly identical to the function below for paras, with some varnames changed and 2 other tweaks
-def logTextOfRunsWithStyle(report_dict, doc_root, stylename, report_category):
+# this is invoked for rsuitevalidate runs only
+def validateImageHolders(report_dict, xml_root, stylename, para, image_string):
+    logger.info("* * * commencing validateImageHolders function")
+    imagestring_regex = re.compile(r"[^\w-]")
+    valid_file_extensions = cfg.imageholder_supported_ext
+    errstring, errstringb = '', ''
+    image_name, image_ext = os.path.splitext(image_string)
+    # check filename and extension separately against regex
+    badchars = re.findall(imagestring_regex, image_name)
+    badchars_ext = re.findall(imagestring_regex, image_ext[1:])
+    # report errors re: unwanted chars
+    if badchars:
+        # errstring = "Invalid character(s) found in '{}' text: '{}'. These character(s) are not supported: {}".format(stylename, image_string, list(set(badchars)))
+        lxml_utils.logForReport(report_dict, xml_root, para, "image_holder_badchar", "{}_{}".format(stylename, image_string))
+    # report separate error for no file extension
+    if not image_ext or image_ext not in valid_file_extensions:
+        # errstringb = "The text of '{}' style must be a filename with file extension; current value '{}' does not include a file extension (valid file extensions are: {})".format(stylename, image_string, valid_file_extensions)
+    # # report separate error if invalid file extension
+    # elif image_ext not in valid_file_extensions or badchars_ext:
+    #     errstringb = "'{}' in '{}', for style '{}' (supported extensions are: {}).".format(image_ext, image_string, stylename, valid_file_extensions)
+    # gather any errors for this imageholder & log 'em!'
+    # if errstringb:
+        lxml_utils.logForReport(report_dict, xml_root, para, "image_holder_ext_error", "{}_{}".format(stylename, image_string))
+
+    return report_dict
+
+def logTextOfRunsWithStyle(report_dict, doc_root, stylename, report_category, scriptname=""):
     logger.info("Logging runs styled as %s to report_dict['%s']" % (stylename, report_category))
     runs = lxml_utils.findRunsWithStyle(lxml_utils.transformStylename(stylename), doc_root)
     for run in runs:
+        # skip if the prev runstyle matches this one; that means we already processed it
+        rneighbors = lxml_utils.getNeighborRuns(run)
+        if rneighbors['prevstyle'] == lxml_utils.transformStylename(stylename):
+            continue
+        # aggregate next text of subsequent runs if stylename is the same
         runtxt = lxml_utils.getParaTxt(run)
+        while rneighbors['nextstyle'] == lxml_utils.transformStylename(stylename):
+            runtmp = rneighbors['next']
+            runtxt += lxml_utils.getParaTxt(runtmp)
+            rneighbors = lxml_utils.getNeighborRuns(runtmp)
         para = run.getparent()
+        # if we're running this for rsuitevalidate & have an imageholder style, need to do extra checks:
+        if stylename in cfg.imageholder_styles and scriptname == 'rsuitevalidate':
+            validateImageHolders(report_dict, doc_root, stylename, para, runtxt)
         report_dict = lxml_utils.logForReport(report_dict,doc_root,para,report_category,runtxt)
     return report_dict
 
 # logging each paratxt individually, this is th emost flexible for managing at time of report generation
-def logTextOfParasWithStyle(report_dict, doc_root, stylename, report_category):
+def logTextOfParasWithStyle(report_dict, doc_root, stylename, report_category, scriptname=""):
     logger.info("Logging paras styled as '%s' to report_dict['%s']" % (stylename, report_category))
     paras = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(stylename), doc_root)
     for para in paras:
         paratxt = lxml_utils.getParaTxt(para)
+        # if we're running this for rsuitevalidate & have an imageholder style, need to do extra checks:
+        if stylename in cfg.imageholder_styles and scriptname == 'rsuitevalidate':
+            validateImageHolders(report_dict, doc_root, stylename, para, paratxt)
         report_dict = lxml_utils.logForReport(report_dict,doc_root,para,report_category,paratxt)
     return report_dict
 

@@ -180,11 +180,11 @@ def getNeighborParas(para):          # move to lxml_utils?
         pneighbors['nextstyle'] = ""
     return pneighbors
 
-# return a dict of neighboring para elements and their text
-def getNeighborRuns(run):          # move to lxml_utils?
+# return a dict of neighboring run elements and their text
+def getNeighborRuns(run):
     rneighbors = {}
     try:
-        # the 'len' call is what generates the error and kicks to the except statement, I think?
+        # the 'len' call is what errors and kicks to the except statement
         rneighbors['prev'] = run.getprevious()
         len(rneighbors['prev'].tag)
         rneighbors['prevtext'] = getParaTxt(rneighbors['prev'])
@@ -194,7 +194,7 @@ def getNeighborRuns(run):          # move to lxml_utils?
         rneighbors['prevtext'] = ""
         rneighbors['prevstyle'] = ""
     try:
-        # the 'len' call is what generates the error and kicks to the except statement, I think?
+        # the 'len' call is what errors and kicks to the except statement
         rneighbors['next'] = run.getnext()
         len(rneighbors['next'].tag)
         rneighbors['nexttext'] = getParaTxt(rneighbors['next'])

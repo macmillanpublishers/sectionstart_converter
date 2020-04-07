@@ -55,16 +55,9 @@ def validateImageHolders(report_dict, xml_root, stylename, para, image_string):
     badchars_ext = re.findall(imagestring_regex, image_ext[1:])
     # report errors re: unwanted chars
     if badchars:
-        # errstring = "Invalid character(s) found in '{}' text: '{}'. These character(s) are not supported: {}".format(stylename, image_string, list(set(badchars)))
         lxml_utils.logForReport(report_dict, xml_root, para, "image_holder_badchar", "{}_{}".format(stylename, image_string))
     # report separate error for no file extension
     if not image_ext or image_ext not in valid_file_extensions:
-        # errstringb = "The text of '{}' style must be a filename with file extension; current value '{}' does not include a file extension (valid file extensions are: {})".format(stylename, image_string, valid_file_extensions)
-    # # report separate error if invalid file extension
-    # elif image_ext not in valid_file_extensions or badchars_ext:
-    #     errstringb = "'{}' in '{}', for style '{}' (supported extensions are: {}).".format(image_ext, image_string, stylename, valid_file_extensions)
-    # gather any errors for this imageholder & log 'em!'
-    # if errstringb:
         lxml_utils.logForReport(report_dict, xml_root, para, "image_holder_ext_error", "{}_{}".format(stylename, image_string))
 
     return report_dict

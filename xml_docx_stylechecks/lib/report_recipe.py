@@ -452,6 +452,20 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "errstring": "Footnote paragraph styled as '{description}' instead of 'Footnote Text' (Note beginning {para_string})."# (Paragraph {para_index})"
     	},
+    	"84_bad_image_holder_ext": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "image_holder_ext_error",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Missing or unsupported file extension for '{descriptionA}'-styled text: '{descriptionB}' (located in {parent_section_start_type}: {parent_section_start_content}). Your filename must end with a supported file extension (one of {valid_file_extensions})"
+    	},
+    	"85_bad_image_holder_char": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "image_holder_badchar",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Unsupported character(s) in '{descriptionA}'-styled text: '{descriptionB}' (located in {parent_section_start_type}: {parent_section_start_content}). Image placement styles may contain only alphanumeric characters, underscores, or hyphens."
+    	},
     	"90_list_change_warning": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
     		"dict_category_name": "list_change_warning",

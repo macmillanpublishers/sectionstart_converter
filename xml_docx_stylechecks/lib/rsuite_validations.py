@@ -365,40 +365,6 @@ def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_c
                     "restyled %s ref: no. %s (was styled as %s)" % (report_category, note_id, runstyle))
     return report_dict
 
-def checkImageHolderStrings(report_dict, imageholder_categoryname):
-    logger.info("* * * commencing checkImageHolderStrings function")
-    # check already collected imageholders from reportdict
-    if imageholder_categoryname in report_dict:
-        imagestring_regex = re.compile(r"[^\w-]")
-        valid_file_extensions = ['.jpg', '.tiff', '.psd']
-        errstring = ''
-        for imageholder in report_dict[imageholder_categoryname]:
-            image_string = imageholder['para_string']
-            image_name, image_ext = os.path.splitext(image_string)
-            badchars = re.findall(imagestring_regex, image_name)
-            badchars_ext += re.findall(imagestring_regex, image_ext[1:])
-            # check filename and extension separately against regex
-            if badchars:
-                errstring = errstring += "--invalid character(s) in image placeholder text: '{}' ".format(badchars)
-            # report separate error for no file extension
-            if not image_ext:
-                errstring = errstring += "--no valid file extension in image plaeholder filename (ex: '.jpg') "
-            # report separate error if invalid file extension
-            elif image_ext not in valid_file_extensions or badchars_ext:
-                errstring = errstring += "--invalid file extension in image plaeholder filename: '{}' (supported extensions: {}) ".format(image_ext, valid_file_extensions)
-            # gather errors for this imageholder & log 'em!'
-            if errstring:
-                errprefix = "The following error(s) were found with image placeholder text: "
-                errstring = errprefix + errstring
-                # bypass "lxml_utils.logForReport" function, copy prev para info directly into report_dict
-                para_dict = {}
-                para_dict["para_id"] = imageholder['para_id']
-                para_dict["description"] = errstring
-                if 'image_holder_error' not in report_dict:
-                    report_dict['image_holder_error'] = []
-                report_dict['image_holder_error'].append(para_dict.copy())
-
-
 def rsuiteValidations(report_dict):
     vbastyleconfig_json = cfg.vbastyleconfig_json
     styleconfig_json = cfg.styleconfig_json
@@ -494,13 +460,10 @@ def rsuiteValidations(report_dict):
     # log texts of isbn-span runs
     report_dict = logTextOfRunsWithStyleInSection(report_dict, doc_root, sectionnames, cfg.copyrightsection_stylename, cfg.isbnstyle, "isbn_spans")
 
-    imageholder_categoryname = "image_holders"
-    # log texts of image_holders-holder paras
-    report_dict = stylereports.logTextOfParasWithStyle(report_dict, doc_root, cfg.imageholder_style, imageholder_categoryname)
-    # log texts of inline illustration-holder runs
-    report_dict = stylereports.logTextOfRunsWithStyle(report_dict, doc_root, cfg.inline_imageholder_style, imageholder_categoryname)
-
-    report_dict = checkImageHolderStrings(report_dict, imageholder_categoryname)
+    # log texts of image_holders-holder paras, also checks for valid imageholder strings
+    report_dict = stylereports.logTextOfParasWithStyle(report_dict, doc_root, cfg.imageholder_style, "image_holders", cfg.script_name)
+    # log texts of inline illustration-holder runs, also checks for valid imageholder strings
+    report_dict = stylereports.logTextOfRunsWithStyle(report_dict, doc_root, cfg.inline_imageholder_style, "image_holders", cfg.script_name)
 
     # check first para for non-section-Bookstyle
     booksection_stylename_short = lxml_utils.transformStylename(cfg.booksection_stylename)

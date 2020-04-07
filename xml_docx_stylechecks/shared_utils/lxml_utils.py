@@ -180,6 +180,31 @@ def getNeighborParas(para):          # move to lxml_utils?
         pneighbors['nextstyle'] = ""
     return pneighbors
 
+# return a dict of neighboring para elements and their text
+def getNeighborRuns(run):          # move to lxml_utils?
+    rneighbors = {}
+    try:
+        # the 'len' call is what generates the error and kicks to the except statement, I think?
+        rneighbors['prev'] = run.getprevious()
+        len(rneighbors['prev'].tag)
+        rneighbors['prevtext'] = getParaTxt(rneighbors['prev'])
+        rneighbors['prevstyle'] = getRunStyle(rneighbors['prev'])
+    except:
+        rneighbors['prev'] = ""
+        rneighbors['prevtext'] = ""
+        rneighbors['prevstyle'] = ""
+    try:
+        # the 'len' call is what generates the error and kicks to the except statement, I think?
+        rneighbors['next'] = run.getnext()
+        len(rneighbors['next'].tag)
+        rneighbors['nexttext'] = getParaTxt(rneighbors['next'])
+        rneighbors['nextstyle'] = getRunStyle(rneighbors['next'])
+    except:
+        rneighbors['next'] = ""
+        rneighbors['nexttext'] = ""
+        rneighbors['nextstyle'] = ""
+    return rneighbors
+
 # creating a dict for section_names: SectionStart stylenames as keys, their 'longnames' as values
 #   from SectionStartRules file
 def getAllSectionNamesFromSSR(section_start_rules):

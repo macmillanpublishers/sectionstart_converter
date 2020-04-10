@@ -184,8 +184,15 @@ def getNeighborParas(para):          # move to lxml_utils?
 def getNeighborRuns(run):
     rneighbors = {}
     try:
-        # the 'len' call is what errors and kicks to the except statement
         rneighbors['prev'] = run.getprevious()
+        # the 'len' errors and kicks to the except statement when no prev sibling
+        len(rneighbors['prev'].tag)
+        # make sure we are capturing the previous _run_, and not other interloping element        
+        if rneighbors['prev'].tag != '{%s}r' % wnamespace:
+            while rneighbors['prev'].tag != '{%s}r' % wnamespace:
+                rneighbors['prev'] = rneighbors['prev'].getprevious()
+                # again, the 'len' call results in empty values when there is no previous
+                len(rneighbors['prev'].tag)
         len(rneighbors['prev'].tag)
         rneighbors['prevtext'] = getParaTxt(rneighbors['prev'])
         rneighbors['prevstyle'] = getRunStyle(rneighbors['prev'])
@@ -194,9 +201,15 @@ def getNeighborRuns(run):
         rneighbors['prevtext'] = ""
         rneighbors['prevstyle'] = ""
     try:
-        # the 'len' call is what errors and kicks to the except statement
         rneighbors['next'] = run.getnext()
+        # the 'len' errors and kicks to the except statement when no next sibling
         len(rneighbors['next'].tag)
+        # make sure we are capturing the next _run_, and not other interloping element
+        if rneighbors['next'].tag != '{%s}r' % wnamespace:
+            while rneighbors['next'].tag != '{%s}r' % wnamespace:
+                rneighbors['next'] = rneighbors['next'].getnext()
+                # again, the 'len' call results in empty values when there is no next
+                len(rneighbors['next'].tag)
         rneighbors['nexttext'] = getParaTxt(rneighbors['next'])
         rneighbors['nextstyle'] = getRunStyle(rneighbors['next'])
     except:

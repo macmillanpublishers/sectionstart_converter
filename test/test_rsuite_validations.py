@@ -263,15 +263,22 @@ class Tests(unittest.TestCase):
     def test_logTextOfRunsWithStyle(self):
         runstylename = 'test-style'
         run1txt, run2txt, run3txt = "How are ", "you today ", " the end "
+        interloper_el = etree.Element("{%s}proofErr" % cfg.wnamespace) #< these occur between runs in real docx
+        interloper_el2 = etree.Element("{%s}proofErr" % cfg.wnamespace) #< these occur between runs in real docx
+        interloper_el3 = etree.Element("{%s}proofErr" % cfg.wnamespace) #< these occur between runs in real docx
+
         # setup
         root, para = createXMLparaWithRun("Pteststyle", '', 'leading non sequitur: ')
+        para.insert(0, interloper_el)
         para = appendRuntoXMLpara(para, runstylename, run1txt)
+        para.append(interloper_el2)
         para = appendRuntoXMLpara(para, runstylename, run2txt)
+        para.append(interloper_el3)
         para = appendRuntoXMLpara(para, '', ' , trailing non sequitur.')
         para = appendRuntoXMLpara(para, runstylename, run3txt)
         # run function
         report_dict = stylereports.logTextOfRunsWithStyle({}, root, runstylename, 'demo_report_category')
-        expected_rd = {'demo_report_category': [{'description': 'How are you today '.format(run1txt + run2txt), 'para_id': 'test'}, \
+        expected_rd = {'demo_report_category': [{'description': '{}'.format(run1txt + run2txt), 'para_id': 'test'}, \
         {'description': run3txt, 'para_id': 'test'}]}
         self.assertEqual(report_dict, expected_rd)
 

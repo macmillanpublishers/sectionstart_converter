@@ -15,6 +15,16 @@ import time
 script_name = os.path.basename(sys.argv[0]).replace("_main.py","")
 inputfile = sys.argv[1]
 
+### From rsv_exec > 'direct': param definitions
+if sys.argv[2] and sys.argv[2] == 'direct':
+    runtype = 'direct'
+    submitter_email = sys.argv[3]
+    display_name = sys.argv[4]
+    # if sys.argv[5]:
+    #     processwatch_file = sys.argv[5]  #<- probably not going to use this
+else:
+    runtype = 'dropbox'
+
 # strip out surrounding double quotes if passed from batch file.
 if inputfile[0] == '"':
     inputfile = inputfile[1:]
@@ -39,7 +49,6 @@ validator_logfile = os.path.join(os.path.dirname(inputfile), "{}_{}_{}.txt".form
 processwatch_file = ''
 if sys.argv[2:]:
     if script_name.startswith("validator"):
-    # if script_name == "validator":
         validator_logfile = sys.argv[2]
     else:
         processwatch_file = sys.argv[2]
@@ -75,13 +84,14 @@ scripts_dir = ""	# we use realtive paths based on __location__ of this file (cfg
 # dropbox folder (for in and out folders)
 if hostOS == "Windows":
     dropboxfolder = os.path.join("C:",os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
+    drivefolder = os.path.join("G:", os.sep, "My Drive", "Workflow Tools")
 else:
     dropboxfolder = os.path.join(os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
     main_tmpdir = os.path.join(os.sep,"Users",currentuser,"stylecheck_tmp") # debug, for testing on MacOS
     staging_file = os.path.join(os.sep,"Users",currentuser,"staging.txt")
+    drivefolder = os.path.join(os.sep, "Volumes", "GoogleDrive", "My Drive", "Workflow Tools")
 # tmpfolder and outfolder
-if script_name.startswith("validator"):
-# if script_name == "validator":
+if script_name.startswith("validator") or runtype == 'direct':
     tmpdir = os.path.dirname(inputfile)
     this_outfolder = tmpdir
 else:
@@ -94,13 +104,16 @@ else:
 if os.path.basename(project_dir) == "converter" or os.path.basename(project_dir) == "reporter":
     project_parentdir_name = os.path.basename(os.path.dirname(project_dir))
     logdir = os.path.join(dropboxfolder, "bookmaker_logs", project_parentdir_name, os.path.basename(project_dir))
-else:
+elif runtype == 'dropbox':
     logdir = os.path.join(dropboxfolder, "bookmaker_logs", os.path.basename(project_dir))
+elif runtype == 'direct':
+    # we may not want to log to drive folders anymore, even though its annoying,
+    #   since drive seems to want to reauthenticate once in a while
+    logdir = os.path.join(drivefolder, "bookmaker_logs", os.path.basename(project_dir))
 
 ### Files
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
 stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))
-# if script_name == "validator":
 if script_name.startswith("validator"):
     stylereport_txt = os.path.join(this_outfolder,"{}_ValidationReport.txt".format(inputfilename_noext))
 workingfile = os.path.join(tmpdir, inputfilename)

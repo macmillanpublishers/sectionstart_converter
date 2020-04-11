@@ -113,7 +113,7 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     logger.info("Putting together email to submitter... ")
     # adding this var so we know whether to re:email user if processing error comes up
     report_emailed = False
-    # set display_name for teh greeting
+    # set display_name for greeting
     if display_name:
         firstname=display_name.split()[0]
         to_string = "%s <%s>" % (display_name, submitter_email)
@@ -127,7 +127,6 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
             converter_txt = usertext_templates.emailtxt()["converter_txt"]
         else:
             converter_txt = ""
-
         # if we have alerts / warnings /notices, include them
         if alerttxt_list:
             alert_text = "\n".join(alerttxt_list)
@@ -168,7 +167,6 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     # nothing to send, skipping
     else:
         logger.warn("no style report or alerts found, so no email to send.")
-
     return report_emailed
 
 
@@ -176,7 +174,8 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
     logger.info("Running cleanup, 'cleanupforReporterOrConverter'...")
 
     # 1 return original_file to outfolder
-    returnOriginal(this_outfolder, workingfile, original_inputfilename)
+    if cfg.runtype != 'direct':
+        returnOriginal(this_outfolder, workingfile, original_inputfilename)
 
     # 2 write our alertfile.txt if necessary
     if os.path.exists(alerts_json):
@@ -206,7 +205,6 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
     # 6 Rm processwatch_file
     logger.debug("deleting processwatch_file")
     os_utils.rm_existing_os_object(processwatch_file, 'processwatch_file')
-
     return report_emailed
 
 def cleanupforValidator(this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json, scriptname):
@@ -289,12 +287,13 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
     # these two items only apply to converter and reporter
     if not scriptname.startswith("validator"):
         # 4 return original_file to outfolder
-        logger.info("trying: return original file to OUT folder")
-        try:
-            returnOriginal(this_outfolder, workingfile, original_inputfilename)
-        except:
-            logger.exception("* returning original to outfolder Traceback:")
-            errs_duringcleanup.append("-returning original file to OUT folder")
+        if cfg.runtype != 'direct':
+            logger.info("trying: return original file to OUT folder")
+            try:
+                returnOriginal(this_outfolder, workingfile, original_inputfilename)
+            except:
+                logger.exception("* returning original to outfolder Traceback:")
+                errs_duringcleanup.append("-returning original file to OUT folder")
 
         # email submitter
         if report_emailed == False and submitter_email:

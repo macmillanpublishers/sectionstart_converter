@@ -183,7 +183,7 @@ def postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile):
     api_POSTurl = '{}?folder={}'.format(api_POSTurl, dest_folder)
     # send files
     try:
-        apipost_results, api_success = {}, True
+        apipost_result, api_success = {}, True
         if os.path.exists(stylereport_txt):
             apipost_result['stylereport'] = apiPOST.apiPOST(stylereport_txt, api_POSTurl)
         if os.path.exists(newdocxfile):
@@ -193,6 +193,8 @@ def postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile):
         for k, v in apipost_result.iteritems():
             if v != 'Success':
                 api_success = False
+        if api_success == False:
+            raise("apipost_result: {}".format(apipost_result))
         return api_success
     except:
         raise
@@ -228,8 +230,6 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
     if cfg.runtype == 'direct':
         logger.debug("sending files to outfolder for direct run")
         api_success = postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile)
-        if api_success == False:
-            raise("apipost_result: {}".format(apipost_result))
 
     # 5 Rm tmpdir
     logger.debug("deleting tmp folder")

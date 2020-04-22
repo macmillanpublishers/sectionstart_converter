@@ -45,6 +45,8 @@ badchar_array = []
 
 ######### SETUP LOGGING
 logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
+if cfg.runtype == 'direct':
+    logfile = os.path.join(cfg.logdir, "{}_{}.txt".format(cfg.script_name, os.path.basename(cfg.tmpdir)))
 cfg.defineLogger(logfile, cfg.loglevel)
 logger = logging.getLogger(__name__)
 
@@ -154,7 +156,7 @@ if __name__ == '__main__':
         ########## CLEANUP
         # includes writing files to outfolder, sending mail to submitter, rm'ing tmpdir
         report_emailed = setup_cleanup.cleanupforReporterOrConverter(cfg.script_name, this_outfolder, workingfile, inputfilename, report_dict, cfg.stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename, newdocxfile)
-        
+
         logger.info("{} complete for '{}', exiting".format(cfg.script_name, inputfilename))
 
     except:

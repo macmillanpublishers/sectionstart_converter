@@ -162,6 +162,7 @@ def writeListToFileByLine(text, filename):
 def writeAlertstoTxtfile(alerts_json, this_outfolder):
     alerts_dict = readJSON(alerts_json)
     alerttxt_list = []
+    alertfile = ''
     if os.path.exists(alerts_json):
         # get all the alert text in a list
         for alert_category, alerts in sorted(alerts_dict.iteritems()):
@@ -180,4 +181,4 @@ def writeAlertstoTxtfile(alerts_json, this_outfolder):
                 alertfile = os.path.join(this_outfolder, "NOTICE.txt")
             # write our file
             writeListToFileByLine(alerttxt_list, alertfile)
-    return alerttxt_list
+    return alerttxt_list, alertfile

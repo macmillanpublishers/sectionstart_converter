@@ -139,6 +139,8 @@ else:
     template_name = "macmillan"
 
 # paths
+api_post_py = os.path.join(scripts_dir_path, "bookmaker_connectors", "api_POST_to_camel.py")
+post_urls_json = os.path.join(scripts_dir_path, "bookmaker_authkeys", "camelPOST_urls.json")
 section_start_rules_json = os.path.join(scripts_dir_path, "bookmaker_validator","section_start_rules.json")
 smtp_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","smtp.txt")
 db_access_token_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","access_token.txt")

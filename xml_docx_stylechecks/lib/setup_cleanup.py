@@ -100,8 +100,9 @@ def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, 
     os_utils.copyFiletoFile(macmillan_template, os.path.join(tmpdir, os.path.basename(macmillan_template)))
 
     ### unzip the manuscript to ziproot, template to template_ziproot
-    os_utils.rm_existing_os_object(ziproot, 'ziproot')
-    os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
+    if cfg.runtype != 'direct':
+        os_utils.rm_existing_os_object(ziproot, 'ziproot')
+        os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
     unzipDOCX.unzipDOCX(workingfile, ziproot)
     unzipDOCX.unzipDOCX(macmillan_template, template_ziproot)
 

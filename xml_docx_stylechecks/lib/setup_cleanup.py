@@ -194,7 +194,7 @@ def postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile):
             if v != 'Success':
                 api_success = False
         if api_success == False:
-            raise("apipost_result: {}".format(apipost_result))
+            raise ValueError("apipost_result(s) include non-success status: {}".format(apipost_result))
         return api_success
     except:
         raise

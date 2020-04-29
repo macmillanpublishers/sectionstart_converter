@@ -85,11 +85,13 @@ scripts_dir = ""	# we use realtive paths based on __location__ of this file (cfg
 if hostOS == "Windows":
     dropboxfolder = os.path.join("C:",os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
     drivefolder = os.path.join("G:", os.sep, "My Drive", "Workflow Tools")
+    direct_logdir = os.path.join("S:", os.sep, "rs_validate_logs")
 else:
     dropboxfolder = os.path.join(os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
     main_tmpdir = os.path.join(os.sep,"Users",currentuser,"stylecheck_tmp") # debug, for testing on MacOS
     staging_file = os.path.join(os.sep,"Users",currentuser,"staging.txt")
     drivefolder = os.path.join(os.sep, "Volumes", "GoogleDrive", "My Drive", "Workflow Tools")
+    direct_logdir = os.path.join(os.sep,"Users",currentuser,"rs_validate_logs")
 # tmpfolder and outfolder
 if script_name.startswith("validator") or runtype == 'direct':
     tmpdir = os.path.dirname(inputfile)
@@ -107,9 +109,7 @@ if os.path.basename(project_dir) == "converter" or os.path.basename(project_dir)
 elif runtype == 'dropbox':
     logdir = os.path.join(dropboxfolder, "bookmaker_logs", os.path.basename(project_dir))
 elif runtype == 'direct':
-    # we may not want to log to drive folders anymore, even though its annoying,
-    #   since drive seems to want to reauthenticate once in a while
-    logdir = os.path.join(drivefolder, "bookmaker_logs", os.path.basename(project_dir))
+    logdir = direct_logdir
 
 ### Files
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator

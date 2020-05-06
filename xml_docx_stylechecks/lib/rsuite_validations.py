@@ -299,10 +299,10 @@ def checkEndnoteFootnoteStyles(xml_root, report_dict, note_style, sectionname):
         parastyle = lxml_utils.getParaStyle(para)
         if parastyle != note_style:
             # skip Endnote/Footnote separator paras (present by default, no style)
-            parent_el_wtype = para.getparent().get('{%s}type' % wnamespace)
-            if parent_el_wtype == 'separator' or parent_el_wtype == 'continuationSeparator':
+            parent_type = para.getparent().get('{%s}type' % wnamespace)
+            if parent_type == 'separator' or parent_type == 'continuationSeparator' or parent_type == 'continuationNotice':
                 continue
-            if not os.environ.get('TEST_FLAG'): 
+            if not os.environ.get('TEST_FLAG'):
                 parastyle = lxml_utils.getStyleLongname(parastyle)
             lxml_utils.logForReport(report_dict,xml_root,para,"improperly_styled_%s" % sectionname, parastyle)
     return report_dict

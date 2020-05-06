@@ -22,7 +22,10 @@ import xml_docx_stylechecks.shared_utils.lxml_utils as lxml_utils
 import xml_docx_stylechecks.shared_utils.check_docx as check_docx
 import xml_docx_stylechecks.shared_utils.unzipDOCX as unzipDOCX
 
+# # # # # # Set testing env variable:
+os.environ["TEST_FLAG"] = 'true'
 
+# # # # # # LOCAL FUNCTIONS
 # return xml root node of xml file
 def getRoot(xmlfile):
     xml_tree = etree.parse(xmlfile)
@@ -336,7 +339,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict, expected_rd)
 
     # testing targeting at new functionality: pulling info from footnotes/endnotes_xml
-    # note: this is a little more if an integration test, b/c a more convoluted function
+    # note: this is a little more of an integration test, b/c a more convoluted function
     def test_calcLocationInfoForLog(self):
         logging.info("Begin")
         # ^ without this we get a notice about logger handlers being unavailable

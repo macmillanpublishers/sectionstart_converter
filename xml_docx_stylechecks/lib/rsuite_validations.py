@@ -302,8 +302,8 @@ def checkEndnoteFootnoteStyles(xml_root, report_dict, note_style, sectionname):
             parent_el_wtype = para.getparent().get('{%s}type' % wnamespace)
             if parent_el_wtype == 'separator' or parent_el_wtype == 'continuationSeparator':
                 continue
-            # note_id = para.getparent().get('{%s}id' % wnamespace)
-            #   ^ identify by note index; may not = printed note id?
+            if not os.environ.get('TEST_FLAG'): 
+                parastyle = lxml_utils.getStyleLongname(parastyle)
             lxml_utils.logForReport(report_dict,xml_root,para,"improperly_styled_%s" % sectionname, parastyle)
     return report_dict
 

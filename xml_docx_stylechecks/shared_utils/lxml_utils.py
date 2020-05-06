@@ -122,8 +122,11 @@ def getStyleLongname(styleshortname, stylenamemap={}):
         searchstring = ".//w:style[@w:styleId='%s']/w:name" % styleshortname
         stylematch = styles_root.find(searchstring, wordnamespaces)
         # get fullname value and test against Macmillan style list
-        stylelongname = stylematch.get('{%s}val' % wnamespace)
-        stylenamemap[styleshortname] = stylelongname
+        if stylematch is not None:
+            stylelongname = stylematch.get('{%s}val' % wnamespace)
+            stylenamemap[styleshortname] = stylelongname
+        else:
+            stylelongname = styleshortname
     return stylelongname
 
 # the "Run" here would be a span / character style.
@@ -187,7 +190,7 @@ def getNeighborRuns(run):
         rneighbors['prev'] = run.getprevious()
         # the 'len' errors and kicks to the except statement when no prev sibling
         len(rneighbors['prev'].tag)
-        # make sure we are capturing the previous _run_, and not other interloping element        
+        # make sure we are capturing the previous _run_, and not other interloping element
         if rneighbors['prev'].tag != '{%s}r' % wnamespace:
             while rneighbors['prev'].tag != '{%s}r' % wnamespace:
                 rneighbors['prev'] = rneighbors['prev'].getprevious()
@@ -440,6 +443,30 @@ def findParasWithStyle(stylename, doc_root):
         paras.append(para)
     return paras
 
+def getCalculatedParaInfo(report_dict_entry, root, section_names, para, category, rootname=''):
+    entry = report_dict_entry
+    # # # Assign Section-start info for notes/comments.xml & get note_id
+    if rootname:
+        entry['parent_section_start_type'], entry['parent_section_start_content'] = rootname, 'n-a'
+        entry['para_index'] = 'n-a'
+        if para.getparent() is not None:
+            entry['note-or-comment_id'] = para.getparent().get('{%s}id' % wnamespace)
+    else:
+        # # # Get para index
+        entry['para_index'] = getParaIndex(para)
+        if entry['para_index'] == 'n-a':
+            logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
+        # get section name, section start text etc
+        entry['parent_section_start_type'], entry['parent_section_start_content']  = getSectionName(para, section_names)
+        if entry['parent_section_start_type'] == 'n-a' or entry['parent_section_start_content'] == 'n-a':
+            logger.warn("couldn't get section start info for %s para (value was set to n-a)" % category)
+    # # # Get 1st 10 words of para text
+    entry['para_string'] = ' '.join(getParaTxt(para).split(' ')[:10])
+    if entry['para_string'] == 'n-a':
+        logger.warn("couldn't get para_string for %s para (value was set to n-a)" % category)
+
+    return entry
+
 # once all changes have been made, call this to add location info for users to the changelog dicts
 def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
     logger.info("calculating para_index numbers for all para_ids in 'report_dict'")
@@ -455,25 +482,18 @@ def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
                                 # Get the para object
                                 searchstring = ".//*w:p[@w14:paraId='%s']" % entry[key]
                                 para = root.find(searchstring, wordnamespaces)
-                                # If we can't find para object, check endnotes.xml and footnotes.xml
+                                # If we can't find para object in main doc, check endnotes.xml and footnotes.xml
                                 if para is None:
-                                    i = 0
-                                    while i < len(alt_roots) and para is None:
-                                        para = alt_roots[i].find(searchstring, wordnamespaces)
-                                        i += 1
-                                # # # Get para index
-                                entry['para_index'] = getParaIndex(para)
-                                if entry['para_index'] == 'n-a':
-                                    logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
-                                # # # Get Section Name
-                                entry['parent_section_start_type'], entry['parent_section_start_content']  = getSectionName(para, section_names)
-                                if entry['parent_section_start_type'] == 'n-a' or entry['parent_section_start_content'] == 'n-a':
-                                    logger.warn("couldn't get section start info for %s para (value was set to n-a)" % category)
-                                # # # Get 1st 10 words of para text
-                                entry['para_string'] = ' '.join(getParaTxt(para).split(' ')[:10])
-                                if entry['para_string'] == 'n-a':
-                                    logger.warn("couldn't get para_string for %s para (value was set to n-a)" % category)
-
+                                    logger.debug("found a para not in main doc_xml")
+                                    if alt_roots:
+                                        for rootname, alt_root in alt_roots.iteritems():
+                                            logger.debug("checking {}, searchstring {}".format(rootname, searchstring))
+                                            para = alt_root.find(searchstring, wordnamespaces)
+                                            if para is not None:
+                                                entry = getCalculatedParaInfo(entry, alt_root, section_names, para, category, rootname)
+                                                break
+                                else:
+                                    entry = getCalculatedParaInfo(entry, root, section_names, para, category)
         else:
             logger.warn("report_dict is empty")
         return report_dict

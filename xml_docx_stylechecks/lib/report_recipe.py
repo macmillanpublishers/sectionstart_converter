@@ -443,14 +443,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"dict_category_name": "improperly_styled_endnote",
     		"line_template": "",
     		"badnews": 'any',
-            "errstring": "Endnote paragraph styled as '{description}' instead of 'Endnote Text': (Note beginning {para_string})."
+            "errstring": "Endnote paragraph styled as '{style_longname}' instead of 'Endnote Text': (Note beginning {para_string})."
     	},
     	"83_footnote_text_misstyled": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
     		"dict_category_name": "improperly_styled_footnote",
     		"line_template": "",
     		"badnews": 'any',
-            "errstring": "Footnote paragraph styled as '{description}' instead of 'Footnote Text' (Note beginning {para_string})."# (Paragraph {para_index})"
+            "errstring": "Footnote paragraph styled as '{style_longname}' instead of 'Footnote Text' (Note beginning {para_string})."# (Paragraph {para_index})"
     	},
     	"84_bad_image_holder_ext": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],

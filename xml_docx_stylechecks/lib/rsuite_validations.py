@@ -134,7 +134,7 @@ def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles
                 if w_id == '0' or w_id == '-1':
                     logger.debug("found default blank %s paragraph, id: %s" % (alt_xmlname, w_id))
                     # para.getparent().remove(para)
-                continue
+                    continue
             parastyle = lxml_utils.getParaStyle(para)
             if parastyle in specialparas:
                 # get section info for report, since we will be unable to retrieve after para is deleted

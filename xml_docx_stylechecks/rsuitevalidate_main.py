@@ -45,6 +45,8 @@ badchar_array = []
 
 ######### SETUP LOGGING
 logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
+if cfg.runtype == 'direct':
+    logfile = os.path.join(cfg.logdir, "{}_{}.txt".format(cfg.script_name, os.path.basename(cfg.tmpdir)))
 cfg.defineLogger(logfile, cfg.loglevel)
 logger = logging.getLogger(__name__)
 
@@ -54,8 +56,17 @@ logger = logging.getLogger(__name__)
 if __name__ == '__main__':
     try:
         ########## SETUP
-        # get file submitter via api, copy infile to tmpdir, setup outfolder
-        submitter_email, display_name, notdocx = setup_cleanup.setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outfolder, inputfile_ext)
+        # run setup differntly based on runtype (dropbox or drive/camel/api)
+        if cfg.runtype == 'dropbox':
+            # get file submitter via api, copy infile to tmpdir, setup outfolder
+            submitter_email, display_name, notdocx = setup_cleanup.setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outfolder, inputfile_ext)
+        elif cfg.runtype == 'direct':
+            submitter_email = cfg.submitter_email
+            display_name = cfg.display_name
+            logger.info("passed submiiter values: name: {}, email {}".format(display_name, submitter_email))
+            notdocx = False # < this is being policed by the api & rsv_exec
+            # copy template to tmpdir, unzip infile and tmpdir
+            setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
 
         if notdocx == True:
             errstring = usertext_templates.alerts()["notdocx"].format(scriptname=cfg.script_name)
@@ -119,7 +130,7 @@ if __name__ == '__main__':
 
                 ### zip ziproot up as a docx into outfolder
                 logger.info("Zipping updated xml into a .docx")
-                os_utils.rm_existing_os_object(newdocxfile, 'newdocxfile')	# < --- this should get replaced with our fancy folder rename
+                # os_utils.rm_existing_os_object(newdocxfile, 'newdocxfile')	# < --- this should get replaced with our fancy folder rename
                 zipDOCX.zipDOCX(ziproot, newdocxfile)
 
                 # write our stylereport.json with all edits etc for
@@ -146,6 +157,8 @@ if __name__ == '__main__':
         ########## CLEANUP
         # includes writing files to outfolder, sending mail to submitter, rm'ing tmpdir
         report_emailed = setup_cleanup.cleanupforReporterOrConverter(cfg.script_name, this_outfolder, workingfile, inputfilename, report_dict, cfg.stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename, newdocxfile)
+
+        logger.info("{} complete for '{}', exiting".format(cfg.script_name, inputfilename))
 
     except:
         ########## LOG ERROR INFO

@@ -483,6 +483,7 @@ def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
                                 searchstring = ".//*w:p[@w14:paraId='%s']" % entry[key]
                                 para = root.find(searchstring, wordnamespaces)
                                 # If we can't find para object in main doc, check endnotes.xml and footnotes.xml
+                                entry_calc_done = False
                                 if para is None:
                                     logger.debug("found a para not in main doc_xml")
                                     if alt_roots:
@@ -491,8 +492,9 @@ def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
                                             para = alt_root.find(searchstring, wordnamespaces)
                                             if para is not None:
                                                 entry = getCalculatedParaInfo(entry, alt_root, section_names, para, category, rootname)
-                                                break
-                                else:
+                                                entry_calc_done = True
+                                                break # < stop checking altroots since we found one
+                                if entry_calc_done == False:
                                     entry = getCalculatedParaInfo(entry, root, section_names, para, category)
         else:
             logger.warn("report_dict is empty")

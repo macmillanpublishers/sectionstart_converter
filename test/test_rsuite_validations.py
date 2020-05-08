@@ -341,9 +341,9 @@ class Tests(unittest.TestCase):
     # testing targeting at new functionality: pulling info from footnotes/endnotes_xml
     # note: this is a little more of an integration test, b/c a more convoluted function
     def test_calcLocationInfoForLog(self):
-        logging.info("Begin")
-        # ^ without this we get a notice about logger handlers being unavailable
-        #   _with_ this we get logged warnings from function but test should pass
+        logging.basicConfig(level=logging.ERROR)
+        # ^ without this we get a notice about logger handlers being unavailable.
+        #   Can change loglevel to see mssges
         sectionnames = ["Section-Test (TEST)"]
         # create main root mockup with no preceding section para, and one with section preceding
         root, para = createXML_paraWithRun('BodyTextTxt', '', "I'm a para with no section", None, 'p_id0')
@@ -355,11 +355,13 @@ class Tests(unittest.TestCase):
         enpara = createPara('en_p_id1', 'EndnoteText', 'I am endnote txt.')
         altroot.append(endnote)
         endnote.append(enpara)
-        # create initial report_dict
+        # create initial report_dict. Adding a paragraph ref, 'p_id3',which does not exist,
+        #   since some paras get deleted prior to this function
         report_dict = {'test_category': \
             [{'para_id': 'p_id0', 'description': 'mainxml'}, \
             {'para_id': 'p_id2', 'description': 'mainxml'}, \
-            {'para_id': 'en_p_id1', 'description': 'altxml'}]}
+            {'para_id': 'en_p_id1', 'description': 'altxml'}, \
+            {'para_id': 'p_id3', 'description': 'mainxml'}]}
         # run function
         report_dict = lxml_utils.calcLocationInfoForLog(report_dict, root, sectionnames, {'Endnotes':altroot})
         #assertion
@@ -381,7 +383,13 @@ class Tests(unittest.TestCase):
                 'para_index': 'n-a',
                 'para_string': 'I am endnote txt.',
                 'parent_section_start_content': 'n-a',
-                'parent_section_start_type': 'Endnotes'}]}
+                'parent_section_start_type': 'Endnotes'},
+            {'description': 'mainxml',
+                'para_id': 'p_id3',
+                'para_index': 'n-a',
+                'para_string': 'n-a',
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a'}]}
         self.assertEqual(report_dict, expected_rd)
 
 if __name__ == '__main__':

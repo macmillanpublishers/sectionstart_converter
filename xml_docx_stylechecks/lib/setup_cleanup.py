@@ -26,6 +26,7 @@ if __name__ == '__main__':
     os_utils = imp.load_source('os_utils', osutilspath)
     unzipDOCX = imp.load_source('unzipDOCX', unzipDOCXpath)
     sendmail = imp.load_source('sendmail', sendmailpath)
+    apiPOST = imp.load_source('apiPOST', cfg.api_post_py)
 else:
     import cfg
     import lib.generate_report as generate_report
@@ -33,6 +34,8 @@ else:
     import shared_utils.os_utils as os_utils
     import shared_utils.unzipDOCX as unzipDOCX
     import shared_utils.sendmail as sendmail
+    import imp
+    apiPOST = imp.load_source('apiPOST', cfg.api_post_py)
 
 
 ######### LOCAL DECLARATIONS
@@ -97,8 +100,9 @@ def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, 
     os_utils.copyFiletoFile(macmillan_template, os.path.join(tmpdir, os.path.basename(macmillan_template)))
 
     ### unzip the manuscript to ziproot, template to template_ziproot
-    os_utils.rm_existing_os_object(ziproot, 'ziproot')
-    os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
+    if cfg.runtype != 'direct':
+        os_utils.rm_existing_os_object(ziproot, 'ziproot')
+        os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
     unzipDOCX.unzipDOCX(workingfile, ziproot)
     unzipDOCX.unzipDOCX(macmillan_template, template_ziproot)
 
@@ -113,7 +117,7 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     logger.info("Putting together email to submitter... ")
     # adding this var so we know whether to re:email user if processing error comes up
     report_emailed = False
-    # set display_name for teh greeting
+    # set display_name for greeting
     if display_name:
         firstname=display_name.split()[0]
         to_string = "%s <%s>" % (display_name, submitter_email)
@@ -127,7 +131,6 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
             converter_txt = usertext_templates.emailtxt()["converter_txt"]
         else:
             converter_txt = ""
-
         # if we have alerts / warnings /notices, include them
         if alerttxt_list:
             alert_text = "\n".join(alerttxt_list)
@@ -168,23 +171,49 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
     # nothing to send, skipping
     else:
         logger.warn("no style report or alerts found, so no email to send.")
-
     return report_emailed
 
+def postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile):
+    logger.info("posting files to outfolder for 'direct' run, via camel api...")
+    # set api url
+    dest_folder = os.path.basename(cfg.this_outfolder)
+    posturldict = os_utils.readJSON(cfg.post_urls_json)
+    api_POSTurl = posturldict['rsvalidate']
+    if os.path.exists(cfg.staging_file):
+        api_POSTurl = posturldict['rsvalidate_stg']
+    api_POSTurl = '{}?folder={}'.format(api_POSTurl, dest_folder)
+    # send files
+    try:
+        apipost_result, api_success = {}, True
+        if os.path.exists(stylereport_txt):
+            apipost_result['stylereport'] = apiPOST.apiPOST(stylereport_txt, api_POSTurl)
+        if os.path.exists(newdocxfile):
+            apipost_result['newdocxfile'] = apiPOST.apiPOST(newdocxfile, api_POSTurl)
+        if os.path.exists(alertfile):
+            apipost_result['alertfile'] = apiPOST.apiPOST(alertfile, api_POSTurl)
+        for k, v in apipost_result.iteritems():
+            if v != 'Success':
+                api_success = False
+        if api_success == False:
+            raise ValueError("apipost_result(s) include non-success status: {}".format(apipost_result))
+        return api_success
+    except:
+        raise
 
 def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json, tmpdir, submitter_email, display_name, original_inputfilename, newdocxfile=""):
     logger.info("Running cleanup, 'cleanupforReporterOrConverter'...")
 
     # 1 return original_file to outfolder
-    returnOriginal(this_outfolder, workingfile, original_inputfilename)
+    if cfg.runtype != 'direct':
+        returnOriginal(this_outfolder, workingfile, original_inputfilename)
 
     # 2 write our alertfile.txt if necessary
     if os.path.exists(alerts_json):
         logger.debug("Writing alerts.txt to outfolder")
-        alerttxt_list = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
+        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
     else:
         logger.debug("Skipping write alerts.txt to outfolder (no alerts.json)")
-        alerttxt_list=[]
+        alerttxt_list, alertfile=[], ''
 
     # 3 if report_dict has contents, write stylereport file & send email!:
     if report_dict:
@@ -198,6 +227,11 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
     logger.debug("emailing stylereport &/or alerts ")
     report_emailed = emailStyleReport(submitter_email, display_name, report_string, stylereport_txt, alerttxt_list, inputfilename, scriptname, newdocxfile)
 
+    # 4.5 if this is a 'direct' run, sendfiles to true outfolder via api
+    if cfg.runtype == 'direct':
+        logger.debug("sending files to outfolder for direct run")
+        api_success = postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile)
+
     # 5 Rm tmpdir
     logger.debug("deleting tmp folder")
     if cfg.preserve_tmpdir == False:    # leave tmpdir for debug/testing
@@ -206,7 +240,6 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
     # 6 Rm processwatch_file
     logger.debug("deleting processwatch_file")
     os_utils.rm_existing_os_object(processwatch_file, 'processwatch_file')
-
     return report_emailed
 
 def cleanupforValidator(this_outfolder, workingfile, inputfilename, report_dict, stylereport_txt, alerts_json, scriptname):
@@ -221,7 +254,7 @@ def cleanupforValidator(this_outfolder, workingfile, inputfilename, report_dict,
     # 2 write our alertfile.txt if necessary
     if os.path.exists(alerts_json):
         logger.debug("Writing alerts.txt to outfolder")
-        alerttxt_list = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
+        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
     else:
         logger.debug("Skipping write alerts.txt to outfolder (no alerts.json)")
         alerttxt_list=[]
@@ -273,7 +306,7 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
     try:
         errstring = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname.title(), support_email_address=cfg.support_email_address)
         os_utils.logAlerttoJSON(alerts_json, "error", errstring)
-        alerttxt_list = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
+        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
     except:
         logger.exception("* writing alert to json and posting alertfile Traceback:")
         errs_duringcleanup.append("-write error alert to json, dump json alerts to errfile in OUT folder")
@@ -289,12 +322,13 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
     # these two items only apply to converter and reporter
     if not scriptname.startswith("validator"):
         # 4 return original_file to outfolder
-        logger.info("trying: return original file to OUT folder")
-        try:
-            returnOriginal(this_outfolder, workingfile, original_inputfilename)
-        except:
-            logger.exception("* returning original to outfolder Traceback:")
-            errs_duringcleanup.append("-returning original file to OUT folder")
+        if cfg.runtype != 'direct':
+            logger.info("trying: return original file to OUT folder")
+            try:
+                returnOriginal(this_outfolder, workingfile, original_inputfilename)
+            except:
+                logger.exception("* returning original to outfolder Traceback:")
+                errs_duringcleanup.append("-returning original file to OUT folder")
 
         # email submitter
         if report_emailed == False and submitter_email:

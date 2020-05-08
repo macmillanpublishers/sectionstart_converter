@@ -90,7 +90,7 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
         import os_utils as os_utils
         # write err to file
         os_utils.logAlerttoJSON(cfg.alerts_json, 'warning', errstring)
-        alerttxt_list = os_utils.writeAlertstoTxtfile(cfg.alerts_json, cfg.this_outfolder)
+        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(cfg.alerts_json, cfg.this_outfolder)
         # print "LOG THIS EMAIL!: ",to_addr_list, subject, bodytxt # debug only
 
 #---------------------  MAIN

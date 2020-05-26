@@ -246,6 +246,8 @@ else:
     nonprintingheads = ["ChapTitleNonprintingctnp", "BMHeadNonprintingbmhnp", "FMHeadNonprintingfmhnp"]
     copyrightstyles = ["CopyrightTextdoublespacecrtxd", "CopyrightTextsinglespacecrtx"]
     autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
+imageholder_styles = [imageholder_style, inline_imageholder_style]
+imageholder_supported_ext = ['.jpg', '.tiff', '.psd']
 
 # # # MSWord XML objects
 # objects for deletion

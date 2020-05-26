@@ -2,6 +2,7 @@ import unittest
 # from mock import patch
 import sys, os, copy, re
 from lxml import etree, objectify
+import logging
 
 # key local paths
 mainproject_path = os.path.join(sys.path[0],'xml_docx_stylechecks')
@@ -13,13 +14,18 @@ sys.path.append(mainproject_path)
 
 # import functions for tests below
 import xml_docx_stylechecks.lib.doc_prepare as doc_prepare
+import xml_docx_stylechecks.lib.rsuite_validations as rsuite_validations
+import xml_docx_stylechecks.lib.stylereports as stylereports
 import xml_docx_stylechecks.shared_utils.os_utils as os_utils
 import xml_docx_stylechecks.cfg as cfg
 import xml_docx_stylechecks.shared_utils.lxml_utils as lxml_utils
 import xml_docx_stylechecks.shared_utils.check_docx as check_docx
 import xml_docx_stylechecks.shared_utils.unzipDOCX as unzipDOCX
 
+# # # # # # Set testing env variable:
+os.environ["TEST_FLAG"] = 'true'
 
+# # # # # # LOCAL FUNCTIONS
 # return xml root node of xml file
 def getRoot(xmlfile):
     xml_tree = etree.parse(xmlfile)
@@ -38,6 +44,83 @@ def normalizeXML(xmldata):
     # remove newline chars and their trailing whitespace
     xml_string = re.sub(r'\n\s*', '', xml_string_raw, flags=re.MULTILINE)
     return xml_string
+
+def appendRuntoXMLpara(para, rstylename, runtxt):
+    # create run with text
+    run = etree.Element("{%s}r" % cfg.wnamespace)
+    run_text = etree.Element("{%s}t" % cfg.wnamespace)
+    run_text.text = runtxt
+    run.append(run_text)
+    if rstylename:
+        # create new run properties element
+        run_props = etree.Element("{%s}rPr" % cfg.wnamespace)
+        run_props_style = etree.Element("{%s}rStyle" % cfg.wnamespace)
+        run_props_style.attrib["{%s}val" % cfg.wnamespace] = rstylename
+        # append props element to run element
+        run_props.append(run_props_style)
+        run.append(run_props)
+    para.append(run)
+    return para
+
+def createXMLroot():
+    root = etree.Element("{%s}document" % cfg.wnamespace, nsmap = cfg.wordnamespaces)
+    return root
+
+def createMiscElement(element_name, namespace, attribute_name='', attr_val='', attr_namespace=''):
+    # have to triple-curly brace curly braces in format string for a single set to be escaped!
+    misc_el = etree.Element("{{{}}}{}".format(namespace, element_name))
+    # body = etree.Element("{%s}body" % cfg.wnamespace)
+    if attribute_name:
+        misc_el.attrib["{{{}}}{}".format(attr_namespace, attribute_name)] = attr_val
+    return misc_el
+
+def createRun(runtxt, rstylename=''):
+    # create run
+    run = etree.Element("{%s}r" % cfg.wnamespace)
+    run_text = etree.Element("{%s}t" % cfg.wnamespace)
+    run_text.text = runtxt
+    run.append(run_text)
+    if rstylename:
+        # create new run properties element
+        run_props = etree.Element("{%s}rPr" % cfg.wnamespace)
+        run_props_style = etree.Element("{%s}rStyle" % cfg.wnamespace)
+        run_props_style.attrib["{%s}val" % cfg.wnamespace] = rstylename
+        # append props element to run element
+        run_props.append(run_props_style)
+        run.append(run_props)
+    return run
+
+def createPara(para_id, pstylename='', runtxt='', rstylename=''):
+    # create para
+    new_para = etree.Element("{%s}p" % cfg.wnamespace)
+    new_para.attrib["{%s}paraId" % cfg.w14namespace] = para_id
+    # create new para properties element
+    new_para_props = etree.Element("{%s}pPr" % cfg.wnamespace)
+    # if parastyle specified, add it here
+    if pstylename:
+        new_para_props_style = etree.Element("{%s}pStyle" % cfg.wnamespace)
+        new_para_props_style.attrib["{%s}val" % cfg.wnamespace] = pstylename
+        # append props element to para element
+        new_para_props.append(new_para_props_style)
+    if runtxt:
+        run = createRun(runtxt, rstylename='')
+        new_para.append(run)
+    new_para.append(new_para_props)
+    return new_para
+
+# another way to spin up basic xml tree quickly/reproducably without going to file
+#   to add more paras run again with last two params specified
+def createXML_paraWithRun(pstylename, rstylename, runtxt, root=None, para_id='test'):
+    if root is None:
+        root = createXMLroot()
+        body = createMiscElement('body', cfg.wnamespace)
+        root.append(body)
+    else:
+        body = root.find(".//{%s}body" % cfg.wnamespace)
+    # create para with run
+    para = createPara(para_id, pstylename, runtxt, rstylename)
+    body.append(para)
+    return root, para
 
 # this function helps with comparing xmldata that was prettified or manually prepared:
 # reads xml from file and passes to function above
@@ -67,6 +150,7 @@ class Tests(unittest.TestCase):
         # unzip current template to files_for_test dir
         self.template_ziproot = os.path.join(testfiles_basepath, 'template_root')
         unzipDOCX.unzipDOCX(rsuite_template_path, self.template_ziproot)
+        self.maxDiff = None
 
     # can `pip mock` to use mock lib, then use "patch" to replace a globally scoped a value for a given test/module, as a decorator
     # @patch('xml_docx_stylechecks.lib.doc_prepare.docroot' = {}), xml_root = {})
@@ -127,7 +211,186 @@ class Tests(unittest.TestCase):
         self.assertEqual(total_paras, 8)
         self.assertEqual(macmillan_styled_paras, 5)
 
+    def test_validateImageHolders_badchar_basename(self):
+        fullstylename = 'Image-Placement (Img)'
+        badfilename = "file,.!@#*<: name-_3.jpg"
+        # setup
+        root, para = createXML_paraWithRun(fullstylename, '', badfilename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
 
+        expected_rd = {'image_holder_badchar': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_wrongext(self):
+        fullstylename = 'Image-Placement (Img)'
+        bad_ext = '.png'
+        filebasename = "filename-_3"
+        badfilename = '{}{}'.format(filebasename, bad_ext)
+        # setup
+        root, para = createXML_paraWithRun(fullstylename, '', badfilename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+
+        expected_rd = {'image_holder_ext_error': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_noext(self):
+        fullstylename = 'Image-Placement (Img)'
+        badfilename = "filename-_3"
+        # setup
+        root, para = createXML_paraWithRun(fullstylename, '', badfilename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+
+        expected_rd = {'image_holder_ext_error': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_inlineholder(self):
+        fullstylename = 'cs-image-placement (cimg)'
+        badfilename = "file,![ ]@#*<: name-_3.jpg"#"file,.!@#*<: name-_3.jpg"
+        # setup
+        root, para = createXML_paraWithRun('test', fullstylename, badfilename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+
+        expected_rd = {'image_holder_badchar': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_badcharANDnoext(self):
+        fullstylename = 'Image-Placement (Img)'
+        badfilename = "file,!@#*<: name-_3"
+        # setup
+        root, para = createXML_paraWithRun(fullstylename, '', badfilename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+
+        expected_rd = {'image_holder_ext_error': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}], \
+            'image_holder_badchar': \
+            [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_noproblems(self):
+        fullstylename = 'Image-Placement (Img)'
+        filename = "filename-_3.jpg"
+        # setup
+        root, para = createXML_paraWithRun(fullstylename, '', filename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, filename)
+
+        expected_rd = {}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_logTextOfRunsWithStyle(self):
+        runstylename = 'test-style'
+        run1txt, run2txt, run3txt = "How are ", "you today ", " the end "
+        interloper_el = etree.Element("{%s}proofErr" % cfg.wnamespace) #< these occur between runs in real docx
+        interloper_el2 = etree.Element("{%s}proofErr" % cfg.wnamespace) #< these occur between runs in real docx
+        interloper_el3 = etree.Element("{%s}proofErr" % cfg.wnamespace) #< these occur between runs in real docx
+
+        # setup
+        root, para = createXML_paraWithRun("Pteststyle", '', 'leading non sequitur: ')
+        para.insert(0, interloper_el)
+        para = appendRuntoXMLpara(para, runstylename, run1txt)
+        para.append(interloper_el2)
+        para = appendRuntoXMLpara(para, runstylename, run2txt)
+        para.append(interloper_el3)
+        para = appendRuntoXMLpara(para, '', ' , trailing non sequitur.')
+        para = appendRuntoXMLpara(para, runstylename, run3txt)
+        # run function
+        report_dict = stylereports.logTextOfRunsWithStyle({}, root, runstylename, 'demo_report_category')
+        expected_rd = {'demo_report_category': [{'description': '{}'.format(run1txt + run2txt), 'para_id': 'test'}, \
+        {'description': run3txt, 'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_checkEndnoteFootnoteStyles(self):
+        note_sectionname = "Endnotes"
+        note_style = cfg.endnotestyle
+        unstyled_id = 'p_id2'
+        bad_pStyle = "MainHead"
+        bad_id = 'p_id3'
+        # setup: create xml root from scratch, with a properly styled para
+        root, para = createXML_paraWithRun(note_style, '', "I am a styled para")
+        # add a style-less para
+        root, para = createXML_paraWithRun('', 'demo_runstyle', "Pstyle-less Para", root, unstyled_id)
+        # add an improperly styled para
+        root, para = createXML_paraWithRun(bad_pStyle, '', "Bad-styled para", root, bad_id)
+        # add a separator type endnote with non-styled child para (should be ignored):
+        endnote = createMiscElement('endnote', cfg.wnamespace, 'type', 'continuationSeparator', cfg.wnamespace)
+        enpara = createPara('p_id4', '', 'I am endnote txt.')
+        root.append(endnote)
+        endnote.append(enpara)
+        # run function
+        report_dict = rsuite_validations.checkEndnoteFootnoteStyles(root, {}, note_style, note_sectionname)
+        expected_rd = {'improperly_styled_{}'.format(note_sectionname): \
+            [{'para_id': unstyled_id, 'description': 'Normal'}, \
+            {'para_id': bad_id, 'description': bad_pStyle}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    # testing targeting at new functionality: pulling info from footnotes/endnotes_xml
+    # note: this is a little more of an integration test, b/c a more convoluted function
+    def test_calcLocationInfoForLog(self):
+        logging.basicConfig(level=logging.ERROR)
+        # ^ without this we get a notice about logger handlers being unavailable.
+        #   Can change loglevel to see mssges
+        sectionnames = ["Section-Test (TEST)"]
+        # create main root mockup with no preceding section para, and one with section preceding
+        root, para = createXML_paraWithRun('BodyTextTxt', '', "I'm a para with no section", None, 'p_id0')
+        root, para = createXML_paraWithRun(sectionnames[0], '', "Section Heading", root, 'p_id1')
+        root, para = createXML_paraWithRun('BodyTextTxt', '', "I'm a normal para", root, 'p_id2')
+        # create alt root mockup with endnote, child para
+        altroot = createXMLroot()
+        endnote = createMiscElement('endnote', cfg.wnamespace, 'id', '1', cfg.wnamespace)
+        enpara = createPara('en_p_id1', 'EndnoteText', 'I am endnote txt.')
+        altroot.append(endnote)
+        endnote.append(enpara)
+        # create initial report_dict. Adding a paragraph ref, 'p_id3',which does not exist,
+        #   since some paras get deleted prior to this function
+        report_dict = {'test_category': \
+            [{'para_id': 'p_id0', 'description': 'mainxml'}, \
+            {'para_id': 'p_id2', 'description': 'mainxml'}, \
+            {'para_id': 'en_p_id1', 'description': 'altxml'}, \
+            {'para_id': 'p_id3', 'description': 'mainxml'}]}
+        # run function
+        report_dict = lxml_utils.calcLocationInfoForLog(report_dict, root, sectionnames, {'Endnotes':altroot})
+        #assertion
+        expected_rd =  {'test_category': [{'description': 'mainxml',
+                'para_id': 'p_id0',
+                'para_index': 0,
+                'para_string': "I'm a para with no section",
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a'},
+            {'description': 'mainxml',
+                'para_id': 'p_id2',
+                'para_index': 2,
+                'para_string': "I'm a normal para",
+                'parent_section_start_content': 'Section Heading',
+                'parent_section_start_type': 'Section-Test (TEST)'},
+            {'description': 'altxml',
+                'note-or-comment_id': '1',
+                'para_id': 'en_p_id1',
+                'para_index': 'n-a',
+                'para_string': 'I am endnote txt.',
+                'parent_section_start_content': 'n-a',
+                'parent_section_start_type': 'Endnotes'},
+            {'description': 'mainxml',
+                'para_id': 'p_id3',
+                'para_index': 'n-a',
+                'para_string': 'n-a',
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a'}]}
+        self.assertEqual(report_dict, expected_rd)
 
 if __name__ == '__main__':
     unittest.main()

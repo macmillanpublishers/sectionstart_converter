@@ -3,6 +3,7 @@ import os
 import json
 import sys
 import logging
+import re
 # make sure to install lxml: sudo pip install lxml
 from lxml import etree
 
@@ -40,7 +41,7 @@ logger = logging.getLogger(__name__)
 # #---------------------  METHODS
 
 # # lifted most of this from stylereports.logTextOfParasWithStyle, so we can get paras with (section) context
-# # if we end up neeeding styles within a container we can do more of a while loop, like we did with containers.
+# # if we end up needing styles within a container we can do more of a while loop, like we did with containers.
 def logTextOfParasWithStyleInSection(report_dict, xml_root, sectionnames, sectionname, stylename, report_category):
     logger.info("* * * commencing logTextOfParasWithStyleInSection: section '%s', style '%s'  ..." % (sectionname, stylename))
     paras = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(stylename), xml_root)
@@ -133,7 +134,7 @@ def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles
                 if w_id == '0' or w_id == '-1':
                     logger.debug("found default blank %s paragraph, id: %s" % (alt_xmlname, w_id))
                     # para.getparent().remove(para)
-                continue
+                    continue
             parastyle = lxml_utils.getParaStyle(para)
             if parastyle in specialparas:
                 # get section info for report, since we will be unable to retrieve after para is deleted
@@ -294,12 +295,16 @@ def checkEndnoteFootnoteStyles(xml_root, report_dict, note_style, sectionname):
     # first check styles of paras
     allparas = xml_root.findall(".//w:p", wordnamespaces)
     for para in allparas:
-        if para.find(".//w:pStyle", wordnamespaces) is not None:    # default separator paras in xml files don't have pStyles
-            parastyle = para.find(".//w:pStyle", wordnamespaces).get('{%s}val' % wnamespace)
-            # print parastyle
-            if parastyle != note_style:
-                note_id = para.getparent().get('{%s}id' % wnamespace)
-                lxml_utils.logForReport(report_dict,xml_root,para,"improperly_styled_%s" % sectionname,lxml_utils.getStyleLongname(parastyle))
+        # note: our getParastyle function assumes paras with no pStyle are 'Normal'
+        parastyle = lxml_utils.getParaStyle(para)
+        if parastyle != note_style:
+            # skip Endnote/Footnote separator paras (present by default, no style)
+            parent_type = para.getparent().get('{%s}type' % wnamespace)
+            if parent_type == 'separator' or parent_type == 'continuationSeparator' or parent_type == 'continuationNotice':
+                continue
+            if not os.environ.get('TEST_FLAG'):
+                parastyle = lxml_utils.getStyleLongname(parastyle)
+            lxml_utils.logForReport(report_dict,xml_root,para,"improperly_styled_%s" % sectionname, parastyle)
     return report_dict
 
 def rmEndnoteFootnoteLeadingWhitespace(xml_root, report_dict, sectionname):
@@ -364,7 +369,6 @@ def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_c
                     "restyled %s ref: no. %s (was styled as %s)" % (report_category, note_id, runstyle))
     return report_dict
 
-
 def rsuiteValidations(report_dict):
     vbastyleconfig_json = cfg.vbastyleconfig_json
     styleconfig_json = cfg.styleconfig_json
@@ -377,17 +381,17 @@ def rsuiteValidations(report_dict):
         doc_root:doc_xml
         }
     # alt_roots is for inclusion in log calculations, as needed
-    alt_roots = []
+    alt_roots = {}
     if os.path.exists(cfg.endnotes_xml):
         endnotes_tree = etree.parse(cfg.endnotes_xml)
         endnotes_root = endnotes_tree.getroot()
         xmlfile_dict[endnotes_root]=cfg.endnotes_xml
-        alt_roots.append(endnotes_root)
+        alt_roots['Endnotes']=endnotes_root
     if os.path.exists(cfg.footnotes_xml):
         footnotes_tree = etree.parse(cfg.footnotes_xml)
         footnotes_root = footnotes_tree.getroot()
         xmlfile_dict[footnotes_root]=cfg.footnotes_xml
-        alt_roots.append(footnotes_root)
+        alt_roots['Footnotes']=footnotes_root
 
     # get Section Start names & styles from vbastyleconfig_json
     #    Could pull styles from macmillan.json  with "Section-" if I don't want to use vbastyleconfig_json
@@ -460,10 +464,10 @@ def rsuiteValidations(report_dict):
     # log texts of isbn-span runs
     report_dict = logTextOfRunsWithStyleInSection(report_dict, doc_root, sectionnames, cfg.copyrightsection_stylename, cfg.isbnstyle, "isbn_spans")
 
-    # log texts of image_holders-holder paras
-    report_dict = stylereports.logTextOfParasWithStyle(report_dict, doc_root, cfg.imageholder_style, "image_holders")
-    # log texts of inline illustration-holder runs
-    report_dict = stylereports.logTextOfRunsWithStyle(report_dict, doc_root, cfg.inline_imageholder_style, "image_holders")
+    # log texts of image_holders-holder paras, also checks for valid imageholder strings
+    report_dict = stylereports.logTextOfParasWithStyle(report_dict, doc_root, cfg.imageholder_style, "image_holders", cfg.script_name)
+    # log texts of inline illustration-holder runs, also checks for valid imageholder strings
+    report_dict = stylereports.logTextOfRunsWithStyle(report_dict, doc_root, cfg.inline_imageholder_style, "image_holders", cfg.script_name)
 
     # check first para for non-section-Bookstyle
     booksection_stylename_short = lxml_utils.transformStylename(cfg.booksection_stylename)

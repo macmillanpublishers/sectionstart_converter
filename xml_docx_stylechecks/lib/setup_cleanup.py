@@ -234,7 +234,7 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
 
     # 5 Rm tmpdir
     logger.debug("deleting tmp folder")
-    if cfg.preserve_tmpdir == False:    # leave tmpdir for debug/testing
+    if cfg.preserve_tmpdir == False or cfg.runtype == 'direct':    # leave tmpdir for debug/testing
         os_utils.rm_existing_os_object(tmpdir, 'tmpdir')
 
     # 6 Rm processwatch_file

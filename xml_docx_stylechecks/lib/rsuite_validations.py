@@ -157,6 +157,77 @@ def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles
             para.getparent().remove(para)
     return report_dict
 
+# so we can insert paras into test xml blocks with predictable para_ids instead of random (for assertions)
+def getTestParaId(counter):
+    if os.environ.get('TEST_FLAG'):
+        para_id = 'p_id-{}'.format(counter)
+    else:
+        para_id = ''
+    counter+=1
+    return para_id, counter
+
+def createDummyNotePara(xml_root, testpara_counter, note_stylename, noteref_stylename):
+    # get test p_id as needed
+    p_id, testpara_counter = getTestParaId(testpara_counter)
+    # create basic para with empty ref-styled run
+    newpara = lxml_utils.createPara(xml_root, note_stylename, '', noteref_stylename, p_id)
+    # add endnote reference object
+    noteref_el = lxml_utils.createMiscElement('endnoteRef', cfg.wnamespace)
+    newrun = newpara[1]
+    newrun.append(noteref_el)
+    # and new placeholder-text run
+    text_run = lxml_utils.createRun("[no text]")
+    newpara.append(text_run)
+    logger.info("for troubleshooting built element: {}".format(etree.tostring(newpara)))
+    # * note: looked at trying to match pStyle for Endnotes, particularly w:spacing
+    #   but maybe not worth it, since we may do harm by trying to guess at the style of endnotes per document
+    #   (whether based on styles.xml, or another endnote, or a standard, any could be wrong)
+    return newpara, testpara_counter
+
+def handleBlankParasInNotes(report_dict, xml_root, note_stylename, noteref_stylename, note_name, note_section):
+    logger.info("* * * commencing handleBlankParasInNotes function, for {}".format(note_section))
+    # vars
+    testpara_counter = 1
+    searchstring = ".//w:{}".format(note_name)
+    type = '{%s}type' % wnamespace
+    separators = ['separator', 'continuationSeparator', 'continuationNotice']
+    # handle notes objects with no para children
+    for note in xml_root.findall(searchstring, wordnamespaces):
+        if len(note) == 0: # <== note object has no children (this may not occur naturally, but why not cover?)
+            dummy_notepara, testpara_counter = createDummyNotePara(xml_root, testpara_counter, note_stylename, noteref_stylename)
+            note.append(dummy_notepara)
+            note_id = note.get('{%s}id' % wnamespace)
+            lxml_utils.logForReport(report_dict,xml_root,dummy_notepara,"found_empty_note",note_name)
+        # handle note objects with children but no non-whitespace text
+        elif not lxml_utils.getParaTxt(note).strip():
+            # skip separator notes
+            if type in note.attrib and note.attrib[type] in separators:
+                continue
+            # count, rm paras, and replace with dummy para:
+            emptypara_count = len(note)
+            for para in note:
+                para.getparent().remove(para)
+            dummy_notepara, testpara_counter = createDummyNotePara(xml_root, testpara_counter, note_stylename, noteref_stylename)
+            note.append(dummy_notepara)
+            note_id = note.get('{%s}id' % wnamespace)
+            lxml_utils.logForReport(report_dict,xml_root,dummy_notepara,"found_empty_note",note_name)
+
+    # handle blank paras within notes that have other paras with content
+    allparas = xml_root.findall(".//w:p", wordnamespaces)
+    for para in allparas:
+        if not lxml_utils.getParaTxt(para).strip(): # or para.text is None:
+            # skip separator notes
+            note = para.getparent()
+            if type in note.attrib and note.attrib[type] in separators:
+                continue
+            # log discovery
+            note_id = note.get('{%s}id' % wnamespace)
+            lxml_utils.logForReport(report_dict,xml_root,para,"removed_blank_para","blank para in {} note with other text; note_id: {}".format(note_name, note_id))
+            # remove para
+            para.getparent().remove(para)
+
+    return report_dict
+
 def checkContainers(report_dict, xml_root, sectionnames, container_start_styles, container_end_styles):
     logger.info("* * * commencing checkContainers function...")
     search_until_styles = sectionnames.keys() + container_start_styles + container_end_styles
@@ -435,9 +506,9 @@ def rsuiteValidations(report_dict):
     #     report_dict = removeBlankParas(report_dict, xml_root)
     report_dict = removeBlankParas(report_dict, doc_root, sectionnames, container_start_styles, container_end_styles, cfg.spacebreakstyles)
     if os.path.exists(cfg.endnotes_xml):
-        report_dict = removeBlankParas(report_dict, endnotes_root, sectionnames, container_start_styles, container_end_styles, cfg.spacebreakstyles, "Endnotes")
+        report_dict = handleBlankParasInNotes(report_dict, endnotes_root, cfg.endnotestyle, cfg.endnote_ref_style, 'endnote', "Endnotes")
     if os.path.exists(cfg.footnotes_xml):
-        report_dict = removeBlankParas(report_dict, footnotes_root, sectionnames, container_start_styles, container_end_styles, cfg.spacebreakstyles, "Footnotes")
+        report_dict = handleBlankParasInNotes(report_dict, footnotes_root, cfg.footnotestyle, cfg.footnote_ref_style, 'footnote', "Footnotes")
 
     # test / verify Container structures
     report_dict = checkContainers(report_dict, doc_root, sectionnames, container_start_styles, container_end_styles)

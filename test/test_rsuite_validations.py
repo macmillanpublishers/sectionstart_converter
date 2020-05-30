@@ -77,9 +77,10 @@ def createMiscElement(element_name, namespace, attribute_name='', attr_val='', a
 def createRun(runtxt, rstylename=''):
     # create run
     run = etree.Element("{%s}r" % cfg.wnamespace)
-    run_text = etree.Element("{%s}t" % cfg.wnamespace)
-    run_text.text = runtxt
-    run.append(run_text)
+    if runtxt:
+        run_text = etree.Element("{%s}t" % cfg.wnamespace)
+        run_text.text = runtxt
+        run.append(run_text)
     if rstylename:
         # create new run properties element
         run_props = etree.Element("{%s}rPr" % cfg.wnamespace)
@@ -94,18 +95,18 @@ def createPara(para_id, pstylename='', runtxt='', rstylename=''):
     # create para
     new_para = etree.Element("{%s}p" % cfg.wnamespace)
     new_para.attrib["{%s}paraId" % cfg.w14namespace] = para_id
-    # create new para properties element
-    new_para_props = etree.Element("{%s}pPr" % cfg.wnamespace)
     # if parastyle specified, add it here
     if pstylename:
+        # create new para properties element
+        new_para_props = etree.Element("{%s}pPr" % cfg.wnamespace)
         new_para_props_style = etree.Element("{%s}pStyle" % cfg.wnamespace)
         new_para_props_style.attrib["{%s}val" % cfg.wnamespace] = pstylename
         # append props element to para element
         new_para_props.append(new_para_props_style)
-    if runtxt:
+        new_para.append(new_para_props)
+    if runtxt or rstylename:
         run = createRun(runtxt, rstylename='')
         new_para.append(run)
-    new_para.append(new_para_props)
     return new_para
 
 # another way to spin up basic xml tree quickly/reproducably without going to file
@@ -320,23 +321,204 @@ class Tests(unittest.TestCase):
         unstyled_id = 'p_id2'
         bad_pStyle = "MainHead"
         bad_id = 'p_id3'
-        # setup: create xml root from scratch, with a properly styled para
-        root, para = createXML_paraWithRun(note_style, '', "I am a styled para")
-        # add a style-less para
-        root, para = createXML_paraWithRun('', 'demo_runstyle', "Pstyle-less Para", root, unstyled_id)
-        # add an improperly styled para
-        root, para = createXML_paraWithRun(bad_pStyle, '', "Bad-styled para", root, bad_id)
-        # add a separator type endnote with non-styled child para (should be ignored):
-        endnote = createMiscElement('endnote', cfg.wnamespace, 'type', 'continuationSeparator', cfg.wnamespace)
-        enpara = createPara('p_id4', '', 'I am endnote txt.')
+        # build xml with 3 types of paras (good, unstyled, and wrong-styled)
+        root = createXMLroot()
+        endnote = createMiscElement('endnote', cfg.wnamespace, 'id', '7', cfg.wnamespace)
+        goodpara = createPara('p_id1', note_style, 'I am a styled para.')
+        unstyled_para = createPara(unstyled_id, '', 'Pstyle-less Para', 'demo_runstyle')
+        badstyled_para = createPara(bad_id, bad_pStyle, 'Bad-styled para')
+        # put items together:
         root.append(endnote)
-        endnote.append(enpara)
+        endnote.append(goodpara)
+        endnote.append(unstyled_para)
+        endnote.append(badstyled_para)
+        # add a separator type endnote with non-styled child para (should be ignored):
+        separator_endnote = createMiscElement('endnote', cfg.wnamespace, 'type', 'continuationSeparator', cfg.wnamespace)
+        separator_enpara = createPara('p_id4', '', 'I am separator placeholder para.')
+        root.append(separator_endnote)
+        separator_endnote.append(separator_enpara)
         # run function
         report_dict = rsuite_validations.checkEndnoteFootnoteStyles(root, {}, note_style, note_sectionname)
         expected_rd = {'improperly_styled_{}'.format(note_sectionname): \
             [{'para_id': unstyled_id, 'description': 'Normal'}, \
             {'para_id': bad_id, 'description': bad_pStyle}]}
         self.assertEqual(report_dict, expected_rd)
+
+    def test_handleBlankParasInNotes_multiblanks(self):
+        note_name = 'endnote'
+        note_stylename = 'EndnoteTxt'
+        note_section = 'Endnotes'
+        noteref_stylename = 'EndnoteReference'
+        para_id = 'p_id-1'
+
+        # build after xml; first build elements
+        dummy_note_para = createPara(para_id, note_stylename, '', noteref_stylename)
+        noteref_el = createMiscElement('endnoteRef', cfg.wnamespace)
+        after_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '2', cfg.wnamespace)
+        after_root = createXMLroot()
+        text_run = createRun("[no text]")
+        # put everything together
+        dummy_note_para[1].append(noteref_el)
+        dummy_note_para.append(text_run)
+        after_endnote.append(dummy_note_para)
+        after_root.append(after_endnote)
+
+        # now build test root
+        test_root = createXMLroot()
+        test_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '2', cfg.wnamespace)
+        blankpara1 = createPara('bp_id1', note_stylename)
+        blankpara2 = createPara('bp_id2', note_stylename)
+        # etree.SubElement(test_endnote, blankpara1)
+        test_endnote.append(blankpara1)
+        test_endnote.append(blankpara2)
+        test_root.append(test_endnote)
+
+        # run function
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
+        expected_rd = {'found_empty_note': \
+            [{'description': "endnote", \
+            'para_id': 'p_id-1'}]}
+        # assert!
+        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(etree.tostring(test_root), etree.tostring(after_root))
+
+    def test_handleBlankParasInNotes_mixedblanks(self):
+        note_name = 'endnote'
+        note_stylename = 'EndnoteTxt'
+        note_section = 'Endnotes'
+        noteref_stylename = 'EndnoteReference'
+        para_id = 'p_id-1'
+        para_id2 = 'p_id-2'
+        para_id3 = 'p_id-3'
+        para_id4 = 'p_id-4'
+        # build test xml
+        # finish building after_root:
+        after_content_p1 = createPara(para_id2, '', "I am a paragraph with content")
+        after_content_p2 = createPara(para_id4, note_stylename, "I am too, I have some words")
+        after_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '3', cfg.wnamespace)
+        after_root = createXMLroot()
+        after_endnote.append(after_content_p1)
+        after_endnote.append(after_content_p2)
+        after_root.append(after_endnote)
+        #   now test root
+        test_root = createXMLroot()
+        test_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '3', cfg.wnamespace)
+        blankpara1 = createPara(para_id, note_stylename)
+        test_content_p1 = copy.deepcopy(after_content_p1)
+        blankpara2 = createPara(para_id3)
+        test_content_p2 = copy.deepcopy(after_content_p2)
+        test_endnote.append(blankpara1)
+        test_endnote.append(test_content_p1)
+        test_endnote.append(blankpara2)
+        test_endnote.append(test_content_p2)
+        test_root.append(test_endnote)
+
+        # run function
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
+        expected_rd = {'removed_blank_para': \
+            [{'description': 'blank para in endnote note with other text; note_id: 3', \
+            'para_id': para_id}, \
+            {'description': 'blank para in endnote note with other text; note_id: 3', \
+            'para_id': para_id3}]}
+        # assert!
+        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(etree.tostring(test_root), etree.tostring(after_root))
+
+    def test_handleBlankParasInNotes_noparas(self):
+        note_name = 'endnote'
+        note_stylename = 'EndnoteTxt'
+        note_section = 'Endnotes'
+        noteref_stylename = 'EndnoteReference'
+        para_id = 'p_id-1'
+
+        # build after xml; first build elements
+        dummy_note_para = createPara(para_id, note_stylename, '', noteref_stylename)
+        noteref_el = createMiscElement('endnoteRef', cfg.wnamespace)
+        after_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '1', cfg.wnamespace)
+        after_root = createXMLroot()
+        text_run = createRun("[no text]")
+        # put everything together
+        dummy_note_para[1].append(noteref_el)
+        dummy_note_para.append(text_run)
+        after_endnote.append(dummy_note_para)
+        after_root.append(after_endnote)
+
+        # build test xml
+        empty_note = createMiscElement(note_name, cfg.wnamespace, 'id', '1', cfg.wnamespace)
+        test_root = createXMLroot()
+        test_root.append(empty_note)
+
+        # run function
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
+        expected_rd = {'found_empty_note': \
+            [{'description': 'endnote', \
+            'para_id': para_id}]}
+        # assert!
+        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(etree.tostring(test_root), etree.tostring(after_root))
+
+    def test_handleBlankParasInNotes_noparas_footnotes(self):
+        note_name = 'footnote'
+        note_stylename = 'FootnoteTxt'
+        noteref_stylename = 'FootnoteReference'
+        note_section = 'Footnotes'
+        para_id = 'p_id-1'
+
+        # build after xml; first build elements
+        dummy_note_para = createPara(para_id, note_stylename, '', noteref_stylename)
+        noteref_el = createMiscElement('endnoteRef', cfg.wnamespace)
+        after_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '1', cfg.wnamespace)
+        after_root = createXMLroot()
+        text_run = createRun("[no text]")
+        # put everything together
+        dummy_note_para[1].append(noteref_el)
+        dummy_note_para.append(text_run)
+        after_endnote.append(dummy_note_para)
+        after_root.append(after_endnote)
+
+        # build test xml
+        empty_note = createMiscElement(note_name, cfg.wnamespace, 'id', '1', cfg.wnamespace)
+        test_root = createXMLroot()
+        test_root.append(empty_note)
+
+        # run function
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
+        expected_rd = {'found_empty_note': \
+            [{'description': 'footnote', \
+            'para_id': para_id}]}
+        # assert!
+        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(etree.tostring(test_root), etree.tostring(after_root))
+
+    def test_handleBlankParasInNotes_separator(self):
+        note_name = 'endnote'
+        # build test xml: cseparator
+        root = createXMLroot()
+        cseparator_note = createMiscElement(note_name, cfg.wnamespace, 'type', 'continuationSeparator', cfg.wnamespace)
+        cseparator_note.attrib["{{{}}}{}".format(cfg.wnamespace, 'id')] = '0'
+        cseparator_para = createPara('p_id-1')
+        cseparator_run = createRun('')
+        cseparator = createMiscElement('continuationSeparator', cfg.wnamespace)
+        cseparator_run.append(cseparator)
+        cseparator_para.append(cseparator_run)
+        cseparator_note.append(cseparator_para)
+        root.append(cseparator_note)
+        # build separator:
+        separator_note = createMiscElement(note_name, cfg.wnamespace, 'type', 'separator', cfg.wnamespace)
+        separator_note.attrib["{{{}}}{}".format(cfg.wnamespace, 'id')] = '0'
+        separator_para = createPara('p_id-1')
+        separator_run = createRun('')
+        separator = createMiscElement('separator', cfg.wnamespace)
+        separator_run.append(separator)
+        separator_para.append(separator_run)
+        separator_note.append(separator_para)
+        root.append(separator_note)
+        expected_root = copy.deepcopy(root)
+        # run the function
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, root, 'note_stylename', 'noteref_stylename', note_name, 'note_section')
+        # assert!
+        self.assertEqual(report_dict, {})
+        self.assertEqual(etree.tostring(expected_root), etree.tostring(root))
 
     # testing targeting at new functionality: pulling info from footnotes/endnotes_xml
     # note: this is a little more of an integration test, b/c a more convoluted function

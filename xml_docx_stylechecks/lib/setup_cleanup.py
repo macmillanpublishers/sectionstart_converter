@@ -234,7 +234,7 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
 
     # 5 Rm tmpdir
     logger.debug("deleting tmp folder")
-    if cfg.preserve_tmpdir == False:    # leave tmpdir for debug/testing
+    if cfg.preserve_tmpdir == False or cfg.runtype != 'direct':    # leave tmpdir for debug/testing
         os_utils.rm_existing_os_object(tmpdir, 'tmpdir')
 
     # 6 Rm processwatch_file
@@ -349,14 +349,15 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
         else:
             logger.info("skipping: notify submitter (report_email already sent)")
 
-        # 5 Rm tmpdir to avoid interfering with next run
-        logger.info("trying: delete tmp folder")
-        try:
-            if cfg.preserve_tmpdir == False:    # leave tmpdir for debug/testing
-                os_utils.rm_existing_os_object(tmpdir, 'tmpdir')
-        except:
-            logger.exception("* deleting tmp folder Traceback:")
-            errs_duringcleanup.append("-deleting tmp folder")
+        # # # \/ this is moot for direct runs as currently constituted
+        # # 5 Rm tmpdir to avoid interfering with next run
+        # logger.info("trying: delete tmp folder")
+        # try:
+        #     if cfg.preserve_tmpdir == False:    # leave tmpdir for debug/testing
+        #         os_utils.rm_existing_os_object(tmpdir, 'tmpdir')
+        # except:
+        #     logger.exception("* deleting tmp folder Traceback:")
+        #     errs_duringcleanup.append("-deleting tmp folder")
 
         # 6 Rm processwatch_file
         logger.debug("deleting processwatch_file")

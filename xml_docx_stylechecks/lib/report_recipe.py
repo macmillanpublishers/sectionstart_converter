@@ -76,6 +76,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
         #   "badnews": 'any',        # < If you want any entry from this report_dict category in the Error List,mark this True.. if one entry is ok but more are errors, use value 'one_allowed'
         #   "badnews_type": 'warning' # Specify type of badnews, whether a warning or error. If neither specified, error is presumed
         #   "errstring": "No paragraphs."   # < The base string you want used to appear in the report's Error list
+        #   "summary": 'true' # Warnings with badnews: 'any' are typically listed singly. This value overrides that. Vice versa for badnews_type: note
         #   "alternate_content": {          # < If you want an alternate title or text element to appear when
         #       "title": "TEST FAIL"        #   report_dict category is empty or not present, set them here. If you
         #       "text": "No title paras."   #   set text but not title, the original title value will be used, and vice versa
@@ -497,6 +498,15 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "badnews_type": 'note',
             "errstring": "{count} shape object(s) deleted from the manuscript."
+    	},
+    	"95.5_found_empty_note": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "found_empty_note",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'warning',
+            "summary": True,
+            "errstring": "{count} {description}(s) without content found. Placeholder text: {para_string} has been inserted."
     	},
     	"96_deleted_bookmark_summary": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],

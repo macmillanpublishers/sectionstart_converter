@@ -347,6 +347,54 @@ def sectionStartTally(report_dict, section_names, doc_root, call_type, headingst
     # logger.warn("finish = %s" % time.strftime("%y%m%d-%H%M%S"))
     return report_dict
 
+def createMiscElement(element_name, namespace, attribute_name='', attr_val='', attr_namespace=''):
+    # have to triple-curly brace curly braces in format string for a single set to be escaped!
+    misc_el = etree.Element("{{{}}}{}".format(namespace, element_name))
+    # body = etree.Element("{%s}body" % cfg.wnamespace)
+    if attribute_name:
+        misc_el.attrib["{{{}}}{}".format(attr_namespace, attribute_name)] = attr_val
+    return misc_el
+
+def createRun(runtxt, rstylename=''):
+    # create run
+    run = etree.Element("{%s}r" % cfg.wnamespace)
+    if runtxt:
+        run_text = etree.Element("{%s}t" % cfg.wnamespace)
+        run_text.text = runtxt
+        run.append(run_text)
+    if rstylename:
+        # create new run properties element
+        run_props = etree.Element("{%s}rPr" % cfg.wnamespace)
+        run_props_style = etree.Element("{%s}rStyle" % cfg.wnamespace)
+        run_props_style.attrib["{%s}val" % cfg.wnamespace] = rstylename
+        # append props element to run element
+        run_props.append(run_props_style)
+        run.append(run_props)
+    return run
+
+def createPara(xml_root, pstylename='', runtxt='', rstylename='', para_id=''):
+    # create para
+    new_para = etree.Element("{%s}p" % cfg.wnamespace)
+    if para_id:
+        new_para_id = para_id
+    else:
+        new_para_id = generate_para_id(xml_root)
+    new_para.attrib["{%s}paraId" % cfg.w14namespace] = new_para_id
+    # if parastyle specified, add it here
+    if pstylename:
+        # create new para properties element
+        new_para_props = etree.Element("{%s}pPr" % cfg.wnamespace)
+        # and pstyle el
+        new_para_props_style = etree.Element("{%s}pStyle" % cfg.wnamespace)
+        new_para_props_style.attrib["{%s}val" % cfg.wnamespace] = pstylename
+        # append props element to para element
+        new_para_props.append(new_para_props_style)
+        new_para.append(new_para_props)
+    if runtxt or rstylename:
+        run = createRun(runtxt, rstylename='')
+        new_para.append(run)
+    return new_para
+
 # Should revisit this using lxml builder
 # def insertSectionStart(sectionstylename, sectionbegin_para, doc_root, contents=''):
 def insertPara(sectionstylename, existing_para, doc_root, contents, insert_before_or_after):

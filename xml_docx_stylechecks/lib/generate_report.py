@@ -80,12 +80,20 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                         new_errstring = recipe_item["errstring"].format(description=item['description'], para_string='"'+item['para_string'].encode('utf-8')+'"', \
                             parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap),  \
                             para_index=item['para_index'], count=len(report_dict[recipe_item["dict_category_name"]]), descriptionA=descriptionA, descriptionB=descriptionB, valid_file_extensions=cfg.imageholder_supported_ext)
+                        # added 'summary' key so we could specify whether to summarize warnings or notes:
+                        #   default is warnings are listed singly, notes are summarized
                         if "badnews_type" in recipe_item and recipe_item["badnews_type"] == 'warning':
-                            warninglist.append(new_errstring)
+                            if "summary" in recipe_item and recipe_item["summary"] == True:
+                                if new_errstring not in warninglist:
+                                    warninglist.append(new_errstring)
+                            else:
+                                warninglist.append(new_errstring)
                         elif "badnews_type" in recipe_item and recipe_item["badnews_type"] == 'note':
-                            # adding provision to conditional to prevent summary items from repeating
-                            if new_errstring not in notelist:
+                            if "summary" in recipe_item and recipe_item["summary"] == False:
                                 notelist.append(new_errstring)
+                            else:
+                                if new_errstring not in notelist:
+                                    notelist.append(new_errstring)
                         else:
                             errorlist.append(new_errstring)
                         tmptextlist =[]

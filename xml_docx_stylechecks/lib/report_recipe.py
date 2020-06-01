@@ -75,6 +75,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
         #                                       a different banner on the report output. Including this key=True signals that we want that warning.
         #   "badnews": 'any',        # < If you want any entry from this report_dict category in the Error List,mark this True.. if one entry is ok but more are errors, use value 'one_allowed'
         #   "badnews_type": 'warning' # Specify type of badnews, whether a warning or error. If neither specified, error is presumed
+        #   "errstring": "No paragraphs."   # < The base string you want used to appear in the report's Error list
         #   "summary": 'true' # Warnings with badnews: 'any' are typically listed singly. This value overrides that. Vice versa for badnews_type: note
         #   "alternate_content": {          # < If you want an alternate title or text element to appear when
         #       "title": "TEST FAIL"        #   report_dict category is empty or not present, set them here. If you

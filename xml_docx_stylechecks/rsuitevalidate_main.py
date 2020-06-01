@@ -63,7 +63,7 @@ if __name__ == '__main__':
         elif cfg.runtype == 'direct':
             submitter_email = cfg.submitter_email
             display_name = cfg.display_name
-            logger.info("passed submiiter values: name: {}, email {}".format(display_name, submitter_email))
+            logger.info("passed submitter values: name: {}, email {}".format(display_name, submitter_email))
             notdocx = False # < this is being policed by the api & rsv_exec
             # copy template to tmpdir, unzip infile and tmpdir
             setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)

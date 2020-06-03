@@ -63,7 +63,7 @@ else:
 # # # # # # # # ENV
 loglevel = "INFO"		# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info
 # variables to quickly setup for testing
-disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = False, False, False, False     # <-- comment out for local testing
+disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = False, False, True, False     # <-- comment out for local testing
 # disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = True, True, True, True      # <-- uncomment for local testing
 hostOS = platform.system()
 currentuser = getpass.getuser()

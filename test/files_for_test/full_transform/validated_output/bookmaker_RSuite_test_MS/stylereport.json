@@ -1,0 +1,1961 @@
+{
+    "Macmillan_charstyle_first_use": [
+        {
+            "description": "ital (i)", 
+            "para_id": "1D373851", 
+            "para_index": 8, 
+            "para_string": "Who Fears Death", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "smallcaps (sc)", 
+            "para_id": "184EAFBB", 
+            "para_index": 27, 
+            "para_string": "Strange Tools", 
+            "parent_section_start_content": "Copyright ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Hyperlink", 
+            "para_id": "38ACB792", 
+            "para_index": 38, 
+            "para_string": "Our books may be purchased for promotional, educational, or business", 
+            "parent_section_start_content": "Copyright ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-isbn (isbn)", 
+            "para_id": "6B10D705", 
+            "para_index": 41, 
+            "para_string": "ISBN 9780809089178 (trade paperback)", 
+            "parent_section_start_content": "Copyright ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)", 
+            "para_id": "24FBEE69", 
+            "para_index": 52, 
+            "para_string": "So the next time you encounter inline_image.jpg fear, consider yourself", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }, 
+        {
+            "description": "cs-design-note (cdn)", 
+            "para_id": "404E93C2", 
+            "para_index": 76, 
+            "para_string": "I am already far north of London, and as I", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "bold (b)", 
+            "para_id": "450BB0B0", 
+            "para_index": 129, 
+            "para_string": "This chapter is to test long, multi-paragraph footnotes. We were", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "bold-ital (bi)", 
+            "para_id": "450BB0B0", 
+            "para_index": 129, 
+            "para_string": "This chapter is to test long, multi-paragraph footnotes. We were", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "smallcaps-bold (scb)", 
+            "para_id": "450BB0B0", 
+            "para_index": 129, 
+            "para_string": "This chapter is to test long, multi-paragraph footnotes. We were", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "underline (u)", 
+            "para_id": "450BB0B0", 
+            "para_index": 129, 
+            "para_string": "This chapter is to test long, multi-paragraph footnotes. We were", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "super (sup)", 
+            "para_id": "450BB0B0", 
+            "para_index": 129, 
+            "para_string": "This chapter is to test long, multi-paragraph footnotes. We were", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "sub (sub)", 
+            "para_id": "450BB0B0", 
+            "para_index": 129, 
+            "para_string": "This chapter is to test long, multi-paragraph footnotes. We were", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "smallcaps-ital (sci)", 
+            "para_id": "450BB0B0", 
+            "para_index": 129, 
+            "para_string": "This chapter is to test long, multi-paragraph footnotes. We were", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "symbols (sym)", 
+            "para_id": "450BB0B0", 
+            "para_index": 129, 
+            "para_string": "This chapter is to test long, multi-paragraph footnotes. We were", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "bookmaker-keep-together (bkt)", 
+            "para_id": "450BB0B0", 
+            "para_index": 129, 
+            "para_string": "This chapter is to test long, multi-paragraph footnotes. We were", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-computer (ccom)", 
+            "para_id": "091B1C7E", 
+            "para_index": 132, 
+            "para_string": "You are so bossy, I type.", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "endnote reference", 
+            "para_id": "4472EB33", 
+            "para_index": 165, 
+            "para_string": "It is even possible that the train of my ideas", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "footnote reference", 
+            "para_id": "27A37EA1", 
+            "para_index": 203, 
+            "para_string": "From this day natural philosophy, and particularly chemistry, in the", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "footnote reference", 
+            "note-or-comment_id": "1", 
+            "para_id": "6830747D", 
+            "para_index": "n-a", 
+            "para_string": "WELL I COULD HARDLY TELL MYSELF!", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }, 
+        {
+            "description": "endnote reference", 
+            "note-or-comment_id": "1", 
+            "para_id": "1535ADA9", 
+            "para_index": "n-a", 
+            "para_string": "See Attica (1972).", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "Macmillan_style_first_use": [
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "1628CEFC", 
+            "para_index": 0, 
+            "para_string": "aasdas", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Author2 (Au2)", 
+            "para_id": "0B343E43", 
+            "para_index": 1, 
+            "para_string": "asdsadsad", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "583D7DD9", 
+            "para_index": 3, 
+            "para_string": "aasdasd", 
+            "parent_section_start_content": "Bookmaker Rsuite Test Document", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "137EFCE4", 
+            "para_index": 5, 
+            "para_string": "Strange Tools", 
+            "parent_section_start_content": "Half Title", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Main-Head (MHead)", 
+            "para_id": "0579657E", 
+            "para_index": 7, 
+            "para_string": "Also by Nnedi Okorafor", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "1D373851", 
+            "para_index": 8, 
+            "para_string": "Who Fears Death", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "4EDBEE50", 
+            "para_index": 12, 
+            "para_string": "Separator", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "List-Head (Lhead)", 
+            "para_id": "665261A8", 
+            "para_index": 13, 
+            "para_string": "Younger readers", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "024EAABE", 
+            "para_index": 19, 
+            "para_string": "Strange Tools", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Subtitle (Sttl)", 
+            "para_id": "1EF8FB9D", 
+            "para_index": 20, 
+            "para_string": "Art and Human Nature", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "50D97F8B", 
+            "para_index": 21, 
+            "para_string": "Alva No\u00eb", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Logo-Placement (Logo)", 
+            "para_id": "42FEC93E", 
+            "para_index": 22, 
+            "para_string": "[LOGO HERE]", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Imprint (Imp)", 
+            "para_id": "437B2FE2", 
+            "para_index": 23, 
+            "para_string": "A TOM DOHERTY ASSOCIATES BOOK", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Cities (Cit)", 
+            "para_id": "67E8BB34", 
+            "para_index": 24, 
+            "para_string": "NEW YORK", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "727BF40E", 
+            "para_index": 26, 
+            "para_string": "This is a work of fiction. All of the characters,", 
+            "parent_section_start_content": "Copyright ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Dedication (Ded)", 
+            "para_id": "683EFC5F", 
+            "para_index": 44, 
+            "para_string": "For Lewis Carroll, who wrote the book Alice In Wonderland,", 
+            "parent_section_start_content": "Copyright ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "2FFB3787", 
+            "para_index": 47, 
+            "para_string": "Here\u2019s a standalone epigraph. A haiku:", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }, 
+        {
+            "description": "Epigraph-Verse (Epiv)", 
+            "para_id": "538DF282", 
+            "para_index": 48, 
+            "para_string": "Epigraph exists", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }, 
+        {
+            "description": "Epigraph-Source (Episrc)", 
+            "para_id": "16C74B88", 
+            "para_index": 51, 
+            "para_string": "Nellie McKesson", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }, 
+        {
+            "description": "Epigraph-Non-Verse (Epi)", 
+            "para_id": "24FBEE69", 
+            "para_index": 52, 
+            "para_string": "So the next time you encounter inline_image.jpg fear, consider yourself", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }, 
+        {
+            "description": "Main-Head (MHead)", 
+            "para_id": "3E832ED5", 
+            "para_index": 58, 
+            "para_string": "Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Frontmatter (Tocfm)", 
+            "para_id": "49A86497", 
+            "para_index": 59, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Chapter (Tocch)", 
+            "para_id": "577AC815", 
+            "para_index": 60, 
+            "para_string": "CHAPTER I.  Down the Rabbit-Hole", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Backmatter (Tocbm)", 
+            "para_id": "2307262E", 
+            "para_index": 73, 
+            "para_string": "Notes", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "2B3C3874", 
+            "para_index": 75, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "404E93C2", 
+            "para_index": 76, 
+            "para_string": "I am already far north of London, and as I", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Main-Head (MHead)", 
+            "para_id": "5D60B572", 
+            "para_index": 78, 
+            "para_string": "Foreword by Robert Walton", 
+            "parent_section_start_content": "Foreword", 
+            "parent_section_start_type": "Section-ForewordSFW"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "621DB1E6", 
+            "para_index": 79, 
+            "para_string": "Robert Walton", 
+            "parent_section_start_content": "Foreword", 
+            "parent_section_start_type": "Section-ForewordSFW"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "2A821E4F", 
+            "para_index": 80, 
+            "para_string": "How slowly the time passes here, encompassed as I am", 
+            "parent_section_start_content": "Foreword", 
+            "parent_section_start_type": "Section-ForewordSFW"
+        }, 
+        {
+            "description": "Closing (Clos)", 
+            "para_id": "183AFE5A", 
+            "para_index": 84, 
+            "para_string": "Your affectionate brother, Robert Walton", 
+            "parent_section_start_content": "Foreword", 
+            "parent_section_start_type": "Section-ForewordSFW"
+        }, 
+        {
+            "description": "Signature (Sig)", 
+            "para_id": "2A3C7234", 
+            "para_index": 85, 
+            "para_string": "R.W.", 
+            "parent_section_start_content": "Foreword", 
+            "parent_section_start_type": "Section-ForewordSFW"
+        }, 
+        {
+            "description": "Ebook-Only-Text (Eonly)", 
+            "para_id": "54CBE537", 
+            "para_index": 87, 
+            "para_string": "Rober Walton Website", 
+            "parent_section_start_content": "Foreword", 
+            "parent_section_start_type": "Section-ForewordSFW"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "5ED9D1B2", 
+            "para_index": 90, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "75D2E657", 
+            "para_index": 91, 
+            "para_string": "I am by birth a Genevese, and my family is", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Ornamental-Space-Break (Osbrk)", 
+            "para_id": "141A1990", 
+            "para_index": 96, 
+            "para_string": "***", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Bookmaker-Processing-Instruction (Bpi)", 
+            "para_id": "485355E5", 
+            "para_index": 97, 
+            "para_string": "IMAGE: wildcards1.jpg", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Verse1 (Vrs1)", 
+            "para_id": "47C6FB0D", 
+            "para_index": 103, 
+            "para_string": "Be like the bird who", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "0F641B20", 
+            "para_index": 106, 
+            "para_string": "Separator", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Number (Num)", 
+            "para_id": "4FF18608", 
+            "para_index": 112, 
+            "para_string": "Part I", 
+            "parent_section_start_content": "Part I", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "7FAFB07A", 
+            "para_index": 113, 
+            "para_string": "Some Random Excerpts", 
+            "parent_section_start_content": "Part I", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Verse1 (Vrs1)", 
+            "para_id": "272119D1", 
+            "para_index": 115, 
+            "para_string": "How doth the little crocodile", 
+            "parent_section_start_content": "Interlude", 
+            "parent_section_start_type": "Section-InterludeSIN"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "40240BED", 
+            "para_index": 119, 
+            "para_string": "Separator", 
+            "parent_section_start_content": "Interlude", 
+            "parent_section_start_type": "Section-InterludeSIN"
+        }, 
+        {
+            "description": "Source (Src)", 
+            "para_id": "14B22BBB", 
+            "para_index": 124, 
+            "para_string": "from \u201cAlice\u2019s adventures in Wonderland,\u201d by Lewis Carroll", 
+            "parent_section_start_content": "Interlude", 
+            "parent_section_start_type": "Section-InterludeSIN"
+        }, 
+        {
+            "description": "Number (Num)", 
+            "para_id": "672DD5B5", 
+            "para_index": 126, 
+            "para_string": "Chapter 1", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "646C5BA4", 
+            "para_index": 127, 
+            "para_string": "The Monster", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Subtitle (Sttl)", 
+            "para_id": "2C048915", 
+            "para_index": 128, 
+            "para_string": "This is a Chapter Subtitle", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "450BB0B0", 
+            "para_index": 129, 
+            "para_string": "This chapter is to test long, multi-paragraph footnotes. We were", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Computer-Text (Comp)", 
+            "para_id": "710933F4", 
+            "para_index": 131, 
+            "para_string": "Then you might want to stop texting and pay attention.", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Ornamental-Space-Break (Osbrk)", 
+            "para_id": "301F4948", 
+            "para_index": 134, 
+            "para_string": "###", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bookmaker-Processing-Instruction (Bpi)", 
+            "para_id": "3B4B271F", 
+            "para_index": 135, 
+            "para_string": "IMAGE: wildcards.jpg global", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "RECIPE > Title (Ttl)", 
+            "para_id": "33719DEE", 
+            "para_index": 142, 
+            "para_string": "Small Batch Tiramisu fromSmitten Kitchen:", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "RECIPE > List-Head (Lhead)", 
+            "para_id": "28C481EA", 
+            "para_index": 143, 
+            "para_string": "Ingredients:", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "RECIPE > Unnum-Level-1-List (Ul1)", 
+            "para_id": "4A27274C", 
+            "para_index": 144, 
+            "para_string": "24 ladyfingers (savioardi) cookies (storebought or from recipe below)", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "RECIPE > Num-Level-1-List (Nl1)", 
+            "para_id": "647D2894", 
+            "para_index": 152, 
+            "para_string": "1. In a medium bowl, beat egg whites until stiff.", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "RECIPE > Body-Text (Tx)", 
+            "para_id": "00094626", 
+            "para_index": 156, 
+            "para_string": "Serves 2", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Extract1 (Ext1)", 
+            "para_id": "07B5EE74", 
+            "para_index": 166, 
+            "para_string": "A Centered Extract", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Headnote (Hdnt)", 
+            "para_id": "5391EE08", 
+            "para_index": 177, 
+            "para_string": "A box introductory paragraph just for testing purposes.", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "A-Head (Ahead)", 
+            "para_id": "4EEE6695", 
+            "para_index": 181, 
+            "para_string": "Heading One", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Headline (Hdline)", 
+            "para_id": "05FF0E9C", 
+            "para_index": 194, 
+            "para_string": "\u201cBE STILL.\u201d", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Extract1 (Ext1)", 
+            "para_id": "59CB165D", 
+            "para_index": 205, 
+            "para_string": "Down, down, down. Would the fall never come to an", 
+            "parent_section_start_content": "Interlude 2", 
+            "parent_section_start_type": "Section-InterludeSIN"
+        }, 
+        {
+            "description": "LETTER-A > Address (Add)", 
+            "para_id": "5CE36B27", 
+            "para_index": 212, 
+            "para_string": "175 Fifth Ave.", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Dateline (Date)", 
+            "para_id": "643E83F4", 
+            "para_index": 214, 
+            "para_string": "January 21, 2017", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Headnote (Hdnt)", 
+            "para_id": "4D590A19", 
+            "para_index": 215, 
+            "para_string": "This letter is confidential.", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Salutation (Sal)", 
+            "para_id": "6BE52E7B", 
+            "para_index": 216, 
+            "para_string": "Dear Sir,", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Body-Text (Tx)", 
+            "para_id": "523516E0", 
+            "para_index": 217, 
+            "para_string": "Please accept this submission for publication. It\u2019s the best submission.", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Closing (Clos)", 
+            "para_id": "04B7C08E", 
+            "para_index": 219, 
+            "para_string": "Best Regards,", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Signature (Sig)", 
+            "para_id": "1862B61F", 
+            "para_index": 220, 
+            "para_string": "Donald Trump", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Postscript (Pst)", 
+            "para_id": "1DF16F06", 
+            "para_index": 221, 
+            "para_string": "P.S. Welcome to the big league.", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "SIDEBAR-A > Title (Ttl)", 
+            "para_id": "5BF8B762", 
+            "para_index": 231, 
+            "para_string": "Mapping out the unknown", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "SIDEBAR-A > Body-Text (Tx)", 
+            "para_id": "6FA00BEE", 
+            "para_index": 232, 
+            "para_string": "Alice was not a bit hurt, and she jumped up", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "SIDEBAR-A > A-Head (Ahead)", 
+            "para_id": "46BDADD3", 
+            "para_index": 236, 
+            "para_string": "Problem space #1: Falling Down a Hole", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "SIDEBAR-A > Bullet-Level-1-List (Bl1)", 
+            "para_id": "12210578", 
+            "para_index": 239, 
+            "para_string": "Alice opened the door and found that it led into", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "VERSE-A > Title (Ttl)", 
+            "para_id": "745CF064", 
+            "para_index": 245, 
+            "para_string": "A Poem", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "VERSE-A > Verse1 (Vrs1)", 
+            "para_id": "2C7F2770", 
+            "para_index": 246, 
+            "para_string": "Tiger tiger burning bright", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)", 
+            "para_id": "05F279CE", 
+            "para_index": 253, 
+            "para_string": "[blank]", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "IMAGE > Caption (Cap)", 
+            "para_id": "360A6F6B", 
+            "para_index": 284, 
+            "para_string": "This is a caption above an image.", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "IMAGE > Image-Placement (Img)", 
+            "para_id": "6E53BCCE", 
+            "para_index": 285, 
+            "para_string": "dragons-fantasy_fullpage.jpg", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "IMAGE > Credit-Line (Crd)", 
+            "para_id": "1D7F0E91", 
+            "para_index": 286, 
+            "para_string": "Image courtesy of some great wizard", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "COMPUTER-A > Design-Note (Dn)", 
+            "para_id": "1DBD6C72", 
+            "para_index": 291, 
+            "para_string": "Electronic text style should differ from preceding Computer Text (Comp)", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "COMPUTER-A > Body-Text (Tx)", 
+            "para_id": "624417EB", 
+            "para_index": 292, 
+            "para_string": "I trembled. One subject! What could it be? Could he", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bullet-Level-1-List (Bl1)", 
+            "para_id": "1DE6A4AD", 
+            "para_index": 295, 
+            "para_string": "Bullet list item one", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Num-Level-3-List (Nl3)", 
+            "para_id": "379465E5", 
+            "para_index": 297, 
+            "para_string": "A nested numbered list", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Num-Level-2-List (Nl2)", 
+            "para_id": "5315C8A0", 
+            "para_index": 298, 
+            "para_string": "IA second nested numbered list item I trembled AGGGGAN. One", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Alpha-Level-1-List (Al1)", 
+            "para_id": "5DAE963D", 
+            "para_index": 307, 
+            "para_string": "I switched gears here", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Num-Level-2-List-Paragraph (Nl2p)", 
+            "para_id": "74EB1C9A", 
+            "para_index": 309, 
+            "para_string": "Second nested bullet item", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Num-Level-3-List-Paragraph (Nl3p)", 
+            "para_id": "6DDE54DA", 
+            "para_index": 311, 
+            "para_string": "This one should error", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bullet-Level-2-List (Bl2)", 
+            "para_id": "1AA8B1C9", 
+            "para_index": 319, 
+            "para_string": "ErrA 2nd level list out of nowhere", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bullet-Level-3-List (Bl3)", 
+            "para_id": "23BD22DE", 
+            "para_index": 321, 
+            "para_string": "ErrB third level list out of nowhere", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Alpha-Level-2-List (Al2)", 
+            "para_id": "747DE394", 
+            "para_index": 328, 
+            "para_string": "2nd level different type Cerror", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Alpha-Level-3-List (Al3)", 
+            "para_id": "6E1F538E", 
+            "para_index": 336, 
+            "para_string": "3rd level", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Num-Level-1-List (Nl1)", 
+            "para_id": "04CB6E9C", 
+            "para_index": 359, 
+            "para_string": "\"William is dead!", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Num-Level-1-List-Paragraph (Nl1p)", 
+            "para_id": "59E16277", 
+            "para_index": 360, 
+            "para_string": "\u2014that sweet child, whose smiles delighted and warmed my heart,", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "List-Head (Lhead)", 
+            "para_id": "08B1884E", 
+            "para_index": 401, 
+            "para_string": "List Head, Here We Go", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Body-Text (Tx)", 
+            "para_id": "60E6922B", 
+            "para_index": 406, 
+            "para_string": "The storm, as is often the case in Switzerland, appeared", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Unnum-Level-1-List (Ul1)", 
+            "para_id": "08827383", 
+            "para_index": 407, 
+            "para_string": "NIMEY\u2014Not In My Election Year", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Body-Text-Continued (Txc)", 
+            "para_id": "153E90A0", 
+            "para_index": 413, 
+            "para_string": "While I watched the tempest, so beautiful yet terrific, I", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B > Body-Text-Continued (Txc)", 
+            "para_id": "1FCC3EB5", 
+            "para_index": 415, 
+            "para_string": "m a figure which stole from behind a clump of", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Main-Head (MHead)", 
+            "para_id": "69A80890", 
+            "para_index": 417, 
+            "para_string": "Appendix", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "6E5D69EE", 
+            "para_index": 418, 
+            "para_string": "No one can conceive the anguish I suffered during the", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Image-Placement (Img)", 
+            "para_id": "4A147794", 
+            "para_index": 420, 
+            "para_string": "backad_fullpage.jpg", 
+            "parent_section_start_content": "Full-Page Back Ad", 
+            "parent_section_start_type": "Section-Back-AdSBA"
+        }, 
+        {
+            "description": "Main-Head (MHead)", 
+            "para_id": "286E2FC8", 
+            "para_index": 422, 
+            "para_string": "References", 
+            "parent_section_start_content": "Bibliography", 
+            "parent_section_start_type": "Section-BibliographySBI"
+        }, 
+        {
+            "description": "Reference-Entry (Ref)", 
+            "para_id": "262BD7A3", 
+            "para_index": 423, 
+            "para_string": "Amior, Michael. \u201cWhy Are Higher Skilled Workers More Mobile Geographically?", 
+            "parent_section_start_content": "Bibliography", 
+            "parent_section_start_type": "Section-BibliographySBI"
+        }, 
+        {
+            "description": "Main-Head (MHead)", 
+            "para_id": "3ADA0434", 
+            "para_index": 460, 
+            "para_string": "Manual Endnotes", 
+            "parent_section_start_content": "NOTES", 
+            "parent_section_start_type": "Section-NotesSNT"
+        }, 
+        {
+            "description": "A-Head (Ahead)", 
+            "para_id": "58DFFFC7", 
+            "para_index": 461, 
+            "para_string": "Chapter 1", 
+            "parent_section_start_content": "NOTES", 
+            "parent_section_start_type": "Section-NotesSNT"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "24645AAC", 
+            "para_index": 462, 
+            "para_string": "1. See Burrough (2015, p. 5). On Watts, see Bloom", 
+            "parent_section_start_content": "NOTES", 
+            "parent_section_start_type": "Section-NotesSNT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "19C8D1BA", 
+            "para_index": 552, 
+            "para_string": "About the Author", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "IMAGE > Image-Placement (Img)", 
+            "para_id": "43C18BEF", 
+            "para_index": 554, 
+            "para_string": "NnediOkorafor.jpg", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "IMAGE > Credit-Line (Crd)", 
+            "para_id": "73221594", 
+            "para_index": 555, 
+            "para_string": "Image courtesy of a photographer", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "61DC6449", 
+            "para_index": 557, 
+            "para_string": "Alva Noe was at first touched by the expressions of", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "BOX-B > Body-Text (Tx)", 
+            "para_id": "6BDCC4B9", 
+            "para_index": 559, 
+            "para_string": "You throw a torch into a pile of buildings, and", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "BOX-B > Table-Head (Tbhd)", 
+            "para_id": "5A94F86B", 
+            "para_index": 1, 
+            "para_string": "CEO\u2019s DIWS Score", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "BOX-B > Table-Text (Tbtx)", 
+            "para_id": "452875D1", 
+            "para_index": 1, 
+            "para_string": "4", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "author_paras": [
+        {
+            "description": "Alva No\u00eb", 
+            "para_id": "50D97F8B", 
+            "para_index": 21, 
+            "para_string": "Alva No\u00eb", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "container_error": [
+        {
+            "description": "BOX-A (BOX-A)", 
+            "para_id": "1CBC47EE", 
+            "para_index": 405, 
+            "para_string": "BOX A \u2013 ends at container", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B (BOX-B)", 
+            "para_id": "377CCFA7", 
+            "para_index": 414, 
+            "para_string": "BOX B \u2013 ends at section", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B (BOX-B)", 
+            "para_id": "2AF64D69", 
+            "para_index": 558, 
+            "para_string": "BOX B - eof ", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "SIDEBAR-A (SIDE-A)", 
+            "para_id": "0ED9A9C3", 
+            "para_index": 230, 
+            "para_string": "Sidebar A", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "deleted_objects-bookmarks": [
+        {
+            "description": "deleted bookmark named 'test_bookmark'", 
+            "para_id": "727BF40E", 
+            "para_index": 26, 
+            "para_string": "This is a work of fiction. All of the characters,", 
+            "parent_section_start_content": "Copyright ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "deleted bookmark named 'test_bookmark_2'", 
+            "para_id": "683EFC5F", 
+            "para_index": 44, 
+            "para_string": "For Lewis Carroll, who wrote the book Alice In Wonderland,", 
+            "parent_section_start_content": "Copyright ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "deleted bookmark named '2.1'", 
+            "para_id": "46BDADD3", 
+            "para_index": 236, 
+            "para_string": "Problem space #1: Falling Down a Hole", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Ref461543543'", 
+            "para_id": "028EFE08", 
+            "para_index": 376, 
+            "para_string": "\"To go instantly to Geneva: come with me, Henry, to", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "deleted_objects-comment_ranges": [
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "50D97F8B", 
+            "para_index": 21, 
+            "para_string": "Alva No\u00eb", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "577AC815", 
+            "para_index": 60, 
+            "para_string": "CHAPTER I.  Down the Rabbit-Hole", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "200AF7F1", 
+            "para_index": 1, 
+            "para_string": "Annual Profit (in million $)", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "50D97F8B", 
+            "para_index": 21, 
+            "para_string": "Alva No\u00eb", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "577AC815", 
+            "para_index": 60, 
+            "para_string": "CHAPTER I.  Down the Rabbit-Hole", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "200AF7F1", 
+            "para_index": 1, 
+            "para_string": "Annual Profit (in million $)", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "50D97F8B", 
+            "para_index": 21, 
+            "para_string": "Alva No\u00eb", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "577AC815", 
+            "para_index": 60, 
+            "para_string": "CHAPTER I.  Down the Rabbit-Hole", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "200AF7F1", 
+            "para_index": 1, 
+            "para_string": "Annual Profit (in million $)", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "deleted_objects-comments-commentsExtended_xml": [
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "095F4BEC"
+        }, 
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "095F4BEC"
+        }, 
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "095F4BEC"
+        }
+    ], 
+    "deleted_objects-comments-commentsIds_xml": [
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "5D9873EA"
+        }, 
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "5D9873EA"
+        }, 
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "5D9873EA"
+        }
+    ], 
+    "deleted_objects-comments-comments_xml": [
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "F13DAE3C"
+        }, 
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "F13DAE3C"
+        }, 
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "F13DAE3C"
+        }
+    ], 
+    "deleted_objects-shapes": [
+        {
+            "description": "deleted shapes of type mc:AlternateContent", 
+            "para_id": "6A8D1511", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted shapes of type w:drawing", 
+            "para_id": "005DD836", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted shapes of type w:drawing", 
+            "para_id": "404E93C2", 
+            "para_index": 76, 
+            "para_string": "I am already far north of London, and as I", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "deleted shapes of type w:drawing", 
+            "para_id": "404E93C2", 
+            "para_index": 76, 
+            "para_string": "I am already far north of London, and as I", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "deleted shapes of type w:drawing", 
+            "para_id": "404E93C2", 
+            "para_index": 76, 
+            "para_string": "I am already far north of London, and as I", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "deleted shapes of type w:drawing", 
+            "para_id": "404E93C2", 
+            "para_index": 76, 
+            "para_string": "I am already far north of London, and as I", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }
+    ], 
+    "empty_section_start_para": [], 
+    "endnote-leading_whitespace_rmd": [
+        {
+            "description": "note ref: 1 (blank run removed)", 
+            "note-or-comment_id": "1", 
+            "para_id": "1535ADA9", 
+            "para_index": "n-a", 
+            "para_string": "See Attica (1972).", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }, 
+        {
+            "description": "note ref: 2 (blank run removed)", 
+            "note-or-comment_id": "2", 
+            "para_id": "4753E72D", 
+            "para_index": "n-a", 
+            "para_string": "Molloy, Smith, and Wozniak (2014). I was firmly convinced in", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "footnote-leading_whitespace_rmd": [
+        {
+            "description": "note ref: 1", 
+            "note-or-comment_id": "1", 
+            "para_id": "6830747D", 
+            "para_index": "n-a", 
+            "para_string": "WELL I COULD HARDLY TELL MYSELF!", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }, 
+        {
+            "description": "note ref: 2", 
+            "note-or-comment_id": "2", 
+            "para_id": "62A4E8D4", 
+            "para_index": "n-a", 
+            "para_string": "Alice was beginning to get very tired of sitting by", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }, 
+        {
+            "description": "note ref: 3 (tab removed)", 
+            "note-or-comment_id": "3", 
+            "para_id": "009C1D2A", 
+            "para_index": "n-a", 
+            "para_string": "It was on a dreary night of November that I", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }, 
+        {
+            "description": "note ref: 3 (blank run removed)", 
+            "note-or-comment_id": "3", 
+            "para_id": "009C1D2A", 
+            "para_index": "n-a", 
+            "para_string": "It was on a dreary night of November that I", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }
+    ], 
+    "image_holder_ext_error": [
+        {
+            "description": "Image-Placement (Img)_TestAI.ai", 
+            "para_id": "299F58FF", 
+            "para_index": 348, 
+            "para_string": "TestAI.ai", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holders": [
+        {
+            "description": "dragons-fantasy_fullpage.jpg", 
+            "para_id": "6E53BCCE", 
+            "para_index": 285, 
+            "para_string": "dragons-fantasy_fullpage.jpg", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Noimagefile.jpg", 
+            "para_id": "4A49B118", 
+            "para_index": 344, 
+            "para_string": "Noimagefile.jpg", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "TestAI.ai", 
+            "para_id": "299F58FF", 
+            "para_index": 348, 
+            "para_string": "TestAI.ai", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "backad_fullpage.jpg", 
+            "para_id": "4A147794", 
+            "para_index": 420, 
+            "para_string": "backad_fullpage.jpg", 
+            "parent_section_start_content": "Full-Page Back Ad", 
+            "parent_section_start_type": "Section-Back-AdSBA"
+        }, 
+        {
+            "description": "NnediOkorafor.jpg", 
+            "para_id": "43C18BEF", 
+            "para_index": 554, 
+            "para_string": "NnediOkorafor.jpg", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "inline_image.jpg", 
+            "para_id": "24FBEE69", 
+            "para_index": 52, 
+            "para_string": "So the next time you encounter inline_image.jpg fear, consider yourself", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }
+    ], 
+    "image_holders__sort_by_index": [
+        {
+            "description": "inline_image.jpg", 
+            "para_id": "24FBEE69", 
+            "para_index": 52, 
+            "para_string": "So the next time you encounter inline_image.jpg fear, consider yourself", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }, 
+        {
+            "description": "dragons-fantasy_fullpage.jpg", 
+            "para_id": "6E53BCCE", 
+            "para_index": 285, 
+            "para_string": "dragons-fantasy_fullpage.jpg", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Noimagefile.jpg", 
+            "para_id": "4A49B118", 
+            "para_index": 344, 
+            "para_string": "Noimagefile.jpg", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "TestAI.ai", 
+            "para_id": "299F58FF", 
+            "para_index": 348, 
+            "para_string": "TestAI.ai", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "backad_fullpage.jpg", 
+            "para_id": "4A147794", 
+            "para_index": 420, 
+            "para_string": "backad_fullpage.jpg", 
+            "parent_section_start_content": "Full-Page Back Ad", 
+            "parent_section_start_type": "Section-Back-AdSBA"
+        }, 
+        {
+            "description": "NnediOkorafor.jpg", 
+            "para_id": "43C18BEF", 
+            "para_index": 554, 
+            "para_string": "NnediOkorafor.jpg", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }
+    ], 
+    "improperly_styled_endnote": [
+        {
+            "description": "Address (Add)", 
+            "note-or-comment_id": "1", 
+            "para_id": "7174848D", 
+            "para_index": "n-a", 
+            "para_string": "This is an address thingy", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "improperly_styled_footnote": [
+        {
+            "description": "BM Head (bmh)", 
+            "note-or-comment_id": "2", 
+            "para_id": "51670E44", 
+            "para_index": "n-a", 
+            "para_string": "Ooooh a vad ibf", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }
+    ], 
+    "isbn_spans": [
+        {
+            "description": "9780809089178", 
+            "para_id": "6B10D705", 
+            "para_index": 41, 
+            "para_string": "ISBN 9780809089178 (trade paperback)", 
+            "parent_section_start_content": "Copyright ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }
+    ], 
+    "list_change_err": [
+        {
+            "description": "'Alpha-Level-2-List (Al2)' para, preceded by: 'Bullet-Level-2-List (Bl2)' para", 
+            "para_id": "1CED3B13", 
+            "para_index": 332, 
+            "para_string": "2nd level change Derror", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "'Bullet-Level-3-List (Bl3)' para, preceded by: 'Alpha-Level-3-List (Al3)' para", 
+            "para_id": "2C8EB09A", 
+            "para_index": 337, 
+            "para_string": "3rd level changeE error", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "list_change_warning": [
+        {
+            "description": "'Alpha-Level-1-List (Al1)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para", 
+            "para_id": "5DAE963D", 
+            "para_index": 307, 
+            "para_string": "I switched gears here", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "list_nesting_err": [
+        {
+            "description": "'Alpha-Level-2-List (Al2)' para, preceded by: 'Bullet-Level-3-List (Bl3)' para", 
+            "para_id": "747DE394", 
+            "para_index": 328, 
+            "para_string": "2nd level different type Cerror", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "'Num-Level-2-List (Nl2)' para, preceded by: 'Num-Level-3-List (Nl3)' para", 
+            "para_id": "5315C8A0", 
+            "para_index": 298, 
+            "para_string": "IA second nested numbered list item I trembled AGGGGAN. One", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "'Num-Level-3-List (Nl3)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para", 
+            "para_id": "379465E5", 
+            "para_index": 297, 
+            "para_string": "A nested numbered list", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "'Num-Level-3-List-Paragraph (Nl3p)' para, preceded by: 'Num-Level-2-List-Paragraph (Nl2p)' para", 
+            "para_id": "6DDE54DA", 
+            "para_index": 311, 
+            "para_string": "This one should error", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "'Bullet-Level-2-List (Bl2)' para, preceded by: 'Body-Text (Tx)' para", 
+            "para_id": "1AA8B1C9", 
+            "para_index": 319, 
+            "para_string": "ErrA 2nd level list out of nowhere", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "'Bullet-Level-3-List (Bl3)' para, preceded by: 'Body-Text (Tx)' para", 
+            "para_id": "23BD22DE", 
+            "para_index": 321, 
+            "para_string": "ErrB third level list out of nowhere", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "'Bullet-Level-3-List (Bl3)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para", 
+            "para_id": "476487A9", 
+            "para_index": 340, 
+            "para_string": "3rd level list errorF", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "logo_paras": [
+        {
+            "description": "[LOGO HERE]", 
+            "para_id": "42FEC93E", 
+            "para_index": 22, 
+            "para_string": "[LOGO HERE]", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "non-Macmillan_charstyle_removed": [
+        {
+            "description": "annotation reference", 
+            "para_id": "50D97F8B", 
+            "para_index": 21, 
+            "para_string": "Alva No\u00eb", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "non-Macmillan_style_used": [
+        {
+            "description": "About Author Text Head (atah)", 
+            "para_id": "161B374B", 
+            "para_index": 67, 
+            "para_string": "asdasdasd", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }
+    ], 
+    "non_section_BOOK_styled_firstpara": [
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "1628CEFC", 
+            "para_index": 0, 
+            "para_string": "aasdas", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "non_section_start_styled_secondpara": [
+        {
+            "description": "Author2 (Au2)", 
+            "para_id": "0B343E43", 
+            "para_index": 1, 
+            "para_string": "asdsadsad", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "note_markers_wrong_style": [
+        {
+            "description": "restyled footnote ref: no. 2 (was styled as supersup)", 
+            "para_id": "27A37EA1", 
+            "para_index": 203, 
+            "para_string": "From this day natural philosophy, and particularly chemistry, in the", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "restyled footnote ref: no. 3 (was styled as supersup)", 
+            "para_id": "0AF2703F", 
+            "para_index": 265, 
+            "para_string": "I continued walking in this manner for some time, endeavouring", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "removed_blank_para": [
+        {
+            "description": "removed Section-DedicationSDE-styled para", 
+            "para_id": "2130CD41", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Section-AcknowledgmentsSAK-styled para", 
+            "para_id": "005DD836", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Body-TextTx-styled para", 
+            "para_id": "6A8D1511", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Body-TextTx-styled para", 
+            "para_id": "10147664", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed BOX-ABOX-A-styled para", 
+            "para_id": "7E26401F", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Body-TextTx-styled para", 
+            "para_id": "70018CD1", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Bullet-Level-1-ListBl1-styled para", 
+            "para_id": "71A4C665", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Alpha-Level-1-ListAl1-styled para", 
+            "para_id": "1D935BE7", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "blank para in endnote note with other text; note_id: 1", 
+            "para_id": "1DE928D6", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "blank para in footnote note with other text; note_id: 2", 
+            "para_id": "3D7815C8", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "removed_container_blank_para": [
+        {
+            "description": "BOX-A (BOX-A)_'Section-Chapter (SCP): \"Chapter 1\"'", 
+            "para_id": "7E26401F", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "removed_section_blank_para": [
+        {
+            "description": "Section-Dedication (SDE)", 
+            "para_id": "2130CD41", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Section-Acknowledgments (SAK)", 
+            "para_id": "005DD836", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "section_start_found": [
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "3C85BA84", 
+            "para_index": 2, 
+            "para_string": "Bookmaker Rsuite Test Document", 
+            "parent_section_start_content": "Bookmaker Rsuite Test Document", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "2BEF1ABE", 
+            "para_index": 4, 
+            "para_string": "Half Title", 
+            "parent_section_start_content": "Half Title", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-Ad-CardSAC", 
+            "para_id": "6124978D", 
+            "para_index": 6, 
+            "para_string": "Ad Card", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Section-TitlepageSTI", 
+            "para_id": "532B972D", 
+            "para_index": 18, 
+            "para_string": "Title Page", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Section-CopyrightSCR", 
+            "para_id": "6662AC61", 
+            "para_index": 25, 
+            "para_string": "Copyright ", 
+            "parent_section_start_content": "Copyright ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Section-EpigraphSEP", 
+            "para_id": "57534141", 
+            "para_index": 46, 
+            "para_string": "Epigraph", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "76A96B8E", 
+            "para_index": 55, 
+            "para_string": "Half Title", 
+            "parent_section_start_content": "Half Title", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-ContentsSTC", 
+            "para_id": "223DF8EC", 
+            "para_index": 57, 
+            "para_string": "Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Section-ForewordSFW", 
+            "para_id": "218744A2", 
+            "para_index": 77, 
+            "para_string": "Foreword", 
+            "parent_section_start_content": "Foreword", 
+            "parent_section_start_type": "Section-ForewordSFW"
+        }, 
+        {
+            "description": "Section-IntroductionSIC", 
+            "para_id": "0B6FE611", 
+            "para_index": 89, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "68F9BDC1", 
+            "para_index": 111, 
+            "para_string": "Part I", 
+            "parent_section_start_content": "Part I", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-InterludeSIN", 
+            "para_id": "121234C8", 
+            "para_index": 114, 
+            "para_string": "Interlude", 
+            "parent_section_start_content": "Interlude", 
+            "parent_section_start_type": "Section-InterludeSIN"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "12447449", 
+            "para_index": 125, 
+            "para_string": "Chapter 1", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-InterludeSIN", 
+            "para_id": "463DB191", 
+            "para_index": 204, 
+            "para_string": "Interlude 2", 
+            "parent_section_start_content": "Interlude 2", 
+            "parent_section_start_type": "Section-InterludeSIN"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "58CB3205", 
+            "para_index": 207, 
+            "para_string": "Chapter 2", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "08AA7E51", 
+            "para_index": 351, 
+            "para_string": "Part 2", 
+            "parent_section_start_content": "Part 2", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "4E72127D", 
+            "para_index": 354, 
+            "para_string": "Chapter 3a", 
+            "parent_section_start_content": "Chapter 3a", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-AppendixSAP", 
+            "para_id": "798E783F", 
+            "para_index": 416, 
+            "para_string": "Appendix", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Section-Back-AdSBA", 
+            "para_id": "225FA39D", 
+            "para_index": 419, 
+            "para_string": "Full-Page Back Ad", 
+            "parent_section_start_content": "Full-Page Back Ad", 
+            "parent_section_start_type": "Section-Back-AdSBA"
+        }, 
+        {
+            "description": "Section-BibliographySBI", 
+            "para_id": "10B5C5B3", 
+            "para_index": 421, 
+            "para_string": "Bibliography", 
+            "parent_section_start_content": "Bibliography", 
+            "parent_section_start_type": "Section-BibliographySBI"
+        }, 
+        {
+            "description": "Section-NotesSNT", 
+            "para_id": "2AF602E6", 
+            "para_index": 459, 
+            "para_string": "NOTES", 
+            "parent_section_start_content": "NOTES", 
+            "parent_section_start_type": "Section-NotesSNT"
+        }, 
+        {
+            "description": "Section-About-AuthorSAA", 
+            "para_id": "148051A5", 
+            "para_index": 551, 
+            "para_string": "About the Author", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }
+    ], 
+    "title_paras": [
+        {
+            "description": "Strange Tools", 
+            "para_id": "024EAABE", 
+            "para_index": 19, 
+            "para_string": "Strange Tools", 
+            "parent_section_start_content": "Title Page", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ]
+}

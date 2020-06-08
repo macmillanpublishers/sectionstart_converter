@@ -224,11 +224,14 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
         report_string = ""
 
     # 4 and send stylereport and/or alerts as mail
-    logger.debug("emailing stylereport &/or alerts ")
-    report_emailed = emailStyleReport(submitter_email, display_name, report_string, stylereport_txt, alerttxt_list, inputfilename, scriptname, newdocxfile)
+    if not os.environ.get('TRANSFORM_TEST_FLAG'):
+        logger.debug("emailing stylereport &/or alerts ")
+        report_emailed = emailStyleReport(submitter_email, display_name, report_string, stylereport_txt, alerttxt_list, inputfilename, scriptname, newdocxfile)
+    else:
+        report_emailed = True
 
     # 4.5 if this is a 'direct' run, sendfiles to true outfolder via api
-    if cfg.runtype == 'direct':
+    if cfg.runtype == 'direct' and not os.environ.get('TRANSFORM_TEST_FLAG'):
         logger.debug("sending files to outfolder for direct run")
         api_success = postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile)
 

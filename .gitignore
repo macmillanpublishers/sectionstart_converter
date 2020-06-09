@@ -3,3 +3,4 @@
 *.pyc
 test/files_for_test/template_root/*
 test/files_for_test/test_checkdocx/stylecount/*
+test/files_for_test/tmp/*

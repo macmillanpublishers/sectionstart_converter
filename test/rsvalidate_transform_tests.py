@@ -3,11 +3,7 @@ import sys, os, copy, re
 import logging
 import shutil
 import subprocess
-import difflib
-import xml.dom.minidom
 from xml.dom import minidom
-import lxml.etree as etree
-import xml.etree.ElementTree as ET
 import time
 
 # accept arguments
@@ -50,7 +46,6 @@ diff_file_list = required_diff_files + nonrequired_diff_files
 # assumes that file lives in transform_testfiles_dir
 def setupFileTest(file, tmpdir_base, transform_testfiles_dir):
     tmpfile = ''
-
     file = os.path.basename(file)
     fname_noext, ext = os.path.splitext(file)
     if ext == '.docx':

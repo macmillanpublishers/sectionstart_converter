@@ -71,7 +71,9 @@ def getParaTxt(para):
 
 # return the w14:paraId attribute's value for a paragraph
 def getParaId(para, doc_root):
-    if para is not None:
+    # checking tag to make sure we've grabbed a paragraph element
+    good_paratag = '{%s}p' % wnamespace
+    if para is not None and para.tag == good_paratag:
         attrib_id_key = '{%s}paraId' % w14namespace
         para_id = para.get(attrib_id_key)
         if para_id is None:
@@ -81,6 +83,8 @@ def getParaId(para, doc_root):
             para.attrib["{%s}paraId" % w14namespace] = new_para_id
             para_id = new_para_id
     else:
+        if para.tag != good_paratag:
+            logger.debug("tried to set p-iD for a non para element: {}".format(para.tag))
         para_id = 'n-a' # this could happen if we are trying to get id of a prev or next para that does not exist
     return para_id
 

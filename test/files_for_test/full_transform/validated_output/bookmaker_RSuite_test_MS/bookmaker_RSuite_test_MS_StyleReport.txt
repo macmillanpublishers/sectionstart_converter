@@ -40,7 +40,7 @@ Problems were found with the styles in your document.
 
 ** ERROR: Footnote paragraph styled as 'BM Head (bmh)' instead of 'Footnote Text' (Note beginning "Ooooh a vad ibf").
 
-** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'TestAI.ai' (located in Section-Chapter (SCP): "Chapter 2"). Your filename must end with a supported file extension (one of ['.jpg', '.tiff', '.psd'])
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'TestAI.ai' (located in Section-Chapter (SCP): "Chapter 2"). Your filename must end with a supported file extension (one of ['.jpg', '.psd', '.tif', '.tiff'])
 
 
 If you have any questions about how to handle these errors,

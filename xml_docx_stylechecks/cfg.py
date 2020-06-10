@@ -247,7 +247,7 @@ else:
     copyrightstyles = ["CopyrightTextdoublespacecrtxd", "CopyrightTextsinglespacecrtx"]
     autonumber_sections = {"Section-Chapter (scp)":"arabic", "Section-Part (spt)":"roman", "Section-Appendix (sap)":"alpha"}
 imageholder_styles = [imageholder_style, inline_imageholder_style]
-imageholder_supported_ext = ['.jpg', '.psd', '.tif', '.tiff']
+imageholder_supported_ext = ['.jpg', '.pdf', '.psd', '.tif', '.tiff']
 
 # # # MSWord XML objects
 # objects for deletion

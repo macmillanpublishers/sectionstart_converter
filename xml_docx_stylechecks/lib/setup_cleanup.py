@@ -34,8 +34,9 @@ else:
     import shared_utils.os_utils as os_utils
     import shared_utils.unzipDOCX as unzipDOCX
     import shared_utils.sendmail as sendmail
-    import imp
-    apiPOST = imp.load_source('apiPOST', cfg.api_post_py)
+    if not os.environ.get('TRANSFORM_TEST_FLAG'):
+        import imp
+        apiPOST = imp.load_source('apiPOST', cfg.api_post_py)
 
 
 ######### LOCAL DECLARATIONS

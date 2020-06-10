@@ -180,6 +180,9 @@ if __name__ == '__main__':
             print "\t- {}".format(file)
     if not all_files_with_diffs and not err_testfiles:
         print "\n\n * * * TESTS PASSED SUCCESSFULLY * * *\n"
+        print ".docx files tested:"
+        for file in testfiles:
+            print "\t- {}".format(os.path.basename(file))
         # remove our diff folder, just for general cleanup
         shutil.rmtree(diff_outputdir)
     else:

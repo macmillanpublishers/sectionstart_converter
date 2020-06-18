@@ -128,10 +128,11 @@ if __name__ == '__main__':
                 # run our rsuite validations!
                 report_dict = rsuite_validations.rsuiteValidations(report_dict)
 
-                ### zip ziproot up as a docx into outfolder
-                logger.info("Zipping updated xml into a .docx")
-                # os_utils.rm_existing_os_object(newdocxfile, 'newdocxfile')	# < --- this should get replaced with our fancy folder rename
-                zipDOCX.zipDOCX(ziproot, newdocxfile)
+                ### zip ziproot up as a docx into outfolder (unless we are running transform tests)
+                if not os.environ.get('TRANSFORM_TEST_FLAG'):
+                    logger.info("Zipping updated xml into a .docx")
+                    # os_utils.rm_existing_os_object(newdocxfile, 'newdocxfile')	# < --- this should get replaced with our fancy folder rename
+                    zipDOCX.zipDOCX(ziproot, newdocxfile)
 
                 # write our stylereport.json with all edits etc for
                 logger.debug("Writing stylereport.json")

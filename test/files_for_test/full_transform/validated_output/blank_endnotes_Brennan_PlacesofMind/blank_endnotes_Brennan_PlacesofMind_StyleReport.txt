@@ -1,0 +1,156 @@
+CONGRATULATIONS! YOU PASSED!
+
+But you're not done yet. Please check the info listed below.
+
+
+----------------------------------- WARNINGS -----------------------------------
+** WARNING: 1 endnote(s) without content found. Placeholder text: "[no text]" has been inserted.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"Places of Mind"
+
+** Author1 (Au1) **
+"Timothy Brennan"
+
+** cs-isbn (isbn) **
+No styled isbns detected.
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+no illustrations detected.
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "Places of Mind"                                         
+Section-Ad-Card (SAC)............ "Ad Card"                                                
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Dedication (SDE)......... "Dedication"                                             
+Section-Epigraph (SEP)........... "Epigraph"                                               
+Section-Contents (STC)........... "Contents"                                               
+Section-Preface (SPF)............ "Preface"                                                
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Chapter (SCP)............ "1. The Cocoon"                                          
+Section-Chapter (SCP)............ "2. Unsettling"                                          
+Section-Chapter (SCP)............ "3. An Invied Apprenticeship"                            
+Section-Chapter (SCP)............ "4. The Secret Agent"                                    
+Section-Chapter (SCP)............ "5. Before Oslo"                                         
+Section-Chapter (SCP)............ "6. The Gentile Intellect"                               
+Section-Chapter (SCP)............ "7. From Saigon to Palestine"                            
+Section-Chapter (SCP)............ "8. Against False Gods"                                  
+Section-Chapter (SCP)............ "9. A Few Simple Ideas"                                  
+Section-Chapter (SCP)............ "10. The Third World Speaks"                             
+Section-Chapter (SCP)............ "11. Two Peoples in One Land"                            
+Section-Chapter (SCP)............ "12. The Race Against Time"                              
+Section-Notes (SNT).............. "Notes"                                                  
+Section-Bibliography (SBI)....... "Selected Bibliography"                                  
+Section-Acknowledgments (SAK).... "Acknowledgments"                                        
+Section-Index (SIN).............. "Index"                                                  
+Section-About-Author (SAA)....... "A Note About the Author"                                
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Ad-Card (SAC): "Ad Card"
+Title (Ttl).................................. "Also by Timothy Brennan"                                   
+Body-Text (Tx)............................... "Borrowed Light: Vico, Hegel and the Colonies"              
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "Places of Mind"                                            
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "Places of Mind"                                            
+Subtitle (Sttl).............................. "A Life of Edward Said"                                     
+Author1 (Au1)................................ "Timothy Brennan"                                           
+Imprint (Imp)................................ "Farrar, Straus and Giroux"                                 
+Cities (Cit)................................. "New York"                                                  
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "Farrar, Straus and Giroux"                                 
+Separator (Sep).............................. "[separator]"                                               
+
+* Section-Dedication (SDE): "Dedication"
+Body-Text (Tx)............................... "For the Palestinian People"                                
+
+* Section-Epigraph (SEP): "Epigraph"
+Epigraph-Non-Verse (Epi)..................... ". . . not as harmony and resolution, but as"               
+Epigraph-Source (Episrc)..................... "—Edward W. Said, Late Style, xiii"                       
+
+* Section-Contents (STC): "Contents"
+Title (Ttl).................................. "Contents"                                                  
+TOC-Frontmatter (Tocfm)...................... "Preface xi"                                                
+TOC-Chapter (Tocch).......................... "1. The Cocoon 3"                                           
+Separator (Sep).............................. "[separator]"                                               
+TOC-Backmatter (Tocbm)....................... "Notes 000"                                                 
+
+* Section-Preface (SPF): "Preface"
+Title (Ttl).................................. "Preface"                                                   
+Body-Text (Tx)............................... "Long after his death in 2003, Edward W. Said remains"      
+Ornamental-Space-Break (Osbrk)............... "<orn>"                                                     
+
+* Section-Chapter (SCP): "1. The Cocoon"
+Number (Num)................................. "1"                                                         
+Title (Ttl).................................. "The Cocoon"                                                
+Epigraph-Verse (Epiv)........................ "Father and mother dear,"                                   
+Epigraph-Source (Episrc)..................... "—Gerard Manley Hopkins, “To seem the stranger . . .”"
+Body-Text (Tx)............................... "On November 1, 1935, a mild sunny afternoon in Jerusalem," 
+Ornamental-Space-Break (Osbrk)............... "<orn>"                                                     
+Extract1 (Ext1).............................. "There were no meaningful frontiers when we were growing up,"
+Body-Text-Continued (Txc).................... "What Said perhaps did downplay, however, was the degree to"
+Verse1 (Vrs1)................................ "And those who knew her loved her: disciples"               
+
+* Section-Chapter (SCP): "2. Unsettling"
+Epigraph-Non-Verse (Epi)..................... ". . . a troubling, disabling, destabilizing, secular wound."
+
+* Section-Chapter (SCP): "4. The Secret Agent"
+Separator (Sep).............................. "[separator]"                                               
+
+* Section-Notes (SNT): "Notes"
+Title (Ttl).................................. "Notes"                                                     
+A-Head (Ahead)............................... "Abbreviations Used in the Notes"                           
+B-Head (Bhead)............................... "Frequently Cited Works by Said"                            
+Reference-Entry (Ref)........................ "ALS: After the Last Sky"                                   
+
+* Section-Bibliography (SBI): "Selected Bibliography"
+Title (Ttl).................................. "Selected Bibliography"                                     
+A-Head (Ahead)............................... "Books by Said"                                             
+Reference-Entry (Ref)........................ "After the Last Sky: Palestinian Lives, Photographs by Jean Mohr"
+B-Head (Bhead)............................... "Creative"                                                  
+Body-Text (Tx)............................... "A bibliography of Said’s essays in academic journals, magazines, and"
+
+* Section-Acknowledgments (SAK): "Acknowledgments"
+Title (Ttl).................................. "Acknowledgments"                                           
+Body-Text (Tx)............................... "I should pay tribute first to those whose writing on"      
+
+* Section-Index (SIN): "Index"
+Title (Ttl).................................. "Index"                                                     
+Body-Text (Tx)............................... "TK [allow 16–18 pages]"                                  
+
+* Section-About-Author (SAA): "A Note About the Author"
+Title (Ttl).................................. "A Note About the Author"                                   
+Body-Text (Tx)............................... "Timothy Brennan is the author of several books, including At"
+
+___________CHARACTER STYLES IN USE___________
+ital (i)
+endnote reference
+bold (b)
+bold-ital (bi)
+symbols (sym)
+Hyperlink
+endnote reference
+super (sup)
+symbols-ital (symi)
+
+

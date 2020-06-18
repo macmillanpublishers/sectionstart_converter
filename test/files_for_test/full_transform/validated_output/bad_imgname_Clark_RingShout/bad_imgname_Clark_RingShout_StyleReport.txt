@@ -1,0 +1,155 @@
+OOPS!
+
+Problems were found with the styles in your document.
+
+
+------------------------------------ ERRORS ------------------------------------
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'Butcher[ Clyde] ' (located in Section-Chapter (SCP): "4"). Your filename must end with a supported file extension (one of ['.jpg', '.psd', '.tif', '.tiff'])
+
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'Strange_woods.png' (located in Section-Chapter (SCP): "7"). Your filename must end with a supported file extension (one of ['.jpg', '.psd', '.tif', '.tiff'])
+
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'NightDoctor.jpg>' (located in Section-Chapter (SCP): "9"). Your filename must end with a supported file extension (one of ['.jpg', '.psd', '.tif', '.tiff'])
+
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'PDjeliClark' (located in Section-Acknowledgments (SAK): "About the Author"). Your filename must end with a supported file extension (one of ['.jpg', '.psd', '.tif', '.tiff'])
+
+** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: 'Mighs*ty.glif' (located in Section-Chapter (SCP): "Epilogue"). Your filename must end with a supported file extension (one of ['.jpg', '.psd', '.tif', '.tiff'])
+
+** ERROR: Unsupported character(s) in 'Image-Placement (Img)'-styled text: 'Butcher[ Clyde] ' (located in Section-Chapter (SCP): "4"). Image placement styles may contain only alphanumeric characters, underscores, or hyphens.
+
+** ERROR: Unsupported character(s) in 'cs-image-placement (cimg)'-styled text: 'Mighs*ty.glif' (located in Section-Chapter (SCP): "Epilogue"). Image placement styles may contain only alphanumeric characters, underscores, or hyphens.
+
+
+If you have any questions about how to handle these errors,
+please contact workflows@macmillan.com.
+
+
+----------------------------------- WARNINGS -----------------------------------
+** WARNING: Too many 'Title (Ttl)' paragraphs detected (11), only one is allowed.
+
+** WARNING: Too many 'Title (Ttl)' paragraphs detected (11), only one is allowed.
+
+
+------------------------------- PROCESSING NOTES -------------------------------
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'annotation reference'.
+
+** NOTE: 2 blank paragraph(s) deleted from the manuscript.
+
+** NOTE: 36 bookmark(s) deleted from the manuscript.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"Ring Shout"
+"OR"
+
+** Author1 (Au1) **
+"P. DJÈLÍ CLARK"
+
+** cs-isbn (isbn) **
+"ISBN 978-1-250-76702-8 (hardcover)"
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+Verify that this list of illustrations includes only the filenames of your illustrations.
+
+Goodone.jpg
+Butcher[ Clyde] 
+Strange_woods.png
+NightDoctor.jpg>
+Mighs*ty.glif
+PDjeliClark
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "Ring Shout"                                             
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Dedication (SDE)......... "Dedication"                                             
+Section-Front-Matter-General (SFM) "Front Matter General"                                   
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Chapter (SCP)............ "1"                                                      
+Section-Chapter (SCP)............ "2"                                                      
+Section-Chapter (SCP)............ "3"                                                      
+Section-Chapter (SCP)............ "4"                                                      
+Section-Chapter (SCP)............ "5"                                                      
+Section-Chapter (SCP)............ "6"                                                      
+Section-Chapter (SCP)............ "7"                                                      
+Section-Chapter (SCP)............ "8"                                                      
+Section-Chapter (SCP)............ "9"                                                      
+Section-Chapter (SCP)............ "Epilogue"                                               
+Section-Back-Matter-General (SBM) "Back Matter General"                                    
+Section-Acknowledgments (SAK).... "Acknowledgments"                                        
+Section-Acknowledgments (SAK).... "About the Author"                                       
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "Ring Shout"                                                
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "Ring Shout"                                                
+Subtitle (Sttl).............................. "HUNTING KU KLUXES IN THE END TIMES"                        
+Author1 (Au1)................................ "P. DJÈLÍ CLARK"                                          
+Logo-Placement (Logo)........................ "[insert Tor.com logo]"                                     
+Imprint (Imp)................................ "A Tom Doherty Associates Book"                             
+Cities (Cit)................................. "New York"                                                  
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "This is a work of fiction. All of the characters,"         
+Separator (Sep).............................. "[separator]"                                               
+
+* Section-Dedication (SDE): "Dedication"
+Body-Text (Tx)............................... "Dedi"                                                      
+
+* Section-Front-Matter-General (SFM): "Front Matter General"
+Custom1 (Cust1).............................. "Notation 15:"                                              
+
+* Section-Chapter (SCP): "1"
+Title (Ttl).................................. "1"                                                         
+Body-Text (Tx)............................... "You ever seen a Klan march?"                               
+Image-Placement (Img)........................ "Goodone.jpg"                                               
+
+* Section-Chapter (SCP): "2"
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+VERSE-A > Verse1 (Vrs1)...................... "“Blow, Gabriel!”"                                      
+VERSE-A > Verse1-indent1 (Vrs1-i1)........... "“At the Judgment.”"                                    
+Ornamental-Space-Break (Osbrk)............... "***"                                                       
+Separator (Sep).............................. "[separator]"                                               
+Custom1 (Cust1).............................. "Notation 32:"                                              
+
+* Section-Chapter (SCP): "3"
+Verse1 (Vrs1)................................ "Oh, the grand old Duke of York,"                           
+
+* Section-Chapter (SCP): "9"
+Verse2 (Vrs2)................................ "Night Doctors, Night Doctors"                              
+
+* Section-Back-Matter-General (SBM): "Back Matter General"
+Title (Ttl).................................. "Music Citations"                                           
+Body-Text (Tx)............................... "(TK; save 1 page)"                                         
+
+* Section-Acknowledgments (SAK): "Acknowledgments"
+Title (Ttl).................................. "Acknowledgments"                                           
+Body-Text (Tx)............................... "(TK, save 1 page)"                                         
+
+* Section-Acknowledgments (SAK): "About the Author"
+Image-Placement (Img)........................ "PDjeliClark"                                               
+Credit-Line (Crd)............................ "Courtesy of the author"                                    
+
+___________CHARACTER STYLES IN USE___________
+cs-cleanup-exclude (cex)
+smallcaps (sc)
+super (sup)
+cs-isbn (isbn)
+ital (i)
+cs-image-placement (cimg)

@@ -1,0 +1,306 @@
+OOPS!
+
+Problems were found with the styles in your document.
+
+
+------------------------------------ ERRORS ------------------------------------
+** ERROR: First paragraph of document is styled with 'Body-Text (Tx)' instead of 'Section-Book (BOOK)'.
+
+** ERROR: Second paragraph of document styled with non-Section Start style: 'Author2 (Au2)'.
+
+** ERROR: Non-Macmillan style 'About Author Text Head (atah)' in Section-Contents (STC): "Contents".
+
+** ERROR: No Container END para found for: 'BOX-A (BOX-A)', in Section-Chapter (SCP): "Chapter 3a".
+
+** ERROR: No Container END para found for: 'BOX-B (BOX-B)', in Section-Chapter (SCP): "Chapter 3a".
+
+** ERROR: No Container END para found for: 'BOX-B (BOX-B)', in Section-About-Author (SAA): "About the Author".
+
+** ERROR: No Container END para found for: 'SIDEBAR-A (SIDE-A)', in Section-Chapter (SCP): "Chapter 2".
+
+** ERROR: Improper list nesting: 'Alpha-Level-2-List (Al2)' para, preceded by: 'Bullet-Level-3-List (Bl3)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "2nd level different type Cerror")
+
+** ERROR: Improper list nesting: 'Num-Level-2-List (Nl2)' para, preceded by: 'Num-Level-3-List (Nl3)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "IA second nested numbered list item I trembled AGGGGAN. One")
+
+** ERROR: Improper list nesting: 'Num-Level-3-List (Nl3)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "A nested numbered list")
+
+** ERROR: Improper list nesting: 'Num-Level-3-List-Paragraph (Nl3p)' para, preceded by: 'Num-Level-2-List-Paragraph (Nl2p)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "This one should error")
+
+** ERROR: Improper list nesting: 'Bullet-Level-2-List (Bl2)' para, preceded by: 'Body-Text (Tx)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "ErrA 2nd level list out of nowhere")
+
+** ERROR: Improper list nesting: 'Bullet-Level-3-List (Bl3)' para, preceded by: 'Body-Text (Tx)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "ErrB third level list out of nowhere")
+
+** ERROR: Improper list nesting: 'Bullet-Level-3-List (Bl3)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "3rd level list errorF")
+
+** ERROR: List type changed in the middle of a list: 'Alpha-Level-2-List (Al2)' para, preceded by: 'Bullet-Level-2-List (Bl2)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "2nd level change Derror")
+
+** ERROR: List type changed in the middle of a list: 'Bullet-Level-3-List (Bl3)' para, preceded by: 'Alpha-Level-3-List (Al3)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "3rd level changeE error")
+
+** ERROR: Endnote paragraph styled as 'Address (Add)' instead of 'Endnote Text': (Note beginning "This is an address thingy").
+
+** ERROR: Footnote paragraph styled as 'BM Head (bmh)' instead of 'Footnote Text' (Note beginning "Ooooh a vad ibf").
+
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'TestAI.ai' (located in Section-Chapter (SCP): "Chapter 2"). Your filename must end with a supported file extension (one of ['.jpg', '.psd', '.tif', '.tiff'])
+
+
+If you have any questions about how to handle these errors,
+please contact workflows@macmillan.com.
+
+
+----------------------------------- WARNINGS -----------------------------------
+** WARNING: A blank Section-Start paragraph was removed: 'Section-Dedication (SDE)'. The removal of a Section-Start paragraph may have led to other errors with your manuscript.
+
+** WARNING: A blank Section-Start paragraph was removed: 'Section-Acknowledgments (SAK)'. The removal of a Section-Start paragraph may have led to other errors with your manuscript.
+
+** WARNING: A blank Container paragraph with style 'BOX-A (BOX-A)' was removed from 'Section-Chapter (SCP): "Chapter 1"'. This is being brought to your attention in case it led to other errors with your manuscript.
+
+** WARNING: List type changed in the middle of a list: 'Alpha-Level-1-List (Al1)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para (in Section-Chapter (SCP): "Chapter 2").
+
+
+------------------------------- PROCESSING NOTES -------------------------------
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'annotation reference'.
+
+** NOTE: Fixed 2 Endnote and/or Footnote markers with incorrect character styles applied.
+
+** NOTE: 10 blank paragraph(s) deleted from the manuscript.
+
+** NOTE: 6 shape object(s) deleted from the manuscript.
+
+** NOTE: 4 bookmark(s) deleted from the manuscript.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"Strange Tools"
+
+** Author1 (Au1) **
+"Alva Noë"
+
+** cs-isbn (isbn) **
+"ISBN 9780809089178 (trade paperback)"
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+Verify that this list of illustrations includes only the filenames of your illustrations.
+
+inline_image.jpg
+dragons-fantasy_fullpage.jpg
+Noimagefile.jpg
+TestAI.ai
+backad_fullpage.jpg
+NnediOkorafor.jpg
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "Bookmaker Rsuite Test Document"                         
+Section-Halftitle (SHT).......... "Half Title"                                             
+Section-Ad-Card (SAC)............ "Ad Card"                                                
+Section-Titlepage (STI).......... "Title Page"                                             
+Section-Copyright (SCR).......... "Copyright "                                             
+Section-Epigraph (SEP)........... "Epigraph"                                               
+Section-Halftitle (SHT).......... "Half Title"                                             
+Section-Contents (STC)........... "Contents"                                               
+Section-Foreword (SFW)........... "Foreword"                                               
+Section-Introduction (SIC)....... "Introduction"                                           
+Section-Part (SPT)............... "Part I"                                                 
+Section-Interlude (SIN).......... "Interlude"                                              
+Section-Chapter (SCP)............ "Chapter 1"                                              
+Section-Interlude (SIN).......... "Interlude 2"                                            
+Section-Chapter (SCP)............ "Chapter 2"                                              
+Section-Part (SPT)............... "Part 2"                                                 
+Section-Chapter (SCP)............ "Chapter 3a"                                             
+Section-Appendix (SAP)........... "Appendix"                                               
+Section-Back-Ad (SBA)............ "Full-Page Back Ad"                                      
+Section-Bibliography (SBI)....... "Bibliography"                                           
+Section-Notes (SNT).............. "NOTES"                                                  
+Section-About-Author (SAA)....... "About the Author"                                       
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* not avaliable: ""
+Body-Text (Tx)............................... "aasdas"                                                    
+Author2 (Au2)................................ "asdsadsad"                                                 
+
+* Section-Book (BOOK): "Bookmaker Rsuite Test Document"
+Body-Text (Tx)............................... "aasdasd"                                                   
+
+* Section-Halftitle (SHT): "Half Title"
+Title (Ttl).................................. "Strange Tools"                                             
+
+* Section-Ad-Card (SAC): "Ad Card"
+Main-Head (MHead)............................ "Also by Nnedi Okorafor"                                    
+Unnum-Level-1-List (Ul1)..................... "Who Fears Death"                                           
+Separator (Sep).............................. "Separator"                                                 
+List-Head (Lhead)............................ "Younger readers"                                           
+
+* Section-Titlepage (STI): "Title Page"
+Title (Ttl).................................. "Strange Tools"                                             
+Subtitle (Sttl).............................. "Art and Human Nature"                                      
+Author1 (Au1)................................ "Alva Noë"                                                 
+Logo-Placement (Logo)........................ "[LOGO HERE]"                                               
+Imprint (Imp)................................ "A TOM DOHERTY ASSOCIATES BOOK"                             
+Cities (Cit)................................. "NEW YORK"                                                  
+
+* Section-Copyright (SCR): "Copyright "
+Body-Text (Tx)............................... "This is a work of fiction. All of the characters,"         
+Dedication (Ded)............................. "For Lewis Carroll, who wrote the book Alice In Wonderland,"
+
+* Section-Epigraph (SEP): "Epigraph"
+Body-Text (Tx)............................... "Here’s a standalone epigraph. A haiku:"                  
+Epigraph-Verse (Epiv)........................ "Epigraph exists"                                           
+Epigraph-Source (Episrc)..................... "Nellie McKesson"                                           
+Epigraph-Non-Verse (Epi)..................... "So the next time you encounter inline_image.jpg fear, consider yourself"
+
+* Section-Contents (STC): "Contents"
+Main-Head (MHead)............................ "Contents"                                                  
+TOC-Frontmatter (Tocfm)...................... "Acknowledgments"                                           
+TOC-Chapter (Tocch).......................... "CHAPTER I.  Down the Rabbit-Hole"                          
+TOC-Backmatter (Tocbm)....................... "Notes"                                                     
+Title (Ttl).................................. "Acknowledgments"                                           
+Body-Text (Tx)............................... "I am already far north of London, and as I"                
+
+* Section-Foreword (SFW): "Foreword"
+Main-Head (MHead)............................ "Foreword by Robert Walton"                                 
+Author1 (Au1)................................ "Robert Walton"                                             
+Body-Text (Tx)............................... "How slowly the time passes here, encompassed as I am"      
+Closing (Clos)............................... "Your affectionate brother, Robert Walton"                  
+Signature (Sig).............................. "R.W."                                                      
+Ebook-Only-Text (Eonly)...................... "Rober Walton Website"                                      
+
+* Section-Introduction (SIC): "Introduction"
+Title (Ttl).................................. "Introduction"                                              
+Body-Text (Tx)............................... "I am by birth a Genevese, and my family is"                
+Ornamental-Space-Break (Osbrk)............... "***"                                                       
+Bookmaker-Processing-Instruction (Bpi)....... "IMAGE: wildcards1.jpg"                                     
+Verse1 (Vrs1)................................ "Be like the bird who"                                      
+Separator (Sep).............................. "Separator"                                                 
+
+* Section-Part (SPT): "Part I"
+Number (Num)................................. "Part I"                                                    
+Title (Ttl).................................. "Some Random Excerpts"                                      
+
+* Section-Interlude (SIN): "Interlude"
+Verse1 (Vrs1)................................ "How doth the little crocodile"                             
+Separator (Sep).............................. "Separator"                                                 
+Source (Src)................................. "from “Alice’s adventures in Wonderland,” by Lewis Carroll"
+
+* Section-Chapter (SCP): "Chapter 1"
+Number (Num)................................. "Chapter 1"                                                 
+Title (Ttl).................................. "The Monster"                                               
+Subtitle (Sttl).............................. "This is a Chapter Subtitle"                                
+Body-Text (Tx)............................... "This chapter is to test long, multi-paragraph footnotes. We were"
+Computer-Text (Comp)......................... "Then you might want to stop texting and pay attention."    
+Ornamental-Space-Break (Osbrk)............... "###"                                                       
+Bookmaker-Processing-Instruction (Bpi)....... "IMAGE: wildcards.jpg global"                               
+RECIPE > Title (Ttl)......................... "Small Batch Tiramisu fromSmitten Kitchen:"                 
+RECIPE > List-Head (Lhead)................... "Ingredients:"                                              
+RECIPE > Unnum-Level-1-List (Ul1)............ "24 ladyfingers (savioardi) cookies (storebought or from recipe below)"
+RECIPE > Num-Level-1-List (Nl1).............. "1. In a medium bowl, beat egg whites until stiff."         
+RECIPE > Body-Text (Tx)...................... "Serves 2"                                                  
+Extract1 (Ext1).............................. "A Centered Extract"                                        
+Headnote (Hdnt).............................. "A box introductory paragraph just for testing purposes."   
+A-Head (Ahead)............................... "Heading One"                                               
+Headline (Hdline)............................ "“BE STILL.”"                                           
+
+* Section-Interlude (SIN): "Interlude 2"
+Extract1 (Ext1).............................. "Down, down, down. Would the fall never come to an"         
+
+* Section-Chapter (SCP): "Chapter 2"
+LETTER-A > Address (Add)..................... "175 Fifth Ave."                                            
+LETTER-A > Dateline (Date)................... "January 21, 2017"                                          
+LETTER-A > Headnote (Hdnt)................... "This letter is confidential."                              
+LETTER-A > Salutation (Sal).................. "Dear Sir,"                                                 
+LETTER-A > Body-Text (Tx).................... "Please accept this submission for publication. It’s the best submission."
+LETTER-A > Closing (Clos).................... "Best Regards,"                                             
+LETTER-A > Signature (Sig)................... "Donald Trump"                                              
+LETTER-A > Postscript (Pst).................. "P.S. Welcome to the big league."                           
+SIDEBAR-A > Title (Ttl)...................... "Mapping out the unknown"                                   
+SIDEBAR-A > Body-Text (Tx)................... "Alice was not a bit hurt, and she jumped up"               
+SIDEBAR-A > A-Head (Ahead)................... "Problem space #1: Falling Down a Hole"                     
+SIDEBAR-A > Bullet-Level-1-List (Bl1)........ "Alice opened the door and found that it led into"          
+VERSE-A > Title (Ttl)........................ "A Poem"                                                    
+VERSE-A > Verse1 (Vrs1)...................... "Tiger tiger burning bright"                                
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+IMAGE > Caption (Cap)........................ "This is a caption above an image."                         
+IMAGE > Image-Placement (Img)................ "dragons-fantasy_fullpage.jpg"                              
+IMAGE > Credit-Line (Crd).................... "Image courtesy of some great wizard"                       
+COMPUTER-A > Design-Note (Dn)................ "Electronic text style should differ from preceding Computer Text (Comp)"
+COMPUTER-A > Body-Text (Tx).................. "I trembled. One subject! What could it be? Could he"       
+Bullet-Level-1-List (Bl1).................... "Bullet list item one"                                      
+Num-Level-3-List (Nl3)....................... "A nested numbered list"                                    
+Num-Level-2-List (Nl2)....................... "IA second nested numbered list item I trembled AGGGGAN. One"
+Alpha-Level-1-List (Al1)..................... "I switched gears here"                                     
+Num-Level-2-List-Paragraph (Nl2p)............ "Second nested bullet item"                                 
+Num-Level-3-List-Paragraph (Nl3p)............ "This one should error"                                     
+Bullet-Level-2-List (Bl2).................... "ErrA 2nd level list out of nowhere"                        
+Bullet-Level-3-List (Bl3).................... "ErrB third level list out of nowhere"                      
+Alpha-Level-2-List (Al2)..................... "2nd level different type Cerror"                           
+Alpha-Level-3-List (Al3)..................... "3rd level"                                                 
+
+* Section-Chapter (SCP): "Chapter 3a"
+Num-Level-1-List (Nl1)....................... ""William is dead!"                                         
+Num-Level-1-List-Paragraph (Nl1p)............ "—that sweet child, whose smiles delighted and warmed my heart,"
+List-Head (Lhead)............................ "List Head, Here We Go"                                     
+BOX-A > Body-Text (Tx)....................... "The storm, as is often the case in Switzerland, appeared"  
+BOX-A > Unnum-Level-1-List (Ul1)............. "NIMEY—Not In My Election Year"                           
+BOX-A > Body-Text-Continued (Txc)............ "While I watched the tempest, so beautiful yet terrific, I" 
+BOX-B > Body-Text-Continued (Txc)............ "m a figure which stole from behind a clump of"             
+
+* Section-Appendix (SAP): "Appendix"
+Main-Head (MHead)............................ "Appendix"                                                  
+Body-Text (Tx)............................... "No one can conceive the anguish I suffered during the"     
+
+* Section-Back-Ad (SBA): "Full-Page Back Ad"
+Image-Placement (Img)........................ "backad_fullpage.jpg"                                       
+
+* Section-Bibliography (SBI): "Bibliography"
+Main-Head (MHead)............................ "References"                                                
+Reference-Entry (Ref)........................ "Amior, Michael. “Why Are Higher Skilled Workers More Mobile Geographically?"
+
+* Section-Notes (SNT): "NOTES"
+Main-Head (MHead)............................ "Manual Endnotes"                                           
+A-Head (Ahead)............................... "Chapter 1"                                                 
+Body-Text (Tx)............................... "1. See Burrough (2015, p. 5). On Watts, see Bloom"         
+
+* Section-About-Author (SAA): "About the Author"
+Title (Ttl).................................. "About the Author"                                          
+IMAGE > Image-Placement (Img)................ "NnediOkorafor.jpg"                                         
+IMAGE > Credit-Line (Crd).................... "Image courtesy of a photographer"                          
+Body-Text (Tx)............................... "Alva Noe was at first touched by the expressions of"       
+BOX-B > Body-Text (Tx)....................... "You throw a torch into a pile of buildings, and"           
+BOX-B > Table-Head (Tbhd).................... "CEO’s DIWS Score"                                        
+BOX-B > Table-Text (Tbtx).................... "4"                                                         
+
+___________CHARACTER STYLES IN USE___________
+ital (i)
+smallcaps (sc)
+Hyperlink
+cs-isbn (isbn)
+cs-image-placement (cimg)
+cs-design-note (cdn)
+bold (b)
+bold-ital (bi)
+smallcaps-bold (scb)
+underline (u)
+super (sup)
+sub (sub)
+smallcaps-ital (sci)
+symbols (sym)
+bookmaker-keep-together (bkt)
+cs-computer (ccom)
+endnote reference
+footnote reference
+footnote reference
+endnote reference
+
+

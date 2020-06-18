@@ -1,0 +1,967 @@
+{
+    "Macmillan_charstyle_first_use": [
+        {
+            "description": "cs-cleanup-exclude (cex)", 
+            "para_id": "691E7E15", 
+            "para_index": 4, 
+            "para_string": "Ring Shout", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "smallcaps (sc)", 
+            "para_id": "42A87852", 
+            "para_index": 14, 
+            "para_string": "RING SHOUT", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "super (sup)", 
+            "para_id": "2FD0520A", 
+            "para_index": 27, 
+            "para_string": "Tor\u00ae is a registered trademark of Macmillan Publishing Group, LLC.", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-isbn (isbn)", 
+            "para_id": "1224D2FB", 
+            "para_index": 29, 
+            "para_string": "ISBN 978-1-250-76702-8 (hardcover)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "ital (i)", 
+            "para_id": "3050F7BB", 
+            "para_index": 61, 
+            "para_string": "Click, click, click, click, click!", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)", 
+            "para_id": "33CDDEF3", 
+            "para_index": 1305, 
+            "para_string": "Auntie Margaret squints over her stitching. \u201cMighs*ty.glif odd choice.\u201d", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "Macmillan_style_first_use": [
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "7996566C", 
+            "para_index": 2, 
+            "para_string": "Ring Shout", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "691E7E15", 
+            "para_index": 4, 
+            "para_string": "Ring Shout", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Subtitle (Sttl)", 
+            "para_id": "507D3097", 
+            "para_index": 6, 
+            "para_string": "HUNTING KU KLUXES IN THE END TIMES", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "6DBDF422", 
+            "para_index": 7, 
+            "para_string": "P. DJ\u00c8L\u00cd CLARK", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Logo-Placement (Logo)", 
+            "para_id": "2B4BB00B", 
+            "para_index": 8, 
+            "para_string": "[insert Tor.com logo]", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Imprint (Imp)", 
+            "para_id": "11AD5ADC", 
+            "para_index": 9, 
+            "para_string": "A Tom Doherty Associates Book", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Cities (Cit)", 
+            "para_id": "42835AA0", 
+            "para_index": 10, 
+            "para_string": "New York", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "47D9E201", 
+            "para_index": 12, 
+            "para_string": "This is a work of fiction. All of the characters,", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "0CC02718", 
+            "para_index": 13, 
+            "para_string": "[separator]", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "46DD04A8", 
+            "para_index": 42, 
+            "para_string": "Dedi", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Custom1 (Cust1)", 
+            "para_id": "5723AB40", 
+            "para_index": 45, 
+            "para_string": "Notation 15:", 
+            "parent_section_start_content": "Front Matter General", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "66F8803D", 
+            "para_index": 51, 
+            "para_string": "1", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "665C9DEB", 
+            "para_index": 52, 
+            "para_string": "You ever seen a Klan march?", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Image-Placement (Img)", 
+            "para_id": "417CB742", 
+            "para_index": 54, 
+            "para_string": "Goodone.jpg", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)", 
+            "para_id": "16EF04CA", 
+            "para_index": 192, 
+            "para_string": "[blank]", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "VERSE-A > Verse1 (Vrs1)", 
+            "para_id": "227ED94B", 
+            "para_index": 229, 
+            "para_string": "\u201cBlow, Gabriel!\u201d", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "VERSE-A > Verse1-indent1 (Vrs1-i1)", 
+            "para_id": "7762E8DC", 
+            "para_index": 230, 
+            "para_string": "\u201cAt the Judgment.\u201d", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Ornamental-Space-Break (Osbrk)", 
+            "para_id": "2F359847", 
+            "para_index": 308, 
+            "para_string": "***", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "6373266E", 
+            "para_index": 367, 
+            "para_string": "[separator]", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Custom1 (Cust1)", 
+            "para_id": "5396339C", 
+            "para_index": 368, 
+            "para_string": "Notation 32:", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Verse1 (Vrs1)", 
+            "para_id": "257E97F9", 
+            "para_index": 459, 
+            "para_string": "Oh, the grand old Duke of York,", 
+            "parent_section_start_content": "3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Verse2 (Vrs2)", 
+            "para_id": "0AD3C54D", 
+            "para_index": 1172, 
+            "para_string": "Night Doctors, Night Doctors", 
+            "parent_section_start_content": "9", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "2568E502", 
+            "para_index": 1309, 
+            "para_string": "Music Citations", 
+            "parent_section_start_content": "Back Matter General", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "44264522", 
+            "para_index": 1310, 
+            "para_string": "(TK; save 1 page)", 
+            "parent_section_start_content": "Back Matter General", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "60733755", 
+            "para_index": 1312, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "5C8C419B", 
+            "para_index": 1313, 
+            "para_string": "(TK, save 1 page)", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Image-Placement (Img)", 
+            "para_id": "180165A8", 
+            "para_index": 1316, 
+            "para_string": "PDjeliClark", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Credit-Line (Crd)", 
+            "para_id": "19790842", 
+            "para_index": 1317, 
+            "para_string": "Courtesy of the author", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }
+    ], 
+    "author_paras": [
+        {
+            "description": "P. DJ\u00c8L\u00cd CLARK", 
+            "para_id": "6DBDF422", 
+            "para_index": 7, 
+            "para_string": "P. DJ\u00c8L\u00cd CLARK", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "deleted_objects-bookmarks": [
+        {
+            "description": "deleted bookmark named '_Hlk32311350'", 
+            "para_id": "0A973274", 
+            "para_index": 64, 
+            "para_string": "\u201cI swear Maryse Boudreaux.\u201d She slings her rifle across blue", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32311428'", 
+            "para_id": "65773234", 
+            "para_index": 65, 
+            "para_string": "She gestures out at buildings rising higher than the telegraph", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32311930'", 
+            "para_id": "7C131B7F", 
+            "para_index": 67, 
+            "para_string": "\u201cThis ain\u2019t no war,\u201d Sadie retorts. We both look at", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32312751'", 
+            "para_id": "703443BE", 
+            "para_index": 77, 
+            "para_string": "Sadie gags like she swallowed her tobacco. \u201cCordelia Lawrence, of", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32313086'", 
+            "para_id": "12C08900", 
+            "para_index": 102, 
+            "para_string": "\u201cNot in the trenches. In Paris, where we was after", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32315722'", 
+            "para_id": "31ED39D9", 
+            "para_index": 148, 
+            "para_string": "But that big Ku Klux not giving me time to", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32316919'", 
+            "para_id": "6A978163", 
+            "para_index": 193, 
+            "para_string": "You see, the Second Klans was birthed on November 25", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32317519'", 
+            "para_id": "49301374", 
+            "para_index": 196, 
+            "para_string": "Was freed people helped end that first Klan\u2014Robert Smalls and", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32319682'", 
+            "para_id": "74BD9D80", 
+            "para_index": 257, 
+            "para_string": "She nods back, eyes wandering to the Shouters. Uncle Will", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32320457'", 
+            "para_id": "5214571F", 
+            "para_index": 273, 
+            "para_string": "Chef laughs. \u201cYour poor white workers be the first ones", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32322145'", 
+            "para_id": "3CCEF98F", 
+            "para_index": 333, 
+            "para_string": "Sadie got it in her head the Warren G. Harding", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32328666'", 
+            "para_id": "424E64C5", 
+            "para_index": 341, 
+            "para_string": "We all go sour at that. Seven years since The", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32329677'", 
+            "para_id": "19D36142", 
+            "para_index": 369, 
+            "para_string": "There\u2019s a Shout we call Move Daniel. Now Daniel was", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32329853'", 
+            "para_id": "4446C5DB", 
+            "para_index": 370, 
+            "para_string": "\u2014Interview with Jupiter \u201cSticker\u201d Woodberry, age seventy, transliterated from the", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32330342'", 
+            "para_id": "453DED37", 
+            "para_index": 379, 
+            "para_string": "\u201cOh, that\u2019s enough for me, Miss Sadie!\u201d a thickset man", 
+            "parent_section_start_content": "3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32331352'", 
+            "para_id": "6CD21A20", 
+            "para_index": 394, 
+            "para_string": "We\u2019re saved when Lester starts up on his favorite topic\u2014Marcus", 
+            "parent_section_start_content": "3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32331499'", 
+            "para_id": "6CD21A20", 
+            "para_index": 394, 
+            "para_string": "We\u2019re saved when Lester starts up on his favorite topic\u2014Marcus", 
+            "parent_section_start_content": "3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32331635'", 
+            "para_id": "195536C4", 
+            "para_index": 406, 
+            "para_string": "\u201cOh yes, Miss Sadie! The old Negro empires in ancient", 
+            "parent_section_start_content": "3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32333274'", 
+            "para_id": "429293BB", 
+            "para_index": 480, 
+            "para_string": "He winks a gray eye. \u201cWe the storm on the", 
+            "parent_section_start_content": "3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32333949'", 
+            "para_id": "1C24B865", 
+            "para_index": 504, 
+            "para_string": "There\u2019s three women. Two are older, sitting in fancy high-backed", 
+            "parent_section_start_content": "3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32334079'", 
+            "para_id": "1632902C", 
+            "para_index": 506, 
+            "para_string": "\u201cHello, Auntie Ondine.\u201d I turn to the other one at", 
+            "parent_section_start_content": "3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32390587'", 
+            "para_id": "74E6F35E", 
+            "para_index": 512, 
+            "para_string": "I sip the sweet tea (that ain\u2019t really sweet tea)", 
+            "parent_section_start_content": "3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32392463'", 
+            "para_id": "5672124F", 
+            "para_index": 565, 
+            "para_string": "wasn\u2019t hard to find. His name in fresh red paint", 
+            "parent_section_start_content": "4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32398598'", 
+            "para_id": "73DF9AED", 
+            "para_index": 607, 
+            "para_string": "\u201cGrand Cyclops is coming,\u201d they hiss. \u201cWhen she do, your", 
+            "parent_section_start_content": "4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32481570'", 
+            "para_id": "157055FF", 
+            "para_index": 624, 
+            "para_string": "Emma Krauss pulls up a chair, face bright as she", 
+            "parent_section_start_content": "4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32329837'", 
+            "para_id": "5753FFB0", 
+            "para_index": 660, 
+            "para_string": "\u2014Interview with Ms. Henrietta Davis, age seventy-two, transliterated from the", 
+            "parent_section_start_content": "4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32401645'", 
+            "para_id": "609A930A", 
+            "para_index": 687, 
+            "para_string": "\u201cBy yo\u2019self?\u201d Sadie shouts.", 
+            "parent_section_start_content": "5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32405811'", 
+            "para_id": "12689450", 
+            "para_index": 847, 
+            "para_string": "My book? How\u2014? I put a hand to my back", 
+            "parent_section_start_content": "6", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32329881'", 
+            "para_id": "3E2A48AE", 
+            "para_index": 889, 
+            "para_string": "\u2014Interview with Ms. Susyanna \u201cSusy\u201d Woodberry, age sixty-six, transliterated from", 
+            "parent_section_start_content": "6", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32412818'", 
+            "para_id": "2D0C618B", 
+            "para_index": 892, 
+            "para_string": "It\u2019s still hours before dawn when I set out. Chef", 
+            "parent_section_start_content": "7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32413804'", 
+            "para_id": "74CBC3D1", 
+            "para_index": 917, 
+            "para_string": "\u201cThen you Dr. Antoine Bisset?\u201d", 
+            "parent_section_start_content": "7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32414831'", 
+            "para_id": "673E02A1", 
+            "para_index": 922, 
+            "para_string": "He stares at me from behind that blindfold. \u201cDo you", 
+            "parent_section_start_content": "7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32421297'", 
+            "para_id": "3FED1985", 
+            "para_index": 1074, 
+            "para_string": "Butcher Clyde\u2019s smile stretches into a jack-o\u2019-lantern\u2019s grin. And I", 
+            "parent_section_start_content": "8", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32480853'", 
+            "para_id": "734B161A", 
+            "para_index": 1274, 
+            "para_string": "Not army trucks but wagons. Full of men claiming to", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32481045'", 
+            "para_id": "2D826F8D", 
+            "para_index": 1279, 
+            "para_string": "\u201cMichael George doing well,\u201d I confirm. Me and him finally", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named '_Hlk32328607'", 
+            "para_id": "33CDDEF3", 
+            "para_index": 1305, 
+            "para_string": "Auntie Margaret squints over her stitching. \u201cMighs*ty.glif odd choice.\u201d", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "empty_section_start_para": [], 
+    "image_holder_badchar": [
+        {
+            "description": "Image-Placement (Img)_Butcher[ Clyde] ", 
+            "para_id": "679AC831", 
+            "para_index": 564, 
+            "para_string": "Butcher[ Clyde] ", 
+            "parent_section_start_content": "4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_Mighs*ty.glif", 
+            "para_id": "33CDDEF3", 
+            "para_index": 1305, 
+            "para_string": "Auntie Margaret squints over her stitching. \u201cMighs*ty.glif odd choice.\u201d", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holder_ext_error": [
+        {
+            "description": "Image-Placement (Img)_Butcher[ Clyde] ", 
+            "para_id": "679AC831", 
+            "para_index": 564, 
+            "para_string": "Butcher[ Clyde] ", 
+            "parent_section_start_content": "4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Image-Placement (Img)_Strange_woods.png", 
+            "para_id": "27EDFE8F", 
+            "para_index": 894, 
+            "para_string": "Strange_woods.png", 
+            "parent_section_start_content": "7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Image-Placement (Img)_NightDoctor.jpg>", 
+            "para_id": "4E67652A", 
+            "para_index": 1168, 
+            "para_string": "NightDoctor.jpg>", 
+            "parent_section_start_content": "9", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Image-Placement (Img)_PDjeliClark", 
+            "para_id": "180165A8", 
+            "para_index": 1316, 
+            "para_string": "PDjeliClark", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_Mighs*ty.glif", 
+            "para_id": "33CDDEF3", 
+            "para_index": 1305, 
+            "para_string": "Auntie Margaret squints over her stitching. \u201cMighs*ty.glif odd choice.\u201d", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holders": [
+        {
+            "description": "Goodone.jpg", 
+            "para_id": "417CB742", 
+            "para_index": 54, 
+            "para_string": "Goodone.jpg", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Butcher[ Clyde] ", 
+            "para_id": "679AC831", 
+            "para_index": 564, 
+            "para_string": "Butcher[ Clyde] ", 
+            "parent_section_start_content": "4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Strange_woods.png", 
+            "para_id": "27EDFE8F", 
+            "para_index": 894, 
+            "para_string": "Strange_woods.png", 
+            "parent_section_start_content": "7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "NightDoctor.jpg>", 
+            "para_id": "4E67652A", 
+            "para_index": 1168, 
+            "para_string": "NightDoctor.jpg>", 
+            "parent_section_start_content": "9", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "PDjeliClark", 
+            "para_id": "180165A8", 
+            "para_index": 1316, 
+            "para_string": "PDjeliClark", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Mighs*ty.glif", 
+            "para_id": "33CDDEF3", 
+            "para_index": 1305, 
+            "para_string": "Auntie Margaret squints over her stitching. \u201cMighs*ty.glif odd choice.\u201d", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holders__sort_by_index": [
+        {
+            "description": "Goodone.jpg", 
+            "para_id": "417CB742", 
+            "para_index": 54, 
+            "para_string": "Goodone.jpg", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Butcher[ Clyde] ", 
+            "para_id": "679AC831", 
+            "para_index": 564, 
+            "para_string": "Butcher[ Clyde] ", 
+            "parent_section_start_content": "4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Strange_woods.png", 
+            "para_id": "27EDFE8F", 
+            "para_index": 894, 
+            "para_string": "Strange_woods.png", 
+            "parent_section_start_content": "7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "NightDoctor.jpg>", 
+            "para_id": "4E67652A", 
+            "para_index": 1168, 
+            "para_string": "NightDoctor.jpg>", 
+            "parent_section_start_content": "9", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Mighs*ty.glif", 
+            "para_id": "33CDDEF3", 
+            "para_index": 1305, 
+            "para_string": "Auntie Margaret squints over her stitching. \u201cMighs*ty.glif odd choice.\u201d", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "PDjeliClark", 
+            "para_id": "180165A8", 
+            "para_index": 1316, 
+            "para_string": "PDjeliClark", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }
+    ], 
+    "isbn_spans": [
+        {
+            "description": "978-1-250-", 
+            "para_id": "1224D2FB", 
+            "para_index": 29, 
+            "para_string": "ISBN 978-1-250-76702-8 (hardcover)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }
+    ], 
+    "logo_paras": [
+        {
+            "description": "[insert Tor.com logo]", 
+            "para_id": "2B4BB00B", 
+            "para_index": 8, 
+            "para_string": "[insert Tor.com logo]", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "non-Macmillan_charstyle_removed": [
+        {
+            "description": "annotation reference", 
+            "para_id": "058D043C", 
+            "para_index": 987, 
+            "para_string": "My eyes roll up to meet his empty sockets and", 
+            "parent_section_start_content": "7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "removed_blank_para": [
+        {
+            "description": "removed Body-TextTx-styled para", 
+            "para_id": "57B1D08C", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Normal-styled para", 
+            "para_id": "3F1E9F48", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "section_start_found": [
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "12F15B78", 
+            "para_index": 0, 
+            "para_string": "Ring Shout", 
+            "parent_section_start_content": "Ring Shout", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "504EC988", 
+            "para_index": 1, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-TitlepageSTI", 
+            "para_id": "177E5C48", 
+            "para_index": 3, 
+            "para_string": "Titlepage", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Section-CopyrightSCR", 
+            "para_id": "44388883", 
+            "para_index": 11, 
+            "para_string": "Copyright", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Section-DedicationSDE", 
+            "para_id": "41467400", 
+            "para_index": 41, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Section-Front-Matter-GeneralSFM", 
+            "para_id": "6A3039BB", 
+            "para_index": 44, 
+            "para_string": "Front Matter General", 
+            "parent_section_start_content": "Front Matter General", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "1DD8A189", 
+            "para_index": 48, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6578D10B", 
+            "para_index": 50, 
+            "para_string": "1", 
+            "parent_section_start_content": "1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "44E9B60E", 
+            "para_index": 178, 
+            "para_string": "2", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6A2148C2", 
+            "para_index": 371, 
+            "para_string": "3", 
+            "parent_section_start_content": "3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6A5A1FC8", 
+            "para_index": 561, 
+            "para_string": "4", 
+            "parent_section_start_content": "4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "4C84D821", 
+            "para_index": 661, 
+            "para_string": "5", 
+            "parent_section_start_content": "5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "0BE86A0F", 
+            "para_index": 748, 
+            "para_string": "6", 
+            "parent_section_start_content": "6", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "77330DEE", 
+            "para_index": 890, 
+            "para_string": "7", 
+            "parent_section_start_content": "7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "676101BF", 
+            "para_index": 1006, 
+            "para_string": "8", 
+            "parent_section_start_content": "8", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "2FF5966E", 
+            "para_index": 1162, 
+            "para_string": "9", 
+            "parent_section_start_content": "9", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "47B3837E", 
+            "para_index": 1263, 
+            "para_string": "Epilogue", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-Back-Matter-GeneralSBM", 
+            "para_id": "5013DF43", 
+            "para_index": 1308, 
+            "para_string": "Back Matter General", 
+            "parent_section_start_content": "Back Matter General", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Section-AcknowledgmentsSAK", 
+            "para_id": "24EE2E4E", 
+            "para_index": 1311, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Section-AcknowledgmentsSAK", 
+            "para_id": "158A8AF8", 
+            "para_index": 1314, 
+            "para_string": "About the Author", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }
+    ], 
+    "title_paras": [
+        {
+            "description": "Ring Shout", 
+            "para_id": "691E7E15", 
+            "para_index": 4, 
+            "para_string": "Ring Shout", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "OR", 
+            "para_id": "65A6F11F", 
+            "para_index": 5, 
+            "para_string": "OR", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ]
+}

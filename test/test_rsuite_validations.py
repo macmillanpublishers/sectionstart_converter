@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import unittest
 # from mock import patch
 import sys, os, copy, re
@@ -250,6 +251,19 @@ class Tests(unittest.TestCase):
 
         expected_rd = {'image_holder_ext_error': \
             [{'description': "{}_{}".format(fullstylename, badfilename), \
+                'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_validateImageHolders_unicodechar(self):
+        fullstylename = 'Image-Placement (Img)'
+        filename = u'—[(—)-].jpg'
+        # setup
+        root, para = createXML_paraWithRun(fullstylename, '', filename)
+        # run function
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, filename)
+
+        expected_rd = {'image_holder_badchar': \
+            [{'description': u'Image-Placement (Img)_\u2014[(\u2014)-].jpg', \
                 'para_id': 'test'}]}
         self.assertEqual(report_dict, expected_rd)
 

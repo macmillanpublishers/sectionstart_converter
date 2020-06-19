@@ -6,7 +6,7 @@ These tests require that the RSuite-Word-template git-repo be cloned locally, in
 
 * * * * *  UNIT TESTING  * * * * *
 You can run all unit tests from a Mac by double-clicking the file:
-  "sh_run_unit_tests.command"   (in the same dir as this README)
+  "sh_run_unit_tests.command"   (found in the same dir as this README)
 
 Otherwise you can run them manually via cmd-line as follows:
 - Run all unit tests: cd to parent dir of /test and run `python -m unittest discover -v`

@@ -55,11 +55,12 @@ def validateImageHolders(report_dict, xml_root, stylename, para, image_string):
     badchars_ext = re.findall(imagestring_regex, image_ext[1:])
     # report errors re: unwanted chars
     if badchars:
-        lxml_utils.logForReport(report_dict, xml_root, para, "image_holder_badchar", "{}_{}".format(stylename, image_string))
+        # note: not using 'format' string interpolation below b/c it threw error for unicode chars
+        #   using string concat here allows us to centralize utf-8 encoding at generate/build report
+        lxml_utils.logForReport(report_dict, xml_root, para, "image_holder_badchar", stylename + "_" + image_string)
     # report separate error for no file extension
     if not image_ext or image_ext not in valid_file_extensions:
-        lxml_utils.logForReport(report_dict, xml_root, para, "image_holder_ext_error", "{}_{}".format(stylename, image_string))
-
+        lxml_utils.logForReport(report_dict, xml_root, para, "image_holder_ext_error", stylename + "_" + image_string)
     return report_dict
 
 def logTextOfRunsWithStyle(report_dict, doc_root, stylename, report_category, scriptname=""):

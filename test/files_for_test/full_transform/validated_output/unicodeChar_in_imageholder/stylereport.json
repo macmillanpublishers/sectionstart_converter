@@ -1,0 +1,647 @@
+{
+    "Macmillan_charstyle_first_use": [
+        {
+            "description": "ital (i)", 
+            "para_id": "B3FA77EE", 
+            "para_index": 7, 
+            "para_string": "Bailey\u2019s Story", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "smallcaps (sc)", 
+            "para_id": "DCCF2198", 
+            "para_index": 32, 
+            "para_string": "lily to the rescue: lost little leopard", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-isbn (isbn)", 
+            "para_id": "A13BB87F", 
+            "para_index": 49, 
+            "para_string": "ISBN 978-1-250-76256-6 (trade paperback)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-cleanup-exclude (cex)", 
+            "para_id": "A042A67C", 
+            "para_index": 59, 
+            "para_string": "0 9 8 7 6 5 4 3 2 1", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)", 
+            "para_id": "EDDBA8E0", 
+            "para_index": 216, 
+            "para_string": "It seemed to me I was being asked to do", 
+            "parent_section_start_content": "Chapter 4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "Macmillan_style_first_use": [
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "759108AA", 
+            "para_index": 3, 
+            "para_string": "Lily to the Rescue", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "FBE58D73", 
+            "para_index": 6, 
+            "para_string": "Also by W. Bruce Cameron", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "B3FA77EE", 
+            "para_index": 7, 
+            "para_string": "Bailey\u2019s Story", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "746F4A16", 
+            "para_index": 15, 
+            "para_string": "[separator]", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "C1651B8A", 
+            "para_index": 22, 
+            "para_string": "Lily to the Rescue", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "73405767", 
+            "para_index": 24, 
+            "para_string": "W. Bruce Cameron", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author2 (Au2)", 
+            "para_id": "62E5BC2F", 
+            "para_index": 25, 
+            "para_string": "Illustrations by Jennifer L. Meyer", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Design-Note (Dn)", 
+            "para_id": "6AB0FB86", 
+            "para_index": 26, 
+            "para_string": "[Starscape logo]", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Imprint (Imp)", 
+            "para_id": "44CF0593", 
+            "para_index": 27, 
+            "para_string": "A Tom Doherty Associates Book", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Cities (Cit)", 
+            "para_id": "9675F527", 
+            "para_index": 28, 
+            "para_string": "New York", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "B83FBB00", 
+            "para_index": 30, 
+            "para_string": "This is a work of fiction. All of the characters,", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "7BFF392B", 
+            "para_index": 31, 
+            "para_string": "[separator]", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "80FBB72D", 
+            "para_index": 61, 
+            "para_string": "[dedication TK]", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "DED79546", 
+            "para_index": 66, 
+            "para_string": "1", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "4E8A8875", 
+            "para_index": 67, 
+            "para_string": "I was playing in the backyard with my girl, Maggie", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)", 
+            "para_id": "F7AB1DEB", 
+            "para_index": 130, 
+            "para_string": "[blank]", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "5028BDE6", 
+            "para_index": 580, 
+            "para_string": "More About Amur Leopards and Macaws", 
+            "parent_section_start_content": "Back Matter General", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "9932D4F5", 
+            "para_index": 581, 
+            "para_string": "[TK]", 
+            "parent_section_start_content": "Back Matter General", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "F34BA6E4", 
+            "para_index": 583, 
+            "para_string": "Read on for a sneak peek at Lily to the", 
+            "parent_section_start_content": "Excerpt Opener", 
+            "parent_section_start_type": "Section-Excerpt-OpenerSEO"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "32CA57C0", 
+            "para_index": 586, 
+            "para_string": "About the Author", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "977D36F6", 
+            "para_index": 587, 
+            "para_string": "W. Bruce Cameron is the #1 New York Times bestselling", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "55975294", 
+            "para_index": 589, 
+            "para_string": "[back ads TK]", 
+            "parent_section_start_content": "Back Ad", 
+            "parent_section_start_type": "Section-Back-AdSBA"
+        }
+    ], 
+    "author_paras": [
+        {
+            "description": "W. Bruce Cameron", 
+            "para_id": "73405767", 
+            "para_index": 24, 
+            "para_string": "W. Bruce Cameron", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "empty_section_start_para": [], 
+    "image_holder_badchar": [
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 9l", 
+            "para_id": "EDDBA8E0", 
+            "para_index": 216, 
+            "para_string": "It seemed to me I was being asked to do", 
+            "parent_section_start_content": "Chapter 4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 10]", 
+            "para_id": "17EF375E", 
+            "para_index": 259, 
+            "para_string": "A cat! The cat was crouched under a bush near", 
+            "parent_section_start_content": "Chapter 4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 11\u2014Lily playing with Jax, a large Rottweiler puppy]", 
+            "para_id": "C9A63941", 
+            "para_index": 281, 
+            "para_string": "He crashed into me, almost knocking me over. He was", 
+            "parent_section_start_content": "Chapter 5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 12 (SAME AS OLD ART 14)\u2014Lily visits a zoo for the first time]", 
+            "para_id": "AAB67E24", 
+            "para_index": 306, 
+            "para_string": "We passed through some gates and soon were in the", 
+            "parent_section_start_content": "Chapter 5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 18]", 
+            "para_id": "3830A2B1", 
+            "para_index": 391, 
+            "para_string": "My girl took me to a big bathtub. We stood", 
+            "parent_section_start_content": "Chapter 7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 19: Lily lying wearily in bed]", 
+            "para_id": "27C5BFA5", 
+            "para_index": 425, 
+            "para_string": "When I wearily climbed into bed with Maggie Rose that", 
+            "parent_section_start_content": "Chapter 8", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holder_ext_error": [
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 9l", 
+            "para_id": "EDDBA8E0", 
+            "para_index": 216, 
+            "para_string": "It seemed to me I was being asked to do", 
+            "parent_section_start_content": "Chapter 4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 10]", 
+            "para_id": "17EF375E", 
+            "para_index": 259, 
+            "para_string": "A cat! The cat was crouched under a bush near", 
+            "parent_section_start_content": "Chapter 4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 11\u2014Lily playing with Jax, a large Rottweiler puppy]", 
+            "para_id": "C9A63941", 
+            "para_index": 281, 
+            "para_string": "He crashed into me, almost knocking me over. He was", 
+            "parent_section_start_content": "Chapter 5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 12 (SAME AS OLD ART 14)\u2014Lily visits a zoo for the first time]", 
+            "para_id": "AAB67E24", 
+            "para_index": 306, 
+            "para_string": "We passed through some gates and soon were in the", 
+            "parent_section_start_content": "Chapter 5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 18]", 
+            "para_id": "3830A2B1", 
+            "para_index": 391, 
+            "para_string": "My girl took me to a big bathtub. We stood", 
+            "parent_section_start_content": "Chapter 7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "cs-image-placement (cimg)_[NEW ART 19: Lily lying wearily in bed]", 
+            "para_id": "27C5BFA5", 
+            "para_index": 425, 
+            "para_string": "When I wearily climbed into bed with Maggie Rose that", 
+            "parent_section_start_content": "Chapter 8", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holders": [
+        {
+            "description": "[NEW ART 9l", 
+            "para_id": "EDDBA8E0", 
+            "para_index": 216, 
+            "para_string": "It seemed to me I was being asked to do", 
+            "parent_section_start_content": "Chapter 4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "[NEW ART 10]", 
+            "para_id": "17EF375E", 
+            "para_index": 259, 
+            "para_string": "A cat! The cat was crouched under a bush near", 
+            "parent_section_start_content": "Chapter 4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "[NEW ART 11\u2014Lily playing with Jax, a large Rottweiler puppy]", 
+            "para_id": "C9A63941", 
+            "para_index": 281, 
+            "para_string": "He crashed into me, almost knocking me over. He was", 
+            "parent_section_start_content": "Chapter 5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "[NEW ART 12 (SAME AS OLD ART 14)\u2014Lily visits a zoo for the first time]", 
+            "para_id": "AAB67E24", 
+            "para_index": 306, 
+            "para_string": "We passed through some gates and soon were in the", 
+            "parent_section_start_content": "Chapter 5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "[NEW ART 18]", 
+            "para_id": "3830A2B1", 
+            "para_index": 391, 
+            "para_string": "My girl took me to a big bathtub. We stood", 
+            "parent_section_start_content": "Chapter 7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "[NEW ART 19: Lily lying wearily in bed]", 
+            "para_id": "27C5BFA5", 
+            "para_index": 425, 
+            "para_string": "When I wearily climbed into bed with Maggie Rose that", 
+            "parent_section_start_content": "Chapter 8", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holders__sort_by_index": [
+        {
+            "description": "[NEW ART 9l", 
+            "para_id": "EDDBA8E0", 
+            "para_index": 216, 
+            "para_string": "It seemed to me I was being asked to do", 
+            "parent_section_start_content": "Chapter 4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "[NEW ART 10]", 
+            "para_id": "17EF375E", 
+            "para_index": 259, 
+            "para_string": "A cat! The cat was crouched under a bush near", 
+            "parent_section_start_content": "Chapter 4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "[NEW ART 11\u2014Lily playing with Jax, a large Rottweiler puppy]", 
+            "para_id": "C9A63941", 
+            "para_index": 281, 
+            "para_string": "He crashed into me, almost knocking me over. He was", 
+            "parent_section_start_content": "Chapter 5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "[NEW ART 12 (SAME AS OLD ART 14)\u2014Lily visits a zoo for the first time]", 
+            "para_id": "AAB67E24", 
+            "para_index": 306, 
+            "para_string": "We passed through some gates and soon were in the", 
+            "parent_section_start_content": "Chapter 5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "[NEW ART 18]", 
+            "para_id": "3830A2B1", 
+            "para_index": 391, 
+            "para_string": "My girl took me to a big bathtub. We stood", 
+            "parent_section_start_content": "Chapter 7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "[NEW ART 19: Lily lying wearily in bed]", 
+            "para_id": "27C5BFA5", 
+            "para_index": 425, 
+            "para_string": "When I wearily climbed into bed with Maggie Rose that", 
+            "parent_section_start_content": "Chapter 8", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "isbn_spans": [
+        {
+            "description": "97", 
+            "para_id": "A13BB87F", 
+            "para_index": 49, 
+            "para_string": "ISBN 978-1-250-76256-6 (trade paperback)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }
+    ], 
+    "section_start_found": [
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "E9065C4C", 
+            "para_index": 0, 
+            "para_string": "Lily to the Rescue", 
+            "parent_section_start_content": "Lily to the Rescue", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "3BA0656A", 
+            "para_index": 1, 
+            "para_string": "Lost Little Leopard", 
+            "parent_section_start_content": "Lost Little Leopard", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "1ADD9CD5", 
+            "para_index": 2, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-Ad-CardSAC", 
+            "para_id": "4B0D7F57", 
+            "para_index": 5, 
+            "para_string": "Ad Card", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Section-TitlepageSTI", 
+            "para_id": "E65C1F73", 
+            "para_index": 21, 
+            "para_string": "Titlepage", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Section-CopyrightSCR", 
+            "para_id": "1ADE0A07", 
+            "para_index": 29, 
+            "para_string": "Copyright", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Section-DedicationSDE", 
+            "para_id": "16C630ED", 
+            "para_index": 60, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "FC39880C", 
+            "para_index": 62, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "E1A8A3C6", 
+            "para_index": 65, 
+            "para_string": "Chapter 1", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "19F3F92C", 
+            "para_index": 115, 
+            "para_string": "Chapter 2", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "99E970FA", 
+            "para_index": 157, 
+            "para_string": "Chapter 3", 
+            "parent_section_start_content": "Chapter 3", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "4B5A23ED", 
+            "para_index": 201, 
+            "para_string": "Chapter 4", 
+            "parent_section_start_content": "Chapter 4", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "FCF7C289", 
+            "para_index": 264, 
+            "para_string": "Chapter 5", 
+            "parent_section_start_content": "Chapter 5", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "85953845", 
+            "para_index": 311, 
+            "para_string": "Chapter 6", 
+            "parent_section_start_content": "Chapter 6", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "1CAC0B15", 
+            "para_index": 362, 
+            "para_string": "Chapter 7", 
+            "parent_section_start_content": "Chapter 7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6B589B39", 
+            "para_index": 405, 
+            "para_string": "Chapter 8", 
+            "parent_section_start_content": "Chapter 8", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "7FDB1FDF", 
+            "para_index": 455, 
+            "para_string": "Chapter 9", 
+            "parent_section_start_content": "Chapter 9", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "689506FC", 
+            "para_index": 502, 
+            "para_string": "Chapter 10", 
+            "parent_section_start_content": "Chapter 10", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "B44B8CC3", 
+            "para_index": 540, 
+            "para_string": "Chapter 11", 
+            "parent_section_start_content": "Chapter 11", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-Back-Matter-GeneralSBM", 
+            "para_id": "83F7128F", 
+            "para_index": 579, 
+            "para_string": "Back Matter General", 
+            "parent_section_start_content": "Back Matter General", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Section-Excerpt-OpenerSEO", 
+            "para_id": "F6992A41", 
+            "para_index": 582, 
+            "para_string": "Excerpt Opener", 
+            "parent_section_start_content": "Excerpt Opener", 
+            "parent_section_start_type": "Section-Excerpt-OpenerSEO"
+        }, 
+        {
+            "description": "Section-About-AuthorSAA", 
+            "para_id": "03581532", 
+            "para_index": 585, 
+            "para_string": "About the Author", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "Section-Back-AdSBA", 
+            "para_id": "768ACCE6", 
+            "para_index": 588, 
+            "para_string": "Back Ad", 
+            "parent_section_start_content": "Back Ad", 
+            "parent_section_start_type": "Section-Back-AdSBA"
+        }
+    ], 
+    "title_paras": [
+        {
+            "description": "Lily to the Rescue", 
+            "para_id": "C1651B8A", 
+            "para_index": 22, 
+            "para_string": "Lily to the Rescue", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Lost Little Leopard", 
+            "para_id": "AAA3F639", 
+            "para_index": 23, 
+            "para_string": "Lost Little Leopard", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ]
+}

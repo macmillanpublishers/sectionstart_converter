@@ -1107,7 +1107,7 @@
     ], 
     "deleted_objects-bookmarks": [
         {
-            "description": "deleted bookmark named 'test_bookmark", 
+            "description": "deleted bookmark named test_bookmark", 
             "para_id": "727BF40E", 
             "para_index": 26, 
             "para_string": "This is a work of fiction. All of the characters,", 
@@ -1115,7 +1115,7 @@
             "parent_section_start_type": "Section-CopyrightSCR"
         }, 
         {
-            "description": "deleted bookmark named 'test_bookmark_2", 
+            "description": "deleted bookmark named test_bookmark_2", 
             "para_id": "683EFC5F", 
             "para_index": 44, 
             "para_string": "For Lewis Carroll, who wrote the book Alice In Wonderland,", 
@@ -1123,7 +1123,7 @@
             "parent_section_start_type": "Section-CopyrightSCR"
         }, 
         {
-            "description": "deleted bookmark named '2.1", 
+            "description": "deleted bookmark named 2.1", 
             "para_id": "46BDADD3", 
             "para_index": 236, 
             "para_string": "Problem space #1: Falling Down a Hole", 
@@ -1131,7 +1131,7 @@
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
-            "description": "deleted bookmark named '_Ref461543543", 
+            "description": "deleted bookmark named _Ref461543543", 
             "para_id": "028EFE08", 
             "para_index": 376, 
             "para_string": "\"To go instantly to Geneva: come with me, Henry, to", 

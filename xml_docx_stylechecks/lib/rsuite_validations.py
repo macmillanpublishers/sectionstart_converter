@@ -111,7 +111,7 @@ def deleteBookmarks(report_dict, xml_root, bookmark_items):
             #   Note: we are silently deleting bookmarks of 'auto_bookmark' types, that were not inserted by users
             logger.debug("deleted bookmark named '%s'" % w_name)
             if para is not None and w_name not in bookmark_items["autobookmark_names"]:
-                lxml_utils.logForReport(report_dict,xml_root,para,"deleted_objects-bookmarks","deleted bookmark named '%s'" % w_name)
+                lxml_utils.logForReport(report_dict,xml_root,para,"deleted_objects-bookmarks","deleted bookmark named " + w_name)
     # delete any orphaned bookmark_ends silently. (these should not exist, but why not clean-up in case?)
     end_searchstring = ".//{}".format(bookmark_items["bookmarkend_tag"])
     for bookmark_end in xml_root.findall(end_searchstring, wordnamespaces):

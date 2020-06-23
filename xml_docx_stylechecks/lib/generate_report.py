@@ -77,7 +77,7 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                         else:
                             descriptionA, descriptionB = "", ""
                         # now we set err strings from report_recipe for toplist items
-                        new_errstring = recipe_item["errstring"].format(description=item['description'], para_string='"'+item['para_string'].encode('utf-8')+'"', \
+                        new_errstring = recipe_item["errstring"].format(description=item['description'].encode('utf-8'), para_string='"'+item['para_string'].encode('utf-8')+'"', \
                             parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap),  \
                             para_index=item['para_index'], count=len(report_dict[recipe_item["dict_category_name"]]), descriptionA=descriptionA.encode('utf-8'), descriptionB=descriptionB.encode('utf-8'), valid_file_extensions=cfg.imageholder_supported_ext)
                         # added 'summary' key so we could specify whether to summarize warnings or notes:

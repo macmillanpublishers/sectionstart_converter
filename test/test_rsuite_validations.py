@@ -228,7 +228,7 @@ class Tests(unittest.TestCase):
 
     def test_validateImageHolders_wrongext(self):
         fullstylename = 'Image-Placement (Img)'
-        bad_ext = '.png'
+        bad_ext = '.pkg'
         filebasename = "filename-_3"
         badfilename = '{}{}'.format(filebasename, bad_ext)
         # setup

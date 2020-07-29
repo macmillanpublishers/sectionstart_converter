@@ -4,17 +4,17 @@ Problems were found with the styles in your document.
 
 
 ------------------------------------ ERRORS ------------------------------------
-** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 9l' (located in Section-Chapter (SCP): "Chapter 4"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 9l' (located in Section-Chapter (SCP): "Chapter 4"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
-** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 10]' (located in Section-Chapter (SCP): "Chapter 4"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 10]' (located in Section-Chapter (SCP): "Chapter 4"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
-** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 11—Lily playing with Jax, a large Rottweiler puppy]' (located in Section-Chapter (SCP): "Chapter 5"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 11—Lily playing with Jax, a large Rottweiler puppy]' (located in Section-Chapter (SCP): "Chapter 5"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
-** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 12 (SAME AS OLD ART 14)—Lily visits a zoo for the first time]' (located in Section-Chapter (SCP): "Chapter 5"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 12 (SAME AS OLD ART 14)—Lily visits a zoo for the first time]' (located in Section-Chapter (SCP): "Chapter 5"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
-** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 18]' (located in Section-Chapter (SCP): "Chapter 7"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 18]' (located in Section-Chapter (SCP): "Chapter 7"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
-** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 19: Lily lying wearily in bed]' (located in Section-Chapter (SCP): "Chapter 8"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: '[NEW ART 19: Lily lying wearily in bed]' (located in Section-Chapter (SCP): "Chapter 8"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
 ** ERROR: Unsupported character(s) in 'cs-image-placement (cimg)'-styled text: '[NEW ART 9l' (located in Section-Chapter (SCP): "Chapter 4"). Image placement styles may contain only alphanumeric characters, underscores, or hyphens.
 

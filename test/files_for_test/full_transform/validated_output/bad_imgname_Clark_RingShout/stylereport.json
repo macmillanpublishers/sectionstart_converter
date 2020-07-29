@@ -604,14 +604,6 @@
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
-            "description": "Image-Placement (Img)_Strange_woods.png", 
-            "para_id": "27EDFE8F", 
-            "para_index": 894, 
-            "para_string": "Strange_woods.png", 
-            "parent_section_start_content": "7", 
-            "parent_section_start_type": "Section-ChapterSCP"
-        }, 
-        {
             "description": "Image-Placement (Img)_NightDoctor.jpg>", 
             "para_id": "4E67652A", 
             "para_index": 1168, 

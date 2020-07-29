@@ -4,15 +4,13 @@ Problems were found with the styles in your document.
 
 
 ------------------------------------ ERRORS ------------------------------------
-** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'Butcher[ Clyde] ' (located in Section-Chapter (SCP): "4"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'Butcher[ Clyde] ' (located in Section-Chapter (SCP): "4"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
-** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'Strange_woods.png' (located in Section-Chapter (SCP): "7"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'NightDoctor.jpg>' (located in Section-Chapter (SCP): "9"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
-** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'NightDoctor.jpg>' (located in Section-Chapter (SCP): "9"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'PDjeliClark' (located in Section-Acknowledgments (SAK): "About the Author"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
-** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'PDjeliClark' (located in Section-Acknowledgments (SAK): "About the Author"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
-
-** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: 'Mighs*ty.glif' (located in Section-Chapter (SCP): "Epilogue"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'cs-image-placement (cimg)'-styled text: 'Mighs*ty.glif' (located in Section-Chapter (SCP): "Epilogue"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
 ** ERROR: Unsupported character(s) in 'Image-Placement (Img)'-styled text: 'Butcher[ Clyde] ' (located in Section-Chapter (SCP): "4"). Image placement styles may contain only alphanumeric characters, underscores, or hyphens.
 

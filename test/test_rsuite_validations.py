@@ -203,6 +203,7 @@ class Tests(unittest.TestCase):
         #       - built-in (Word) styled paras, including 'Normal (Web)'
         #       - para with old Macmillan-style:
         #       - acceptable built-in styles (e.g. 'Footnote Text')
+        #       - styled, unstyled and 'Normal' styled table cells (which should be ignored)
         testdocx_root = os.path.join(testfiles_basepath, 'test_checkdocx', 'stylecount')
         unzipDOCX.unzipDOCX('{}{}'.format(testdocx_root,'.docx'), testdocx_root)
         # set paths & run function

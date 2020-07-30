@@ -80,6 +80,8 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                         new_errstring = recipe_item["errstring"].format(description=item['description'].encode('utf-8'), para_string='"'+item['para_string'].encode('utf-8')+'"', \
                             parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap),  \
                             para_index=item['para_index'], count=len(report_dict[recipe_item["dict_category_name"]]), descriptionA=descriptionA.encode('utf-8'), descriptionB=descriptionB.encode('utf-8'), valid_file_extensions=cfg.imageholder_supported_ext)
+                        if item['para_index'] == 'tablecell_para':# and not("summary" in recipe_item and recipe_item["summary"] == True):
+                            new_errstring += "  (< this item is from a table)"
                         # added 'summary' key so we could specify whether to summarize warnings or notes:
                         #   default is warnings are listed singly, notes are summarized
                         if "badnews_type" in recipe_item and recipe_item["badnews_type"] == 'warning':

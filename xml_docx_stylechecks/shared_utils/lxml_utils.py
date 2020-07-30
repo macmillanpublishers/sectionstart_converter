@@ -508,8 +508,18 @@ def getCalculatedParaInfo(report_dict_entry, root, section_names, para, category
         entry['para_index'] = getParaIndex(para)
         if entry['para_index'] == 'n-a':
             logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
-        # get section name, section start text etc
-        entry['parent_section_start_type'], entry['parent_section_start_content']  = getSectionName(para, section_names)
+
+        # check if we have a tablecell_paras, get section info accordingly
+        tablecell_tag = '{%s}tc' % wnamespace
+        if para is not None and para.getparent().tag == tablecell_tag:
+            entry['para_index'] = 'tablecell_para'
+            # get section name, start text based on para.parent.parent.parent: (table)
+            table = para.getparent().getparent().getparent()
+            entry['parent_section_start_type'], entry['parent_section_start_content'] = getSectionName(table, section_names)
+        else:
+            # get section name, section start text etc
+            entry['parent_section_start_type'], entry['parent_section_start_content'] = getSectionName(para, section_names)
+
         if entry['parent_section_start_type'] == 'n-a' or entry['parent_section_start_content'] == 'n-a':
             logger.warn("couldn't get section start info for %s para (value was set to n-a)" % category)
     # # # Get 1st 10 words of para text

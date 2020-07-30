@@ -1047,18 +1047,18 @@
         {
             "description": "BOX-B > Table-Head (Tbhd)", 
             "para_id": "5A94F86B", 
-            "para_index": 1, 
+            "para_index": "tablecell_para", 
             "para_string": "CEO\u2019s DIWS Score", 
-            "parent_section_start_content": "", 
-            "parent_section_start_type": "n-a"
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
             "description": "BOX-B > Table-Text (Tbtx)", 
             "para_id": "452875D1", 
-            "para_index": 1, 
+            "para_index": "tablecell_para", 
             "para_string": "4", 
-            "parent_section_start_content": "", 
-            "parent_section_start_type": "n-a"
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
         }
     ], 
     "author_paras": [
@@ -1159,10 +1159,10 @@
         {
             "description": "deleted comment_ranges of type w:commentRangeStart", 
             "para_id": "200AF7F1", 
-            "para_index": 1, 
+            "para_index": "tablecell_para", 
             "para_string": "Annual Profit (in million $)", 
-            "parent_section_start_content": "", 
-            "parent_section_start_type": "n-a"
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
             "description": "deleted comment_ranges of type w:commentRangeEnd", 
@@ -1183,10 +1183,10 @@
         {
             "description": "deleted comment_ranges of type w:commentRangeEnd", 
             "para_id": "200AF7F1", 
-            "para_index": 1, 
+            "para_index": "tablecell_para", 
             "para_string": "Annual Profit (in million $)", 
-            "parent_section_start_content": "", 
-            "parent_section_start_type": "n-a"
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
             "description": "deleted comment_ranges of type w:commentReference", 
@@ -1207,10 +1207,10 @@
         {
             "description": "deleted comment_ranges of type w:commentReference", 
             "para_id": "200AF7F1", 
-            "para_index": 1, 
+            "para_index": "tablecell_para", 
             "para_string": "Annual Profit (in million $)", 
-            "parent_section_start_content": "", 
-            "parent_section_start_type": "n-a"
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
         }
     ], 
     "deleted_objects-comments-commentsExtended_xml": [

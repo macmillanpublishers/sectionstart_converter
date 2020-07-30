@@ -589,5 +589,38 @@ class Tests(unittest.TestCase):
                 'parent_section_start_type': 'n-a'}]}
         self.assertEqual(report_dict, expected_rd)
 
+    def test_calcLocationInfoForLog_tablepara(self):
+        logging.basicConfig(level=logging.ERROR)
+        # ^ without this we get a notice about logger handlers being unavailable.
+        #   Can change loglevel to see mssges
+        sectionnames = ["Section-Test (TEST)"]
+        para_id = 'table_p_id1'
+        # create alt root mockup with endnote, child para
+        root, para = createXML_paraWithRun(sectionnames[0], '', "Section Heading", None, 'p_id1')
+        table = createMiscElement('table', cfg.wnamespace)
+        tr = createMiscElement('tr', cfg.wnamespace)
+        tc = createMiscElement('tc', cfg.wnamespace)
+        para = createPara(para_id, 'BodyTextTxt', 'I am a para in a table')
+        tc.append(para)
+        tr.append(tc)
+        table.append(tr)
+        root.append(table)
+
+        # create initial report_dict. Adding a paragraph ref, 'p_id3',which does not exist,
+        #   since some paras get deleted prior to this function
+        report_dict = {'test_category': \
+            [{'para_id': para_id, 'description': 'tablecellpara'}]}
+
+        # run function
+        report_dict = lxml_utils.calcLocationInfoForLog(report_dict, root, sectionnames)
+        #assertion
+        expected_rd =  {'test_category': [{'description': 'tablecellpara',
+                'para_id': para_id,
+                'para_index': 'tablecell_para',
+                'para_string': "I am a para in a table",
+                'parent_section_start_content': 'Section Heading',
+                'parent_section_start_type': 'Section-Test (TEST)'}]}
+        self.assertEqual(report_dict, expected_rd)
+
 if __name__ == '__main__':
     unittest.main()

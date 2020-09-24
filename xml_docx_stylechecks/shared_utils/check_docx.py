@@ -301,7 +301,8 @@ def stripDuplicateMacmillanStyles(doc_xml, styles_xml):
     if len(stylematches):
         for zerostyle in stylematches:
             # only capture macmillan styles
-            if "(" in zerostyle.find(".//w:name", wordnamespaces).get('{%s}val' % wnamespace):
+            zs_nameattirb = zerostyle.find(".//w:name", wordnamespaces) # defining this separate from the conditional, b/c table styles don't have w:name children
+            if zs_nameattirb is not None and "(" in zs_nameattirb.get('{%s}val' % wnamespace):
                 zerostylecheck = True
                 zerostylename = zerostyle.get('{%s}styleId' % wnamespace)
                 nozerostylename = zerostylename[:-1]

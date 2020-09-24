@@ -10,6 +10,10 @@ Problems were found with the styles in your document.
 
 ** ERROR: Non-Macmillan style 'About Author Text Head (atah)' in Section-Contents (STC): "Contents".
 
+** ERROR: Non-Macmillan style 'Section-Interlude (SIN)' in Section-Part (SPT): "Part I".
+
+** ERROR: Non-Macmillan style 'Section-Interlude (SIN)' in Section-Chapter (SCP): "Chapter 1".
+
 ** ERROR: No Container END para found for: 'BOX-A (BOX-A)', in Section-Chapter (SCP): "Chapter 3a".
 
 ** ERROR: No Container END para found for: 'BOX-B (BOX-B)', in Section-Chapter (SCP): "Chapter 3a".
@@ -40,7 +44,7 @@ Problems were found with the styles in your document.
 
 ** ERROR: Footnote paragraph styled as 'BM Head (bmh)' instead of 'Footnote Text' (Note beginning "Ooooh a vad ibf").
 
-** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'TestAI.ai' (located in Section-Chapter (SCP): "Chapter 2"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.psd', '.tif', '.tiff'])
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'TestAI.ai' (located in Section-Chapter (SCP): "Chapter 2"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
 
 If you have any questions about how to handle these errors,
@@ -110,9 +114,7 @@ Section-Contents (STC)........... "Contents"
 Section-Foreword (SFW)........... "Foreword"                                               
 Section-Introduction (SIC)....... "Introduction"                                           
 Section-Part (SPT)............... "Part I"                                                 
-Section-Interlude (SIN).......... "Interlude"                                              
 Section-Chapter (SCP)............ "Chapter 1"                                              
-Section-Interlude (SIN).......... "Interlude 2"                                            
 Section-Chapter (SCP)............ "Chapter 2"                                              
 Section-Part (SPT)............... "Part 2"                                                 
 Section-Chapter (SCP)............ "Chapter 3a"                                             
@@ -188,8 +190,6 @@ Separator (Sep).............................. "Separator"
 * Section-Part (SPT): "Part I"
 Number (Num)................................. "Part I"                                                    
 Title (Ttl).................................. "Some Random Excerpts"                                      
-
-* Section-Interlude (SIN): "Interlude"
 Verse1 (Vrs1)................................ "How doth the little crocodile"                             
 Separator (Sep).............................. "Separator"                                                 
 Source (Src)................................. "from “Alice’s adventures in Wonderland,” by Lewis Carroll"
@@ -211,9 +211,7 @@ Extract1 (Ext1).............................. "A Centered Extract"
 Headnote (Hdnt).............................. "A box introductory paragraph just for testing purposes."   
 A-Head (Ahead)............................... "Heading One"                                               
 Headline (Hdline)............................ "“BE STILL.”"                                           
-
-* Section-Interlude (SIN): "Interlude 2"
-Extract1 (Ext1).............................. "Down, down, down. Would the fall never come to an"         
+Source (Src)................................. "from Alice in Wonderland"                                  
 
 * Section-Chapter (SCP): "Chapter 2"
 LETTER-A > Address (Add)..................... "175 Fifth Ave."                                            

@@ -100,10 +100,13 @@ def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, 
     # move template to the tmpdir
     os_utils.copyFiletoFile(macmillan_template, os.path.join(tmpdir, os.path.basename(macmillan_template)))
 
+    # if we're on a direct run & inputfilename had unsupported chars, create a sanitized-fname workingfile in tmpdir
+    if cfg.runtype == 'direct' and cfg.inputfile != cfg.inputfilename:
+        os_utils.copyFiletoFile(cfg.inputfile, workingfile)
+
     ### unzip the manuscript to ziproot, template to template_ziproot
-    if cfg.runtype != 'direct':
-        os_utils.rm_existing_os_object(ziproot, 'ziproot')
-        os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
+    os_utils.rm_existing_os_object(ziproot, 'ziproot')
+    os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
     unzipDOCX.unzipDOCX(workingfile, ziproot)
     unzipDOCX.unzipDOCX(macmillan_template, template_ziproot)
 

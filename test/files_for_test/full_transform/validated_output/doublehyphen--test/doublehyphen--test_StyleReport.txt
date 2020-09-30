@@ -1,0 +1,107 @@
+OOPS!
+
+Problems were found with the styles in your document.
+
+
+------------------------------------ ERRORS ------------------------------------
+** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+
+** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+
+** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+
+** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+
+** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+
+** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+
+
+If you have any questions about how to handle these errors,
+please contact workflows@macmillan.com.
+
+
+------------------------------- PROCESSING NOTES -------------------------------
+** NOTE: 1 blank paragraph(s) deleted from the manuscript.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"Tender Is the Bite"
+
+** Author1 (Au1) **
+"Spencer Quinn"
+
+** cs-isbn (isbn) **
+"ISBN 978-1-250-77024-0 (hardcover)"
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+no illustrations detected.
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "Tender Is the Bite"                                     
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Ad-Card (SAC)............ "Ad Card"                                                
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Dedication (SDE)......... "Dedication"                                             
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Chapter (SCP)............ "Chapter One"                                            
+Section-Chapter (SCP)............ "Chapter Two"                                            
+Section-Chapter (SCP)............ "Chapter Three"                                          
+Section-Chapter (SCP)............ "Chapter Thirty"                                         
+Section-Acknowledgments (SAK).... "Acknowledgments"                                        
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "Tender Is the Bite"                                        
+
+* Section-Ad-Card (SAC): "Ad Card"
+Title (Ttl).................................. "Other Books in The"                                        
+A-Head (Ahead)............................... "Chet and Bernie Series"                                    
+Unnum-Level-1-List (Ul1)..................... "Dog on It"                                                 
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "Tender Is the Bite"                                        
+Author1 (Au1)................................ "Spencer Quinn"                                             
+Design-Note (Dn)............................. "[insert round Forge logo]"                                 
+Imprint (Imp)................................ "A Tom Doherty Associates Book"                             
+Cities (Cit)................................. "New York"                                                  
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "This is a work of fiction. All of the characters,"         
+Separator (Sep).............................. "[separator]"                                               
+
+* Section-Dedication (SDE): "Dedication"
+Body-Text (Tx)............................... "Dedication TK"                                             
+
+* Section-Chapter (SCP): "Chapter One"
+Title (Ttl).................................. "One"                                                       
+Body-Text (Tx)............................... "“I think we’re being followed,” Bernie said."        
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+
+* Section-Acknowledgments (SAK): "Acknowledgments"
+Title (Ttl).................................. "Acknowledgments"                                           
+Body-Text (Tx)............................... "TK"                                                        
+
+___________CHARACTER STYLES IN USE___________
+ital (i)
+smallcaps (sc)
+super (sup)
+cs-isbn (isbn)
+cs-cleanup-exclude (cex)
+
+

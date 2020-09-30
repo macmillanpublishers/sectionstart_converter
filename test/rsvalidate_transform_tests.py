@@ -48,15 +48,19 @@ def setupFileTest(file, tmpdir_base, transform_testfiles_dir):
     tmpfile = ''
     file = os.path.basename(file)
     fname_noext, ext = os.path.splitext(file)
+    sanitized_fname_noext = re.sub('[^\w-]','',fname_noext)
+    sanitized_fname = "{}{}".format(sanitized_fname_noext,ext)
     if ext == '.docx':
-        tmpdir = os.path.join(tmpdir_base, fname_noext)
+        tmpdir = os.path.join(tmpdir_base, sanitized_fname_noext)
+        tmpfile = os.path.join(tmpdir, sanitized_fname)
         if debug_diff_only != True:
             if os.path.exists(tmpdir):
                 shutil.rmtree(tmpdir)
             if not os.path.exists(tmpdir):
                 os.makedirs(tmpdir)
             shutil.copy(os.path.join(transform_testfiles_dir, file), tmpdir)
-        tmpfile = os.path.join(tmpdir, file)
+            if sanitized_fname_noext != fname_noext:
+                os.rename(os.path.join(tmpdir, file), tmpfile)
     return tmpfile
 
 def runTest(testfile):

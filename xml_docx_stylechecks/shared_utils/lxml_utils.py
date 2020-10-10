@@ -8,6 +8,7 @@ import re
 import json
 import logging
 from lxml import etree
+import xml.etree.ElementTree as ET
 # import time
 
 # ######### IMPORT LOCAL MODULES
@@ -69,11 +70,32 @@ def getParaTxt(para):
         paratext = "n-a"
     return paratext
 
+def addNamespace(xmlroot, nsprefix, nsuri):
+    # check if already present
+    if nsprefix not in xmlroot.nsmap:
+        ET.register_namespace(nsprefix, nsuri)
+        tree = ET.ElementTree()
+        tree.parse(xmlroot)
+        root = tree.getroot()
+        attrstring = "{%s}paraId" % nsuri
+        root.attrib[attrstring] = "3"
+
+    return xmlroot
+
+def checkNamespace(xmlroot, nsprefix):
+    ns_present = False
+    if nsprefix in xmlroot.nsmap and nsprefix in cfg.wordnamespaces: #and \
+        # xmlroot.nsmap['{}'.format(nsprefix)] == cfg.wordnamespaces['{}'.format(nsprefix)]:
+        ### ^ uncomment the above (and update related test) if we decide to restrict content updates
+        ###     based on ns values differing from our defined set
+        ns_present = True
+    return ns_present
+
 # return the w14:paraId attribute's value for a paragraph
 def getParaId(para, doc_root):
     # checking tag to make sure we've grabbed a paragraph element
     good_paratag = '{%s}p' % wnamespace
-    if para is not None and para.tag == good_paratag:
+    if para is not None and para.tag == good_paratag and checkNamespace(doc_root, 'w14') == True:
         attrib_id_key = '{%s}paraId' % w14namespace
         para_id = para.get(attrib_id_key)
         if para_id is None:
@@ -85,7 +107,10 @@ def getParaId(para, doc_root):
     else:
         if para.tag != good_paratag:
             logger.debug("tried to set p-iD for a non para element: {}".format(para.tag))
+        elif checkNamespace(doc_root, 'w14') == False:
+            logger.debug("tried to set p-iD for an xml doc without w14 namespace")
         para_id = 'n-a' # this could happen if we are trying to get id of a prev or next para that does not exist
+                        #   or for file without w14 namespace, like endnotes/footnotes
     return para_id
 
 def getParaStyle(para):      # move to lxml_utils?
@@ -383,7 +408,10 @@ def createPara(xml_root, pstylename='', runtxt='', rstylename='', para_id=''):
         new_para_id = para_id
     else:
         new_para_id = generate_para_id(xml_root)
-    new_para.attrib["{%s}paraId" % cfg.w14namespace] = new_para_id
+    if checkNamespace(xml_root, 'w14') == True:
+        new_para.attrib["{%s}paraId" % cfg.w14namespace] = new_para_id
+    else:
+        logger.debug("skipped setting p-iD, this xml does not have w14 namespace")
     # if parastyle specified, add it here
     if pstylename:
         # create new para properties element
@@ -406,7 +434,10 @@ def insertPara(sectionstylename, existing_para, doc_root, contents, insert_befor
     # create new para element
     new_para_id = generate_para_id(doc_root)
     new_para = etree.Element("{%s}p" % wnamespace)
-    new_para.attrib["{%s}paraId" % w14namespace] = new_para_id
+    if checkNamespace(xml_root, 'w14') == True:
+        new_para.attrib["{%s}paraId" % cfg.w14namespace] = new_para_id
+    else:
+        logger.debug("skipped setting p-iD, this xml does not have w14 namespace")
 
     # create new para properties element
     new_para_props = etree.Element("{%s}pPr" % wnamespace)

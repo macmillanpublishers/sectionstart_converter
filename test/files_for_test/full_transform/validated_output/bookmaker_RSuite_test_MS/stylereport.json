@@ -1216,43 +1216,79 @@
     "deleted_objects-comments-commentsExtended_xml": [
         {
             "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
-            "para_id": "n-a"
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
         }, 
         {
             "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
-            "para_id": "n-a"
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
         }, 
         {
             "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
-            "para_id": "n-a"
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
         }
     ], 
     "deleted_objects-comments-commentsIds_xml": [
         {
             "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
-            "para_id": "n-a"
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
         }, 
         {
             "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
-            "para_id": "n-a"
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
         }, 
         {
             "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
-            "para_id": "n-a"
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
         }
     ], 
     "deleted_objects-comments-comments_xml": [
         {
             "description": "deleted comments-comments_xml of type w:comment", 
-            "para_id": "n-a"
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
         }, 
         {
             "description": "deleted comments-comments_xml of type w:comment", 
-            "para_id": "n-a"
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
         }, 
         {
             "description": "deleted comments-comments_xml of type w:comment", 
-            "para_id": "n-a"
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
         }
     ], 
     "deleted_objects-shapes": [

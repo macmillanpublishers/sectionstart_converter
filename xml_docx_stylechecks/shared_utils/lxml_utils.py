@@ -526,7 +526,7 @@ def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
         # make sure we have contents in the dict
         if report_dict:
             for category, entries in report_dict.iteritems():
-                # exclude hard-coded 'marker' attributes for validator_main; also skipping deleted objects from commentxml files
+                # exclude hard-coded 'marker' attributes for validator_main
                 if category != 'validator_py_complete' and category != 'percent_styled':
                     for entry in entries:
                         for key in entry.keys():

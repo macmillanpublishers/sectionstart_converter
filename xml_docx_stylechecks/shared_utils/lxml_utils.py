@@ -527,7 +527,7 @@ def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
         if report_dict:
             for category, entries in report_dict.iteritems():
                 # exclude hard-coded 'marker' attributes for validator_main; also skipping deleted objects from commentxml files
-                if category != 'validator_py_complete' and category != 'percent_styled' and 'deleted_objects-comments-comments' not in category:
+                if category != 'validator_py_complete' and category != 'percent_styled':
                     for entry in entries:
                         for key in entry.keys():
                             if key == "para_id":

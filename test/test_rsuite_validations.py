@@ -25,6 +25,8 @@ import xml_docx_stylechecks.shared_utils.unzipDOCX as unzipDOCX
 
 # # # # # # Set testing env variable:
 os.environ["TEST_FLAG"] = 'true'
+### other defs
+notes_nsmap = {'w': cfg.wnamespace}
 
 # # # # # # LOCAL FUNCTIONS
 # return xml root node of xml file
@@ -63,8 +65,8 @@ def appendRuntoXMLpara(para, rstylename, runtxt):
     para.append(run)
     return para
 
-def createXMLroot():
-    root = etree.Element("{%s}document" % cfg.wnamespace, nsmap = cfg.wordnamespaces)
+def createXMLroot(ns_map=cfg.wordnamespaces):
+    root = etree.Element("{%s}document" % cfg.wnamespace, nsmap = ns_map)
     return root
 
 def createMiscElement(element_name, namespace, attribute_name='', attr_val='', attr_namespace=''):
@@ -358,6 +360,37 @@ class Tests(unittest.TestCase):
             {'para_id': bad_id, 'description': bad_pStyle}]}
         self.assertEqual(report_dict, expected_rd)
 
+    # a duplicate of above test, but with a more accurate nsmap (without w14 ns)
+    #   this returns para_id's of 'n-a', otherwise identical output
+    def test_checkEndnoteFootnoteStyles_noteNsmap(self):
+        note_sectionname = "Endnotes"
+        note_style = cfg.endnotestyle
+        unstyled_id = 'n-a'
+        bad_pStyle = "MainHead"
+        bad_id = 'n-a'
+        # build xml with 3 types of paras (good, unstyled, and wrong-styled)
+        root = createXMLroot(notes_nsmap)
+        endnote = createMiscElement('endnote', cfg.wnamespace, 'id', '7', cfg.wnamespace)
+        goodpara = createPara('p_id1', note_style, 'I am a styled para.')
+        unstyled_para = createPara(unstyled_id, '', 'Pstyle-less Para', 'demo_runstyle')
+        badstyled_para = createPara(bad_id, bad_pStyle, 'Bad-styled para')
+        # put items together:
+        root.append(endnote)
+        endnote.append(goodpara)
+        endnote.append(unstyled_para)
+        endnote.append(badstyled_para)
+        # add a separator type endnote with non-styled child para (should be ignored):
+        separator_endnote = createMiscElement('endnote', cfg.wnamespace, 'type', 'continuationSeparator', cfg.wnamespace)
+        separator_enpara = createPara('p_id4', '', 'I am separator placeholder para.')
+        root.append(separator_endnote)
+        separator_endnote.append(separator_enpara)
+        # run function
+        report_dict = rsuite_validations.checkEndnoteFootnoteStyles(root, {}, note_style, note_sectionname)
+        expected_rd = {'improperly_styled_{}'.format(note_sectionname): \
+            [{'para_id': unstyled_id, 'description': 'Normal'}, \
+            {'para_id': bad_id, 'description': bad_pStyle}]}
+        self.assertEqual(report_dict, expected_rd)
+
     def test_handleBlankParasInNotes_multiblanks(self):
         note_name = 'endnote'
         note_stylename = 'EndnoteTxt'
@@ -587,6 +620,45 @@ class Tests(unittest.TestCase):
                 'parent_section_start_content': '',
                 'parent_section_start_type': 'n-a'}]}
         self.assertEqual(report_dict, expected_rd)
+
+    def test_checkNamespace(self):
+        test_nsmap = {'w': cfg.wnamespace, 'tst': 'test_ns_value', 'w14': 'diff_ns_value'}
+        good_ns = 'w'       # defined in our own wordnamespaces, and in target xml_root
+        good_ns2 = 'w14'    # defined both places, but different ns values? Do we want this or want to prevent?
+        bad_ns = 'tst'     # defined in the target xml, but not in our code
+        bad_ns2 = 'bad'     # not defined either place
+
+        root = createXMLroot(test_nsmap)
+
+        # run tests
+        bool_good = lxml_utils.checkNamespace(root, good_ns)
+        bool_good2 = lxml_utils.checkNamespace(root, good_ns2)
+        bool_bad = lxml_utils.checkNamespace(root, bad_ns)
+        bool_bad2 = lxml_utils.checkNamespace(root, bad_ns2)
+
+        #assertions
+        self.assertEqual(bool_good, True)
+        self.assertEqual(bool_good2, True)
+        self.assertEqual(bool_bad, False)
+        self.assertEqual(bool_bad2, False)
+
+    def test_addNamespace(self):
+        test_nsmap = {'w': cfg.wnamespace, 'tst': 'test_ns_value'}
+        # new_nsprefix = {'w14': cfg.w14namespace}
+        new_nsprefix = 'w14'
+        new_nsuri = cfg.w14namespace
+
+        root = createXMLroot(test_nsmap)
+        print "BEFOTE", root
+
+        # run tests
+        root = lxml_utils.addNamespace(root, new_nsprefix, new_nsuri)
+        bool_result = lxml_utils.checkNamespace(root, new_nsprefix)
+        print "NOW", root
+
+        #assertions
+        self.assertEqual(bool_result, True)
+
 
 if __name__ == '__main__':
     unittest.main()

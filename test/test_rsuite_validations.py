@@ -114,9 +114,9 @@ def createPara(para_id, pstylename='', runtxt='', rstylename=''):
 
 # another way to spin up basic xml tree quickly/reproducably without going to file
 #   to add more paras run again with last two params specified
-def createXML_paraWithRun(pstylename, rstylename, runtxt, root=None, para_id='test'):
+def createXML_paraWithRun(pstylename, rstylename, runtxt, root=None, para_id='test', ns_map=cfg.wordnamespaces):
     if root is None:
-        root = createXMLroot()
+        root = createXMLroot(ns_map)
         body = createMiscElement('body', cfg.wnamespace)
         root.append(body)
     else:
@@ -361,13 +361,12 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict, expected_rd)
 
     # a duplicate of above test, but with a more accurate nsmap (without w14 ns)
-    #   this returns para_id's of 'n-a', otherwise identical output
     def test_checkEndnoteFootnoteStyles_noteNsmap(self):
         note_sectionname = "Endnotes"
         note_style = cfg.endnotestyle
-        unstyled_id = 'n-a'
+        unstyled_id = 'p_id2b'
         bad_pStyle = "MainHead"
-        bad_id = 'n-a'
+        bad_id = 'p_id3b'
         # build xml with 3 types of paras (good, unstyled, and wrong-styled)
         root = createXMLroot(notes_nsmap)
         endnote = createMiscElement('endnote', cfg.wnamespace, 'id', '7', cfg.wnamespace)
@@ -624,40 +623,60 @@ class Tests(unittest.TestCase):
     def test_checkNamespace(self):
         test_nsmap = {'w': cfg.wnamespace, 'tst': 'test_ns_value', 'w14': 'diff_ns_value'}
         good_ns = 'w'       # defined in our own wordnamespaces, and in target xml_root
-        good_ns2 = 'w14'    # defined both places, but different ns values? Do we want this or want to prevent?
-        bad_ns = 'tst'     # defined in the target xml, but not in our code
-        bad_ns2 = 'bad'     # not defined either place
-
+        bad_ns = 'bad'     # not defined either place
+        # good_ns2 = 'w14'    # defined both places, but different ns values? Do we want this or want to prevent?
         root = createXMLroot(test_nsmap)
 
         # run tests
         bool_good = lxml_utils.checkNamespace(root, good_ns)
-        bool_good2 = lxml_utils.checkNamespace(root, good_ns2)
         bool_bad = lxml_utils.checkNamespace(root, bad_ns)
-        bool_bad2 = lxml_utils.checkNamespace(root, bad_ns2)
+        # bool_good2 = lxml_utils.checkNamespace(root, good_ns2)
 
         #assertions
         self.assertEqual(bool_good, True)
-        self.assertEqual(bool_good2, True)
         self.assertEqual(bool_bad, False)
-        self.assertEqual(bool_bad2, False)
+        # self.assertEqual(bool_good2, True)
 
     def test_addNamespace(self):
-        test_nsmap = {'w': cfg.wnamespace, 'tst': 'test_ns_value'}
-        # new_nsprefix = {'w14': cfg.w14namespace}
+        # setup intitial nsmap, ns we are adding, and expected-final nsmap
+        test_nsmap = {'w': cfg.wnamespace, 'tst': 'test_ns_value'}#, 'w14': 'old'}
+        final_nsmap = test_nsmap.copy()
+        new_nsprefix = 'w14'
+        new_nsuri = cfg.w14namespace
+        new_nsmap = {new_nsprefix: new_nsuri}
+        final_nsmap[new_nsprefix] = new_nsuri
+
+        # create dummy root
+        root = createXMLroot(test_nsmap)
+        # run our transform
+        lxml_utils.addNamespace(root, new_nsprefix, new_nsuri)
+        #assertions
+        self.assertEqual(root.nsmap, final_nsmap)
+
+    def test_verifyOrAddNamespace(self):
+        # setup intitial nsmap, ns we are adding, and expected-final nsmap
+        test_nsmap_good = {'w': cfg.wnamespace, 'tst': 'test_ns_value', 'w14': cfg.w14namespace}
+        test_nsmap_bad = {'w': cfg.wnamespace, 'tst': 'test_ns_value'}
         new_nsprefix = 'w14'
         new_nsuri = cfg.w14namespace
 
-        root = createXMLroot(test_nsmap)
-        print "BEFOTE", root
+        # create dummy roots
+        root_good, para = createXML_paraWithRun('BodyTextTxt', '', "I'm a normal para", None, 'p_id2', test_nsmap_good)
+        root_bad, para2 = createXML_paraWithRun('BodyTextTxt', '', "I'm a normal para", None, 'p_id2', test_nsmap_bad)
+        root_good_before = copy.deepcopy(root_good)
+        root_bad_before = copy.deepcopy(root_bad)
 
-        # run tests
-        root = lxml_utils.addNamespace(root, new_nsprefix, new_nsuri)
-        bool_result = lxml_utils.checkNamespace(root, new_nsprefix)
-        print "NOW", root
+        # run our transform
+        lxml_utils.verifyOrAddNamespace(root_bad, new_nsprefix, new_nsuri)
+        lxml_utils.verifyOrAddNamespace(root_good, new_nsprefix, new_nsuri)
 
         #assertions
-        self.assertEqual(bool_result, True)
+        self.assertEqual(root_good.nsmap, root_good_before.nsmap)
+        self.assertEqual(etree.tostring(root_good), etree.tostring(root_good_before))
+        self.assertEqual(root_good.nsmap, root_bad.nsmap)
+        self.assertEqual(etree.tostring(root_good), etree.tostring(root_bad))
+        self.assertNotEqual(root_bad_before.nsmap, root_bad.nsmap)
+        self.assertNotEqual(etree.tostring(root_bad_before), etree.tostring(root_bad))
 
 
 if __name__ == '__main__':

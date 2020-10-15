@@ -518,7 +518,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     	},
     	"97_deleted_comment_summary": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
-    		"dict_category_name": "deleted_objects-comments-comment_xml",
+    		"dict_category_name": "deleted_objects-comments-comments_xml",
     		"line_template": "",
     		"badnews": 'any',
             "badnews_type": 'note',

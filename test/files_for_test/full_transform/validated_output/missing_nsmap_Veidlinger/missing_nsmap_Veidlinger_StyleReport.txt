@@ -1,0 +1,174 @@
+CONGRATULATIONS! YOU PASSED!
+
+But you're not done yet. Please check the info listed below.
+
+
+----------------------------------- WARNINGS -----------------------------------
+** WARNING: 1 endnote(s) without content found. Placeholder text: "[no text]" has been inserted.
+
+
+------------------------------- PROCESSING NOTES -------------------------------
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'annotation reference'.
+
+** NOTE: 20 blank paragraph(s) deleted from the manuscript.
+
+** NOTE: 55 bookmark(s) deleted from the manuscript.
+
+** NOTE: 58 comment(s) deleted from the manuscript.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"In the Midst of Civilized Europe"
+
+** Author1 (Au1) **
+"Jeffrey Veidlinger"
+
+** cs-isbn (isbn) **
+"ISBN: 978-1-250-11625-3"
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+no illustrations detected.
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "In the Midst of Civilized Europe"                       
+Section-Ad-Card (SAC)............ "Ad Card"                                                
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Epigraph (SEP)........... "Epigraph"                                               
+Section-Contents (STC)........... "Contents"                                               
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Introduction (SIC)....... "Introduction: “Will a Slaughter of Jews Be Next European Horror?”"
+Section-Front-Matter-General (SFM) "Front Matter General"                                   
+Section-Part (SPT)............... "Part I: War and Revolution"                             
+Section-Chapter (SCP)............ "Chapter 1: The Last Years of the Russian Empire"        
+Section-Chapter (SCP)............ "Chapter 2: The Revolutions of 1917"                     
+Section-Chapter (SCP)............ "Chapter 3: The Central Rada of Ukraine"                 
+Section-Chapter (SCP)............ "Chapter 4: The Hetmanate and the Ukrainian People’s Republic"
+Section-Part (SPT)............... "Part II: The Ukrainian People’s Republic"             
+Section-Chapter (SCP)............ "Chapter 5: The Ovruch Pogrom"                           
+Section-Chapter (SCP)............ "Chapter 6: The Zhytomyr Pogrom"                         
+Section-Chapter (SCP)............ "Chapter 7: The Proskuriv Pogrom"                        
+Section-Chapter (SCP)............ "Chapter 8: The Second Zhytomyr Pogrom"                  
+Section-Chapter (SCP)............ "Chapter 9: The Entente"                                 
+Section-Part (SPT)............... "Part III: Power Vacuum"                                 
+Section-Chapter (SCP)............ "Chapter 10: Warlords"                                   
+Section-Chapter (SCP)............ "Chapter 11: Months and Days"                            
+Section-Chapter (SCP)............ "Chapter 12: Poland and Ukraine on the World Stage"      
+Section-Part (SPT)............... "Part IV: The Triumph of Bolshevism"                     
+Section-Chapter (SCP)............ "Chapter 13: The Volunteer Army"                         
+Section-Chapter (SCP)............ "Chapter 14: The Tetiiv Pogrom"                          
+Section-Chapter (SCP)............ "Chapter 15: The Polish-Soviet War"                      
+Section-Part (SPT)............... "Part V: Aftermath"                                      
+Section-Chapter (SCP)............ "Chapter 16: Refugees"                                   
+Section-Chapter (SCP)............ "Chapter 17: The Schwarzbard Trial"                      
+Section-Chapter (SCP)............ "Chapter 18: The Interwar in Ukraine"                    
+Section-Chapter (SCP)............ "Chapter 19: The Onset of the Holocaust"                 
+Section-Acknowledgments (SAK).... "Acknowledgments"                                        
+Section-About-Author (SAA)....... "About the Author"                                       
+Section-Index (SIN).............. "Index"                                                  
+Section-Notes (SNT).............. "Notes"                                                  
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Ad-Card (SAC): "Ad Card"
+Title (Ttl).................................. "Also by Jeffrey Veidlinger"                                
+Unnum-Level-1-List (Ul1)..................... "The Moscow State Yiddish Theater: Jewish Culture on the Soviet"
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "In the Midst of Civilized Europe"                          
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "In the Midst of Civilized Europe"                          
+Subtitle (Sttl).............................. "The Pogroms of 1918–1921 and the Onset of the Holocaust" 
+Author1 (Au1)................................ "Jeffrey Veidlinger"                                        
+Imprint (Imp)................................ "Metropolitan Books"                                        
+Publisher (Pub).............................. "Henry Holt and Company"                                    
+Cities (Cit)................................. "New York"                                                  
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "[Metropolitan logo]"                                       
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Epigraph (SEP): "Epigraph"
+Epigraph-Non-Verse (Epi)..................... "“In the very midst of civilized Europe, at the dawn"     
+Epigraph-Source (Episrc)..................... "Anatole France, 1919"                                      
+
+* Section-Contents (STC): "Contents"
+Title (Ttl).................................. "Contents"                                                  
+TOC-Frontmatter (Tocfm)...................... "Introduction: “Will a Slaughter of Jews Be Next European Horror?”"
+TOC-Part (Tocpt)............................. "Part I: War and Revolution, March 1881–December 1918"    
+TOC-Chapter (Tocch).......................... "1. The Last Years of the Russian Empire"                   
+TOC-Backmatter (Tocbm)....................... "Notes"                                                     
+
+* Section-Introduction (SIC): "Introduction: “Will a Slaughter of Jews Be Next European Horror?”"
+Title (Ttl).................................. "Introduction: “Will a Slaughter of Jews Be Next European Horror?”"
+Body-Text (Tx)............................... "In the years after the Holocaust, survivors around the globe"
+Design-Note (Dn)............................. "Image 1–1 (Frontispiece to Khurbn Proskurov)"            
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+
+* Section-Front-Matter-General (SFM): "Front Matter General"
+Title (Ttl).................................. "A Note on Sources, Numbers, Dates, and Place Names"        
+Body-Text (Tx)............................... "We know about the pogroms thanks to the heroic efforts"    
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+Design-Note (Dn)............................. "Images 1–4 (A form signed by S. Roysh)"                  
+
+* Section-Part (SPT): "Part I: War and Revolution"
+Number (Num)................................. "Part I"                                                    
+Title (Ttl).................................. "War and Revolution"                                        
+Dateline (Date).............................. "March 1881–December 1918"                                
+
+* Section-Chapter (SCP): "Chapter 1: The Last Years of the Russian Empire"
+Number (Num)................................. "1"                                                         
+Title (Ttl).................................. "The Last Years of the Russian Empire"                      
+Body-Text (Tx)............................... "The word pogrom, derived from the Russian gromit’, to smash"
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+Design-Note (Dn)............................. "Map 2 (Ukraine, 1917)"                                     
+
+* Section-Chapter (SCP): "Chapter 4: The Hetmanate and the Ukrainian People’s Republic"
+Extract1 (Ext1).............................. "The first act of the Polish troops was to disarm"          
+
+* Section-Acknowledgments (SAK): "Acknowledgments"
+Title (Ttl).................................. "Acknowledgments"                                           
+Body-Text (Tx)............................... "The idea for this book began when I was a"                 
+
+* Section-About-Author (SAA): "About the Author"
+Title (Ttl).................................. "About the Author"                                          
+Body-Text (Tx)............................... "Jeffrey Veidlinger is a professor of history and Judaic studies"
+
+* Section-Index (SIN): "Index"
+Title (Ttl).................................. "Index"                                                     
+Body-Text (Tx)............................... "[TK, allow 16 pages]"                                      
+
+* Section-Notes (SNT): "Notes"
+Title (Ttl).................................. "Notes"                                                     
+A-Head (Ahead)............................... "Abbreviations"                                             
+Body-Text (Tx)............................... "AHEYM Archives of Historical and Ethnographic Yiddish Memories"
+
+___________CHARACTER STYLES IN USE___________
+ital (i)
+super (sup)
+cs-isbn (isbn)
+cs-cleanup-exclude (cex)
+symbols-ital (symi)
+endnote reference
+symbols (sym)
+bold (b)
+smallcaps (sc)
+endnote reference
+underline (u)
+
+

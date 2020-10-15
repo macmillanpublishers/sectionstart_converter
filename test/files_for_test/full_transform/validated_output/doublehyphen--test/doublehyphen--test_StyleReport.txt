@@ -4,17 +4,17 @@ Problems were found with the styles in your document.
 
 
 ------------------------------------ ERRORS ------------------------------------
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
 
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
 
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
 
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
 
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
 
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
 
 
 If you have any questions about how to handle these errors,

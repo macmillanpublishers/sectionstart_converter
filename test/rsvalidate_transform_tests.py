@@ -38,7 +38,11 @@ nonrequired_diff_files = [
     "{fname_noext}_unzipped/word/endnotes.xml",
     "{fname_noext}_unzipped/word/comments.xml",
     "{fname_noext}_unzipped/word/commentsExtended.xml",
-    "{fname_noext}_unzipped/word/commentsIds.xml"
+    "{fname_noext}_unzipped/word/commentsIds.xml",
+    "alerts.json",
+    "WARNING.txt",
+    "ERROR.txt",
+    "NOTICE.txt"
     ]
 diff_file_list = required_diff_files + nonrequired_diff_files
 

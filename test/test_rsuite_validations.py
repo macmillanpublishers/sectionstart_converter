@@ -25,6 +25,8 @@ import xml_docx_stylechecks.shared_utils.unzipDOCX as unzipDOCX
 
 # # # # # # Set testing env variable:
 os.environ["TEST_FLAG"] = 'true'
+### other defs
+notes_nsmap = {'w': cfg.wnamespace}
 
 # # # # # # LOCAL FUNCTIONS
 # return xml root node of xml file
@@ -63,8 +65,8 @@ def appendRuntoXMLpara(para, rstylename, runtxt):
     para.append(run)
     return para
 
-def createXMLroot():
-    root = etree.Element("{%s}document" % cfg.wnamespace, nsmap = cfg.wordnamespaces)
+def createXMLroot(ns_map=cfg.wordnamespaces):
+    root = etree.Element("{%s}document" % cfg.wnamespace, nsmap = ns_map)
     return root
 
 def createMiscElement(element_name, namespace, attribute_name='', attr_val='', attr_namespace=''):
@@ -112,9 +114,9 @@ def createPara(para_id, pstylename='', runtxt='', rstylename=''):
 
 # another way to spin up basic xml tree quickly/reproducably without going to file
 #   to add more paras run again with last two params specified
-def createXML_paraWithRun(pstylename, rstylename, runtxt, root=None, para_id='test'):
+def createXML_paraWithRun(pstylename, rstylename, runtxt, root=None, para_id='test', ns_map=cfg.wordnamespaces):
     if root is None:
-        root = createXMLroot()
+        root = createXMLroot(ns_map)
         body = createMiscElement('body', cfg.wnamespace)
         root.append(body)
     else:
@@ -337,6 +339,36 @@ class Tests(unittest.TestCase):
         bad_id = 'p_id3'
         # build xml with 3 types of paras (good, unstyled, and wrong-styled)
         root = createXMLroot()
+        endnote = createMiscElement('endnote', cfg.wnamespace, 'id', '7', cfg.wnamespace)
+        goodpara = createPara('p_id1', note_style, 'I am a styled para.')
+        unstyled_para = createPara(unstyled_id, '', 'Pstyle-less Para', 'demo_runstyle')
+        badstyled_para = createPara(bad_id, bad_pStyle, 'Bad-styled para')
+        # put items together:
+        root.append(endnote)
+        endnote.append(goodpara)
+        endnote.append(unstyled_para)
+        endnote.append(badstyled_para)
+        # add a separator type endnote with non-styled child para (should be ignored):
+        separator_endnote = createMiscElement('endnote', cfg.wnamespace, 'type', 'continuationSeparator', cfg.wnamespace)
+        separator_enpara = createPara('p_id4', '', 'I am separator placeholder para.')
+        root.append(separator_endnote)
+        separator_endnote.append(separator_enpara)
+        # run function
+        report_dict = rsuite_validations.checkEndnoteFootnoteStyles(root, {}, note_style, note_sectionname)
+        expected_rd = {'improperly_styled_{}'.format(note_sectionname): \
+            [{'para_id': unstyled_id, 'description': 'Normal'}, \
+            {'para_id': bad_id, 'description': bad_pStyle}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    # a duplicate of above test, but with a more accurate nsmap (without w14 ns)
+    def test_checkEndnoteFootnoteStyles_noteNsmap(self):
+        note_sectionname = "Endnotes"
+        note_style = cfg.endnotestyle
+        unstyled_id = 'p_id2b'
+        bad_pStyle = "MainHead"
+        bad_id = 'p_id3b'
+        # build xml with 3 types of paras (good, unstyled, and wrong-styled)
+        root = createXMLroot(notes_nsmap)
         endnote = createMiscElement('endnote', cfg.wnamespace, 'id', '7', cfg.wnamespace)
         goodpara = createPara('p_id1', note_style, 'I am a styled para.')
         unstyled_para = createPara(unstyled_id, '', 'Pstyle-less Para', 'demo_runstyle')
@@ -587,6 +619,65 @@ class Tests(unittest.TestCase):
                 'parent_section_start_content': '',
                 'parent_section_start_type': 'n-a'}]}
         self.assertEqual(report_dict, expected_rd)
+
+    def test_checkNamespace(self):
+        test_nsmap = {'w': cfg.wnamespace, 'tst': 'test_ns_value', 'w14': 'diff_ns_value'}
+        good_ns = 'w'       # defined in our own wordnamespaces, and in target xml_root
+        bad_ns = 'bad'     # not defined either place
+        # good_ns2 = 'w14'    # defined both places, but different ns values? Do we want this or want to prevent?
+        root = createXMLroot(test_nsmap)
+
+        # run tests
+        bool_good = lxml_utils.checkNamespace(root, good_ns)
+        bool_bad = lxml_utils.checkNamespace(root, bad_ns)
+        # bool_good2 = lxml_utils.checkNamespace(root, good_ns2)
+
+        #assertions
+        self.assertEqual(bool_good, True)
+        self.assertEqual(bool_bad, False)
+        # self.assertEqual(bool_good2, True)
+
+    def test_addNamespace(self):
+        # setup intitial nsmap, ns we are adding, and expected-final nsmap
+        test_nsmap = {'w': cfg.wnamespace, 'tst': 'test_ns_value'}#, 'w14': 'old'}
+        final_nsmap = test_nsmap.copy()
+        new_nsprefix = 'w14'
+        new_nsuri = cfg.w14namespace
+        new_nsmap = {new_nsprefix: new_nsuri}
+        final_nsmap[new_nsprefix] = new_nsuri
+
+        # create dummy root
+        root = createXMLroot(test_nsmap)
+        # run our transform
+        lxml_utils.addNamespace(root, new_nsprefix, new_nsuri)
+        #assertions
+        self.assertEqual(root.nsmap, final_nsmap)
+
+    def test_verifyOrAddNamespace(self):
+        # setup intitial nsmap, ns we are adding, and expected-final nsmap
+        test_nsmap_good = {'w': cfg.wnamespace, 'tst': 'test_ns_value', 'w14': cfg.w14namespace}
+        test_nsmap_bad = {'w': cfg.wnamespace, 'tst': 'test_ns_value'}
+        new_nsprefix = 'w14'
+        new_nsuri = cfg.w14namespace
+
+        # create dummy roots
+        root_good, para = createXML_paraWithRun('BodyTextTxt', '', "I'm a normal para", None, 'p_id2', test_nsmap_good)
+        root_bad, para2 = createXML_paraWithRun('BodyTextTxt', '', "I'm a normal para", None, 'p_id2', test_nsmap_bad)
+        root_good_before = copy.deepcopy(root_good)
+        root_bad_before = copy.deepcopy(root_bad)
+
+        # run our transform
+        lxml_utils.verifyOrAddNamespace(root_bad, new_nsprefix, new_nsuri)
+        lxml_utils.verifyOrAddNamespace(root_good, new_nsprefix, new_nsuri)
+
+        #assertions
+        self.assertEqual(root_good.nsmap, root_good_before.nsmap)
+        self.assertEqual(etree.tostring(root_good), etree.tostring(root_good_before))
+        self.assertEqual(root_good.nsmap, root_bad.nsmap)
+        self.assertEqual(etree.tostring(root_good), etree.tostring(root_bad))
+        self.assertNotEqual(root_bad_before.nsmap, root_bad.nsmap)
+        self.assertNotEqual(etree.tostring(root_bad_before), etree.tostring(root_bad))
+
 
 if __name__ == '__main__':
     unittest.main()

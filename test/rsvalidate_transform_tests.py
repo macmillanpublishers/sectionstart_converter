@@ -33,12 +33,19 @@ required_diff_files = [
     "stylereport.json",
     "{fname_noext}_unzipped/word/document.xml",
     ]
+# styles & numbering are only here for duplicate style fix
 nonrequired_diff_files = [
     "{fname_noext}_unzipped/word/footnotes.xml",
     "{fname_noext}_unzipped/word/endnotes.xml",
     "{fname_noext}_unzipped/word/comments.xml",
     "{fname_noext}_unzipped/word/commentsExtended.xml",
-    "{fname_noext}_unzipped/word/commentsIds.xml"
+    "{fname_noext}_unzipped/word/commentsIds.xml",
+    "{fname_noext}_unzipped/word/styles.xml",
+    "{fname_noext}_unzipped/word/numbering.xml",
+    "alerts.json",
+    "WARNING.txt",
+    "ERROR.txt",
+    "NOTICE.txt"
     ]
 diff_file_list = required_diff_files + nonrequired_diff_files
 

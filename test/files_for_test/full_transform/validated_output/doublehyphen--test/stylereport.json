@@ -1,0 +1,371 @@
+{
+    "Macmillan_charstyle_first_use": [
+        {
+            "description": "ital (i)", 
+            "para_id": "FE371FE7", 
+            "para_index": 6, 
+            "para_string": "Dog on It", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "smallcaps (sc)", 
+            "para_id": "B98089B9", 
+            "para_index": 25, 
+            "para_string": "tender is the bite", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "super (sup)", 
+            "para_id": "D7E83FD2", 
+            "para_index": 38, 
+            "para_string": "Forge\u00ae is a registered trademark of Macmillan Publishing Group, LLC.", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-isbn (isbn)", 
+            "para_id": "AF03E8F6", 
+            "para_index": 40, 
+            "para_string": "ISBN 978-1-250-77024-0 (hardcover)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-cleanup-exclude (cex)", 
+            "para_id": "E3CDED10", 
+            "para_index": 51, 
+            "para_string": "0 9 8 7 6 5 4 3 2 1", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }
+    ], 
+    "Macmillan_style_first_use": [
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "D11B9387", 
+            "para_index": 2, 
+            "para_string": "Tender Is the Bite", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "3F418CF9", 
+            "para_index": 4, 
+            "para_string": "Other Books in The", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "A-Head (Ahead)", 
+            "para_id": "0C55AE4B", 
+            "para_index": 5, 
+            "para_string": "Chet and Bernie Series", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "FE371FE7", 
+            "para_index": 6, 
+            "para_string": "Dog on It", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "134EB143", 
+            "para_index": 17, 
+            "para_string": "Tender Is the Bite", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "EBBFAD71", 
+            "para_index": 18, 
+            "para_string": "Spencer Quinn", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Design-Note (Dn)", 
+            "para_id": "B14E2003", 
+            "para_index": 19, 
+            "para_string": "[insert round Forge logo]", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Imprint (Imp)", 
+            "para_id": "D0D13FB0", 
+            "para_index": 20, 
+            "para_string": "A Tom Doherty Associates Book", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Cities (Cit)", 
+            "para_id": "F85BF3FD", 
+            "para_index": 21, 
+            "para_string": "New York", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "2B5480CA", 
+            "para_index": 23, 
+            "para_string": "This is a work of fiction. All of the characters,", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "32EB49DE", 
+            "para_index": 24, 
+            "para_string": "[separator]", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "04E3604B", 
+            "para_index": 53, 
+            "para_string": "Dedication TK", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "65CA3EA1", 
+            "para_index": 57, 
+            "para_string": "One", 
+            "parent_section_start_content": "Chapter One", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "527CF0BC", 
+            "para_index": 58, 
+            "para_string": "\u201cI think we\u2019re being followed,\u201d Bernie said.", 
+            "parent_section_start_content": "Chapter One", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)", 
+            "para_id": "2C57BA49", 
+            "para_index": 127, 
+            "para_string": "[blank]", 
+            "parent_section_start_content": "Chapter One", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "892C89C4", 
+            "para_index": 501, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "A5E27BD1", 
+            "para_index": 502, 
+            "para_string": "TK", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }
+    ], 
+    "author_paras": [
+        {
+            "description": "Spencer Quinn", 
+            "para_id": "EBBFAD71", 
+            "para_index": 18, 
+            "para_string": "Spencer Quinn", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "empty_section_start_para": [], 
+    "isbn_spans": [
+        {
+            "description": "978-1-250-77024-0", 
+            "para_id": "AF03E8F6", 
+            "para_index": 40, 
+            "para_string": "ISBN 978-1-250-77024-0 (hardcover)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }
+    ], 
+    "non-Macmillan_style_used": [
+        {
+            "description": "Normal", 
+            "para_id": "C70D3D0D", 
+            "para_index": 1, 
+            "para_string": "Bad table", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "044BD9B6", 
+            "para_index": 1, 
+            "para_string": "One of the worst", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "FA0E0E79", 
+            "para_index": 1, 
+            "para_string": "Never been styled", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "8CDE9E1F", 
+            "para_index": 1, 
+            "para_string": "Everyone;s upset", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "C0474114", 
+            "para_index": 1, 
+            "para_string": "Jeez who styled this ms", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "20A890BD", 
+            "para_index": 1, 
+            "para_string": "Because they should be ashamed", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "removed_blank_para": [
+        {
+            "description": "removed Body-TextTx-styled para", 
+            "para_id": "B6938C87", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "section_start_found": [
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "F75EFE74", 
+            "para_index": 0, 
+            "para_string": "Tender Is the Bite", 
+            "parent_section_start_content": "Tender Is the Bite", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "30335324", 
+            "para_index": 1, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-Ad-CardSAC", 
+            "para_id": "A58D2B8B", 
+            "para_index": 3, 
+            "para_string": "Ad Card", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Section-TitlepageSTI", 
+            "para_id": "E8397D0E", 
+            "para_index": 16, 
+            "para_string": "Titlepage", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Section-CopyrightSCR", 
+            "para_id": "ACCB8230", 
+            "para_index": 22, 
+            "para_string": "Copyright", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Section-DedicationSDE", 
+            "para_id": "0ED24B13", 
+            "para_index": 52, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "AAAEA2B0", 
+            "para_index": 54, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "9C894104", 
+            "para_index": 56, 
+            "para_string": "Chapter One", 
+            "parent_section_start_content": "Chapter One", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "E8A923AC", 
+            "para_index": 183, 
+            "para_string": "Chapter Two", 
+            "parent_section_start_content": "Chapter Two", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "04BC7DA5", 
+            "para_index": 251, 
+            "para_string": "Chapter Three", 
+            "parent_section_start_content": "Chapter Three", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "E6FB3CF4", 
+            "para_index": 369, 
+            "para_string": "Chapter Thirty", 
+            "parent_section_start_content": "Chapter Thirty", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-AcknowledgmentsSAK", 
+            "para_id": "0EAFF040", 
+            "para_index": 500, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }
+    ], 
+    "title_paras": [
+        {
+            "description": "Tender Is the Bite", 
+            "para_id": "134EB143", 
+            "para_index": 17, 
+            "para_string": "Tender Is the Bite", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ]
+}

@@ -69,6 +69,46 @@ def getParaTxt(para):
         paratext = "n-a"
     return paratext
 
+# note: if new nsprefix already exists, with different uri, the old uri is preserved.
+#   for our current purposes this is fine, we are only adding new ns if existing one is not present
+def addNamespace(xmlroot, new_nsprefix, new_nsuri):
+    nsmap_prefixes = [new_nsprefix]
+    # get current nsmap prefixes
+    for k, v in xmlroot.nsmap.iteritems():
+        nsmap_prefixes.append(k)
+    # get unique values
+    nsmap_prefixes = list(set(nsmap_prefixes))
+    # retain current namespace, add new one:
+    etree.cleanup_namespaces(xmlroot, top_nsmap={new_nsprefix: new_nsuri}, keep_ns_prefixes=nsmap_prefixes)
+
+def checkNamespace(xmlroot, nsprefix):
+    ns_present = False
+    if nsprefix in xmlroot.nsmap: #and \
+        # xmlroot.nsmap['{}'.format(nsprefix)] == cfg.wordnamespaces['{}'.format(nsprefix)]:
+        ### ^ uncomment the above (and update related test) if we decide to restrict content updates
+        ###     based on ns values differing from our defined set
+        ns_present = True
+    return ns_present
+
+def verifyOrAddNamespace(xmlroot, ns_prefix, ns_uri):
+    # if namespace is not already present,
+    if checkNamespace(xmlroot, ns_prefix) == False:
+        # add namespace to top level nsmap, then
+        addNamespace(xmlroot, ns_prefix, ns_uri)
+        # verify ns was added successfully
+        if checkNamespace(xmlroot, ns_prefix) == True:
+            # get filename through tag
+            root_tag = xmlroot.tag
+            if root_tag is not None:
+                filename = re.sub('{.*}','',root_tag)
+            else:
+                filename = '<unknown>'
+            logger.warn("Had to add required global namespace '{}' to {}.xml file".format(ns_prefix, filename))
+        # if ns is not present after adding, exit ungracefully (user will get std processing err, wf-mail will get alert)
+        else:
+            logger.error("EXITING: Unsuccessful at adding required global namespace '{}' to xmlroot".format(ns_prefix))
+            sys.exit(1)
+
 # return the w14:paraId attribute's value for a paragraph
 def getParaId(para, doc_root):
     # checking tag to make sure we've grabbed a paragraph element
@@ -77,6 +117,8 @@ def getParaId(para, doc_root):
         attrib_id_key = '{%s}paraId' % w14namespace
         para_id = para.get(attrib_id_key)
         if para_id is None:
+            # check/add w14 namespace:
+            verifyOrAddNamespace(doc_root, 'w14', cfg.w14namespace)
             # create a new para_id and set it for the para!
             new_para_id = generate_para_id(doc_root)
             logger.warn("no para_id: making & setting our own: %s" % new_para_id)
@@ -86,6 +128,7 @@ def getParaId(para, doc_root):
         if para.tag != good_paratag:
             logger.debug("tried to set p-iD for a non para element: {}".format(para.tag))
         para_id = 'n-a' # this could happen if we are trying to get id of a prev or next para that does not exist
+                        #   or for file without w14 namespace, like endnotes/footnotes
     return para_id
 
 def getParaStyle(para):      # move to lxml_utils?
@@ -383,6 +426,8 @@ def createPara(xml_root, pstylename='', runtxt='', rstylename='', para_id=''):
         new_para_id = para_id
     else:
         new_para_id = generate_para_id(xml_root)
+    #  check xml root namepaces before setting para_id
+    verifyOrAddNamespace(xml_root, 'w14', cfg.w14namespace)
     new_para.attrib["{%s}paraId" % cfg.w14namespace] = new_para_id
     # if parastyle specified, add it here
     if pstylename:
@@ -406,7 +451,9 @@ def insertPara(sectionstylename, existing_para, doc_root, contents, insert_befor
     # create new para element
     new_para_id = generate_para_id(doc_root)
     new_para = etree.Element("{%s}p" % wnamespace)
-    new_para.attrib["{%s}paraId" % w14namespace] = new_para_id
+    #  check xml root namepaces before setting para_id
+    verifyOrAddNamespace(xml_root, 'w14', cfg.w14namespace)
+    new_para.attrib["{%s}paraId" % cfg.w14namespace] = new_para_id
 
     # create new para properties element
     new_para_props = etree.Element("{%s}pPr" % wnamespace)
@@ -536,8 +583,8 @@ def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
         # make sure we have contents in the dict
         if report_dict:
             for category, entries in report_dict.iteritems():
-                # exclude hard-coded 'marker' attributes for validator_main; also skipping deleted objects from commentxml files
-                if category != 'validator_py_complete' and category != 'percent_styled' and 'deleted_objects-comments-comments' not in category:
+                # exclude hard-coded 'marker' attributes for validator_main
+                if category != 'validator_py_complete' and category != 'percent_styled':
                     for entry in entries:
                         for key in entry.keys():
                             if key == "para_id":

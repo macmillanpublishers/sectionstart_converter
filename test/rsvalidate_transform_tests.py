@@ -33,7 +33,7 @@ required_diff_files = [
     "stylereport.json",
     "{fname_noext}_unzipped/word/document.xml",
     ]
-# styles & numebering are only here for duplicate style fix
+# styles & numbering are only here for duplicate style fix
 nonrequired_diff_files = [
     "{fname_noext}_unzipped/word/footnotes.xml",
     "{fname_noext}_unzipped/word/endnotes.xml",

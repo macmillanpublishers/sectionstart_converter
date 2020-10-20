@@ -84,7 +84,6 @@ def checkSecondPara(report_dict, xml_root, firstpara, sectionnames):
         report_dict = lxml_utils.logForReport(report_dict,xml_root,pneighbors["next"],"non_section_start_styled_secondpara",lxml_utils.getStyleLongname(secondpara_style))
     return report_dict
 
-
 def getContainerStarts(styleconfig_dict):
     container_start_styles = []
     for category in styleconfig_dict["containerparas"]:
@@ -120,41 +119,69 @@ def deleteBookmarks(report_dict, xml_root, bookmark_items):
         logger.debug("deleted orphaned bookmark_end named '%s'" % w_name)
     return report_dict
 
+# table cell (w:tc) elements require at least one w:p
+#   so we cannot bilthely delete
+def handleBlankParasInTables(report_dict, xml_root, para, log_category="table_blank_para", log_description="blank para found in table cell", skip_logging=False):
+    tablepara = False
+    # have a provision to flag only _solo_ table paras, so we can aggressively rm any blank para possible.
+    #   looking back at teh original reqrement, that is both an edge case, and possibly overly intrusive
+    #   So leaving provision in place with the following var; but selecting to note all tableparas as protected /
+    #       deserving of flagging instead of removal, for now.
+    removing_excess_tbl_blankparas = False
+    # check for parent tablecell element
+    if para.getparent().tag == '{{{}}}tc'.format(wnamespace):
+        logger.debug("encountered blank tablecell para")
+        # From this conditional, we handle whether we are only preservind _solo_blankparas, or all table paras
+        if removing_excess_tbl_blankparas == True:
+            paras_in_cell = para.getparent().findall(".//w:p", wordnamespaces)
+            if len(paras_in_cell) == 1:
+                #  para.getnext().tag != '{{{}}}p'.format(wnamespace)) and \
+                # (pneighbors['prev'] is None or pneighbors['prev'].tag != '{{{}}}p'.format(wnamespace)):
+                logger.info("encountered solo-table-para, tagging for report")
+                lxml_utils.logForReport(report_dict,xml_root,para,log_category,log_description)
+                tablepara = True
+            else:
+                # print len(pneighbors['prev'])
+                logger.debug("blank tablecell para has a neighbor, bouncing back to std blank para handling")
+        else:
+            if skip_logging == False:
+                lxml_utils.logForReport(report_dict,xml_root,para,log_category,log_description)
+            tablepara = True
+    return report_dict, tablepara
+
 # def removeBlankParas(xml_root, report_dict):
-def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles, container_end_styles, spacebreakstyles, alt_xmlname=""):
+def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles, container_end_styles, spacebreakstyles):
     logger.info("* * * commencing removeBlankParas function...")
     specialparas = sectionnames.keys() + container_start_styles + container_end_styles + spacebreakstyles
     allparas = xml_root.findall(".//w:p", wordnamespaces)
     for para in allparas:
+        # get paras with no content
         if not lxml_utils.getParaTxt(para).strip(): # or para.text is None:
-            # check for default paras in endnotes / footnotes, which we can ignore (for now)? Or rm silently if desired
-            if alt_xmlname != "":
-                parent_el = para.getparent()
-                w_id = parent_el.get('{%s}id' % wnamespace)
-                if w_id == '0' or w_id == '-1':
-                    logger.debug("found default blank %s paragraph, id: %s" % (alt_xmlname, w_id))
-                    # para.getparent().remove(para)
-                    continue
-            parastyle = lxml_utils.getParaStyle(para)
-            if parastyle in specialparas:
-                # get section info for report, since we will be unable to retrieve after para is deleted
-                if alt_xmlname:
-                    section_info = "section: '%s'" % alt_xmlname
-                else:
+            #   checking for solo tablecell paras first: extremely unlikely in the 1st two cases but possible in the 3rd:
+            #   and rm'ing one breaks output doc
+            report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para)
+            if tablepara == False:
+                # log special warnings for the report for 'special' blank paras
+                parastyle = lxml_utils.getParaStyle(para)
+                if parastyle in specialparas:
+                    # get section info for report, since we will be unable to retrieve after para is deleted
                     sectionname, sectiontext = lxml_utils.getSectionName(para, sectionnames)
+                    # sectionfullname = sectionname
                     sectionfullname = lxml_utils.getStyleLongname(sectionname)
                     section_info = "'%s: \"%s\"'" % (sectionfullname, sectiontext)
-                # separate warning tet for sectionparas versus others:
-                if parastyle in sectionnames.keys():
-                    lxml_utils.logForReport(report_dict,xml_root,para,"removed_section_blank_para", sectionfullname)
-                elif parastyle in container_start_styles + container_end_styles:
-                    lxml_utils.logForReport(report_dict,xml_root,para,"removed_container_blank_para","%s_%s" % (lxml_utils.getStyleLongname(parastyle), section_info))
-                elif parastyle in spacebreakstyles:
-                    lxml_utils.logForReport(report_dict,xml_root,para,"removed_spacebreak_blank_para","%s_%s" % (lxml_utils.getStyleLongname(parastyle), section_info))
+                    # separate warning text for sectionparas versus others:
+                    if parastyle in sectionnames.keys():
+                        lxml_utils.logForReport(report_dict,xml_root,para,"removed_section_blank_para", sectionfullname)
+                    elif parastyle in container_start_styles + container_end_styles:
+                        lxml_utils.logForReport(report_dict,xml_root,para,"removed_container_blank_para","%s_%s" % (lxml_utils.getStyleLongname(parastyle), section_info))
+                    elif parastyle in spacebreakstyles:
+                        lxml_utils.logForReport(report_dict,xml_root,para,"removed_spacebreak_blank_para","%s_%s" % (lxml_utils.getStyleLongname(parastyle), section_info))
 
-            # all paras are counted again so we gt a total for our count on the report
-            lxml_utils.logForReport(report_dict,xml_root,para,"removed_blank_para","removed %s-styled para" % parastyle)
-            para.getparent().remove(para)
+                # all paras are counted again so we gt a total for our count on the report
+                lxml_utils.logForReport(report_dict,xml_root,para,"removed_blank_para","removed %s-styled para" % parastyle)
+                # and then the blank para is removed
+                para.getparent().remove(para)
+
     return report_dict
 
 # so we can insert paras into test xml blocks with predictable para_ids instead of random (for assertions)
@@ -200,31 +227,44 @@ def handleBlankParasInNotes(report_dict, xml_root, note_stylename, noteref_style
             lxml_utils.logForReport(report_dict,xml_root,dummy_notepara,"found_empty_note",note_name)
         # handle note objects with children but no non-whitespace text
         elif not lxml_utils.getParaTxt(note).strip():
+            uniquenote = True
             # skip separator notes
             if type in note.attrib and note.attrib[type] in separators:
                 continue
-            # count, rm paras, and replace with dummy para:
-            emptypara_count = len(note)
-            for para in note:
-                para.getparent().remove(para)
-            dummy_notepara, testpara_counter = createDummyNotePara(xml_root, testpara_counter, note_stylename, noteref_stylename)
-            note.append(dummy_notepara)
-            note_id = note.get('{%s}id' % wnamespace)
-            lxml_utils.logForReport(report_dict,xml_root,dummy_notepara,"found_empty_note",note_name)
+            # find paras in note (could be nested in tables, hence search)
+            for para in note.findall(".//w:p", wordnamespaces):
+                # check if we are in a table; a table cell (w:tc) element requires at least one w:p
+                #   skipping table para logging here, they will get captured again below in when cycling through paras
+                report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para, '', '', True)
+                if tablepara == False:
+                    para.getparent().remove(para)
+                    # make sure we don't re-add dummy text and log for report for miltiblank paras in the same note!
+                    if uniquenote == True:
+                        dummy_notepara, testpara_counter = createDummyNotePara(xml_root, testpara_counter, note_stylename, noteref_stylename)
+                        note.append(dummy_notepara)
+                        note_id = note.get('{%s}id' % wnamespace)
+                        lxml_utils.logForReport(report_dict,xml_root,dummy_notepara,"found_empty_note",note_name)
+                        uniquenote = False
+                elif tablepara == True:
+                    uniquenote = False
 
     # handle blank paras within notes that have other paras with content
+    #   the search above captured any notes with solo blank paras, this captures the remainder, which can be rm'd
     allparas = xml_root.findall(".//w:p", wordnamespaces)
     for para in allparas:
         if not lxml_utils.getParaTxt(para).strip(): # or para.text is None:
-            # skip separator notes
-            note = para.getparent()
-            if type in note.attrib and note.attrib[type] in separators:
-                continue
-            # log discovery
-            note_id = note.get('{%s}id' % wnamespace)
-            lxml_utils.logForReport(report_dict,xml_root,para,"removed_blank_para","blank para in {} note with other text; note_id: {}".format(note_name, note_id))
-            # remove para
-            para.getparent().remove(para)
+            # check if we are in a table; a table cell (w:tc) element requires at least one w:p
+            report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para, 'table_blank_para_notes', 'blank para in table cell in {}'.format(note_name))
+            if tablepara == False:
+                # skip separator notes
+                note = para.getparent()
+                if type in note.attrib and note.attrib[type] in separators:
+                    continue
+                # log discovery
+                note_id = note.get('{%s}id' % wnamespace)
+                lxml_utils.logForReport(report_dict,xml_root,para,"removed_blank_para","blank para in {} note with other text; note_id: {}".format(note_name, note_id))
+                # remove para
+                para.getparent().remove(para)
 
     return report_dict
 

@@ -137,8 +137,9 @@ def handleBlankParasInTables(report_dict, xml_root, para, log_category="table_bl
             if len(paras_in_cell) == 1:
                 #  para.getnext().tag != '{{{}}}p'.format(wnamespace)) and \
                 # (pneighbors['prev'] is None or pneighbors['prev'].tag != '{{{}}}p'.format(wnamespace)):
-                logger.info("encountered solo-table-para, tagging for report")
-                lxml_utils.logForReport(report_dict,xml_root,para,log_category,log_description)
+                if skip_logging == False:
+                    logger.info("encountered solo-table-para, tagging for report")
+                    lxml_utils.logForReport(report_dict,xml_root,para,log_category,log_description)
                 tablepara = True
             else:
                 # print len(pneighbors['prev'])

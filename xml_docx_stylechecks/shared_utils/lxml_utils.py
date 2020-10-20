@@ -156,24 +156,27 @@ def getRunStyle(run):
 # lookup longname of style in styles.xml of file.
 #  save looked up values in a dict to speed up repeat lookups if desired
 def getStyleLongname(styleshortname, stylenamemap={}):
-    # print styleshortname#, stylenamemap
-    styles_tree = etree.parse(styles_xml)
-    styles_root = styles_tree.getroot()
-    if styleshortname == "n-a":
-        stylelongname = "not avaliable"
-    elif styleshortname in stylenamemap:
-        stylelongname = stylenamemap[styleshortname]
-        # print "in the map!"
+    if os.environ.get('TEST_FLAG'):
+        return styleshortname
     else:
-        # print "not in tht emap!"
-        searchstring = ".//w:style[@w:styleId='%s']/w:name" % styleshortname
-        stylematch = styles_root.find(searchstring, wordnamespaces)
-        # get fullname value and test against Macmillan style list
-        if stylematch is not None:
-            stylelongname = stylematch.get('{%s}val' % wnamespace)
-            stylenamemap[styleshortname] = stylelongname
+        # print styleshortname#, stylenamemap
+        styles_tree = etree.parse(styles_xml)
+        styles_root = styles_tree.getroot()
+        if styleshortname == "n-a":
+            stylelongname = "not avaliable"
+        elif styleshortname in stylenamemap:
+            stylelongname = stylenamemap[styleshortname]
+            # print "in the map!"
         else:
-            stylelongname = styleshortname
+            # print "not in tht emap!"
+            searchstring = ".//w:style[@w:styleId='%s']/w:name" % styleshortname
+            stylematch = styles_root.find(searchstring, wordnamespaces)
+            # get fullname value and test against Macmillan style list
+            if stylematch is not None:
+                stylelongname = stylematch.get('{%s}val' % wnamespace)
+                stylenamemap[styleshortname] = stylelongname
+            else:
+                stylelongname = styleshortname
     return stylelongname
 
 # the "Run" here would be a span / character style.
@@ -544,10 +547,14 @@ def findParasWithStyle(stylename, doc_root):
 
 def getCalculatedParaInfo(report_dict_entry, root, section_names, para, category, rootname=''):
     entry = report_dict_entry
+    tablecell_tag = '{%s}tc' % wnamespace
     # # # Assign Section-start info for notes/comments.xml & get note_id
     if rootname:
         entry['parent_section_start_type'], entry['parent_section_start_content'] = rootname, 'n-a'
-        entry['para_index'] = 'n-a'
+        if para is not None and para.getparent().tag == tablecell_tag:
+            entry['para_index'] = 'tablecell_para'
+        else:
+            entry['para_index'] = 'n-a'
         if para.getparent() is not None:
             entry['note-or-comment_id'] = para.getparent().get('{%s}id' % wnamespace)
     else:
@@ -557,7 +564,6 @@ def getCalculatedParaInfo(report_dict_entry, root, section_names, para, category
             logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
 
         # check if we have a tablecell_paras, get section info accordingly
-        tablecell_tag = '{%s}tc' % wnamespace
         if para is not None and para.getparent().tag == tablecell_tag:
             entry['para_index'] = 'tablecell_para'
             # get section name, start text based on para.parent.parent.parent: (table)

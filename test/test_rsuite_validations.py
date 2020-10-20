@@ -112,8 +112,18 @@ def createPara(para_id, pstylename='', runtxt='', rstylename=''):
         new_para.append(run)
     return new_para
 
+def createTableWithPara(paratxt, parastyle, paraId="p-id"):
+    tbl = createMiscElement('tbl', cfg.wnamespace)
+    tr = createMiscElement('tr', cfg.wnamespace)
+    tc = createMiscElement('tc', cfg.wnamespace)
+    para = createPara(paraId, pstylename=parastyle, runtxt=paratxt)
+    tc.append(para)
+    tr.append(tc)
+    tbl.append(tr)
+    return tbl, para
+
 # another way to spin up basic xml tree quickly/reproducably without going to file
-#   to add more paras run again with last two params specified
+#   to add more paras run again with root & para_id specified
 def createXML_paraWithRun(pstylename, rstylename, runtxt, root=None, para_id='test', ns_map=cfg.wordnamespaces):
     if root is None:
         root = createXMLroot(ns_map)
@@ -471,38 +481,54 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(test_root), etree.tostring(after_root))
 
-    def test_handleBlankParasInNotes_noparas(self):
+    def test_handleBlankParasInNotes_blanktablepara(self):
+        note_name = 'endnote'
+        note_stylename = 'EndnoteTxt'
+        note_section = 'Endnotes'
+        noteref_stylename = 'EndnoteReference'
+        para_id = 'table_p1'
+
+        # build test xml
+        empty_note = createMiscElement(note_name, cfg.wnamespace, 'id', '1', cfg.wnamespace)
+        test_root = createXMLroot()
+        test_root.append(empty_note)
+        tbl, blanktblpara = createTableWithPara('', 'BodyTextTxt', para_id)
+        empty_note.append(tbl)
+        expected_root = copy.deepcopy(test_root)
+
+        # run function
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
+
+        # assert!
+        expected_rd = {'table_blank_para_notes': [{'description': 'blank para in table cell in endnote',
+                        'para_id': para_id}]}
+        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(etree.tostring(test_root), etree.tostring(expected_root))
+
+    def test_handleBlankParasInNotes_blankparaAndblanktablepara(self):
         note_name = 'endnote'
         note_stylename = 'EndnoteTxt'
         note_section = 'Endnotes'
         noteref_stylename = 'EndnoteReference'
         para_id = 'p_id-1'
 
-        # build after xml; first build elements
-        dummy_note_para = createPara(para_id, note_stylename, '', noteref_stylename)
-        noteref_el = createMiscElement('endnoteRef', cfg.wnamespace)
-        after_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '1', cfg.wnamespace)
-        after_root = createXMLroot()
-        text_run = createRun("[no text]")
-        # put everything together
-        dummy_note_para[1].append(noteref_el)
-        dummy_note_para.append(text_run)
-        after_endnote.append(dummy_note_para)
-        after_root.append(after_endnote)
-
         # build test xml
         empty_note = createMiscElement(note_name, cfg.wnamespace, 'id', '1', cfg.wnamespace)
         test_root = createXMLroot()
         test_root.append(empty_note)
+        tbl, blanktblpara = createTableWithPara('', 'BodyTextTxt', 'table_p1')
+        empty_note.append(tbl)
+        expected_root = copy.deepcopy(test_root)
+        blankpara = createPara('bp_id1', note_stylename)
+        empty_note.append(blankpara)
 
         # run function
         report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
-        expected_rd = {'found_empty_note': \
-            [{'description': 'endnote', \
-            'para_id': para_id}]}
+        expected_rd = {'table_blank_para_notes': [{'description': 'blank para in table cell in endnote',
+                        'para_id': 'table_p1'}]}
         # assert!
         self.assertEqual(report_dict, expected_rd)
-        self.assertEqual(etree.tostring(test_root), etree.tostring(after_root))
+        self.assertEqual(etree.tostring(test_root), etree.tostring(expected_root))
 
     def test_handleBlankParasInNotes_noparas_footnotes(self):
         note_name = 'footnote'
@@ -711,6 +737,172 @@ class Tests(unittest.TestCase):
         self.assertEqual(etree.tostring(root_good), etree.tostring(root_bad))
         self.assertNotEqual(root_bad_before.nsmap, root_bad.nsmap)
         self.assertNotEqual(etree.tostring(root_bad_before), etree.tostring(root_bad))
+
+    def test_handleBlankParasInTables_soloblankpara(self):
+        # create root with soloblanktablepara, table
+        root, para = createXML_paraWithRun('BodyTextTxt', '', '', None)
+        tbl, tblpara = createTableWithPara('', 'BodyTextTxt', 'p-id')
+        para.addnext(tbl)
+        before_root = copy.deepcopy(root)
+
+        # run our transform
+        report_dict, solopara_bool = rsuite_validations.handleBlankParasInTables({}, root, tblpara)
+
+        #assertions
+        expected_rd = {'table_blank_para': [{'description': 'blank para found in table cell',
+                        'para_id': 'p-id'}]}
+        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(solopara_bool, True)
+
+    ## test for setting: "removing_excess_tbl_blankparas" to "True" in ““handleBlankParasInTables
+    # def test_handleBlankParasInTables_multiblankparas(self):
+    #     # create root with blank para preceding other para
+    #     root, para = createXML_paraWithRun('BodyTextTxt', '', '', None)
+    #     tbl, tblpara = createTableWithPara('A', 'BodyTextTxt', 'p-id')
+    #     xtrapara = createPara('p-id2', '', 'I have text.')
+    #     tblpara.addnext(xtrapara)
+    #     para.addnext(tbl)
+    #     before_root = copy.deepcopy(root)
+    #
+    #     # run our transform
+    #     report_dict, solopara_bool = rsuite_validations.handleBlankParasInTables({}, root, tblpara)
+    #
+    #     #assertions
+    #     expected_rd = {}
+    #     self.assertEqual(report_dict, expected_rd)
+    #     self.assertEqual(solopara_bool, False)
+
+    # this blank para should be removed and reported
+    def test_removeBlankParas_blanktxtpara(self):
+        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testcontainers = ['Excerpt1','Excerpt2']
+        test_ends = ['END','END2']
+        test_breaks = ['break1','break2']
+        # create root and init (Section) para
+        root, para = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
+        # append subsequent paras
+        root, goodcontainer_p = createXML_paraWithRun(testcontainers[0], '', 'Container1Starter', root, 'goodcontainer_p')
+        root, goodbreak_p = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
+        # dupe root so we can mock up ideal outcome, by not adding badtxt to dupe, but everything else to both
+        root_dupe = copy.deepcopy(root)
+        root, badtxt_p = createXML_paraWithRun('BodyTextTxt', '', '   ', root, 'badtxt_p')
+        root, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
+        root_dupe, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
+
+        # run our transform
+        report_dict = rsuite_validations.removeBlankParas({}, root, testsections, testcontainers, test_ends, test_breaks)
+
+        #assertions
+        expected_rd = {'removed_blank_para': [{'description': 'removed BodyTextTxt-styled para',
+                        'para_id': 'badtxt_p'}]}
+        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
+
+    # This blank container para should be removed, and reported in two separate categories
+    def test_removeBlankParas_blankcontainerpara(self):
+        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testcontainers = ['Excerpt1','Excerpt2']
+        test_ends = ['END','END2']
+        test_breaks = ['break1','break2']
+        # create root and init (Section) para
+        root, para = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
+        # append subsequent paras
+        # dupe root so we can mock up ideal outcome, by not adding badtxt to dupe, but everything else to both
+        root_dupe = copy.deepcopy(root)
+        root, badcontainer_p = createXML_paraWithRun(testcontainers[0], '', '', root, 'badcontainer_p')
+        root, goodbreak_p = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
+        root, goodtxt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'badtxt_p')
+        root, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
+        root_dupe, goodbreak_p = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
+        root_dupe, goodtxt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'goodtxt_p')
+        root_dupe, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
+        # with patch("xml_docx_stylechecks.shared_utils.lxml_utils.getStyleLongname") as getlongname_mock:
+        #     getlongname_mock.return_value = "foo"
+        # test = lxml_utils.getStyleLongname('sdsd')
+
+        # run our transform
+        report_dict = rsuite_validations.removeBlankParas({}, root, testsections, testcontainers, test_ends, test_breaks)
+
+        #assertions
+        expected_rd = {'removed_blank_para': [{'description': 'removed Excerpt1-styled para',
+                        'para_id': 'badcontainer_p'}],
+                        'removed_container_blank_para': [{'description': 'Excerpt1_\'Section2: "Section1!"\'',
+                        'para_id': 'badcontainer_p'}]}
+        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
+
+    # This blank section & container paras should be removed, and reported in two separate categories
+    #   Also notable, with no parent section; container description should contain default value
+    def test_removeBlankParas_blankSectionAndContainerParas(self):
+        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testcontainers = ['Excerpt1','Excerpt2']
+        test_ends = ['END','END2']
+        test_breaks = ['break1','break2']
+        # create root and init (Section) para
+        root, para = createXML_paraWithRun(list(testsections.keys())[0], '', '', None)
+        # append subsequent paras
+        # dupe root so we can mock it up as ideal outcome, then run function on root_dupe
+        root_dupe = copy.deepcopy(root)
+        root_dupe, badcontainer_p = createXML_paraWithRun(testcontainers[0], '', '', root_dupe, 'badcontainer_p')
+        root_dupe, goodbreak_p = createXML_paraWithRun(test_breaks[1], '', '-break text-', root_dupe, 'goodbreak_p')
+        root_dupe, goodtxt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_dupe, 'goodtxt_p')
+        root_dupe, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
+        # mock up root as expected outcome
+        para.getparent().remove(para)
+        root, goodbreak_p = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
+        root, goodtxt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'goodtxt_p')
+        root, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
+
+        # run our transform
+        report_dict = rsuite_validations.removeBlankParas({}, root_dupe, testsections, testcontainers, test_ends, test_breaks)
+
+        #assertions
+        expected_rd = {'removed_blank_para': [{'description': 'removed Section2-styled para',
+                        'para_id': 'test'},
+                        {'description': 'removed Excerpt1-styled para',
+                        'para_id': 'badcontainer_p'}],
+                        'removed_container_blank_para': [{'description': 'Excerpt1_\'n-a: ""\'',
+                        'para_id': 'badcontainer_p'}],
+                        'removed_section_blank_para': [{'description': 'Section2',
+                        'para_id': 'test'}]}
+        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
+
+    # adding two blank spacebreak paras, including one in a table
+    # the one in the table should be reported, not removed; the other should be reported in 2 separate categories
+    def test_removeBlankParas_blankBreakAndTableParas(self):
+        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testcontainers = ['Excerpt1','Excerpt2']
+        test_ends = ['END','END2']
+        test_breaks = ['break1','break2']
+        # create root and init (Section) para
+        root, para = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
+        # append subsequent paras
+        root, goodcontainer_p = createXML_paraWithRun(testcontainers[0], '', 'Container1Starter', root, 'goodcontainer_p')
+        root, goodtxt_p = createXML_paraWithRun('BodyTextTxt', '', 'Im a para with text', root, 'goodtxt_p')
+        # dupe root so we can mock up ideal outcome, by not adding badtxt to dupe, but everything else to both
+        root_dupe = copy.deepcopy(root)
+        root, badbreak1_p = createXML_paraWithRun(test_breaks[1], '', '', root, 'badbreak1_p')
+        root, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
+        tbl, badbreak2_p = createTableWithPara('', test_breaks[0], 'badbreak2_p')
+        goodend_p.addnext(tbl)
+        # now add only items that should not be removed, to the root_dupe
+        root_dupe, goodend_p_dupe = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
+        tbl2, badbreak2_p_dupe = createTableWithPara('', test_breaks[0], 'badbreak2_p')
+        goodend_p_dupe.addnext(tbl2)
+
+        # run our transform
+        report_dict = rsuite_validations.removeBlankParas({}, root, testsections, testcontainers, test_ends, test_breaks)
+
+        # assertions
+        expected_rd = {'removed_blank_para': [{'description': 'removed break2-styled para',
+                        'para_id': 'badbreak1_p'}],
+                        'removed_spacebreak_blank_para': [{'description': 'break2_\'Section2: "Section1!"\'',
+                        'para_id': 'badbreak1_p'}],
+                        'table_blank_para': [{'description': 'blank para found in table cell',
+                        'para_id': 'badbreak2_p'}]}
+        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
 
 if __name__ == '__main__':
     unittest.main()

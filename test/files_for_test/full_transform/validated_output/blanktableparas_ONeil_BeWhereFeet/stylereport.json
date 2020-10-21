@@ -1,0 +1,1405 @@
+{
+    "Macmillan_charstyle_first_use": [
+        {
+            "description": "smallcaps (sc)", 
+            "para_id": "3D76364C", 
+            "para_index": 14, 
+            "para_string": "be where your feet are. Copyright  2020 by Scott", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-isbn (isbn)", 
+            "para_id": "3A51DE27", 
+            "para_index": 20, 
+            "para_string": "ISBN 978-1-250-76987-9 (hardcover)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-cleanup-exclude (cex)", 
+            "para_id": "2E720747", 
+            "para_index": 27, 
+            "para_string": "10 9 8 7 6 5 4 3 2 1", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "bold (b)", 
+            "para_id": "4A3F5674", 
+            "para_index": 29, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "endnote reference", 
+            "para_id": "223E2FE4", 
+            "para_index": 42, 
+            "para_string": "Chapter 5 Be The Purple Water Buffalo", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "ital (i)", 
+            "para_id": "34A0F074", 
+            "para_index": 54, 
+            "para_string": "\u201cThis is the last time you will ever speak to", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "super (sup)", 
+            "para_id": "4BBBE211", 
+            "para_index": 85, 
+            "para_string": "When I\u2019m at my best, I am wholly present. When", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "strike (str)", 
+            "para_id": "6C233538", 
+            "para_index": 492, 
+            "para_string": "I thought I had applied my traditional \u201cteam player\u201d strategy.", 
+            "parent_section_start_content": "Chapter 4: Fail Forward", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "endnote reference", 
+            "note-or-comment_id": "1", 
+            "para_id": "39F1B560", 
+            "para_index": "n-a", 
+            "para_string": "This is a test", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "Macmillan_style_first_use": [
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "14A0CB5A", 
+            "para_index": 2, 
+            "para_string": "Be Where Your Feet Are", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "3602E391", 
+            "para_index": 4, 
+            "para_string": "Be Where Your Feet Are", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Subtitle (Sttl)", 
+            "para_id": "27E11136", 
+            "para_index": 5, 
+            "para_string": "Seven Principles to Keep You Present, Grounded, and Thriving", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "005E0ECD", 
+            "para_index": 6, 
+            "para_string": "Scott M. O\u2019Neil", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author2 (Au2)", 
+            "para_id": "336A7B35", 
+            "para_index": 7, 
+            "para_string": "with Randal Wright", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author3 (Au3)", 
+            "para_id": "17056498", 
+            "para_index": 8, 
+            "para_string": "and Michele Bender", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Imprint (Imp)", 
+            "para_id": "44F0CFE5", 
+            "para_index": 9, 
+            "para_string": "[place Imprint logo here]", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Cities (Cit)", 
+            "para_id": "65645244", 
+            "para_index": 10, 
+            "para_string": "New York", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "39D75852", 
+            "para_index": 12, 
+            "para_string": "Published in the United States by St. Martin\u2019s Essentials, an", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "156421ED", 
+            "para_index": 13, 
+            "para_string": "[separator]", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "4A3F5674", 
+            "para_index": 29, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "2F0483F7", 
+            "para_index": 36, 
+            "para_string": "Table of Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Chapter (Tocch)", 
+            "para_id": "5B4767FB", 
+            "para_index": 37, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Backmatter (Tocbm)", 
+            "para_id": "16C0C019", 
+            "para_index": 46, 
+            "para_string": "Acknowledgements", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "42D85C80", 
+            "para_index": 51, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Epigraph-Non-Verse (Epi)", 
+            "para_id": "01617B03", 
+            "para_index": 52, 
+            "para_string": "Being challenged in life is inevitable; being defeated is optional.", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Epigraph-Source (Episrc)", 
+            "para_id": "13B8D3C5", 
+            "para_index": 53, 
+            "para_string": "-Roger Crawford", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "34A0F074", 
+            "para_index": 54, 
+            "para_string": "\u201cThis is the last time you will ever speak to", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Number (Num)", 
+            "para_id": "6D277A4C", 
+            "para_index": 73, 
+            "para_string": "Chapter 1", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Epigraph-Verse (Epiv)", 
+            "para_id": "6CC88C8D", 
+            "para_index": 75, 
+            "para_string": "If you must look back, do so forgivingly.", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "B-Head (Bhead)", 
+            "para_id": "14CB3BA4", 
+            "para_index": 79, 
+            "para_string": "Being Where Your Feet Are is the New Balance", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "A-Head (Ahead)", 
+            "para_id": "6B2325D5", 
+            "para_index": 91, 
+            "para_string": "Find perspective", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "F-Head (Fhead)", 
+            "para_id": "6FE7A5D0", 
+            "para_index": 174, 
+            "para_string": "Nelson Family Values", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Extract1 (Ext1)", 
+            "para_id": "24D1169F", 
+            "para_index": 175, 
+            "para_string": "CLEAN thoughts, words, bodies", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "EXTRACT-A > Body-Text (Tx)", 
+            "para_id": "505EC77A", 
+            "para_index": 188, 
+            "para_string": "I am Heavenly Father\u2019s son and priesthood leader. I am", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bullet-Level-1-List (Bl1)", 
+            "para_id": "63AFD3F4", 
+            "para_index": 203, 
+            "para_string": "A Constitution is an articulation of the core qualities that", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "EXTRACT-A > Bullet-Level-1-List (Bl1)", 
+            "para_id": "26AC36C1", 
+            "para_index": 213, 
+            "para_string": "-bring positive energy into my space", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "C-Head (Chead)", 
+            "para_id": "1579224E", 
+            "para_index": 237, 
+            "para_string": "Strength, Friendship and Loss", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Body-Text (Tx)", 
+            "para_id": "15AE2F1B", 
+            "para_index": 335, 
+            "para_string": "It is with a heavy heart that I write to", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Signature (Sig)", 
+            "para_id": "4865C799", 
+            "para_index": 339, 
+            "para_string": "Jim", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "List-Head (Lhead)", 
+            "para_id": "14BA7763", 
+            "para_index": 442, 
+            "para_string": "WMI", 
+            "parent_section_start_content": "Chapter 3: WMI", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Num-Level-1-List (Nl1)", 
+            "para_id": "5082BEBF", 
+            "para_index": 443, 
+            "para_string": "1.", 
+            "parent_section_start_content": "Chapter 3: WMI", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Image-Placement (Img)", 
+            "para_id": "33A6CF0A", 
+            "para_index": 715, 
+            "para_string": "Tshirt_image.png", 
+            "parent_section_start_content": "Chapter 6: Assume Positive Intent", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > F-Head (Fhead)", 
+            "para_id": "6F682437", 
+            "para_index": 786, 
+            "para_string": "Eliza\u2019s Letter to Me:", 
+            "parent_section_start_content": "Chapter 7: Trust the Process", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Salutation (Sal)", 
+            "para_id": "09424706", 
+            "para_index": 787, 
+            "para_string": "Dear Dad,", 
+            "parent_section_start_content": "Chapter 7: Trust the Process", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Closing (Clos)", 
+            "para_id": "1EAEE4D0", 
+            "para_index": 789, 
+            "para_string": "Rhinocorns,", 
+            "parent_section_start_content": "Chapter 7: Trust the Process", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "LETTER-A > Separator (Sep)", 
+            "para_id": "3AF6F76C", 
+            "para_index": 791, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Chapter 7: Trust the Process", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "456C7BE9", 
+            "para_index": 827, 
+            "para_string": "Acknowledgements", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "6DDA6EC3", 
+            "para_index": 828, 
+            "para_string": "My life has been blessed with an unmatched village of", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "38DB76E1", 
+            "para_index": 856, 
+            "para_string": "Index [allow 8-10 pages]", 
+            "parent_section_start_content": "Index", 
+            "parent_section_start_type": "Section-IndexSIN"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "35BEBFA0", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Table-Head (Tbhd)", 
+            "para_id": "522069F0", 
+            "para_index": "tablecell_para", 
+            "para_string": "Month", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Table-Text (Tbtx)", 
+            "para_id": "39325A1F", 
+            "para_index": "tablecell_para", 
+            "para_string": "January", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "author_paras": [
+        {
+            "description": "Scott M. O\u2019Neil", 
+            "para_id": "005E0ECD", 
+            "para_index": 6, 
+            "para_string": "Scott M. O\u2019Neil", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "deleted_objects-bookmarks": [
+        {
+            "description": "deleted bookmark named _gjdgxs", 
+            "para_id": "4C7C504D", 
+            "para_index": 44, 
+            "para_string": "Chapter 7 Trust the Process", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "deleted bookmark named _1fob9te", 
+            "para_id": "16C0C019", 
+            "para_index": 46, 
+            "para_string": "Acknowledgements", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "deleted bookmark named _2et92p0", 
+            "para_id": "444D81D5", 
+            "para_index": 822, 
+            "para_string": "Think of someone you love. We need to do a", 
+            "parent_section_start_content": "Chapter 7: Trust the Process", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "deleted_objects-comment_ranges": [
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "1F22ED62", 
+            "para_index": 0, 
+            "para_string": "Be Where Your Feet Are", 
+            "parent_section_start_content": "Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "19F98645", 
+            "para_index": 1, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "678DE963", 
+            "para_index": 28, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "4A3F5674", 
+            "para_index": 29, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "19894993", 
+            "para_index": 50, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "14CB3BA4", 
+            "para_index": 79, 
+            "para_string": "Being Where Your Feet Are is the New Balance", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "073FC21B", 
+            "para_index": 227, 
+            "para_string": "I declare that I am\u00a0.\u00a0.\u00a0.", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeStart", 
+            "para_id": "1579224E", 
+            "para_index": 237, 
+            "para_string": "Strength, Friendship and Loss", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "1F22ED62", 
+            "para_index": 0, 
+            "para_string": "Be Where Your Feet Are", 
+            "parent_section_start_content": "Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "19F98645", 
+            "para_index": 1, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "678DE963", 
+            "para_index": 28, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "4A3F5674", 
+            "para_index": 29, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "19894993", 
+            "para_index": 50, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "14CB3BA4", 
+            "para_index": 79, 
+            "para_string": "Being Where Your Feet Are is the New Balance", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "073FC21B", 
+            "para_index": 227, 
+            "para_string": "I declare that I am\u00a0.\u00a0.\u00a0.", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentRangeEnd", 
+            "para_id": "1579224E", 
+            "para_index": 237, 
+            "para_string": "Strength, Friendship and Loss", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "1F22ED62", 
+            "para_index": 0, 
+            "para_string": "Be Where Your Feet Are", 
+            "parent_section_start_content": "Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "19F98645", 
+            "para_index": 1, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "678DE963", 
+            "para_index": 28, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "4A3F5674", 
+            "para_index": 29, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "19894993", 
+            "para_index": 50, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "14CB3BA4", 
+            "para_index": 79, 
+            "para_string": "Being Where Your Feet Are is the New Balance", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "073FC21B", 
+            "para_index": 227, 
+            "para_string": "I declare that I am\u00a0.\u00a0.\u00a0.", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted comment_ranges of type w:commentReference", 
+            "para_id": "1579224E", 
+            "para_index": 237, 
+            "para_string": "Strength, Friendship and Loss", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "deleted_objects-comments-commentsExtended_xml": [
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsExtended_xml of type w15:commentEx", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "deleted_objects-comments-commentsIds_xml": [
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-commentsIds_xml of type w16cid:commentId", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "deleted_objects-comments-comments_xml": [
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "deleted comments-comments_xml of type w:comment", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "empty_section_start_para": [], 
+    "endnote-leading_whitespace_rmd": [
+        {
+            "description": "note ref: 1", 
+            "note-or-comment_id": "1", 
+            "para_id": "39F1B560", 
+            "para_index": "n-a", 
+            "para_string": "This is a test", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }, 
+        {
+            "description": "note ref: 2", 
+            "note-or-comment_id": "2", 
+            "para_id": "616BE71D", 
+            "para_index": "n-a", 
+            "para_string": "How about if we insert a table right here?", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "image_holders": [
+        {
+            "description": "Tshirt_image.png", 
+            "para_id": "33A6CF0A", 
+            "para_index": 715, 
+            "para_string": "Tshirt_image.png", 
+            "parent_section_start_content": "Chapter 6: Assume Positive Intent", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holders__sort_by_index": [
+        {
+            "description": "Tshirt_image.png", 
+            "para_id": "33A6CF0A", 
+            "para_index": 715, 
+            "para_string": "Tshirt_image.png", 
+            "parent_section_start_content": "Chapter 6: Assume Positive Intent", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "isbn_spans": [
+        {
+            "description": "978-1-250-76987-9", 
+            "para_id": "3A51DE27", 
+            "para_index": 20, 
+            "para_string": "ISBN 978-1-250-76987-9 (hardcover)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }
+    ], 
+    "non-Macmillan_charstyle_removed": [
+        {
+            "description": "annotation reference", 
+            "para_id": "1F22ED62", 
+            "para_index": 0, 
+            "para_string": "Be Where Your Feet Are", 
+            "parent_section_start_content": "Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }
+    ], 
+    "removed_blank_para": [
+        {
+            "description": "removed Body-TextTx-styled para", 
+            "para_id": "2C04095B", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Body-TextTx-styled para", 
+            "para_id": "56C15810", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "blank para in endnote note with other text; note_id: 2", 
+            "para_id": "75C7DD37", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "section_start_found": [
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "1F22ED62", 
+            "para_index": 0, 
+            "para_string": "Be Where Your Feet Are", 
+            "parent_section_start_content": "Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "19F98645", 
+            "para_index": 1, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-TitlepageSTI", 
+            "para_id": "77A5FDB4", 
+            "para_index": 3, 
+            "para_string": "Titlepage", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Section-CopyrightSCR", 
+            "para_id": "54B4DEE2", 
+            "para_index": 11, 
+            "para_string": "Copyright", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Section-DedicationSDE", 
+            "para_id": "678DE963", 
+            "para_index": 28, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Section-ContentsSTC", 
+            "para_id": "3558E98D", 
+            "para_index": 35, 
+            "para_string": "Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "4F490527", 
+            "para_index": 48, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "19894993", 
+            "para_index": 50, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "4916076B", 
+            "para_index": 72, 
+            "para_string": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_content": "Chapter 1: Be Where Your Feet Are", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "2A73F6A6", 
+            "para_index": 230, 
+            "para_string": "Chapter 2: Change the Race", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "1BF05BBD", 
+            "para_index": 347, 
+            "para_string": "Chapter 3: WMI", 
+            "parent_section_start_content": "Chapter 3: WMI", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6A31184B", 
+            "para_index": 459, 
+            "para_string": "Chapter 4: Fail Forward", 
+            "parent_section_start_content": "Chapter 4: Fail Forward", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "13B0CBA8", 
+            "para_index": 570, 
+            "para_string": "Chapter 5: Be the Purple Water Buffalo", 
+            "parent_section_start_content": "Chapter 5: Be the Purple Water Buffalo", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "076B2D4E", 
+            "para_index": 639, 
+            "para_string": "Chapter 6: Assume Positive Intent", 
+            "parent_section_start_content": "Chapter 6: Assume Positive Intent", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "2161861B", 
+            "para_index": 716, 
+            "para_string": "Chapter 7: Trust the Process", 
+            "parent_section_start_content": "Chapter 7: Trust the Process", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6C7AA5D0", 
+            "para_index": 823, 
+            "para_string": "Epilogue", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-AcknowledgmentsSAK", 
+            "para_id": "35CAF02B", 
+            "para_index": 826, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Section-IndexSIN", 
+            "para_id": "4DE081AC", 
+            "para_index": 855, 
+            "para_string": "Index", 
+            "parent_section_start_content": "Index", 
+            "parent_section_start_type": "Section-IndexSIN"
+        }
+    ], 
+    "table_blank_para": [
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "35BEBFA0", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "4CDBCFB7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "76C80699", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "321BD67E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "5BB83CCA", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "4600EFF1", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "47B9187D", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "22ED477B", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "16F59E3D", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "67C45888", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "3E874094", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "65C53B3E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "039F5172", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "12044062", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "63044570", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "35E8D180", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "237C8658", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "7B3AB482", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "40718177", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "5D80773D", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "4D14EF95", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "373806D0", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "18AF7056", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "1D755FD2", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "433C511F", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "7C00E787", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "02E7EB9D", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "16469E4F", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 2: Change the Race", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "1B4CE54A", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Fail Forward", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "2086A6DD", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Fail Forward", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "68BC1EA3", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Fail Forward", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "7AEA7F5D", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Fail Forward", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "1125135E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Fail Forward", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "6A903E8F", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Fail Forward", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "3ABCF61A", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Fail Forward", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "table_blank_para_notes": [
+        {
+            "description": "blank para in table cell in endnote", 
+            "note-or-comment_id": null, 
+            "para_id": "053C2851", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }, 
+        {
+            "description": "blank para in table cell in endnote", 
+            "note-or-comment_id": null, 
+            "para_id": "355638C1", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }, 
+        {
+            "description": "blank para in table cell in endnote", 
+            "note-or-comment_id": null, 
+            "para_id": "7BABD68F", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "title_paras": [
+        {
+            "description": "Be Where Your Feet Are", 
+            "para_id": "3602E391", 
+            "para_index": 4, 
+            "para_string": "Be Where Your Feet Are", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ]
+}

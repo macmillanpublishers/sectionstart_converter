@@ -432,9 +432,10 @@ class Tests(unittest.TestCase):
 
         # run function
         report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
-        expected_rd = {'found_empty_note': \
-            [{'description': "endnote", \
-            'para_id': 'p_id-1'}]}
+        expected_rd = {'found_empty_note': [{'description': "endnote",
+                        'para_id': 'p_id-1'}],
+                        'removed_blank_para': [{'description': 'excess blank para in empty endnote',
+                        'para_id': 'bp_id2'}]}
         # assert!
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(test_root), etree.tostring(after_root))
@@ -524,7 +525,9 @@ class Tests(unittest.TestCase):
 
         # run function
         report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
-        expected_rd = {'table_blank_para_notes': [{'description': 'blank para in table cell in endnote',
+        expected_rd = {'removed_blank_para': [{'description': 'excess blank para in empty endnote',
+                        'para_id': 'bp_id1'}],
+                        'table_blank_para_notes': [{'description': 'blank para in table cell in endnote',
                         'para_id': 'table_p1'}]}
         # assert!
         self.assertEqual(report_dict, expected_rd)
@@ -754,7 +757,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(solopara_bool, True)
 
-    ## test for setting: "removing_excess_tbl_blankparas" to "True" in ““handleBlankParasInTables
+    ## test for setting: "removing_excess_tbl_blankparas" to "True" in "handleBlankParasInTables"
     # def test_handleBlankParasInTables_multiblankparas(self):
     #     # create root with blank para preceding other para
     #     root, para = createXML_paraWithRun('BodyTextTxt', '', '', None)

@@ -4,81 +4,13 @@ But you're not done yet. Please check the info listed below.
 
 
 ----------------------------------- WARNINGS -----------------------------------
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Dedication (SDE): "Dedication").
+** WARNING: 3 table cell(s) containing only blank paragraph(s) found; these blank paras cannot be removed by rsuite_validate (in Section-Dedication (SDE): "Dedication").
 
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Dedication (SDE): "Dedication").
+** WARNING: 25 table cell(s) containing only blank paragraph(s) found; these blank paras cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
 
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Dedication (SDE): "Dedication").
+** WARNING: 7 table cell(s) containing only blank paragraph(s) found; these blank paras cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 4: Fail Forward").
 
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 2: Change the Race").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 4: Fail Forward").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 4: Fail Forward").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 4: Fail Forward").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 4: Fail Forward").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 4: Fail Forward").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 4: Fail Forward").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in Section-Chapter (SCP): "Chapter 4: Fail Forward").
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in: 'Endnotes').
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in: 'Endnotes').
-
-** WARNING: A table cell with a blank paragraph was found; this blank para cannot be removed by rsuite_validate (in: 'Endnotes').
+** WARNING: 3 table cell(s) containing only blank paragraph(s) found; these blank paras cannot be removed by rsuite_validate (in: 'Endnotes').
 
 
 ------------------------------- PROCESSING NOTES -------------------------------

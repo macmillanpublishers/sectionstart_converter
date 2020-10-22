@@ -77,9 +77,17 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                         else:
                             descriptionA, descriptionB = "", ""
                         # now we set err strings from report_recipe for toplist items
-                        new_errstring = recipe_item["errstring"].format(description=item['description'].encode('utf-8'), para_string='"'+item['para_string'].encode('utf-8')+'"', \
-                            parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap),  \
-                            para_index=item['para_index'], count=len(report_dict[recipe_item["dict_category_name"]]), descriptionA=descriptionA.encode('utf-8'), descriptionB=descriptionB.encode('utf-8'), valid_file_extensions=cfg.imageholder_supported_ext)
+                        new_errstring = recipe_item["errstring"].format(description=item['description'].encode('utf-8'), \
+                            para_string='"'+item['para_string'].encode('utf-8')+'"', \
+                            parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', \
+                            parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap), \
+                            para_index=item['para_index'], \
+                            count=len(report_dict[recipe_item["dict_category_name"]]), \
+                            section_count=sum(1 for sectiontxt in report_dict[recipe_item["dict_category_name"]] if sectiontxt['parent_section_start_content'] == item['parent_section_start_content']), \
+                            notes_count=sum(1 for notestype in report_dict[recipe_item["dict_category_name"]] if notestype['parent_section_start_type'] == item['parent_section_start_type']), \
+                            descriptionA=descriptionA.encode('utf-8'), \
+                            descriptionB=descriptionB.encode('utf-8'), \
+                            valid_file_extensions=cfg.imageholder_supported_ext)
                         if item['para_index'] == 'tablecell_para':# and not("summary" in recipe_item and recipe_item["summary"] == True):
                             if 'suppress_table_note' not in recipe_item or recipe_item['suppress_table_note'] != True:
                                 new_errstring += "  (< this item is from a table)"

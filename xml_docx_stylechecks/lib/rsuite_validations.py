@@ -158,7 +158,7 @@ def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles
     for para in allparas:
         # get paras with no content
         if not lxml_utils.getParaTxt(para).strip(): # or para.text is None:
-            #   checking for solo tablecell paras first: extremely unlikely in the 1st two cases but possible in the 3rd:
+            # checking for solo tablecell paras first: extremely unlikely in the 1st two cases but possible in the 3rd:
             #   and rm'ing one breaks output doc
             report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para)
             if tablepara == False:
@@ -167,7 +167,6 @@ def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles
                 if parastyle in specialparas:
                     # get section info for report, since we will be unable to retrieve after para is deleted
                     sectionname, sectiontext = lxml_utils.getSectionName(para, sectionnames)
-                    # sectionfullname = sectionname
                     sectionfullname = lxml_utils.getStyleLongname(sectionname)
                     section_info = "'%s: \"%s\"'" % (sectionfullname, sectiontext)
                     # separate warning text for sectionparas versus others:
@@ -232,20 +231,22 @@ def handleBlankParasInNotes(report_dict, xml_root, note_stylename, noteref_style
             # skip separator notes
             if type in note.attrib and note.attrib[type] in separators:
                 continue
-            # find paras in note (could be nested in tables, hence search)
+            # find paras in note (could be nested in tables, hence search instead of laterally scanning siblings)
             for para in note.findall(".//w:p", wordnamespaces):
                 # check if we are in a table; a table cell (w:tc) element requires at least one w:p
                 #   skipping table para logging here, they will get captured again below in when cycling through paras
                 report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para, '', '', True)
                 if tablepara == False:
                     para.getparent().remove(para)
-                    # make sure we don't re-add dummy text and log for report for miltiblank paras in the same note!
+                    # make sure we don't re-add dummy text and log for report for multiblank paras in the same note!
                     if uniquenote == True:
                         dummy_notepara, testpara_counter = createDummyNotePara(xml_root, testpara_counter, note_stylename, noteref_stylename)
                         note.append(dummy_notepara)
-                        note_id = note.get('{%s}id' % wnamespace)
                         lxml_utils.logForReport(report_dict,xml_root,dummy_notepara,"found_empty_note",note_name)
                         uniquenote = False
+                    else:
+                        # log above blank para removal for summary
+                        lxml_utils.logForReport(report_dict,xml_root,para,"removed_blank_para","excess blank para in empty {}".format(note_name))
                 elif tablepara == True:
                     uniquenote = False
 

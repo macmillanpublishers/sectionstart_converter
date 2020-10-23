@@ -403,7 +403,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "badnews_type": 'warning',
             "summary": True,
-            "errstring": "{section_count} table cell(s) containing only blank paragraph(s) found; these blank paras cannot be removed by rsuite_validate (in {parent_section_start_type}: {parent_section_start_content})."
+            "errstring": "{section_count} table cell(s) containing only blank paragraph(s) were found in {parent_section_start_type}: {parent_section_start_content}. Please confirm these empty table cells are intended, and if not, remove as needed."
     	},
     	"75.6_table_blank_para_notes": {
             "include_for": ["rsuitevalidate"],
@@ -413,7 +413,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "badnews_type": 'warning',
             "summary": True,
-            "errstring": "{notes_count} table cell(s) containing only blank paragraph(s) found; these blank paras cannot be removed by rsuite_validate (in: '{parent_section_start_type}')."
+            "errstring": "{notes_count} table cell(s) containing only blank paragraph(s) were found in '{parent_section_start_type}'. Please confirm these empty table cells are intended, and if not, remove as needed."
     	},
     	"76_section_blankpara": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],

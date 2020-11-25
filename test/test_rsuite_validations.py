@@ -907,5 +907,111 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
 
+    def test_checkContainers_goodcases(self):
+        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testcontainers = ['Excerpt1','Excerpt2']
+        test_ends = ['END','END2']
+
+        # create root and init (Section) para
+        root, para = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1 Head', None)
+        # dupe root so we can mock up mutliple outcomes,
+        root_dupe = copy.deepcopy(root)
+        # append subsequent paras
+        root, container_p = createXML_paraWithRun(testcontainers[0], '', 'Excerpt Cntnr', root, 'container_p')
+        root, txt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'txt_p')
+        root, end_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'end_p')
+        # append subsequent paras to dupe
+        root_dupe, txt_p2 = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_dupe, 'txt_p')
+
+        # run our check(s)
+        report_dict = rsuite_validations.checkContainers({}, root, testsections, testcontainers, test_ends)
+        report_dict2 = rsuite_validations.checkContainers({}, root_dupe, testsections, testcontainers, test_ends)
+
+        #assertions
+        self.assertEqual(report_dict, {})   # no containers
+        self.assertEqual(report_dict2, {})  # good container
+
+    def test_checkContainers_badcases(self):
+        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testcontainers = ['Excerpt1','Excerpt2']
+        test_ends = ['END','END2']
+
+        # create root and init (Section) para
+        root_noend, para = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
+        # append subsequent paras
+        root_noend, container_p = createXML_paraWithRun(testcontainers[0], '', 'Excerpt Cntnr', root_noend, 'container_p')
+        root_noend, txt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_noend, 'txt_p')
+        # dupe root so we can mock up ideal outcome, by not adding badtxt to dupe, but everything else to both
+        root_noend_container = copy.deepcopy(root_noend)
+        root_noend_section = copy.deepcopy(root_noend)
+        # append subsequent paras to dupes
+        root_noend_container, container_p2 = createXML_paraWithRun(testcontainers[1], '', 'Excerpt Cntnr again', root_noend_container, 'container_p2')
+        root_noend_container, end_p = createXML_paraWithRun(test_ends[1], '', 'C. End', root_noend_container, 'end_p')
+        root_noend_section, section2 = createXML_paraWithRun(list(testsections.keys())[1], '', 'Section2!', root_noend_section, 'section2')
+
+        # run our check(s)
+        report_dict_noend = rsuite_validations.checkContainers({}, root_noend, testsections, testcontainers, test_ends)
+        report_dict_noend_c = rsuite_validations.checkContainers({}, root_noend_container, testsections, testcontainers, test_ends)
+        report_dict_noend_s = rsuite_validations.checkContainers({}, root_noend_section, testsections, testcontainers, test_ends)
+
+        #assertions
+        expected_rd = {'container_error': [{'para_id': 'container_p',
+                        'description': 'Excerpt1'}]}
+        self.assertEqual(report_dict_noend, expected_rd)
+        self.assertEqual(report_dict_noend_c, expected_rd)
+        self.assertEqual(report_dict_noend_s, expected_rd)
+
+    def test_checkContainers_tableparas(self):
+        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testcontainers = ['Excerpt1','Excerpt2']
+        test_ends = ['END','END2']
+
+        # create root and init (Section) para
+        root, para = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
+        tbl1, cntnrpara = createTableWithPara('Start Extract1', testcontainers[0], 'cntnrpara')
+        tbl2, endpara = createTableWithPara('Container End', test_ends[0], 'endpara')
+        para.addnext(tbl1)
+        tbl1.addnext(tbl2)
+
+        # run our check(s)
+        report_dict = rsuite_validations.checkContainers({}, root, testsections, testcontainers, test_ends)
+
+        #assertions
+        expected_rd = {'illegal_style_in_table': [{'description': 'Excerpt1',
+                        'para_id': 'cntnrpara'},
+                        {'description': 'END', 'para_id': 'endpara'}]}
+        self.assertEqual(report_dict, expected_rd)
+
+    def test_checkContainers_extraends(self):
+        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testcontainers = ['Excerpt1','Excerpt2']
+        test_ends = ['END','END2']
+
+        # create root and init para
+        root_doubleend, end_p1 = createXML_paraWithRun(test_ends[1], '', 'C. End', None, 'end_p1')
+        # append subsequent paras
+        root_doubleend, sectionp = createXML_paraWithRun(list(testsections.keys())[1], '', 'Section 1!', root_doubleend, 'section1')
+        root_doubleend, end_p2 = createXML_paraWithRun(test_ends[0], '', 'C. End again', root_doubleend, 'end_p2')
+
+        # create different root for variation
+        root_end_and_sectionend, para = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section 2!', None)
+        # append subsequent paras
+        root_end_and_sectionend, end_p1b = createXML_paraWithRun(test_ends[0], '', 'C. End', root_end_and_sectionend, 'end_p1b')
+        root_end_and_sectionend, container_p = createXML_paraWithRun(testcontainers[1], '', 'Excerpt Cntnr', root_end_and_sectionend, 'container_p1')
+        root_end_and_sectionend, end_p2b = createXML_paraWithRun(test_ends[1], '', 'C. End again', root_end_and_sectionend, 'end_p2b')
+        root_end_and_sectionend, end_p3 = createXML_paraWithRun(test_ends[0], '', 'C. End again again', root_end_and_sectionend, 'end_p3')
+
+        # run our check(s)
+        report_dict_doubleend = rsuite_validations.checkContainers({}, root_doubleend, testsections, testcontainers, test_ends)
+        report_dict_end_and_sectionend = rsuite_validations.checkContainers({}, root_end_and_sectionend, testsections, testcontainers, test_ends)
+
+        #assertions
+        expected_rd_doubleend = {'container_end_error': [{'description': 'END', 'para_id': 'end_p2'},
+                        {'description': 'END2', 'para_id': 'end_p1'}]}
+        expected_rd_end_and_sectionend = {'container_end_error': [{'description': 'END', 'para_id': 'end_p1b'},
+                        {'description': 'END', 'para_id': 'end_p3'}]}
+        self.assertEqual(report_dict_doubleend, expected_rd_doubleend)
+        self.assertEqual(report_dict_end_and_sectionend, expected_rd_end_and_sectionend)
+
 if __name__ == '__main__':
     unittest.main()

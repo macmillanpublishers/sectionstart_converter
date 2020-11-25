@@ -366,6 +366,16 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "errstring": "Non-Macmillan style '{description}' in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
     	},
+    	"73.2_non_macmillan_styles_in_table": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["reporter", "rsuitevalidate"],
+    		"dict_category_name": "non-Macmillan_style_used_in_table",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'error',
+            "summary": True,
+            "suppress_table_note": True,
+            "errstring": "{section_count} paragraphs styled with Non-Macmillan style '{description}' were found in a table(s). The parent table(s) can be found in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
+    	},
     	"73.5_non_macmillan_charstyles": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["reporter", "rsuitevalidate"],
     		"dict_category_name": "non-Macmillan_charstyle_used",
@@ -446,6 +456,13 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "errstring": "No Container END para found for: '{description}', in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
     	},
+    	"79.5_container_error": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "container_end_error",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Found a Container END para with no corresponding Container Start; in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
+    	},
     	"80_list_error": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
     		"dict_category_name": "list_nesting_err",
@@ -459,6 +476,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "List type changed in the middle of a list: {description} in {parent_section_start_type} {parent_section_start_content} (starts with text: {para_string})"# (Paragraph {para_index})"
+    	},
+    	"81_illegal_style_in_table": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "illegal_style_in_table",
+    		"line_template": "",
+            "suppress_table_note": True,
+    		"badnews": 'any',
+            "errstring": "Found a Container or Section styled paragraph in a table cell: {description} (in {parent_section_start_type} {parent_section_start_content}). Sections and/or Containers cannot be inside of tables."# (Paragraph {para_index})"
     	},
     	"82_endnote_text_misstyled": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],

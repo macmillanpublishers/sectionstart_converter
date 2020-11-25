@@ -273,6 +273,8 @@ def handleBlankParasInNotes(report_dict, xml_root, note_stylename, noteref_style
 def checkContainers(report_dict, xml_root, sectionnames, container_start_styles, container_end_styles):
     logger.info("* * * commencing checkContainers function...")
     search_until_styles = sectionnames.keys() + container_start_styles + container_end_styles
+    # adding counters to help determine if we need to check for orphan ENDS
+    matched_cstart_count = 0
     # loop through searching for different container start styles
     for container_stylename in container_start_styles:
         # searchstring = ".//*w:pStyle[@w:val='%s']" % container_stylename
@@ -280,23 +282,23 @@ def checkContainers(report_dict, xml_root, sectionnames, container_start_styles,
         # containerstart_paras = xml_root.findall(searchstring, wordnamespaces)
         # loop through specific matched paras of a given style
         for start_para in containerstart_paras:
+            # check if we're in a table; if so, log it as an err and 'continue' to next para
+            if start_para.getparent().tag == '{{{}}}tc'.format(wnamespace):
+                report_dict = lxml_utils.logForReport(report_dict,xml_root,start_para,"illegal_style_in_table",lxml_utils.getStyleLongname(container_stylename))
+                continue
             # start_para = start_para_pStyle.getparent().getparent()
             pneighbors = lxml_utils.getNeighborParas(start_para)
             para_tmp = start_para
-            # # take a quick moment to log any blank patas we find, since those will generate errors:
-            # paratxt = lxml_utils.getParaTxt(start_para)
-            # if not paratxt.strip():
-            #     lxml_utils.logForReport(report_dict,xml_root,start_para,"blank_container_para","style is %s" % container_stylename)
 
             # scan styles of next paras until we match something to stop at
             while pneighbors['nextstyle'] and pneighbors['nextstyle'] not in search_until_styles:
                 # increment para downwards
                 para_tmp = pneighbors['next']
                 pneighbors = lxml_utils.getNeighborParas(para_tmp)
-
             # figure out whether we matched an END style or something else
             if pneighbors['nextstyle'] and pneighbors['nextstyle'] in container_end_styles:
                 logger.debug("found a container end style before section start, container start or document end")
+                matched_cstart_count = matched_cstart_count + 1
             else:
                 lxml_utils.logForReport(report_dict,xml_root,start_para,"container_error",lxml_utils.getStyleLongname(container_stylename))
                 if not pneighbors['nextstyle']:
@@ -305,6 +307,46 @@ def checkContainers(report_dict, xml_root, sectionnames, container_start_styles,
                     logger.warn("container error - reached section-start style '%s' before container END styled para :(" % pneighbors['nextstyle'])
                 else:
                     logger.warn("container error - reached container-start style '%s' before container END styled para :(" % pneighbors['nextstyle'])
+    # doublecheck that no container Ends live in tables, or are orphaned:
+    c_end_count = 0
+    for end_stylename in container_end_styles:
+        container_end_paras = lxml_utils.findParasWithStyle(end_stylename, xml_root)
+        # containerstart_paras = xml_root.findall(searchstring, wordnamespaces)
+        # loop through specific matched paras of a given style
+        for end_para in container_end_paras:
+            # check if we're in a table; if so, log it as an err and 'continue' to next para
+            if end_para.getparent().tag == '{{{}}}tc'.format(wnamespace):
+                report_dict = lxml_utils.logForReport(report_dict,xml_root,end_para,"illegal_style_in_table",lxml_utils.getStyleLongname(end_stylename))
+            else:
+                c_end_count = c_end_count + 1
+    # if the counts don't match, we have an orphan END para somewhere.
+    if c_end_count != matched_cstart_count:
+        logger.warn("found %s matched start containers, but %s Container_ends, indicating orphaned END" % (matched_cstart_count, c_end_count))
+        for end_stylename in container_end_styles:
+            # the below loop is identical to teh one above, except reversed (scanning upwards from end paras for valid starts)
+            logger.info("looping through container ends and scanning upwards, searching for orphan(s)")
+            container_end_paras = lxml_utils.findParasWithStyle(end_stylename, xml_root)
+            for end_para in container_end_paras:
+                # skip illegal ends in tables, already flagged those
+                if end_para.getparent().tag != '{{{}}}tc'.format(wnamespace):
+                    pneighbors = lxml_utils.getNeighborParas(end_para)
+                    para_tmp = end_para
+                    # scan styles of next paras until we match something to stop at
+                    while pneighbors['prevstyle'] and pneighbors['prevstyle'] not in search_until_styles:
+                        # increment para downwards
+                        para_tmp = pneighbors['prev']
+                        pneighbors = lxml_utils.getNeighborParas(para_tmp)
+                    # figure out whether we matched a START style or something else
+                    if pneighbors['prevstyle'] and pneighbors['prevstyle'] in container_start_styles:
+                        logger.debug("found container start, this END is part of a set")
+                    else:
+                        lxml_utils.logForReport(report_dict,xml_root,end_para,"container_end_error",lxml_utils.getStyleLongname(end_stylename))
+                        if not pneighbors['prevstyle']:
+                            logger.warn("orphaned container END - reached start of document before container-start para")
+                        elif pneighbors['prevstyle'] and pneighbors['prevstyle'] in sectionnames.keys():
+                            logger.warn("orphaned container END - reached section-start style '%s' before container START styled para" % pneighbors['prevstyle'])
+                        else:
+                            logger.warn("orphaned container END - reached another container-END para before container START para")
 
     return report_dict
 

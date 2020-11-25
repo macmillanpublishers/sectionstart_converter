@@ -93,20 +93,27 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                                 new_errstring += "  (< this item is from a table)"
                         # added 'summary' key so we could specify whether to summarize warnings or notes:
                         #   default is warnings are listed singly, notes are summarized
-                        if "badnews_type" in recipe_item and recipe_item["badnews_type"] == 'warning':
-                            if "summary" in recipe_item and recipe_item["summary"] == True:
-                                if new_errstring not in warninglist:
-                                    warninglist.append(new_errstring)
+                        alerttypes = {
+                            'note': notelist,
+                            'warning': warninglist,
+                            'error': errorlist
+                        }
+                        for alertname, alertlist in alerttypes.iteritems():
+                            if "badnews_type" in recipe_item:
+                                if recipe_item["badnews_type"] == alertname:
+                                    # 'notes' are expected to summarize by default
+                                    if alertname == 'note' or ("summary" in recipe_item and recipe_item["summary"] == True):
+                                        if new_errstring not in alertlist:
+                                            alertlist.append(new_errstring)
+                                            break
+                                    # if we don't specify 'summary' in recipe at all, add it singly
+                                    else:
+                                        alertlist.append(new_errstring)
+                                        break
+                            # if badnews_type key is not present in recipe, assume its an error (not warning or Note)
                             else:
-                                warninglist.append(new_errstring)
-                        elif "badnews_type" in recipe_item and recipe_item["badnews_type"] == 'note':
-                            if "summary" in recipe_item and recipe_item["summary"] == False:
-                                notelist.append(new_errstring)
-                            else:
-                                if new_errstring not in notelist:
-                                    notelist.append(new_errstring)
-                        else:
-                            errorlist.append(new_errstring)
+                                errorlist.append(new_errstring)
+                                break
                         tmptextlist =[]
                     if "badnews" in recipe_item and recipe_item["badnews"] == 'one_allowed' and len(report_dict[recipe_item["dict_category_name"]]) > 1:
                         new_errstring = recipe_item["errstring"].format(count=len(recipe_item["dict_category_name"]))

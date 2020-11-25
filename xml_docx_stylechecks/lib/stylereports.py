@@ -122,8 +122,11 @@ def getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_
             if run_style is not None:
                 # log char styles
                 report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_used",stylename_full)
+            # log para styles not reverted to base; separate categories for table-paras...
+            elif para.getparent().tag == '{{{}}}tc'.format(wnamespace):
+                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used_in_table",stylename_full)
+            # and regular paras:
             else:
-                # log para styles not reverted to base
                 report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
     return report_dict
 
@@ -148,6 +151,10 @@ def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_r
         # if we're "validating", revert custom_styles based on Macmillan styles to base_style (for _non_ rsuite styled)
         if call_type == "validate" and not container_styles:
             report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para)
+        # else log non-Macmillan style used; separate categories for table-paras...
+        elif para.getparent().tag == '{{{}}}tc'.format(wnamespace):
+            report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used_in_table",stylename_full)
+        # versus regular paras:
         else:
             report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
     return report_dict

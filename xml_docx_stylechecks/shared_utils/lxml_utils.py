@@ -377,6 +377,10 @@ def sectionStartTally(report_dict, section_names, doc_root, call_type, headingst
         if stylename in section_names:
             para = pstyle.getparent().getparent()
             section_name = stylename
+            # # check if we're in a table; if so, log it as an err and 'continue' to next para
+            if para.getparent().tag == '{{{}}}tc'.format(wnamespace):
+                report_dict = logForReport(report_dict,doc_root,para,"illegal_style_in_table",section_name)
+                continue
             # log the section start para
             #   (we can run this before content is added to paras, b/c that content is captured later in the 'calcLocationInfoForLog' method
             report_dict = logForReport(report_dict,doc_root, para, "section_start_found", section_name)

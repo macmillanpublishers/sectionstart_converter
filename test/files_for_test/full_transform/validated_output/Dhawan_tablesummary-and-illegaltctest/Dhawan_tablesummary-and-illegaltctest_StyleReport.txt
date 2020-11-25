@@ -1,0 +1,210 @@
+OOPS!
+
+Problems were found with the styles in your document.
+
+
+------------------------------------ ERRORS ------------------------------------
+** ERROR: 14 paragraphs styled with Non-Macmillan style 'Normal' were found in a table(s). The parent table(s) can be found in Section-Chapter (SCP): "Chapter 4: Value Visibly".
+
+** ERROR: 17 paragraphs styled with Non-Macmillan style 'Normal' were found in a table(s). The parent table(s) can be found in Section-Chapter (SCP): "Chapter 5: Communicate Carefully".
+
+** ERROR: 17 paragraphs styled with Non-Macmillan style 'Normal' were found in a table(s). The parent table(s) can be found in Section-Chapter (SCP): "Chapter 6: Collaborate Confidently".
+
+** ERROR: Found a Container END para with no corresponding Container Start; in Section-Chapter (SCP): "Chapter 1: What Is Digital Body Language?".
+
+** ERROR: Found a Container or Section styled paragraph in a table cell: EXTRACT-B (EXT-B) (in Section-Chapter (SCP) "Chapter 4: Value Visibly"). Sections and/or Containers cannot be inside of tables.
+
+** ERROR: Found a Container or Section styled paragraph in a table cell: END (END) (in Section-Chapter (SCP) "Chapter 4: Value Visibly"). Sections and/or Containers cannot be inside of tables.
+
+** ERROR: Found a Container or Section styled paragraph in a table cell: Section-Chapter2SCP2 (in Section-Chapter (SCP) "Chapter 4: Value Visibly"). Sections and/or Containers cannot be inside of tables.
+
+** ERROR: Found a Container or Section styled paragraph in a table cell: Section-BookBOOK (in Section-Chapter (SCP) "Chapter 4: Value Visibly"). Sections and/or Containers cannot be inside of tables.
+
+
+If you have any questions about how to handle these errors,
+please contact workflows@macmillan.com.
+
+
+----------------------------------- WARNINGS -----------------------------------
+** WARNING: 14 table cell(s) containing only blank paragraph(s) were found in Section-Chapter (SCP): "Chapter 4: Value Visibly". Please confirm these empty table cells are intended, and if not, remove as needed.
+
+** WARNING: 17 table cell(s) containing only blank paragraph(s) were found in Section-Chapter (SCP): "Chapter 5: Communicate Carefully". Please confirm these empty table cells are intended, and if not, remove as needed.
+
+** WARNING: 17 table cell(s) containing only blank paragraph(s) were found in Section-Chapter (SCP): "Chapter 6: Collaborate Confidently". Please confirm these empty table cells are intended, and if not, remove as needed.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"Digital Body Language"
+
+** Author1 (Au1) **
+"Erica Dhawan"
+
+** cs-isbn (isbn) **
+"ISBN 978-1-250-24652-3 (hardcover)"
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+Verify that this list of illustrations includes only the filenames of your illustrations.
+
+16-yesresponse.pdf
+17-munoztweet.pdf
+Image001.pdf
+19_deadline1.pdf
+20_deadline2.pdf
+21_deadline3.pdf
+18-reschedule.pdf
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "Digital Body Language"                                  
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Ad-Card (SAC)............ "Ad Card"                                                
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Dedication (SDE)......... "Dedication"                                             
+Section-Contents (STC)........... "Contents"                                               
+Section-Introduction (SIC)....... "Introduction"                                           
+Section-Part (SPT)............... "Part One: Digital Elements of Style"                    
+Section-Chapter (SCP)............ "Chapter 1: What Is Digital Body Language?"              
+Section-Part (SPT)............... "Part Two: The Four Laws of Digital Body Language"       
+Section-Chapter (SCP)............ "Chapter 4: Value Visibly"                               
+Section-Chapter (SCP)............ "Chapter 5: Communicate Carefully"                       
+Section-Chapter (SCP)............ "Chapter 6: Collaborate Confidently"                     
+Section-Conclusion (SCL)......... "Conclusion"                                             
+Section-Appendix (SAP)........... "Appendix"                                               
+Section-Acknowledgments (SAK).... "Acknowledgments"                                        
+Section-Notes (SNT).............. "Notes"                                                  
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "Digital Body Language"                                     
+
+* Section-Ad-Card (SAC): "Ad Card"
+Title (Ttl).................................. "Also by Erica Dhawan"                                      
+Unnum-Level-1-List (Ul1)..................... "Get Big Things Done: The Power of Connectional Intelligence (with"
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "Digital Body Language"                                     
+Subtitle (Sttl).............................. "How to Build Trust and Connection, No Matter the Distance" 
+Author1 (Au1)................................ "Erica Dhawan"                                              
+Design-Note (Dn)............................. "[place Imprint logo here]"                                 
+Imprint (Imp)................................ "St. Martin’s Press"                                      
+Cities (Cit)................................. "New York"                                                  
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "First published in the United States by St. Martin’s Press,"
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Dedication (SDE): "Dedication"
+Dedication (Ded)............................. "Dedication TK"                                             
+
+* Section-Contents (STC): "Contents"
+Title (Ttl).................................. "Table of Contents"                                         
+TOC-Chapter (Tocch).......................... "Introduction:"                                             
+TOC-Part (Tocpt)............................. "PART ONE: Digital Elements of Style"                       
+TOC-Backmatter (Tocbm)....................... "Guidebook: The Digital Body Language Toolkit"              
+
+* Section-Introduction (SIC): "Introduction"
+Title (Ttl).................................. "Introduction"                                              
+Body-Text (Tx)............................... "After co-authoring my first book, Get Big Things Done: The"
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+
+* Section-Part (SPT): "Part One: Digital Elements of Style"
+Number (Num)................................. "Part One"                                                  
+Title (Ttl).................................. "Digital Elements of Style"                                 
+
+* Section-Chapter (SCP): "Chapter 1: What Is Digital Body Language?"
+Number (Num)................................. "Chapter 1"                                                 
+Title (Ttl).................................. "What Is Digital Body Language?"                            
+Body-Text (Tx)............................... "They had been going out for three years when the"          
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+Display1 (Disp1)............................. "You see, these days, we don’t talk the talk or"          
+Display2 (Disp2)............................. "How do we create connection when up to 70 percent"         
+A-Head (Ahead)............................... "What is Digital Body Language (and why is it important?)"  
+Bullet-Level-1-List (Bl1).................... "Traditional Body Language involves: A head tilted to one side,"
+Bullet-Level-1-List-Paragraph (Bl1p)......... "Digital Body Language involves: “Liking” a text. Praising another person’s"
+BOX-A > A-Head (Ahead)....................... "So You Want to Communicate . . ."                       
+BOX-A > B-Head (Bhead)....................... ". . .Trust:"                                               
+BOX-A > Bullet-Level-1-List (Bl1)............ "Traditional Body Language: keep your palms open, uncross your arms"
+
+* Section-Chapter (SCP): "Chapter 4: Value Visibly"
+Extract1 (Ext1).............................. "Me: So, how do you think it’s going? Because I"          
+Custom1 (Cust1).............................. "#EricaTips"                                                
+BOX-B > A-Head (Ahead)....................... "Common Pet Peeves You Must Avoid:"                         
+BOX-B > Bullet-Level-1-List (Bl1)............ "-Being in a rush. Sending a message without proofreading. Trying"
+B-Head (Bhead)............................... "Reading Carefully is the New Listening"                    
+Image-Placement (Img)........................ "16-yesresponse.pdf"                                        
+
+* Section-Chapter (SCP): "Chapter 5: Communicate Carefully"
+Dialogue1 (Dia1)............................. "Shwartz: We got 30,000. That’s great!"                   
+Computer-Text (Comp)......................... "Yep, we did $457K for Feb!"                                
+
+* Section-Chapter (SCP): "Chapter 6: Collaborate Confidently"
+Subtitle (Sttl).............................. "Teamwork in a Digital Age"                                 
+Epigraph-Non-Verse (Epi)..................... "“unsubscribe”—a message sent to the massive reply all chain that"
+
+* Section-Conclusion (SCL): "Conclusion"
+Title (Ttl).................................. "Conclusion"                                                
+Body-Text (Tx)............................... "When I sat down to write this book, I knew"                
+
+* Section-Appendix (SAP): "Appendix"
+Title (Ttl).................................. "Appendix"                                                  
+Subtitle (Sttl).............................. "How do I apply what I’ve learned?"                       
+Body-Text (Tx)............................... "To get you started, I’ve put together a practical, instructive"
+Bullet-Level-1-List (Bl1).................... "Digital Body Language Style Guide: A digital “Elements of Style”"
+A-Head (Ahead)............................... "EMAIL"                                                     
+List-Head (Lhead)............................ "The Audience:"                                             
+Num-Level-1-List (Nl1)....................... "1. Hierarchy may matter. In some corporate cultures, it matters"
+Unnum-Level-2-List (Ul2)..................... "Do: Mr. Robinson, or Dear Sam, . . . . Sincerely, Erica Dhawan,"
+BOX-A > A-Head (Ahead)....................... "Common Interpretations of Our Most Used Email Signatures:" 
+BOX-A > Unnum-Level-1-List (Ul1)............. "No signature—the equivalent of awkwardly walking out of a room,"
+BOX-A > Body-Text (Tx)....................... "Thanks in Advance—This has actually been shown to be the"
+Custom2 (Cust2).............................. "Channels: text message, Skype messenger, Slack, Google Chat, etc."
+Unnum-Level-1-List (Ul1)..................... "Emails"                                                    
+B-Head (Bhead)............................... "The Basics:"                                               
+Design-Note (Dn)............................. "DES: Set checkbox characters in this list and similar lists"
+Bullet-Level-2-List (Bl2).................... " Purpose: Does the meeting have a clearly defined purpose?"
+Display1 (Disp1)............................. "Answer the following questions based on how you would respond"
+Alpha-Level-2-List (Al2)..................... "A. Clear on why you’re invited, what’s on the agenda"  
+Extract2 (Ext2).............................. "(# of A x 3) + (# of B x"                                  
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Acknowledgments (SAK): "Acknowledgments"
+Title (Ttl).................................. "Acknowledgments Tk"                                        
+
+* Section-Notes (SNT): "Notes"
+Title (Ttl).................................. "Notes"                                                     
+Table-Head (Tbhd)............................ "Strongly Agree"                                            
+Table-Text (Tbtx)............................ "Excellent work is acknowledged and rewarded in your organization."
+Table-Text (Tbtx)............................ "Your time is respected."                                   
+EXTRACT-B > Table-Text (Tbtx)................ "You are not overworked or burnt out. "                     
+Table-Head (Tbhd)............................ "Complexity of argument"                                    
+
+___________CHARACTER STYLES IN USE___________
+ital (i)
+smallcaps (sc)
+cs-isbn (isbn)
+cs-cleanup-exclude (cex)
+super (sup)
+endnote reference
+bold (b)
+bold-ital (bi)
+underline (u)
+footnote reference
+symbols (sym)
+footnote reference
+endnote reference
+
+

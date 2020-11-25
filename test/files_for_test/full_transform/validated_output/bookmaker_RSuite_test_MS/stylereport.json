@@ -1071,6 +1071,16 @@
             "parent_section_start_type": "Section-TitlepageSTI"
         }
     ], 
+    "container_end_error": [
+        {
+            "description": "END (END)", 
+            "para_id": "185F1734", 
+            "para_index": 184, 
+            "para_string": "End", 
+            "parent_section_start_content": "Chapter 1", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
     "container_error": [
         {
             "description": "BOX-A (BOX-A)", 

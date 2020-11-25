@@ -4,17 +4,7 @@ Problems were found with the styles in your document.
 
 
 ------------------------------------ ERRORS ------------------------------------
-** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
-
-** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
-
-** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
-
-** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
-
-** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
-
-** ERROR: Non-Macmillan style 'Normal' in Section-Chapter (SCP): "Chapter One".  (< this item is from a table)
+** ERROR: 6 paragraphs styled with Non-Macmillan style 'Normal' were found in a table(s). The parent table(s) can be found in Section-Chapter (SCP): "Chapter One".
 
 
 If you have any questions about how to handle these errors,

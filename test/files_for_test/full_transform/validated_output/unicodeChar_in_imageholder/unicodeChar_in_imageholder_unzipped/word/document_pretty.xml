@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <w:document mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14" xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink" xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d" xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex" xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex" xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex" xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex" xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex" xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex" xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex" xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex" xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
    <w:body>
-      <w:p w14:paraId="2402099E" w:rsidP="006763AA" w:rsidR="006763AA" w:rsidRDefault="006763AA" w:rsidRPr="006763AA">
+      <w:p w14:paraId="4F21E5A6" w:rsidP="006763AA" w:rsidR="006763AA" w:rsidRDefault="006763AA" w:rsidRPr="006763AA">
          <w:pPr>
             <w:pStyle w:val="Section-BookBOOK"/>
          </w:pPr>
@@ -9,7 +9,7 @@
             <w:t>Lily to the Rescue</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="689F4317" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="006763AA">
+      <w:p w14:paraId="A780F52B" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="006763AA">
          <w:pPr>
             <w:pStyle w:val="Section-BookBOOK"/>
          </w:pPr>
@@ -17,7 +17,7 @@
             <w:t>Lost Little Leopard</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="43DDC2F1" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="43596466" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-HalftitleSHT"/>
          </w:pPr>
@@ -26,7 +26,7 @@
             <w:t>Halftitle Page</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="824FAB2A" w:rsidP="00A00FF7" w:rsidR="004152A4" w:rsidRDefault="004152A4" w:rsidRPr="00E93458">
+      <w:p w14:paraId="3FB9F4A1" w:rsidP="00A00FF7" w:rsidR="004152A4" w:rsidRDefault="004152A4" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -45,7 +45,7 @@
             <w:t>Lost Little Leopard</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="D206EF47" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="09312A13" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-Ad-CardSAC"/>
          </w:pPr>
@@ -54,7 +54,7 @@
             <w:t>Ad Card</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7A3FBE87" w:rsidP="00A00FF7" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
+      <w:p w14:paraId="14BEAEAB" w:rsidP="00A00FF7" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -71,7 +71,7 @@
             <w:t>Cameron</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="A3261A07" w:rsidP="00A00FF7" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="003F40F7">
+      <w:p w14:paraId="D2712747" w:rsidP="00A00FF7" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="003F40F7">
          <w:pPr>
             <w:pStyle w:val="Unnum-Level-1-ListUl1"/>
          </w:pPr>
@@ -255,7 +255,7 @@
             <w:t>s Story</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="224D2989" w:rsidP="0087348B" w:rsidR="0087348B" w:rsidRDefault="0087348B" w:rsidRPr="0087348B">
+      <w:p w14:paraId="BFD8455C" w:rsidP="0087348B" w:rsidR="0087348B" w:rsidRDefault="0087348B" w:rsidRPr="0087348B">
          <w:pPr>
             <w:pStyle w:val="SeparatorSep"/>
          </w:pPr>
@@ -318,7 +318,7 @@
             <w:t>Lily to the Rescue: The Misfit Donkey</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="0E5ED177" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="3D23F53D" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-TitlepageSTI"/>
          </w:pPr>
@@ -327,7 +327,7 @@
             <w:t>Titlepage</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="048445D3" w:rsidP="00A00FF7" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
+      <w:p w14:paraId="ABAB202F" w:rsidP="00A00FF7" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -338,7 +338,7 @@
             <w:t>to the Rescue</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="ADFC5CD9" w:rsidP="00A00FF7" w:rsidR="00A9669B" w:rsidRDefault="00B92FAA">
+      <w:p w14:paraId="1E0E512D" w:rsidP="00A00FF7" w:rsidR="00A9669B" w:rsidRDefault="00B92FAA">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -346,7 +346,7 @@
             <w:t>Lost Little Leopard</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="031E9607" w:rsidP="00A00FF7" w:rsidR="00A9669B" w:rsidRDefault="00B92FAA">
+      <w:p w14:paraId="37F2BDD7" w:rsidP="00A00FF7" w:rsidR="00A9669B" w:rsidRDefault="00B92FAA">
          <w:pPr>
             <w:pStyle w:val="Author1Au1"/>
          </w:pPr>
@@ -354,7 +354,7 @@
             <w:t>W. Bruce Cameron</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="0664B667" w:rsidP="00A00FF7" w:rsidR="00A9669B" w:rsidRDefault="00B92FAA">
+      <w:p w14:paraId="527A6FFB" w:rsidP="00A00FF7" w:rsidR="00A9669B" w:rsidRDefault="00B92FAA">
          <w:pPr>
             <w:pStyle w:val="Author2Au2"/>
          </w:pPr>
@@ -362,7 +362,7 @@
             <w:t>Illustrations by Jennifer L. Meyer</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="6276BAA2" w:rsidP="00A00FF7" w:rsidR="00B92FAA" w:rsidRDefault="004152A4" w:rsidRPr="00E93458">
+      <w:p w14:paraId="5695F140" w:rsidP="00A00FF7" w:rsidR="00B92FAA" w:rsidRDefault="004152A4" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Design-NoteDn"/>
          </w:pPr>
@@ -373,7 +373,7 @@
             <w:t>Starscape logo]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7B9B70DC" w:rsidP="00A00FF7" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
+      <w:p w14:paraId="3EDA5054" w:rsidP="00A00FF7" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="ImprintImp"/>
          </w:pPr>
@@ -381,7 +381,7 @@
             <w:t>A Tom Doherty Associates Book</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7C8CD2A5" w:rsidP="00A00FF7" w:rsidR="00A9669B" w:rsidRDefault="00B92FAA">
+      <w:p w14:paraId="FF39D5EB" w:rsidP="00A00FF7" w:rsidR="00A9669B" w:rsidRDefault="00B92FAA">
          <w:pPr>
             <w:pStyle w:val="CitiesCit"/>
          </w:pPr>
@@ -389,7 +389,7 @@
             <w:t>New York</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="8C718F14" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="5E8D1EBD" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-CopyrightSCR"/>
          </w:pPr>
@@ -398,7 +398,7 @@
             <w:t>Copyright</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="78CCFD86" w:rsidP="00E16D02" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
+      <w:p w14:paraId="503513DF" w:rsidP="00E16D02" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -412,7 +412,7 @@
             <w:t>s imagination or are used fictitiously.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="8AF13C09" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="2ACEF3BE" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="SeparatorSep"/>
          </w:pPr>
@@ -420,7 +420,7 @@
             <w:t>[separator]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="0F797824" w:rsidP="00E16D02" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="003F40F7">
+      <w:p w14:paraId="40C08C2C" w:rsidP="00E16D02" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="003F40F7">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -560,7 +560,7 @@
             <w:t>[separator]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="662D52F2" w:rsidP="00E16D02" w:rsidR="00A9669B" w:rsidRDefault="004152A4">
+      <w:p w14:paraId="F4254456" w:rsidP="00E16D02" w:rsidR="00A9669B" w:rsidRDefault="004152A4">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -829,7 +829,7 @@
             <w:t>[separator]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="6F086749" w:rsidP="00E16D02" w:rsidR="00A9669B" w:rsidRDefault="00B92FAA">
+      <w:p w14:paraId="E2FF4CBD" w:rsidP="00E16D02" w:rsidR="00A9669B" w:rsidRDefault="00B92FAA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -918,7 +918,7 @@
             <w:t>1</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="687BEAAB" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="C8057606" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-DedicationSDE"/>
          </w:pPr>
@@ -927,7 +927,7 @@
             <w:t>Dedication</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="2514697B" w:rsidP="00E16D02" w:rsidR="00A9669B" w:rsidRDefault="004152A4">
+      <w:p w14:paraId="91A4E8A2" w:rsidP="00E16D02" w:rsidR="00A9669B" w:rsidRDefault="004152A4">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -935,7 +935,7 @@
             <w:t>[dedication TK]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="0FC9D7C6" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="3E33111E" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-HalftitleSHT"/>
          </w:pPr>
@@ -963,7 +963,7 @@
             <w:t>Lost Little Leopard</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="ED2D30C1" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="B7C5AB73" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -975,7 +975,7 @@
             <w:t xml:space="preserve"> 1</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="6D45B3E4" w:rsidP="00A00FF7" w:rsidR="00A9669B" w:rsidRDefault="00BD4E09">
+      <w:p w14:paraId="7AD15AD6" w:rsidP="00A00FF7" w:rsidR="00A9669B" w:rsidRDefault="00BD4E09">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -983,7 +983,7 @@
             <w:t>1</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="B87AC6F8" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
+      <w:p w14:paraId="99548E51" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -1959,7 +1959,7 @@
             <w:t>nd with that, I heard a scream.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="5E2D91A5" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="B89C192F" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -2498,7 +2498,7 @@
             <w:t>”</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="A6348FE5" w:rsidP="00427C90" w:rsidR="00427C90" w:rsidRDefault="00427C90" w:rsidRPr="00427C90">
+      <w:p w14:paraId="7E69D034" w:rsidP="00427C90" w:rsidR="00427C90" w:rsidRDefault="00427C90" w:rsidRPr="00427C90">
          <w:pPr>
             <w:pStyle w:val="Blank-Space-BreakBsbrk"/>
          </w:pPr>
@@ -3097,7 +3097,7 @@
             <w:t>I decided to try it.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="25A6A016" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="3AB8A110" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -4214,7 +4214,7 @@
             <w:t xml:space="preserve"> he gasped.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="E36ECD81" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="4B718288" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -4593,7 +4593,7 @@
             <w:t>”</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="FF1D97F3" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
+      <w:p w14:paraId="28EBFDB2" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -5724,7 +5724,7 @@
             <w:t>s shoulder.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="1016920B" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
+      <w:p w14:paraId="34C07081" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -5842,7 +5842,7 @@
             <w:t>”</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="ACC5619B" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="35780F2F" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -6181,7 +6181,7 @@
             <w:t>Jax did not stop.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="FCFE313D" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
+      <w:p w14:paraId="5B0A92E1" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -6836,7 +6836,7 @@
             <w:t>I pulled Maggie Rose right across the parking lot, heading straight for these smells.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="408203EB" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
+      <w:p w14:paraId="35D9B3ED" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -7014,7 +7014,7 @@
             <w:t xml:space="preserve"> Mom called sharply.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7071F00C" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="B21C2471" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -8203,7 +8203,7 @@
             <w:t>t.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="EA58972B" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="B7A79184" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -9017,7 +9017,7 @@
             <w:t xml:space="preserve"> Dusty Pants replied.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="C6D97B01" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
+      <w:p w14:paraId="2844254C" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -9484,7 +9484,7 @@
             <w:t>”</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="385FBA8B" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="7DA93C49" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -10024,7 +10024,7 @@
             <w:t>t last long.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="432C4FCD" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
+      <w:p w14:paraId="6DEBCD08" w:rsidP="00E16D02" w:rsidR="00EB742C" w:rsidRDefault="00EB742C" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -10807,7 +10807,7 @@
             <w:t>”</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="A978E17C" w:rsidP="00A00FF7" w:rsidR="00A00FF7" w:rsidRDefault="00A00FF7" w:rsidRPr="00A00FF7">
+      <w:p w14:paraId="C02F3CE8" w:rsidP="00A00FF7" w:rsidR="00A00FF7" w:rsidRDefault="00A00FF7" w:rsidRPr="00A00FF7">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -11994,7 +11994,7 @@
             <w:t>But Bad Cat had other ideas.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="FD2A0133" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="47C3C8BF" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -12992,7 +12992,7 @@
             <w:t xml:space="preserve"> Mom replied.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="9FBD26D9" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="8FE79CE6" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -13839,7 +13839,7 @@
             <w:t>nd I was a very, very good dog.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="4005C2A5" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="8FD256B2" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-Back-Matter-GeneralSBM"/>
          </w:pPr>
@@ -13848,7 +13848,7 @@
             <w:t>Back Matter General</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="9AABACA5" w:rsidP="00691CF4" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
+      <w:p w14:paraId="471257DC" w:rsidP="00691CF4" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -13859,7 +13859,7 @@
             <w:t>About Amur Leopards and Macaws</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="B62E615E" w:rsidP="00E16D02" w:rsidR="00A9669B" w:rsidRDefault="00E93458">
+      <w:p w14:paraId="45E63A00" w:rsidP="00E16D02" w:rsidR="00A9669B" w:rsidRDefault="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -13867,7 +13867,7 @@
             <w:t>[TK]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="08855CF6" w:rsidP="00691CF4" w:rsidR="00691CF4" w:rsidRDefault="00691CF4" w:rsidRPr="00691CF4">
+      <w:p w14:paraId="95620FA7" w:rsidP="00691CF4" w:rsidR="00691CF4" w:rsidRDefault="00691CF4" w:rsidRPr="00691CF4">
          <w:pPr>
             <w:pStyle w:val="Section-Excerpt-OpenerSEO"/>
          </w:pPr>
@@ -13876,7 +13876,7 @@
             <w:t>Excerpt Opener</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="73E97BB7" w:rsidP="00E16D02" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
+      <w:p w14:paraId="887E507C" w:rsidP="00E16D02" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -13904,7 +13904,7 @@
             <w:t>TK]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="8E522761" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="580444D0" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-About-AuthorSAA"/>
          </w:pPr>
@@ -13913,7 +13913,7 @@
             <w:t>About the Author</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="704C0DE1" w:rsidP="00691CF4" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA">
+      <w:p w14:paraId="E085870B" w:rsidP="00691CF4" w:rsidR="00B92FAA" w:rsidRDefault="00B92FAA">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -13924,7 +13924,7 @@
             <w:t>the Author</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="6F12D6AF" w:rsidP="00E16D02" w:rsidR="00A9669B" w:rsidRDefault="00E93458">
+      <w:p w14:paraId="5AAEE515" w:rsidP="00E16D02" w:rsidR="00A9669B" w:rsidRDefault="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
             <w:rPr>
@@ -14790,7 +14790,7 @@
             <w:t>California.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="5CE5B83A" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
+      <w:p w14:paraId="7D62E1A8" w:rsidP="00853D3A" w:rsidR="00853D3A" w:rsidRDefault="00853D3A" w:rsidRPr="00853D3A">
          <w:pPr>
             <w:pStyle w:val="Section-Back-AdSBA"/>
          </w:pPr>
@@ -14799,7 +14799,7 @@
             <w:t>Back Ad</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="87534936" w:rsidP="00E16D02" w:rsidR="00B92FAA" w:rsidRDefault="00E93458" w:rsidRPr="00E93458">
+      <w:p w14:paraId="52704782" w:rsidP="00E16D02" w:rsidR="00B92FAA" w:rsidRDefault="00E93458" w:rsidRPr="00E93458">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>

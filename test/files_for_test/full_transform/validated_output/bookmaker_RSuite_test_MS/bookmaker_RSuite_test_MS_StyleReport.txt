@@ -14,6 +14,8 @@ Problems were found with the styles in your document.
 
 ** ERROR: Non-Macmillan style 'Section-Interlude (SIN)' in Section-Chapter (SCP): "Chapter 1".
 
+** ERROR: Found a Container END para with no corresponding Container Start; in Section-Chapter (SCP): "Chapter 1".
+
 ** ERROR: No Container END para found for: 'BOX-A (BOX-A)', in Section-Chapter (SCP): "Chapter 3a".
 
 ** ERROR: No Container END para found for: 'BOX-B (BOX-B)', in Section-Chapter (SCP): "Chapter 3a".

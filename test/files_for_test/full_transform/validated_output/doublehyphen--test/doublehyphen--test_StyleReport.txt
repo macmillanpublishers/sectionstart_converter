@@ -4,17 +4,7 @@ Problems were found with the styles in your document.
 
 
 ------------------------------------ ERRORS ------------------------------------
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
-
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
-
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
-
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
-
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
-
-** ERROR: Non-Macmillan style 'Normal' in not avaliable: "".
+** ERROR: 6 paragraphs styled with Non-Macmillan style 'Normal' were found in a table(s). The parent table(s) can be found in Section-Chapter (SCP): "Chapter One".
 
 
 If you have any questions about how to handle these errors,

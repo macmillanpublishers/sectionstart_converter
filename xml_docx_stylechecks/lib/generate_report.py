@@ -77,25 +77,43 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                         else:
                             descriptionA, descriptionB = "", ""
                         # now we set err strings from report_recipe for toplist items
-                        new_errstring = recipe_item["errstring"].format(description=item['description'].encode('utf-8'), para_string='"'+item['para_string'].encode('utf-8')+'"', \
-                            parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap),  \
-                            para_index=item['para_index'], count=len(report_dict[recipe_item["dict_category_name"]]), descriptionA=descriptionA.encode('utf-8'), descriptionB=descriptionB.encode('utf-8'), valid_file_extensions=cfg.imageholder_supported_ext)
+                        new_errstring = recipe_item["errstring"].format(description=item['description'].encode('utf-8'), \
+                            para_string='"'+item['para_string'].encode('utf-8')+'"', \
+                            parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', \
+                            parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap), \
+                            para_index=item['para_index'], \
+                            count=len(report_dict[recipe_item["dict_category_name"]]), \
+                            section_count=sum(1 for sectiontxt in report_dict[recipe_item["dict_category_name"]] if sectiontxt['parent_section_start_content'] == item['parent_section_start_content']), \
+                            notes_count=sum(1 for notestype in report_dict[recipe_item["dict_category_name"]] if notestype['parent_section_start_type'] == item['parent_section_start_type']), \
+                            descriptionA=descriptionA.encode('utf-8'), \
+                            descriptionB=descriptionB.encode('utf-8'), \
+                            valid_file_extensions=cfg.imageholder_supported_ext)
+                        if item['para_index'] == 'tablecell_para':# and not("summary" in recipe_item and recipe_item["summary"] == True):
+                            if 'suppress_table_note' not in recipe_item or recipe_item['suppress_table_note'] != True:
+                                new_errstring += "  (< this item is from a table)"
                         # added 'summary' key so we could specify whether to summarize warnings or notes:
                         #   default is warnings are listed singly, notes are summarized
-                        if "badnews_type" in recipe_item and recipe_item["badnews_type"] == 'warning':
-                            if "summary" in recipe_item and recipe_item["summary"] == True:
-                                if new_errstring not in warninglist:
-                                    warninglist.append(new_errstring)
+                        alerttypes = {
+                            'note': notelist,
+                            'warning': warninglist,
+                            'error': errorlist
+                        }
+                        for alertname, alertlist in alerttypes.iteritems():
+                            if "badnews_type" in recipe_item:
+                                if recipe_item["badnews_type"] == alertname:
+                                    # 'notes' are expected to summarize by default
+                                    if alertname == 'note' or ("summary" in recipe_item and recipe_item["summary"] == True):
+                                        if new_errstring not in alertlist:
+                                            alertlist.append(new_errstring)
+                                            break
+                                    # if we don't specify 'summary' in recipe at all, add it singly
+                                    else:
+                                        alertlist.append(new_errstring)
+                                        break
+                            # if badnews_type key is not present in recipe, assume its an error (not warning or Note)
                             else:
-                                warninglist.append(new_errstring)
-                        elif "badnews_type" in recipe_item and recipe_item["badnews_type"] == 'note':
-                            if "summary" in recipe_item and recipe_item["summary"] == False:
-                                notelist.append(new_errstring)
-                            else:
-                                if new_errstring not in notelist:
-                                    notelist.append(new_errstring)
-                        else:
-                            errorlist.append(new_errstring)
+                                errorlist.append(new_errstring)
+                                break
                         tmptextlist =[]
                     if "badnews" in recipe_item and recipe_item["badnews"] == 'one_allowed' and len(report_dict[recipe_item["dict_category_name"]]) > 1:
                         new_errstring = recipe_item["errstring"].format(count=len(recipe_item["dict_category_name"]))

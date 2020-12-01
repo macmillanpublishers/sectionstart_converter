@@ -1,0 +1,1797 @@
+{
+    "Macmillan_charstyle_first_use": [
+        {
+            "description": "ital (i)", 
+            "para_id": "1965D918", 
+            "para_index": 5, 
+            "para_string": "Get Big Things Done: The Power of Connectional Intelligence (with", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "smallcaps (sc)", 
+            "para_id": "54D944DF", 
+            "para_index": 16, 
+            "para_string": "digital body language. Copyright  2021 by Erica Dhawan. All", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-isbn (isbn)", 
+            "para_id": "2F1B2E34", 
+            "para_index": 22, 
+            "para_string": "ISBN 978-1-250-24652-3 (hardcover)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-cleanup-exclude (cex)", 
+            "para_id": "3D5CF5AB", 
+            "para_index": 29, 
+            "para_string": "10 9 8 7 6 5 4 3 2 1", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "super (sup)", 
+            "para_id": "7429483F", 
+            "para_index": 54, 
+            "para_string": "After co-authoring my first book, Get Big Things Done: The", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "endnote reference", 
+            "para_id": "1887FFA1", 
+            "para_index": 90, 
+            "para_string": "But if you think writing clearly is a niche or", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "bold (b)", 
+            "para_id": "53531FE3", 
+            "para_index": 112, 
+            "para_string": "You see, these days, we don\u2019t talk the talk or", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "bold-ital (bi)", 
+            "para_id": "53531FE3", 
+            "para_index": 112, 
+            "para_string": "You see, these days, we don\u2019t talk the talk or", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "underline (u)", 
+            "para_id": "16E6987A", 
+            "para_index": 536, 
+            "para_string": "Measure success in results, not hours. Avoid hounding people over", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "footnote reference", 
+            "para_id": "5950008C", 
+            "para_index": 602, 
+            "para_string": "Today, we can access a much broader diversity of perspectives.", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "symbols (sym)", 
+            "para_id": "39FC0421", 
+            "para_index": 842, 
+            "para_string": "Betty\u2019s emails are always polite. Even if she\u2019s apologetic about", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "footnote reference", 
+            "note-or-comment_id": "1", 
+            "para_id": "1D9A932E", 
+            "para_index": "n-a", 
+            "para_string": "https://hbr.org/2012/03/how-virtual-teams-can-outperfo", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }, 
+        {
+            "description": "endnote reference", 
+            "note-or-comment_id": "1", 
+            "para_id": "660AEA90", 
+            "para_index": "n-a", 
+            "para_string": "Ward, Marguerite. \u201cCEO of a $16 Billion Business Says the", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "Macmillan_style_first_use": [
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "5E86036A", 
+            "para_index": 2, 
+            "para_string": "Digital Body Language", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "1FB90E49", 
+            "para_index": 4, 
+            "para_string": "Also by Erica Dhawan", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "1965D918", 
+            "para_index": 5, 
+            "para_string": "Get Big Things Done: The Power of Connectional Intelligence (with", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "656B81B6", 
+            "para_index": 7, 
+            "para_string": "Digital Body Language", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Subtitle (Sttl)", 
+            "para_id": "685C19BA", 
+            "para_index": 8, 
+            "para_string": "How to Build Trust and Connection, No Matter the Distance", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "3053E304", 
+            "para_index": 9, 
+            "para_string": "Erica Dhawan", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Design-Note (Dn)", 
+            "para_id": "1D38E041", 
+            "para_index": 10, 
+            "para_string": "[place Imprint logo here]", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Imprint (Imp)", 
+            "para_id": "29FFE240", 
+            "para_index": 11, 
+            "para_string": "St. Martin\u2019s Press", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Cities (Cit)", 
+            "para_id": "58977369", 
+            "para_index": 12, 
+            "para_string": "New York", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "60BF077B", 
+            "para_index": 14, 
+            "para_string": "First published in the United States by St. Martin\u2019s Press,", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "1B8EEAFA", 
+            "para_index": 15, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Dedication (Ded)", 
+            "para_id": "48947A50", 
+            "para_index": 31, 
+            "para_string": "Dedication TK", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "45EF1CF3", 
+            "para_index": 33, 
+            "para_string": "Table of Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Chapter (Tocch)", 
+            "para_id": "01366ABA", 
+            "para_index": 34, 
+            "para_string": "Introduction:", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Part (Tocpt)", 
+            "para_id": "1FA920E3", 
+            "para_index": 35, 
+            "para_string": "PART ONE: Digital Elements of Style", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Backmatter (Tocbm)", 
+            "para_id": "2B340BA4", 
+            "para_index": 49, 
+            "para_string": "Guidebook: The Digital Body Language Toolkit", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "65EA9A2B", 
+            "para_index": 53, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "7429483F", 
+            "para_index": 54, 
+            "para_string": "After co-authoring my first book, Get Big Things Done: The", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)", 
+            "para_id": "1B453013", 
+            "para_index": 59, 
+            "para_string": "[blank]", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Number (Num)", 
+            "para_id": "57A3F23D", 
+            "para_index": 94, 
+            "para_string": "Part One", 
+            "parent_section_start_content": "Part One: Digital Elements of Style", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "4790FD34", 
+            "para_index": 95, 
+            "para_string": "Digital Elements of Style", 
+            "parent_section_start_content": "Part One: Digital Elements of Style", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Number (Num)", 
+            "para_id": "01B9C3F0", 
+            "para_index": 97, 
+            "para_string": "Chapter 1", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "4E9E6CFC", 
+            "para_index": 98, 
+            "para_string": "What Is Digital Body Language?", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "2EC7CC21", 
+            "para_index": 99, 
+            "para_string": "They had been going out for three years when the", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)", 
+            "para_id": "63D2CBC2", 
+            "para_index": 109, 
+            "para_string": "[blank]", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Display1 (Disp1)", 
+            "para_id": "53531FE3", 
+            "para_index": 112, 
+            "para_string": "You see, these days, we don\u2019t talk the talk or", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Display2 (Disp2)", 
+            "para_id": "2F9481F9", 
+            "para_index": 125, 
+            "para_string": "How do we create connection when up to 70 percent", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "A-Head (Ahead)", 
+            "para_id": "6D70DEE7", 
+            "para_index": 136, 
+            "para_string": "What is Digital Body Language (and why is it important?)", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bullet-Level-1-List (Bl1)", 
+            "para_id": "4380CA81", 
+            "para_index": 140, 
+            "para_string": "Traditional Body Language involves: A head tilted to one side,", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bullet-Level-1-List-Paragraph (Bl1p)", 
+            "para_id": "3EE590A1", 
+            "para_index": 141, 
+            "para_string": "Digital Body Language involves: \u201cLiking\u201d a text. Praising another person\u2019s", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > A-Head (Ahead)", 
+            "para_id": "74866E41", 
+            "para_index": 190, 
+            "para_string": "So You Want to Communicate\u00a0.\u00a0.\u00a0.", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > B-Head (Bhead)", 
+            "para_id": "6440A5F4", 
+            "para_index": 191, 
+            "para_string": ". . .Trust:", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Bullet-Level-1-List (Bl1)", 
+            "para_id": "1F2B62AD", 
+            "para_index": 192, 
+            "para_string": "Traditional Body Language: keep your palms open, uncross your arms", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Extract1 (Ext1)", 
+            "para_id": "6C513387", 
+            "para_index": 214, 
+            "para_string": "Me: So, how do you think it\u2019s going? Because I", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Custom1 (Cust1)", 
+            "para_id": "6C9F4A19", 
+            "para_index": 239, 
+            "para_string": "#EricaTips", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B > A-Head (Ahead)", 
+            "para_id": "04150C76", 
+            "para_index": 241, 
+            "para_string": "Common Pet Peeves You Must Avoid:", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B > Bullet-Level-1-List (Bl1)", 
+            "para_id": "368BC337", 
+            "para_index": 242, 
+            "para_string": "-Being in a rush. Sending a message without proofreading. Trying", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "B-Head (Bhead)", 
+            "para_id": "6BF5708B", 
+            "para_index": 251, 
+            "para_string": "Reading Carefully is the New Listening", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Image-Placement (Img)", 
+            "para_id": "5BE97B73", 
+            "para_index": 254, 
+            "para_string": "16-yesresponse.pdf", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Dialogue1 (Dia1)", 
+            "para_id": "49865CBD", 
+            "para_index": 359, 
+            "para_string": "Shwartz: We got 30,000. That\u2019s great!", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Computer-Text (Comp)", 
+            "para_id": "59001F59", 
+            "para_index": 399, 
+            "para_string": "Yep, we did $457K for Feb!", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Subtitle (Sttl)", 
+            "para_id": "0B5383E6", 
+            "para_index": 492, 
+            "para_string": "Teamwork in a Digital Age", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Epigraph-Non-Verse (Epi)", 
+            "para_id": "44E12E0D", 
+            "para_index": 548, 
+            "para_string": "\u201cunsubscribe\u201d\u2014a message sent to the massive reply all chain that", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "6FF7DE70", 
+            "para_index": 594, 
+            "para_string": "Conclusion", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "131D6839", 
+            "para_index": 595, 
+            "para_string": "When I sat down to write this book, I knew", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "160C28E4", 
+            "para_index": 605, 
+            "para_string": "Appendix", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Subtitle (Sttl)", 
+            "para_id": "101B3C0A", 
+            "para_index": 607, 
+            "para_string": "How do I apply what I\u2019ve learned?", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "7FDAFE5B", 
+            "para_index": 608, 
+            "para_string": "To get you started, I\u2019ve put together a practical, instructive", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Bullet-Level-1-List (Bl1)", 
+            "para_id": "0F5CE824", 
+            "para_index": 609, 
+            "para_string": "Digital Body Language Style Guide: A digital \u201cElements of Style\u201d", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "A-Head (Ahead)", 
+            "para_id": "2173D94B", 
+            "para_index": 619, 
+            "para_string": "EMAIL", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "List-Head (Lhead)", 
+            "para_id": "7463C9EB", 
+            "para_index": 620, 
+            "para_string": "The Audience:", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Num-Level-1-List (Nl1)", 
+            "para_id": "33462BA4", 
+            "para_index": 621, 
+            "para_string": "1. Hierarchy may matter. In some corporate cultures, it matters", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Unnum-Level-2-List (Ul2)", 
+            "para_id": "293907E0", 
+            "para_index": 623, 
+            "para_string": "Do: Mr. Robinson, or Dear Sam,\u00a0.\u00a0.\u00a0. . Sincerely, Erica Dhawan,", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "BOX-A > A-Head (Ahead)", 
+            "para_id": "7B5A0299", 
+            "para_index": 627, 
+            "para_string": "Common Interpretations of Our Most Used Email Signatures:", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "BOX-A > Unnum-Level-1-List (Ul1)", 
+            "para_id": "472299FF", 
+            "para_index": 628, 
+            "para_string": "No signature\u2014the equivalent of awkwardly walking out of a room,", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "BOX-A > Body-Text (Tx)", 
+            "para_id": "7EDF6E32", 
+            "para_index": 635, 
+            "para_string": "Thanks in Advance\u2014This has actually been shown to be the", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Custom2 (Cust2)", 
+            "para_id": "1571B0BE", 
+            "para_index": 657, 
+            "para_string": "Channels: text message, Skype messenger, Slack, Google Chat, etc.", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "27BACE3E", 
+            "para_index": 709, 
+            "para_string": "Emails", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "B-Head (Bhead)", 
+            "para_id": "6ECBAD3D", 
+            "para_index": 730, 
+            "para_string": "The Basics:", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Design-Note (Dn)", 
+            "para_id": "47F5F94D", 
+            "para_index": 731, 
+            "para_string": "DES: Set checkbox characters in this list and similar lists", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Bullet-Level-2-List (Bl2)", 
+            "para_id": "5E6BED8A", 
+            "para_index": 771, 
+            "para_string": " Purpose: Does the meeting have a clearly defined purpose?", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Display1 (Disp1)", 
+            "para_id": "621B9D2E", 
+            "para_index": 788, 
+            "para_string": "Answer the following questions based on how you would respond", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Alpha-Level-2-List (Al2)", 
+            "para_id": "6CE2ABD0", 
+            "para_index": 790, 
+            "para_string": "A. Clear on why you\u2019re invited, what\u2019s on the agenda", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Extract2 (Ext2)", 
+            "para_id": "1B9DBAB4", 
+            "para_index": 831, 
+            "para_string": "(# of A x 3) + (# of B x", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "71C67432", 
+            "para_index": 847, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "7109C864", 
+            "para_index": 860, 
+            "para_string": "Acknowledgments Tk", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "495AF192", 
+            "para_index": 862, 
+            "para_string": "Notes", 
+            "parent_section_start_content": "Notes", 
+            "parent_section_start_type": "Section-NotesSNT"
+        }, 
+        {
+            "description": "Table-Head (Tbhd)", 
+            "para_id": "249216E6", 
+            "para_index": "tablecell_para", 
+            "para_string": "Strongly Agree", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Table-Text (Tbtx)", 
+            "para_id": "52CE694F", 
+            "para_index": "tablecell_para", 
+            "para_string": "Excellent work is acknowledged and rewarded in your organization.", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Table-Text (Tbtx)", 
+            "para_id": "223EA0A2", 
+            "para_index": "tablecell_para", 
+            "para_string": "Your time is respected.", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "EXTRACT-B > Table-Text (Tbtx)", 
+            "para_id": "1E961B76", 
+            "para_index": "tablecell_para", 
+            "para_string": "You are not overworked or burnt out. ", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Table-Head (Tbhd)", 
+            "para_id": "326948DE", 
+            "para_index": "tablecell_para", 
+            "para_string": "Complexity of argument", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "author_paras": [
+        {
+            "description": "Erica Dhawan", 
+            "para_id": "3053E304", 
+            "para_index": 9, 
+            "para_string": "Erica Dhawan", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "container_end_error": [
+        {
+            "description": "END (END)", 
+            "para_id": "5727BCDB", 
+            "para_index": 187, 
+            "para_string": "An extra end", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "empty_section_start_para": [], 
+    "illegal_style_in_table": [
+        {
+            "description": "EXTRACT-B (EXT-B)", 
+            "para_id": "41D8A6B8", 
+            "para_index": "tablecell_para", 
+            "para_string": "EXTRACT", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "END (END)", 
+            "para_id": "73EF7DD3", 
+            "para_index": "tablecell_para", 
+            "para_string": "END", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-Chapter2SCP2", 
+            "para_id": "3B8DF3A4", 
+            "para_index": "tablecell_para", 
+            "para_string": "Chapter 2", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "4D9D7646", 
+            "para_index": "tablecell_para", 
+            "para_string": "book", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holders": [
+        {
+            "description": "16-yesresponse.pdf", 
+            "para_id": "5BE97B73", 
+            "para_index": 254, 
+            "para_string": "16-yesresponse.pdf", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "17-munoztweet.pdf", 
+            "para_id": "7D2B570B", 
+            "para_index": 428, 
+            "para_string": "17-munoztweet.pdf", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Image001.pdf", 
+            "para_id": "37BE1C2A", 
+            "para_index": 465, 
+            "para_string": "Image001.pdf", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "19_deadline1.pdf", 
+            "para_id": "34147BCC", 
+            "para_index": 525, 
+            "para_string": "19_deadline1.pdf", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "20_deadline2.pdf", 
+            "para_id": "10DE0E5D", 
+            "para_index": 526, 
+            "para_string": "20_deadline2.pdf", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "21_deadline3.pdf", 
+            "para_id": "31D9C3AD", 
+            "para_index": 527, 
+            "para_string": "21_deadline3.pdf", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "18-reschedule.pdf", 
+            "para_id": "422ECC89", 
+            "para_index": 542, 
+            "para_string": "18-reschedule.pdf", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holders__sort_by_index": [
+        {
+            "description": "16-yesresponse.pdf", 
+            "para_id": "5BE97B73", 
+            "para_index": 254, 
+            "para_string": "16-yesresponse.pdf", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "17-munoztweet.pdf", 
+            "para_id": "7D2B570B", 
+            "para_index": 428, 
+            "para_string": "17-munoztweet.pdf", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Image001.pdf", 
+            "para_id": "37BE1C2A", 
+            "para_index": 465, 
+            "para_string": "Image001.pdf", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "19_deadline1.pdf", 
+            "para_id": "34147BCC", 
+            "para_index": 525, 
+            "para_string": "19_deadline1.pdf", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "20_deadline2.pdf", 
+            "para_id": "10DE0E5D", 
+            "para_index": 526, 
+            "para_string": "20_deadline2.pdf", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "21_deadline3.pdf", 
+            "para_id": "31D9C3AD", 
+            "para_index": 527, 
+            "para_string": "21_deadline3.pdf", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "18-reschedule.pdf", 
+            "para_id": "422ECC89", 
+            "para_index": 542, 
+            "para_string": "18-reschedule.pdf", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "isbn_spans": [
+        {
+            "description": "978-1-250-24652-3", 
+            "para_id": "2F1B2E34", 
+            "para_index": 22, 
+            "para_string": "ISBN 978-1-250-24652-3 (hardcover)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }
+    ], 
+    "non-Macmillan_style_used_in_table": [
+        {
+            "description": "Normal", 
+            "para_id": "37B136DA", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "53AADEC1", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "5D3070E5", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2667F8C7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7DBFC03B", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "30B21577", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "3AEE310D", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "5EDC89C0", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "57A51A67", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "73F2BA0E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2F80AF98", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7FA83B14", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "45BB08C1", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "334BACC1", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "3B5D1F43", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "162A001A", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "6452AD3A", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "52CC645C", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "0632F28B", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "66C9AB48", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "61BCE0F7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "260F4E95", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "34465E5B", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "606A49A7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "689880EE", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "3D971A08", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "68CE6A23", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "15ADC593", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "46814728", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "6893B08E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "04E92E6D", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "271CE24E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "67B68574", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "602AA5A1", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "5F21004E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "1015A2FB", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "3D4EC998", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "1298AFA7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "06974E92", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "75ADF3A7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "0EF428EB", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "47D2837B", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "720AE3CA", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "26D1C1FB", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "46FA1305", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "02B881EF", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7B5D5C80", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "47B2A0EC", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "section_start_found": [
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "63D5B3AA", 
+            "para_index": 0, 
+            "para_string": "Digital Body Language", 
+            "parent_section_start_content": "Digital Body Language", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "185A629E", 
+            "para_index": 1, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-Ad-CardSAC", 
+            "para_id": "563DE64D", 
+            "para_index": 3, 
+            "para_string": "Ad Card", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Section-TitlepageSTI", 
+            "para_id": "734627A3", 
+            "para_index": 6, 
+            "para_string": "Titlepage", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Section-CopyrightSCR", 
+            "para_id": "45336BE5", 
+            "para_index": 13, 
+            "para_string": "Copyright", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Section-DedicationSDE", 
+            "para_id": "32497EDC", 
+            "para_index": 30, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Section-ContentsSTC", 
+            "para_id": "03253857", 
+            "para_index": 32, 
+            "para_string": "Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Section-IntroductionSIC", 
+            "para_id": "1B88B092", 
+            "para_index": 52, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "4889558E", 
+            "para_index": 93, 
+            "para_string": "Part One: Digital Elements of Style", 
+            "parent_section_start_content": "Part One: Digital Elements of Style", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "204E9513", 
+            "para_index": 96, 
+            "para_string": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_content": "Chapter 1: What Is Digital Body Language?", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "135BBFD8", 
+            "para_index": 204, 
+            "para_string": "Part Two: The Four Laws of Digital Body Language", 
+            "parent_section_start_content": "Part Two: The Four Laws of Digital Body Language", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "08E2EA9C", 
+            "para_index": 207, 
+            "para_string": "Chapter 4: Value Visibly", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "2452A734", 
+            "para_index": 351, 
+            "para_string": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "1875C825", 
+            "para_index": 489, 
+            "para_string": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ConclusionSCL", 
+            "para_id": "60852C0D", 
+            "para_index": 593, 
+            "para_string": "Conclusion", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "Section-AppendixSAP", 
+            "para_id": "2DBF116C", 
+            "para_index": 604, 
+            "para_string": "Appendix", 
+            "parent_section_start_content": "Appendix", 
+            "parent_section_start_type": "Section-AppendixSAP"
+        }, 
+        {
+            "description": "Section-AcknowledgmentsSAK", 
+            "para_id": "7E99E597", 
+            "para_index": 859, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Section-NotesSNT", 
+            "para_id": "1F598BF5", 
+            "para_index": 861, 
+            "para_string": "Notes", 
+            "parent_section_start_content": "Notes", 
+            "parent_section_start_type": "Section-NotesSNT"
+        }
+    ], 
+    "table_blank_para": [
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "37B136DA", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "53AADEC1", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "5D3070E5", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "2667F8C7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "7DBFC03B", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "30B21577", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "3AEE310D", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "5EDC89C0", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "57A51A67", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "73F2BA0E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "2F80AF98", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "7FA83B14", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "45BB08C1", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "334BACC1", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 4: Value Visibly", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "3B5D1F43", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "162A001A", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "6452AD3A", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "52CC645C", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "0632F28B", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "66C9AB48", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "61BCE0F7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "260F4E95", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "34465E5B", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "606A49A7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "689880EE", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "3D971A08", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "68CE6A23", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "15ADC593", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "46814728", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "6893B08E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "04E92E6D", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 5: Communicate Carefully", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "271CE24E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "67B68574", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "602AA5A1", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "5F21004E", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "1015A2FB", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "3D4EC998", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "1298AFA7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "06974E92", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "75ADF3A7", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "0EF428EB", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "47D2837B", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "720AE3CA", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "26D1C1FB", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "46FA1305", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "02B881EF", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "7B5D5C80", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "blank para found in table cell", 
+            "para_id": "47B2A0EC", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "Chapter 6: Collaborate Confidently", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "title_paras": [
+        {
+            "description": "Digital Body Language", 
+            "para_id": "656B81B6", 
+            "para_index": 7, 
+            "para_string": "Digital Body Language", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <w:document xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing">
    <w:body>
-      <w:p w14:paraId="3CA541A5" w:rsidP="00BA4310" w:rsidR="00BA4310" w:rsidRDefault="00BA4310" w:rsidRPr="00BA4310">
+      <w:p w14:paraId="8C1CA01E" w:rsidP="00BA4310" w:rsidR="00BA4310" w:rsidRDefault="00BA4310" w:rsidRPr="00BA4310">
          <w:pPr>
             <w:pStyle w:val="Section-BookBOOK"/>
          </w:pPr>
@@ -9,7 +9,7 @@
             <w:t>In the Midst of Civilized Europe</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="CFBB1D3E" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
+      <w:p w14:paraId="25AC1682" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
          <w:pPr>
             <w:pStyle w:val="Section-Ad-CardSAC"/>
          </w:pPr>
@@ -18,7 +18,7 @@
             <w:t>Ad Card</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="497C9C7E" w:rsidP="00D37FD6" w:rsidR="00CF3337" w:rsidRDefault="00CF3337" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="CF33D8A8" w:rsidP="00D37FD6" w:rsidR="00CF3337" w:rsidRDefault="00CF3337" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -29,7 +29,7 @@
             <w:t>by Jeffrey Veidlinger</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="38F97EF8" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00240A7A">
+      <w:p w14:paraId="325D3D9C" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00240A7A">
          <w:pPr>
             <w:pStyle w:val="Unnum-Level-1-ListUl1"/>
             <w:rPr>
@@ -85,7 +85,7 @@
             <w:t xml:space="preserve"> (editor)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7140AB9A" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
+      <w:p w14:paraId="74E04988" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
          <w:pPr>
             <w:pStyle w:val="Section-HalftitleSHT"/>
          </w:pPr>
@@ -94,7 +94,7 @@
             <w:t>Halftitle Page</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="94EE2BC9" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00CF3337">
+      <w:p w14:paraId="515C555B" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00CF3337">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -105,7 +105,7 @@
             <w:t>the Midst of Civilized Europe</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="2F692740" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
+      <w:p w14:paraId="4BF1D9CD" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
          <w:pPr>
             <w:pStyle w:val="Section-TitlepageSTI"/>
          </w:pPr>
@@ -114,7 +114,7 @@
             <w:t>Titlepage</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="93384AFE" w:rsidP="00D37FD6" w:rsidR="00CF3337" w:rsidRDefault="00072ADD" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="76895BE1" w:rsidP="00D37FD6" w:rsidR="00CF3337" w:rsidRDefault="00072ADD" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -125,7 +125,7 @@
             <w:t>the Midst of Civilized Europe</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="48CC6D80" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00072ADD">
+      <w:p w14:paraId="E8DFD08C" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00072ADD">
          <w:pPr>
             <w:pStyle w:val="SubtitleSttl"/>
          </w:pPr>
@@ -133,7 +133,7 @@
             <w:t>The Pogroms of 1918–1921 and the Onset of the Holocaust</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="DC407AEB" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00072ADD">
+      <w:p w14:paraId="2E9C610A" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00072ADD">
          <w:pPr>
             <w:pStyle w:val="Author1Au1"/>
          </w:pPr>
@@ -141,7 +141,7 @@
             <w:t>Jeffrey Veidlinger</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="63FBD277" w:rsidP="00D37FD6" w:rsidR="00CF3337" w:rsidRDefault="00CF3337" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="6D8CBB86" w:rsidP="00D37FD6" w:rsidR="00CF3337" w:rsidRDefault="00CF3337" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="ImprintImp"/>
          </w:pPr>
@@ -149,7 +149,7 @@
             <w:t>Metropolitan Books</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="264D6F07" w:rsidP="00D37FD6" w:rsidR="00CF3337" w:rsidRDefault="00CF3337" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="DC44BB1D" w:rsidP="00D37FD6" w:rsidR="00CF3337" w:rsidRDefault="00CF3337" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="PublisherPub"/>
          </w:pPr>
@@ -157,7 +157,7 @@
             <w:t>Henry Holt and Company</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="529F6F5B" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00CF3337">
+      <w:p w14:paraId="3330508A" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00CF3337">
          <w:pPr>
             <w:pStyle w:val="CitiesCit"/>
          </w:pPr>
@@ -165,7 +165,7 @@
             <w:t>New York</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="4A8445AA" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
+      <w:p w14:paraId="E01C0A62" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
          <w:pPr>
             <w:pStyle w:val="Section-CopyrightSCR"/>
          </w:pPr>
@@ -174,7 +174,7 @@
             <w:t>Copyright</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="B771EEEF" w:rsidP="008A0F91" w:rsidR="00072ADD" w:rsidRDefault="00072ADD" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="0106201E" w:rsidP="008A0F91" w:rsidR="00072ADD" w:rsidRDefault="00072ADD" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -233,7 +233,7 @@
             <w:t>www.henryholt.com</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="EB089769" w:rsidP="005F0EB5" w:rsidR="005F0EB5" w:rsidRDefault="005F0EB5" w:rsidRPr="005F0EB5">
+      <w:p w14:paraId="88665C40" w:rsidP="005F0EB5" w:rsidR="005F0EB5" w:rsidRDefault="005F0EB5" w:rsidRPr="005F0EB5">
          <w:pPr>
             <w:pStyle w:val="SeparatorSep"/>
          </w:pPr>
@@ -241,7 +241,7 @@
             <w:t>[Separator]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="19D965BD" w:rsidP="008A0F91" w:rsidR="00072ADD" w:rsidRDefault="00072ADD" w:rsidRPr="00EB398A">
+      <w:p w14:paraId="8308F78F" w:rsidP="008A0F91" w:rsidR="00072ADD" w:rsidRDefault="00072ADD" w:rsidRPr="00EB398A">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -315,7 +315,7 @@
             <w:t>[Separator]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="E5F9DA8F" w:rsidP="008A0F91" w:rsidR="00072ADD" w:rsidRDefault="00072ADD" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="200BBFCD" w:rsidP="008A0F91" w:rsidR="00072ADD" w:rsidRDefault="00072ADD" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -423,7 +423,7 @@
             <w:t>[Separator]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7CBE2CA1" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00072ADD">
+      <w:p w14:paraId="D9D582EA" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00072ADD">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -512,7 +512,7 @@
             <w:t>1</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="2E533311" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
+      <w:p w14:paraId="53D8FFD3" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
          <w:pPr>
             <w:pStyle w:val="Section-EpigraphSEP"/>
          </w:pPr>
@@ -521,7 +521,7 @@
             <w:t>Epigraph</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="1219FAAF" w:rsidP="00D37FD6" w:rsidR="0050205B" w:rsidRDefault="0050205B" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="3A5532DE" w:rsidP="00D37FD6" w:rsidR="0050205B" w:rsidRDefault="0050205B" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Epigraph-Non-VerseEpi"/>
          </w:pPr>
@@ -529,7 +529,7 @@
             <w:t>“In the very midst of civilized Europe, at the dawn of the new era for which the world awaits its charter of liberty and justice, the existence of a whole population is threatened. Such crimes dishonour not only the people that commit them, but outrage human reason and conscience.”</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="07FC2871" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="0050205B">
+      <w:p w14:paraId="7E730574" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="0050205B">
          <w:pPr>
             <w:pStyle w:val="Epigraph-SourceEpisrc"/>
          </w:pPr>
@@ -537,7 +537,7 @@
             <w:t>Anatole France, 1919</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="DB8B9648" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
+      <w:p w14:paraId="FA76C0EB" w:rsidP="002D522F" w:rsidR="002D522F" w:rsidRDefault="002D522F" w:rsidRPr="002D522F">
          <w:pPr>
             <w:pStyle w:val="Section-ContentsSTC"/>
          </w:pPr>
@@ -546,7 +546,7 @@
             <w:t>Contents</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="888C81B0" w:rsidP="00D37FD6" w:rsidR="0050205B" w:rsidRDefault="0050205B" w:rsidRPr="00D37FD6">
+      <w:p w14:paraId="BEB14EA6" w:rsidP="00D37FD6" w:rsidR="0050205B" w:rsidRDefault="0050205B" w:rsidRPr="00D37FD6">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -554,7 +554,7 @@
             <w:t>Contents</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="41C93DA1" w:rsidP="00D37FD6" w:rsidR="00F27221" w:rsidRDefault="00F27221" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="320FBC1B" w:rsidP="00D37FD6" w:rsidR="00F27221" w:rsidRDefault="00F27221" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="TOC-FrontmatterTocfm"/>
          </w:pPr>
@@ -570,7 +570,7 @@
             <w:t>A Note on Sources, Numbers, Dates, and Place Names</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="E7F4DC72" w:rsidP="00D37FD6" w:rsidR="00F27221" w:rsidRDefault="00F27221" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="50CD9B7D" w:rsidP="00D37FD6" w:rsidR="00F27221" w:rsidRDefault="00F27221" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="TOC-PartTocpt"/>
          </w:pPr>
@@ -578,7 +578,7 @@
             <w:t>Part I: War and Revolution, March 1881–December 1918</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="4FA6BC71" w:rsidP="00D37FD6" w:rsidR="00F27221" w:rsidRDefault="00F27221" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="8FE13451" w:rsidP="00D37FD6" w:rsidR="00F27221" w:rsidRDefault="00F27221" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="TOC-ChapterTocch"/>
          </w:pPr>
@@ -761,7 +761,7 @@
             <w:t>19. The Onset of the Holocaust</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="88342B2B" w:rsidP="00D37FD6" w:rsidR="00F27221" w:rsidRDefault="00F27221" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="60EDBC3E" w:rsidP="00D37FD6" w:rsidR="00F27221" w:rsidRDefault="00F27221" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="TOC-BackmatterTocbm"/>
          </w:pPr>
@@ -785,7 +785,7 @@
             <w:t>Index</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="EC31DD52" w:rsidP="002D522F" w:rsidR="006569AD" w:rsidRDefault="002D522F">
+      <w:p w14:paraId="995FC8F6" w:rsidP="002D522F" w:rsidR="006569AD" w:rsidRDefault="002D522F">
          <w:pPr>
             <w:pStyle w:val="Section-HalftitleSHT"/>
          </w:pPr>
@@ -805,7 +805,7 @@
             <w:t>the Midst of Civilized Europe</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="9EB6F751" w:rsidP="002D522F" w:rsidR="006569AD" w:rsidRDefault="00D37FD6">
+      <w:p w14:paraId="C8E6AC83" w:rsidP="002D522F" w:rsidR="006569AD" w:rsidRDefault="00D37FD6">
          <w:pPr>
             <w:pStyle w:val="Section-IntroductionSIC"/>
          </w:pPr>
@@ -814,7 +814,7 @@
             <w:t>Introduction: “Will a Slaughter of Jews Be Next European Horror?”</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="1080B6D9" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="6711BBC9" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -825,7 +825,7 @@
             <w:t>: “Will a Slaughter of Jews Be Next European Horror?”</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="F24B0336" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="50E23377" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -833,7 +833,7 @@
             <w:t>In the years after the Holocaust, survivors around the globe began compiling memorial books, one for each city and town. These literary monuments to destroyed communities preserved local stories and documented the names of victims to keep memory alive. As a historian of Eastern European Jewry, I have long appreciated the way these memorial books provide insight into the everyday rhythms of ordinary life. In them, contributors share anecdotes about the local schools, the fire brigade orchestra, the soccer club, the Zionist youth group. They paint portraits of local celebrities whose fame extended only as far as the wheat fields around the town: a favorite teacher, a respected rabbi, the town councilor, the water-porter everybody knew. They document events small and large: the time a Jewish soldier returned home from the Russo-Japanese War, the time a traveling theater troupe from Odesa came to town, the time a fire burned down Yankl Friedman’s inn, the day the Nazis arrived.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="14E7B951" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="360F3832" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -887,7 +887,7 @@
             <w:t>. After the Second World War, it became widely understood to refer to the fate of European Jewry under the Nazis.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="50673C28" w:rsidP="008A0F91" w:rsidR="00440D2B" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="1CE83130" w:rsidP="008A0F91" w:rsidR="00440D2B" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -925,7 +925,7 @@
             </w:rPr>
          </w:r>
       </w:p>
-      <w:p w14:paraId="05B80862" w:rsidP="00C034F0" w:rsidR="002C6557" w:rsidRDefault="002C6557">
+      <w:p w14:paraId="8F2F2B52" w:rsidP="00C034F0" w:rsidR="002C6557" w:rsidRDefault="002C6557">
          <w:pPr>
             <w:pStyle w:val="Design-NoteDn"/>
          </w:pPr>
@@ -945,7 +945,7 @@
             <w:t>)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="3C1E3A04" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="29919490" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -1054,7 +1054,7 @@
             <w:t>higher figure is likely exaggerated, most historians today would agree that the total number of excess deaths within the Jewish community between 1918 and 1921 was well over one hundred thousand. The lives of many more were shattered. Approximately six hundred thousand Jewish refugees were forced to flee across international borders, and millions more were displaced internally. About two-thirds of all Jewish houses and over half of all Jewish businesses in the region were looted or destroyed. The pogroms traumatized the affected communities for at least a generation, and set off alarms around the world.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="EA1921C5" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="00B22EB4" w:rsidRPr="00B22EB4">
+      <w:p w14:paraId="22217E42" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="00B22EB4" w:rsidRPr="00B22EB4">
          <w:pPr>
             <w:pStyle w:val="Blank-Space-BreakBsbrk"/>
          </w:pPr>
@@ -1062,7 +1062,7 @@
             <w:t>[blank]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="D510B71C" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="122E4382" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -1083,7 +1083,7 @@
             <w:t>portrayals of the Holocaust similarly emphasize the suddenness and unexpectedness of what took place . When I bring my students to the Holocaust Memorial Center in Farmington Hills, Michigan, for instance, they enter the exhibition in a large open space filled with Jewish ritual objects and photos of everyday Jewish life in Europe, testifying to a vibrant, rooted existence. Then, turning a corner, they encounter a massive portrait of Adolf Hitler looming over a long hallway that descends into the next exhibit room. The impression is that Hitler appeared out of the blue, with no hint of the coming apocalypse.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="ABE0B0AC" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="1995DFDB" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -1127,7 +1127,7 @@
             <w:t xml:space="preserve"> (New York Times article)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="C149962F" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="D6C9C1D9" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
             <w:rPr>
@@ -1680,7 +1680,7 @@
             <w:t xml:space="preserve"> The Jews were an underclass, differentiated from their neighbors by their religious practice, language, clothing, names, occupations, and by hundreds of discriminatory legal edicts imposed upon them by a succession of tsars in the lands under Russian rule. The most notorious of these were the residency laws that restricted most Jews to the “Pale of Jewish Settlement” in the western provinces of the Russian empire and to the Kingdom of Poland, which was also controlled by Russia.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="E0DC8B18" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="E8A575C7" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -2141,7 +2141,7 @@
             <w:t>zealots invaded the villages of Ukraine, wresting the land from the people and the churches from the faithful; and Soviet procurement brigades forcibly requisitioned grain and livestock from starving peasants. All this intensified animosity toward the new government and toward the Jews, who were blamed for its excesses. The concluding chapter examines the pogroms the Germans instigated when they invaded in June 1941, showing how the Nazis exploited local memory and drew upon existing patterns of violence when they initiated a new and final round of slaughter.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="893C894E" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="DFCFE983" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-Front-Matter-GeneralSFM"/>
          </w:pPr>
@@ -2150,7 +2150,7 @@
             <w:t>Front Matter General</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="EBDA6FC9" w:rsidP="00146F4F" w:rsidR="006569AD" w:rsidRDefault="008E3CDF">
+      <w:p w14:paraId="34716884" w:rsidP="00146F4F" w:rsidR="006569AD" w:rsidRDefault="008E3CDF">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -2161,7 +2161,7 @@
             <w:t>Note on Sources, Numbers, Dates, and Place Names</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="32AC9FBA" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="89C27D64" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -2178,7 +2178,7 @@
             <w:t xml:space="preserve"> The Jewish population responded in force, producing tens of thousands of pages of testimony and reports in the days and years after the violence. Drawing extensively upon this material, this book not only tells the story of the pogroms, but also honors the extraordinary work of those who documented them.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="0C6864E7" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="00B22EB4" w:rsidRPr="00B22EB4">
+      <w:p w14:paraId="19E44ADB" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="00B22EB4" w:rsidRPr="00B22EB4">
          <w:pPr>
             <w:pStyle w:val="Blank-Space-BreakBsbrk"/>
          </w:pPr>
@@ -2304,7 +2304,7 @@
             <w:t>and a test case for the still relatively new Russian judicial system. For calling the perpetrators of the Bialystok pogrom to justice, Hillerson was sentenced to one year in prison. The comprehensive reports he authored about the 1919 pogroms were widely distributed and subsequently published in multiple languages.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="E1D69C4B" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="A8E3A2CC" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -2374,7 +2374,7 @@
             </w:rPr>
          </w:r>
       </w:p>
-      <w:p w14:paraId="B18D9E6F" w:rsidP="00C034F0" w:rsidR="002C6557" w:rsidRDefault="002C6557">
+      <w:p w14:paraId="91ADC74F" w:rsidP="00C034F0" w:rsidR="002C6557" w:rsidRDefault="002C6557">
          <w:pPr>
             <w:pStyle w:val="Design-NoteDn"/>
          </w:pPr>
@@ -2718,7 +2718,7 @@
             <w:t>The repeated name changes throughout the region remind us of the ever-changing climate in which the subjects of this book lived and died.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="C0ECDD97" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00D346DB" w:rsidRPr="00050550">
+      <w:p w14:paraId="B10E6C6D" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00D346DB" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-PartSPT"/>
          </w:pPr>
@@ -2742,7 +2742,7 @@
             <w:t>War and Revolution</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="320AEC57" w:rsidP="00D37FD6" w:rsidR="00D37FD6" w:rsidRDefault="00D30499">
+      <w:p w14:paraId="22A2B355" w:rsidP="00D37FD6" w:rsidR="00D37FD6" w:rsidRDefault="00D30499">
          <w:pPr>
             <w:pStyle w:val="NumberNum"/>
             <w:rPr>
@@ -2762,7 +2762,7 @@
             <w:t>I</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="FB040F3F" w:rsidP="00D37FD6" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="54DEAA6B" w:rsidP="00D37FD6" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
             <w:rPr>
@@ -2782,7 +2782,7 @@
             <w:t>and Revolution</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="C12F8DA0" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00D30499">
+      <w:p w14:paraId="06245BF2" w:rsidP="00D37FD6" w:rsidR="006569AD" w:rsidRDefault="00D30499">
          <w:pPr>
             <w:pStyle w:val="DatelineDate"/>
             <w:rPr>
@@ -2796,7 +2796,7 @@
             <w:t>March 1881–December 1918</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="342A1B95" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="74971CCE" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -2817,7 +2817,7 @@
             <w:t xml:space="preserve"> The Last Years of the Russian Empire</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="EDD6DACE" w:rsidP="00D806C7" w:rsidR="00C206C3" w:rsidRDefault="006569AD">
+      <w:p w14:paraId="230FA45A" w:rsidP="00D806C7" w:rsidR="00C206C3" w:rsidRDefault="006569AD">
          <w:pPr>
             <w:pStyle w:val="NumberNum"/>
          </w:pPr>
@@ -2825,7 +2825,7 @@
             <w:t>1</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="D0AF8415" w:rsidP="005705D6" w:rsidR="00AA6E45" w:rsidRDefault="00C206C3" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="7CF4D928" w:rsidP="005705D6" w:rsidR="00AA6E45" w:rsidRDefault="00C206C3" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -2839,7 +2839,7 @@
             <w:t>Last Years of the Russian Empire</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="5CF09431" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="D9EC67CF" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
             <w:rPr>
@@ -3844,7 +3844,7 @@
             <w:t>War.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="B39FD296" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="00B22EB4" w:rsidRPr="00B22EB4">
+      <w:p w14:paraId="A36BD61C" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="00B22EB4" w:rsidRPr="00B22EB4">
          <w:pPr>
             <w:pStyle w:val="Blank-Space-BreakBsbrk"/>
          </w:pPr>
@@ -4130,7 +4130,7 @@
             <w:t>Christian residents of war-torn towns greeted the unwanted arrival of downtrodden and destitute Jewish newcomers with dismay; they feared the refugees would burden local social services and viewed them as a threat to the public order. Many associated the Jews with the German enemy or blamed them for fomenting the revolutionary movement. Small communities also feared that Jewish newcomers would import the troubles of the big cities. But perhaps most importantly, they were wary of the epidemics that traveled in the unsanitary freight cars with the passengers. Scarlet fever, measles, diphtheria, typhus, dysentery, and even cholera killed thousands and made no distinction between Jew and Christian.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="6266BD78" w:rsidP="008A0F91" w:rsidR="00E762A6" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="4E473B3B" w:rsidP="008A0F91" w:rsidR="00E762A6" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -4149,7 +4149,7 @@
             </w:rPr>
          </w:r>
       </w:p>
-      <w:p w14:paraId="4A26EF42" w:rsidP="00C034F0" w:rsidR="006569AD" w:rsidRDefault="002C6557">
+      <w:p w14:paraId="34B93493" w:rsidP="00C034F0" w:rsidR="006569AD" w:rsidRDefault="002C6557">
          <w:pPr>
             <w:pStyle w:val="Design-NoteDn"/>
          </w:pPr>
@@ -4163,7 +4163,7 @@
             <w:t>ine, 1917)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="DAEF9780" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="12E3A861" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -4229,7 +4229,7 @@
             <w:t xml:space="preserve"> He was preaching the new gospel: that the February Revolution heralded a modern age of inter-religious understanding and cooperation, that Jews, Russians, Poles, and Ukrainians could flourish in an autonomous Ukraine as part of a federated socialist republic. In some towns, he would stand on a table in the market square and lecture massive assemblies of three thousand soldiers and peasants on the concepts of national autonomy, federal government, and land use indemnification, as his audience cheered in approval, grumbled their dissent, or just nibbled on sunflower seeds.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="FD6B3146" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="7F04342D" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -4352,7 +4352,7 @@
             <w:endnoteReference w:id="92"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="D014B19F" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="926F6CB5" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -4525,7 +4525,7 @@
             <w:t>for Ukrainian autonomy within a democratic and federated Russian republic. It asserted the right to use the Ukrainian language in schools, courts, public institutions, and the church, and the right to establish Ukrainian military units within the Russian army.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7166FAD1" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="CAF9CC30" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -4979,7 +4979,7 @@
             <w:endnoteReference w:id="115"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="CE4618C3" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="C9677D2D" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -5176,7 +5176,7 @@
             <w:t>paramilitaries from the Ukrainian Soviet Republic moved toward Kyiv. The Bolsheviks were now at war with the Ukrainian People’s Republic. The civil war that was already tearing apart the former Russian Empire had come to Ukraine.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="EF71EB83" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00B9081F">
+      <w:p w14:paraId="8629C521" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00B9081F">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -5241,7 +5241,7 @@
             <w:endnoteReference w:id="122"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="FA883A5F" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="7A912A5D" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -5283,7 +5283,7 @@
             <w:t>)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="FE3E0DBF" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="05CB3778" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -5485,7 +5485,7 @@
             <w:t>[blank]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="29304DF5" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="7CFD1BAD" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -6130,7 +6130,7 @@
             <w:endnoteReference w:id="157"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="32773975" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="CC2E97F7" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -6186,7 +6186,7 @@
             <w:t>Map 3 (Ukraine after Brest-Litovsk)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="D5953E6F" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="A43B7DD0" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -6363,7 +6363,7 @@
             <w:endnoteReference w:id="166"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="6F023EF4" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="D3B7ADA2" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -7037,7 +7037,7 @@
             <w:t>On November 22, Polish reinforcements arrived from Kraków, forced the Ukrainian soldiers out, and attacked Jewish civilians with a barbarity that outraged the world. The British Jewish writer Israel Cohen described the scene in a report he wrote as a Special Commissioner of the World Zionist Organization:</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="4E6FFAB5" w:rsidP="00D771F1" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="16C8877B" w:rsidP="00D771F1" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Extract1Ext1"/>
          </w:pPr>
@@ -7281,7 +7281,7 @@
             <w:t>[blank]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="1A298E35" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="22D9EAA1" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -7374,7 +7374,7 @@
             <w:endnoteReference w:id="215"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="8E7E0074" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="8316E0C5" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -7424,7 +7424,7 @@
             <w:t>)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="A1770252" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="001C5727" w:rsidRPr="00050550">
+      <w:p w14:paraId="7A36D678" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="001C5727" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-PartSPT"/>
          </w:pPr>
@@ -7439,7 +7439,7 @@
             <w:t>The Ukrainian People’s Republic</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="73CA6599" w:rsidP="001C5727" w:rsidR="001C5727" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="27D14F89" w:rsidP="001C5727" w:rsidR="001C5727" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="NumberNum"/>
          </w:pPr>
@@ -7469,7 +7469,7 @@
             <w:t>December 1918–March 1919</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="ECCAB929" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="70DDE82B" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -8170,7 +8170,7 @@
             <w:endnoteReference w:id="247"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="E8ED4769" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="9DE3A245" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -8381,7 +8381,7 @@
             <w:t>stealing the wealth of Ukraine, as enemies of the church, and as the agents Bolshevism. It was a belief system that resonated far beyond Ovruch.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="62C0936C" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="3CFC95F9" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -8850,7 +8850,7 @@
             <w:t xml:space="preserve"> In reality, as soon as Petliura’s reinforcements appeared, the local soldiers who had gone over to the Bolsheviks abandoned the revolt, either returning to their home villages or staying around only to ransack the city. The workers who led the uprising proved to be more capable of issuing manifestos than corraling an army. Vykidanets returned to his office, issued an order for the remaining soldiers from the local regiments to guard the city overnight, and went home to sleep.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="1532EA40" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="A9E3D49F" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -9174,7 +9174,7 @@
             <w:endnoteReference w:id="301"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="9C4D910C" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="B62B375C" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -9825,7 +9825,7 @@
             <w:endnoteReference w:id="340"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="F4B0FCE0" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="684ABE7A" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -10143,7 +10143,7 @@
             <w:endnoteReference w:id="356"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="1A5991B7" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00B9081F" w:rsidRPr="00050550">
+      <w:p w14:paraId="F8099917" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00B9081F" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -10225,7 +10225,7 @@
             <w:t>of an hour later the 14:35 speed off in the other direction.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="217BAD4E" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="60BA66DF" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -10406,7 +10406,7 @@
             <w:t>The odd thing was that on February 13, everybody seemed to be hearing the same rumors. The municipal police chief cornered Ilya Joffe, the socialist councilor, that same day and accused him of being part of a plot. (The rebels had even selected the members of a Military Revolutionary Committee, the police chief asserted.) Joffe shared Shenkman’s skepticism, but also his concern. Late that night, he learned that some of the trade unionists were indeed preparing an imminent seizure of power. Joffe was furious: the socialist bloc was strongly opposed to an uprising and had been working productively with the left-leaning Directory government. As a Jew—like many members of the socialist bloc—Joffe was acutely aware of what had happened to the Jews of Zhytomyr after the Bolsheviks tried and failed to seize power. He blamed the plot on a group of young firebrands, uneducated workers, and criminal elements among the Bolsheviks and their Left SR allies, who, he claimed, lived off money sent from Soviet Russia and acted as Russian agents agitating for the overthrow of Ukrainian independence.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="95DBD3A5" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="B92B3911" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -11142,7 +11142,7 @@
             <w:endnoteReference w:id="413"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="DA54FC92" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="D7B5DB1B" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -11232,7 +11232,7 @@
             <w:t>stretched out across several weeks, or the Zhytomyr pogrom, which built up slowly over the course of three days, the events in Proskuriv were condensed into just a few hours. The pogrom took place within what the Dutch sociologist Abram de Swaan has called a “killing compartment,” a narrowly circumscribed period of time in which ordinary norms are suspended for the purpose of mass destruction against a clearly defined set of victims. It had an explicit starting point and an end point.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="45410C79" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="F85A86EA" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
             <w:rPr>
@@ -11532,7 +11532,7 @@
             <w:endnoteReference w:id="429"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="B41588A9" w:rsidP="00050550" w:rsidR="006569AD" w:rsidRDefault="00B33093">
+      <w:p w14:paraId="091A4C5A" w:rsidP="00050550" w:rsidR="006569AD" w:rsidRDefault="00B33093">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -12123,7 +12123,7 @@
             <w:t xml:space="preserve"> Bolshevik rule was still fresh, but Livshitz must have already recognized this phrase as a euphemism for extrajudicial execution, a sentence the Bolsheviks inflicted on many of those who had served counterrevolutionary causes.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="8381764F" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="8D7B39AC" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -12210,7 +12210,7 @@
             <w:endnoteReference w:id="463"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="B34C5BDB" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="D6509BF3" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -12283,7 +12283,7 @@
             <w:endnoteReference w:id="465"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="76681434" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="83DAC517" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -12598,7 +12598,7 @@
             <w:t>[blank]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="2741E30B" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="D9F51F07" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -13068,7 +13068,7 @@
             <w:t>[blank]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="381F3B83" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="2663F2E6" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -13233,7 +13233,7 @@
             <w:endnoteReference w:id="518"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="C8B98CE7" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="A69593B6" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -13456,7 +13456,7 @@
             <w:endnoteReference w:id="530"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="758A9964" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="009E6A1B" w:rsidRPr="00050550">
+      <w:p w14:paraId="458FBE08" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="009E6A1B" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-PartSPT"/>
          </w:pPr>
@@ -13501,7 +13501,7 @@
             <w:t>March 1919–August 1919</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="FE961919" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="FC04E5F2" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -13930,7 +13930,7 @@
             <w:t>The next morning, the bloodshed resumed. According to Abram Shenderov, four soldiers entered his house at 4 a.m. on May 17, shouting about communists and Jews. His son David, who answered the door, managed to pay off the soldiers, and they left. But at noon another gang came knocking. David again answered the door; this time the invaders shot him dead on the spot, then killed eighteen people in the corridor of the building.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="36CFEBD4" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="CDCD9DFC" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -14935,7 +14935,7 @@
             <w:t>telegraph station.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="9484B2BF" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="236115C5" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -14991,7 +14991,7 @@
             <w:t xml:space="preserve"> (Man on toy horse)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="8F64B2DF" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="3633EB9B" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -15785,7 +15785,7 @@
             <w:t xml:space="preserve"> How could the Christian peasants of Ukraine not fight back?</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="C508EA10" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="B1C524FC" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -16229,7 +16229,7 @@
             <w:endnoteReference w:id="676"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="B795CB53" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="B2ECA0D4" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -16781,7 +16781,7 @@
             <w:endnoteReference w:id="708"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="08D89E0C" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="BC177C44" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -16829,7 +16829,7 @@
             <w:t>On Saturday, June 28, 1919—five years to the day since Gavrilo Princip’s fateful assassination of Archduke Franz Ferdinand—lancers in blue uniforms and tin hats lined the square in front of the Chateau Versailles as motor cars ferried Clemenceau, Wilson, Lloyd George, and their aides into the palace. Escorted by the French Republican Guard, Clemenceau, the host, led the stately convoy up the Grand Staircase, through the state rooms, and into the Galerie des Glaces, the same place where Bismarck had declared the establishment of the German Empire back in 1871. Now, the leaders of the Great Powers sat on a slightly elevated dais in the middle of the magnificent room, surrounded by gilded bronze capitals, red marble “Rouge de Rance” pilasters, and hundreds of mirrors. A throng of distinguished guests—sixty people for each of the Great Powers—looked on. There were no elaborate speeches; the mood was subdued. It was a sharp contrast with the grandiose setting, so rich with historical symbolism.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7DA9FA13" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="DBA257C9" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -17600,7 +17600,7 @@
             <w:endnoteReference w:id="748"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="14FE737C" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="00AE24E1" w:rsidRPr="00050550">
+      <w:p w14:paraId="314E39C5" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="00AE24E1" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-PartSPT"/>
          </w:pPr>
@@ -17645,7 +17645,7 @@
             <w:t>August 1919–March 1921</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="52743A31" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="B508CDEE" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -17666,7 +17666,7 @@
             <w:t xml:space="preserve"> The Volunteer Army</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="3A8A891A" w:rsidP="00E503C9" w:rsidR="00C206C3" w:rsidRDefault="006569AD">
+      <w:p w14:paraId="ACBC5CD7" w:rsidP="00E503C9" w:rsidR="00C206C3" w:rsidRDefault="006569AD">
          <w:pPr>
             <w:pStyle w:val="NumberNum"/>
          </w:pPr>
@@ -18059,7 +18059,7 @@
             <w:endnoteReference w:id="759"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="2D57C5A0" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="80B007E2" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
             <w:rPr>
@@ -18120,7 +18120,7 @@
             <w:t>e Coat of Arms of Leon Trotsky”)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="858B0782" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="0902E530" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
             <w:rPr>
@@ -18512,7 +18512,7 @@
             <w:endnoteReference w:id="780"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7E371E63" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="B780E425" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -18616,7 +18616,7 @@
             <w:t>with Denikin’s forces and the two reached a temporary understanding that they would use the Dnipro River as a dividing line between their operations in Kyiv. On August 22, a Galician unit led by the Austrian general Anton Kraus moved into Bila Tserkva, 50 miles southwest of Kyiv.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="B2045B5E" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="4284AB2E" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -18693,7 +18693,7 @@
             <w:t>would be protected by the spirit of Avrom ha-Malach (Avrom the Angel), the son of the eighteenth-century Hasidic leader Dov-Ber of Mezritsh, whose grave was a popular pilgrimage site. The more pragmatic were convinced that the Red Army would never abandon this important railroad junction. Neither the pious nor the pragmatic got it right. By late August the question was simply whether the Whites would reach the city before the Galicians. Most of the local Jews, having previously experienced the turbulence of Ukrainian rule, were rooting for the Whites, who, at least, held out the promise of restoring law and order.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="37E0B511" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="88237620" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -19931,7 +19931,7 @@
             <w:t xml:space="preserve"> The antisemitic publicity campaign reminded many of Kiev’s Jewish residents of the darkest days of tsarism, and was regarded by some as a greater affront than the physical violence they endured.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="44BE3B85" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="FD91D0BD" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -20021,7 +20021,7 @@
             <w:t>wish delegation greets Petliura)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="32C02453" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="FBCAE411" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -21054,7 +21054,7 @@
             <w:t xml:space="preserve"> As in Slovechno and other locales, Bolshevik justice was firm and quick.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="9BC65EDD" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00B9081F">
+      <w:p w14:paraId="6C67D081" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00B9081F">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
             <w:rPr>
@@ -21193,7 +21193,7 @@
             <w:endnoteReference w:id="932"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="BB9B8976" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="CA880BF8" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -21267,7 +21267,7 @@
             <w:t>[blank]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="0C3607F8" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="9FF37AE9" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -21308,7 +21308,7 @@
             <w:t>(Polish Soldiers in Kyiv)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="CADEA830" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="F44C72F5" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -21414,7 +21414,7 @@
             <w:t>a civilian)</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="09C8818E" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="5151AE4F" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -21824,7 +21824,7 @@
             <w:t xml:space="preserve"> When Babel’s own division arrived in the Polish town of Komarów on August 28, he wrote:</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="AAE9FA7B" w:rsidP="008236DB" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="BAB22A9E" w:rsidP="008236DB" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="Extract1Ext1"/>
          </w:pPr>
@@ -22165,7 +22165,7 @@
             <w:endnoteReference w:id="980"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="DA1359A8" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="00AE24E1" w:rsidRPr="00050550">
+      <w:p w14:paraId="431CDF93" w:rsidP="00B22EB4" w:rsidR="00B22EB4" w:rsidRDefault="00AE24E1" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-PartSPT"/>
          </w:pPr>
@@ -22180,7 +22180,7 @@
             <w:t>Aftermath</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="A3E87C64" w:rsidP="008236DB" w:rsidR="008236DB" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="91FC29D5" w:rsidP="008236DB" w:rsidR="008236DB" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="NumberNum"/>
          </w:pPr>
@@ -22207,7 +22207,7 @@
             <w:t>1921–1941</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="3EE62A51" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="349F7E29" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -22447,7 +22447,7 @@
             <w:endnoteReference w:id="994"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="BB4A8947" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="DFB09297" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -22585,7 +22585,7 @@
             <w:t>until, at last—a few thousand among so many, many others—they were taken into shelters for children.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="1DA11E72" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="85203404" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -23021,7 +23021,7 @@
             <w:t>[blank]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="1DDFDD18" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="243D6F96" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -24086,7 +24086,7 @@
             <w:t xml:space="preserve"> The unspoken understanding in the congressional debates was that reducing the number of immigrants from these four regions would effectively ban almost all Jews from entering the country. It also ensured that America would be closed to the tens of thousands of European Jews desperate to flee the rise of fascism.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="14AD004C" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="E1582361" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -24172,7 +24172,7 @@
             <w:t>Born in 1886 in Bessarabia, Schwarzbard was raised in the Podilian town of Balta. Three of his siblings and his mother died when he was a child; the young Schwarzbard was apprenticed to a watchmaker soon after his bar mitzvah. As a youth, he became involved in anarchist circles, agitating for the overthrow of the tsar. Once, in 1906, when he was distributing literature inside a synagogue, the pious Jews trying to pray got fed up with him and denounced him to the authorities. He was detained, but managed to flee across the Austro-Hungarian border, and continued his anarchist activities. He was arrested again in Vienna on the charge of robbing a small wine bar. The barkeep found him on the premises at opening time: the would-be thief had carelessly locked himself inside at closing the night before. The till was short and Schwarzbard was carrying a tool kit and cash. Undeterred by the hopelessness of his defense, the brash poet claimed it was a case of misidentification. After serving four months for the crime, he moved to Budapest, where he again found himself in custody, this time for distributing radical literature. He relocated to Paris in 1910, where during the Great War he served in the Foreign Legion and later in a regular French infantry brigade. He was injured and awarded the Croix de Guerre.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="FDA8741A" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="5040A078" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -24590,7 +24590,7 @@
             <w:endnoteReference w:id="1118"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="95182C9F" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="680C3B62" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -24940,7 +24940,7 @@
             <w:endnoteReference w:id="1131"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="A626D080" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="E46EAAC6" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -25278,7 +25278,7 @@
             <w:endnoteReference w:id="1150"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="B5A951CA" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="DDF17D59" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -25389,7 +25389,7 @@
             <w:t xml:space="preserve"> The real reason the Jews were being settled in the region, the article asserted, was to spread Bolshevism in Ukraine.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="66A2D0F0" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="F9116743" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -25686,7 +25686,7 @@
             <w:t xml:space="preserve"> It was an ominous harbinger of what was to come.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="793626B5" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="248D27EE" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-ChapterSCP"/>
          </w:pPr>
@@ -25910,7 +25910,7 @@
             <w:t xml:space="preserve"> At least in the minds of the victims, in other words, the violence they experienced in 1941 was directly connected to the bloodshed they had experienced in 1918.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="07BD8AFF" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="4061BBBC" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
             <w:rPr>
@@ -26627,7 +26627,7 @@
             <w:t>[blank]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="297859D7" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="3E035F5B" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
             <w:rPr>
@@ -26937,7 +26937,7 @@
             <w:t>fields and clean the streets. In Zhytomyr, nearly five thousand Jews were held behind barbed wire in an area that included the Jewish synagogue, which was used to house residents. Similarly, the Germans set off a few streets in Korostyshiv, Radomyshl, Fastiv, Chernobyl, and hundreds of other cities, towns, and villages. On August 26, about fifteen thousand Jews were confined to a ghetto in Berdychiv, the largest in the region. The Germans relied upon locals to help enforce their rules by disclosing Jews in hiding and reporting on suspicious individuals. Some heroically resisted, saving and hiding their neighbors; many others did not.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="52BF4E4E" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="8057BE06" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -27222,7 +27222,7 @@
             <w:t>convinced many that the Jews were to blame. Those who had lived through the pogroms of the civil war remembered the playbook. They had seen what was possible in an era of total war. Even in the midst of civilized Europe.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="28BE2559" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="E41FA71E" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-AcknowledgmentsSAK"/>
          </w:pPr>
@@ -27231,7 +27231,7 @@
             <w:t>Acknowledgments</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="0270565F" w:rsidP="00CA45E3" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
+      <w:p w14:paraId="DA1346B3" w:rsidP="00CA45E3" w:rsidR="006569AD" w:rsidRDefault="00AA6E45">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -27239,7 +27239,7 @@
             <w:t>Acknowledgments</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7CC9A899" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00A77E9A">
+      <w:p w14:paraId="AC4F9657" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00A77E9A">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
             <w:rPr>
@@ -27722,7 +27722,7 @@
             <w:t>Finally, I would like to thank my family for their love and support: Rebecca, Naomi and Mae; my parents, Otto and Marilyn; my siblings, Daniel and Shira; and all my aunts, uncles, cousins, nieces, nephews, and in-laws.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="C6286D92" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="523E41A4" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-About-AuthorSAA"/>
          </w:pPr>
@@ -27731,7 +27731,7 @@
             <w:t>About the Author</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="ECDE425E" w:rsidP="00CA45E3" w:rsidR="00AA6E45" w:rsidRDefault="00672367" w:rsidRPr="00CA45E3">
+      <w:p w14:paraId="012C9023" w:rsidP="00CA45E3" w:rsidR="00AA6E45" w:rsidRDefault="00672367" w:rsidRPr="00CA45E3">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -27742,7 +27742,7 @@
             <w:t>the Author</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="58CD7BF1" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00672367">
+      <w:p w14:paraId="CA954110" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="00672367">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -27774,7 +27774,7 @@
             <w:t>, have won a National Jewish Book Award, the Barnard Hewitt Award for Theatre Scholarship, two Canadian Jewish Book Awards, and the J. I. Segal Award. He lives in Ann Arbor, Michigan.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="8EA9FB7D" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="C4399E1F" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-IndexSIN"/>
          </w:pPr>
@@ -27783,7 +27783,7 @@
             <w:t>Index</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="EA596147" w:rsidP="00992DDA" w:rsidR="00672367" w:rsidRDefault="006E1D2F" w:rsidRPr="00992DDA">
+      <w:p w14:paraId="7B8B1622" w:rsidP="00992DDA" w:rsidR="00672367" w:rsidRDefault="006E1D2F" w:rsidRPr="00992DDA">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -27791,7 +27791,7 @@
             <w:t>Index</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7ADC2767" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="006E1D2F">
+      <w:p w14:paraId="B2F8FE0A" w:rsidP="008A0F91" w:rsidR="006569AD" w:rsidRDefault="006E1D2F">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -27799,7 +27799,7 @@
             <w:t>[TK, allow 16 pages]</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="1880C5A0" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
+      <w:p w14:paraId="9E078943" w:rsidP="00050550" w:rsidR="00050550" w:rsidRDefault="00050550" w:rsidRPr="00050550">
          <w:pPr>
             <w:pStyle w:val="Section-NotesSNT"/>
          </w:pPr>
@@ -27808,7 +27808,7 @@
             <w:t>Notes</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="EDF8EA86" w:rsidP="006255F3" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="853ADB1D" w:rsidP="006255F3" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
@@ -27816,7 +27816,7 @@
             <w:t>Notes</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="530C1DD4" w:rsidP="006255F3" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="006255F3">
+      <w:p w14:paraId="D44D110D" w:rsidP="006255F3" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="006255F3">
          <w:pPr>
             <w:pStyle w:val="A-HeadAhead"/>
          </w:pPr>
@@ -27824,7 +27824,7 @@
             <w:t>Abbreviations</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="652447EB" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
+      <w:p w14:paraId="4D361274" w:rsidP="008A0F91" w:rsidR="00AA6E45" w:rsidRDefault="00AA6E45" w:rsidRPr="00A372AA">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>

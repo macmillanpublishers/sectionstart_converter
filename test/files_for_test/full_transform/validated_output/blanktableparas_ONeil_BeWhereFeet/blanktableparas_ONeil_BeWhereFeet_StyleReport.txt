@@ -1,0 +1,155 @@
+CONGRATULATIONS! YOU PASSED!
+
+But you're not done yet. Please check the info listed below.
+
+
+----------------------------------- WARNINGS -----------------------------------
+** WARNING: 3 table cell(s) containing only blank paragraph(s) were found in Section-Dedication (SDE): "Dedication". Please confirm these empty table cells are intended, and if not, remove as needed.
+
+** WARNING: 25 table cell(s) containing only blank paragraph(s) were found in Section-Chapter (SCP): "Chapter 2: Change the Race". Please confirm these empty table cells are intended, and if not, remove as needed.
+
+** WARNING: 7 table cell(s) containing only blank paragraph(s) were found in Section-Chapter (SCP): "Chapter 4: Fail Forward". Please confirm these empty table cells are intended, and if not, remove as needed.
+
+** WARNING: 3 table cell(s) containing only blank paragraph(s) were found in 'Endnotes'. Please confirm these empty table cells are intended, and if not, remove as needed.
+
+
+------------------------------- PROCESSING NOTES -------------------------------
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'annotation reference'.
+
+** NOTE: 3 blank paragraph(s) deleted from the manuscript.
+
+** NOTE: 3 bookmark(s) deleted from the manuscript.
+
+** NOTE: 8 comment(s) deleted from the manuscript.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"Be Where Your Feet Are"
+
+** Author1 (Au1) **
+"Scott M. O’Neil"
+
+** cs-isbn (isbn) **
+"ISBN 978-1-250-76987-9 (hardcover)"
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+Verify that this list of illustrations includes only the filenames of your illustrations.
+
+Tshirt_image.png
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "Be Where Your Feet Are"                                 
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Dedication (SDE)......... "Dedication"                                             
+Section-Contents (STC)........... "Contents"                                               
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Chapter (SCP)............ "Introduction"                                           
+Section-Chapter (SCP)............ "Chapter 1: Be Where Your Feet Are"                      
+Section-Chapter (SCP)............ "Chapter 2: Change the Race"                             
+Section-Chapter (SCP)............ "Chapter 3: WMI"                                         
+Section-Chapter (SCP)............ "Chapter 4: Fail Forward"                                
+Section-Chapter (SCP)............ "Chapter 5: Be the Purple Water Buffalo"                 
+Section-Chapter (SCP)............ "Chapter 6: Assume Positive Intent"                      
+Section-Chapter (SCP)............ "Chapter 7: Trust the Process"                           
+Section-Chapter (SCP)............ "Epilogue"                                               
+Section-Acknowledgments (SAK).... "Acknowledgments"                                        
+Section-Index (SIN).............. "Index"                                                  
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "Be Where Your Feet Are"                                    
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "Be Where Your Feet Are"                                    
+Subtitle (Sttl).............................. "Seven Principles to Keep You Present, Grounded, and Thriving"
+Author1 (Au1)................................ "Scott M. O’Neil"                                         
+Author2 (Au2)................................ "with Randal Wright"                                        
+Author3 (Au3)................................ "and Michele Bender"                                        
+Imprint (Imp)................................ "[place Imprint logo here]"                                 
+Cities (Cit)................................. "New York"                                                  
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "Published in the United States by St. Martin’s Essentials, an"
+Separator (Sep).............................. "[separator]"                                               
+
+* Section-Dedication (SDE): "Dedication"
+Body-Text (Tx)............................... "Dedication"                                                
+
+* Section-Contents (STC): "Contents"
+Title (Ttl).................................. "Table of Contents"                                         
+TOC-Chapter (Tocch).......................... "Introduction"                                              
+TOC-Backmatter (Tocbm)....................... "Acknowledgements"                                          
+
+* Section-Chapter (SCP): "Introduction"
+Title (Ttl).................................. "Introduction"                                              
+Epigraph-Non-Verse (Epi)..................... "Being challenged in life is inevitable; being defeated is optional."
+Epigraph-Source (Episrc)..................... "-Roger Crawford"                                           
+Body-Text (Tx)............................... "“This is the last time you will ever speak to"           
+
+* Section-Chapter (SCP): "Chapter 1: Be Where Your Feet Are"
+Number (Num)................................. "Chapter 1"                                                 
+Epigraph-Verse (Epiv)........................ "If you must look back, do so forgivingly."                 
+B-Head (Bhead)............................... "Being Where Your Feet Are is the New Balance"              
+A-Head (Ahead)............................... "Find perspective"                                          
+F-Head (Fhead)............................... "Nelson Family Values"                                      
+Extract1 (Ext1).............................. "CLEAN thoughts, words, bodies"                             
+EXTRACT-A > Body-Text (Tx)................... "I am Heavenly Father’s son and priesthood leader. I am"  
+Bullet-Level-1-List (Bl1).................... "A Constitution is an articulation of the core qualities that"
+EXTRACT-A > Bullet-Level-1-List (Bl1)........ "-bring positive energy into my space"                      
+
+* Section-Chapter (SCP): "Chapter 2: Change the Race"
+C-Head (Chead)............................... "Strength, Friendship and Loss"                             
+LETTER-A > Body-Text (Tx).................... "It is with a heavy heart that I write to"                  
+LETTER-A > Signature (Sig)................... "Jim"                                                       
+
+* Section-Chapter (SCP): "Chapter 3: WMI"
+List-Head (Lhead)............................ "WMI"                                                       
+Num-Level-1-List (Nl1)....................... "1."                                                        
+
+* Section-Chapter (SCP): "Chapter 6: Assume Positive Intent"
+Image-Placement (Img)........................ "Tshirt_image.png"                                          
+
+* Section-Chapter (SCP): "Chapter 7: Trust the Process"
+LETTER-A > F-Head (Fhead).................... "Eliza’s Letter to Me:"                                   
+LETTER-A > Salutation (Sal).................. "Dear Dad,"                                                 
+LETTER-A > Closing (Clos).................... "Rhinocorns,"                                               
+LETTER-A > Separator (Sep)................... "[Separator]"                                               
+
+* Section-Acknowledgments (SAK): "Acknowledgments"
+Title (Ttl).................................. "Acknowledgements"                                          
+Body-Text (Tx)............................... "My life has been blessed with an unmatched village of"     
+
+* Section-Index (SIN): "Index"
+Title (Ttl).................................. "Index [allow 8-10 pages]"                                  
+Body-Text (Tx)............................... ""                                                          
+Table-Head (Tbhd)............................ "Month"                                                     
+Table-Text (Tbtx)............................ "January"                                                   
+
+___________CHARACTER STYLES IN USE___________
+smallcaps (sc)
+cs-isbn (isbn)
+cs-cleanup-exclude (cex)
+bold (b)
+endnote reference
+ital (i)
+super (sup)
+strike (str)
+endnote reference
+
+

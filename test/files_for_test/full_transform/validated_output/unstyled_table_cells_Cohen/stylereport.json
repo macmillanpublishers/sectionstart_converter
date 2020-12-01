@@ -1,0 +1,1749 @@
+{
+    "Macmillan_charstyle_first_use": [
+        {
+            "description": "ital (i)", 
+            "para_id": "6313A568", 
+            "para_index": 3, 
+            "para_string": "The Chicago Cubs: Story of Curse", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "bold (b)", 
+            "para_id": "691776B2", 
+            "para_index": "tablecell_para", 
+            "para_string": "No. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "super-ital (supi)", 
+            "para_id": "021303A1", 
+            "para_index": 588, 
+            "para_string": "Once upon a time, kids wanted to play goalie for", 
+            "parent_section_start_content": "November", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "Macmillan_style_first_use": [
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "315BB20D", 
+            "para_index": 2, 
+            "para_string": "Also by Rich Cohen", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "6313A568", 
+            "para_index": 3, 
+            "para_string": "The Chicago Cubs: Story of Curse", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "3EF63B69", 
+            "para_index": 17, 
+            "para_string": "Pee Wees", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "5155E2FD", 
+            "para_index": 19, 
+            "para_string": "Pee Wees", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Subtitle (Sttl)", 
+            "para_id": "66876F6C", 
+            "para_index": 20, 
+            "para_string": "Confessions of a Hockey Parent", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "010D2EBC", 
+            "para_index": 21, 
+            "para_string": "Rich Cohen", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "2CF69E14", 
+            "para_index": 22, 
+            "para_string": "Farrar, Straus and Giroux", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "555C7A13", 
+            "para_index": 25, 
+            "para_string": "Farrar, Straus and Giroux", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "2453F6A5", 
+            "para_index": 27, 
+            "para_string": "[separator]", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "7A85488A", 
+            "para_index": 51, 
+            "para_string": "If I were not to dedicate this book, and, what\u2019s", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "344F3224", 
+            "para_index": 52, 
+            "para_string": "[separator]", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Epigraph-Non-Verse (Epi)", 
+            "para_id": "14C47553", 
+            "para_index": 57, 
+            "para_string": "Hell is other hockey parents.", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }, 
+        {
+            "description": "Epigraph-Source (Episrc)", 
+            "para_id": "16E49C8D", 
+            "para_index": 58, 
+            "para_string": "\u2014Jean Paul Sartre, French philosopher", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "41149EB9", 
+            "para_index": 62, 
+            "para_string": "Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Frontmatter (Tocfm)", 
+            "para_id": "340F208A", 
+            "para_index": 63, 
+            "para_string": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears xiii", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "163FFCEB", 
+            "para_index": 65, 
+            "para_string": "[separator]", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Chapter (Tocch)", 
+            "para_id": "2314C343", 
+            "para_index": 66, 
+            "para_string": "April 3", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Backmatter (Tocbm)", 
+            "para_id": "29045B3A", 
+            "para_index": 78, 
+            "para_string": "Acknowledgments 000", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "6DE5680B", 
+            "para_index": 80, 
+            "para_string": "2018\u201319 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "62BC7371", 
+            "para_index": 81, 
+            "para_string": "Coaches", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "700918EC", 
+            "para_index": 90, 
+            "para_string": "What follows is the story of a single season in", 
+            "parent_section_start_content": "Author\u2019s Note", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)", 
+            "para_id": "4986E0C9", 
+            "para_index": 91, 
+            "para_string": "[blank]", 
+            "parent_section_start_content": "Author\u2019s Note", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "30025782", 
+            "para_index": 96, 
+            "para_string": "April", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "6870BA4D", 
+            "para_index": 97, 
+            "para_string": "Every kind of car in the parking lot. German cars.", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Image-Placement (Img)", 
+            "para_id": "1A23DA56", 
+            "para_index": 101, 
+            "para_string": "001.jpg", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Ornamental-Space-Break (Osbrk)", 
+            "para_id": "1A189E12", 
+            "para_index": 121, 
+            "para_string": "<orn>", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Caption (Cap)", 
+            "para_id": "13531DD5", 
+            "para_index": 199, 
+            "para_string": "Me on the lower left, looking unaccountably sad. The Deerfield", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Verse1 (Vrs1)", 
+            "para_id": "3BBA0EC2", 
+            "para_index": 206, 
+            "para_string": "We don\u2019t care", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "5B3A2354", 
+            "para_index": 277, 
+            "para_string": "Winning", 
+            "parent_section_start_content": "August", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Headline (Hdline)", 
+            "para_id": "3B6DABD6", 
+            "para_index": 378, 
+            "para_string": "Subject: Respect and team work", 
+            "parent_section_start_content": "August", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Extract1 (Ext1)", 
+            "para_id": "7C8F21B8", 
+            "para_index": 379, 
+            "para_string": "All: It has come to my attention that there had", 
+            "parent_section_start_content": "August", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Dateline (Date)", 
+            "para_id": "3FB63250", 
+            "para_index": 459, 
+            "para_string": "From Rich Cohen to Jerry Sherman Sun, Sept 28, 9:33", 
+            "parent_section_start_content": "September", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Dialogue1 (Dia1)", 
+            "para_id": "0A457841", 
+            "para_index": 460, 
+            "para_string": "RC: Such bullshit. The playing time is all out of", 
+            "parent_section_start_content": "September", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "3081FA0E", 
+            "para_index": 916, 
+            "para_string": "[separator]", 
+            "parent_section_start_content": "February", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "54CDD04B", 
+            "para_index": 1039, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "70236AEE", 
+            "para_index": 1040, 
+            "para_string": "TK [allow 2 pages]", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }
+    ], 
+    "author_paras": [
+        {
+            "description": "Rich Cohen", 
+            "para_id": "010D2EBC", 
+            "para_index": 21, 
+            "para_string": "Rich Cohen", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "empty_section_start_para": [], 
+    "image_holder_ext_error": [
+        {
+            "description": "Image-Placement (Img)_004.JPG", 
+            "para_id": "3A4AB942", 
+            "para_index": 341, 
+            "para_string": "004.JPG", 
+            "parent_section_start_content": "August", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Image-Placement (Img)_009.JPG", 
+            "para_id": "11954E7B", 
+            "para_index": 736, 
+            "para_string": "009.JPG", 
+            "parent_section_start_content": "Lake Placid\u2014An Interlude", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holders": [
+        {
+            "description": "001.jpg", 
+            "para_id": "1A23DA56", 
+            "para_index": 101, 
+            "para_string": "001.jpg", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "002.jpg", 
+            "para_id": "1A2E4D65", 
+            "para_index": 198, 
+            "para_string": "002.jpg", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "003.jpg", 
+            "para_id": "312AD28D", 
+            "para_index": 216, 
+            "para_string": "003.jpg", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "004.JPG", 
+            "para_id": "3A4AB942", 
+            "para_index": 341, 
+            "para_string": "004.JPG", 
+            "parent_section_start_content": "August", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "005.jpg", 
+            "para_id": "23A76EFF", 
+            "para_index": 393, 
+            "para_string": "005.jpg", 
+            "parent_section_start_content": "September", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "006.jpg", 
+            "para_id": "19234420", 
+            "para_index": 602, 
+            "para_string": "006.jpg", 
+            "parent_section_start_content": "November", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "007.jpg", 
+            "para_id": "431C1EE6", 
+            "para_index": 704, 
+            "para_string": "007.jpg", 
+            "parent_section_start_content": "Lake Placid\u2014An Interlude", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "008.jpg", 
+            "para_id": "7F34B0C9", 
+            "para_index": 731, 
+            "para_string": "008.jpg", 
+            "parent_section_start_content": "Lake Placid\u2014An Interlude", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "009.JPG", 
+            "para_id": "11954E7B", 
+            "para_index": 736, 
+            "para_string": "009.JPG", 
+            "parent_section_start_content": "Lake Placid\u2014An Interlude", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "010.jpg", 
+            "para_id": "7CD6A4E1", 
+            "para_index": 878, 
+            "para_string": "010.jpg", 
+            "parent_section_start_content": "February", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "011.jpg", 
+            "para_id": "58D5978F", 
+            "para_index": 973, 
+            "para_string": "011.jpg", 
+            "parent_section_start_content": "March", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "image_holders__sort_by_index": [
+        {
+            "description": "001.jpg", 
+            "para_id": "1A23DA56", 
+            "para_index": 101, 
+            "para_string": "001.jpg", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "002.jpg", 
+            "para_id": "1A2E4D65", 
+            "para_index": 198, 
+            "para_string": "002.jpg", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "003.jpg", 
+            "para_id": "312AD28D", 
+            "para_index": 216, 
+            "para_string": "003.jpg", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "004.JPG", 
+            "para_id": "3A4AB942", 
+            "para_index": 341, 
+            "para_string": "004.JPG", 
+            "parent_section_start_content": "August", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "005.jpg", 
+            "para_id": "23A76EFF", 
+            "para_index": 393, 
+            "para_string": "005.jpg", 
+            "parent_section_start_content": "September", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "006.jpg", 
+            "para_id": "19234420", 
+            "para_index": 602, 
+            "para_string": "006.jpg", 
+            "parent_section_start_content": "November", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "007.jpg", 
+            "para_id": "431C1EE6", 
+            "para_index": 704, 
+            "para_string": "007.jpg", 
+            "parent_section_start_content": "Lake Placid\u2014An Interlude", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "008.jpg", 
+            "para_id": "7F34B0C9", 
+            "para_index": 731, 
+            "para_string": "008.jpg", 
+            "parent_section_start_content": "Lake Placid\u2014An Interlude", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "009.JPG", 
+            "para_id": "11954E7B", 
+            "para_index": 736, 
+            "para_string": "009.JPG", 
+            "parent_section_start_content": "Lake Placid\u2014An Interlude", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "010.jpg", 
+            "para_id": "7CD6A4E1", 
+            "para_index": 878, 
+            "para_string": "010.jpg", 
+            "parent_section_start_content": "February", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "011.jpg", 
+            "para_id": "58D5978F", 
+            "para_index": 973, 
+            "para_string": "011.jpg", 
+            "parent_section_start_content": "March", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "non-Macmillan_style_used_in_table": [
+        {
+            "description": "Normal", 
+            "para_id": "691776B2", 
+            "para_index": "tablecell_para", 
+            "para_string": "No. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "44316973", 
+            "para_index": "tablecell_para", 
+            "para_string": "Player ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "36A73200", 
+            "para_index": "tablecell_para", 
+            "para_string": "Position ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "4735FFF1", 
+            "para_index": "tablecell_para", 
+            "para_string": "Age ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7DA8A780", 
+            "para_index": "tablecell_para", 
+            "para_string": "Ht.", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "4A2EC95E", 
+            "para_index": "tablecell_para", 
+            "para_string": "Wt.", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7FEFFC54", 
+            "para_index": "tablecell_para", 
+            "para_string": "Fav. NHL Player ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "34B012E9", 
+            "para_index": "tablecell_para", 
+            "para_string": "Parents", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "59006069", 
+            "para_index": "tablecell_para", 
+            "para_string": "00 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7E7F8E68", 
+            "para_index": "tablecell_para", 
+            "para_string": "Dan Arcus ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7E872C0E", 
+            "para_index": "tablecell_para", 
+            "para_string": "Goalie ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "22B21417", 
+            "para_index": "tablecell_para", 
+            "para_string": "12 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "24B98BB3", 
+            "para_index": "tablecell_para", 
+            "para_string": "5'6\"", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7D312798", 
+            "para_index": "tablecell_para", 
+            "para_string": "135 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "61C8DCB1", 
+            "para_index": "tablecell_para", 
+            "para_string": "Henrik Lundquist ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "71C7507C", 
+            "para_index": "tablecell_para", 
+            "para_string": "Jocko & Camille", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "4D55E6CC", 
+            "para_index": "tablecell_para", 
+            "para_string": "03 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "73840410", 
+            "para_index": "tablecell_para", 
+            "para_string": "Jean Camus ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2A9CBF7E", 
+            "para_index": "tablecell_para", 
+            "para_string": "Right Wing ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "5A6B0AFB", 
+            "para_index": "tablecell_para", 
+            "para_string": "11 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "57912097", 
+            "para_index": "tablecell_para", 
+            "para_string": "5'2\" ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "759C1FC9", 
+            "para_index": "tablecell_para", 
+            "para_string": "105 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "017C678C", 
+            "para_index": "tablecell_para", 
+            "para_string": "Guy Charron ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "1C9D0D59", 
+            "para_index": "tablecell_para", 
+            "para_string": "Simone", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7209CC64", 
+            "para_index": "tablecell_para", 
+            "para_string": "04 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7CF30605", 
+            "para_index": "tablecell_para", 
+            "para_string": "Tommy McDermott ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "123AEB06", 
+            "para_index": "tablecell_para", 
+            "para_string": "Center ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "79570CBC", 
+            "para_index": "tablecell_para", 
+            "para_string": "12 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "1B90740C", 
+            "para_index": "tablecell_para", 
+            "para_string": "4'8\" ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "0FC0ABA2", 
+            "para_index": "tablecell_para", 
+            "para_string": "83 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "6D850CF6", 
+            "para_index": "tablecell_para", 
+            "para_string": "Brad Marchand ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "244F3287", 
+            "para_index": "tablecell_para", 
+            "para_string": "Bobby & Bari", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "259F88A8", 
+            "para_index": "tablecell_para", 
+            "para_string": "12 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "744A6248", 
+            "para_index": "tablecell_para", 
+            "para_string": "Rick Stanley ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "64A94869", 
+            "para_index": "tablecell_para", 
+            "para_string": "Defense ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "4D4BBF7B", 
+            "para_index": "tablecell_para", 
+            "para_string": "12 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "6DFDBBA1", 
+            "para_index": "tablecell_para", 
+            "para_string": "5'6\" ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "3A14098C", 
+            "para_index": "tablecell_para", 
+            "para_string": "135 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2DBF15A7", 
+            "para_index": "tablecell_para", 
+            "para_string": "Gordie Howe ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "16AE80B0", 
+            "para_index": "tablecell_para", 
+            "para_string": "Terry & Samantha", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "676CA925", 
+            "para_index": "tablecell_para", 
+            "para_string": "14 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "4EA1E0E8", 
+            "para_index": "tablecell_para", 
+            "para_string": "Joey McDermott ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "333E16C6", 
+            "para_index": "tablecell_para", 
+            "para_string": "Left Wing ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "6FFC7262", 
+            "para_index": "tablecell_para", 
+            "para_string": "12 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "42BD0C3E", 
+            "para_index": "tablecell_para", 
+            "para_string": "4'8\" ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "698B7D10", 
+            "para_index": "tablecell_para", 
+            "para_string": "81 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2749C726", 
+            "para_index": "tablecell_para", 
+            "para_string": "Artemi Paneri ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "5469CBB4", 
+            "para_index": "tablecell_para", 
+            "para_string": "Bobby & Bari", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "3A588163", 
+            "para_index": "tablecell_para", 
+            "para_string": "15 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7068974B", 
+            "para_index": "tablecell_para", 
+            "para_string": "Duffy Taylor ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7780FA66", 
+            "para_index": "tablecell_para", 
+            "para_string": "Left Wing ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2A131976", 
+            "para_index": "tablecell_para", 
+            "para_string": "11 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "39C487D4", 
+            "para_index": "tablecell_para", 
+            "para_string": "4'10\" ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "439BA030", 
+            "para_index": "tablecell_para", 
+            "para_string": "96 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "445D38EA", 
+            "para_index": "tablecell_para", 
+            "para_string": "Mark Messier ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "475D3CED", 
+            "para_index": "tablecell_para", 
+            "para_string": "Parky & Jill", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "4D9490E4", 
+            "para_index": "tablecell_para", 
+            "para_string": "19 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "578751D2", 
+            "para_index": "tablecell_para", 
+            "para_string": "Brian Rizzo ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7D5ABAB4", 
+            "para_index": "tablecell_para", 
+            "para_string": "Defense ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "1CB98E4B", 
+            "para_index": "tablecell_para", 
+            "para_string": "11 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "15949350", 
+            "para_index": "tablecell_para", 
+            "para_string": "4'10\" ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7FE42326", 
+            "para_index": "tablecell_para", 
+            "para_string": "98 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "6E2566C2", 
+            "para_index": "tablecell_para", 
+            "para_string": "Patrick Kane ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2BE4075B", 
+            "para_index": "tablecell_para", 
+            "para_string": "Ralph & Sharon", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "66EFBC51", 
+            "para_index": "tablecell_para", 
+            "para_string": "32 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "1618545B", 
+            "para_index": "tablecell_para", 
+            "para_string": "Patrick Campi ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "3E68F43C", 
+            "para_index": "tablecell_para", 
+            "para_string": "Defense ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "5B6E7F15", 
+            "para_index": "tablecell_para", 
+            "para_string": "12 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "390E27F0", 
+            "para_index": "tablecell_para", 
+            "para_string": "5'6\"", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "6F1EFDD2", 
+            "para_index": "tablecell_para", 
+            "para_string": "120 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "12FC671D", 
+            "para_index": "tablecell_para", 
+            "para_string": "John Taveres ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "780C86E5", 
+            "para_index": "tablecell_para", 
+            "para_string": "Gordon & Sue", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7807E632", 
+            "para_index": "tablecell_para", 
+            "para_string": "33 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "62171163", 
+            "para_index": "tablecell_para", 
+            "para_string": "Becky Goodman ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2A02DB4F", 
+            "para_index": "tablecell_para", 
+            "para_string": "Defense ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "4AA41F18", 
+            "para_index": "tablecell_para", 
+            "para_string": "12 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "1549BACE", 
+            "para_index": "tablecell_para", 
+            "para_string": "5'7\"", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "48903791", 
+            "para_index": "tablecell_para", 
+            "para_string": "110 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "5FB0A17F", 
+            "para_index": "tablecell_para", 
+            "para_string": "Hilary Knight ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "16306D97", 
+            "para_index": "tablecell_para", 
+            "para_string": "Bill & Roz", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "361659D8", 
+            "para_index": "tablecell_para", 
+            "para_string": "45 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "12817E07", 
+            "para_index": "tablecell_para", 
+            "para_string": "Micah Cohen ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "0CCC7BC2", 
+            "para_index": "tablecell_para", 
+            "para_string": "Left Wing ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "1BB47135", 
+            "para_index": "tablecell_para", 
+            "para_string": "11 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "7467CCC7", 
+            "para_index": "tablecell_para", 
+            "para_string": "4'8\"", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "4D27D5EB", 
+            "para_index": "tablecell_para", 
+            "para_string": "81 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "0C467A4E", 
+            "para_index": "tablecell_para", 
+            "para_string": "Patrick Kane ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "06CEC553", 
+            "para_index": "tablecell_para", 
+            "para_string": "Rich & Jessica", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2B7B7C8E", 
+            "para_index": "tablecell_para", 
+            "para_string": "55 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "3B6622A3", 
+            "para_index": "tablecell_para", 
+            "para_string": "\u201cBroadway\u201d Julie Sherman ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "584B92E4", 
+            "para_index": "tablecell_para", 
+            "para_string": "Right Wing ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "664F2033", 
+            "para_index": "tablecell_para", 
+            "para_string": "12 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "04932989", 
+            "para_index": "tablecell_para", 
+            "para_string": "5'5\"", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "1CAD1A8E", 
+            "para_index": "tablecell_para", 
+            "para_string": "103 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "37E06C63", 
+            "para_index": "tablecell_para", 
+            "para_string": "Hilary Knight ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "37AAF1A6", 
+            "para_index": "tablecell_para", 
+            "para_string": "Jerry & Geri", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "49450B16", 
+            "para_index": "tablecell_para", 
+            "para_string": "64 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "78C73670", 
+            "para_index": "tablecell_para", 
+            "para_string": "Barry Meese ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "0D8052AA", 
+            "para_index": "tablecell_para", 
+            "para_string": "Center ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "0EEFED7F", 
+            "para_index": "tablecell_para", 
+            "para_string": "12 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2576DB48", 
+            "para_index": "tablecell_para", 
+            "para_string": "5'2\"", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "5BC73132", 
+            "para_index": "tablecell_para", 
+            "para_string": "103 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "03B7356B", 
+            "para_index": "tablecell_para", 
+            "para_string": "Conor McDavid ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2688ECB7", 
+            "para_index": "tablecell_para", 
+            "para_string": "Jud & Gail", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "5BC55906", 
+            "para_index": "tablecell_para", 
+            "para_string": "65 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "3CF52966", 
+            "para_index": "tablecell_para", 
+            "para_string": "Leo Moriarty ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "24420F50", 
+            "para_index": "tablecell_para", 
+            "para_string": "Right Wing ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "15524110", 
+            "para_index": "tablecell_para", 
+            "para_string": "11 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "0F96C3DB", 
+            "para_index": "tablecell_para", 
+            "para_string": "5'1\"", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "25E44F26", 
+            "para_index": "tablecell_para", 
+            "para_string": "99 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "42BD2D30", 
+            "para_index": "tablecell_para", 
+            "para_string": "Zach Hyman ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "6E7B4FBE", 
+            "para_index": "tablecell_para", 
+            "para_string": "Albert", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "5A5A5D94", 
+            "para_index": "tablecell_para", 
+            "para_string": "66 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "57C4D16D", 
+            "para_index": "tablecell_para", 
+            "para_string": "\u201cBroadway\u201d Jenny Hendrix ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "34A33A8F", 
+            "para_index": "tablecell_para", 
+            "para_string": "Center/Wing ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "750A525E", 
+            "para_index": "tablecell_para", 
+            "para_string": "12 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2806D8DC", 
+            "para_index": "tablecell_para", 
+            "para_string": "4'7\"", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "29BA3B60", 
+            "para_index": "tablecell_para", 
+            "para_string": "77 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "6884A857", 
+            "para_index": "tablecell_para", 
+            "para_string": "Kendall Coyne ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "443B02F9", 
+            "para_index": "tablecell_para", 
+            "para_string": "Alan & Helen", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "0E56750E", 
+            "para_index": "tablecell_para", 
+            "para_string": "89 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "25D5447F", 
+            "para_index": "tablecell_para", 
+            "para_string": "Roman Holian ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "01B18EA3", 
+            "para_index": "tablecell_para", 
+            "para_string": "Right Wing ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "13B9B62B", 
+            "para_index": "tablecell_para", 
+            "para_string": "11 ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "568E56E1", 
+            "para_index": "tablecell_para", 
+            "para_string": "5'3\"", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "2DA7DC9E", 
+            "para_index": "tablecell_para", 
+            "para_string": "107 lbs. ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "1BC75BF0", 
+            "para_index": "tablecell_para", 
+            "para_string": "Max Pacioretti ", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Normal", 
+            "para_id": "4A1EC50D", 
+            "para_index": "tablecell_para", 
+            "para_string": "Rob & Victoria", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }
+    ], 
+    "section_start_found": [
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "04DAC467", 
+            "para_index": 0, 
+            "para_string": "Pee Wees", 
+            "parent_section_start_content": "Pee Wees", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-Ad-CardSAC", 
+            "para_id": "082D318F", 
+            "para_index": 1, 
+            "para_string": "Ad Card", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "6490EE6D", 
+            "para_index": 16, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-TitlepageSTI", 
+            "para_id": "3CE3738C", 
+            "para_index": 18, 
+            "para_string": "Titlepage", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Section-CopyrightSCR", 
+            "para_id": "67368396", 
+            "para_index": 24, 
+            "para_string": "Copyright", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Section-DedicationSDE", 
+            "para_id": "40BBEA8F", 
+            "para_index": 50, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Section-EpigraphSEP", 
+            "para_id": "4273A03C", 
+            "para_index": 56, 
+            "para_string": "Epigraph", 
+            "parent_section_start_content": "Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        }, 
+        {
+            "description": "Section-ContentsSTC", 
+            "para_id": "32F6DFFB", 
+            "para_index": 61, 
+            "para_string": "Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Section-Front-Matter-GeneralSFM", 
+            "para_id": "27FE6B59", 
+            "para_index": 79, 
+            "para_string": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_content": "2018\u20132019 Roster, Pee Wee A Ridgefield Bears", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Section-Front-Matter-GeneralSFM", 
+            "para_id": "27C4F993", 
+            "para_index": 88, 
+            "para_string": "Author\u2019s Note", 
+            "parent_section_start_content": "Author\u2019s Note", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "48EF9025", 
+            "para_index": 93, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "32B3EC82", 
+            "para_index": 95, 
+            "para_string": "April", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "7A822FA1", 
+            "para_index": 265, 
+            "para_string": "August", 
+            "parent_section_start_content": "August", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "7062F8E0", 
+            "para_index": 382, 
+            "para_string": "September", 
+            "parent_section_start_content": "September", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "43C96D4A", 
+            "para_index": 469, 
+            "para_string": "October", 
+            "parent_section_start_content": "October", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "23DE7214", 
+            "para_index": 579, 
+            "para_string": "November", 
+            "parent_section_start_content": "November", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "37A724D9", 
+            "para_index": 660, 
+            "para_string": "Lake Placid\u2014An Interlude", 
+            "parent_section_start_content": "Lake Placid\u2014An Interlude", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "762B2816", 
+            "para_index": 748, 
+            "para_string": "December", 
+            "parent_section_start_content": "December", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "2BC529FE", 
+            "para_index": 754, 
+            "para_string": "January", 
+            "parent_section_start_content": "January", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "0EEB6262", 
+            "para_index": 858, 
+            "para_string": "February", 
+            "parent_section_start_content": "February", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "2282670F", 
+            "para_index": 959, 
+            "para_string": "March", 
+            "parent_section_start_content": "March", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "60B88A98", 
+            "para_index": 1029, 
+            "para_string": "April", 
+            "parent_section_start_content": "April", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-AcknowledgmentsSAK", 
+            "para_id": "6D8C3DA8", 
+            "para_index": 1038, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }
+    ], 
+    "title_paras": [
+        {
+            "description": "Pee Wees", 
+            "para_id": "5155E2FD", 
+            "para_index": 19, 
+            "para_string": "Pee Wees", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ]
+}

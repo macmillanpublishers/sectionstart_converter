@@ -1,0 +1,151 @@
+OOPS!
+
+Problems were found with the styles in your document.
+
+
+------------------------------------ ERRORS ------------------------------------
+** ERROR: 128 paragraphs styled with Non-Macmillan style 'Normal' were found in a table(s). The parent table(s) can be found in Section-Front-Matter-General (SFM): "2018–2019 Roster, Pee Wee A Ridgefield Bears".
+
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: '004.JPG' (located in Section-Chapter (SCP): "August"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
+
+** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: '009.JPG' (located in Section-Chapter (SCP): "Lake Placid—An Interlude"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
+
+
+If you have any questions about how to handle these errors,
+please contact workflows@macmillan.com.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"Pee Wees"
+
+** Author1 (Au1) **
+"Rich Cohen"
+
+** cs-isbn (isbn) **
+No styled isbns detected.
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+Verify that this list of illustrations includes only the filenames of your illustrations.
+
+001.jpg
+002.jpg
+003.jpg
+004.JPG
+005.jpg
+006.jpg
+007.jpg
+008.jpg
+009.JPG
+010.jpg
+011.jpg
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "Pee Wees"                                               
+Section-Ad-Card (SAC)............ "Ad Card"                                                
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Dedication (SDE)......... "Dedication"                                             
+Section-Epigraph (SEP)........... "Epigraph"                                               
+Section-Contents (STC)........... "Contents"                                               
+Section-Front-Matter-General (SFM) "2018–2019 Roster, Pee Wee A Ridgefield Bears"         
+Section-Front-Matter-General (SFM) "Author’s Note"                                        
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Chapter (SCP)............ "April"                                                  
+Section-Chapter (SCP)............ "August"                                                 
+Section-Chapter (SCP)............ "September"                                              
+Section-Chapter (SCP)............ "October"                                                
+Section-Chapter (SCP)............ "November"                                               
+Section-Chapter (SCP)............ "Lake Placid—An Interlude"                             
+Section-Chapter (SCP)............ "December"                                               
+Section-Chapter (SCP)............ "January"                                                
+Section-Chapter (SCP)............ "February"                                               
+Section-Chapter (SCP)............ "March"                                                  
+Section-Chapter (SCP)............ "April"                                                  
+Section-Acknowledgments (SAK).... "Acknowledgments"                                        
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Ad-Card (SAC): "Ad Card"
+Title (Ttl).................................. "Also by Rich Cohen"                                        
+Body-Text (Tx)............................... "The Chicago Cubs: Story of Curse"                          
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "Pee Wees"                                                  
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "Pee Wees"                                                  
+Subtitle (Sttl).............................. "Confessions of a Hockey Parent"                            
+Author1 (Au1)................................ "Rich Cohen"                                                
+Body-Text (Tx)............................... "Farrar, Straus and Giroux"                                 
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "Farrar, Straus and Giroux"                                 
+Separator (Sep).............................. "[separator]"                                               
+
+* Section-Dedication (SDE): "Dedication"
+Body-Text (Tx)............................... "If I were not to dedicate this book, and, what’s"        
+Separator (Sep).............................. "[separator]"                                               
+
+* Section-Epigraph (SEP): "Epigraph"
+Epigraph-Non-Verse (Epi)..................... "Hell is other hockey parents."                             
+Epigraph-Source (Episrc)..................... "—Jean Paul Sartre, French philosopher"                   
+
+* Section-Contents (STC): "Contents"
+Title (Ttl).................................. "Contents"                                                  
+TOC-Frontmatter (Tocfm)...................... "2018–2019 Roster, Pee Wee A Ridgefield Bears xiii"       
+Separator (Sep).............................. "[separator]"                                               
+TOC-Chapter (Tocch).......................... "April 3"                                                   
+TOC-Backmatter (Tocbm)....................... "Acknowledgments 000"                                       
+
+* Section-Front-Matter-General (SFM): "2018–2019 Roster, Pee Wee A Ridgefield Bears"
+Title (Ttl).................................. "2018–19 Roster, Pee Wee A Ridgefield Bears"              
+Unnum-Level-1-List (Ul1)..................... "Coaches"                                                   
+
+* Section-Front-Matter-General (SFM): "Author’s Note"
+Body-Text (Tx)............................... "What follows is the story of a single season in"           
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+
+* Section-Chapter (SCP): "April"
+Title (Ttl).................................. "April"                                                     
+Body-Text (Tx)............................... "Every kind of car in the parking lot. German cars."        
+Image-Placement (Img)........................ "001.jpg"                                                   
+Ornamental-Space-Break (Osbrk)............... "<orn>"                                                     
+Caption (Cap)................................ "Me on the lower left, looking unaccountably sad. The Deerfield"
+Verse1 (Vrs1)................................ "We don’t care"                                           
+
+* Section-Chapter (SCP): "August"
+Unnum-Level-1-List (Ul1)..................... "Winning"                                                   
+Headline (Hdline)............................ "Subject: Respect and team work"                            
+Extract1 (Ext1).............................. "All: It has come to my attention that there had"           
+
+* Section-Chapter (SCP): "September"
+Dateline (Date).............................. "From Rich Cohen to Jerry Sherman Sun, Sept 28, 9:33"       
+Dialogue1 (Dia1)............................. "RC: Such bullshit. The playing time is all out of"         
+
+* Section-Chapter (SCP): "February"
+Separator (Sep).............................. "[separator]"                                               
+
+* Section-Acknowledgments (SAK): "Acknowledgments"
+Title (Ttl).................................. "Acknowledgments"                                           
+Body-Text (Tx)............................... "TK [allow 2 pages]"                                        
+
+___________CHARACTER STYLES IN USE___________
+ital (i)
+bold (b)
+super-ital (supi)
+
+

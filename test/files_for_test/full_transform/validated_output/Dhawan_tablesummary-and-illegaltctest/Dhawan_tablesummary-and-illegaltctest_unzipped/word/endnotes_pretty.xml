@@ -1,0 +1,1187 @@
+<?xml version="1.0" ?>
+<w:endnotes mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14" xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink" xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d" xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex" xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex" xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex" xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex" xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex" xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex" xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex" xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex" xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+   <w:endnote w:id="-1" w:type="separator">
+      <w:p w14:paraId="4DFF9F64" w14:textId="77777777" w:rsidP="00E26BDD" w:rsidR="00060FBE" w:rsidRDefault="00060FBE">
+         <w:r>
+            <w:separator/>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="0" w:type="continuationSeparator">
+      <w:p w14:paraId="2B672B2D" w14:textId="77777777" w:rsidP="00E26BDD" w:rsidR="00060FBE" w:rsidRDefault="00060FBE">
+         <w:r>
+            <w:continuationSeparator/>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="1">
+      <w:p w14:paraId="660AEA90" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ward, Marguerite. “CEO of a $16 Billion Business Says the Way You Write</w:t>
+         </w:r>
+         <w:r>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>.</w:t>
+         </w:r>
+         <w:r>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>.</w:t>
+         </w:r>
+         <w:r>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>.,” November 30, 2016. https://www.cnbc.com/2016/11/30/ceo-of-a-16-billion-business-says-the-way-you-write-emails-can-break-your-career.html.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="2">
+      <w:p w14:paraId="4BD57446" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ibid.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="3">
+      <w:p w14:paraId="56DA72BA" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>The Radicati Group, Inc. “Email Statistics Report, 202</w:t>
+         </w:r>
+         <w:r>
+            <w:t>0–2</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>024,” February 2020. https://www.radicati.com/wp/wp-content/uploads/2019/12/Email-Statistics-Report-202</w:t>
+         </w:r>
+         <w:r>
+            <w:t>0–2</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t xml:space="preserve">024-Executive-Summary.pdf; The </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:eastAsia="Times New Roman"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Radicati Group, Inc. “Email Statistics Report, 201</w:t>
+         </w:r>
+         <w:r>
+            <w:rPr>
+               <w:rFonts w:eastAsia="Times New Roman"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>5–2</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:eastAsia="Times New Roman"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t xml:space="preserve">019,” March 2015. </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rFonts w:eastAsia="Times New Roman"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>https://www.radicati.com/wp/wp-content/uploads/2015/02/Email-Statistics-Report-201</w:t>
+         </w:r>
+         <w:r>
+            <w:rPr>
+               <w:rFonts w:eastAsia="Times New Roman"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>5–2</w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rFonts w:eastAsia="Times New Roman"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>019-Executive-Summary.pdf</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:eastAsia="Times New Roman"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="4">
+      <w:p w14:paraId="1570267C" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Kruger, Justin, Nicholas Epley, Jason Parker, and Zhi-Wen Ng. “Egocentrism over e-Mail: Can We Communicate as Well as We Think?” Journal of Personality and Social Psychology 89, no. 6 (December 2005): 925–36. https://doi.org/10.1037/002</w:t>
+         </w:r>
+         <w:r>
+            <w:t>2–3</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>514.89.6.925.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="5">
+      <w:p w14:paraId="0A811F85" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Chokshi, Niraj. “Out of the Office: More People Are Working Remotely, Survey Finds.” The New York Times, February 15, 2017. https://www.nytimes.com/2017/02/15/us/remote-workers-work-from-home.html.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="6">
+      <w:p w14:paraId="16A2D4D6" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Knudson, Annalise. “Teens Prefer Texting to Talking, New Survey Shows.” silive, September 11, 2018. https://www.silive.com/news/2018/09/teens_prefer_texting_to_talkin.html.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="7">
+      <w:p w14:paraId="7FCBCCF6" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Rainie, Lee, and Kathryn Zickuhr. “Americans’ Views on Mobile Etiquette.” Pew Research Center. Pew Research Center, December 31, 2019. https://www.pewresearch.org/internet/2015/08/26/americans-views-on-mobile-etiquette/.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="8">
+      <w:p w14:paraId="4882F48D" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Sun, Carolyn. “How Do Your Social Media Habits Compare to the Average Person</w:t>
+         </w:r>
+         <w:r>
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>’</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>s?”</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>Entrepeneur</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>. December 14, 2017. https://www.entrepreneur.com/slideshow/306136.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="9">
+      <w:p w14:paraId="62EC9060" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Pease, Allan, and Barbara Pease.</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>The Definitive Book of Body Language</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>. New York: Bantam Books, 2006.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="10">
+      <w:p w14:paraId="286B93D5" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Schoenenberg, Katrin, Alexander Raake, and Judith Koeppe. “Why Are You so Slow? – Misattribution of Transmission Delay to Attributes of the Conversation Partner at the Far-End.”</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>International Journal of Human-Computer Studies</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>72, no. 5 (May 2014): 477–87. https://doi.org/10.1016/j.ijhcs.2014.02.004.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="11">
+      <w:p w14:paraId="23B9AC2A" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Porath, Christine. “Half of Employees Don</w:t>
+         </w:r>
+         <w:r>
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>’</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>t Feel Respected by Their Bosses.” Harvard Business Review, December 6, 2017. https://hbr.org/2014/11/half-of-employees-dont-feel-respected-by-their-bosses.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="12">
+      <w:p w14:paraId="250E9B1B" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Spector, Nicole. “Why Are Big Companies Calling Their Remote Workers Back to the Office?” NBCNews.com. NBCUniversal News Group, July 27, 2017. https://www.nbcnews.com/business/business-news/why-are-big-companies-calling-their-remote-workers-back-office-n787101.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="13">
+      <w:p w14:paraId="3C61181A" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Baron, Naomi S.</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>Words Onscreen: the Fate of Reading in a Digital World</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>. New York: Oxford University Press, 2016.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="14">
+      <w:p w14:paraId="73E6673F" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ibid.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="15">
+      <w:p w14:paraId="6913D8DD" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Scott Gerber (CEO, Young Entrepeneur Council) in discussion with the author, May 2019.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="16">
+      <w:p w14:paraId="39739597" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Aria Finger (CEO, DoSomething.org) in discussion with the author, May 2019.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="17">
+      <w:p w14:paraId="223E8CA3" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>“NPT’s BEST NONPROFITS TO WORK FOR 2013.”</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>The NonProfit Times </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>. April 1, 2013; “Best Places to Work - DOSOMETHING.ORG.” Crain</w:t>
+         </w:r>
+         <w:r>
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>’</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>s New York Business, January 1, 2012. https://www.crainsnewyork.com/awards/dosomethingorg-3.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="18">
+      <w:p w14:paraId="54A60754" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r>
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00022353">
+            <w:t>Algoe, Sara. “Putting the “You” in Thank You.</w:t>
+         </w:r>
+         <w:r>
+            <w:t>”</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00022353">
+            <w:t xml:space="preserve"> Journal of Social Psychology. June 7, 2016. https://journals.sagepub.com/doi/10.1177/1948550616651681</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="19">
+      <w:p w14:paraId="0074119D" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>McGregor, Jena. “The Odd Things People Do While Half-Listening on Conference Calls.” The Washington Post. WP Company, August 21, 2014. https://www.washingtonpost.com/news/on-leadership/wp/2014/08/21/the-odd-things-people-do-while-half-listening-on-conference-calls/.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="20">
+      <w:p w14:paraId="7FD45D51" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Schwartz, Alon. “Does Your Team Know What Success Looks Like?” Alon Shwartz, March 20, 2019. http://alonshwartz.com/2019/03/does-your-team-know-what-success-looks-like/.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="21">
+      <w:p w14:paraId="110CEFDB" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ibid.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="22">
+      <w:p w14:paraId="385A5424" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ibid.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="23">
+      <w:p w14:paraId="7C5AA9AA" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Coreworx. “Poor Communication Leads to Project Failure One Third of the Time.” Coreworx. Coreworx, Inc., April 20, 2017. https://info.coreworx.com/blog/pmi-study-reveals-poor-communication-leads-to-project-failure-one-third-of-the-time.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="24">
+      <w:p w14:paraId="3D2BCEA0" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Project Management Institute. “THE HIGH COST OF LOW PERFORMANCE: THE ESSENTIAL ROLE OF COMMUNICATIONS,” May 2013. https://www.pmi.org/-/media/pmi/documents/public/pdf/learning/thought-leadership/pulse/the-essential-role-of-communications.pdf.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="25">
+      <w:p w14:paraId="54A2B14E" w14:textId="77777777" w:rsidR="007F16D2" w:rsidRDefault="007F16D2">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r>
+            <w:t>[no text]</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="26">
+      <w:p w14:paraId="0078EDBC" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Victor, Daniel, and Matt Stevens. “United Airlines Passenger Is Dragged From an Overbooked Flight.”</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>The New York Times</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>, April 10, 2017. https://www.nytimes.com/2017/04/10/business/united-flight-passenger-dragged.html.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="27">
+      <w:p w14:paraId="3A44E418" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Shen, Lucinda. “United Airlines Stock Drops $1.4 Billion After Passenger-Removal Controversy.”</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>Fortune</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>, April 11, 2017. https://fortune.com/2017/04/11/united-airlines-stock-drop/.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="28">
+      <w:p w14:paraId="7FEF394B" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Stack, Liam, and Matt Stevens. “Southwest Airlines Engine Explodes in Flight, Killing a Passenger.”</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>The New York Times</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>, April 17, 2018. https://www.nytimes.com/2018/04/17/us/southwest-airlines-explosion.html.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="29">
+      <w:p w14:paraId="1775EFFB" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>“Southwest Flight Suffers Jet Engine Failure.”</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>CNN</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>, April 17, 2018. https://www.cnn.com/us/live-news/southwest-flight-emergency/h_e24cbf88f32766bb168d5bafd6539538.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="30">
+      <w:p w14:paraId="22841BDE" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t xml:space="preserve">WFAA. “Southwest CEO mourns loss of passenger on Dallas-bound flight.” </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>YouTube</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t xml:space="preserve"> video, 18:20. April 17, 2018. </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:t>https://www.youtube.com/watch?v=hu3yfAA8aI8</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="31">
+      <w:p w14:paraId="412DE984" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Zapier.</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rFonts w:ascii="Cambria" w:cs="Cambria" w:hAnsi="Cambria"/>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t> </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>The Ultimate Guide to Remote Work</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>, 2015. https://cdn.zapier.com/storage/learn_ebooks/e4fbeb81f76c0c13b589cd390cb6420b.pdf.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="32">
+      <w:p w14:paraId="19644CF0" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ibid.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="33">
+      <w:p w14:paraId="37E860D0" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ibid.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="34">
+      <w:p w14:paraId="68D6EC4B" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Monahan, Tom. “The Hard Evidence: Business Is Slowing Down.” Fortune. Fortune, January 28, 2016. https://fortune.com/2016/01/28/business-decision-making-project-management/.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="35">
+      <w:p w14:paraId="1833E632" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ibid.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="36">
+      <w:p w14:paraId="1A12C3B0" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ibid.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="37">
+      <w:p w14:paraId="5CEA0144" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Francoise Henderson (translator) in discussion with the author, May 2019.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="38">
+      <w:p w14:paraId="183F6EBD" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ibid.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="39">
+      <w:p w14:paraId="548804C0" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t>Ibid.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="40">
+      <w:p w14:paraId="012B2D85" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t xml:space="preserve">LinkedIn Marketing Solutions. “The 2013 Regulatory Landscape from FinanceConnect: 13.” </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>YouTube</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t xml:space="preserve"> video, 45:28. May 9, 2013. </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:t>https://www.youtube.com/watch?v=cbsMDRDBB_o</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="41">
+      <w:p w14:paraId="707DECC7" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00A313F7">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t xml:space="preserve">“The Bloody History of </w:t>
+         </w:r>
+         <w:r>
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>‘</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>Deadline</w:t>
+         </w:r>
+         <w:r>
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>’</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>.” Merriam-Webster. Merriam-Webster. Accessed April 4, 2020. https://www.merriam-webster.com/words-at-play/your-deadline-wont-kill-you.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+   <w:endnote w:id="42">
+      <w:p w14:paraId="0904A23C" w14:textId="77777777" w:rsidP="00795A11" w:rsidR="007F16D2" w:rsidRDefault="007F16D2" w:rsidRPr="00CD6A41">
+         <w:pPr>
+            <w:pStyle w:val="EndnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00A313F7">
+            <w:rPr>
+               <w:rStyle w:val="EndnoteReference"/>
+               <w:rFonts w:ascii="Athelas" w:hAnsi="Athelas"/>
+               <w:sz w:val="20"/>
+            </w:rPr>
+            <w:endnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t xml:space="preserve">Grant, Adam M., and Francesca Gino. “A Little Thanks Goes a Long Way: Explaining Why Gratitude Expressions Motivate Prosocial Behavior.” </w:t>
+         </w:r>
+         <w:r w:rsidRPr="002F7295">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>Journal of Personality and Social Psychology</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00A313F7">
+            <w:t xml:space="preserve"> 98, no. 6 (2010): 946–55. https://doi.org/10.1037/a0017935.</w:t>
+         </w:r>
+      </w:p>
+   </w:endnote>
+</w:endnotes>

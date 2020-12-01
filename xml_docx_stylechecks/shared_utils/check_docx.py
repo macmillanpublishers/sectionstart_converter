@@ -85,29 +85,43 @@ def compare_docxVersions(document_version, template_version, doc_version_min, do
         logger.error('Failed version compare, exiting', exc_info=True)
         sys.exit(1)
 
+def checkIfMacmillanStyle(stylename, template_styles_root):
+    is_macmillan_style = False
+    # search template_styles.xlm for corresponding full stylename
+    stylesearchstring = ".//w:style[@w:styleId='%s']/w:name" % stylename
+    stylematch = template_styles_root.find(stylesearchstring, wordnamespaces)
+
+    if stylematch is not None:
+        # get fullname value and test for parentheses: if parenthesis we have a Macmillan style
+        #   (with exception of built-in style 'Normal (Web)')
+        stylename_full = stylematch.get('{%s}val' % wnamespace)
+        if '(' in stylename_full and stylename_full != 'Normal (Web)':
+            is_macmillan_style = True
+
+    return is_macmillan_style
+
+
 def getParaStyleSummary(xml_file, template_styles_root, valid_native_pstyles, total_paras=0, macmillan_styled_paras=0):
     xml_tree = etree.parse(xml_file)
     total_paras += len(xml_tree.xpath(".//w:p", namespaces=wordnamespaces))
+    # subtract tablecell paras from total
+    tablecell_paras = len(xml_tree.xpath(".//w:tc/w:p", namespaces=wordnamespaces))
+    total_paras = total_paras - tablecell_paras
     xml_root = xml_tree.getroot()
     for para_style in xml_root.findall(".//*w:pStyle", wordnamespaces):
         # get stylename from each para
         stylename = para_style.get('{%s}val' % wnamespace)
-
         # lets not count valid native styles as 'styled' or 'not-styled'
         if stylename in valid_native_pstyles:
             total_paras -= 1
+        elif checkIfMacmillanStyle(stylename, template_styles_root):
+            macmillan_styled_paras += 1
 
-        # search template_styles.xlm for corresponding full stylename
-        stylesearchstring = ".//w:style[@w:styleId='%s']/w:name" % stylename
-        stylematch = template_styles_root.find(stylesearchstring, wordnamespaces)
-
-        if stylematch is not None:
-            # get fullname value and test for parentheses: if parenthesis we have a Macmillan style
-            #   (with exception of built-in style 'Normal (Web)')
-            stylename_full = stylematch.get('{%s}val' % wnamespace)
-            if '(' in stylename_full and stylename_full != 'Normal (Web)':
-                macmillan_styled_paras += 1
-
+    # now subtract macmillan styled table cell paras
+    for para_style in xml_root.findall(".//w:tc//w:pStyle", wordnamespaces):
+        stylename = para_style.get('{%s}val' % wnamespace)
+        if checkIfMacmillanStyle(stylename, template_styles_root):
+            macmillan_styled_paras -= 1
     return total_paras, macmillan_styled_paras
 
 def macmillanStyleCount(doc_xml, template_styles_xml):

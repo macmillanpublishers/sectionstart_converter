@@ -69,6 +69,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
         #                                                       #   the report_dict category data presented. To insert a value
         #                                                       #   from a report_dict entry, put the key name in {brackets}
         #                                                       #   (the trailing colons etc are are extra formatting)
+        #   "suppress_table_note": True,    # Even if this is a table para don't include "  (< this item is from a table)" from gen_report.py
     	# 	"required": True,       # < If it's an error if a report_dict category is empty or not present, mark this True
     	# 	                        #   (If this is true you will need an "errstring" entry too)
         #   "v_warning_banner": "Alert string",   # this is for validator only scripts - if any edits were made or unsupported styles were found, we want to surface
@@ -365,6 +366,16 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "errstring": "Non-Macmillan style '{description}' in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
     	},
+    	"73.2_non_macmillan_styles_in_table": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["reporter", "rsuitevalidate"],
+    		"dict_category_name": "non-Macmillan_style_used_in_table",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'error',
+            "summary": True,
+            "suppress_table_note": True,
+            "errstring": "{section_count} paragraphs styled with Non-Macmillan style '{description}' were found in a table(s). The parent table(s) can be found in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
+    	},
     	"73.5_non_macmillan_charstyles": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["reporter", "rsuitevalidate"],
     		"dict_category_name": "non-Macmillan_charstyle_used",
@@ -393,6 +404,26 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "Empty Section-Start paragraph: found a '{description}' para with no text."# (Paragraph {para_index})"
+    	},
+    	"75.5_table_blank_para": {
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "table_blank_para",
+    		"line_template": "",
+            "suppress_table_note": True,
+    		"badnews": 'any',
+            "badnews_type": 'warning',
+            "summary": True,
+            "errstring": "{section_count} table cell(s) containing only blank paragraph(s) were found in {parent_section_start_type}: {parent_section_start_content}. Please confirm these empty table cells are intended, and if not, remove as needed."
+    	},
+    	"75.6_table_blank_para_notes": {
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "table_blank_para_notes",
+    		"line_template": "",
+            "suppress_table_note": True,
+    		"badnews": 'any',
+            "badnews_type": 'warning',
+            "summary": True,
+            "errstring": "{notes_count} table cell(s) containing only blank paragraph(s) were found in '{parent_section_start_type}'. Please confirm these empty table cells are intended, and if not, remove as needed."
     	},
     	"76_section_blankpara": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
@@ -425,6 +456,13 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "errstring": "No Container END para found for: '{description}', in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
     	},
+    	"79.5_container_error": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "container_end_error",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Found a Container END para with no corresponding Container Start; in {parent_section_start_type}: {parent_section_start_content}."# (Paragraph {para_index})"
+    	},
     	"80_list_error": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
     		"dict_category_name": "list_nesting_err",
@@ -438,6 +476,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "List type changed in the middle of a list: {description} in {parent_section_start_type} {parent_section_start_content} (starts with text: {para_string})"# (Paragraph {para_index})"
+    	},
+    	"81_illegal_style_in_table": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "illegal_style_in_table",
+    		"line_template": "",
+            "suppress_table_note": True,
+    		"badnews": 'any',
+            "errstring": "Found a Container or Section styled paragraph in a table cell: {description} (in {parent_section_start_type} {parent_section_start_content}). Sections and/or Containers cannot be inside of tables."# (Paragraph {para_index})"
     	},
     	"82_endnote_text_misstyled": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],

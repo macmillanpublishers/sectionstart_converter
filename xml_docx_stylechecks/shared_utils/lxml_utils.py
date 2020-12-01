@@ -156,24 +156,27 @@ def getRunStyle(run):
 # lookup longname of style in styles.xml of file.
 #  save looked up values in a dict to speed up repeat lookups if desired
 def getStyleLongname(styleshortname, stylenamemap={}):
-    # print styleshortname#, stylenamemap
-    styles_tree = etree.parse(styles_xml)
-    styles_root = styles_tree.getroot()
-    if styleshortname == "n-a":
-        stylelongname = "not avaliable"
-    elif styleshortname in stylenamemap:
-        stylelongname = stylenamemap[styleshortname]
-        # print "in the map!"
+    if os.environ.get('TEST_FLAG'):
+        return styleshortname
     else:
-        # print "not in tht emap!"
-        searchstring = ".//w:style[@w:styleId='%s']/w:name" % styleshortname
-        stylematch = styles_root.find(searchstring, wordnamespaces)
-        # get fullname value and test against Macmillan style list
-        if stylematch is not None:
-            stylelongname = stylematch.get('{%s}val' % wnamespace)
-            stylenamemap[styleshortname] = stylelongname
+        # print styleshortname#, stylenamemap
+        styles_tree = etree.parse(styles_xml)
+        styles_root = styles_tree.getroot()
+        if styleshortname == "n-a":
+            stylelongname = "not avaliable"
+        elif styleshortname in stylenamemap:
+            stylelongname = stylenamemap[styleshortname]
+            # print "in the map!"
         else:
-            stylelongname = styleshortname
+            # print "not in tht emap!"
+            searchstring = ".//w:style[@w:styleId='%s']/w:name" % styleshortname
+            stylematch = styles_root.find(searchstring, wordnamespaces)
+            # get fullname value and test against Macmillan style list
+            if stylematch is not None:
+                stylelongname = stylematch.get('{%s}val' % wnamespace)
+                stylenamemap[styleshortname] = stylelongname
+            else:
+                stylelongname = styleshortname
     return stylelongname
 
 # the "Run" here would be a span / character style.
@@ -374,6 +377,10 @@ def sectionStartTally(report_dict, section_names, doc_root, call_type, headingst
         if stylename in section_names:
             para = pstyle.getparent().getparent()
             section_name = stylename
+            # # check if we're in a table; if so, log it as an err and 'continue' to next para
+            if para.getparent().tag == '{{{}}}tc'.format(wnamespace):
+                report_dict = logForReport(report_dict,doc_root,para,"illegal_style_in_table",section_name)
+                continue
             # log the section start para
             #   (we can run this before content is added to paras, b/c that content is captured later in the 'calcLocationInfoForLog' method
             report_dict = logForReport(report_dict,doc_root, para, "section_start_found", section_name)
@@ -544,10 +551,14 @@ def findParasWithStyle(stylename, doc_root):
 
 def getCalculatedParaInfo(report_dict_entry, root, section_names, para, category, rootname=''):
     entry = report_dict_entry
+    tablecell_tag = '{%s}tc' % wnamespace
     # # # Assign Section-start info for notes/comments.xml & get note_id
     if rootname:
         entry['parent_section_start_type'], entry['parent_section_start_content'] = rootname, 'n-a'
-        entry['para_index'] = 'n-a'
+        if para is not None and para.getparent().tag == tablecell_tag:
+            entry['para_index'] = 'tablecell_para'
+        else:
+            entry['para_index'] = 'n-a'
         if para.getparent() is not None:
             entry['note-or-comment_id'] = para.getparent().get('{%s}id' % wnamespace)
     else:
@@ -555,8 +566,17 @@ def getCalculatedParaInfo(report_dict_entry, root, section_names, para, category
         entry['para_index'] = getParaIndex(para)
         if entry['para_index'] == 'n-a':
             logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
-        # get section name, section start text etc
-        entry['parent_section_start_type'], entry['parent_section_start_content']  = getSectionName(para, section_names)
+
+        # check if we have a tablecell_paras, get section info accordingly
+        if para is not None and para.getparent().tag == tablecell_tag:
+            entry['para_index'] = 'tablecell_para'
+            # get section name, start text based on para.parent.parent.parent: (table)
+            table = para.getparent().getparent().getparent()
+            entry['parent_section_start_type'], entry['parent_section_start_content'] = getSectionName(table, section_names)
+        else:
+            # get section name, section start text etc
+            entry['parent_section_start_type'], entry['parent_section_start_content'] = getSectionName(para, section_names)
+
         if entry['parent_section_start_type'] == 'n-a' or entry['parent_section_start_content'] == 'n-a':
             logger.warn("couldn't get section start info for %s para (value was set to n-a)" % category)
     # # # Get 1st 10 words of para text

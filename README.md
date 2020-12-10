@@ -1,31 +1,41 @@
-# sectionstart_converter (IN PROGRESS)
-This tool is being expanded, and now has four primary, distinct functions, with a 'main' script for each. They share many of the same functions, logging and dependencies, and key scripts (zipDOCX.py & unzipDOCX.py) can be run independently as standalone processes.
+# sectionstart_converter
+This repo was originally intended to host several interrelated tools, all for parsing, reporting on, and editing MS Word files via python/lxml.
+Currently only one is in use: 'rsuite_validate', invoked via main script: rsuitevalidate_main.py.
 
-##### xml_docx_stylechecks/converter_main.py -
+Also originally intended to use dropbox api's to gather submitter info: now it's being served via GoogleDrive and passed necessary parameters at runtime.
+
+#### rsuite_validate
+This tool accepts Word manuscripts and validates against a number of criteria, makes small edits not related to content or large errors, and returns a report and the edited document to the user, both in an outfolder and via email.
+Internal documentation available [here](https://confluence.macmillan.com/display/RSUITE/RSuite+Validation).
+
+
+#### Legacy products
+These were items that this repo was initially intended to serve as well, all are retired for now, not refactored out of the code as of yet:
+
+* xml_docx_stylechecks/converter_main.py -
 This tool is to update Microsoft Word documents that were styled with Macmillan styles prior to the release of our new Section Start styling.
 The document.xml file will be directly edited using python/lxml, in order to add and update Section Start styles to conform with updated bookmaker and egalleymaker toolchains.
 
-##### xml_docx_stylechecks/reporter_main.py -
+* xml_docx_stylechecks/reporter_main.py -
 This tool is to run functions formerly handled in our VBA Stylecheck macro(s). It will output a 'Style Report', both as a txt file, and send an email to the submitter. The original manuscript is not edited.
 
-##### xml_docx_stylechecks/validator_main.py -
+* xml_docx_stylechecks/validator_main.py -
 This tool is to prepare a manuscript for egalley creation, as part of the bookmaker_validator toolchain; it fixes errors found in the 'Stylecheck' plus some other unique ones.
 
-##### xml_docx_stylechecks/rsuitevalidate_main.py -
-This tool is essentially a Style-Reporter companion for our new RSuite Word styles, with some new checks based on style changes & new requirements
 
-## Dependencies
+## Setup/Config
+
+##### Dependencies
 The xml processing requires the lxml library for python, install like so:
-
 `pip install lxml`
-`pip install dropbox`
 
-## Setup
-Setup items are found in cfg.py. Key items:
+##### cfg.py
+Key setup items are found in cfg.py.
 * tmpdir - this is a static path to a location on the host environment, and needs to be set.
-* dropboxfolder - This is a path set for the default Macmillan Dropbox folder on Windows or Mac, and would need to be edited for use in any other environment.
+* Global loglevel etc can also be set here.
 
-Most other items are setup in relation to these two.
+## Testing
+Unit and integration tests for rsuite_validate are documented in ./test/README.txt
 
 ## Running the scripts
 

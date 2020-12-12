@@ -1,0 +1,794 @@
+{
+    "Macmillan_charstyle_first_use": [
+        {
+            "description": "ital (i)", 
+            "para_id": "6990DF84", 
+            "para_index": 5, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Adcard\n            \n        ", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "smallcaps (sc)", 
+            "para_id": "6297DE02", 
+            "para_index": 16, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Copyright\n            \n        ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-isbn (isbn)", 
+            "para_id": "9A797C49", 
+            "para_index": 19, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Copyright\n            \n        ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "footnote reference", 
+            "para_id": "B282D7A3", 
+            "para_index": 31, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "endnote reference", 
+            "para_id": "D7234B78", 
+            "para_index": 32, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "footnote reference", 
+            "note-or-comment_id": "1", 
+            "para_id": "38D33B35", 
+            "para_index": "n-a", 
+            "para_string": "General test", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }, 
+        {
+            "description": "endnote reference", 
+            "note-or-comment_id": "1", 
+            "para_id": "315A1D35", 
+            "para_index": "n-a", 
+            "para_string": "Here\u2019s an endnote with confusing stlyes!", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "Macmillan_style_first_use": [
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "A5DBF905", 
+            "para_index": 2, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP\n            \n        ", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Main-Head (MHead)", 
+            "para_id": "EAE4988D", 
+            "para_index": 4, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Adcard\n            \n        ", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "6990DF84", 
+            "para_index": 5, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Adcard\n            \n        ", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "FD4B7E6F", 
+            "para_index": 8, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP2\n            \n        ", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "A18838B1", 
+            "para_index": 9, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP2\n            \n        ", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Logo-Placement (Logo)", 
+            "para_id": "6FE935F2", 
+            "para_index": 10, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP2\n            \n        ", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Imprint (Imp)", 
+            "para_id": "F083542C", 
+            "para_index": 11, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP2\n            \n        ", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Cities (Cit)", 
+            "para_id": "32E5C8B5", 
+            "para_index": 12, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP2\n            \n        ", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "6A95D4D1", 
+            "para_index": 14, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Copyright\n            \n        ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Dedication (Ded)", 
+            "para_id": "6360DD24", 
+            "para_index": 26, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Ded\n            \n        ", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "BC47BBBC", 
+            "para_index": 29, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Subtitle (Sttl)", 
+            "para_id": "30ABEF2B", 
+            "para_index": 30, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Address (Add)", 
+            "para_id": "B282D7A3", 
+            "para_index": 31, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "D7234B78", 
+            "para_index": 32, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Quotation (Quo)", 
+            "para_id": "313A431C", 
+            "para_index": 95, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Source (Src)", 
+            "para_id": "6E4EA400", 
+            "para_index": 96, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "9F745DE0", 
+            "para_index": 98, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "E2BE3CDE", 
+            "para_index": 101, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Dateline (Date)", 
+            "para_id": "67026D9E", 
+            "para_index": 121, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "9736C479", 
+            "para_index": 207, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Authors note\n            \n        ", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "B5CCE6EE", 
+            "para_index": 208, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Authors note\n            \n        ", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)", 
+            "para_id": "98D15FC2", 
+            "para_index": 209, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Authors note\n            \n        ", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "6D22DD0C", 
+            "para_index": 224, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                    \n                \n                \n                ack\n            \n        ", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "EBA3D73D", 
+            "para_index": 225, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                    \n                \n                \n                ack\n            \n        ", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Epigraph-Verse (Epiv)", 
+            "para_id": "24684E93", 
+            "para_index": "tablecell_para", 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }
+    ], 
+    "author_paras": [
+        {
+            "description": "\n            \n                \n            \n            \n                Ellen Alpsten\n            \n        ", 
+            "para_id": "A18838B1", 
+            "para_index": 9, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP2\n            \n        ", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "deleted_objects-bookmarks": [
+        {
+            "description": "deleted bookmark named _Hlk55572731", 
+            "para_id": "A4759C92", 
+            "para_index": 0, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                Book\n            \n        ", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk45695816", 
+            "para_id": "A4759C92", 
+            "para_index": 0, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                Book\n            \n        ", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }
+    ], 
+    "empty_section_start_para": [], 
+    "endnote-leading_whitespace_rmd": [
+        {
+            "description": "note ref: 1", 
+            "note-or-comment_id": "1", 
+            "para_id": "315A1D35", 
+            "para_index": "n-a", 
+            "para_string": "Here\u2019s an endnote with confusing stlyes!", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "footnote-leading_whitespace_rmd": [
+        {
+            "description": "note ref: 1", 
+            "note-or-comment_id": "1", 
+            "para_id": "38D33B35", 
+            "para_index": "n-a", 
+            "para_string": "General test", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }
+    ], 
+    "improperly_styled_endnote": [
+        {
+            "description": "Epigraph-Verse (Epiv)", 
+            "note-or-comment_id": "1", 
+            "para_id": "FE1A5A90", 
+            "para_index": "n-a", 
+            "para_string": ",oure ev", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }, 
+        {
+            "description": "Dedication (Ded)", 
+            "note-or-comment_id": "1", 
+            "para_id": "ADF06F4E", 
+            "para_index": "n-a", 
+            "para_string": "A nice dedication", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "improperly_styled_footnote": [
+        {
+            "description": "Address (Add)", 
+            "note-or-comment_id": "1", 
+            "para_id": "56A26867", 
+            "para_index": "n-a", 
+            "para_string": "Also, ", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }, 
+        {
+            "description": "Address (Add)", 
+            "note-or-comment_id": null, 
+            "para_id": "9F75B6FB", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }, 
+        {
+            "description": "Address (Add)", 
+            "note-or-comment_id": null, 
+            "para_id": "BF7B8331", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }
+    ], 
+    "isbn_spans": [
+        {
+            "description": "\n                \n                    \n                \n                978-1-250-21440-9\n            ", 
+            "para_id": "9A797C49", 
+            "para_index": 19, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Copyright\n            \n        ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "\n                \n                    \n                \n                978-1-250-21442-3\n            ", 
+            "para_id": "82C24EBA", 
+            "para_index": 20, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Copyright\n            \n        ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }
+    ], 
+    "logo_paras": [
+        {
+            "description": "\n            \n                \n            \n            \n                [place Imprint logo here]\n            \n        ", 
+            "para_id": "6FE935F2", 
+            "para_index": 10, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP2\n            \n        ", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "non-Macmillan_charstyle_removed": [
+        {
+            "description": "ital (i", 
+            "para_id": "9F7545B7", 
+            "para_index": 6, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Adcard\n            \n        ", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "span hyperlink (url)", 
+            "para_id": "C8B7C3AF", 
+            "para_index": 17, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Copyright\n            \n        ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "span material to come (tk)", 
+            "para_id": "E612A5F8", 
+            "para_index": 18, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Copyright\n            \n        ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "span preserve characters (pre)", 
+            "para_id": "05F5D1CD", 
+            "para_index": 24, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Copyright\n            \n        ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Strong", 
+            "para_id": "5207B784", 
+            "para_index": 78, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "span boldface characters (bf)", 
+            "para_id": "5207B784", 
+            "para_index": 78, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }
+    ], 
+    "non-Macmillan_style_used": [
+        {
+            "description": "Dateline - Chapter (dl)", 
+            "para_id": "2FFB4529", 
+            "para_index": 99, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Dateline - Chapter (dl)", 
+            "para_id": "A85EF793", 
+            "para_index": 100, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Chap Title (ct)", 
+            "para_id": "BEAC7F87", 
+            "para_index": 120, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Text - Std No-Indent (tx1)", 
+            "para_id": "35C6754F", 
+            "para_index": 128, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Text - Std No-Indent (tx1)", 
+            "para_id": "8CCDF995", 
+            "para_index": 141, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Text - Std No-Indent (tx1)", 
+            "para_id": "E1106796", 
+            "para_index": 153, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Chap Title (ct)", 
+            "para_id": "EAC97F26", 
+            "para_index": 160, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Text - Std No-Indent (tx1)", 
+            "para_id": "6010470B", 
+            "para_index": 185, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bookmaker Processing Instruction (bpi)", 
+            "para_id": "2867939A", 
+            "para_index": 226, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                    \n                \n                \n                ack\n            \n        ", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }
+    ], 
+    "removed_blank_para": [
+        {
+            "description": "removed Unnum-Level-1-ListUl1-styled para", 
+            "para_id": "008E5966", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Unnum-Level-1-ListUl1-styled para", 
+            "para_id": "0ACDCDAC", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Unnum-Level-1-ListUl1-styled para", 
+            "para_id": "1497966A", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Unnum-Level-1-ListUl1-styled para", 
+            "para_id": "2D61BC44", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Unnum-Level-1-ListUl1-styled para", 
+            "para_id": "5DA8776D", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Section-EpigraphSEP-styled para", 
+            "para_id": "158118F3", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed PageBreakpb-styled para", 
+            "para_id": "AE706B86", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Blank-Space-BreakBsbrk-styled para", 
+            "para_id": "6CAE3586", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Blank-Space-BreakBsbrk-styled para", 
+            "para_id": "747ED2A2", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Blank-Space-BreakBsbrk-styled para", 
+            "para_id": "FA4D3FD0", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed PageBreakpb-styled para", 
+            "para_id": "7BF765E6", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Blank-Space-BreakBsbrk-styled para", 
+            "para_id": "456F76DC", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "removed Blank-Space-BreakBsbrk-styled para", 
+            "para_id": "62A27329", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "blank para in footnote note with other text; note_id: 1", 
+            "para_id": "5FC8476A", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "removed_section_blank_para": [
+        {
+            "description": "Section-Epigraph (SEP)", 
+            "para_id": "158118F3", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "removed_spacebreak_blank_para": [
+        {
+            "description": "Blank-Space-Break (Bsbrk)_'Section-Chapter (SCP): \"\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        \"'", 
+            "para_id": "6CAE3586", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)_'Section-Chapter (SCP): \"\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        \"'", 
+            "para_id": "747ED2A2", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)_'Section-Chapter (SCP): \"\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        \"'", 
+            "para_id": "FA4D3FD0", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)_'Section-Chapter (SCP): \"\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        \"'", 
+            "para_id": "456F76DC", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)_'Section-Chapter (SCP): \"\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        \"'", 
+            "para_id": "62A27329", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "section_start_found": [
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "A4759C92", 
+            "para_index": 0, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                Book\n            \n        ", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "3BC8F63A", 
+            "para_index": 1, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP\n            \n        ", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-Ad-CardSAC", 
+            "para_id": "82A7180F", 
+            "para_index": 3, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Adcard\n            \n        ", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Section-TitlepageSTI", 
+            "para_id": "CB65C2C0", 
+            "para_index": 7, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP2\n            \n        ", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Section-CopyrightSCR", 
+            "para_id": "6B92A0E3", 
+            "para_index": 13, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Copyright\n            \n        ", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Section-DedicationSDE", 
+            "para_id": "D330313F", 
+            "para_index": 25, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Ded\n            \n        ", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Section-Front-Matter-GeneralSFM", 
+            "para_id": "D58A9398", 
+            "para_index": 28, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                fmg\n            \n        ", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "E59FEA82", 
+            "para_index": 97, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Section-Prologuw\n            \n        ", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-Back-Matter-GeneralSBM", 
+            "para_id": "D656DB72", 
+            "para_index": 206, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                Authors note\n            \n        ", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Section-AcknowledgmentsSAK", 
+            "para_id": "DAD3B8D2", 
+            "para_index": 223, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                    \n                \n                \n                ack\n            \n        ", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }
+    ], 
+    "table_blank_para_notes": [
+        {
+            "description": "blank para in table cell in footnote", 
+            "note-or-comment_id": null, 
+            "para_id": "9F75B6FB", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }, 
+        {
+            "description": "blank para in table cell in footnote", 
+            "note-or-comment_id": null, 
+            "para_id": "BF7B8331", 
+            "para_index": "tablecell_para", 
+            "para_string": "", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }
+    ], 
+    "title_paras": [
+        {
+            "description": "\n            \n                \n            \n            \n                The \n            \n            \n                Tsarina\n            \n            \n                \u2019s\n            \n            \n                 Daughter\n            \n        ", 
+            "para_id": "FD4B7E6F", 
+            "para_index": 8, 
+            "para_string": "\n         ", 
+            "parent_section_start_content": "\n            \n                \n            \n            \n                \n                TP2\n            \n        ", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ]
+}

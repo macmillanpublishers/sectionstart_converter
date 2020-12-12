@@ -1,0 +1,467 @@
+OOPS!
+
+Problems were found with the styles in your document.
+
+
+------------------------------------ ERRORS ------------------------------------
+** ERROR: Non-Macmillan style 'Dateline - Chapter (dl)' in Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        ".
+
+** ERROR: Non-Macmillan style 'Dateline - Chapter (dl)' in Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        ".
+
+** ERROR: Non-Macmillan style 'Chap Title (ct)' in Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        ".
+
+** ERROR: Non-Macmillan style 'Text - Std No-Indent (tx1)' in Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        ".
+
+** ERROR: Non-Macmillan style 'Text - Std No-Indent (tx1)' in Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        ".
+
+** ERROR: Non-Macmillan style 'Text - Std No-Indent (tx1)' in Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        ".
+
+** ERROR: Non-Macmillan style 'Chap Title (ct)' in Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        ".
+
+** ERROR: Non-Macmillan style 'Text - Std No-Indent (tx1)' in Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        ".
+
+** ERROR: Non-Macmillan style 'Bookmaker Processing Instruction (bpi)' in Section-Acknowledgments (SAK): "
+            
+                
+            
+            
+                
+                    
+                
+                
+                ack
+            
+        ".
+
+** ERROR: Endnote paragraph styled as 'Epigraph-Verse (Epiv)' instead of 'Endnote Text': (Note beginning ",oure ev").
+
+** ERROR: Endnote paragraph styled as 'Dedication (Ded)' instead of 'Endnote Text': (Note beginning "A nice dedication").
+
+** ERROR: Footnote paragraph styled as 'Address (Add)' instead of 'Footnote Text' (Note beginning "Also, ").
+
+** ERROR: Footnote paragraph styled as 'Address (Add)' instead of 'Footnote Text' (Note beginning "").  (< this item is from a table)
+
+** ERROR: Footnote paragraph styled as 'Address (Add)' instead of 'Footnote Text' (Note beginning "").  (< this item is from a table)
+
+
+If you have any questions about how to handle these errors,
+please contact workflows@macmillan.com.
+
+
+----------------------------------- WARNINGS -----------------------------------
+** WARNING: 2 table cell(s) containing only blank paragraph(s) were found in 'Footnotes'. Please confirm these empty table cells are intended, and if not, remove as needed.
+
+** WARNING: A blank Section-Start paragraph was removed: 'Section-Epigraph (SEP)'. The removal of a Section-Start paragraph may have led to other errors with your manuscript.
+
+** WARNING: A blank paragraph with style 'Blank-Space-Break (Bsbrk)' was removed from 'Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        "'. Even a Space-break or Separator paragraph must have content to be processed by RSuite.
+
+** WARNING: A blank paragraph with style 'Blank-Space-Break (Bsbrk)' was removed from 'Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        "'. Even a Space-break or Separator paragraph must have content to be processed by RSuite.
+
+** WARNING: A blank paragraph with style 'Blank-Space-Break (Bsbrk)' was removed from 'Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        "'. Even a Space-break or Separator paragraph must have content to be processed by RSuite.
+
+** WARNING: A blank paragraph with style 'Blank-Space-Break (Bsbrk)' was removed from 'Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        "'. Even a Space-break or Separator paragraph must have content to be processed by RSuite.
+
+** WARNING: A blank paragraph with style 'Blank-Space-Break (Bsbrk)' was removed from 'Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        "'. Even a Space-break or Separator paragraph must have content to be processed by RSuite.
+
+
+------------------------------- PROCESSING NOTES -------------------------------
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'ital (i'.
+
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'span hyperlink (url)'.
+
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'span material to come (tk)'.
+
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'span preserve characters (pre)'.
+
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'Strong'.
+
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'span boldface characters (bf)'.
+
+** NOTE: 14 blank paragraph(s) deleted from the manuscript.
+
+** NOTE: 2 bookmark(s) deleted from the manuscript.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"
+         "
+
+** Author1 (Au1) **
+"
+         "
+
+** cs-isbn (isbn) **
+"
+         "
+"
+         "
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+no illustrations detected.
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "
+            
+                
+            
+            
+                Book
+            
+        "
+Section-Halftitle (SHT).......... "
+            
+                
+            
+            
+                
+                TP
+            
+        "
+Section-Ad-Card (SAC)............ "
+            
+                
+            
+            
+                
+                Adcard
+            
+        "
+Section-Titlepage (STI).......... "
+            
+                
+            
+            
+                
+                TP2
+            
+        "
+Section-Copyright (SCR).......... "
+            
+                
+            
+            
+                
+                Copyright
+            
+        "
+Section-Dedication (SDE)......... "
+            
+                
+            
+            
+                
+                Ded
+            
+        "
+Section-Front-Matter-General (SFM) "
+            
+                
+            
+            
+                
+                fmg
+            
+        "
+Section-Chapter (SCP)............ "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        "
+Section-Back-Matter-General (SBM) "
+            
+                
+            
+            
+                
+                Authors note
+            
+        "
+Section-Acknowledgments (SAK).... "
+            
+                
+            
+            
+                
+                    
+                
+                
+                ack
+            
+        "
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Halftitle (SHT): "
+            
+                
+            
+            
+                
+                TP
+            
+        "
+Title (Ttl).................................. "
+         "                                                
+
+* Section-Ad-Card (SAC): "
+            
+                
+            
+            
+                
+                Adcard
+            
+        "
+Main-Head (MHead)............................ "
+         "                                                
+Body-Text (Tx)............................... "
+         "                                                
+
+* Section-Titlepage (STI): "
+            
+                
+            
+            
+                
+                TP2
+            
+        "
+Title (Ttl).................................. "
+         "                                                
+Author1 (Au1)................................ "
+         "                                                
+Logo-Placement (Logo)........................ "
+         "                                                
+Imprint (Imp)................................ "
+         "                                                
+Cities (Cit)................................. "
+         "                                                
+
+* Section-Copyright (SCR): "
+            
+                
+            
+            
+                
+                Copyright
+            
+        "
+Body-Text (Tx)............................... "
+         "                                                
+
+* Section-Dedication (SDE): "
+            
+                
+            
+            
+                
+                Ded
+            
+        "
+Dedication (Ded)............................. "
+         "                                                
+
+* Section-Front-Matter-General (SFM): "
+            
+                
+            
+            
+                
+                fmg
+            
+        "
+Title (Ttl).................................. "
+         "                                                
+Subtitle (Sttl).............................. "
+         "                                                
+Address (Add)................................ "
+         "                                                
+Unnum-Level-1-List (Ul1)..................... "
+         "                                                
+Quotation (Quo).............................. "
+         "                                                
+Source (Src)................................. "
+         "                                                
+
+* Section-Chapter (SCP): "
+            
+                
+            
+            
+                
+                Section-Prologuw
+            
+        "
+Title (Ttl).................................. "
+         "                                                
+Body-Text (Tx)............................... "
+         "                                                
+Dateline (Date).............................. "
+         "                                                
+
+* Section-Back-Matter-General (SBM): "
+            
+                
+            
+            
+                
+                Authors note
+            
+        "
+Title (Ttl).................................. "
+         "                                                
+Body-Text (Tx)............................... "
+         "                                                
+Blank-Space-Break (Bsbrk).................... "
+         "                                                
+
+* Section-Acknowledgments (SAK): "
+            
+                
+            
+            
+                
+                    
+                
+                
+                ack
+            
+        "
+Title (Ttl).................................. "
+         "                                                
+Body-Text (Tx)............................... "
+         "                                                
+Epigraph-Verse (Epiv)........................ "
+         "                                                
+
+___________CHARACTER STYLES IN USE___________
+ital (i)
+smallcaps (sc)
+cs-isbn (isbn)
+footnote reference
+endnote reference
+footnote reference
+endnote reference
+
+

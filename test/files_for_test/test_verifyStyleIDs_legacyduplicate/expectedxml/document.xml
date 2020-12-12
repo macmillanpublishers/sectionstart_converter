@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex" xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex" xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex" xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex" xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex" xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex" xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex" xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex" xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink" xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14">
+    <w:body>
+        <w:p w14:paraId="3F27F616" w14:textId="6BD5D24E" w:rsidR="005F4F64" w:rsidRDefault="00D44AA7" w:rsidP="007459E4">
+            <w:pPr>
+                <w:pStyle w:val="TitleTtl"/>
+            </w:pPr>
+            <w:r>
+                <w:t xml:space="preserve">This is a test </w:t>
+            </w:r>
+        </w:p>
+        <w:p w14:paraId="04F1DBBF" w14:textId="580DC927" w:rsidR="00D44AA7" w:rsidRDefault="00D44AA7" w:rsidP="007459E4">
+            <w:pPr>
+                <w:pStyle w:val="ParaStyleSwitchPSS0"/>
+            </w:pPr>
+            <w:r>
+                <w:t>Here is another test sentence</w:t>
+            </w:r>
+            <w:r w:rsidR="007459E4">
+                <w:t>.</w:t>
+            </w:r>
+        </w:p>
+        <w:p w14:paraId="23EAC70B" w14:textId="5085671F" w:rsidR="007459E4" w:rsidRDefault="007459E4" w:rsidP="007459E4">
+            <w:pPr>
+                <w:pStyle w:val="ParaStyleChangePSC"/>
+            </w:pPr>
+            <w:proofErr w:type="spellStart"/>
+            <w:r>
+                <w:t>Folloewd</w:t>
+            </w:r>
+            <w:proofErr w:type="spellEnd"/>
+            <w:r>
+                <w:t xml:space="preserve"> by </w:t>
+            </w:r>
+            <w:proofErr w:type="spellStart"/>
+            <w:r>
+                <w:t>antoher</w:t>
+            </w:r>
+            <w:proofErr w:type="spellEnd"/>
+            <w:r>
+                <w:t xml:space="preserve"> paragraph</w:t>
+            </w:r>
+        </w:p>
+        <w:p w14:paraId="788E3F14" w14:textId="2EDBBFC4" w:rsidR="00D44AA7" w:rsidRDefault="00D44AA7" w:rsidP="007459E4">
+            <w:pPr>
+                <w:pStyle w:val="Body-Text-ContinuedTxc"/>
+            </w:pPr>
+            <w:r>
+                <w:t>And a third!</w:t>
+            </w:r>
+        </w:p>
+        <w:p w14:paraId="3F58948D" w14:textId="28D1E9BA" w:rsidR="00D44AA7" w:rsidRDefault="00D44AA7" w:rsidP="007459E4">
+            <w:pPr>
+                <w:pStyle w:val="ParaStyleChangePSC"/>
+            </w:pPr>
+            <w:r>
+                <w:t>And a fourth</w:t>
+            </w:r>
+        </w:p>
+        <w:p w14:paraId="180059C4" w14:textId="73E1C336" w:rsidR="007459E4" w:rsidRDefault="007459E4" w:rsidP="00DC59BE">
+            <w:pPr>
+                <w:pStyle w:val="Body-TextTx"/>
+            </w:pPr>
+            <w:r>
+                <w:t xml:space="preserve">And </w:t>
+            </w:r>
+            <w:proofErr w:type="gramStart"/>
+            <w:r>
+                <w:t>finally</w:t>
+            </w:r>
+            <w:proofErr w:type="gramEnd"/>
+            <w:r>
+                <w:t xml:space="preserve"> more plain text</w:t>
+            </w:r>
+        </w:p>
+        <w:p w14:paraId="370ADD23" w14:textId="2D0711DB" w:rsidR="00DC59BE" w:rsidRDefault="00DC59BE" w:rsidP="00DC59BE">
+            <w:pPr>
+                <w:pStyle w:val="ParaStyleSwitchpss"/>
+            </w:pPr>
+            <w:r>
+                <w:t xml:space="preserve">The </w:t>
+            </w:r>
+            <w:r w:rsidRPr="00DC59BE">
+                <w:rPr>
+                    <w:rStyle w:val="charstyleswitchcss1"/>
+                </w:rPr>
+                <w:t>BAD</w:t>
+            </w:r>
+            <w:r>
+                <w:t xml:space="preserve"> body text (made a body-text </w:t>
+            </w:r>
+            <w:r w:rsidRPr="00DC59BE">
+                <w:rPr>
+                    <w:rStyle w:val="charstylechangedcsc"/>
+                </w:rPr>
+                <w:t>without</w:t>
+            </w:r>
+            <w:r>
+                <w:t xml:space="preserve"> </w:t>
+            </w:r>
+            <w:proofErr w:type="spellStart"/>
+            <w:r>
+                <w:t>clo</w:t>
+            </w:r>
+            <w:proofErr w:type="spellEnd"/>
+            <w:r>
+                <w:rPr>
+                    <w:rStyle w:val="FootnoteReference"/>
+                </w:rPr>
+                <w:footnoteReference w:id="1"/>
+            </w:r>
+            <w:r>
+                <w:t xml:space="preserve">sing </w:t>
+            </w:r>
+            <w:proofErr w:type="spellStart"/>
+            <w:r w:rsidRPr="00DC59BE">
+                <w:rPr>
+                    <w:rStyle w:val="charstyleswitchcss1"/>
+                </w:rPr>
+                <w:t>paren</w:t>
+            </w:r>
+            <w:proofErr w:type="spellEnd"/>
+            <w:r>
+                <w:t>)</w:t>
+            </w:r>
+        </w:p>
+        <w:p w14:paraId="4BD6E8B8" w14:textId="52D26B7A" w:rsidR="00DC59BE" w:rsidRDefault="00DC59BE" w:rsidP="00DC59BE">
+            <w:pPr>
+                <w:pStyle w:val="Body-TextTx0"/>
+                <w:rPr>
+                    <w:rStyle w:val="charstyleswitchCsS"/>
+                </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="00DC59BE">
+                <w:rPr>
+                    <w:rStyle w:val="charstylechangedcsc"/>
+                </w:rPr>
+                <w:t>And</w:t>
+            </w:r>
+            <w:r>
+                <w:t xml:space="preserve"> again </w:t>
+            </w:r>
+            <w:r w:rsidRPr="00DC59BE">
+                <w:rPr>
+                    <w:rStyle w:val="charstyleswitchCsS"/>
+                </w:rPr>
+                <w:t>BAD</w:t>
+            </w:r>
+        </w:p>
+        <w:tbl>
+            <w:tblPr>
+                <w:tblStyle w:val="TableGrid"/>
+                <w:tblW w:w="0" w:type="auto"/>
+                <w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/>
+            </w:tblPr>
+            <w:tblGrid>
+                <w:gridCol w:w="3116"/>
+                <w:gridCol w:w="3117"/>
+                <w:gridCol w:w="3117"/>
+            </w:tblGrid>
+            <w:tr w:rsidR="00616BD2" w14:paraId="0E2C59FA" w14:textId="77777777" w:rsidTr="00616BD2">
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="3116" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="5EC14BA7" w14:textId="331D24A1" w:rsidR="00616BD2" w:rsidRPr="00616BD2" w:rsidRDefault="00616BD2" w:rsidP="00616BD2">
+                        <w:pPr>
+                            <w:pStyle w:val="ParaStyleChangePSC"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>Testing a table</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="3117" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="38803829" w14:textId="2107EF1D" w:rsidR="00616BD2" w:rsidRDefault="00616BD2" w:rsidP="00616BD2">
+                        <w:pPr>
+                            <w:pStyle w:val="ParaStyleSwitchPSS0"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t xml:space="preserve">With </w:t>
+                        </w:r>
+                        <w:r w:rsidRPr="00616BD2">
+                            <w:rPr>
+                                <w:rStyle w:val="charstyle-newcs34"/>
+                            </w:rPr>
+                            <w:t>good</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="3117" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="29F7455A" w14:textId="3B748626" w:rsidR="00616BD2" w:rsidRDefault="00616BD2" w:rsidP="00616BD2">
+                        <w:pPr>
+                            <w:pStyle w:val="ParaStyleSwitchpss"/>
+                        </w:pPr>
+                        <w:proofErr w:type="spellStart"/>
+                        <w:r>
+                            <w:t>Amd</w:t>
+                        </w:r>
+                        <w:proofErr w:type="spellEnd"/>
+                        <w:r>
+                            <w:t xml:space="preserve"> </w:t>
+                        </w:r>
+                        <w:r w:rsidRPr="00616BD2">
+                            <w:rPr>
+                                <w:rStyle w:val="charstylechangedcsc"/>
+                            </w:rPr>
+                            <w:t>bad</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr w:rsidR="00616BD2" w14:paraId="6E24AEC1" w14:textId="77777777" w:rsidTr="00616BD2">
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="3116" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="56847BD9" w14:textId="77777777" w:rsidR="00616BD2" w:rsidRDefault="00616BD2" w:rsidP="00616BD2">
+                        <w:pPr>
+                            <w:pStyle w:val="AddressAdd"/>
+                            <w:pBdr>
+                                <w:left w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+                            </w:pBdr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="3117" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="33901E3B" w14:textId="65D11030" w:rsidR="00616BD2" w:rsidRPr="00616BD2" w:rsidRDefault="00616BD2" w:rsidP="00616BD2">
+                        <w:pPr>
+                            <w:pStyle w:val="AddressAdd"/>
+                            <w:pBdr>
+                                <w:left w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+                            </w:pBdr>
+                            <w:rPr>
+                                <w:rStyle w:val="boldb"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00616BD2">
+                            <w:rPr>
+                                <w:rStyle w:val="boldb"/>
+                            </w:rPr>
+                            <w:t>Styles</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="3117" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="3AE49493" w14:textId="6F7BB0B0" w:rsidR="00616BD2" w:rsidRDefault="00616BD2" w:rsidP="00616BD2">
+                        <w:pPr>
+                            <w:pStyle w:val="Para-Style-NewPSN0"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t xml:space="preserve">And really </w:t>
+                        </w:r>
+                        <w:r w:rsidRPr="00616BD2">
+                            <w:rPr>
+                                <w:rStyle w:val="boldb"/>
+                            </w:rPr>
+                            <w:t>BAD</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr w:rsidR="00616BD2" w14:paraId="198C6A12" w14:textId="77777777" w:rsidTr="00616BD2">
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="3116" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="10511CC6" w14:textId="3BCB8310" w:rsidR="00616BD2" w:rsidRDefault="00616BD2" w:rsidP="00616BD2">
+                        <w:pPr>
+                            <w:pStyle w:val="Para-Style-NewPSN1"/>
+                        </w:pPr>
+                        <w:r>
+                            <w:t>styles</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="3117" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="12C998BF" w14:textId="77777777" w:rsidR="00616BD2" w:rsidRDefault="00616BD2" w:rsidP="00616BD2">
+                        <w:pPr>
+                            <w:pStyle w:val="Body-TextTx"/>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="3117" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="5AF58F6F" w14:textId="77777777" w:rsidR="00616BD2" w:rsidRDefault="00616BD2" w:rsidP="00616BD2">
+                        <w:pPr>
+                            <w:pStyle w:val="ParaStyleChangePSC"/>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+        </w:tbl>
+        <w:p w14:paraId="6D721157" w14:textId="77777777" w:rsidR="00616BD2" w:rsidRPr="00616BD2" w:rsidRDefault="00616BD2" w:rsidP="00616BD2">
+            <w:pPr>
+                <w:pStyle w:val="AddressAdd"/>
+            </w:pPr>
+        </w:p>
+        <w:sectPr w:rsidR="00616BD2" w:rsidRPr="00616BD2" w:rsidSect="00012DA0">
+            <w:pgSz w:w="12240" w:h="15840"/>
+            <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720" w:gutter="0"/>
+            <w:cols w:space="720"/>
+            <w:docGrid w:linePitch="360"/>
+        </w:sectPr>
+    </w:body>
+</w:document>

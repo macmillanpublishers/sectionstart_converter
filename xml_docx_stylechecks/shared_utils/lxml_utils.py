@@ -55,10 +55,11 @@ def int_to_Roman(num):
       num -= val[i] * count
    return roman_num
 
-def transformStylename(stylename):
-    # in js we needed to escape pound signs.  Come back and test that here
-    # yep, cause Word strips em out for the style-shortname
-    stylename = stylename.replace(" ","").replace("(",'').replace(")",'').replace("#",'')
+def transformStylename(lngstylename):
+    # matching restrictions for Wordml styleID's (observed): alphanumeric + hyphens ONLY
+    #   (12/20 - switching from manual string of replacements to regex)
+    stylename = re.sub('[^\w-]','',lngstylename)
+    # stylename = stylename.replace(" ","").replace("(",'').replace(")",'').replace("#",'').replace("_",'')
     return stylename
 
 # return all text from a paragraph (or run)

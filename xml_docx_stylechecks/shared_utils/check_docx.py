@@ -18,9 +18,11 @@ if __name__ == '__main__':
     parentpath = os.path.join(sys.path[0], '..', 'cfg.py')
     cfg = imp.load_source('cfg', parentpath)
     os_utils = imp.load_source('os_utils', osutilspath)
+    lxml_utils = imp.load_source('lxml_utils', lxmlutilspath)
 else:
     import cfg
     import shared_utils.os_utils as os_utils
+    import shared_utils.lxml_utils as lxml_utils
 
 ######### LOCAL DECLARATIONS
 
@@ -286,70 +288,163 @@ def checkFilename(inputfilename):
     logger.info("filename badchar check: {} found: {}".format(len(badchars),badchars))
     return badchars
 
-def stripDuplicateMacmillanStyles(doc_xml, styles_xml):
-    logger.debug("Checking for old Macmillan duplicate styles, replacing as needed...")
-    zerostylecheck = False
+def getXMLroot(xml_file):
+    if os.path.exists(xml_file):
+        xml_tree = etree.parse(xml_file)
+        xml_root = xml_tree.getroot()
+    else:
+        xml_root = None
+    return xml_root
 
-    styles_tree = etree.parse(styles_xml)
-    styles_root = styles_tree.getroot()
-    doc_tree = etree.parse(doc_xml)
-    doc_root = doc_tree.getroot()
-    # this is for cycling through any of these xml_roots that exist
-    xmlfile_dict = {doc_root:doc_xml}
-    if os.path.exists(cfg.endnotes_xml):
-        endnotes_tree = etree.parse(cfg.endnotes_xml)
-        endnotes_root = endnotes_tree.getroot()
-        xmlfile_dict[endnotes_root]=cfg.endnotes_xml
-    if os.path.exists(cfg.footnotes_xml):
-        footnotes_tree = etree.parse(cfg.footnotes_xml)
-        footnotes_root = footnotes_tree.getroot()
-        xmlfile_dict[footnotes_root]=cfg.footnotes_xml
-    if os.path.exists(cfg.numbering_xml):
-        numbering_tree = etree.parse(cfg.numbering_xml)
-        numbering_root = numbering_tree.getroot()
-        xmlfile_dict[numbering_root]=cfg.numbering_xml
+def updateStyleidInXML(oldstyle_id, newstyle_id, xml_root, root_name):
+    updates_made = False
+    # search xml file for all references to legacystyle
+    oldstyle_searchstring = ".//*w:pStyle[@w:val='%s']" % oldstyle_id
+    oldstyle_uses = xml_root.findall(oldstyle_searchstring, wordnamespaces)
+    # if we don't find paraStyles, try runstyles:
+    if not oldstyle_uses:
+        oldstyle_searchstring = ".//*w:rStyle[@w:val='%s']" % oldstyle_id
+        oldstyle_uses = xml_root.findall(oldstyle_searchstring, wordnamespaces)
+    for oldstyle_use in oldstyle_uses:
+        oldstyle_use.attrib["{%s}val" % wnamespace] = newstyle_id
+    if oldstyle_uses:
+        updates_made = True
+        logging.info("replaced %s occurrences of styleID '%s' with '%s' in %s" % (len(oldstyle_uses), oldstyle_id, newstyle_id, root_name))
+        # os_utils.writeXMLtoFile(xml_root, xml_file)
+    return updates_made
 
-    # get styles that end in zero: use xpath b/c lxml find doesn't support wildcard search in attr name
-    stylematches = styles_tree.xpath("w:style[@w:styleId[contains(.,'0') and substring-after(.,'0') = '']]", namespaces=wordnamespaces)
-    # print "stylematch count!!!!!!!:  %s" % len(stylematches) # debug
-    if len(stylematches):
-        for zerostyle in stylematches:
-            # only capture macmillan styles
-            zs_nameattirb = zerostyle.find(".//w:name", wordnamespaces) # defining this separate from the conditional, b/c table styles don't have w:name children
-            if zs_nameattirb is not None and "(" in zs_nameattirb.get('{%s}val' % wnamespace):
-                zerostylecheck = True
-                zerostylename = zerostyle.get('{%s}styleId' % wnamespace)
-                nozerostylename = zerostylename[:-1]
-                nozero_downcase_stylename = nozerostylename.lower()
+def updateStyleUsesInStylesXML(styles_root, current_id, new_id):
+    # scanstyles_root for other common uses of updated styleID (in basedOn or nextStyle vals)
+    searchstring = ".//w:style/w:next[@w:val='%s']" % current_id
+    searchstring_b = ".//w:style/w:basedOn[@w:val='%s']" % current_id
+    el_attrs_to_update = styles_root.findall(searchstring, wordnamespaces) + styles_root.findall(searchstring_b, wordnamespaces)
+    if len(el_attrs_to_update) > 0:
+        for el in el_attrs_to_update:
+            el.attrib["{%s}val" % wnamespace] = new_id
+        logging.debug("updated %s style-element next/basedOn Style attribute values from '%s' to '%s'" % (len(el_attrs_to_update), current_id, new_id))    
 
-                # # find style with matching stylename. (legacystyle), get its stylename, rm legacy style
-                legacystyle = styles_tree.xpath("w:style[translate(@w:styleId,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz') = '" + nozero_downcase_stylename + "']", namespaces=wordnamespaces)
-                if legacystyle:
-                    legacystylename = legacystyle[0].get('{%s}styleId' % wnamespace)
-                    parent_el = legacystyle[0].getparent()
-                    parent_el.remove(legacystyle[0])
-                    # go back to zero style & correct its stylename (sans 0)
-                    zerostyle.attrib["{%s}styleId" % wnamespace] = nozerostylename
+def updateStyleidInAllXML(oldstyle_id, newstyle_id, styles_root, doc_root, endnotes_root, footnotes_root, xmls_updated):
+    # update styles_root,
+    updateStyleUsesInStylesXML(styles_root, oldstyle_id, newstyle_id)
+    # doc root,
+    docxml_updated = updateStyleidInXML(oldstyle_id, newstyle_id, doc_root, "document.xml")
+    if xmls_updated['docxml'] == False and docxml_updated == True:
+        xmls_updated['docxml'] = True
+    # endnotes,
+    if endnotes_root is not None:
+        enotexml_updated = updateStyleidInXML(oldstyle_id, newstyle_id, endnotes_root, "endnotes.xml")
+        if xmls_updated['endnotes'] == False and enotexml_updated == True:
+            xmls_updated['endnotes'] = True
+    # footnotes
+    if footnotes_root is not None:
+        fnotexml_updated = updateStyleidInXML(oldstyle_id, newstyle_id, footnotes_root, "footnotes.xml")
+        if xmls_updated['footnotes'] == False and fnotexml_updated == True:
+            xmls_updated['footnotes'] = True
+    return xmls_updated
 
-                    # cycle through xml files to update relevant stylenames
-                    for xml_root in xmlfile_dict:
-                        # search xml file for all references to legacystyle
-                        legacystyle_searchstring = ".//w:pStyle[@w:val='%s']" % legacystylename
-                        legacy_uses = xml_root.findall(legacystyle_searchstring, wordnamespaces)
-                        zerostyle_searchstring = ".//w:pStyle[@w:val='%s']" % zerostylename
-                        zerostyle_uses = xml_root.findall(zerostyle_searchstring, wordnamespaces)
-                        # and update all style references to zerostyle & legacy
-                        for changedstyle_use in zerostyle_uses + legacy_uses:
-                            changedstyle_use.attrib["{%s}val" % wnamespace] = nozerostylename
+# go through and check that each style longname, if present, has teh expected styleid.
+#   5 different outcomes: -styleID good, -style not present, -styleID wrong but no conflicting styleID,
+#       -styleID wrong and conflicts with legacy style, -styleID wrong ands conflicts with random style
+def verifyStyleIDs(macmillanstyle_dict, legacystyle_dict, styles_root, doc_root, endnotes_root, footnotes_root):
+    stylenames_updated = False
+    xmls_updated = {'docxml': False, 'footnotes': False, 'endnotes': False}
+    for lng_stylename, shrt_stylename in macmillanstyle_dict.iteritems():
+        searchstring = ".//w:style/w:name[@w:val='%s']" % lng_stylename
+        rsuite_name_el = styles_root.find(searchstring, wordnamespaces)
+        # proceed if we found our style long name in current styles.xml (do nothing)
+        if rsuite_name_el is not None:
+            current_rs_style_el = rsuite_name_el.getparent()
+            current_style_id = current_rs_style_el.get('{%s}styleId' % wnamespace)
+            # the style shortname is not the expected / calculated one, we need to take some action:
+            if current_style_id != shrt_stylename:
+                # find if another style is using what should be our shortname... (using xpath for case-insensitive search)
+                shrt_stylename_downcase = shrt_stylename.lower()
+                styles_tree = etree.ElementTree(styles_root)
+                target_rs_style_els = styles_tree.xpath("w:style[translate(@w:styleId,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz') = '" \
+                    + shrt_stylename_downcase + "']", namespaces=wordnamespaces)
+                # if not, rename the style shortname, and rename all occurences in body xml, notes xmls to match new shortname
+                if len(target_rs_style_els) == 0:
+                    logging.warn("style '%s' had unexpected styleID '%s', expected styleID available ('%s'), updating all xml" \
+                        % (lng_stylename, current_style_id, shrt_stylename))
+                    current_rs_style_el.attrib["{%s}styleId" % wnamespace] = shrt_stylename
+                    xmls_updated = updateStyleidInAllXML(current_style_id, shrt_stylename, styles_root, doc_root, endnotes_root, footnotes_root, xmls_updated)
+                # if so, find out if the style with our shortname is a legacy style
+                else:
+                    # the above xpath search returned a list, but if we're here we found exactly 1 item
+                    target_rs_style_el = target_rs_style_els[0]
+                    # get target style styleID; we'll need it for legacy or non-legacy cases below:
+                    target_styleID = target_rs_style_el.get('{%s}styleId' % wnamespace)
+                    # get target_style full stylename:
+                    target_name_el = target_rs_style_el.find(".//w:name", wordnamespaces)
+                    target_stylename = target_name_el.get('{%s}val' % wnamespace)
+                    # if this _is_ a legacy style, we merge the new with the old
+                    #   (since the longnames are almost identical, old-style uses can be presumed to be unintentional misstylings, and corrected)
+                    if target_stylename in legacystyle_dict:
+                        logging.warn("style '%s' had unexpected styleID '%s', expected styleID in use by legacy style ('%s'), merging the two under styleid: '%s'" \
+                            % (lng_stylename, current_style_id, target_stylename, shrt_stylename))
+                        # delete the legacy style_el ...
+                        parent_el = target_rs_style_el.getparent()
+                        parent_el.remove(target_rs_style_el)
+                        # ... and rename our corresponding RS style_el with the expected styleID
+                        current_rs_style_el.attrib["{%s}styleId" % wnamespace] = shrt_stylename
+                        # then we update current styleid uses in the xml to new styleid
+                        xmls_updated = updateStyleidInAllXML(current_style_id, shrt_stylename, styles_root, doc_root, endnotes_root, footnotes_root, xmls_updated)
+                        # if the target styleID does not match styleShortname (caps could vary) we rename that globally as well:
+                        if target_styleID != shrt_stylename:
+                            xmls_updated = updateStyleidInAllXML(target_styleID, shrt_stylename, styles_root, doc_root, endnotes_root, footnotes_root, xmls_updated)
+                    # this is not a legacy style, so we will swap style id's in styles_root, and update occurrences with new style id's in 3 xml files
+                    else:
+                        # get current shortname suffix, and set new shortname for rogue dupe (in case basename capitalization varies)
+                        current_suffix = re.sub(r"^{}".format(shrt_stylename),'',current_style_id)
+                        if current_suffix != current_style_id:
+                            new_target_style_id = '{}{}'.format(target_styleID, current_suffix)
+                        else:
+                            new_target_style_id = current_style_id
+                        logging.warn("style '%s' had unexpected styleID '%s', expected styleID ('%s') used by non-legacy style: ('%s'), swapping style ID's in all XML" \
+                            % (lng_stylename, current_style_id, shrt_stylename, target_stylename))
+                        # swap styleid's in styles_root
+                        current_rs_style_el.attrib["{%s}styleId" % wnamespace] = shrt_stylename
+                        target_rs_style_el.attrib["{%s}styleId" % wnamespace] = new_target_style_id
+                        # 3 part swap in xml roots (A > C, B > A, C > B)
+                        tmpstyle_id = lxml_utils.generate_id()
+                        tmp_stylename = "{}{}".format(shrt_stylename, tmpstyle_id)
+                        xmls_updated = updateStyleidInAllXML(target_styleID, tmp_stylename, styles_root, doc_root, endnotes_root, footnotes_root, xmls_updated)
+                        xmls_updated = updateStyleidInAllXML(current_style_id, shrt_stylename, styles_root, doc_root, endnotes_root, footnotes_root, xmls_updated)
+                        xmls_updated = updateStyleidInAllXML(tmp_stylename, new_target_style_id, styles_root, doc_root, endnotes_root, footnotes_root, xmls_updated)
+                stylenames_updated = True
+        else:
+            logger.info("style longname not present: %s (style may have been deleted/modified?)" % lng_stylename)
 
-    if zerostylecheck:  # write out updated xml files if zerostyles were found
-        # write xml out. styles file:
+    return stylenames_updated, xmls_updated
+
+# a problem caused by having clashing style templates added, or rogue random styles pre-existing a Macmillan one.
+def checkForDuplicateStyleIDs(macmillanstyles_json, legacystyles_json, styles_xml, doc_xml, endnotes_xml, footnotes_xml):
+    logger.info("running checkDuplicateStyleIDs...")
+    # create dict of style_longname : style_shortname for all macmillan styles
+    macmillanstyle_data = os_utils.readJSON(macmillanstyles_json)
+    macmillanstyle_dict = {}
+    for lng_stylename in macmillanstyle_data:
+        macmillanstyle_dict[lng_stylename] = lxml_utils.transformStylename(lng_stylename)
+
+    # get xml_roots
+    doc_root = getXMLroot(doc_xml)
+    footnotes_root = getXMLroot(footnotes_xml)
+    endnotes_root = getXMLroot(endnotes_xml)
+    styles_root = getXMLroot(styles_xml)
+
+    legacystyle_dict = os_utils.readJSON(legacystyles_json)
+    stylenames_updated, xmls_updated = verifyStyleIDs(macmillanstyle_dict, legacystyle_dict, styles_root, doc_root, endnotes_root, footnotes_root)
+    # write styles file out
+    if stylenames_updated == True:
         os_utils.writeXMLtoFile(styles_root, styles_xml)
-        #   .. and all other xml files:
-        for xml_root in xmlfile_dict:
-            os_utils.writeXMLtoFile(xml_root, xmlfile_dict[xml_root])
+    # if changes were made to other files, write files out
+    if xmls_updated['docxml'] == True:
+        os_utils.writeXMLtoFile(doc_root, doc_xml)
+    if xmls_updated['footnotes'] == True:
+        os_utils.writeXMLtoFile(footnotes_root, footnotes_xml)
+    if xmls_updated['endnotes'] == True:
+        os_utils.writeXMLtoFile(endnotes_root, endnotes_xml)
 
-    return zerostylecheck
 
 #---------------------  MAIN
 

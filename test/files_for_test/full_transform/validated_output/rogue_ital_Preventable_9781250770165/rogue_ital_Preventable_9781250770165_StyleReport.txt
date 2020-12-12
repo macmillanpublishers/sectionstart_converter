@@ -1,0 +1,174 @@
+CONGRATULATIONS! YOU PASSED!
+
+But you're not done yet. Please check the info listed below.
+
+
+----------------------------------- WARNINGS -----------------------------------
+** WARNING: A blank Section-Start paragraph was removed: 'Section-Chapter (SCP)'. The removal of a Section-Start paragraph may have led to other errors with your manuscript.
+
+
+------------------------------- PROCESSING NOTES -------------------------------
+** NOTE: 1 blank paragraph(s) deleted from the manuscript.
+
+** NOTE: 64 bookmark(s) deleted from the manuscript.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"Preventable"
+
+** Author1 (Au1) **
+"Andy Slavitt"
+
+** cs-isbn (isbn) **
+"ISBN 978-1-250-77016-5 (hardcover)"
+"ISBN 978-1-250-77017-2 (ebook)"
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+Verify that this list of illustrations includes only the filenames of your illustrations.
+
+Image001.jpg
+Image002.jpg
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "Preventable"                                            
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Dedication (SDE)......... "Dedication"                                             
+Section-Contents (STC)........... "Contents"                                               
+Section-Front-Matter-General (SFM) "Front Matter General"                                   
+Section-Preface (SPF)............ "Preface"                                                
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Introduction (SIC)....... "Introduction"                                           
+Section-Chapter (SCP)............ "Chapter 1: Is This Really Happening?"                   
+Section-Chapter (SCP)............ "Chapter 2: Unexploded Bombs"                            
+Section-Chapter (SCP)............ "Chapter 3: Waking up Late"                              
+Section-Chapter (SCP)............ "Chapter 4: The Virus & The White House, Part I"         
+Section-Chapter (SCP)............ "Chapter 5: The Virus & the White House, Part II"        
+Section-Chapter (SCP)............ "Chapter 6: Trump Eats the Marshmallow"                  
+Section-Chapter (SCP)............ "Chapter 7: No One Left in Charge but the Virus"         
+Section-Chapter (SCP)............ "Chapter 8: The Room Service Pandemic"                   
+Section-Chapter (SCP)............ "Chapter 9: The Folly of the Free Market Pandemic"       
+Section-Chapter (SCP)............ "Chapter 10: Anti-Expert, Pro-Magic"                     
+Section-Chapter (SCP)............ "Chapter 11: Deniers, Fauxers, and Herders (Oh My)"      
+Section-Chapter (SCP)............ "Chapter 12: The Work To Do"                             
+Section-Afterword (SAW).......... "Afterword"                                              
+Section-Appendix (SAP)........... "Appendix"                                               
+Section-Acknowledgments (SAK).... "Acknowledgments"                                        
+Section-Notes (SNT).............. "Notes"                                                  
+Section-Index (SIN).............. "Index"                                                  
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "Preventable"                                               
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "Preventable"                                               
+Subtitle (Sttl).............................. "The Inside Story of How Leadership Failures, Politics, and Selfishness"
+Author1 (Au1)................................ "Andy Slavitt"                                              
+Design-Note (Dn)............................. "[place Imprint logo here]"                                 
+Imprint (Imp)................................ "St. Martin’s Press"                                      
+Cities (Cit)................................. "New York"                                                  
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "First published in the United States by St. Martin’s Press,"
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Dedication (SDE): "Dedication"
+Dedication (Ded)............................. "To our career civil servants, who serve this nation with"  
+
+* Section-Contents (STC): "Contents"
+Title (Ttl).................................. "Contents"                                                  
+TOC-Frontmatter (Tocfm)...................... "Timeline 000"                                              
+TOC-Chapter (Tocch).......................... "Introduction 000"                                          
+TOC-Backmatter (Tocbm)....................... "Appendix 000"                                              
+
+* Section-Front-Matter-General (SFM): "Front Matter General"
+Design-Note (Dn)............................. "[timeline tk—2 pages]"                                   
+
+* Section-Preface (SPF): "Preface"
+Title (Ttl).................................. "Preface"                                                   
+Body-Text (Tx)............................... "In 1998, my college roommate Jeff Yurkofsky, then 31, began"
+
+* Section-Introduction (SIC): "Introduction"
+Title (Ttl).................................. "Introduction"                                              
+Body-Text (Tx)............................... "One day in April 2020, Ahmed Aden returned home from"      
+Ornamental-Space-Break (Osbrk)............... "***"                                                       
+
+* Section-Chapter (SCP): "Chapter 1: Is This Really Happening?"
+Number (Num)................................. "Chapter 1"                                                 
+Title (Ttl).................................. "Is This Really Happening?"                                 
+Dateline (Date).............................. "Scene: United States, February 2020"                       
+Body-Text (Tx)............................... "Thia Morton, a 60-year old documentary filmmaker, lived alone in"
+Ornamental-Space-Break (Osbrk)............... "***"                                                       
+A-Head (Ahead)............................... "The Coming Storm"                                          
+
+* Section-Chapter (SCP): "Chapter 2: Unexploded Bombs"
+Extract1 (Ext1).............................. "Promoting science isn’t just about providing resources—it is also about"
+
+* Section-Chapter (SCP): "Chapter 3: Waking up Late"
+EXTRACT-A > Num-Level-1-List (Nl1)........... "Prevention now will be easier than clean-up later. Controlling 10"
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Chapter (SCP): "Chapter 4: The Virus & The White House, Part I"
+Epigraph-Non-Verse (Epi)..................... "If you need to be right before you move, you"              
+Epigraph-Source (Episrc)..................... "—Dr. Michael Ryan, executive director of the WHO Health Emergencies"
+Num-Level-1-List (Nl1)....................... "1. Infection rate"                                         
+
+* Section-Chapter (SCP): "Chapter 7: No One Left in Charge but the Virus"
+EXTRACT-A > Body-Text (Tx)................... "If cases keep growing, it is not possible to scale"        
+EXTRACT-A > Unnum-Level-1-List (Ul1)......... "• Going to bars or working to open schools"              
+
+* Section-Chapter (SCP): "Chapter 8: The Room Service Pandemic"
+Bullet-Level-1-List (Bl1).................... "Homeless shelters found that 18–30 percent or more of their"
+
+* Section-Chapter (SCP): "Chapter 9: The Folly of the Free Market Pandemic"
+B-Head (Bhead)............................... "The Pharma Financial Machine"                              
+
+* Section-Afterword (SAW): "Afterword"
+Title (Ttl).................................. "Afterword"                                                 
+Body-Text (Tx)............................... "On Saturday, November 7, after a highly contested election in"
+
+* Section-Appendix (SAP): "Appendix"
+Title (Ttl).................................. "Appendix"                                                  
+Subtitle (Sttl).............................. "Exhibit N"                                                 
+Image-Placement (Img)........................ "Image001.jpg"                                              
+
+* Section-Acknowledgments (SAK): "Acknowledgments"
+Title (Ttl).................................. "Acknowledgments"                                           
+Body-Text (Tx)............................... "It was challenging to write a book about an event"         
+
+* Section-Notes (SNT): "Notes"
+Title (Ttl).................................. "Notes"                                                     
+
+* Section-Index (SIN): "Index"
+Title (Ttl).................................. "Index [Tk]"                                                
+
+___________CHARACTER STYLES IN USE___________
+smallcaps (sc)
+cs-isbn (isbn)
+cs-cleanup-exclude (cex)
+endnote reference
+ital (i)
+super (sup)
+Hyperlink
+bold (b)
+endnote reference
+sub (sub)
+underline (u)
+
+

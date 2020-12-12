@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 import unittest
 # from mock import patch
-import sys, os, copy, re
+import sys, os, copy, re, shutil
 from lxml import etree, objectify
 import logging
 
 # key local paths
 mainproject_path = os.path.join(sys.path[0],'xml_docx_stylechecks')
 testfiles_basepath = os.path.join(sys.path[0], 'test', 'files_for_test')
+tmpdir_basepath = os.path.join(sys.path[0], 'test', 'files_for_test', 'tmp')
 rsuite_template_path = os.path.join(sys.path[0], '..', 'RSuite_Word-template', 'StyleTemplate_auto-generate', 'RSuite.dotx')
 
 # append main project path to system path for below imports to work
@@ -65,8 +66,8 @@ def appendRuntoXMLpara(para, rstylename, runtxt):
     para.append(run)
     return para
 
-def createXMLroot(ns_map=cfg.wordnamespaces):
-    root = etree.Element("{%s}document" % cfg.wnamespace, nsmap = ns_map)
+def createXMLroot(ns_map=cfg.wordnamespaces, root_tag='document'):
+    root = etree.Element("{%s}%s" % (cfg.wnamespace, root_tag), nsmap = ns_map)
     return root
 
 def createMiscElement(element_name, namespace, attribute_name='', attr_val='', attr_namespace=''):
@@ -144,6 +145,17 @@ def normalizeXMLfile(xmlfile):
     xml_string = normalizeXML(filecontents)
     return xml_string
 
+def setupTestFilesinTmp(test_foldername, badxml_srcdir):
+    test_tmpdir = os.path.join(tmpdir_basepath, test_foldername)
+    # setup test files in tmp
+    try:
+        shutil.rmtree(test_tmpdir)
+    except:
+        print "SETUP NOTE: srcdir not yet present in tmp, cannot be deleted"
+    shutil.copytree(badxml_srcdir, test_tmpdir)
+    return test_tmpdir
+
+
 class Tests(unittest.TestCase):
     def setUp(self):
         # build a basic xml object with lxml.objectify
@@ -216,11 +228,12 @@ class Tests(unittest.TestCase):
         #       - para with old Macmillan-style:
         #       - acceptable built-in styles (e.g. 'Footnote Text')
         #       - styled, unstyled and 'Normal' styled table cells (which should be ignored)
-        testdocx_root = os.path.join(testfiles_basepath, 'test_checkdocx', 'stylecount')
-        unzipDOCX.unzipDOCX('{}{}'.format(testdocx_root,'.docx'), testdocx_root)
+        # testdocx_root = os.path.join(testfiles_basepath, 'test_stylecount')
+        test_folder_root = setupTestFilesinTmp('test_stylecount', os.path.join(testfiles_basepath, 'test_stylecount'))
+        unzipDOCX.unzipDOCX('{}{}'.format(test_folder_root,'.docx'), test_folder_root)
         # set paths & run function
         template_styles_xml = os.path.join(self.template_ziproot, 'word', 'styles.xml')
-        doc_xml = os.path.join(testdocx_root, 'word', 'document.xml')
+        doc_xml = os.path.join(test_folder_root, 'word', 'document.xml')
         percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(doc_xml, template_styles_xml)
         # ASSERTION
         self.assertEqual(total_paras, 8)
@@ -1012,6 +1025,304 @@ class Tests(unittest.TestCase):
                         {'description': 'END', 'para_id': 'end_p3'}]}
         self.assertEqual(report_dict_doubleend, expected_rd_doubleend)
         self.assertEqual(report_dict_end_and_sectionend, expected_rd_end_and_sectionend)
+
+    def test_getXMLroot(self):
+        # quick test, borrowing another function's xml
+        test_tmpdir = setupTestFilesinTmp('test_getXMLroot', os.path.join(testfiles_basepath, "test_updateStyleidInAllXML", 'badxml'))
+        doc_xml = os.path.join(test_tmpdir, 'document.xml')
+        # run our changes
+        good_root = check_docx.getXMLroot(doc_xml)
+        bad_root = check_docx.getXMLroot('/nonexistent/path')
+        #assertions
+        self.assertIsNotNone(good_root)
+        self.assertIsNone(bad_root)
+
+    def test_updateStyleidInAllXML(self):
+        # test files include badstyles in footnotes and main doc, also badstyles present in tables in both stories
+        # NOTE: had to manually change header (1st line) to match quote/caps pattern of re-written xml
+        badcharstyle = "boldb0"
+        goodcharstyle = "boldb"
+        badparastyle = "Body-TextTx0"
+        goodparastyle = "Body-TextTx"
+        xmls_updated = {'docxml': False, 'footnotes': False, 'endnotes': False}
+
+        # \/ don't need to setup tmpdir here since we are not writing files out \/
+        # test_tmpdir = setupTestFilesinTmp('test_updateStyleidInAllXML', os.path.join(testfiles_basepath, "test_updateStyleidInAllXML", 'badxml'))
+        badxml_dir = os.path.join(testfiles_basepath, "test_updateStyleidInAllXML", 'badxml')
+        doc_root = getRoot(os.path.join(badxml_dir, 'document.xml'))
+        fnotes_root = getRoot(os.path.join(badxml_dir, 'footnotes.xml'))
+        enotes_root = getRoot(os.path.join(badxml_dir, 'endnotes.xml'))
+        styles_root = getRoot(os.path.join(badxml_dir, 'styles.xml'))
+
+        # run our changes
+        xmls_updatedcs = check_docx.updateStyleidInAllXML(badcharstyle, goodcharstyle, styles_root, doc_root, None, fnotes_root, xmls_updated)
+        xmls_updatedps = check_docx.updateStyleidInAllXML(badparastyle, goodparastyle, styles_root, doc_root, enotes_root, fnotes_root, xmls_updated)
+
+        # expected output
+        expected_dir = os.path.join(testfiles_basepath, "test_updateStyleidInAllXML", 'expectedxml')
+        expected_docroot = etree.tostring(getRoot(os.path.join(expected_dir, 'document.xml')))
+        expected_fnotesroot = etree.tostring(getRoot(os.path.join(expected_dir, 'footnotes.xml')))
+        expected_enotesroot = etree.tostring(getRoot(os.path.join(expected_dir, 'endnotes.xml')))
+        expected_stylesroot = etree.tostring(getRoot(os.path.join(expected_dir, 'styles.xml')))
+
+        #assertions
+        self.assertEqual(xmls_updatedcs, {'docxml': True, 'footnotes': True, 'endnotes': False})
+        self.assertEqual(xmls_updatedps, {'docxml': True, 'footnotes': True, 'endnotes': False})
+        self.assertEqual(expected_docroot, etree.tostring(doc_root))
+        self.assertEqual(expected_fnotesroot, etree.tostring(fnotes_root))
+        self.assertEqual(expected_enotesroot, etree.tostring(enotes_root))
+        self.assertEqual(expected_stylesroot, etree.tostring(styles_root))
+
+
+    # test 1 of 5: original bug-case: style-id is fine, but duplicated by rogue random style(s)
+    # no change should be made
+    def test_verifyStyleIDs_nochange(self):
+        macmillanstyle_dict = {"Para Style (PS)": "ParaStylePS", "charstyle (cs)": "charstylecs"}
+        root = createXMLroot(cfg.wordnamespaces, 'styles')
+
+        cstyle= createMiscElement('style', cfg.wnamespace, 'styleId', 'charstylecs', cfg.wnamespace)
+        cs_name = createMiscElement('name', cfg.wnamespace, 'val', 'charstyle (cs)', cfg.wnamespace)
+
+        pstyle = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStylePS', cfg.wnamespace)
+        ps_name = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style (PS)', cfg.wnamespace)
+
+        cstyle2 = createMiscElement('style', cfg.wnamespace, 'styleId', 'charstylecs0', cfg.wnamespace)
+        cs2_name = createMiscElement('name', cfg.wnamespace, 'val', 'charstyle cs', cfg.wnamespace)
+
+        pstyle2 = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStylePS0', cfg.wnamespace)
+        ps2_name = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style PS', cfg.wnamespace)
+
+        pstyle.append(ps_name)
+        cstyle.append(cs_name)
+        pstyle2.append(ps2_name)
+        cstyle2.append(cs2_name)
+        root.append(pstyle)
+        root.append(pstyle2)
+        root.append(cstyle)
+        root.append(cstyle2)
+        root_before = copy.deepcopy(root)
+
+        # run our function(s)
+        stylenames_updated, xmls_updated = check_docx.verifyStyleIDs(macmillanstyle_dict, {}, root, None, None, None)
+
+        #assertions
+        self.assertEqual(xmls_updated, {'docxml': False, 'footnotes': False, 'endnotes': False})
+        self.assertEqual(etree.tostring(root), etree.tostring(root_before))
+        self.assertFalse(stylenames_updated)
+
+    # test 2 of 5: style is not present (no change)
+    def test_verifyStyleIDs_nochange2(self):
+        macmillanstyle_dict = {
+            "Para Style 2 (PS)": "ParaStyle2PS", "charstyle 2 (cs)": "charstyle2cs",
+            "Para Style (PS)": "ParaStylePS", "charstyle (cs)": "charstylecs"}
+        root = createXMLroot(cfg.wordnamespaces, 'styles')
+
+        cstyle= createMiscElement('style', cfg.wnamespace, 'styleId', 'charstylecs', cfg.wnamespace)
+        cs_name = createMiscElement('name', cfg.wnamespace, 'val', 'charstyle (cs)', cfg.wnamespace)
+
+        pstyle = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStylePS', cfg.wnamespace)
+        ps_name = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style (PS)', cfg.wnamespace)
+
+        pstyle2 = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStylePS1', cfg.wnamespace)
+        ps2_name = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style PS', cfg.wnamespace)
+
+        pstyle.append(ps_name)
+        cstyle.append(cs_name)
+        pstyle2.append(ps2_name)
+        root.append(pstyle)
+        root.append(pstyle2)
+        root.append(cstyle)
+        root_before = copy.deepcopy(root)
+
+        # run our function(s)
+        stylenames_updated, xmls_updated = check_docx.verifyStyleIDs(macmillanstyle_dict, {}, root, None, None, None)
+
+        #assertions
+        self.assertEqual(xmls_updated, {'docxml': False, 'footnotes': False, 'endnotes': False})
+        self.assertEqual(etree.tostring(root), etree.tostring(root_before))
+        self.assertFalse(stylenames_updated)
+
+    # # test 3 of 5: styleid is wrong, but right one is absent (styleid updates to right one)
+    def test_verifyStyleIDs_styleidupdate(self):
+        test_tmpdir = setupTestFilesinTmp('test_verifyStyleIDs_styleidupdate', os.path.join(testfiles_basepath, "test_verifyStyleIDs_styleidupdate", 'badxml'))
+        doc_xml = os.path.join(test_tmpdir, 'document.xml')
+        doc_root = getRoot(doc_xml)
+        expected_doc_xml = os.path.join(testfiles_basepath, 'test_verifyStyleIDs_styleidupdate', 'expectedxml','document.xml')
+        expected_doc_root = getRoot(expected_doc_xml)
+        macmillanstyle_dict = {"Para-Style-New (PSN)": "ParaStyleNewPSN", "charstyle-new (cs)": "charstyle-newcs"}
+        styles_root = createXMLroot(cfg.wordnamespaces, 'styles')
+
+        # misc. elements
+        cstyle= createMiscElement('style', cfg.wnamespace, 'styleId', 'charstylecs', cfg.wnamespace)
+        cs_name = createMiscElement('name', cfg.wnamespace, 'val', 'charstyle (cs)', cfg.wnamespace)
+        cstyle.append(cs_name)
+        styles_root.append(cstyle)
+        pstyle2 = createMiscElement('style', cfg.wnamespace, 'styleId', 'Para-Style-NewPSN1', cfg.wnamespace)
+        ps2_name = createMiscElement('name', cfg.wnamespace, 'val', 'Para-Style-New PSN', cfg.wnamespace)
+        pstyle2.append(ps2_name)
+        styles_root.append(pstyle2)
+
+        styles_root_expected = copy.deepcopy(styles_root)
+
+        # elements for bad root
+        pstyle_bad = createMiscElement('style', cfg.wnamespace, 'styleId', 'Para-Style-NewPSN0', cfg.wnamespace)
+        ps_name_bad = createMiscElement('name', cfg.wnamespace, 'val', 'Para-Style-New (PSN)', cfg.wnamespace)
+        pstyle_bad.append(ps_name_bad)
+        styles_root.append(pstyle_bad)
+        cstyle_bad = createMiscElement('style', cfg.wnamespace, 'styleId', 'charstyle-newcs34', cfg.wnamespace)
+        cs_name_bad = createMiscElement('name', cfg.wnamespace, 'val', 'charstyle-new (cs)', cfg.wnamespace)
+        cstyle_bad.append(cs_name_bad)
+        styles_root.append(cstyle_bad)
+
+        # elements for good root
+        pstyle_good = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStyleNewPSN', cfg.wnamespace)
+        ps_name_good = createMiscElement('name', cfg.wnamespace, 'val', 'Para-Style-New (PSN)', cfg.wnamespace)
+        pstyle_good.append(ps_name_good)
+        styles_root_expected.append(pstyle_good)
+        cstyle_good = createMiscElement('style', cfg.wnamespace, 'styleId', 'charstyle-newcs', cfg.wnamespace)
+        cs_name_good = createMiscElement('name', cfg.wnamespace, 'val', 'charstyle-new (cs)', cfg.wnamespace)
+        cstyle_good.append(cs_name_good)
+        styles_root_expected.append(cstyle_good)
+
+        # run our function(s)
+        stylenames_updated, xmls_updated = check_docx.verifyStyleIDs(macmillanstyle_dict, {}, styles_root, doc_root, None, None)
+
+        #assertions
+        self.assertEqual(xmls_updated, {'docxml': True, 'footnotes': False, 'endnotes': False})
+        self.assertEqual(etree.tostring(styles_root_expected), etree.tostring(styles_root))
+        self.assertTrue(stylenames_updated)
+        self.assertEqual(etree.tostring(expected_doc_root), etree.tostring(doc_root))
+
+    # test 4 of 5: is duplicate id of a legacy style - styleid merge
+    def test_verifyStyleIDs_legacyduplicate(self):
+        test_tmpdir = setupTestFilesinTmp('test_verifyStyleIDs_legacyduplicate', os.path.join(testfiles_basepath, "test_verifyStyleIDs_legacyduplicate", 'badxml'))
+        doc_xml = os.path.join(test_tmpdir, 'document.xml')
+        doc_root = getRoot(doc_xml)
+        expected_doc_xml = os.path.join(testfiles_basepath, 'test_verifyStyleIDs_legacyduplicate', 'expectedxml', 'document.xml')
+        expected_doc_root = getRoot(expected_doc_xml)
+        macmillanstyle_dict = {"Para Style Change (PSC)": "ParaStyleChangePSC", "charstyle changed (csc)": "charstylechangedcsc"}
+        legacystyle_dict = {"char_style_changed (CsC)":[], "Para Style Change (psc)":[]}
+        styles_root = createXMLroot(cfg.wordnamespaces, 'styles')
+        styles_root_expected = createXMLroot(cfg.wordnamespaces, 'styles')
+
+        # create bad (init) root
+        pstyle = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStyleChangePSC0', cfg.wnamespace)
+        ps_name = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style Change (PSC)', cfg.wnamespace)
+        pstyle.append(ps_name)
+        styles_root.append(pstyle)
+        pstyle_legacy = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStyleChangepsc', cfg.wnamespace)
+        ps_name_legacy = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style Change (psc)', cfg.wnamespace)
+        pstyle_legacy.append(ps_name_legacy)
+        styles_root.append(pstyle_legacy)
+        cstyle = createMiscElement('style', cfg.wnamespace, 'styleId', 'charstylechangedcsc1', cfg.wnamespace)
+        cs_name = createMiscElement('name', cfg.wnamespace, 'val', 'charstyle changed (csc)', cfg.wnamespace)
+        cstyle.append(cs_name)
+        styles_root.append(cstyle)
+        cstyle_legacy = createMiscElement('style', cfg.wnamespace, 'styleId', 'charstylechangedCsC', cfg.wnamespace)
+        cs_name_legacy = createMiscElement('name', cfg.wnamespace, 'val', 'char_style_changed (CsC)', cfg.wnamespace)
+        cstyle_legacy.append(cs_name_legacy)
+        styles_root.append(cstyle_legacy)
+
+        # create good (expected outcome) root
+        pstyle_good = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStyleChangePSC', cfg.wnamespace)
+        ps_name_good = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style Change (PSC)', cfg.wnamespace)
+        pstyle_good.append(ps_name_good)
+        styles_root_expected.append(pstyle_good)
+        cstyle_good = createMiscElement('style', cfg.wnamespace, 'styleId', 'charstylechangedcsc', cfg.wnamespace)
+        cs_name_good = createMiscElement('name', cfg.wnamespace, 'val', 'charstyle changed (csc)', cfg.wnamespace)
+        cstyle_good.append(cs_name_good)
+        styles_root_expected.append(cstyle_good)
+
+        # run our function(s)
+        stylenames_updated, xmls_updated = check_docx.verifyStyleIDs(macmillanstyle_dict, legacystyle_dict, styles_root, doc_root, None, None)
+
+        #assertions
+        self.assertEqual(xmls_updated, {'docxml': True, 'footnotes': False, 'endnotes': False})
+        self.assertEqual(etree.tostring(styles_root_expected), etree.tostring(styles_root))
+        self.assertTrue(stylenames_updated)
+        self.assertEqual(etree.tostring(expected_doc_root), etree.tostring(doc_root))
+
+    # test 5 of 5: wrong styleid found, right styleid in use, styleid swap takes place
+    def test_verifyStyleIDs_nonlegacy_dupe(self):
+        test_tmpdir = setupTestFilesinTmp('test_verifyStyleIDs_nonlegacy_dupe', os.path.join(testfiles_basepath, "test_verifyStyleIDs_nonlegacy_dupe", 'badxml'))
+        doc_xml = os.path.join(test_tmpdir, 'document.xml')
+        doc_root = getRoot(doc_xml)
+        expected_doc_xml = os.path.join(testfiles_basepath, 'test_verifyStyleIDs_nonlegacy_dupe', 'expectedxml', 'document.xml')
+        expected_doc_root = getRoot(expected_doc_xml)
+        macmillanstyle_dict = {"Para Style Switch (PSS)": "ParaStyleSwitchPSS", "charstyle switch (css)": "charstyleswitchcss"}
+        legacystyle_dict = {"char_style_switch (Css)":[], "Para Style Switch (Pss)":[]}  # < these are 1 cap away from bad styles, but should not get matched
+
+        styles_root = createXMLroot(cfg.wordnamespaces, 'styles')
+        styles_root_expected = createXMLroot(cfg.wordnamespaces, 'styles')
+
+        # create bad (init) root
+        pstyle = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStyleSwitchPSS0', cfg.wnamespace)
+        ps_name = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style Switch (PSS)', cfg.wnamespace)
+        pstyle.append(ps_name)
+        styles_root.append(pstyle)
+        pstyle_rogue = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStyleSwitchpss', cfg.wnamespace)
+        ps_name_rogue = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style Switch (pss)', cfg.wnamespace)
+        pstyle_rogue.append(ps_name_rogue)
+        styles_root.append(pstyle_rogue)
+        cstyle = createMiscElement('style', cfg.wnamespace, 'styleId', 'charstyleswitchcss1', cfg.wnamespace)
+        cs_name = createMiscElement('name', cfg.wnamespace, 'val', 'charstyle switch (css)', cfg.wnamespace)
+        cstyle.append(cs_name)
+        styles_root.append(cstyle)
+        cstyle_rogue = createMiscElement('style', cfg.wnamespace, 'styleId', 'charstyleswitchCsS', cfg.wnamespace)
+        cs_name_rogue = createMiscElement('name', cfg.wnamespace, 'val', 'char_style_switch (CsS)', cfg.wnamespace)
+        cstyle_rogue.append(cs_name_rogue)
+        styles_root.append(cstyle_rogue)
+
+        # create good (expected outcome) root
+        pstyle_good = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStyleSwitchPSS', cfg.wnamespace)
+        ps_name_good = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style Switch (PSS)', cfg.wnamespace)
+        pstyle_good.append(ps_name_good)
+        styles_root_expected.append(pstyle_good)
+        pstyle_bad = createMiscElement('style', cfg.wnamespace, 'styleId', 'ParaStyleSwitchpss0', cfg.wnamespace)
+        ps_name_bad = createMiscElement('name', cfg.wnamespace, 'val', 'Para Style Switch (pss)', cfg.wnamespace)
+        pstyle_bad.append(ps_name_bad)
+        styles_root_expected.append(pstyle_bad)
+        cstyle_good = createMiscElement('style', cfg.wnamespace, 'styleId', 'charstyleswitchcss', cfg.wnamespace)
+        cs_name_good = createMiscElement('name', cfg.wnamespace, 'val', 'charstyle switch (css)', cfg.wnamespace)
+        cstyle_good.append(cs_name_good)
+        styles_root_expected.append(cstyle_good)
+        cstyle_bad = createMiscElement('style', cfg.wnamespace, 'styleId', 'charstyleswitchCsS1', cfg.wnamespace)
+        cs_name_bad = createMiscElement('name', cfg.wnamespace, 'val', 'char_style_switch (CsS)', cfg.wnamespace)
+        cstyle_bad.append(cs_name_bad)
+        styles_root_expected.append(cstyle_bad)
+
+        # run our function(s)
+        stylenames_updated, xmls_updated = check_docx.verifyStyleIDs(macmillanstyle_dict, legacystyle_dict, styles_root, doc_root, None, None)
+
+        #assertions
+        self.assertEqual(xmls_updated, {'docxml': True, 'footnotes': False, 'endnotes': False})
+        self.assertEqual(etree.tostring(styles_root_expected), etree.tostring(styles_root))
+        self.assertTrue(stylenames_updated)
+        self.assertEqual(etree.tostring(expected_doc_root), etree.tostring(doc_root))
+
+    def test_checkForDuplicateStyleIDs(self):
+        # setup tmpdir, define paths
+        test_tmpdir = setupTestFilesinTmp('test_checkForDuplicateStyleIDs', os.path.join(testfiles_basepath, "test_checkForDuplicateStyleIDs", 'badxml'))
+        legacystyles_json = os.path.join(test_tmpdir, 'legacy_styles.json')
+        macmillanstyles_json = os.path.join(test_tmpdir, 'RSuite.json')
+        doc_xml = os.path.join(test_tmpdir, 'document.xml')
+        styles_xml = os.path.join(test_tmpdir, 'styles.xml')
+        endnotes_xml = os.path.join(test_tmpdir, 'endnotes.xml')
+        footnotes_xml = os.path.join(test_tmpdir, 'footnotes.xml')
+        expected_output_dir = os.path.join(testfiles_basepath, 'test_checkForDuplicateStyleIDs', 'expectedxml')
+        expected_doc_xml = os.path.join(expected_output_dir, 'document.xml')
+        expected_styles_xml = os.path.join(expected_output_dir, 'styles.xml')
+        expected_endnotes_xml = os.path.join(expected_output_dir, 'endnotes.xml')
+        expected_footnotes_xml = os.path.join(expected_output_dir, 'footnotes.xml')
+
+        # run our function(s)
+        check_docx.checkForDuplicateStyleIDs(macmillanstyles_json, legacystyles_json, styles_xml, doc_xml, endnotes_xml, footnotes_xml)
+
+        #assertions
+        self.assertEqual(etree.tostring(getRoot(styles_xml)), etree.tostring(getRoot(expected_styles_xml)))
+        self.assertEqual(etree.tostring(getRoot(doc_xml)), etree.tostring(getRoot(expected_doc_xml)))
+        self.assertEqual(etree.tostring(getRoot(endnotes_xml)), etree.tostring(getRoot(expected_endnotes_xml)))
+        self.assertEqual(etree.tostring(getRoot(footnotes_xml)), etree.tostring(getRoot(expected_footnotes_xml)))
 
 if __name__ == '__main__':
     unittest.main()

@@ -148,7 +148,7 @@ macmillan_template = os.path.join(templatefiles_path, "%s.dotx" % template_name)
 macmillanstyles_json = os.path.join(templatefiles_path, "%s.json" % template_name)
 vbastyleconfig_json = os.path.join(templatefiles_path, "vba_style_config.json")
 styleconfig_json = os.path.join(templatefiles_path, "style_config.json")
-
+legacystyles_json = os.path.join(__location__, "legacy_styles.json") # same dir as this file
 
 # # # # # # # # RELATIVE PATHS for unzipping and zipping docx files
 ### xml filepaths relative to ziproot

@@ -116,14 +116,8 @@ if __name__ == '__main__':
             if (version_result=="newer_template_avail" or version_result=="up_to_date") and percent_styled >= percent_styled_min and protection == "":
                 logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
 
-                # handle docs where both style-sets exist.
-                zerostylecheck = check_docx.stripDuplicateMacmillanStyles(cfg.doc_xml, cfg.styles_xml)
-                if os.path.exists(cfg.footnotes_xml) and zerostylecheck == True:
-                    zscheck_fn = check_docx.stripDuplicateMacmillanStyles(cfg.footnotes_xml, cfg.styles_xml)
-                if os.path.exists(cfg.endnotes_xml) and zerostylecheck == True:
-                    zscheck_fn = check_docx.stripDuplicateMacmillanStyles(cfg.endnotes_xml, cfg.styles_xml)
-                if zerostylecheck:
-                    logger.warn("duplicate Macmillan styles were found: legacy styles were replaced with new ones")
+                # handle docs where both style-sets exist, any other cases where Macmillan styleid's are non-std
+                check_docx.checkForDuplicateStyleIDs(cfg.macmillanstyles_json, cfg.legacystyles_json, cfg.styles_xml, cfg.doc_xml, cfg.endnotes_xml, cfg.footnotes_xml)
 
                 # run our rsuite validations!
                 report_dict = rsuite_validations.rsuiteValidations(report_dict)

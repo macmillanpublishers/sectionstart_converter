@@ -2868,6 +2868,24 @@
          <w:sz w:val="24"/>
       </w:rPr>
    </w:style>
+   <w:style w:customStyle="1" w:styleId="TOCPartNumbercpn" w:type="paragraph">
+      <w:name w:val="TOC Part Number  (cpn)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:rsid w:val="001E5441"/>
+      <w:pPr>
+         <w:pBdr>
+            <w:left w:color="66FFFF" w:space="4" w:sz="48" w:val="dotted"/>
+         </w:pBdr>
+         <w:spacing w:before="240" w:line="360" w:lineRule="auto"/>
+         <w:contextualSpacing/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+         <w:bCs/>
+         <w:sz w:val="32"/>
+         <w:szCs w:val="32"/>
+      </w:rPr>
+   </w:style>
    <w:style w:customStyle="1" w:styleId="TOCPartTitlecpt" w:type="paragraph">
       <w:name w:val="TOC Part Title (cpt)"/>
       <w:basedOn w:val="Normal"/>
@@ -28960,6 +28978,11 @@
       <w:basedOn w:val="BibliographyTextbibtx"/>
       <w:rsid w:val="00B7689A"/>
    </w:style>
+   <w:style w:customStyle="1" w:styleId="SpaceBreak-Internalint" w:type="paragraph">
+      <w:name w:val="SpaceBreak - Internal (int)"/>
+      <w:basedOn w:val="SpaceBreak"/>
+      <w:rsid w:val="008D48E6"/>
+   </w:style>
    <w:style w:customStyle="1" w:styleId="ChapTitleALTact" w:type="paragraph">
       <w:name w:val="Chap Title ALT (act)"/>
       <w:basedOn w:val="Normal"/>
@@ -29222,7 +29245,7 @@
          <w14:cntxtAlts w14:val="0"/>
       </w:rPr>
    </w:style>
-   <w:style w:customStyle="1" w:styleId="SpaceBreak-Internalint" w:type="paragraph">
+   <w:style w:customStyle="1" w:styleId="SpaceBreak-Internalint0" w:type="paragraph">
       <w:name w:val="Space Break - Internal (int)"/>
       <w:basedOn w:val="Normal"/>
       <w:next w:val="Text-StdNo-Indenttx1"/>
@@ -29253,10 +29276,156 @@
       <w:basedOn w:val="DefaultParagraphFont"/>
       <w:rsid w:val="00C840B8"/>
    </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Front-Salessfs0" w:type="paragraph">
+      <w:name w:val="Section-Front-Sales (sfs)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="FrontSalesQuoteHeadfsqh"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="FF6666" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Halftitlesht0" w:type="paragraph">
+      <w:name w:val="Section-Halftitle (sht)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="HalftitleBookTitlehtit"/>
+      <w:uiPriority w:val="1"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="CCFF66" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Series-Pagessp0" w:type="paragraph">
+      <w:name w:val="Section-Series-Page (ssp)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="FMHeadfmh"/>
+      <w:uiPriority w:val="3"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="B4E2F3" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Ad-Cardsac0" w:type="paragraph">
+      <w:name w:val="Section-Ad-Card (sac)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="AdCardMainHeadacmh"/>
+      <w:uiPriority w:val="2"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="CC66FF" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Titlepagesti0" w:type="paragraph">
+      <w:name w:val="Section-Titlepage (sti)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="TitlepageBookTitletit"/>
+      <w:uiPriority w:val="4"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="CCFF66" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Copyrightscr0" w:type="paragraph">
+      <w:name w:val="Section-Copyright (scr)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="CopyrightTextdoublespacecrtxd"/>
+      <w:uiPriority w:val="5"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="FFCC66" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Dedicationsde0" w:type="paragraph">
+      <w:name w:val="Section-Dedication (sde)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="DedicationDed"/>
+      <w:uiPriority w:val="6"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="6666FF" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
    <w:style w:customStyle="1" w:styleId="Section-Epigraphsepi" w:type="paragraph">
       <w:name w:val="Section-Epigraph (sepi)"/>
       <w:basedOn w:val="Normal"/>
-      <w:next w:val="Epigraph-non-verseepi"/>
+      <w:next w:val="Epigraph-Non-VerseEpi"/>
       <w:uiPriority w:val="7"/>
       <w:rsid w:val="00507687"/>
       <w:pPr>
@@ -29266,6 +29435,69 @@
             <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
          </w:pBdr>
          <w:shd w:color="auto" w:fill="FF6FCF" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Contentsstc0" w:type="paragraph">
+      <w:name w:val="Section-Contents (stc)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="FMHeadfmh"/>
+      <w:uiPriority w:val="8"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="66FFFF" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Forewordsfw0" w:type="paragraph">
+      <w:name w:val="Section-Foreword (sfw)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="FMHeadfmh"/>
+      <w:uiPriority w:val="9"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="66FFCC" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Prefacespf0" w:type="paragraph">
+      <w:name w:val="Section-Preface (spf)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="FMHeadfmh"/>
+      <w:uiPriority w:val="10"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="66FFCC" w:val="clear"/>
          <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
          <w:jc w:val="center"/>
          <w:outlineLvl w:val="0"/>
@@ -29337,7 +29569,309 @@
          <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
       </w:rPr>
    </w:style>
-   <w:style w:customStyle="1" w:styleId="TOCPartNumbercpn" w:type="paragraph">
+   <w:style w:customStyle="1" w:styleId="Section-Partspt0" w:type="paragraph">
+      <w:name w:val="Section-Part (spt)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="PartTitlept"/>
+      <w:uiPriority w:val="13"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="FF0080" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Chapterscp0" w:type="paragraph">
+      <w:name w:val="Section-Chapter (scp)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="ChapNumbercn"/>
+      <w:uiPriority w:val="14"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="00FF00" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Conclusionscl0" w:type="paragraph">
+      <w:name w:val="Section-Conclusion (scl)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="BMHeadbmh"/>
+      <w:uiPriority w:val="15"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="00FF00" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Appendixsap0" w:type="paragraph">
+      <w:name w:val="Section-Appendix (sap)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="AppendixHeadaph"/>
+      <w:uiPriority w:val="18"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="804000" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+         <w:color w:val="A6A6A6"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Afterwordsaw0" w:type="paragraph">
+      <w:name w:val="Section-Afterword (saw)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="BMHeadbmh"/>
+      <w:uiPriority w:val="16"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="000080" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+         <w:color w:val="A6A6A6"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Acknowledgmentssak0" w:type="paragraph">
+      <w:name w:val="Section-Acknowledgments (sak)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="BMHeadbmh"/>
+      <w:uiPriority w:val="17"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="000080" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+         <w:color w:val="A6A6A6"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Glossarysgl0" w:type="paragraph">
+      <w:name w:val="Section-Glossary (sgl)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="BMHeadbmh"/>
+      <w:uiPriority w:val="19"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="008080" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Notessnt0" w:type="paragraph">
+      <w:name w:val="Section-Notes (snt)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="BMHeadbmh"/>
+      <w:uiPriority w:val="23"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="008000" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Bibliographysbi0" w:type="paragraph">
+      <w:name w:val="Section-Bibliography (sbi)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="BMHeadbmh"/>
+      <w:uiPriority w:val="22"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="808000" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Excerpt-Openerseo0" w:type="paragraph">
+      <w:name w:val="Section-Excerpt-Opener (seo)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="TeaserOpeningTextNo-Indenttotx1"/>
+      <w:uiPriority w:val="21"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="3333CC" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+         <w:color w:val="A6A6A6"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Excerpt-Chaptersec0" w:type="paragraph">
+      <w:name w:val="Section-Excerpt-Chapter (sec)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="ChapTitlect"/>
+      <w:uiPriority w:val="20"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="3333CC" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+         <w:color w:val="A6A6A6"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-About-Authorsaa0" w:type="paragraph">
+      <w:name w:val="Section-About-Author (saa)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="AboutAuthorTextHeadatah"/>
+      <w:uiPriority w:val="24"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="800000" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+         <w:color w:val="A6A6A6"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Back-Adsba0" w:type="paragraph">
+      <w:name w:val="Section-Back-Ad (sba)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="BOBAdTitlebobt"/>
+      <w:uiPriority w:val="25"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="800080" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+         <w:color w:val="A6A6A6"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="Section-Indexsin0" w:type="paragraph">
+      <w:name w:val="Section-Index (sin)"/>
+      <w:basedOn w:val="Normal"/>
+      <w:next w:val="BMHeadbmh"/>
+      <w:uiPriority w:val="26"/>
+      <w:rsid w:val="00507687"/>
+      <w:pPr>
+         <w:pageBreakBefore/>
+         <w:widowControl w:val="0"/>
+         <w:pBdr>
+            <w:left w:color="000000" w:space="4" w:sz="48" w:val="single"/>
+         </w:pBdr>
+         <w:shd w:color="auto" w:fill="004080" w:val="clear"/>
+         <w:spacing w:after="120" w:line="240" w:lineRule="auto"/>
+         <w:jc w:val="center"/>
+         <w:outlineLvl w:val="0"/>
+      </w:pPr>
+      <w:rPr>
+         <w:rFonts w:ascii="Arial Black" w:hAnsi="Arial Black"/>
+         <w:color w:val="A6A6A6"/>
+      </w:rPr>
+   </w:style>
+   <w:style w:customStyle="1" w:styleId="TOCPartNumbercpn0" w:type="paragraph">
       <w:name w:val="TOC Part Number (cpn)"/>
       <w:basedOn w:val="Normal"/>
       <w:next w:val="TOCPartTitlecpt"/>
@@ -39399,7 +39933,7 @@
    <w:style w:customStyle="1" w:styleId="Section-DedicationSDE" w:type="paragraph">
       <w:name w:val="Section-Dedication (SDE)"/>
       <w:basedOn w:val="Normal"/>
-      <w:next w:val="DedicationDed0"/>
+      <w:next w:val="DedicationDed"/>
       <w:uiPriority w:val="3"/>
       <w:rsid w:val="00E81D42"/>
       <w:pPr>

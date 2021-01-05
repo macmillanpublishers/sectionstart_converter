@@ -505,6 +505,25 @@ def rmEndnoteFootnoteLeadingWhitespace(xml_root, report_dict, sectionname):
 
     return report_dict
 
+def flagCustomNoteMarks(xml_root, report_dict, ref_style_dict):
+    logger.info("* * * commencing flagCustomNoteMarks function...")
+    for note_type, ref_style in ref_style_dict.iteritems():
+        ref_el_name = ref_style[0].lower() + ref_style[1:]
+        searchstring = './/*w:{}[@w:customMarkFollows="1"]'.format(ref_el_name)
+        customref_els = xml_root.findall(searchstring, wordnamespaces)
+        if customref_els:
+            for customref_el in customref_els:
+                # get text, id of custom mark
+                ref_run = customref_el.getparent()
+                ref_text_el = ref_run.find(".//w:t", wordnamespaces)
+                reftext = ref_text_el.text
+                attrib_id_key = '{%s}id' % wnamespace
+                ref_id = customref_el.get(attrib_id_key)
+                para = lxml_utils.getParaParentofElement(ref_run)
+                #log occurence
+                lxml_utils.logForReport(report_dict,xml_root,para,"custom_%s_mark" % note_type,"custom note marker: '%s', %s id: %s" %(reftext, note_type, ref_id))
+    return report_dict
+
 def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_category):
     logger.info("* * * commencing cleanNoteMarkers function, for %s..." % report_category)
     noteref_objects = xml_root.findall(".//%s" % noteref_object, wordnamespaces)
@@ -609,6 +628,9 @@ def rsuiteValidations(report_dict):
     if os.path.exists(cfg.endnotes_xml):
         report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
         report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
+    # log custom note markers for report
+    refstyle_dict = {"endnote":cfg.endnote_ref_style, "footnote":cfg.footnote_ref_style}
+    report_dict = flagCustomNoteMarks(doc_root, report_dict, refstyle_dict)
 
     # # log texts of titlepage-title paras
     report_dict = logTextOfParasWithStyleInSection(report_dict, doc_root, sectionnames, cfg.titlesection_stylename, cfg.titlestyle, "title_paras")

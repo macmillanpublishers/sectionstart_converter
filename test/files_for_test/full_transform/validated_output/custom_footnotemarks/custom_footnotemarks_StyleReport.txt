@@ -1,0 +1,241 @@
+OOPS!
+
+Problems were found with the styles in your document.
+
+
+------------------------------------ ERRORS ------------------------------------
+** ERROR: 4 custom Footnote mark(s) found. These are not supported by RSuite and must be replaced with standard Footnote mark(s).
+
+
+If you have any questions about how to handle these errors,
+please contact workflows@macmillan.com.
+
+
+----------------------------------- WARNINGS -----------------------------------
+** WARNING: 57 table cell(s) containing only blank paragraph(s) were found in Section-Introduction (SIC): "Introduction". Please confirm these empty table cells are intended, and if not, remove as needed.
+
+** WARNING: 4 table cell(s) containing only blank paragraph(s) were found in Section-Chapter (SCP): "Lesson Three: The Habit of Saving". Please confirm these empty table cells are intended, and if not, remove as needed.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"The Law of Success"
+
+** Author1 (Au1) **
+"Napoleon Hill"
+
+** cs-isbn (isbn) **
+"ISBN 978-1-250-79492-5 (trade paperback)"
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+no illustrations detected.
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "The Law of Success"                                     
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Ad-Card (SAC)............ "Ad Card"                                                
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Dedication (SDE)......... "Dedication"                                             
+Section-Front-Matter-General (SFM) "Front Matter General"                                   
+Section-Epigraph (SEP)........... "Epigraph"                                               
+Section-Contents (STC)........... "Contents"                                               
+Section-Front-Matter-General (SFM) "Front Matter General"                                   
+Section-Front-Matter-General (SFM) "Front Matter General"                                   
+Section-Front-Matter-General (SFM) "Front Matter General"                                   
+Section-Introduction (SIC)....... "Introduction"                                           
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson One: A Definite Chief Aim"                       
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Two: Self-Confidence"                            
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Three: The Habit of Saving"                      
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Four: Initiative and Leadership"                 
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Five: Imagination"                               
+Section-Chapter (SCP)............ "Lesson Six: Enthusiasm"                                 
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Seven: Self-Control"                             
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Eight: Habit of Doing More than Paid For"        
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Nine: Pleasing Personality"                      
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Ten: Accurate Thought"                           
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Eleven: Concentration"                           
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Twelve: Co-Operation"                            
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Thirteen: Failure"                               
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Fourteen: Tolerance"                             
+Section-Chapter (SCP)............ "Epigraph"                                               
+Section-Chapter (SCP)............ "Lesson Fifteen: The Golden Rule"                        
+Section-Index (SIN).............. "Index"                                                  
+Section-About-Author (SAA)....... "About the Author"                                       
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "The Law of Success"                                        
+
+* Section-Ad-Card (SAC): "Ad Card"
+Title (Ttl).................................. "[Blank]"                                                   
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "The Law of Success"                                        
+Subtitle (Sttl).............................. "The 15 Most Powerful Principles for Wealth, Health, and Happiness"
+Author1 (Au1)................................ "Napoleon Hill"                                             
+Imprint (Imp)................................ "[place Imprint logo here]"                                 
+Cities (Cit)................................. "New York"                                                  
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "The information in this book is not intended to replace"   
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Dedication (SDE): "Dedication"
+Body-Text (Tx)............................... "Dedicated to"                                              
+
+* Section-Front-Matter-General (SFM): "Front Matter General"
+Title (Ttl).................................. "Publisher’s Note"                                        
+Body-Text (Tx)............................... "Other than minor adjustments made for clarity or to meet"  
+
+* Section-Epigraph (SEP): "Epigraph"
+Epigraph-Non-Verse (Epi)..................... "Who said it could not be done? And what great"             
+Epigraph-Source (Episrc)..................... "—Napoleon Hill"                                          
+
+* Section-Contents (STC): "Contents"
+Title (Ttl).................................. "Contents"                                                  
+TOC-Frontmatter (Tocfm)...................... "A Personal Statement by the Authorxiii"                    
+TOC-Chapter (Tocch).......................... "Introduction: The Master Mind1"                            
+TOC-Backmatter (Tocbm)....................... "Index601"                                                  
+Headline (Hdline)............................ "“WHAT I WOULD DO IF I HAD A MILLION DOLLARS!”"         
+Signature (Sig).............................. "—NAPOLEON HILL"                                          
+Unnum-Level-1-List (Ul1)..................... "Henry Ford"                                                
+Num-Level-1-List (Nl1)....................... "1. POWER—what it is and how to create and use"           
+
+* Section-Introduction (SIC): "Introduction"
+Title (Ttl).................................. "Introduction"                                              
+Subtitle (Sttl).............................. "THE MASTER MIND"                                           
+Epigraph-Non-Verse (Epi)..................... "“You Can Do It If You Believe You Can!”"               
+Body-Text (Tx)............................... "This is a course on the fundamentals of Success."          
+BOX-A > Epigraph-Non-Verse (Epi)............. "No man has a chance to enjoy permanent success until"      
+BOX-A > Epigraph-Source (Episrc)............. "—Napoleon Hill"                                          
+Num-Level-1-List (Nl1)....................... "1. A DEFINITE CHIEF AIM will teach you how to"             
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+Unnum-Level-1-List (Ul1)..................... "“The organized knowledge of the Ford Organization 75%"   
+List-Head (Lhead)............................ "Who Can Profit Most by the Law of Success Philosophy?"     
+A-Head (Ahead)............................... "Summary of the Introduction"                               
+B-Head (Bhead)............................... "An After-the-Lesson Visit with the Author"                 
+Design-Note (Dn)............................. "[Art 1]"                                                   
+Headnote (Hdnt).............................. "The Six Specters are labeled: Fear of Poverty, Fear of"    
+EXTRACT-A > Body-Text (Tx)................... "One of the most destructive evils is slanderous talk. It"  
+EXTRACT-A > Verse1 (Vrs1).................... "Man is of soul and body formed for deeds"                  
+EXTRACT-A > Separator (Sep).................. "[Separator]"                                               
+EXTRACT-A > Source (Src)..................... "—shelley"                                                
+
+* Section-Chapter (SCP): "Epigraph"
+Design-Note (Dn)............................. "DES: set this epigraph on its own page"                    
+Epigraph-Non-Verse (Epi)..................... "The best rose bush, after all, is not that which"          
+Epigraph-Source (Episrc)..................... "—Henry Van Dyke"                                         
+
+* Section-Chapter (SCP): "Lesson One: A Definite Chief Aim"
+Number (Num)................................. "Lesson One"                                                
+Title (Ttl).................................. "A Definite Chief Aim"                                      
+Body-Text (Tx)............................... "You are at the beginning of a course of philosophy"        
+Num-Level-1-List (Nl1)....................... "1. The posture of the body, and the way they"              
+Verse1 (Vrs1)................................ "When angry"                                                
+BOX-A > Epigraph-Non-Verse (Epi)............. "No person is “Educated” who has not at least a"        
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+A-Head (Ahead)............................... "A Definite Chief Aim"                                      
+Source (Src)................................. "—ingalls"                                                
+
+* Section-Chapter (SCP): "Lesson Two: Self-Confidence"
+Alpha-Level-1-List (Al1)..................... "a. The fear of Poverty"                                    
+BOX-A > Epigraph-Source (Episrc)............. "—Luther Burbank"                                         
+EXTRACT-A > Body-Text (Tx)................... "I believe in myself. I believe in those who work"          
+EXTRACT-A > Signature (Sig).................. "Signed. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  . . . ."
+Signature (Sig).............................. "Signed. . . . . . . . . . . . . . . . . . . . . . . ."
+Separator (Sep).............................. "[Separator]"                                               
+Body-Text-Continued (Txc).................... "It can do no harm if you commit this poem"                 
+B-Head (Bhead)............................... "An After-the-Lesson Visit with the Author"                 
+Caption (Cap)................................ "The marker stands at the Entrance Gate of Life and"        
+Extract1 (Ext1).............................. "May it not be possible that we can co-operate with"        
+
+* Section-Chapter (SCP): "Lesson Three: The Habit of Saving"
+Custom1 (Cust1).............................. "Cigarettes. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . $.75"
+Unnum-Level-1-List (Ul1)..................... "$4,000.00 inherited, invested in automobile supply business with a friend"
+
+* Section-Chapter (SCP): "Lesson Four: Initiative and Leadership"
+BOX-A > Separator (Sep)...................... "[Separator]"                                               
+
+* Section-Chapter (SCP): "Lesson Five: Imagination"
+LETTER-A > Body-Text (Tx).................... "I have just finished a commercial course in a first-class" 
+LETTER-A > Closing (Clos).................... "Very cordially,"                                           
+
+* Section-Chapter (SCP): "Lesson Six: Enthusiasm"
+LETTER-A > Salutation (Sal).................. "My dear Mr. Ford:"                                         
+LETTER-A > Separator (Sep)................... "[Separator]"                                               
+LETTER-A > Address (Add)..................... "Hon. Thomas R. Marshall,"                                  
+BOX-A > Epigraph-Verse (Epiv)................ "Half the wrecks that strew life’s ocean"                 
+Verse1-indent1 (Vrs1-i1)..................... "“O jealousy,"                                            
+
+* Section-Chapter (SCP): "Lesson Nine: Pleasing Personality"
+Verse2 (Vrs2)................................ "Antony: “For Brutus’ sake, I am beholding to you.”"  
+
+* Section-Chapter (SCP): "Lesson Eleven: Concentration"
+Author1 (Au1)................................ "By George W. Dixon"                                        
+Epigraph-Verse (Epiv)........................ "Yesterday is but a dream,"                                 
+
+* Section-Chapter (SCP): "Lesson Thirteen: Failure"
+Display1 (Disp1)............................. "OPPORTUNITY"                                               
+
+* Section-Chapter (SCP): "Lesson Fourteen: Tolerance"
+EXTRACT-A > Extract1 (Ext1).................. "RUSS REDS ORDER BOOKS. Contracts being let in Germany for" 
+EXTRACT-A > Source (Src)..................... "(By George Witts)"                                         
+BOX-B > A-Head (Ahead)....................... "TOLERANCE!"                                                
+BOX-B > Body-Text (Tx)....................... "When the dawn of Intelligence shall have spread its wings" 
+
+* Section-Index (SIN): "Index"
+Title (Ttl).................................. "Index"                                                     
+Headnote (Hdnt).............................. "Page numbers in italic indicate illustrations."            
+Index-Entry (Idx1)........................... "“Abou Ben Adhem” (Hunt), 212"                          
+Index-Sub-Entry (Idx2)....................... "accurate knowledge, 187"                                   
+Separator (Sep).............................. "[Separator]"                                               
+Index-Sub-Sub-Entry (Idx3)................... "See also “Compensation” (Emerson)"                     
+
+* Section-About-Author (SAA): "About the Author"
+Title (Ttl).................................. "About the Author"                                          
+Body-Text (Tx)............................... "Napoleon Hill was born in 1883 in Wise County, Virginia."  
+Table-Head (Tbhd)............................ "NOTICE"                                                    
+Table-Text (Tbtx)............................ ""                                                          
+Table-Subhead (Tbsbhd)....................... "THE FIFTEEN LAWS OF SUCCESS"                               
+
+___________CHARACTER STYLES IN USE___________
+smallcaps (sc)
+bold (b)
+cs-isbn (isbn)
+cs-cleanup-exclude (cex)
+bold-ital (bi)
+ital (i)
+cs-head (cshd)
+sub (sub)
+underline (u)
+footnote reference
+footnote reference
+
+

@@ -554,6 +554,24 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
             "summary": True,
             "errstring": "{count} {description}(s) without content found. Placeholder text: {para_string} has been inserted."
     	},
+    	"95.6_custom_endnote_mark": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "custom_endnote_mark",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'error',
+            "summary": True,
+            "errstring": "{count} custom Endnote mark(s) found. These are not supported by RSuite and must be replaced with standard Endnote mark(s)."
+    	},
+    	"95.7_custom_footnote_mark": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "custom_footnote_mark",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'error',
+            "summary": True,
+            "errstring": "{count} custom Footnote mark(s) found. These are not supported by RSuite and must be replaced with standard Footnote mark(s)."
+    	},
     	"96_deleted_bookmark_summary": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
     		"dict_category_name": "deleted_objects-bookmarks",

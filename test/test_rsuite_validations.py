@@ -1324,5 +1324,28 @@ class Tests(unittest.TestCase):
         self.assertEqual(etree.tostring(getRoot(endnotes_xml)), etree.tostring(getRoot(expected_endnotes_xml)))
         self.assertEqual(etree.tostring(getRoot(footnotes_xml)), etree.tostring(getRoot(expected_footnotes_xml)))
 
+    def test_flagCustomNoteMarks(self):
+        refstyle_dict = {"endnote":cfg.endnote_ref_style, "footnote":cfg.footnote_ref_style}
+        doc_xml = os.path.join(testfiles_basepath, 'test_flagCustomNoteMarks', 'document.xml')
+        root = getRoot(doc_xml)
+        control_docxml = os.path.join(testfiles_basepath, 'test_flagCustomNoteMarks', 'control_doc.xml')
+        cntrl_root = getRoot(control_docxml)
+        # run our function(s)
+        report_dict = rsuite_validations.flagCustomNoteMarks(root, {}, refstyle_dict)
+        cntrl_report_dict = rsuite_validations.flagCustomNoteMarks(cntrl_root, {}, refstyle_dict)
+
+        expected_rd = {'custom_endnote_mark':
+                [{'description': "custom note marker: '!', endnote id: 2", 'para_id': '4248380B'},
+                {'description': "custom note marker: '!!', endnote id: 3", 'para_id': '1CAB8160'},
+                {'description': "custom note marker: '111', endnote id: 5", 'para_id': '7BDB93ED'}],
+            'custom_footnote_mark':
+                [{'description': "custom note marker: '*', footnote id: 2", 'para_id': '7838E8E7'},
+                {'description': "custom note marker: '#', footnote id: 4", 'para_id': '739DEFD3'}]}
+
+        #assertions
+        self.assertEqual(cntrl_report_dict, {})
+        self.assertEqual(report_dict, expected_rd)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -58,8 +58,8 @@ def get_docxVersion(customprops_xml):
             versionstring = versionstring[1:]
 
         # if versionstring is like 'x.x.x' just get 'x.x'
-        if len(versionstring.split('.')) > 2
-            '.'.join(str.split('.')[:2])
+        if len(versionstring.split('.')) > 2:
+            versionstring = '.'.join(versionstring.split('.')[:2])
 
         try:
             versionstring = str(float(versionstring))

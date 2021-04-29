@@ -1340,7 +1340,8 @@ class Tests(unittest.TestCase):
                 {'description': "custom note marker: '111', endnote id: 5", 'para_id': '7BDB93ED'}],
             'custom_footnote_mark':
                 [{'description': "custom note marker: '*', footnote id: 2", 'para_id': '7838E8E7'},
-                {'description': "custom note marker: '#', footnote id: 4", 'para_id': '739DEFD3'}]}
+                {'description': "custom note marker: '#', footnote id: 4", 'para_id': '739DEFD3'},
+                {'description': "custom note marker: '(custom ref-mark is symbol not text)', footnote id: 6", 'para_id': '72A0B3D3'}]}
 
         #assertions
         self.assertEqual(cntrl_report_dict, {})

@@ -57,6 +57,10 @@ def get_docxVersion(customprops_xml):
         if versionstring[0] == 'v':
             versionstring = versionstring[1:]
 
+        # if versionstring is like 'x.x.x' just get 'x.x'
+        if len(versionstring.split('.')) > 2:
+            versionstring = '.'.join(versionstring.split('.')[:2])
+
         try:
             versionstring = str(float(versionstring))
         except:
@@ -321,7 +325,7 @@ def updateStyleUsesInStylesXML(styles_root, current_id, new_id):
     if len(el_attrs_to_update) > 0:
         for el in el_attrs_to_update:
             el.attrib["{%s}val" % wnamespace] = new_id
-        logging.debug("updated %s style-element next/basedOn Style attribute values from '%s' to '%s'" % (len(el_attrs_to_update), current_id, new_id))    
+        logging.debug("updated %s style-element next/basedOn Style attribute values from '%s' to '%s'" % (len(el_attrs_to_update), current_id, new_id))
 
 def updateStyleidInAllXML(oldstyle_id, newstyle_id, styles_root, doc_root, endnotes_root, footnotes_root, xmls_updated):
     # update styles_root,

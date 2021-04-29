@@ -1,21 +1,21 @@
 <?xml version="1.0" ?>
 <w:footnotes mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14" xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink" xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d" xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex" xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex" xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex" xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex" xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex" xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex" xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex" xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex" xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
    <w:footnote w:id="-1" w:type="separator">
-      <w:p w:rsidP="00DC558D" w:rsidR="00D85845" w:rsidRDefault="00D85845">
+      <w:p w14:paraId="0D72524A" w14:textId="77777777" w:rsidP="00DC558D" w:rsidR="006229A0" w:rsidRDefault="006229A0">
          <w:r>
             <w:separator/>
          </w:r>
       </w:p>
    </w:footnote>
    <w:footnote w:id="0" w:type="continuationSeparator">
-      <w:p w:rsidP="00DC558D" w:rsidR="00D85845" w:rsidRDefault="00D85845">
+      <w:p w14:paraId="1EBF56D2" w14:textId="77777777" w:rsidP="00DC558D" w:rsidR="006229A0" w:rsidRDefault="006229A0">
          <w:r>
             <w:continuationSeparator/>
          </w:r>
       </w:p>
    </w:footnote>
    <w:footnote w:id="1">
-      <w:p w14:paraId="60DB5B5D" w:rsidP="00E04AC2" w:rsidR="0065371B" w:rsidRDefault="0065371B" w:rsidRPr="00E04AC2">
+      <w:p w14:paraId="6E41657C" w14:textId="77777777" w:rsidP="00E04AC2" w:rsidR="0065371B" w:rsidRDefault="0065371B" w:rsidRPr="00E04AC2">
          <w:pPr>
             <w:pStyle w:val="FootnoteText"/>
          </w:pPr>
@@ -38,7 +38,23 @@
       </w:p>
    </w:footnote>
    <w:footnote w:id="2">
-      <w:p w:rsidP="00E04AC2" w:rsidR="0065371B" w:rsidRDefault="0065371B">
+      <w:p w14:paraId="320F2312" w14:textId="0F1FE98C" w:rsidR="0063680F" w:rsidRDefault="0063680F">
+         <w:pPr>
+            <w:pStyle w:val="FootnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="0063680F">
+            <w:rPr>
+               <w:rStyle w:val="FootnoteReference"/>
+            </w:rPr>
+            <w:sym w:char="F051" w:font="Symbol"/>
+         </w:r>
+         <w:r>
+            <w:t xml:space="preserve">Using Symbol for Custom note mark</w:t>
+         </w:r>
+      </w:p>
+   </w:footnote>
+   <w:footnote w:id="3">
+      <w:p w14:paraId="5DDF3EAE" w14:textId="77777777" w:rsidP="00E04AC2" w:rsidR="0065371B" w:rsidRDefault="0065371B">
          <w:pPr>
             <w:pStyle w:val="FootnoteText"/>
          </w:pPr>
@@ -106,8 +122,8 @@
          </w:r>
       </w:p>
    </w:footnote>
-   <w:footnote w:id="3">
-      <w:p w:rsidP="00E04AC2" w:rsidR="0065371B" w:rsidRDefault="0065371B" w:rsidRPr="001E565A">
+   <w:footnote w:id="4">
+      <w:p w14:paraId="58748422" w14:textId="77777777" w:rsidP="00E04AC2" w:rsidR="0065371B" w:rsidRDefault="0065371B" w:rsidRPr="001E565A">
          <w:pPr>
             <w:pStyle w:val="FootnoteText"/>
          </w:pPr>
@@ -124,21 +140,7 @@
             <w:rPr>
                <w:kern w:val="2"/>
             </w:rPr>
-            <w:t xml:space="preserve">Judge T. </w:t>
-         </w:r>
-         <w:proofErr w:type="spellStart"/>
-         <w:r w:rsidRPr="001E565A">
-            <w:rPr>
-               <w:kern w:val="2"/>
-            </w:rPr>
-            <w:t>Troward</w:t>
-         </w:r>
-         <w:proofErr w:type="spellEnd"/>
-         <w:r w:rsidRPr="001E565A">
-            <w:rPr>
-               <w:kern w:val="2"/>
-            </w:rPr>
-            <w:t xml:space="preserve">, in </w:t>
+            <w:t xml:space="preserve">Judge T. Troward, in </w:t>
          </w:r>
          <w:r w:rsidRPr="004F741E">
             <w:rPr>
@@ -148,8 +150,8 @@
          </w:r>
       </w:p>
    </w:footnote>
-   <w:footnote w:id="4">
-      <w:p w:rsidP="00E04AC2" w:rsidR="0065371B" w:rsidRDefault="0065371B" w:rsidRPr="00737C95">
+   <w:footnote w:id="5">
+      <w:p w14:paraId="08FDEDE9" w14:textId="77777777" w:rsidP="00E04AC2" w:rsidR="0065371B" w:rsidRDefault="0065371B" w:rsidRPr="00737C95">
          <w:pPr>
             <w:pStyle w:val="FootnoteText"/>
          </w:pPr>

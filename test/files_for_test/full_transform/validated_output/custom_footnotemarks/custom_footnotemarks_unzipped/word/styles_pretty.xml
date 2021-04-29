@@ -154,6 +154,9 @@
       <w:lsdException w:name="Table Subtle 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
       <w:lsdException w:name="Table Subtle 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
       <w:lsdException w:name="Table Web 1" w:semiHidden="1" w:unhideWhenUsed="1"/>
+      <w:lsdException w:name="Table Web 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
+      <w:lsdException w:name="Table Web 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
+      <w:lsdException w:name="Table Theme" w:semiHidden="1" w:unhideWhenUsed="1"/>
       <w:lsdException w:name="Placeholder Text" w:semiHidden="1"/>
       <w:lsdException w:name="No Spacing" w:qFormat="1"/>
       <w:lsdException w:name="Light Shading"/>
@@ -491,8 +494,8 @@
    <w:style w:default="1" w:styleId="DefaultParagraphFont" w:type="character">
       <w:name w:val="Default Paragraph Font"/>
       <w:uiPriority w:val="1"/>
+      <w:semiHidden/>
       <w:unhideWhenUsed/>
-      <w:rsid w:val="003A2722"/>
    </w:style>
    <w:style w:default="1" w:styleId="TableNormal" w:type="table">
       <w:name w:val="Normal Table"/>
@@ -514,7 +517,6 @@
       <w:uiPriority w:val="99"/>
       <w:semiHidden/>
       <w:unhideWhenUsed/>
-      <w:rsid w:val="003A2722"/>
    </w:style>
    <w:style w:styleId="BalloonText" w:type="paragraph">
       <w:name w:val="Balloon Text"/>

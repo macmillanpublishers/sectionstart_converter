@@ -2,7 +2,7 @@
     "Macmillan_charstyle_first_use": [
         {
             "description": "smallcaps (sc)", 
-            "para_id": "75C6FA95", 
+            "para_id": "5CA99094", 
             "para_index": 14, 
             "para_string": "the law of success. All rights reserved. Printed in the", 
             "parent_section_start_content": "Copyright", 
@@ -10,7 +10,7 @@
         }, 
         {
             "description": "bold (b)", 
-            "para_id": "4FECB361", 
+            "para_id": "344241DA", 
             "para_index": 18, 
             "para_string": "Library of Congress Cataloging-in-Publication Data (TK)", 
             "parent_section_start_content": "Copyright", 
@@ -18,7 +18,7 @@
         }, 
         {
             "description": "cs-isbn (isbn)", 
-            "para_id": "FEBCA113", 
+            "para_id": "29133616", 
             "para_index": 20, 
             "para_string": "ISBN 978-1-250-79492-5 (trade paperback)", 
             "parent_section_start_content": "Copyright", 
@@ -26,7 +26,7 @@
         }, 
         {
             "description": "cs-cleanup-exclude (cex)", 
-            "para_id": "1E6810B8", 
+            "para_id": "2E12C912", 
             "para_index": 29, 
             "para_string": "10 9 8 7 6 5 4 3 2 1", 
             "parent_section_start_content": "Copyright", 
@@ -34,7 +34,7 @@
         }, 
         {
             "description": "bold-ital (bi)", 
-            "para_id": "FA646323", 
+            "para_id": "3C781868", 
             "para_index": 31, 
             "para_string": "Dedicated to", 
             "parent_section_start_content": "Dedication", 
@@ -42,7 +42,7 @@
         }, 
         {
             "description": "ital (i)", 
-            "para_id": "1B8676C6", 
+            "para_id": "2BA44226", 
             "para_index": 214, 
             "para_string": "The Law of Success philosophy was brought to the attention", 
             "parent_section_start_content": "Introduction", 
@@ -50,7 +50,7 @@
         }, 
         {
             "description": "cs-head (cshd)", 
-            "para_id": "9AC2C7CC", 
+            "para_id": "4A52EB25", 
             "para_index": 268, 
             "para_string": "Molecules, Atoms and Electrons: To understand both the detail and", 
             "parent_section_start_content": "Introduction", 
@@ -58,7 +58,7 @@
         }, 
         {
             "description": "sub (sub)", 
-            "para_id": "0DB59A3F", 
+            "para_id": "3E91E2F8", 
             "para_index": 335, 
             "para_string": "Every mind, or brain, is directly connected with every other", 
             "parent_section_start_content": "Introduction", 
@@ -66,7 +66,7 @@
         }, 
         {
             "description": "underline (u)", 
-            "para_id": "F836A73B", 
+            "para_id": "6C7DCBD6", 
             "para_index": "tablecell_para", 
             "para_string": "THE FIFTEEN LAWS OF SUCCESS", 
             "parent_section_start_content": "Introduction", 
@@ -74,7 +74,7 @@
         }, 
         {
             "description": "footnote reference", 
-            "para_id": "50D7B858", 
+            "para_id": "3F9E0905", 
             "para_index": 1570, 
             "para_string": "Through the courtesy of a prominent Building and Loan Association*", 
             "parent_section_start_content": "Lesson Three: The Habit of Saving", 
@@ -83,7 +83,7 @@
         {
             "description": "footnote reference", 
             "note-or-comment_id": "1", 
-            "para_id": "60DB5B5D", 
+            "para_id": "6E41657C", 
             "para_index": "n-a", 
             "para_string": "* The following figures are reflective of the author\u2019s era.", 
             "parent_section_start_content": "n-a", 
@@ -93,7 +93,7 @@
     "Macmillan_style_first_use": [
         {
             "description": "Title (Ttl)", 
-            "para_id": "3914095F", 
+            "para_id": "55E8118C", 
             "para_index": 2, 
             "para_string": "The Law of Success", 
             "parent_section_start_content": "Halftitle Page", 
@@ -101,7 +101,7 @@
         }, 
         {
             "description": "Title (Ttl)", 
-            "para_id": "E6DA3F1D", 
+            "para_id": "72F0FE98", 
             "para_index": 4, 
             "para_string": "[Blank]", 
             "parent_section_start_content": "Ad Card", 
@@ -109,7 +109,7 @@
         }, 
         {
             "description": "Title (Ttl)", 
-            "para_id": "A878DD81", 
+            "para_id": "6FFFA109", 
             "para_index": 6, 
             "para_string": "The Law of Success", 
             "parent_section_start_content": "Titlepage", 
@@ -117,7 +117,7 @@
         }, 
         {
             "description": "Subtitle (Sttl)", 
-            "para_id": "C4F1EE86", 
+            "para_id": "3CD1C790", 
             "para_index": 7, 
             "para_string": "The 15 Most Powerful Principles for Wealth, Health, and Happiness", 
             "parent_section_start_content": "Titlepage", 
@@ -125,7 +125,7 @@
         }, 
         {
             "description": "Author1 (Au1)", 
-            "para_id": "01B89D0F", 
+            "para_id": "56E1AB5D", 
             "para_index": 8, 
             "para_string": "Napoleon Hill", 
             "parent_section_start_content": "Titlepage", 
@@ -133,7 +133,7 @@
         }, 
         {
             "description": "Imprint (Imp)", 
-            "para_id": "AE8C049E", 
+            "para_id": "2A77F6A3", 
             "para_index": 9, 
             "para_string": "[place Imprint logo here]", 
             "parent_section_start_content": "Titlepage", 
@@ -141,7 +141,7 @@
         }, 
         {
             "description": "Cities (Cit)", 
-            "para_id": "6BC8743C", 
+            "para_id": "573D9B9D", 
             "para_index": 10, 
             "para_string": "New York", 
             "parent_section_start_content": "Titlepage", 
@@ -149,7 +149,7 @@
         }, 
         {
             "description": "Body-Text (Tx)", 
-            "para_id": "2B0D219A", 
+            "para_id": "7CE05CA4", 
             "para_index": 12, 
             "para_string": "The information in this book is not intended to replace", 
             "parent_section_start_content": "Copyright", 
@@ -157,7 +157,7 @@
         }, 
         {
             "description": "Separator (Sep)", 
-            "para_id": "69DF2E01", 
+            "para_id": "464EEB66", 
             "para_index": 13, 
             "para_string": "[Separator]", 
             "parent_section_start_content": "Copyright", 
@@ -165,7 +165,7 @@
         }, 
         {
             "description": "Body-Text (Tx)", 
-            "para_id": "FA646323", 
+            "para_id": "3C781868", 
             "para_index": 31, 
             "para_string": "Dedicated to", 
             "parent_section_start_content": "Dedication", 
@@ -173,7 +173,7 @@
         }, 
         {
             "description": "Title (Ttl)", 
-            "para_id": "40902B3F", 
+            "para_id": "18F3DB0F", 
             "para_index": 39, 
             "para_string": "Publisher\u2019s Note", 
             "parent_section_start_content": "Front Matter General", 
@@ -181,7 +181,7 @@
         }, 
         {
             "description": "Body-Text (Tx)", 
-            "para_id": "4484863D", 
+            "para_id": "5E2799E7", 
             "para_index": 40, 
             "para_string": "Other than minor adjustments made for clarity or to meet", 
             "parent_section_start_content": "Front Matter General", 
@@ -189,7 +189,7 @@
         }, 
         {
             "description": "Epigraph-Non-Verse (Epi)", 
-            "para_id": "EF0159BE", 
+            "para_id": "569CE5F8", 
             "para_index": 42, 
             "para_string": "Who said it could not be done? And what great", 
             "parent_section_start_content": "Epigraph", 
@@ -197,7 +197,7 @@
         }, 
         {
             "description": "Epigraph-Source (Episrc)", 
-            "para_id": "13018B91", 
+            "para_id": "5C2F2E1D", 
             "para_index": 43, 
             "para_string": "\u2014Napoleon Hill", 
             "parent_section_start_content": "Epigraph", 
@@ -205,7 +205,7 @@
         }, 
         {
             "description": "Title (Ttl)", 
-            "para_id": "3A3504A3", 
+            "para_id": "0742EB7B", 
             "para_index": 45, 
             "para_string": "Contents", 
             "parent_section_start_content": "Contents", 
@@ -213,7 +213,7 @@
         }, 
         {
             "description": "TOC-Frontmatter (Tocfm)", 
-            "para_id": "61CF39EC", 
+            "para_id": "2D5079D1", 
             "para_index": 46, 
             "para_string": "A Personal Statement by the Authorxiii", 
             "parent_section_start_content": "Contents", 
@@ -221,7 +221,7 @@
         }, 
         {
             "description": "TOC-Chapter (Tocch)", 
-            "para_id": "ED334EB9", 
+            "para_id": "3B3C1588", 
             "para_index": 49, 
             "para_string": "Introduction: The Master Mind1", 
             "parent_section_start_content": "Contents", 
@@ -229,7 +229,7 @@
         }, 
         {
             "description": "TOC-Backmatter (Tocbm)", 
-            "para_id": "CF98479F", 
+            "para_id": "1A3657CE", 
             "para_index": 65, 
             "para_string": "Index601", 
             "parent_section_start_content": "Contents", 
@@ -237,7 +237,7 @@
         }, 
         {
             "description": "Headline (Hdline)", 
-            "para_id": "7865D949", 
+            "para_id": "2D7EC79B", 
             "para_index": 70, 
             "para_string": "\u201cWHAT I WOULD DO IF I HAD A MILLION DOLLARS!\u201d", 
             "parent_section_start_content": "Front Matter General", 
@@ -245,7 +245,7 @@
         }, 
         {
             "description": "Signature (Sig)", 
-            "para_id": "16AFE90B", 
+            "para_id": "2F9D1ECC", 
             "para_index": 95, 
             "para_string": "\u2014NAPOLEON HILL", 
             "parent_section_start_content": "Front Matter General", 
@@ -253,7 +253,7 @@
         }, 
         {
             "description": "Unnum-Level-1-List (Ul1)", 
-            "para_id": "4AD1552E", 
+            "para_id": "6C7A7ED4", 
             "para_index": 100, 
             "para_string": "Henry Ford", 
             "parent_section_start_content": "Front Matter General", 
@@ -261,7 +261,7 @@
         }, 
         {
             "description": "Num-Level-1-List (Nl1)", 
-            "para_id": "13E1A7A9", 
+            "para_id": "0F0BF7C1", 
             "para_index": 157, 
             "para_string": "1. POWER\u2014what it is and how to create and use", 
             "parent_section_start_content": "Front Matter General", 
@@ -269,7 +269,7 @@
         }, 
         {
             "description": "Title (Ttl)", 
-            "para_id": "FC30B6AD", 
+            "para_id": "5ED94999", 
             "para_index": 198, 
             "para_string": "Introduction", 
             "parent_section_start_content": "Introduction", 
@@ -277,7 +277,7 @@
         }, 
         {
             "description": "Subtitle (Sttl)", 
-            "para_id": "DB04AFF5", 
+            "para_id": "50E965BF", 
             "para_index": 199, 
             "para_string": "THE MASTER MIND", 
             "parent_section_start_content": "Introduction", 
@@ -285,7 +285,7 @@
         }, 
         {
             "description": "Epigraph-Non-Verse (Epi)", 
-            "para_id": "D439747E", 
+            "para_id": "24F13132", 
             "para_index": 200, 
             "para_string": "\u201cYou Can Do It If You Believe You Can!\u201d", 
             "parent_section_start_content": "Introduction", 
@@ -293,7 +293,7 @@
         }, 
         {
             "description": "Body-Text (Tx)", 
-            "para_id": "29F8B462", 
+            "para_id": "53F918B7", 
             "para_index": 201, 
             "para_string": "This is a course on the fundamentals of Success.", 
             "parent_section_start_content": "Introduction", 
@@ -301,7 +301,7 @@
         }, 
         {
             "description": "BOX-A > Epigraph-Non-Verse (Epi)", 
-            "para_id": "66CB8421", 
+            "para_id": "407199FE", 
             "para_index": 222, 
             "para_string": "No man has a chance to enjoy permanent success until", 
             "parent_section_start_content": "Introduction", 
@@ -309,7 +309,7 @@
         }, 
         {
             "description": "BOX-A > Epigraph-Source (Episrc)", 
-            "para_id": "952E9A11", 
+            "para_id": "612D7765", 
             "para_index": 223, 
             "para_string": "\u2014Napoleon Hill", 
             "parent_section_start_content": "Introduction", 
@@ -317,7 +317,7 @@
         }, 
         {
             "description": "Num-Level-1-List (Nl1)", 
-            "para_id": "A849B679", 
+            "para_id": "26901204", 
             "para_index": 234, 
             "para_string": "1. A DEFINITE CHIEF AIM will teach you how to", 
             "parent_section_start_content": "Introduction", 
@@ -325,7 +325,7 @@
         }, 
         {
             "description": "Blank-Space-Break (Bsbrk)", 
-            "para_id": "4B26701C", 
+            "para_id": "4C289808", 
             "para_index": 263, 
             "para_string": "[blank]", 
             "parent_section_start_content": "Introduction", 
@@ -333,7 +333,7 @@
         }, 
         {
             "description": "Unnum-Level-1-List (Ul1)", 
-            "para_id": "4D2DCC36", 
+            "para_id": "1094E000", 
             "para_index": 452, 
             "para_string": "\u201cThe organized knowledge of the Ford Organization 75%", 
             "parent_section_start_content": "Introduction", 
@@ -341,7 +341,7 @@
         }, 
         {
             "description": "List-Head (Lhead)", 
-            "para_id": "38B2D612", 
+            "para_id": "2D525A9B", 
             "para_index": 585, 
             "para_string": "Who Can Profit Most by the Law of Success Philosophy?", 
             "parent_section_start_content": "Introduction", 
@@ -349,7 +349,7 @@
         }, 
         {
             "description": "A-Head (Ahead)", 
-            "para_id": "CB222864", 
+            "para_id": "06570AC4", 
             "para_index": 612, 
             "para_string": "Summary of the Introduction", 
             "parent_section_start_content": "Introduction", 
@@ -357,7 +357,7 @@
         }, 
         {
             "description": "B-Head (Bhead)", 
-            "para_id": "7289B1AC", 
+            "para_id": "7437AF15", 
             "para_index": 688, 
             "para_string": "An After-the-Lesson Visit with the Author", 
             "parent_section_start_content": "Introduction", 
@@ -365,7 +365,7 @@
         }, 
         {
             "description": "Design-Note (Dn)", 
-            "para_id": "CA288D75", 
+            "para_id": "1744AB6C", 
             "para_index": 689, 
             "para_string": "[Art 1]", 
             "parent_section_start_content": "Introduction", 
@@ -373,7 +373,7 @@
         }, 
         {
             "description": "Headnote (Hdnt)", 
-            "para_id": "9A7B3AF0", 
+            "para_id": "40710C33", 
             "para_index": 690, 
             "para_string": "The Six Specters are labeled: Fear of Poverty, Fear of", 
             "parent_section_start_content": "Introduction", 
@@ -381,7 +381,7 @@
         }, 
         {
             "description": "EXTRACT-A > Body-Text (Tx)", 
-            "para_id": "4F0C970A", 
+            "para_id": "08CC2E80", 
             "para_index": 735, 
             "para_string": "One of the most destructive evils is slanderous talk. It", 
             "parent_section_start_content": "Introduction", 
@@ -389,7 +389,7 @@
         }, 
         {
             "description": "EXTRACT-A > Verse1 (Vrs1)", 
-            "para_id": "95FB8A56", 
+            "para_id": "1C209787", 
             "para_index": 736, 
             "para_string": "Man is of soul and body formed for deeds", 
             "parent_section_start_content": "Introduction", 
@@ -397,7 +397,7 @@
         }, 
         {
             "description": "EXTRACT-A > Separator (Sep)", 
-            "para_id": "86A841C6", 
+            "para_id": "6AAAAE02", 
             "para_index": 741, 
             "para_string": "[Separator]", 
             "parent_section_start_content": "Introduction", 
@@ -405,7 +405,7 @@
         }, 
         {
             "description": "EXTRACT-A > Source (Src)", 
-            "para_id": "DA9D61D2", 
+            "para_id": "09957D2F", 
             "para_index": 752, 
             "para_string": "\u2014shelley", 
             "parent_section_start_content": "Introduction", 
@@ -413,7 +413,7 @@
         }, 
         {
             "description": "Design-Note (Dn)", 
-            "para_id": "A9443436", 
+            "para_id": "6789D67C", 
             "para_index": 755, 
             "para_string": "DES: set this epigraph on its own page", 
             "parent_section_start_content": "Epigraph", 
@@ -421,7 +421,7 @@
         }, 
         {
             "description": "Epigraph-Non-Verse (Epi)", 
-            "para_id": "673C726A", 
+            "para_id": "2DF64B62", 
             "para_index": 756, 
             "para_string": "The best rose bush, after all, is not that which", 
             "parent_section_start_content": "Epigraph", 
@@ -429,7 +429,7 @@
         }, 
         {
             "description": "Epigraph-Source (Episrc)", 
-            "para_id": "984A6C4B", 
+            "para_id": "5CB6BD80", 
             "para_index": 757, 
             "para_string": "\u2014Henry Van Dyke", 
             "parent_section_start_content": "Epigraph", 
@@ -437,7 +437,7 @@
         }, 
         {
             "description": "Number (Num)", 
-            "para_id": "CF094A14", 
+            "para_id": "7079F68F", 
             "para_index": 759, 
             "para_string": "Lesson One", 
             "parent_section_start_content": "Lesson One: A Definite Chief Aim", 
@@ -445,7 +445,7 @@
         }, 
         {
             "description": "Title (Ttl)", 
-            "para_id": "546DB9B6", 
+            "para_id": "11F4B035", 
             "para_index": 760, 
             "para_string": "A Definite Chief Aim", 
             "parent_section_start_content": "Lesson One: A Definite Chief Aim", 
@@ -453,7 +453,7 @@
         }, 
         {
             "description": "Body-Text (Tx)", 
-            "para_id": "9C4EEDDF", 
+            "para_id": "7318963A", 
             "para_index": 761, 
             "para_string": "You are at the beginning of a course of philosophy", 
             "parent_section_start_content": "Lesson One: A Definite Chief Aim", 
@@ -461,7 +461,7 @@
         }, 
         {
             "description": "Num-Level-1-List (Nl1)", 
-            "para_id": "9F078EF9", 
+            "para_id": "66068807", 
             "para_index": 783, 
             "para_string": "1. The posture of the body, and the way they", 
             "parent_section_start_content": "Lesson One: A Definite Chief Aim", 
@@ -469,7 +469,7 @@
         }, 
         {
             "description": "Verse1 (Vrs1)", 
-            "para_id": "878E4003", 
+            "para_id": "4A4B1F53", 
             "para_index": 789, 
             "para_string": "When angry", 
             "parent_section_start_content": "Lesson One: A Definite Chief Aim", 
@@ -477,7 +477,7 @@
         }, 
         {
             "description": "BOX-A > Epigraph-Non-Verse (Epi)", 
-            "para_id": "F2AACA28", 
+            "para_id": "0A7153EC", 
             "para_index": 811, 
             "para_string": "No person is \u201cEducated\u201d who has not at least a", 
             "parent_section_start_content": "Lesson One: A Definite Chief Aim", 
@@ -485,7 +485,7 @@
         }, 
         {
             "description": "Blank-Space-Break (Bsbrk)", 
-            "para_id": "EE2B2063", 
+            "para_id": "67959DD2", 
             "para_index": 831, 
             "para_string": "[blank]", 
             "parent_section_start_content": "Lesson One: A Definite Chief Aim", 
@@ -493,7 +493,7 @@
         }, 
         {
             "description": "A-Head (Ahead)", 
-            "para_id": "0753B059", 
+            "para_id": "4C226DDD", 
             "para_index": 923, 
             "para_string": "A Definite Chief Aim", 
             "parent_section_start_content": "Lesson One: A Definite Chief Aim", 
@@ -501,7 +501,7 @@
         }, 
         {
             "description": "Source (Src)", 
-            "para_id": "B61AF3FA", 
+            "para_id": "40440278", 
             "para_index": 1101, 
             "para_string": "\u2014ingalls", 
             "parent_section_start_content": "Lesson One: A Definite Chief Aim", 
@@ -509,7 +509,7 @@
         }, 
         {
             "description": "Alpha-Level-1-List (Al1)", 
-            "para_id": "CF363896", 
+            "para_id": "574E39C1", 
             "para_index": 1117, 
             "para_string": "a. The fear of Poverty", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -517,7 +517,7 @@
         }, 
         {
             "description": "BOX-A > Epigraph-Source (Episrc)", 
-            "para_id": "B0D33E96", 
+            "para_id": "16D20ABE", 
             "para_index": 1253, 
             "para_string": "\u2014Luther Burbank", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -525,7 +525,7 @@
         }, 
         {
             "description": "EXTRACT-A > Body-Text (Tx)", 
-            "para_id": "8A293C76", 
+            "para_id": "15791C11", 
             "para_index": 1288, 
             "para_string": "I believe in myself. I believe in those who work", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -533,7 +533,7 @@
         }, 
         {
             "description": "EXTRACT-A > Signature (Sig)", 
-            "para_id": "CAE6BFB0", 
+            "para_id": "62366355", 
             "para_index": 1289, 
             "para_string": "Signed.\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. \u00a0.\u00a0.\u00a0.\u00a0.", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -541,7 +541,7 @@
         }, 
         {
             "description": "Signature (Sig)", 
-            "para_id": "C51B7049", 
+            "para_id": "2D6FF1AE", 
             "para_index": 1313, 
             "para_string": "Signed.\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0.", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -549,7 +549,7 @@
         }, 
         {
             "description": "Separator (Sep)", 
-            "para_id": "24F9A87A", 
+            "para_id": "7444511E", 
             "para_index": 1340, 
             "para_string": "[Separator]", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -557,7 +557,7 @@
         }, 
         {
             "description": "Body-Text-Continued (Txc)", 
-            "para_id": "B6AAA24B", 
+            "para_id": "74FAC740", 
             "para_index": 1355, 
             "para_string": "It can do no harm if you commit this poem", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -565,7 +565,7 @@
         }, 
         {
             "description": "B-Head (Bhead)", 
-            "para_id": "505C0093", 
+            "para_id": "2AE58BDE", 
             "para_index": 1404, 
             "para_string": "An After-the-Lesson Visit with the Author", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -573,7 +573,7 @@
         }, 
         {
             "description": "Caption (Cap)", 
-            "para_id": "3D118E67", 
+            "para_id": "2BFA2F6E", 
             "para_index": 1406, 
             "para_string": "The marker stands at the Entrance Gate of Life and", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -581,7 +581,7 @@
         }, 
         {
             "description": "Extract1 (Ext1)", 
-            "para_id": "AEE8314A", 
+            "para_id": "5DE0DB2D", 
             "para_index": 1411, 
             "para_string": "May it not be possible that we can co-operate with", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -589,7 +589,7 @@
         }, 
         {
             "description": "Custom1 (Cust1)", 
-            "para_id": "3E3E23E5", 
+            "para_id": "039077E6", 
             "para_index": 1576, 
             "para_string": "Cigarettes.\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. .\u00a0.\u00a0.\u00a0. $.75", 
             "parent_section_start_content": "Lesson Three: The Habit of Saving", 
@@ -597,7 +597,7 @@
         }, 
         {
             "description": "Unnum-Level-1-List (Ul1)", 
-            "para_id": "CCD99C2D", 
+            "para_id": "33D9C1A2", 
             "para_index": 1598, 
             "para_string": "$4,000.00 inherited, invested in automobile supply business with a friend", 
             "parent_section_start_content": "Lesson Three: The Habit of Saving", 
@@ -605,7 +605,7 @@
         }, 
         {
             "description": "BOX-A > Separator (Sep)", 
-            "para_id": "FE6C6D16", 
+            "para_id": "3BC6640F", 
             "para_index": 1981, 
             "para_string": "[Separator]", 
             "parent_section_start_content": "Lesson Four: Initiative and Leadership", 
@@ -613,7 +613,7 @@
         }, 
         {
             "description": "LETTER-A > Body-Text (Tx)", 
-            "para_id": "D5CF0638", 
+            "para_id": "526CDFE6", 
             "para_index": 2298, 
             "para_string": "I have just finished a commercial course in a first-class", 
             "parent_section_start_content": "Lesson Five: Imagination", 
@@ -621,7 +621,7 @@
         }, 
         {
             "description": "LETTER-A > Closing (Clos)", 
-            "para_id": "4791CF3B", 
+            "para_id": "78C8040D", 
             "para_index": 2301, 
             "para_string": "Very cordially,", 
             "parent_section_start_content": "Lesson Five: Imagination", 
@@ -629,7 +629,7 @@
         }, 
         {
             "description": "LETTER-A > Salutation (Sal)", 
-            "para_id": "EED1D799", 
+            "para_id": "446AA0C4", 
             "para_index": 2676, 
             "para_string": "My dear Mr. Ford:", 
             "parent_section_start_content": "Lesson Six: Enthusiasm", 
@@ -637,7 +637,7 @@
         }, 
         {
             "description": "LETTER-A > Separator (Sep)", 
-            "para_id": "A9593672", 
+            "para_id": "5F28CFE2", 
             "para_index": 2681, 
             "para_string": "[Separator]", 
             "parent_section_start_content": "Lesson Six: Enthusiasm", 
@@ -645,7 +645,7 @@
         }, 
         {
             "description": "LETTER-A > Address (Add)", 
-            "para_id": "1D1733C8", 
+            "para_id": "3BBBF1E9", 
             "para_index": 2682, 
             "para_string": "Hon. Thomas R. Marshall,", 
             "parent_section_start_content": "Lesson Six: Enthusiasm", 
@@ -653,7 +653,7 @@
         }, 
         {
             "description": "BOX-A > Epigraph-Verse (Epiv)", 
-            "para_id": "A754458F", 
+            "para_id": "05D8664A", 
             "para_index": 2730, 
             "para_string": "Half the wrecks that strew life\u2019s ocean", 
             "parent_section_start_content": "Lesson Six: Enthusiasm", 
@@ -661,7 +661,7 @@
         }, 
         {
             "description": "Verse1-indent1 (Vrs1-i1)", 
-            "para_id": "2BB5E9B2", 
+            "para_id": "67104C69", 
             "para_index": 3001, 
             "para_string": "\u201cO jealousy,", 
             "parent_section_start_content": "Lesson Six: Enthusiasm", 
@@ -669,7 +669,7 @@
         }, 
         {
             "description": "Verse2 (Vrs2)", 
-            "para_id": "FEB044DB", 
+            "para_id": "3E7F1E91", 
             "para_index": 3989, 
             "para_string": "Antony: \u201cFor Brutus\u2019 sake, I am beholding to you.\u201d", 
             "parent_section_start_content": "Lesson Nine: Pleasing Personality", 
@@ -677,7 +677,7 @@
         }, 
         {
             "description": "Author1 (Au1)", 
-            "para_id": "73D8E244", 
+            "para_id": "066644FD", 
             "para_index": 4968, 
             "para_string": "By George W. Dixon", 
             "parent_section_start_content": "Lesson Eleven: Concentration", 
@@ -685,7 +685,7 @@
         }, 
         {
             "description": "Epigraph-Verse (Epiv)", 
-            "para_id": "AAD4C382", 
+            "para_id": "67850EFB", 
             "para_index": 5409, 
             "para_string": "Yesterday is but a dream,", 
             "parent_section_start_content": "Epigraph", 
@@ -693,7 +693,7 @@
         }, 
         {
             "description": "Display1 (Disp1)", 
-            "para_id": "13194855", 
+            "para_id": "66D90B4D", 
             "para_index": 5816, 
             "para_string": "OPPORTUNITY", 
             "parent_section_start_content": "Lesson Thirteen: Failure", 
@@ -701,7 +701,7 @@
         }, 
         {
             "description": "EXTRACT-A > Extract1 (Ext1)", 
-            "para_id": "6AACDC7F", 
+            "para_id": "7866A1C6", 
             "para_index": 5921, 
             "para_string": "RUSS REDS ORDER BOOKS. Contracts being let in Germany for", 
             "parent_section_start_content": "Lesson Fourteen: Tolerance", 
@@ -709,7 +709,7 @@
         }, 
         {
             "description": "EXTRACT-A > Source (Src)", 
-            "para_id": "5CE50CCA", 
+            "para_id": "14591115", 
             "para_index": 5922, 
             "para_string": "(By George Witts)", 
             "parent_section_start_content": "Lesson Fourteen: Tolerance", 
@@ -717,7 +717,7 @@
         }, 
         {
             "description": "BOX-B > A-Head (Ahead)", 
-            "para_id": "D5C77687", 
+            "para_id": "5822F7C7", 
             "para_index": 6051, 
             "para_string": "TOLERANCE!", 
             "parent_section_start_content": "Lesson Fourteen: Tolerance", 
@@ -725,7 +725,7 @@
         }, 
         {
             "description": "BOX-B > Body-Text (Tx)", 
-            "para_id": "1DFA6957", 
+            "para_id": "50886555", 
             "para_index": 6052, 
             "para_string": "When the dawn of Intelligence shall have spread its wings", 
             "parent_section_start_content": "Lesson Fourteen: Tolerance", 
@@ -733,7 +733,7 @@
         }, 
         {
             "description": "Title (Ttl)", 
-            "para_id": "A1A82D43", 
+            "para_id": "4DBE5F28", 
             "para_index": 6358, 
             "para_string": "Index", 
             "parent_section_start_content": "Index", 
@@ -741,7 +741,7 @@
         }, 
         {
             "description": "Headnote (Hdnt)", 
-            "para_id": "D83490EE", 
+            "para_id": "1B5562DE", 
             "para_index": 6359, 
             "para_string": "Page numbers in italic indicate illustrations.", 
             "parent_section_start_content": "Index", 
@@ -749,7 +749,7 @@
         }, 
         {
             "description": "Index-Entry (Idx1)", 
-            "para_id": "8FEE5BD0", 
+            "para_id": "35BE9040", 
             "para_index": 6360, 
             "para_string": "\u201cAbou Ben Adhem\u201d (Hunt), 212", 
             "parent_section_start_content": "Index", 
@@ -757,7 +757,7 @@
         }, 
         {
             "description": "Index-Sub-Entry (Idx2)", 
-            "para_id": "4055ACE4", 
+            "para_id": "62FB4127", 
             "para_index": 6363, 
             "para_string": "accurate knowledge, 187", 
             "parent_section_start_content": "Index", 
@@ -765,7 +765,7 @@
         }, 
         {
             "description": "Separator (Sep)", 
-            "para_id": "60B18E36", 
+            "para_id": "15E9A2C8", 
             "para_index": 6413, 
             "para_string": "[Separator]", 
             "parent_section_start_content": "Index", 
@@ -773,7 +773,7 @@
         }, 
         {
             "description": "Index-Sub-Sub-Entry (Idx3)", 
-            "para_id": "5F2B4A95", 
+            "para_id": "33D87660", 
             "para_index": 7094, 
             "para_string": "See also \u201cCompensation\u201d (Emerson)", 
             "parent_section_start_content": "Index", 
@@ -781,7 +781,7 @@
         }, 
         {
             "description": "Title (Ttl)", 
-            "para_id": "3D758AC5", 
+            "para_id": "72B3181C", 
             "para_index": 7652, 
             "para_string": "About the Author", 
             "parent_section_start_content": "About the Author", 
@@ -789,7 +789,7 @@
         }, 
         {
             "description": "Body-Text (Tx)", 
-            "para_id": "A3A3F34C", 
+            "para_id": "5BB0F011", 
             "para_index": 7653, 
             "para_string": "Napoleon Hill was born in 1883 in Wise County, Virginia.", 
             "parent_section_start_content": "About the Author", 
@@ -797,7 +797,7 @@
         }, 
         {
             "description": "Table-Head (Tbhd)", 
-            "para_id": "3E668B46", 
+            "para_id": "5A1C15BA", 
             "para_index": "tablecell_para", 
             "para_string": "NOTICE", 
             "parent_section_start_content": "Introduction", 
@@ -805,7 +805,7 @@
         }, 
         {
             "description": "Table-Text (Tbtx)", 
-            "para_id": "43AD391C", 
+            "para_id": "10FA628C", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -813,7 +813,7 @@
         }, 
         {
             "description": "Table-Subhead (Tbsbhd)", 
-            "para_id": "F836A73B", 
+            "para_id": "6C7DCBD6", 
             "para_index": "tablecell_para", 
             "para_string": "THE FIFTEEN LAWS OF SUCCESS", 
             "parent_section_start_content": "Introduction", 
@@ -823,7 +823,7 @@
     "author_paras": [
         {
             "description": "Napoleon Hill", 
-            "para_id": "01B89D0F", 
+            "para_id": "56E1AB5D", 
             "para_index": 8, 
             "para_string": "Napoleon Hill", 
             "parent_section_start_content": "Titlepage", 
@@ -833,31 +833,39 @@
     "custom_footnote_mark": [
         {
             "description": "custom note marker: '*', footnote id: 1", 
-            "para_id": "50D7B858", 
+            "para_id": "3F9E0905", 
             "para_index": 1570, 
             "para_string": "Through the courtesy of a prominent Building and Loan Association*", 
             "parent_section_start_content": "Lesson Three: The Habit of Saving", 
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
-            "description": "custom note marker: '*', footnote id: 2", 
-            "para_id": "9A71AFD8", 
+            "description": "custom note marker: '(custom ref-mark is symbol not text)', footnote id: 2", 
+            "para_id": "2CCCDCDC", 
+            "para_index": 1571, 
+            "para_string": "The making and saving of money is a science, yet", 
+            "parent_section_start_content": "Lesson Three: The Habit of Saving", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "custom note marker: '*', footnote id: 3", 
+            "para_id": "1412FB08", 
             "para_index": 1747, 
             "para_string": "With abundance of health, unfaltering faith, unflagging energy, unceasing optimism,", 
             "parent_section_start_content": "Lesson Three: The Habit of Saving", 
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
-            "description": "custom note marker: '*', footnote id: 3", 
-            "para_id": "ED86FA1A", 
+            "description": "custom note marker: '*', footnote id: 4", 
+            "para_id": "4D482DB5", 
             "para_index": 5067, 
             "para_string": "If we were to remove the surface portion of the", 
             "parent_section_start_content": "Lesson Twelve: Co-Operation", 
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
-            "description": "custom note marker: '*', footnote id: 4", 
-            "para_id": "97D0EB88", 
+            "description": "custom note marker: '*', footnote id: 5", 
+            "para_id": "4F0138B7", 
             "para_index": 5722, 
             "para_string": "When the world has found\u2014a MAN!*", 
             "parent_section_start_content": "Lesson Thirteen: Failure", 
@@ -865,10 +873,21 @@
         }
     ], 
     "empty_section_start_para": [], 
+    "footnote-leading_whitespace_rmd": [
+        {
+            "description": "note ref: 2", 
+            "note-or-comment_id": "2", 
+            "para_id": "320F2312", 
+            "para_index": "n-a", 
+            "para_string": "Using Symbol for Custom note mark", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }
+    ], 
     "isbn_spans": [
         {
             "description": "978", 
-            "para_id": "FEBCA113", 
+            "para_id": "29133616", 
             "para_index": 20, 
             "para_string": "ISBN 978-1-250-79492-5 (trade paperback)", 
             "parent_section_start_content": "Copyright", 
@@ -878,7 +897,7 @@
     "section_start_found": [
         {
             "description": "Section-BookBOOK", 
-            "para_id": "F1AF1091", 
+            "para_id": "429C2EF8", 
             "para_index": 0, 
             "para_string": "The Law of Success", 
             "parent_section_start_content": "The Law of Success", 
@@ -886,7 +905,7 @@
         }, 
         {
             "description": "Section-HalftitleSHT", 
-            "para_id": "497E9AA8", 
+            "para_id": "7CC2BD60", 
             "para_index": 1, 
             "para_string": "Halftitle Page", 
             "parent_section_start_content": "Halftitle Page", 
@@ -894,7 +913,7 @@
         }, 
         {
             "description": "Section-Ad-CardSAC", 
-            "para_id": "0B0BBB75", 
+            "para_id": "42F6037F", 
             "para_index": 3, 
             "para_string": "Ad Card", 
             "parent_section_start_content": "Ad Card", 
@@ -902,7 +921,7 @@
         }, 
         {
             "description": "Section-TitlepageSTI", 
-            "para_id": "DD16DF12", 
+            "para_id": "2263F6CB", 
             "para_index": 5, 
             "para_string": "Titlepage", 
             "parent_section_start_content": "Titlepage", 
@@ -910,7 +929,7 @@
         }, 
         {
             "description": "Section-CopyrightSCR", 
-            "para_id": "456B7B37", 
+            "para_id": "7187AC0D", 
             "para_index": 11, 
             "para_string": "Copyright", 
             "parent_section_start_content": "Copyright", 
@@ -918,7 +937,7 @@
         }, 
         {
             "description": "Section-DedicationSDE", 
-            "para_id": "BBC470CA", 
+            "para_id": "21B87548", 
             "para_index": 30, 
             "para_string": "Dedication", 
             "parent_section_start_content": "Dedication", 
@@ -926,7 +945,7 @@
         }, 
         {
             "description": "Section-Front-Matter-GeneralSFM", 
-            "para_id": "C059910B", 
+            "para_id": "776C833E", 
             "para_index": 38, 
             "para_string": "Front Matter General", 
             "parent_section_start_content": "Front Matter General", 
@@ -934,7 +953,7 @@
         }, 
         {
             "description": "Section-EpigraphSEP", 
-            "para_id": "04024B61", 
+            "para_id": "30480963", 
             "para_index": 41, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -942,7 +961,7 @@
         }, 
         {
             "description": "Section-ContentsSTC", 
-            "para_id": "CFDE9B59", 
+            "para_id": "1908F244", 
             "para_index": 44, 
             "para_string": "Contents", 
             "parent_section_start_content": "Contents", 
@@ -950,7 +969,7 @@
         }, 
         {
             "description": "Section-Front-Matter-GeneralSFM", 
-            "para_id": "A28A15CF", 
+            "para_id": "116F1A58", 
             "para_index": 67, 
             "para_string": "Front Matter General", 
             "parent_section_start_content": "Front Matter General", 
@@ -958,7 +977,7 @@
         }, 
         {
             "description": "Section-Front-Matter-GeneralSFM", 
-            "para_id": "08C6541C", 
+            "para_id": "39B35519", 
             "para_index": 96, 
             "para_string": "Front Matter General", 
             "parent_section_start_content": "Front Matter General", 
@@ -966,7 +985,7 @@
         }, 
         {
             "description": "Section-Front-Matter-GeneralSFM", 
-            "para_id": "DB63A6F1", 
+            "para_id": "43A1B5E7", 
             "para_index": 155, 
             "para_string": "Front Matter General", 
             "parent_section_start_content": "Front Matter General", 
@@ -974,7 +993,7 @@
         }, 
         {
             "description": "Section-IntroductionSIC", 
-            "para_id": "9C8F1927", 
+            "para_id": "64DF1FF1", 
             "para_index": 197, 
             "para_string": "Introduction", 
             "parent_section_start_content": "Introduction", 
@@ -982,7 +1001,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "BAD019FC", 
+            "para_id": "0646DC9B", 
             "para_index": 754, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -990,7 +1009,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "BCA93D4F", 
+            "para_id": "6990BB9A", 
             "para_index": 758, 
             "para_string": "Lesson One: A Definite Chief Aim", 
             "parent_section_start_content": "Lesson One: A Definite Chief Aim", 
@@ -998,7 +1017,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "47DC5772", 
+            "para_id": "0C1F9282", 
             "para_index": 1102, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1006,7 +1025,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "DF3D80CF", 
+            "para_id": "55F08F86", 
             "para_index": 1106, 
             "para_string": "Lesson Two: Self-Confidence", 
             "parent_section_start_content": "Lesson Two: Self-Confidence", 
@@ -1014,7 +1033,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "C8646438", 
+            "para_id": "3D14AAD9", 
             "para_index": 1476, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1022,7 +1041,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "FA853689", 
+            "para_id": "51A6829D", 
             "para_index": 1479, 
             "para_string": "Lesson Three: The Habit of Saving", 
             "parent_section_start_content": "Lesson Three: The Habit of Saving", 
@@ -1030,7 +1049,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "8D5D6421", 
+            "para_id": "54BBC7F6", 
             "para_index": 1824, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1038,7 +1057,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "ABF14159", 
+            "para_id": "3EFF15BC", 
             "para_index": 1827, 
             "para_string": "Lesson Four: Initiative and Leadership", 
             "parent_section_start_content": "Lesson Four: Initiative and Leadership", 
@@ -1046,7 +1065,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "529D89D1", 
+            "para_id": "1B51266D", 
             "para_index": 2221, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1054,7 +1073,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "15BF73C4", 
+            "para_id": "3A7FFFD2", 
             "para_index": 2225, 
             "para_string": "Lesson Five: Imagination", 
             "parent_section_start_content": "Lesson Five: Imagination", 
@@ -1062,7 +1081,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "D57E082B", 
+            "para_id": "4302CA63", 
             "para_index": 2623, 
             "para_string": "Lesson Six: Enthusiasm", 
             "parent_section_start_content": "Lesson Six: Enthusiasm", 
@@ -1070,7 +1089,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "AF8AC775", 
+            "para_id": "1753C3E5", 
             "para_index": 3024, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1078,7 +1097,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "CE976B41", 
+            "para_id": "46781FD5", 
             "para_index": 3027, 
             "para_string": "Lesson Seven: Self-Control", 
             "parent_section_start_content": "Lesson Seven: Self-Control", 
@@ -1086,7 +1105,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "32E5FC4B", 
+            "para_id": "7DE10324", 
             "para_index": 3408, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1094,7 +1113,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "802136A1", 
+            "para_id": "1B0A0A60", 
             "para_index": 3411, 
             "para_string": "Lesson Eight: Habit of Doing More than Paid For", 
             "parent_section_start_content": "Lesson Eight: Habit of Doing More than Paid For", 
@@ -1102,7 +1121,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "B2596912", 
+            "para_id": "2C4B6514", 
             "para_index": 3824, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1110,7 +1129,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "B8015196", 
+            "para_id": "3E615623", 
             "para_index": 3827, 
             "para_string": "Lesson Nine: Pleasing Personality", 
             "parent_section_start_content": "Lesson Nine: Pleasing Personality", 
@@ -1118,7 +1137,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "2AEFFC61", 
+            "para_id": "2F3B999D", 
             "para_index": 4273, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1126,7 +1145,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "3B2C984E", 
+            "para_id": "03F9A857", 
             "para_index": 4276, 
             "para_string": "Lesson Ten: Accurate Thought", 
             "parent_section_start_content": "Lesson Ten: Accurate Thought", 
@@ -1134,7 +1153,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "40F467F8", 
+            "para_id": "71D50CCE", 
             "para_index": 4722, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1142,7 +1161,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "D36EF389", 
+            "para_id": "467A891D", 
             "para_index": 4725, 
             "para_string": "Lesson Eleven: Concentration", 
             "parent_section_start_content": "Lesson Eleven: Concentration", 
@@ -1150,7 +1169,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "89DEED77", 
+            "para_id": "53E0F52E", 
             "para_index": 5046, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1158,7 +1177,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "330DF07F", 
+            "para_id": "2116B20D", 
             "para_index": 5049, 
             "para_string": "Lesson Twelve: Co-Operation", 
             "parent_section_start_content": "Lesson Twelve: Co-Operation", 
@@ -1166,7 +1185,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "285344EE", 
+            "para_id": "5EF00468", 
             "para_index": 5407, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1174,7 +1193,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "4C89E934", 
+            "para_id": "694428A3", 
             "para_index": 5416, 
             "para_string": "Lesson Thirteen: Failure", 
             "parent_section_start_content": "Lesson Thirteen: Failure", 
@@ -1182,7 +1201,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "5E718547", 
+            "para_id": "10846C1B", 
             "para_index": 5842, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1190,7 +1209,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "47C4DA12", 
+            "para_id": "10244FB7", 
             "para_index": 5846, 
             "para_string": "Lesson Fourteen: Tolerance", 
             "parent_section_start_content": "Lesson Fourteen: Tolerance", 
@@ -1198,7 +1217,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "F5C8389D", 
+            "para_id": "067BEB0B", 
             "para_index": 6059, 
             "para_string": "Epigraph", 
             "parent_section_start_content": "Epigraph", 
@@ -1206,7 +1225,7 @@
         }, 
         {
             "description": "Section-ChapterSCP", 
-            "para_id": "D2FE5CF1", 
+            "para_id": "494581BA", 
             "para_index": 6063, 
             "para_string": "Lesson Fifteen: The Golden Rule", 
             "parent_section_start_content": "Lesson Fifteen: The Golden Rule", 
@@ -1214,7 +1233,7 @@
         }, 
         {
             "description": "Section-IndexSIN", 
-            "para_id": "FC01F637", 
+            "para_id": "686A369F", 
             "para_index": 6357, 
             "para_string": "Index", 
             "parent_section_start_content": "Index", 
@@ -1222,7 +1241,7 @@
         }, 
         {
             "description": "Section-About-AuthorSAA", 
-            "para_id": "72FC2FEF", 
+            "para_id": "3CB123B1", 
             "para_index": 7651, 
             "para_string": "About the Author", 
             "parent_section_start_content": "About the Author", 
@@ -1232,7 +1251,7 @@
     "table_blank_para": [
         {
             "description": "blank para found in table cell", 
-            "para_id": "43AD391C", 
+            "para_id": "10FA628C", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1240,7 +1259,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "5D3057A8", 
+            "para_id": "70A359DE", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1248,7 +1267,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "9FFBB902", 
+            "para_id": "45BB7EA7", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1256,7 +1275,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "4F72FF22", 
+            "para_id": "44F6A0D0", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1264,7 +1283,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "E455624C", 
+            "para_id": "448424BA", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1272,7 +1291,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "9699378D", 
+            "para_id": "1C81D342", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1280,7 +1299,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "8DF668EB", 
+            "para_id": "3B923CBB", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1288,7 +1307,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "98445CEF", 
+            "para_id": "74309CC9", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1296,7 +1315,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "7BAB6B3A", 
+            "para_id": "07FBB678", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1304,7 +1323,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "FE080A9C", 
+            "para_id": "5E93DF5A", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1312,7 +1331,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "6BD6CEA7", 
+            "para_id": "69EC5DA7", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1320,7 +1339,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "F8E3C7DC", 
+            "para_id": "3101D4D8", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1328,7 +1347,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "358A04BE", 
+            "para_id": "2E4F1EF0", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1336,7 +1355,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "2669FB95", 
+            "para_id": "2C62A711", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1344,7 +1363,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "0FE87766", 
+            "para_id": "5FB014C2", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1352,7 +1371,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "AFBE468F", 
+            "para_id": "011951AA", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1360,7 +1379,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "9DF3E97B", 
+            "para_id": "435E8B8C", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1368,7 +1387,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "AFD8C3A4", 
+            "para_id": "1D1C5AD2", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1376,7 +1395,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "48C50955", 
+            "para_id": "63D4EAE0", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1384,7 +1403,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "ADD72420", 
+            "para_id": "7A43833D", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1392,7 +1411,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "2D45C8DE", 
+            "para_id": "0B0EC2A2", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1400,7 +1419,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "788ACF9E", 
+            "para_id": "504D83E9", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1408,7 +1427,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "CE73FA39", 
+            "para_id": "48CA714A", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1416,7 +1435,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "C73C8482", 
+            "para_id": "273EB66D", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1424,7 +1443,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "98DAC763", 
+            "para_id": "2BE92C8B", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1432,7 +1451,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "64392274", 
+            "para_id": "5C339306", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1440,7 +1459,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "3F1F9F00", 
+            "para_id": "419C35C8", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1448,7 +1467,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "3332EFEA", 
+            "para_id": "6B6E939D", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1456,7 +1475,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "7ACC6E40", 
+            "para_id": "0C21EE8A", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1464,7 +1483,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "86643AEB", 
+            "para_id": "3039C0D9", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1472,7 +1491,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "C58B3C12", 
+            "para_id": "32A80532", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1480,7 +1499,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "CEE2C859", 
+            "para_id": "564A2EEB", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1488,7 +1507,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "99C55416", 
+            "para_id": "76F6DEA9", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1496,7 +1515,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "0C86A30A", 
+            "para_id": "398EC5ED", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1504,7 +1523,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "05126B80", 
+            "para_id": "354BDD68", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1512,7 +1531,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "46D60870", 
+            "para_id": "23FA5287", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1520,7 +1539,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "11476B00", 
+            "para_id": "553CD8D0", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1528,7 +1547,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "881ECB55", 
+            "para_id": "289BAF3B", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1536,7 +1555,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "97B3C8EE", 
+            "para_id": "779E380E", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1544,7 +1563,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "969F2724", 
+            "para_id": "722F0E1A", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1552,7 +1571,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "2E9D12F4", 
+            "para_id": "123CF488", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1560,7 +1579,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "C7A22FC4", 
+            "para_id": "46E52CA1", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1568,7 +1587,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "8759FA7E", 
+            "para_id": "60EDF4C1", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1576,7 +1595,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "65CFA73A", 
+            "para_id": "63113C98", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1584,7 +1603,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "418CEBF2", 
+            "para_id": "274E8869", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1592,7 +1611,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "6AFA73C4", 
+            "para_id": "3D55100F", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1600,7 +1619,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "C69FC340", 
+            "para_id": "0355D73C", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1608,7 +1627,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "3A0BFADD", 
+            "para_id": "4C530564", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1616,7 +1635,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "4D3199B3", 
+            "para_id": "2802999B", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1624,7 +1643,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "7326DC4A", 
+            "para_id": "007A01C3", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1632,7 +1651,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "3E839E9D", 
+            "para_id": "63A2347C", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1640,7 +1659,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "55C7560E", 
+            "para_id": "2680469C", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1648,7 +1667,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "21D5AC68", 
+            "para_id": "2221A032", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1656,7 +1675,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "303A7EDC", 
+            "para_id": "08A22289", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1664,7 +1683,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "1549251A", 
+            "para_id": "4F139E29", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1672,7 +1691,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "7B2EA3CD", 
+            "para_id": "27346E3D", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1680,7 +1699,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "C7BAD690", 
+            "para_id": "2175EFE1", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Introduction", 
@@ -1688,7 +1707,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "7CC1DC28", 
+            "para_id": "7F2330C7", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Lesson Three: The Habit of Saving", 
@@ -1696,7 +1715,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "45E51D54", 
+            "para_id": "46B08332", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Lesson Three: The Habit of Saving", 
@@ -1704,7 +1723,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "12E14F11", 
+            "para_id": "0DFC7142", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Lesson Three: The Habit of Saving", 
@@ -1712,7 +1731,7 @@
         }, 
         {
             "description": "blank para found in table cell", 
-            "para_id": "EFF927A5", 
+            "para_id": "5FB0B3F6", 
             "para_index": "tablecell_para", 
             "para_string": "", 
             "parent_section_start_content": "Lesson Three: The Habit of Saving", 
@@ -1722,7 +1741,7 @@
     "title_paras": [
         {
             "description": "The Law of Success", 
-            "para_id": "A878DD81", 
+            "para_id": "6FFFA109", 
             "para_index": 6, 
             "para_string": "The Law of Success", 
             "parent_section_start_content": "Titlepage", 

@@ -171,7 +171,7 @@
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
-            "description": "VERSE-A > Verse1 (Vrs1)", 
+            "description": "Verse1 (Vrs1)", 
             "para_id": "227ED94B", 
             "para_index": 229, 
             "para_string": "\u201cBlow, Gabriel!\u201d", 
@@ -179,7 +179,7 @@
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
-            "description": "VERSE-A > Verse1-indent1 (Vrs1-i1)", 
+            "description": "Verse1-indent1 (Vrs1-i1)", 
             "para_id": "7762E8DC", 
             "para_index": 230, 
             "para_string": "\u201cAt the Judgment.\u201d", 
@@ -208,14 +208,6 @@
             "para_index": 368, 
             "para_string": "Notation 32:", 
             "parent_section_start_content": "2", 
-            "parent_section_start_type": "Section-ChapterSCP"
-        }, 
-        {
-            "description": "Verse1 (Vrs1)", 
-            "para_id": "257E97F9", 
-            "para_index": 459, 
-            "para_string": "Oh, the grand old Duke of York,", 
-            "parent_section_start_content": "3", 
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
@@ -283,6 +275,32 @@
             "para_string": "P. DJ\u00c8L\u00cd CLARK", 
             "parent_section_start_content": "Titlepage", 
             "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "container_end_error": [
+        {
+            "description": "END (END)", 
+            "para_id": "69AC8C7F", 
+            "para_index": 237, 
+            "para_string": "END", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "END (END)", 
+            "para_id": "14C8B076", 
+            "para_index": 756, 
+            "para_string": "END", 
+            "parent_section_start_content": "6", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "END (END)", 
+            "para_id": "1EFDC049", 
+            "para_index": 789, 
+            "para_string": "END", 
+            "parent_section_start_content": "6", 
+            "parent_section_start_type": "Section-ChapterSCP"
         }
     ], 
     "deleted_objects-bookmarks": [
@@ -755,6 +773,32 @@
             "para_index": 987, 
             "para_string": "My eyes roll up to meet his empty sockets and", 
             "parent_section_start_content": "7", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "non-Macmillan_style_used": [
+        {
+            "description": "VERSE-A (VRS-A)", 
+            "para_id": "3B64BBA1", 
+            "para_index": 228, 
+            "para_string": "VERSE-A", 
+            "parent_section_start_content": "2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "VERSE-A (VRS-A)", 
+            "para_id": "38223F0C", 
+            "para_index": 751, 
+            "para_string": "VERSE-A", 
+            "parent_section_start_content": "6", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "VERSE-A (VRS-A)", 
+            "para_id": "3C08D23A", 
+            "para_index": 784, 
+            "para_string": "VERSE-A", 
+            "parent_section_start_content": "6", 
             "parent_section_start_type": "Section-ChapterSCP"
         }
     ], 

@@ -4,6 +4,18 @@ Problems were found with the styles in your document.
 
 
 ------------------------------------ ERRORS ------------------------------------
+** ERROR: Non-Macmillan style 'VERSE-A (VRS-A)' in Section-Chapter (SCP): "2".
+
+** ERROR: Non-Macmillan style 'VERSE-A (VRS-A)' in Section-Chapter (SCP): "6".
+
+** ERROR: Non-Macmillan style 'VERSE-A (VRS-A)' in Section-Chapter (SCP): "6".
+
+** ERROR: Found a Container END para with no corresponding Container Start; in Section-Chapter (SCP): "2".
+
+** ERROR: Found a Container END para with no corresponding Container Start; in Section-Chapter (SCP): "6".
+
+** ERROR: Found a Container END para with no corresponding Container Start; in Section-Chapter (SCP): "6".
+
 ** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'Butcher[ Clyde] ' (located in Section-Chapter (SCP): "4"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
 ** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'NightDoctor.jpg>' (located in Section-Chapter (SCP): "9"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
@@ -120,14 +132,11 @@ Image-Placement (Img)........................ "Goodone.jpg"
 
 * Section-Chapter (SCP): "2"
 Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
-VERSE-A > Verse1 (Vrs1)...................... "“Blow, Gabriel!”"                                      
-VERSE-A > Verse1-indent1 (Vrs1-i1)........... "“At the Judgment.”"                                    
+Verse1 (Vrs1)................................ "“Blow, Gabriel!”"                                      
+Verse1-indent1 (Vrs1-i1)..................... "“At the Judgment.”"                                    
 Ornamental-Space-Break (Osbrk)............... "***"                                                       
 Separator (Sep).............................. "[separator]"                                               
 Custom1 (Cust1).............................. "Notation 32:"                                              
-
-* Section-Chapter (SCP): "3"
-Verse1 (Vrs1)................................ "Oh, the grand old Duke of York,"                           
 
 * Section-Chapter (SCP): "9"
 Verse2 (Vrs2)................................ "Night Doctors, Night Doctors"                              

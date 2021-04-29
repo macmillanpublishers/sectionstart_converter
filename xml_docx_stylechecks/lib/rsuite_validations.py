@@ -516,7 +516,14 @@ def flagCustomNoteMarks(xml_root, report_dict, ref_style_dict):
                 # get text, id of custom mark
                 ref_run = customref_el.getparent()
                 ref_text_el = ref_run.find(".//w:t", wordnamespaces)
-                reftext = ref_text_el.text
+                if ref_text_el is not None:
+                    reftext = ref_text_el.text
+                else:
+                    ref_sym_el = ref_run.find(".//w:sym", wordnamespaces)
+                    if ref_sym_el is not None:
+                        reftext = "(custom ref-mark is symbol not text)"
+                    else:
+                        reftext = "(custom ref-mark is not symbol or text)"
                 attrib_id_key = '{%s}id' % wnamespace
                 ref_id = customref_el.get(attrib_id_key)
                 para = lxml_utils.getParaParentofElement(ref_run)

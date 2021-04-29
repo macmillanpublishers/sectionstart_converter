@@ -63,8 +63,13 @@
          <w:pPr>
             <w:pStyle w:val="Main-HeadMHead"/>
          </w:pPr>
+         <w:proofErr w:type="gramStart"/>
          <w:r w:rsidRPr="00152908">
-            <w:t>Also by Nnedi Okorafor</w:t>
+            <w:t>Also</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="00152908">
+            <w:t xml:space="preserve"> by Nnedi Okorafor</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="1D373851" w14:textId="77777777" w:rsidP="002B7DE5" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="002B7DE5">
@@ -557,8 +562,13 @@
          <w:pPr>
             <w:pStyle w:val="Epigraph-Non-VerseEpi"/>
          </w:pPr>
+         <w:proofErr w:type="gramStart"/>
          <w:r>
-            <w:t>So the next time you encounter</w:t>
+            <w:t>So</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> the next time you encounter</w:t>
          </w:r>
          <w:r w:rsidR="00DE7495">
             <w:t xml:space="preserve"> </w:t>
@@ -570,7 +580,15 @@
             <w:t>inline_image.jpg</w:t>
          </w:r>
          <w:r>
-            <w:t xml:space="preserve"> fear, consider yourself lucky. This is where the courage comes in. Usually we think that brave people have no fear. The truth is that they are intimate with fear.</w:t>
+            <w:t xml:space="preserve"> fear, consider yourself lucky. This is where the courage comes in. </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>Usually</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> we think that brave people have no fear. The truth is that they are intimate with fear.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="586148E6" w14:textId="5E2B1483" w:rsidP="002B7DE5" w:rsidR="00F75C2D" w:rsidRDefault="00F75C2D">
@@ -804,11 +822,11 @@
             <w:t>which braces my nerves and fills me with delight</w:t>
          </w:r>
          <w:r w:rsidRPr="00F5395A">
-            <w:t xml:space="preserve">. Do you understand this </w:t>
+            <w:t xml:space="preserve">. Do you understand this feeling? This breeze, which has travelled from the regions towards which I am advancing, gives me a foretaste of those icy climes. Inspirited by this wind of promise, </w:t>
          </w:r>
          <w:r w:rsidRPr="00F5395A">
             <w:lastRenderedPageBreak/>
-            <w:t>feeling? This breeze, which has travelled from the regions towards which I am advancing, gives me a foretaste of those icy climes. Inspirited by this wind of promise, my daydreams become more fervent and vivid. I try in vain to be persuaded that the pole is the seat of frost and desolation; it ever presents itself to my imagination as the region of beaut</w:t>
+            <w:t>my daydreams become more fervent and vivid. I try in vain to be persuaded that the pole is the seat of frost and desolation; it ever presents itself to my imagination as the region of beaut</w:t>
          </w:r>
          <w:r w:rsidR="00160D71">
             <w:rPr>
@@ -896,7 +914,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t xml:space="preserve">But I have one want which I have never yet been able to satisfy, and the absence of the object of which I now feel as a most severe evil, I have no friend, Margaret: when I am glowing with the enthusiasm of success, there will be none to participate my joy; if I am assailed by disappointment, no one will endeavour to sustain me in dejection. I shall commit my thoughts to paper, it is true; but that is a poor medium for the communication of feeling. I desire the company of a man who could sympathize with me, whose eyes would reply to mine. You may deem me romantic, my dear sister, but I bitterly feel the want of a friend. I have no one near me, gentle yet courageous, possessed of a cultivated as well as of a capacious mind, whose tastes are like my own, to approve or amend my plans. How would such a friend repair the faults of your poor brother! I am too ardent in execution and too impatient of difficulties. But it is a still greater evil to me that I am self-educated: for the first fourteen years of my life I ran wild on a common and read nothing but our Uncle Thomas' books of voyages. At that age I became acquainted with the celebrated poets of our own country; but it was only when it had ceased to be in my power to derive its most important benefits from such a conviction that I perceived the </w:t>
+            <w:t xml:space="preserve">But I have one want which I have never yet been able to satisfy, and the absence of the object of which I now feel as a most severe evil, I have no friend, Margaret: when I am glowing with the enthusiasm of success, there will be none to participate my joy; if I am assailed by disappointment, no one will endeavour to sustain me in dejection. I shall commit my thoughts to paper, it is true; but that is a poor medium for the communication of feeling. I desire the company of a man who could sympathize with me, whose eyes would reply to mine. You may deem me romantic, my dear sister, but I bitterly feel the want of a friend. I have no one near me, gentle yet courageous, possessed of a cultivated as well as of a capacious mind, whose tastes are like my own, to approve or amend my plans. How would such a friend repair the faults of your poor brother! I am too ardent in execution and too impatient of difficulties. But it is a still greater evil to me that I am self-educated: for the first fourteen years of my </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>life</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> I ran wild on a common and read nothing but our Uncle Thomas' books of voyages. At that age I became acquainted with the celebrated poets of our own country; but it was only when it had ceased to be in my power to derive its most important benefits from such a conviction that I perceived the </w:t>
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
@@ -904,7 +930,15 @@
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
-            <w:t>owes to him the happiness of her life. This, briefly, is his story. Some years ago he loved a young Russian lady of moderate fortune, and having amassed a considerable sum in prize-money, the father of the girl consented to the match. He saw his mistress once before the destined ceremony; but she was bathed in tears, and throwing herself at his feet, entreated him to spare her, confessing at the same time that she loved another, but that he was poor, and that her father would never consent to the union. My generous friend reassured the suppliant, and on being informed of the name of her lover, instantly abandoned his pursuit. He had already bought a farm with his money, on which he had designed to pass the remainder of his life; but he bestowed the whole on his rival, together with the remains of his prize-money to purchase stock, and then himself solicited the young woman's father to consent to her marriage with her lover. But the old man decidedly refused, thinking himself bound in honour to my friend, who, when he found the father inexorable, quitted his country, nor returned until he heard that his former mistress was married according to her inclinations. &quot;What a noble fellow!&quot; you will exclaim. He is so; but then he is wholly uneducated: he is as silent as a Turk, and a kind of ignorant carelessness attends him, which, while it renders his conduct the more astonishing, detracts from the interest and sympathy which otherwise he would command.</w:t>
+            <w:t xml:space="preserve">owes to him the happiness of her life. This, briefly, is his story. Some years </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>ago</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> he loved a young Russian lady of moderate fortune, and having amassed a considerable sum in prize-money, the father of the girl consented to the match. He saw his mistress once before the destined ceremony; but she was bathed in tears, and throwing herself at his feet, entreated him to spare her, confessing at the same time that she loved another, but that he was poor, and that her father would never consent to the union. My generous friend reassured the suppliant, and on being informed of the name of her lover, instantly abandoned his pursuit. He had already bought a farm with his money, on which he had designed to pass the remainder of his life; but he bestowed the whole on his rival, together with the remains of his prize-money to purchase stock, and then himself solicited the young woman's father to consent to her marriage with her lover. But the old man decidedly refused, thinking himself bound in honour to my friend, who, when he found the father inexorable, quitted his country, nor returned until he heard that his former mistress was married according to her inclinations. &quot;What a noble fellow!&quot; you will exclaim. He is so; but then he is wholly uneducated: he is as silent as a Turk, and a kind of ignorant carelessness attends him, which, while it renders his conduct the more astonishing, detracts from the interest and sympathy which otherwise he would command.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="1AAA4799" w14:textId="2C38B96E" w:rsidP="002B7DE5" w:rsidR="00AD06F6" w:rsidRDefault="00AD06F6">
@@ -924,7 +958,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t>I cannot describe to you my sensations on the near prospect of my undertaking. It is impossible to communicate to you a conception of the trembling sensation, half pleasurable and half fearful, with which I am preparing to depart. I am going to unexplored regions, to &quot;the land of mist and snow,&quot; but I shall kill no albatross; therefore do not be alarmed for my safety or if I should come back to you as worn and woeful as the &quot;Ancient Mariner.&quot; You will smile at my allusion, but I will disclose a secret. I have often attributed my attachment to, my passionate enthusiasm for, the dangerous mysteries of ocean to that production of the most imaginative of modern poets. There is something at work in my soul which I do not understand. I am practically industrious—painstaking, a workman to execute with perseverance and labour—but besides this there is a love for the marvellous, a belief in the marvellous, intertwined in all my projects, which hurries me out of the common pathways of men, even to the wild sea and unvisited regions I am about to explore. But to return to dearer considerations. Shall I meet you again, after having traversed immense seas, and returned by the most southern cape of Africa or America? I dare not expect such success, yet I cannot bear to look on the reverse of the picture. Continue for the present to write to me by every opportunity: I may receive your letters on some occasions when I need them most to support my spirits. I love you very tenderly. Remember me with affection, should you never hear from me again.</w:t>
+            <w:t xml:space="preserve">I cannot describe to you my sensations on the near prospect of my undertaking. It is impossible to communicate to you a conception of the trembling sensation, half pleasurable and half fearful, with which I am preparing to depart. I am going to unexplored regions, to &quot;the land of mist and snow,&quot; but I shall kill no albatross; </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>therefore</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> do not be alarmed for my safety or if I should come back to you as worn and woeful as the &quot;Ancient Mariner.&quot; You will smile at my allusion, but I will disclose a secret. I have often attributed my attachment to, my passionate enthusiasm for, the dangerous mysteries of ocean to that production of the most imaginative of modern poets. There is something at work in my soul which I do not understand. I am practically industrious—painstaking, a workman to execute with perseverance and labour—but besides this there is a love for the marvellous, a belief in the marvellous, intertwined in all my projects, which hurries me out of the common pathways of men, even to the wild sea and unvisited regions I am about to explore. But to return to dearer considerations. Shall I meet you again, after having traversed immense seas, and returned by the most southern cape of Africa or America? I dare not expect such success, yet I cannot bear to look on the reverse of the picture. Continue for the present to write to me by every opportunity: I may receive your letters on some occasions when I need them most to support my spirits. I love you very tenderly. Remember me with affection, should you never hear from me again.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="183AFE5A" w14:textId="1CE769A9" w:rsidP="002B7DE5" w:rsidR="00C840B8" w:rsidRDefault="00AD06F6" w:rsidRPr="005A2304">
@@ -1005,7 +1047,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t>I am by birth a Genevese, and my family is one of the most distinguished of that republic. My ancestors had been for many years counsellors and syndics, and my father had filled several public situations with honour and reputation. He was respected by all who knew him for his integrity and indefatigable attention to public business. He passed his younger days perpetually occupied by the affairs of his country; a variety of circumstances had prevented his marrying early, nor was it until the decline of life that he became a husband and the father of a family.</w:t>
+            <w:t xml:space="preserve">I am by birth a Genevese, and my family is one of the most distinguished of that republic. My ancestors had been for many </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>years</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> counsellors and syndics, and my father had filled several public situations with honour and reputation. He was respected by all who knew him for his integrity and indefatigable attention to public business. He passed his younger days perpetually occupied by the affairs of his country; a variety of circumstances had prevented his marrying early, nor was it until the decline of life that he became a husband and the father of a family.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="1ECC4F6F" w14:textId="121CFCB5" w:rsidP="002B7DE5" w:rsidR="008B4EB5" w:rsidRDefault="008B4EB5">
@@ -1034,7 +1084,23 @@
             <w:t>Beaufort had saved but a very small sum of money from the wreck of his fortunes</w:t>
          </w:r>
          <w:r>
-            <w:t>, but it was sufficient to provide him with sustenance for some months, and in the meantime he hoped to procure some respectable employment in a merchant's house. The interval was, consequently, spent in inaction; his grief only became more deep and rankling when he had leisure for reflection, and at length it took so fast hold of his mind that at the end of three months he lay on a bed of sickness, incapable of any exertion.</w:t>
+            <w:t xml:space="preserve">, but it was sufficient to provide him with sustenance for some months, and in the </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>meantime</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> he hoped to procure some respectable employment in a merchant's house. The interval was, consequently, spent in inaction; his grief only became </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>more deep</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> and rankling when he had leisure for reflection, and at length it took so fast hold of his mind that at the end of three months he lay on a bed of sickness, incapable of any exertion.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="3362C458" w14:textId="29849B7B" w:rsidP="002B7DE5" w:rsidR="008B4EB5" w:rsidRDefault="008B4EB5">
@@ -1050,7 +1116,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t>Several months passed in this manner. Her father grew worse; her time was more entirely occupied in attending him; her means of subsistence decreased; and in the tenth month her father died in her arms, leaving her an orphan and a beggar. This last blow overcame her, and she knelt by Beaufort's coffin weeping bitterly, when my father entered the chamber. He came like a protecting spirit to the poor girl, who committed herself to his care; and after the interment of his friend he conducted her to Geneva and placed her under the protection of a relation. Two years after this event Caroline became his wife.</w:t>
+            <w:t xml:space="preserve">Several months passed in this manner. Her father grew worse; her time was more entirely occupied in attending him; her means of subsistence decreased; and in the tenth month her father died in her arms, leaving her an orphan and a beggar. This last blow overcame her, and she knelt by Beaufort's coffin weeping bitterly, when my father entered the chamber. He came like a protecting spirit to the poor girl, who committed herself to his care; and after the interment of his </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>friend</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> he conducted her to Geneva and placed her under the protection of a relation. Two years after this event Caroline became his wife.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="141A1990" w14:textId="518BF6D4" w:rsidP="002B7DE5" w:rsidR="00C840B8" w:rsidRDefault="002B7DE5">
@@ -1078,7 +1152,15 @@
             </w:rPr>
          </w:pPr>
          <w:r w:rsidRPr="008B4EB5">
-            <w:t>There was a considerable difference between the ages of my parents, but this circumstance seemed to unite them only closer in bonds of devoted affection. There was a sense of justice in my father's upright mind which rendered it necessary that he should approve highly to love strongly. Perhaps during former years he had suffered from the late-discovered unworthiness of one beloved and so was disposed to set a greater value on tried worth. There was a show of gratitude and worship in his attachment to my mother, differing wholly from the doting fondness of age, for it was inspired by reverence for her virtues and a desire to be the means of, in some degree, recompensing her for the sorrows she had endured, but which gave inexpressible grace to his behaviour to her. Everything was made to yield to her wishes and her convenience. He strove to shelter her, as a fair exotic is sheltered by the gardener, from every rougher wind and to surround her with all that could tend to excite pleasurable emotion in her soft and benevolent mind. Her health, and even the tranquillity of her hitherto constant spirit, had been shaken by what she had gone through. During the two years that had elapsed previous to their marriage my father had gradually relinquished all his public functions; and immediately after their union they sought the pleasant climate of Italy, and the change of scene and interest attendant on a tour through that land of wonders, as a restorative for her weakened frame.</w:t>
+            <w:t xml:space="preserve">There was a considerable difference between the ages of my parents, but this circumstance seemed to unite them only closer in bonds of devoted affection. There was a sense of justice in my father's upright mind which rendered it necessary that he should approve highly to love strongly. Perhaps during former </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="008B4EB5">
+            <w:t>years</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="008B4EB5">
+            <w:t xml:space="preserve"> he had suffered from the late-discovered unworthiness of one beloved and so was disposed to set a greater value on tried worth. There was a show of gratitude and worship in his attachment to my mother, differing wholly from the doting fondness of age, for it was inspired by reverence for her virtues and a desire to be the means of, in some degree, recompensing her for the sorrows she had endured, but which gave inexpressible grace to his behaviour to her. Everything was made to yield to her wishes and her convenience. He strove to shelter her, as a fair exotic is sheltered by the gardener, from every rougher wind and to surround her with all that could tend to excite pleasurable emotion in her soft and benevolent mind. Her health, and even the tranquillity of her hitherto constant spirit, had been shaken by what she had gone through. During the two years that had elapsed previous to their marriage my father had gradually relinquished all his public functions; and immediately after their union they sought the pleasant climate of Italy, and the change of scene and interest attendant on a tour through that land of wonders, as a restorative for her weakened frame.</w:t>
          </w:r>
          <w:r w:rsidRPr="002B7DE5">
             <w:rPr>
@@ -1474,7 +1556,21 @@
             <w:rPr>
                <w:rStyle w:val="bookmaker-keep-togetherbkt"/>
             </w:rPr>
-            <w:t xml:space="preserve">bookmaker keep together (kt) </w:t>
+            <w:t xml:space="preserve">bookmaker </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="001E3326">
+            <w:rPr>
+               <w:rStyle w:val="bookmaker-keep-togetherbkt"/>
+            </w:rPr>
+            <w:t>keep</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="001E3326">
+            <w:rPr>
+               <w:rStyle w:val="bookmaker-keep-togetherbkt"/>
+            </w:rPr>
+            <w:t xml:space="preserve"> together (kt) </w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="6C862368" w14:textId="77777777" w:rsidP="002B7DE5" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="00F75827">
@@ -1549,7 +1645,15 @@
          </w:pPr>
          <w:r>
             <w:lastRenderedPageBreak/>
-            <w:t>No human being could have passed a happier childhood than myself. My parents were possessed by the very spirit of kindness and indulgence. We felt that they were not the tyrants to rule our lot according to their caprice, but the agents and creators of all the many delights which we enjoyed. When I mingled with other families I distinctly discerned how peculiarly fortunate my lot was, and gratitude assisted the development of filial love.</w:t>
+            <w:t xml:space="preserve">No human being could have passed a happier childhood than myself. My parents were possessed by the very spirit of kindness and indulgence. We felt that they were not the tyrants to rule our lot according to their caprice, but the agents and creators of all the many delights which we enjoyed. When I mingled with other </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>families</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> I distinctly discerned how peculiarly fortunate my lot was, and gratitude assisted the development of filial love.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="54CFFB0B" w14:textId="69079183" w:rsidP="002B7DE5" w:rsidR="0002512F" w:rsidRDefault="0002512F">
@@ -1557,7 +1661,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t>My temper was sometimes violent, and my passions vehement; but by some law in my temperature they were turned not towards childish pursuits but to an eager desire to learn, and not to learn all things indiscriminately. I confess that neither the structure of languages, nor the code of governments, nor the politics of various states possessed attractions for me. It was the secrets of heaven and earth that I desired to learn; and whether it was the outward substance of things or the inner spirit of nature and the mysterious soul of man that occupied me, still my inquiries were directed to the metaphysical, or in its highest sense, the physical secrets of the world.</w:t>
+            <w:t xml:space="preserve">My temper was sometimes violent, and my passions vehement; but by some law in my </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>temperature</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> they were turned not towards childish pursuits but to an eager desire to learn, and not to learn all things indiscriminately. I confess that neither the structure of languages, nor the code of governments, nor the politics of various states possessed attractions for me. It was the secrets of heaven and earth that I desired to learn; and whether it was the outward substance of things or the inner spirit of nature and the mysterious soul of man that occupied me, still my inquiries were directed to the metaphysical, or in its highest sense, the physical secrets of the world.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="3AEE88B5" w14:textId="6176D951" w:rsidP="001E3326" w:rsidR="00C840B8" w:rsidRDefault="001E3326" w:rsidRPr="009A405C">
@@ -1573,7 +1685,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r w:rsidRPr="0002512F">
-            <w:t xml:space="preserve">Meanwhile Clerval occupied himself, so to speak, with the moral relations of things. The busy stage of life, the virtues of heroes, and the actions of men were his theme; and his hope and his dream was to become one among those whose names are recorded in story as the gallant and adventurous benefactors of our species. The saintly soul of Elizabeth shone like a shrine-dedicated lamp in our peaceful home. Her sympathy was ours; her smile, her soft voice, the sweet glance of her celestial eyes, were ever there to bless and animate us. She was the living spirit of love to soften and attract; I might have become sullen in my study, rough through the ardour of my nature, but that she was </w:t>
+            <w:t xml:space="preserve">Meanwhile Clerval occupied himself, so to speak, with the moral relations of things. The busy stage of life, the virtues of heroes, and the actions of men were his theme; and his hope and his dream </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="0002512F">
+            <w:t>was</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="0002512F">
+            <w:t xml:space="preserve"> to become one among those whose names are recorded in story as the gallant and adventurous benefactors of our species. The saintly soul of Elizabeth shone like a shrine-dedicated lamp in our peaceful home. Her sympathy was ours; her smile, her soft voice, the sweet glance of her celestial eyes, were ever there to bless and animate us. She was the living spirit of love to soften and attract; I might have become sullen in my study, rough through the ardour of my nature, but that she was </w:t>
          </w:r>
          <w:r w:rsidRPr="0002512F">
             <w:lastRenderedPageBreak/>
@@ -1775,7 +1895,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t>Besides, in drawing the picture of my early days, I also record those events which led, by insensible steps, to my after tale of misery, for when I would account to myself for the birth of that passion which afterwards ruled my destiny I find it arise, like a mountain river</w:t>
+            <w:t xml:space="preserve">Besides, in drawing the picture of my early days, I also record those events which led, by insensible steps, to </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>my</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> after tale of misery, for when I would account to myself for the birth of that passion which afterwards ruled my destiny I find it arise, like a mountain river</w:t>
          </w:r>
          <w:r w:rsidRPr="002B7DE5">
             <w:rPr>
@@ -1804,7 +1932,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t xml:space="preserve">When I was thirteen years of age we all went on a party of pleasure to the baths near Thonon; </w:t>
+            <w:t xml:space="preserve">When I was thirteen years of </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>age</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> we all went on a party of pleasure to the baths near Thonon; </w:t>
          </w:r>
          <w:r w:rsidRPr="002B7DE5">
             <w:rPr>
@@ -1821,7 +1957,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t>Testing a centered paragraph on it’s own.</w:t>
+            <w:t xml:space="preserve">Testing a centered paragraph on </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>it’s</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> own.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="7F764DCA" w14:textId="77777777" w:rsidP="000872F7" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="009A405C">
@@ -1908,7 +2052,31 @@
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
-            <w:t xml:space="preserve">regard to my favourite studies. My father was not scientific, and I was left to struggle with a child's blindness, added to a student's thirst for knowledge. Under the guidance of my new preceptors I entered with the greatest diligence into the search of the philosopher's stone and the elixir of life; but the latter soon obtained my undivided attention. Wealth was an inferior object, but what glory would attend the discovery if I could banish disease from the human frame and render man invulnerable to any but a violent death! Nor were these my only visions. The raising of ghosts or devils was a promise liberally accorded by my favourite authors, the fulfilment of which I most eagerly sought; and if my incantations were always unsuccessful, I attributed the failure rather to my own inexperience and mistake than to a want of skill or fidelity in my instructors. And thus for a time I was occupied by exploded systems, mingling, like an unadept, a thousand contradictory theories and floundering desperately in a very slough of multifarious knowledge, guided by an ardent imagination and childish reasoning, till an accident again changed the current of my ideas. When I was about fifteen years old we had retired to our house near Belrive, when we witnessed a most violent and terrible thunderstorm. It advanced from behind the mountains of Jura, and the thunder burst at once with frightful loudness from various quarters of the heavens. I remained, while the storm lasted, watching its progress with curiosity and delight. As I stood at the door, on a sudden I beheld a stream of fire issue from an old and beautiful oak which stood about twenty yards from our house; and so soon as the dazzling light vanished, the oak had disappeared, and nothing remained but a blasted stump. When we visited it the next morning, we found the tree shattered in a singular manner. It was not splintered by the shock, but entirely reduced to thin ribbons of wood. I never beheld anything so utterly </w:t>
+            <w:t xml:space="preserve">regard to my favourite studies. My father was not scientific, and I was left to struggle with a child's blindness, added to a student's thirst for knowledge. Under the guidance of my new </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>preceptors</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> I entered with the greatest diligence into the search of the philosopher's stone and the elixir of life; but the latter soon obtained my undivided attention. Wealth was an inferior object, but what glory would attend the discovery if I could banish disease from the human frame and render man invulnerable to any but a violent death! Nor were these my only visions. The raising of ghosts or devils was a promise liberally accorded by my favourite authors, the fulfilment of which I most eagerly sought; and if my incantations were always unsuccessful, I attributed the failure rather to my own inexperience and mistake than to a want of skill or fidelity in my instructors. And </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>thus</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> for a time I was occupied by exploded systems, mingling, like an unadept, a thousand contradictory theories and floundering desperately in a very slough of multifarious knowledge, guided by an ardent imagination and childish reasoning, till an accident again changed the current of my ideas. When I was about fifteen years </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>old</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> we had retired to our house near Belrive, when we witnessed a most violent and terrible thunderstorm. It advanced from behind the mountains of Jura, and the thunder burst at once with frightful loudness from various quarters of the heavens. I remained, while the storm lasted, watching its progress with curiosity and delight. As I stood at the door, on a sudden I beheld a stream of fire issue from an old and beautiful oak which stood about twenty yards from our house; and so soon as the dazzling light vanished, the oak had disappeared, and nothing remained but a blasted stump. When we visited it the next morning, we found the tree shattered in a singular manner. It was not splintered by the shock, but entirely reduced to thin ribbons of wood. I never beheld anything so utterly </w:t>
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
@@ -2764,15 +2932,28 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t>Before this I was not unacquainted with the more obvious laws of electricity. On this occasion a man of great research in natural philosophy was with us, and excited by this catastrophe, he entered on the explanation of a theory which he had formed on the subject of electricity and galvanism, which was at once new and astonishing to me. All that he said threw greatly into the shade Cornelius Agrippa, Albertus Magnus, and Paracelsus, the lords of my imagination; but by some fatality the overthrow of these men disinclined me to pursue my accustomed studies. It seemed to me as if nothing would or could ever be known. All that had so long engaged my attention suddenly grew despicable. By one of those caprices of the mind which we are perhaps most subject to in early youth, I at once gave up my former occupations, set down natural history and all its progeny as a deformed and abortive creation, and entertained the greatest disdain for a would-be science which could never even step within the threshold of real knowledge. In this mood of mind I betook myself to the mathematics and the branches of study appertaining to that science as being built upon secure foundations, and so worthy of my consideration.</w:t>
+            <w:t xml:space="preserve">Before this I was not unacquainted with the more obvious laws of electricity. On this occasion a man of great research in natural philosophy was with us, and excited by this catastrophe, he entered on the explanation of a theory which he had formed on the subject of electricity and galvanism, which was at once new and astonishing to me. All that he said threw greatly into the shade Cornelius Agrippa, Albertus Magnus, and Paracelsus, the lords of my imagination; but by some fatality the overthrow of these men disinclined me to pursue my accustomed studies. It seemed to me as if nothing would or could ever be known. All that had so long engaged my attention suddenly grew despicable. By one of those caprices of the mind which we are perhaps most subject to in early youth, I at once gave up my former occupations, set down natural history and all its progeny as a deformed and abortive creation, and entertained the greatest disdain for a would-be science which could never even step within the threshold of real knowledge. In this mood of </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>mind</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> I betook myself to the mathematics and the branches of study appertaining to that science as being built upon secure foundations, and so worthy of my consideration.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="5037AA29" w14:textId="0E17B258" w:rsidP="002B7DE5" w:rsidR="00CD1D0C" w:rsidRDefault="00CD1D0C">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
+         <w:proofErr w:type="gramStart"/>
          <w:r>
-            <w:t xml:space="preserve">Thus strangely are our souls constructed, and by such slight ligaments are we bound to prosperity or ruin. When I look back, it seems to me as if this almost miraculous change of inclination and will was the immediate suggestion of the guardian angel of my life—the last effort made by the spirit of preservation to avert the storm that was even then hanging in the stars and ready to envelop me. Her victory was announced by an </w:t>
+            <w:t>Thus</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> strangely are our souls constructed, and by such slight ligaments are we bound to prosperity or ruin. When I look back, it seems to me as if this almost miraculous change of inclination and will was the immediate suggestion of the guardian angel of my life—the last effort made by the spirit of preservation to avert the storm that was even then hanging in the stars and ready to envelop me. Her victory was announced by an </w:t>
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
@@ -2900,7 +3081,15 @@
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
-            <w:t>He had endeavoured to persuade his father to permit him to accompany me and to become my fellow student, but in vain. His father was a narrow-minded trader and saw idleness and ruin in the aspirations and ambition of his son. Henry deeply felt the misfortune of being debarred from a liberal education. He said little, but when he spoke I read in his kindling eye and in his animated glance a restrained but firm resolve not to be chained to the miserable details of commerce.</w:t>
+            <w:t xml:space="preserve">He had endeavoured to persuade his father to permit him to accompany me and to become my fellow student, but in vain. His father was a narrow-minded trader and saw idleness and ruin in the aspirations and ambition of his son. Henry deeply felt the misfortune of being debarred from a liberal education. He said little, but when he </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>spoke</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> I read in his kindling eye and in his animated glance a restrained but firm resolve not to be chained to the miserable details of commerce.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="36EECB18" w14:textId="46CE7EA8" w:rsidP="002B7DE5" w:rsidR="00CD1D0C" w:rsidRDefault="00CD1D0C">
@@ -2916,7 +3105,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t xml:space="preserve">I threw myself into the chaise that was to convey me away and indulged in the most melancholy reflections. I, who had ever been surrounded by amiable companions, continually engaged in endeavouring to bestow mutual pleasure—I was now alone. In the university whither I was going I must form my own friends and be my own protector. My life had hitherto been remarkably secluded and domestic, and this had given me invincible repugnance to new countenances. I loved my brothers, Elizabeth, and Clerval; these were &quot;old familiar faces,&quot; but I believed myself totally unfitted for the company of strangers. Such were my reflections as I commenced my journey; but as I proceeded, my spirits and hopes rose. I ardently desired the acquisition of knowledge. I had often, when at home, thought it hard to remain during my youth cooped up in one place and had </w:t>
+            <w:t xml:space="preserve">I threw myself into the chaise that was to convey me away and indulged in the </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>most melancholy</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> reflections. I, who had ever been surrounded by amiable companions, continually engaged in endeavouring to bestow mutual pleasure—I was now alone. In the university whither I was going I must form my own friends and be my own protector. My life had hitherto been remarkably secluded and domestic, and this had given me invincible repugnance to new countenances. I loved my brothers, Elizabeth, and Clerval; these were &quot;old familiar faces,&quot; but I believed myself totally unfitted for the company of strangers. Such were my reflections as I commenced my journey; but as I proceeded, my spirits and hopes rose. I ardently desired the acquisition of knowledge. I had often, when at home, thought it hard to remain during my youth cooped up in one place and had </w:t>
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
@@ -2936,7 +3133,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t>The next morning I delivered my letters of introduction and paid a visit to some of the principal professors. Chance—or rather the evil influence, the Angel of Destruction, which asserted omnipotent sway over me from the moment I turned my reluctant steps from my father's door—led me first to M. Krempe, professor of natural philosophy. He was an uncouth man, but deeply imbued in the secrets of his science. He asked me several questions concerning my progress in the different branches of science appertaining to natural philosophy. I replied carelessly, and partly in contempt, mentioned the names of my alchemists as the principal authors I had studied. The professor stared. &quot;Have you,&quot; he said, &quot;really spent your time in studying such nonsense?&quot;</w:t>
+            <w:t xml:space="preserve">The next </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>morning</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> I delivered my letters of introduction and paid a visit to some of the principal professors. Chance—or rather the evil influence, the Angel of Destruction, which asserted omnipotent sway over me from the moment I turned my reluctant steps from my father's door—led me first to M. Krempe, professor of natural philosophy. He was an uncouth man, but deeply imbued in the secrets of his science. He asked me several questions concerning my progress in the different branches of science appertaining to natural philosophy. I replied carelessly, and partly in contempt, mentioned the names of my alchemists as the principal authors I had studied. The professor stared. &quot;Have you,&quot; he said, &quot;really spent your time in studying such nonsense?&quot;</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="05FF0E9C" w14:textId="77777777" w:rsidP="000872F7" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="009A405C">
@@ -2975,8 +3180,13 @@
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
+         <w:proofErr w:type="gramStart"/>
          <w:r>
-            <w:t>So saying, he stepped aside and wrote down a list of several books treating of natural philosophy which he desired me to procure, and dismissed me after mentioning that in the beginning of the following week he intended to commence a course of lectures upon natural philosophy in its general relations, and that M. Waldman, a fellow professor, would lecture upon chemistry the alternate days that he omitted.</w:t>
+            <w:t>So</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> saying, he stepped aside and wrote down a list of several books treating of natural philosophy which he desired me to procure, and dismissed me after mentioning that in the beginning of the following week he intended to commence a course of lectures upon natural philosophy in its general relations, and that M. Waldman, a fellow professor, would lecture upon chemistry the alternate days that he omitted.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="67DB1328" w14:textId="552B0D14" w:rsidP="002B7DE5" w:rsidR="00417EF1" w:rsidRDefault="00417EF1">
@@ -3016,7 +3226,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t>Such were the professor's words—rather let me say such the words of the fate—enounced to destroy me. As he went on I felt as if my soul were grappling with a palpable enemy; one by one the various keys were touched which formed the mechanism of my being; chord after chord was sounded, and soon my mind was filled with one thought, one conception, one purpose. So much has been done, exclaimed the soul of Frankenstein—more, far more, will I achieve; treading in the steps already marked, I will pioneer a new way, explore unknown powers, and unfold to the world the deepest mysteries of creation.</w:t>
+            <w:t xml:space="preserve">Such were the professor's words—rather let me say such the words of the fate—enounced to destroy me. As he went </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>on</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> I felt as if my soul were grappling with a palpable enemy; one by one the various keys were touched which formed the mechanism of my being; chord after chord was sounded, and soon my mind was filled with one thought, one conception, one purpose. So much has been done, exclaimed the soul of Frankenstein—more, far more, will I achieve; treading in the steps already marked, I will pioneer a new way, explore unknown powers, and unfold to the world the deepest mysteries of creation.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="37EEF5B4" w14:textId="77E5D38A" w:rsidP="002B7DE5" w:rsidR="00417EF1" w:rsidRDefault="00417EF1">
@@ -3155,10 +3373,21 @@
             <w:rPr>
                <w:rStyle w:val="boldb"/>
             </w:rPr>
-            <w:t>This paragraph is to test that footnote numbering restarts correctly.</w:t>
+            <w:t xml:space="preserve">This paragraph is to test that footnote numbering restarts </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="001E3326">
+            <w:rPr>
+               <w:rStyle w:val="boldb"/>
+            </w:rPr>
+            <w:t>correctly.</w:t>
          </w:r>
          <w:r w:rsidRPr="009A405C">
-            <w:t xml:space="preserve">. . . </w:t>
+            <w:t>. . .</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="009A405C">
+            <w:t xml:space="preserve"> </w:t>
          </w:r>
          <w:r w:rsidR="00AD74DF" w:rsidRPr="00AD74DF">
             <w:t>As I applied so closely, it may be easily conceived that my progress was rapid. My ardour was indeed the astonishment of the students, and my proficiency that of the masters. Professor Krempe often asked me, with a sly smile, how Cornelius Agrippa went on, whilst M. Waldman expressed the most heartfelt exultation in my progress. Two years passed in this manner, during which I paid no visit to Geneva, but was engaged, heart and soul, in the pursuit of some discoveries which I hoped to make.</w:t>
@@ -3286,11 +3515,16 @@
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
-            <w:t>most insupportable to the delicacy of the human feelings.</w:t>
+            <w:t>most insupportable to the delicacy of the human feelings</w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>.</w:t>
          </w:r>
          <w:r w:rsidR="00C840B8" w:rsidRPr="009A405C">
             <w:t xml:space="preserve"> . . .</w:t>
          </w:r>
+         <w:proofErr w:type="gramEnd"/>
          <w:r w:rsidR="00C840B8">
             <w:rPr>
                <w:rStyle w:val="EndnoteReference"/>
@@ -3469,20 +3703,32 @@
             <w:t>I prepared myself for a multitude of reverses; my operations might be incessantly baffled, and at last my work be imperfect, yet when I considered the improvement which every day takes place in science and mechanics, I was encouraged to hope my present attempts would at least lay the foundations of future success. Nor could I consider the magnitude and complexity of my plan as any argument of its impracticability. It was with these feelings that I began the creation of a human being. As the minuteness of the parts formed a great hindrance to my speed, I resolved, contrary to my first intention, to make the being of a gigantic stature, that is to say, about eight feet in height, and proportionably large. After having formed this determination and having spent some months in successfully collecting and arranging my materials, I began.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="74FB5820" w14:textId="6970BDD5" w:rsidP="005F007F" w:rsidR="005F007F" w:rsidRDefault="005F007F">
+      <w:p w14:paraId="74FB5820" w14:textId="43660B15" w:rsidP="003F2A80" w:rsidR="005F007F" w:rsidRDefault="003F2A80">
          <w:pPr>
-            <w:pStyle w:val="VERSE-AVRS-A"/>
+            <w:pStyle w:val="COMPUTER-ACOM-A"/>
          </w:pPr>
          <w:r>
             <w:lastRenderedPageBreak/>
-            <w:t>Verse A</w:t>
+            <w:t>Co</w:t>
+         </w:r>
+         <w:r w:rsidR="00AF2393">
+            <w:t>m</w:t>
+         </w:r>
+         <w:r>
+            <w:t>puter</w:t>
+         </w:r>
+         <w:r w:rsidR="005F007F">
+            <w:t xml:space="preserve"> A</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="745CF064" w14:textId="77777777" w:rsidP="005F007F" w:rsidR="00C840B8" w:rsidRDefault="00C840B8">
+      <w:p w14:paraId="745CF064" w14:textId="1E581A07" w:rsidP="005F007F" w:rsidR="00C840B8" w:rsidRDefault="003F2A80">
          <w:pPr>
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
          <w:r>
+            <w:t xml:space="preserve">Formerly, </w:t>
+         </w:r>
+         <w:r w:rsidR="00C840B8">
             <w:t>A Poem</w:t>
          </w:r>
       </w:p>
@@ -3713,7 +3959,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r w:rsidRPr="00AD74DF">
-            <w:t>Continuing thus, I came at length opposite to the inn at which the various diligences and carriages usually stopped. Here I paused, I knew not why; but I remained some minutes with my eyes fixed on a coach that was coming towards me from the other end of the street. As it drew nearer I observed that it was the Swiss diligence; it stopped just where I was standing, and on the door being opened, I perceived Henry Clerval, who, on seeing me, instantly sprung out. &quot;My dear Frankenstein,&quot; exclaimed he, &quot;how glad I am to see you! How fortunate that you should be here at the very moment of my alighting!&quot;</w:t>
+            <w:t xml:space="preserve">Continuing thus, I came at length opposite to the inn at which the various diligences and carriages usually stopped. Here I paused, I knew not why; but I remained some minutes with my eyes fixed on a coach that was coming towards me from the other end of the street. As it drew </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="00AD74DF">
+            <w:t>nearer</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="00AD74DF">
+            <w:t xml:space="preserve"> I observed that it was the Swiss diligence; it stopped just where I was standing, and on the door being opened, I perceived Henry Clerval, who, on seeing me, instantly sprung out. &quot;My dear Frankenstein,&quot; exclaimed he, &quot;how glad I am to see you! How fortunate that you should be here at the very moment of my alighting!&quot;</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="3C1BD04F" w14:textId="24BFEA49" w:rsidP="002B7DE5" w:rsidR="00AD74DF" w:rsidRDefault="00AD74DF">
@@ -3838,7 +4092,15 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r w:rsidRPr="00E87818">
-            <w:t>This was the commencement of a nervous fever which confined me for several months. During all that time Henry was my only nurse. I afterwards learned that, knowing my father's advanced age and unfitness for so long a journey, and how wretched my sickness would make Elizabeth, he spared them this grief by concealing the extent of my disorder. He knew that I could not have a more kind and attentive nurse than himself; and, firm in the hope he felt of my recovery, he did not doubt that, instead of doing harm, he performed the kindest action that he could towards them.</w:t>
+            <w:t xml:space="preserve">This was the commencement of a nervous fever which confined me for several months. During all that time Henry was my only nurse. I afterwards learned that, knowing my father's advanced age and unfitness for so long a journey, and how wretched my sickness would make Elizabeth, he spared them this grief by concealing the extent of my disorder. He knew that I could not have a </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="00E87818">
+            <w:t>more kind and attentive</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="00E87818">
+            <w:t xml:space="preserve"> nurse than himself; and, firm in the hope he felt of my recovery, he did not doubt that, instead of doing harm, he performed the kindest action that he could towards them.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="691053BF" w14:textId="7AED0141" w:rsidP="002B7DE5" w:rsidR="00E87818" w:rsidRDefault="00E87818">
@@ -4118,7 +4380,15 @@
             <w:pStyle w:val="Bullet-Level-1-ListBl1"/>
          </w:pPr>
          <w:r>
-            <w:t>The fifth and final top level item</w:t>
+            <w:t xml:space="preserve">The fifth and final </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>top level</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> item</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="35C32CCE" w14:textId="6E106A5E" w:rsidP="002B7DE5" w:rsidR="00C840B8" w:rsidRDefault="00E87818">
@@ -4789,7 +5059,15 @@
             <w:pStyle w:val="TitleTtl"/>
          </w:pPr>
          <w:r>
-            <w:t>A Letter From My Father</w:t>
+            <w:t xml:space="preserve">A Letter </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>From</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> My Father</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="640E9A55" w14:textId="2ED302F0" w:rsidP="004838EB" w:rsidR="00C840B8" w:rsidRDefault="007237E7" w:rsidRPr="00B54102">
@@ -4797,8 +5075,13 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r w:rsidRPr="007237E7">
-            <w:t>On my return, I found the following letter from my father:—</w:t>
+            <w:t xml:space="preserve">On my return, I found the following letter from my </w:t>
          </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="007237E7">
+            <w:t>father:—</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
       </w:p>
       <w:p w14:paraId="154CA654" w14:textId="77777777" w:rsidP="002B7DE5" w:rsidR="007237E7" w:rsidRDefault="007237E7">
          <w:pPr>
@@ -4863,7 +5146,15 @@
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
-            <w:t>was already dusk before we thought of returning; and then we discovered that William and Ernest, who had gone on before, were not to be found. We accordingly rested on a seat until they should return. Presently Ernest came, and enquired if we had seen his brother; he said, that he had been playing with him, that William had run away to hide himself, and that he vainly sought for him, and afterwards waited for a long time, but that he did not return. This account rather alarmed us, and we continued to search for him until night fell, when Elizabeth conjectured that he might have returned to the house. He was not there. We returned again, with torches; for I could not rest, when I thought that my sweet boy had lost himself, and was exposed to all the damps and dews of night; Elizabeth also suffered extreme anguish. About five in the morning I discovered my lovely boy, whom the night before I had seen blooming and active in health, stretched on the grass livid and motionless; the print of the murder's finger was on his neck.</w:t>
+            <w:t xml:space="preserve">was already dusk before we thought of returning; and then we discovered that William and Ernest, who had gone on before, were not to be found. We accordingly rested on a seat until they should return. Presently Ernest came, and enquired if we had seen his brother; he said, that he had been playing with him, that William had run away to hide himself, and that he vainly sought for him, and afterwards waited for a long time, but that he did not return. This account rather alarmed us, and we continued to search for him until night fell, when Elizabeth conjectured that he might have returned to the house. He was not there. We returned again, with torches; for I could not rest, when I thought that my sweet boy had lost himself, and was exposed to all the damps and dews of night; Elizabeth also suffered extreme anguish. About five in the </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>morning</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> I discovered my lovely boy, whom the night before I had seen blooming and active in health, stretched on the grass livid and motionless; the print of the murder's finger was on his neck.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="7E2D0EF2" w14:textId="354B9A6A" w:rsidP="004838EB" w:rsidR="00C840B8" w:rsidRDefault="007237E7" w:rsidRPr="00B54102">
@@ -4882,7 +5173,15 @@
             <w:pStyle w:val="Num-Level-1-List-ParagraphNl1p"/>
          </w:pPr>
          <w:r>
-            <w:t xml:space="preserve">The anguish that was visible in my countenance betrayed the secret to Elizabeth. She was very earnest to see the corpse. At first I attempted to prevent her but she persisted, and entering the room where it lay, hastily examined the neck of the victim, and clasping her hands exclaimed, 'O God! I have murdered my darling child!' &quot;She fainted, and was restored with extreme difficulty. When she again lived, it was only to weep and sigh. She told me, that that same evening William had teased her to let him wear a very valuable miniature that she possessed of your mother. This picture is gone, and was doubtless the temptation </w:t>
+            <w:t xml:space="preserve">The anguish that was visible in my countenance betrayed the secret to Elizabeth. She was very earnest to see the corpse. At </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>first</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> I attempted to prevent her but she persisted, and entering the room where it lay, hastily examined the neck of the victim, and clasping her hands exclaimed, 'O God! I have murdered my darling child!' &quot;She fainted, and was restored with extreme difficulty. When she again lived, it was only to weep and sigh. She told me, that that same evening William had teased her to let him wear a very valuable miniature that she possessed of your mother. This picture is gone, and was doubtless the temptation </w:t>
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
@@ -4995,7 +5294,15 @@
             <w:pStyle w:val="Num-Level-1-List-ParagraphNl1p"/>
          </w:pPr>
          <w:r w:rsidRPr="007237E7">
-            <w:t>‘I advise you to leave off this minute!’ She generally gave herself very good advice, (though she very seldom followed it), and sometimes she scolded herself so severely as to bring tears into her eyes; and once she remembered trying to box her own ears for having cheated herself in a game of croquet she was playing against herself, for this curious child was very fond of pretending to be two people. ‘But it’s no use now,’ thought poor Alice, ‘to pretend to be two people! Why, there’s hardly enough of me left to make one respectable person!’</w:t>
+            <w:t xml:space="preserve">‘I advise you to leave off this minute!’ She generally gave herself very good advice, (though she very seldom followed it), and sometimes she scolded herself so severely as to bring tears into her eyes; and once she remembered trying to box her own ears for having cheated herself in a game of </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="007237E7">
+            <w:t>croquet</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="007237E7">
+            <w:t xml:space="preserve"> she was playing against herself, for this curious child was very fond of pretending to be two people. ‘But it’s no use now,’ thought poor Alice, ‘to pretend to be two people! Why, there’s hardly enough of me left to make one respectable person!’</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="576C5ED3" w14:textId="5E4B2CF0" w:rsidP="004838EB" w:rsidR="00C840B8" w:rsidRDefault="00E33941" w:rsidRPr="00B54102">
@@ -5039,14 +5346,30 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r>
-            <w:t xml:space="preserve">My journey was very melancholy. At first I wished to hurry on, for I longed to console and sympathise with my loved and sorrowing friends; but when I drew near my native town, I slackened my progress. I could hardly sustain the multitude of feelings that crowded into my mind. I passed through scenes familiar to my youth, but which I had not seen for nearly six years. How altered every thing might be during that time! One sudden and desolating change had taken place; but a thousand little circumstances might have by degrees worked other alterations, which, although they were done more tranquilly, might not be the less decisive. Fear overcame me; I dared no advance, dreading a thousand nameless evils that made me tremble, although I was unable to define them. I remained two days at Lausanne, in this painful state of mind. I contemplated the lake: the waters were placid; all around was calm; and the snowy mountains, 'the palaces of nature,' were not changed. By degrees the calm and heavenly scene restored me, and I continued my </w:t>
+            <w:t xml:space="preserve">My journey was very melancholy. At </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>first</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r>
+            <w:t xml:space="preserve"> I wished to hurry on, for I longed to console and sympathise with my loved and sorrowing friends; but when I drew near my native town, I slackened my progress. I could hardly sustain the multitude of feelings that crowded into my mind. I passed through scenes familiar to my youth, but which I had not seen for nearly six years. How altered every thing might be during that time! One sudden and desolating change had taken place; but a thousand little circumstances might have by degrees worked other alterations, which, although they were done more tranquilly, might not be the less decisive. Fear overcame me; I dared no advance, dreading a thousand nameless evils that made me tremble, although I was unable to define them. I remained two days at Lausanne, in this painful state of mind. I contemplated the lake: the waters were placid; all around was calm; and the snowy mountains, 'the palaces of nature,' were not changed. By degrees the calm and heavenly scene restored me, and I continued my </w:t>
          </w:r>
          <w:r>
             <w:lastRenderedPageBreak/>
-            <w:t>journey towards Geneva.</w:t>
+            <w:t xml:space="preserve">journey towards </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r>
+            <w:t>Geneva.</w:t>
          </w:r>
          <w:r w:rsidR="00C840B8" w:rsidRPr="002F3F0C">
-            <w:t>&lt;NoteCallout&gt;1&lt;/NoteCallout&gt;</w:t>
+            <w:t>&lt;</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidR="00C840B8" w:rsidRPr="002F3F0C">
+            <w:t>NoteCallout&gt;1&lt;/NoteCallout&gt;</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="7D94CC06" w14:textId="77777777" w:rsidP="004838EB" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="00B54102">
@@ -5275,7 +5598,15 @@
             <w:pStyle w:val="Unnum-Level-1-ListUl1"/>
          </w:pPr>
          <w:r w:rsidRPr="002F3F0C">
-            <w:t>NIMEY—Not In My Election Year</w:t>
+            <w:t xml:space="preserve">NIMEY—Not </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="002F3F0C">
+            <w:t>In</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="002F3F0C">
+            <w:t xml:space="preserve"> My Election Year</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="0F960DAF" w14:textId="77777777" w:rsidP="004838EB" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="00B54102">
@@ -5283,7 +5614,15 @@
             <w:pStyle w:val="Unnum-Level-1-ListUl1"/>
          </w:pPr>
          <w:r w:rsidRPr="002F3F0C">
-            <w:t>NIMTOO—Not In My Term of Office</w:t>
+            <w:t xml:space="preserve">NIMTOO—Not </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="002F3F0C">
+            <w:t>In</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="002F3F0C">
+            <w:t xml:space="preserve"> My Term of Office</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="0A97A2AF" w14:textId="77777777" w:rsidP="004838EB" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="00B54102">
@@ -5701,7 +6040,15 @@
             <w:pStyle w:val="Reference-EntryRef"/>
          </w:pPr>
          <w:r w:rsidRPr="002F3F0C">
-            <w:t>Boluk, Liam. “Ride Or Die: Less Money, Mo’ Music &amp; Lots of Problems: A Look at the Music Biz.” Redef.com, August 13, 2015.</w:t>
+            <w:t xml:space="preserve">Boluk, Liam. “Ride </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="002F3F0C">
+            <w:t>Or</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="002F3F0C">
+            <w:t xml:space="preserve"> Die: Less Money, Mo’ Music &amp; Lots of Problems: A Look at the Music Biz.” Redef.com, August 13, 2015.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="6520824E" w14:textId="77777777" w:rsidP="004838EB" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="00B54102">
@@ -6101,10 +6448,18 @@
             <w:t xml:space="preserve">4. </w:t>
          </w:r>
          <w:r w:rsidR="0071662D" w:rsidRPr="0071662D">
-            <w:t>Nothing in human shape could have destroyed the fair child. HE was the murderer!</w:t>
+            <w:t xml:space="preserve">Nothing in human shape could have destroyed the fair child. HE was the </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidR="0071662D" w:rsidRPr="0071662D">
+            <w:t>murderer!</w:t>
          </w:r>
          <w:r w:rsidRPr="002F3F0C">
-            <w:t>, see D. Black, Sanders, Taylor and Taylor (2015).</w:t>
+            <w:t>,</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="002F3F0C">
+            <w:t xml:space="preserve"> see D. Black, Sanders, Taylor and Taylor (2015).</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="7BCEF4F1" w14:textId="77777777" w:rsidP="002B7DE5" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="00B54102">
@@ -6147,10 +6502,18 @@
             <w:t xml:space="preserve">9. Molloy, Smith, and Wozniak (2014). </w:t>
          </w:r>
          <w:r w:rsidR="0071662D" w:rsidRPr="0071662D">
-            <w:t>Six years had elapsed, passed in a dream but for one indelible trace, and I stood in the same place where I had last embraced my father before my departure for Ingolstadt. Beloved and venerable parent! He still remained to me. I gazed on the picture of my mother, which stood over the mantel-piece. It was an historical subject, painted at my father's desire, and represented Caroline Beaufort in an agony of despair, kneeling by the coffin of her dead father.</w:t>
+            <w:t xml:space="preserve">Six years had elapsed, passed in a dream but for one indelible trace, and I stood in the same place where I had last embraced my father before my departure for Ingolstadt. Beloved and venerable parent! He still remained to me. I gazed on the picture of my mother, which stood over the mantel-piece. It was an historical subject, painted at my father's desire, and represented Caroline Beaufort in an agony of despair, kneeling by the coffin of her dead </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidR="0071662D" w:rsidRPr="0071662D">
+            <w:t>father.</w:t>
          </w:r>
          <w:r w:rsidRPr="002F3F0C">
-            <w:t>—are Wisconsin, Ohio, Indiana, and Michigan, a mix of Midwest and Rust Belt locales (Livingston 2014).</w:t>
+            <w:t>—</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="002F3F0C">
+            <w:t>are Wisconsin, Ohio, Indiana, and Michigan, a mix of Midwest and Rust Belt locales (Livingston 2014).</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="474ECE99" w14:textId="77777777" w:rsidP="002B7DE5" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="00B54102">
@@ -6270,7 +6633,15 @@
             <w:t xml:space="preserve">23. See Davis and Haltiwanger (2014). </w:t>
          </w:r>
          <w:r w:rsidR="0071662D" w:rsidRPr="0071662D">
-            <w:t>Her garb was rustic, and her cheek pale; but there was an air of dignity and beauty, that hardly permitted the sentiment of pity. Below this picture was a miniature of William; and my tears flowed when I looked upon it. While I was thus engaged, Ernest entered: he had heard me arrive, and hastened to welcome me: &quot;Welcome, my dearest Victor,&quot; said he. &quot;Ah! I wish you had come three months ago, and then you would have found us all joyous and delighted. You come to us now to share a misery which nothing can alleviate; yet your presence will, I hope, revive our father, who seems sinking under his misfortune; and your persuasions will induce poor Elizabeth to cease her vain and tormenting self-accusations.</w:t>
+            <w:t xml:space="preserve">Her garb was rustic, and her cheek pale; but there was an air of dignity and beauty, that hardly permitted the sentiment of pity. Below this picture was a miniature of William; and my tears flowed when I looked upon it. While I was thus engaged, Ernest entered: he had heard me arrive, and hastened to welcome me: &quot;Welcome, my dearest Victor,&quot; said he. &quot;Ah! I wish you had come three months ago, and then you would have found us all joyous and delighted. You come to us now to share a misery which nothing can alleviate; yet your presence will, I hope, revive our father, who seems sinking under his misfortune; and your persuasions will induce poor Elizabeth to cease her </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidR="0071662D" w:rsidRPr="0071662D">
+            <w:t>vain</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidR="0071662D" w:rsidRPr="0071662D">
+            <w:t xml:space="preserve"> and tormenting self-accusations.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="2C3819C5" w14:textId="77777777" w:rsidP="002B7DE5" w:rsidR="00C840B8" w:rsidRDefault="00C840B8" w:rsidRPr="00B54102">
@@ -6761,7 +7132,21 @@
             <w:rPr>
                <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
             </w:rPr>
-            <w:t>was at first touched by the expressions of his misery; yet, when I called to mind what Frankenstein had said of his powers of eloquence and persuasion, and when I again cast my eyes on the lifeless form of my friend, indignation was rekindled within me. &quot;Wretch!&quot; I said. &quot;It is well that you come here to whine over the desolation that you have made</w:t>
+            <w:t xml:space="preserve">was at first touched by the expressions of his misery; yet, when I called to mind what Frankenstein had said of his powers of eloquence and persuasion, and when I again cast my eyes on the lifeless form of my friend, indignation was rekindled within me. &quot;Wretch!&quot; I </w:t>
+         </w:r>
+         <w:proofErr w:type="gramStart"/>
+         <w:r w:rsidRPr="0071662D">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>said</w:t>
+         </w:r>
+         <w:proofErr w:type="gramEnd"/>
+         <w:r w:rsidRPr="0071662D">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>. &quot;It is well that you come here to whine over the desolation that you have made</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="2AF64D69" w14:textId="7CD0F0AE" w:rsidP="00995565" w:rsidR="00A76F95" w:rsidRDefault="00995565" w:rsidRPr="008A729E">

@@ -4,7 +4,7 @@ Problems were found with the styles in your document.
 
 
 ------------------------------------ ERRORS ------------------------------------
-** ERROR: 4 custom Footnote mark(s) found. These are not supported by RSuite and must be replaced with standard Footnote mark(s).
+** ERROR: 5 custom Footnote mark(s) found. These are not supported by RSuite and must be replaced with standard Footnote mark(s).
 
 
 If you have any questions about how to handle these errors,

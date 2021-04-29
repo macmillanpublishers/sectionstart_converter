@@ -278,11 +278,6 @@
       <w:lsdException w:name="Book Title" w:qFormat="1"/>
       <w:lsdException w:name="Bibliography" w:semiHidden="1" w:unhideWhenUsed="1"/>
       <w:lsdException w:name="TOC Heading" w:qFormat="1" w:semiHidden="1" w:unhideWhenUsed="1"/>
-      <w:lsdException w:name="Plain Table 5" w:semiHidden="1" w:unhideWhenUsed="1"/>
-      <w:lsdException w:name="Grid Table Light" w:semiHidden="1" w:unhideWhenUsed="1"/>
-      <w:lsdException w:name="Grid Table 1 Light" w:semiHidden="1" w:unhideWhenUsed="1"/>
-      <w:lsdException w:name="Grid Table 2" w:semiHidden="1" w:unhideWhenUsed="1"/>
-      <w:lsdException w:name="Grid Table 3" w:semiHidden="1" w:unhideWhenUsed="1"/>
       <w:lsdException w:name="Mention" w:semiHidden="1" w:uiPriority="99" w:unhideWhenUsed="1"/>
       <w:lsdException w:name="Smart Hyperlink" w:semiHidden="1" w:uiPriority="99" w:unhideWhenUsed="1"/>
       <w:lsdException w:name="Hashtag" w:semiHidden="1" w:uiPriority="99" w:unhideWhenUsed="1"/>
@@ -511,7 +506,6 @@
       <w:uiPriority w:val="1"/>
       <w:semiHidden/>
       <w:unhideWhenUsed/>
-      <w:rsid w:val="00E81D42"/>
    </w:style>
    <w:style w:default="1" w:styleId="TableNormal" w:type="table">
       <w:name w:val="Normal Table"/>
@@ -533,7 +527,6 @@
       <w:uiPriority w:val="99"/>
       <w:semiHidden/>
       <w:unhideWhenUsed/>
-      <w:rsid w:val="00E81D42"/>
    </w:style>
    <w:style w:styleId="Hyperlink" w:type="character">
       <w:name w:val="Hyperlink"/>

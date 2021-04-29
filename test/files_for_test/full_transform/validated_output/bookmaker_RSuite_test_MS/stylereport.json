@@ -741,15 +741,15 @@
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
-            "description": "VERSE-A > Title (Ttl)", 
+            "description": "COMPUTER-A > Title (Ttl)", 
             "para_id": "745CF064", 
             "para_index": 245, 
-            "para_string": "A Poem", 
+            "para_string": "Formerly, A Poem", 
             "parent_section_start_content": "Chapter 2", 
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
-            "description": "VERSE-A > Verse1 (Vrs1)", 
+            "description": "COMPUTER-A > Verse1 (Vrs1)", 
             "para_id": "2C7F2770", 
             "para_index": 246, 
             "para_string": "Tiger tiger burning bright", 

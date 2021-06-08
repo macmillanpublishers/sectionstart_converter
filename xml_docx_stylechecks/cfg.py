@@ -215,6 +215,7 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite':
     inline_imageholder_style = "cs-image-placement (cimg)"
     hyperlinkstyle = "Hyperlink"
     spacebreakstyles = ['SeparatorSep','Blank-Space-BreakBsbrk','Ornamental-Space-BreakOsbrk']
+    superscriptstyle = "supersup"
     # for some reason the long-stylenames for these references are lowercase?
     valid_native_word_styles = [
         'Hyperlink',
@@ -240,6 +241,7 @@ else:
     inline_imageholder_style = "span illustration holder (illi)"
     titlesection_stylename = "Section-Titlepagesti"
     copyrightsection_stylename = "Section-Copyrightscr"
+    superscriptstyle = "spansuperscriptcharacterssup"
     # staticstyle groups (section start)
     valid_native_word_styles = ['endnote reference', 'annotation reference']
     nocharstyle_headingstyles = ["FMHeadfmh", "BMHeadbmh", "ChapNumbercn", "PartNumberpn"]

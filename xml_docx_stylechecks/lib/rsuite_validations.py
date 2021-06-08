@@ -531,6 +531,37 @@ def flagCustomNoteMarks(xml_root, report_dict, ref_style_dict):
                 lxml_utils.logForReport(report_dict,xml_root,para,"custom_%s_mark" % note_type,"custom note marker: '%s', %s id: %s" %(reftext, note_type, ref_id))
     return report_dict
 
+# wdv-389 specifies superscript styled ref marks in notes.
+#   this fixes that, but does not correct superscript _formatted_ refmarks, which have rpr contents: <w:vertAlign w:val="superscript"/>
+#   could add blanket handling of any non-custom notes not styled with std ref style pretty easily.
+#   (this find skips custom notes, they do not have ref_el)
+def fixSuperNoteMarks(xml_root, report_dict, superstyle, good_ref_style, note_type):
+    logger.info("* * * commencing flagCustomNoteMarks function for %ss..." % note_type)
+    ref_el = '{}Ref'.format(note_type)
+
+    ref_searchstring = './/*w:{}'.format(ref_el)
+    ref_els = xml_root.findall(ref_searchstring, wordnamespaces)
+
+    for ref_el in ref_els:
+        ref_el_run = ref_el.getparent()
+        refstyle_el = ref_el_run.find(".//*w:rStyle", wordnamespaces)
+        if refstyle_el is not None:
+            refstyle = refstyle_el.get('{%s}val' % wnamespace)
+            # print refstyle, superstyle # < for debug
+            if refstyle == superstyle:
+
+                attrib_style_key = '{%s}val' % wnamespace
+                refstyle_el.set(attrib_style_key, good_ref_style)
+                # log replacement
+                para = lxml_utils.getParaParentofElement(ref_el_run)
+                note_el = para.getparent()
+                attrib_id_key = '{%s}id' % wnamespace
+                ref_id = note_el.get(attrib_id_key)
+                # re-using category from main body note mark-check
+                lxml_utils.logForReport(report_dict,xml_root,para,"note_markers_wrong_style","super_styled ref-mark in %ss, ref_id: %s" % (note_type, ref_id))
+
+    return report_dict
+
 def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_category):
     logger.info("* * * commencing cleanNoteMarkers function, for %s..." % report_category)
     noteref_objects = xml_root.findall(".//%s" % noteref_object, wordnamespaces)
@@ -629,12 +660,15 @@ def rsuiteValidations(report_dict):
 
     # check footnote / endnote para styles
     # rm footnote / endnote leading whitespace
+    # handle note refs that are styled 'super' wdv-344
     if os.path.exists(cfg.footnotes_xml):
         report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
         report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")
+        report_dict = fixSuperNoteMarks(footnotes_root, report_dict, cfg.superscriptstyle, cfg.footnote_ref_style, 'footnote')
     if os.path.exists(cfg.endnotes_xml):
         report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
         report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
+        report_dict = fixSuperNoteMarks(endnotes_root, report_dict, cfg.superscriptstyle, cfg.endnote_ref_style, 'endnote')
     # log custom note markers for report
     refstyle_dict = {"endnote":cfg.endnote_ref_style, "footnote":cfg.footnote_ref_style}
     report_dict = flagCustomNoteMarks(doc_root, report_dict, refstyle_dict)

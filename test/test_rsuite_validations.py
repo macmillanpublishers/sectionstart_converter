@@ -1347,6 +1347,28 @@ class Tests(unittest.TestCase):
         self.assertEqual(cntrl_report_dict, {})
         self.assertEqual(report_dict, expected_rd)
 
+    def test_fixSuperNoteMarks(self):
+        superstyle = "supersup" # cfg.superscriptstyle # < testing with rsuite style; this test is picking up pre-rsuite
+        fn_finalxml = os.path.join(testfiles_basepath, 'test_fixSuperNoteMarks', 'expectedxml', 'footnotes.xml')
+        en_finalxml = os.path.join(testfiles_basepath, 'test_fixSuperNoteMarks', 'expectedxml', 'endnotes.xml')
+        fn_xml = os.path.join(testfiles_basepath, 'test_fixSuperNoteMarks', 'footnotes.xml')
+        en_xml = os.path.join(testfiles_basepath, 'test_fixSuperNoteMarks', 'endnotes.xml')
+        fn_root = getRoot(fn_xml)
+        en_root = getRoot(en_xml)
+
+        # run our function(s)
+        report_dict = rsuite_validations.fixSuperNoteMarks(en_root, {}, superstyle, cfg.endnote_ref_style, 'endnote')
+        report_dict = rsuite_validations.fixSuperNoteMarks(fn_root, report_dict, superstyle, cfg.footnote_ref_style, 'footnote')
+
+        expected_rd = {'note_markers_wrong_style':
+                [{'description': "super_styled ref-mark in endnotes, ref_id: 3", 'para_id': '32E9B737'},
+                {'description': "super_styled ref-mark in footnotes, ref_id: 3", 'para_id': '329170A0'}]}
+
+        #assertions
+        self.assertEqual(etree.tostring(fn_root), etree.tostring(getRoot(fn_finalxml)))
+        self.assertEqual(etree.tostring(en_root), etree.tostring(getRoot(en_finalxml)))
+        self.assertEqual(report_dict, expected_rd)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -59,10 +59,10 @@
         }, 
         {
             "description": "super (sup)", 
-            "note-or-comment_id": "336", 
-            "para_id": "5E8A5ABD", 
+            "note-or-comment_id": "547", 
+            "para_id": "60E8CF8A", 
             "para_index": "n-a", 
-            "para_string": "97:31:III.1. ", 
+            "para_string": "\u201cPrepared Statement of Edward W. Said,\u201d (with Abu Lughod) \u201cQuestions", 
             "parent_section_start_content": "n-a", 
             "parent_section_start_type": "Endnotes"
         }, 
@@ -469,9 +469,20 @@
         {
             "description": "endnote", 
             "note-or-comment_id": "1061", 
-            "para_id": "D77D4E98", 
+            "para_id": "780BB573", 
             "para_index": "n-a", 
             "para_string": "[no text]", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "note_markers_wrong_style": [
+        {
+            "description": "super_styled ref-mark in endnotes, ref_id: 336", 
+            "note-or-comment_id": "336", 
+            "para_id": "5E8A5ABD", 
+            "para_index": "n-a", 
+            "para_string": "97:31:III.1. ", 
             "parent_section_start_content": "n-a", 
             "parent_section_start_type": "Endnotes"
         }

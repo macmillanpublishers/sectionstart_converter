@@ -13718,7 +13718,7 @@
          </w:pPr>
          <w:r w:rsidRPr="0087401C">
             <w:rPr>
-               <w:rStyle w:val="supersup"/>
+               <w:rStyle w:val="EndnoteReference"/>
             </w:rPr>
             <w:endnoteRef/>
          </w:r>
@@ -46159,7 +46159,7 @@
       </w:p>
    </w:endnote>
    <w:endnote w:id="1061">
-      <w:p w14:paraId="D77D4E98">
+      <w:p w14:paraId="780BB573">
          <w:pPr>
             <w:pStyle w:val="EndnoteText"/>
          </w:pPr>

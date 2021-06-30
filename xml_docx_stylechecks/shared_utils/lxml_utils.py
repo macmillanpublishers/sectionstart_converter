@@ -126,7 +126,7 @@ def getParaId(para, doc_root):
             para.attrib["{%s}paraId" % w14namespace] = new_para_id
             para_id = new_para_id
     else:
-        if para.tag != good_paratag:
+        if para is not None and para.tag != good_paratag:
             logger.debug("tried to set p-iD for a non para element: {}".format(para.tag))
         para_id = 'n-a' # this could happen if we are trying to get id of a prev or next para that does not exist
                         #   or for file without w14 namespace, like endnotes/footnotes

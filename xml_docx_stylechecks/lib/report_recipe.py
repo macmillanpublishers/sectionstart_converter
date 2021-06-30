@@ -55,7 +55,7 @@ def getBanners():
 # This method defines what goes in the StyleReport txt and mail outputs, in what order, + formatting.
 # See the commented "SAMPLE RECIPE ENTRY" below for details on each field.  All fields should be optional,
 #   though text, title or dict_category_name must be present for something to print
-def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_stylename):
+def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_stylename, notessection_stylename):
     report_recipe = {
         # # # # # # # # # # # # #  SAMPLE RECIPE ENTRY:
         # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -75,7 +75,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
         #   "v_warning_banner": "Alert string",   # this is for validator only scripts - if any edits were made or unsupported styles were found, we want to surface
         #                                       a different banner on the report output. Including this key=True signals that we want that warning.
         #   "badnews": 'any',        # < If you want any entry from this report_dict category in the Error List,mark this True.. if one entry is ok but more are errors, use value 'one_allowed'
-        #   "badnews_type": 'warning' # Specify type of badnews, whether a warning or error. If neither specified, error is presumed
+        #   "missing_type": 'warning' # Specify type of badnews, whether a warning or error. If neither specified, error is presumed
         #   "errstring": "No paragraphs."   # < The base string you want used to appear in the report's Error list
         #   "summary": 'true' # Warnings with badnews: 'any' are typically listed singly. This value overrides that. Vice versa for badnews_type: note
         #   "alternate_content": {          # < If you want an alternate title or text element to appear when
@@ -358,6 +358,13 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "Second paragraph of document styled with non-Section Start style: '{description}'."# (Paragraph {para_index})"
+    	},
+    	"72.1_missing_required_notes_section": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "missing_notes_section",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Embedded endnotes are present, but there is no paragraph styled: '%s' in the main body of the document." % notessection_stylename# (Paragraph {para_index})"
     	},
     	"73_non_macmillan_styles": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["reporter", "rsuitevalidate"],

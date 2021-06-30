@@ -899,6 +899,16 @@
             "parent_section_start_type": "Section-CopyrightSCR"
         }
     ], 
+    "missing_notes_section": [
+        {
+            "description": "Endnotes are present, Notes Section is not", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
     "non-Macmillan_charstyle_removed": [
         {
             "description": "annotation reference", 

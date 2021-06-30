@@ -201,12 +201,13 @@ endnotestyle = "EndnoteText" #/ "Endnote Text"
 # \/ These styles apply to 'in-text' reference markers. Markers in the notes section are styled like: <w:vertAlign w:val="superscript"/>
 footnote_ref_style = 'FootnoteReference'
 endnote_ref_style = 'EndnoteReference'
-if script_name.startswith("rsuite") or templatetype == 'rsuite':
+if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in script_name:
     helpurl = "https://confluence.macmillan.com/x/R3NPBQ#RSuiteValidation-Reviewingthersuite_validateReport"
     # RSuite hardcoded stylenames (can I get these from styleconfig? in some cases)
     titlesection_stylename = "Section-TitlepageSTI"
     booksection_stylename = "Section-Book (BOOK)"
     copyrightsection_stylename = "Section-CopyrightSCR"
+    notessection_stylename = "Section-Notes (SNT)"
     titlestyle = "Title (Ttl)"
     isbnstyle = "cs-isbn (isbn)"
     authorstyle = "Author1 (Au1)"
@@ -264,6 +265,7 @@ comment_objects = ["w:commentRangeStart","w:commentRangeEnd","w:commentReference
 # word note marker objects
 footnote_ref_obj = "w:footnoteReference"    # < in-text reference marker object. In Notes section, equiv is: <w:footnoteRef/>
 endnote_ref_obj = "w:endnoteReference"      # < in-text reference marker object. In Notes section, equiv is: <w:endnoteRef/>
+note_separator_types = ['separator', 'continuationSeparator', 'continuationNotice']
 
 # Word namespace vars
 wnamespace = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'

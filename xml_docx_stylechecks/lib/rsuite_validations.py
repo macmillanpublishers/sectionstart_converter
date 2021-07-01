@@ -231,11 +231,8 @@ def checkForNotesSection(doc_root, endnotes_root, report_dict, separators, note_
     if notes_bool == True:
         paras = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(note_section_stylename), doc_root)
         if len(paras) == 0:
-            # we may need some para object here?
             firstpara = doc_root.find(".//*w:p", wordnamespaces)
             lxml_utils.logForReport(report_dict,doc_root,None,"missing_notes_section","Endnotes are present, Notes Section is not")
-        # elif len(paras) > 1:
-        #     print "twpppp"
     return report_dict
 
 def handleBlankParasInNotes(report_dict, xml_root, separators, note_stylename, noteref_stylename, note_name, note_section):

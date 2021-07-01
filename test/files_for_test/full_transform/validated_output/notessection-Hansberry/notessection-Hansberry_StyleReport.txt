@@ -1,0 +1,203 @@
+OOPS!
+
+Problems were found with the styles in your document.
+
+
+------------------------------------ ERRORS ------------------------------------
+** ERROR: Embedded endnotes are present, but there is no paragraph styled: 'Section-Notes (SNT)' in the main body of the document.
+
+
+If you have any questions about how to handle these errors,
+please contact workflows@macmillan.com.
+
+
+------------------------------- PROCESSING NOTES -------------------------------
+** NOTE: Found and removed non-Macmillan character style from manuscript: 'Heading 1 Char'.
+
+** NOTE: Fixed 7 Endnote and/or Footnote markers with incorrect character styles applied.
+
+** NOTE: 2 blank paragraph(s) deleted from the manuscript.
+
+** NOTE: 75 bookmark(s) deleted from the manuscript.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"Lorraine Hansberry"
+
+** Author1 (Au1) **
+"Charles J. Shields"
+
+** cs-isbn (isbn) **
+"ISBN: 9781250205537"
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+no illustrations detected.
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "Lorraine Hansberry"                                     
+Section-Ad-Card (SAC)............ "Ad Card"                                                
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Dedication (SDE)......... "Dedication"                                             
+Section-Contents (STC)........... "Contents"                                               
+Section-Front-Matter-General (SFM) "Front Matter General"                                   
+Section-Introduction (SIC)....... "Introduction"                                           
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Part (SPT)............... "Part I: Chicago"                                        
+Section-Chapter (SCP)............ "Chapter 1: Infant of the Spring"                        
+Section-Part (SPT)............... "Part I: Chicago"                                        
+Section-Chapter (SCP)............ "Chapter 2: “The King of the Kitchenettes”"          
+Section-Part (SPT)............... "Part I: Chicago"                                        
+Section-Chapter (SCP)............ "Chapter 3: Stay Where You Belong"                       
+Section-Part (SPT)............... "Part I: Chicago"                                        
+Section-Chapter (SCP)............ "Chapter 4: American Princess"                           
+Section-Part (SPT)............... "Part II: Madison, Wisconsin"                            
+Section-Chapter (SCP)............ "Chapter 5: Entering into a Romance"                     
+Section-Part (SPT)............... "Part II: Madison, Wisconsin"                            
+Section-Chapter (SCP)............ "Chapter 6: The Young Progressives"                      
+Section-Part (SPT)............... "Part II: Madison, Wisconsin"                            
+Section-Chapter (SCP)............ "Chapter 7: Mexico"                                      
+Section-Part (SPT)............... "Part III: Harlem"                                       
+Section-Chapter (SCP)............ "Chapter 8: “Flag from a Kitchenette Window”"        
+Section-Part (SPT)............... "Part III: Harlem"                                       
+Section-Chapter (SCP)............ "Chapter 9: Freedom"                                     
+Section-Part (SPT)............... "Part III: Harlem"                                       
+Section-Chapter (SCP)............ "Chapter 10: “A Young Harriet Tubman”"               
+Section-Part (SPT)............... "Part III: Harlem"                                       
+Section-Chapter (SCP)............ "Chapter 11: The Passport"                               
+Section-Part (SPT)............... "Part III: Harlem"                                       
+Section-Chapter (SCP)............ "Chapter 12: “I Do Love You”"                        
+Section-Part (SPT)............... "Part IV: Greenwich Village"                             
+Section-Chapter (SCP)............ "Chapter 13: Camp Unity"                                 
+Section-Part (SPT)............... "Part IV: Greenwich Village"                             
+Section-Chapter (SCP)............ "Chapter 14: “One Becomes a Woman”"                  
+Section-Part (SPT)............... "Part IV: Greenwich Village"                             
+Section-Chapter (SCP)............ "Chapter 15: “I Ain’t Sick”"                       
+Section-Part (SPT)............... "Part IV: Greenwich Village"                             
+Section-Chapter (SCP)............ "Chapter 16: “Cindy, Oh Cindy”"                      
+Section-Part (SPT)............... "Part IV: Greenwich Village"                             
+Section-Chapter (SCP)............ "Chapter 17: The Invisible Lesbian"                      
+Section-Part (SPT)............... "Part V: The Great White Way"                            
+Section-Chapter (SCP)............ "Chapter 18: “Go the Way Your Blood Beats”"          
+Section-Part (SPT)............... "Part V: The Great White Way"                            
+Section-Chapter (SCP)............ "Chapter 19: “Something Urgently on Its Way”"        
+Section-Part (SPT)............... "Part V: The Great White Way"                            
+Section-Chapter (SCP)............ "Chapter 20: Dismantling the Master’s House"           
+Section-Part (SPT)............... "Part V: The Great White Way"                            
+Section-Chapter (SCP)............ "Chapter 21: Chitterlin’ Heights"                      
+Section-Chapter (SCP)............ "Epilogue"                                               
+Section-Bibliography (SBI)....... "Bibliography"                                           
+Section-Acknowledgments (SAK).... "Acknowledgments"                                        
+Section-Back-Matter-General (SBM) "Back Matter General"                                    
+Section-Index (SIN).............. "Index"                                                  
+Section-About-Author (SAA)....... "About the Author"                                       
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Ad-Card (SAC): "Ad Card"
+Title (Ttl).................................. "Also by Charles J. Shields"                                
+Unnum-Level-1-List (Ul1)..................... "The Man Who Wrote the Perfect Novel: John Williams, Stoner,"
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "Lorraine Hansberry"                                        
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "Lorraine Hansberry"                                        
+Author1 (Au1)................................ "Charles J. Shields"                                        
+Design-Note (Dn)............................. "[logo]"                                                    
+Imprint (Imp)................................ "Henry Holt and Company"                                    
+Cities (Cit)................................. "New York"                                                  
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "Henry Holt and Company"                                    
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Dedication (SDE): "Dedication"
+Body-Text (Tx)............................... "To Guadalupe"                                              
+Separator (Sep).............................. "[Separator]"                                               
+Source (Src)................................. "—Proverbs 31:10"                                         
+
+* Section-Contents (STC): "Contents"
+Title (Ttl).................................. "Table of Contents"                                         
+TOC-Frontmatter (Tocfm)...................... "Chronology"                                                
+TOC-Part (Tocpt)............................. "Part I: Chicago"                                           
+TOC-Chapter (Tocch).......................... "Chapter 1: Infant of the Spring"                           
+TOC-Backmatter (Tocbm)....................... "Notes"                                                     
+
+* Section-Front-Matter-General (SFM): "Front Matter General"
+Title (Ttl).................................. "Chronology"                                                
+Body-Text (Tx)............................... "1819William “Bill” Hansberry, great-grandfather, born at the Salubria plantation in"
+
+* Section-Introduction (SIC): "Introduction"
+Title (Ttl).................................. "Introduction"                                              
+Body-Text (Tx)............................... "This book is about Lorraine Hansberry, an American playwright whose"
+Signature (Sig).............................. "Charles J. Shields"                                        
+
+* Section-Part (SPT): "Part I: Chicago"
+Number (Num)................................. "Part I"                                                    
+Title (Ttl).................................. "Chicago"                                                   
+
+* Section-Chapter (SCP): "Chapter 1: Infant of the Spring"
+Number (Num)................................. "1"                                                         
+Title (Ttl).................................. "Infant of the Spring"                                      
+Epigraph-Non-Verse (Epi)..................... "I went to Chicago as a migrant from Mississippi. And"      
+Epigraph-Source (Episrc)..................... "—Richard Wright, Black Metropolis, Introduction"         
+Body-Text (Tx)............................... "It was a warm evening for early February in Philadelphia"  
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+
+* Section-Chapter (SCP): "Chapter 3: Stay Where You Belong"
+Verse1 (Vrs1)................................ "What is Africa to me:"                                     
+
+* Section-Chapter (SCP): "Chapter 4: American Princess"
+Extract1 (Ext1).............................. "Mamie do this without fail get help from doctor Turner"    
+
+* Section-Chapter (SCP): "Chapter 5: Entering into a Romance"
+Epigraph-Verse (Epiv)........................ "You did not know the Black continent"                      
+
+* Section-Chapter (SCP): "Chapter 7: Mexico"
+Extract2 (Ext2).............................. "Narrator: We the youth have risen in each age"             
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Bibliography (SBI): "Bibliography"
+Title (Ttl).................................. "Selected Bibliography"                                     
+Reference-Entry (Ref)........................ "Abbot, Edith, and Sophonisba P. Breckinridge. The Tenements of Chicago,"
+
+* Section-Acknowledgments (SAK): "Acknowledgments"
+Title (Ttl).................................. "Acknowledgments"                                           
+Body-Text (Tx)............................... "I am indebted to the following institutions and their reference"
+
+* Section-Back-Matter-General (SBM): "Back Matter General"
+Title (Ttl).................................. "Illustration Credits [Tk 5/15/21]"                         
+
+* Section-Index (SIN): "Index"
+Title (Ttl).................................. "[Index Tk]"                                                
+
+* Section-About-Author (SAA): "About the Author"
+Title (Ttl).................................. "About the Author"                                          
+Body-Text (Tx)............................... "Charles J. Shields is the author of the bestselling biography"
+
+___________CHARACTER STYLES IN USE___________
+ital (i)
+cs-isbn (isbn)
+cs-cleanup-exclude (cex)
+endnote reference
+symbols (sym)
+super (sup)
+bold (b)
+endnote reference
+
+

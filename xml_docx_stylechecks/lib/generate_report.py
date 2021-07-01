@@ -235,7 +235,7 @@ def generateReport(report_dict, outputtxt_path, scriptname):
     validator_warnings = []
 
     # get the report recipe
-    recipe = report_recipe.getReportRecipe(cfg.titlestyle, cfg.authorstyle, cfg.isbnstyle, cfg.logostyle, cfg.booksection_stylename)
+    recipe = report_recipe.getReportRecipe(cfg.titlestyle, cfg.authorstyle, cfg.isbnstyle, cfg.logostyle, cfg.booksection_stylename, cfg.notessection_stylename)
 
     # build our style report as a list of strings
     for item in sorted(recipe):

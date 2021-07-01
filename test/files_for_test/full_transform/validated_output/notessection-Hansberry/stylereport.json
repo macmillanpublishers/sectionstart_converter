@@ -1,0 +1,1659 @@
+{
+    "Macmillan_charstyle_first_use": [
+        {
+            "description": "ital (i)", 
+            "para_id": "3DE7BA49", 
+            "para_index": 3, 
+            "para_string": "The Man Who Wrote the Perfect Novel: John Williams, Stoner,", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "cs-isbn (isbn)", 
+            "para_id": "62572D06", 
+            "para_index": 30, 
+            "para_string": "ISBN: 9781250205537", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-cleanup-exclude (cex)", 
+            "para_id": "36649EE5", 
+            "para_index": 40, 
+            "para_string": "1 2 3 4 5 6 7 8 9 10", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "endnote reference", 
+            "para_id": "2A56A583", 
+            "para_index": 132, 
+            "para_string": "Baldwin had never seen a play like hers, a play", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "symbols (sym)", 
+            "para_id": "07CA03C5", 
+            "para_index": 212, 
+            "para_string": "She remembered her sister and brothers treating her tenderly. But", 
+            "parent_section_start_content": "Chapter 2: \u201cThe King of the Kitchenettes\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "super (sup)", 
+            "para_id": "7DAFE11A", 
+            "para_index": 223, 
+            "para_string": "Hansberry intended to exploit this white fear by \u201cblockbusting\u201d in", 
+            "parent_section_start_content": "Chapter 2: \u201cThe King of the Kitchenettes\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "bold (b)", 
+            "para_id": "41FAFA33", 
+            "para_index": 1719, 
+            "para_string": "Charles J. Shields is the author of the bestselling biography", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "endnote reference", 
+            "note-or-comment_id": "1", 
+            "para_id": "1A2200A1", 
+            "para_index": "n-a", 
+            "para_string": ". James Baldwin, \u201cSweet Lorraine,\u201d Esquire, November 1, 1969, p.", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "Macmillan_style_first_use": [
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "5104BD87", 
+            "para_index": 2, 
+            "para_string": "Also by Charles J. Shields", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "3DE7BA49", 
+            "para_index": 3, 
+            "para_string": "The Man Who Wrote the Perfect Novel: John Williams, Stoner,", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "2911757C", 
+            "para_index": 8, 
+            "para_string": "Lorraine Hansberry", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "0B883A36", 
+            "para_index": 10, 
+            "para_string": "Lorraine Hansberry", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "042DE38A", 
+            "para_index": 11, 
+            "para_string": "Charles J. Shields", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Design-Note (Dn)", 
+            "para_id": "6F7EE844", 
+            "para_index": 12, 
+            "para_string": "[logo]", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Imprint (Imp)", 
+            "para_id": "72A16F50", 
+            "para_index": 13, 
+            "para_string": "Henry Holt and Company", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Cities (Cit)", 
+            "para_id": "36383E95", 
+            "para_index": 14, 
+            "para_string": "New York", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "092307F1", 
+            "para_index": 16, 
+            "para_string": "Henry Holt and Company", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "7BF7F527", 
+            "para_index": 21, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "593628BA", 
+            "para_index": 42, 
+            "para_string": "To Guadalupe", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "0DC549BB", 
+            "para_index": 43, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Source (Src)", 
+            "para_id": "79C35128", 
+            "para_index": 46, 
+            "para_string": "\u2014Proverbs 31:10", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "7BBA81C5", 
+            "para_index": 48, 
+            "para_string": "Table of Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Frontmatter (Tocfm)", 
+            "para_id": "3D115668", 
+            "para_index": 49, 
+            "para_string": "Chronology", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Part (Tocpt)", 
+            "para_id": "15050A56", 
+            "para_index": 51, 
+            "para_string": "Part I: Chicago", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Chapter (Tocch)", 
+            "para_id": "6E51050C", 
+            "para_index": 52, 
+            "para_string": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Backmatter (Tocbm)", 
+            "para_id": "56D93562", 
+            "para_index": 78, 
+            "para_string": "Notes", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "39589821", 
+            "para_index": 84, 
+            "para_string": "Chronology", 
+            "parent_section_start_content": "Front Matter General", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "16D0FF2F", 
+            "para_index": 85, 
+            "para_string": "1819William \u201cBill\u201d Hansberry, great-grandfather, born at the Salubria plantation in", 
+            "parent_section_start_content": "Front Matter General", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "7EE82478", 
+            "para_index": 110, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "2ACBFF8A", 
+            "para_index": 111, 
+            "para_string": "This book is about Lorraine Hansberry, an American playwright whose", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Signature (Sig)", 
+            "para_id": "2E6097DF", 
+            "para_index": 117, 
+            "para_string": "Charles J. Shields", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Number (Num)", 
+            "para_id": "1D38E7D7", 
+            "para_index": 123, 
+            "para_string": "Part I", 
+            "parent_section_start_content": "Part I: Chicago", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "2B22F2FB", 
+            "para_index": 124, 
+            "para_string": "Chicago", 
+            "parent_section_start_content": "Part I: Chicago", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Number (Num)", 
+            "para_id": "3104CD6D", 
+            "para_index": 126, 
+            "para_string": "1", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "2049915C", 
+            "para_index": 127, 
+            "para_string": "Infant of the Spring", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Epigraph-Non-Verse (Epi)", 
+            "para_id": "415A4A31", 
+            "para_index": 128, 
+            "para_string": "I went to Chicago as a migrant from Mississippi. And", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Epigraph-Source (Episrc)", 
+            "para_id": "3FDD167D", 
+            "para_index": 129, 
+            "para_string": "\u2014Richard Wright, Black Metropolis, Introduction", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "1FB48756", 
+            "para_index": 130, 
+            "para_string": "It was a warm evening for early February in Philadelphia", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)", 
+            "para_id": "141F4206", 
+            "para_index": 134, 
+            "para_string": "[blank]", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Verse1 (Vrs1)", 
+            "para_id": "3DCAAD8E", 
+            "para_index": 259, 
+            "para_string": "What is Africa to me:", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Extract1 (Ext1)", 
+            "para_id": "37529273", 
+            "para_index": 385, 
+            "para_string": "Mamie do this without fail get help from doctor Turner", 
+            "parent_section_start_content": "Chapter 4: American Princess", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Epigraph-Verse (Epiv)", 
+            "para_id": "53ADDA3D", 
+            "para_index": 397, 
+            "para_string": "You did not know the Black continent", 
+            "parent_section_start_content": "Chapter 5: Entering into a Romance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Extract2 (Ext2)", 
+            "para_id": "0248A707", 
+            "para_index": 560, 
+            "para_string": "Narrator: We the youth have risen in each age", 
+            "parent_section_start_content": "Chapter 7: Mexico", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "7E3EEEE1", 
+            "para_index": 562, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Chapter 7: Mexico", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "1C6BBA2C", 
+            "para_index": 1594, 
+            "para_string": "Selected Bibliography", 
+            "parent_section_start_content": "Bibliography", 
+            "parent_section_start_type": "Section-BibliographySBI"
+        }, 
+        {
+            "description": "Reference-Entry (Ref)", 
+            "para_id": "6BD1EB65", 
+            "para_index": 1595, 
+            "para_string": "Abbot, Edith, and Sophonisba P. Breckinridge. The Tenements of Chicago,", 
+            "parent_section_start_content": "Bibliography", 
+            "parent_section_start_type": "Section-BibliographySBI"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "0E08A56D", 
+            "para_index": 1703, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "7CBEF08E", 
+            "para_index": 1704, 
+            "para_string": "I am indebted to the following institutions and their reference", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "07CFF3DB", 
+            "para_index": 1714, 
+            "para_string": "Illustration Credits [Tk 5/15/21]", 
+            "parent_section_start_content": "Back Matter General", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "2FDA5FC6", 
+            "para_index": 1716, 
+            "para_string": "[Index Tk]", 
+            "parent_section_start_content": "Index", 
+            "parent_section_start_type": "Section-IndexSIN"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "72B918D8", 
+            "para_index": 1718, 
+            "para_string": "About the Author", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "41FAFA33", 
+            "para_index": 1719, 
+            "para_string": "Charles J. Shields is the author of the bestselling biography", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }
+    ], 
+    "author_paras": [
+        {
+            "description": "Charles J. Shields", 
+            "para_id": "042DE38A", 
+            "para_index": 11, 
+            "para_string": "Charles J. Shields", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "deleted_objects-bookmarks": [
+        {
+            "description": "deleted bookmark named _Hlk69981260", 
+            "para_id": "6E42C601", 
+            "para_index": 98, 
+            "para_string": "1952Secretly attends the Montevideo Inter-American Congress for Peace, in Uruguay,", 
+            "parent_section_start_content": "Front Matter General", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk69983068", 
+            "para_id": "1FB48756", 
+            "para_index": 130, 
+            "para_string": "It was a warm evening for early February in Philadelphia", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70584616", 
+            "para_id": "0E348CEA", 
+            "para_index": 135, 
+            "para_string": "The day Lorraine Hansberry was born, May 19, 1930, started", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk71628946", 
+            "para_id": "63B24603", 
+            "para_index": 142, 
+            "para_string": "Her father, Carl, arrived in Chicago in 1916 aboard an", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70586056", 
+            "para_id": "4934D0BC", 
+            "para_index": 143, 
+            "para_string": "But Hansberry was ready for what the city could offer.", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70587298", 
+            "para_id": "7027FD40", 
+            "para_index": 146, 
+            "para_string": "At the end of the nineteenth century, earlier immigrants such", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70589110", 
+            "para_id": "6268457B", 
+            "para_index": 157, 
+            "para_string": "Six weeks after the Hansberrys married, their future changed suddenly.", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70589886", 
+            "para_id": "1B8C405C", 
+            "para_index": 163, 
+            "para_string": "The year the Hansberrys\u2019 second child, Perry Holloway Hansberry, was", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70600350", 
+            "para_id": "3A4C7545", 
+            "para_index": 179, 
+            "para_string": "Carl Hansberry was now president of Hansberry Enterprises, at 4272", 
+            "parent_section_start_content": "Chapter 2: \u201cThe King of the Kitchenettes\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70602420", 
+            "para_id": "39666077", 
+            "para_index": 191, 
+            "para_string": "Regular guests at the Hansberrys\u2019 table included E. Horace Fitchett,", 
+            "parent_section_start_content": "Chapter 2: \u201cThe King of the Kitchenettes\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70604831", 
+            "para_id": "67D2E244", 
+            "para_index": 226, 
+            "para_string": "Incredibly, the willing seller he found on the other side", 
+            "parent_section_start_content": "Chapter 2: \u201cThe King of the Kitchenettes\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70605219", 
+            "para_id": "1BABC7F0", 
+            "para_index": 229, 
+            "para_string": "Things moved quickly after that. Burke found a straw buyer", 
+            "parent_section_start_content": "Chapter 2: \u201cThe King of the Kitchenettes\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70605980", 
+            "para_id": "63AC78C4", 
+            "para_index": 245, 
+            "para_string": "School ended, and the neighborhood children began playing outside during", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70606738", 
+            "para_id": "3497C3C2", 
+            "para_index": 256, 
+            "para_string": "School began in October, delayed by a month due to", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk71629229", 
+            "para_id": "7609AFA0", 
+            "para_index": 286, 
+            "para_string": "William Hansberry was born in 1819 on the 3,200-acre Salubria", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70672571", 
+            "para_id": "726DAA5D", 
+            "para_index": 313, 
+            "para_string": "Lorraine\u2019s new home on South Parkway was only a quarter", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70672839", 
+            "para_id": "126F7BD3", 
+            "para_index": 320, 
+            "para_string": "The Hansberry defense team returned in October to Springfield to", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70672978", 
+            "para_id": "59EE0D44", 
+            "para_index": 321, 
+            "para_string": "In the meantime, Carl decided to throw his hat in", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70673663", 
+            "para_id": "29316C2B", 
+            "para_index": 329, 
+            "para_string": "Soon, the NAACP would be assisted in other discrimination cases", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70673702", 
+            "para_id": "29316C2B", 
+            "para_index": 329, 
+            "para_string": "Soon, the NAACP would be assisted in other discrimination cases", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70674089", 
+            "para_id": "122BAF5E", 
+            "para_index": 332, 
+            "para_string": "Two years after Carl Hansberry overcame the restrictive covenant covering", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70674141", 
+            "para_id": "30F3629F", 
+            "para_index": 333, 
+            "para_string": "The Court\u2019s decision was a victory for civil rights, but", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70674180", 
+            "para_id": "30F3629F", 
+            "para_index": 333, 
+            "para_string": "The Court\u2019s decision was a victory for civil rights, but", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70674335", 
+            "para_id": "621A153D", 
+            "para_index": 342, 
+            "para_string": "February 1945. The end of World War II was within", 
+            "parent_section_start_content": "Chapter 4: American Princess", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70675166", 
+            "para_id": "6059937C", 
+            "para_index": 349, 
+            "para_string": "Lorraine liked stories that packed an emotional punch. Secretly, she", 
+            "parent_section_start_content": "Chapter 4: American Princess", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70677953", 
+            "para_id": "75C92A41", 
+            "para_index": 386, 
+            "para_string": "Mannitol hexanitrate, used for treating vascular disease, had been on", 
+            "parent_section_start_content": "Chapter 4: American Princess", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70680126", 
+            "para_id": "57873495", 
+            "para_index": 426, 
+            "para_string": "It was Negro History Week when Lorraine registered. Black pianist", 
+            "parent_section_start_content": "Chapter 5: Entering into a Romance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70684740", 
+            "para_id": "59EAE9FF", 
+            "para_index": 483, 
+            "para_string": "Nothing came of her infatuation with the beautiful young man.", 
+            "parent_section_start_content": "Chapter 6: The Young Progressives", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70685194", 
+            "para_id": "07B6FDDD", 
+            "para_index": 487, 
+            "para_string": "The campaign of former Vice President Henry Wallace was launched", 
+            "parent_section_start_content": "Chapter 6: The Young Progressives", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70687623", 
+            "para_id": "65F8B19E", 
+            "para_index": 508, 
+            "para_string": "They compromised on three plays with themes that satisfied both", 
+            "parent_section_start_content": "Chapter 6: The Young Progressives", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk71557781", 
+            "para_id": "65F8B19E", 
+            "para_index": 508, 
+            "para_string": "They compromised on three plays with themes that satisfied both", 
+            "parent_section_start_content": "Chapter 6: The Young Progressives", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70687754", 
+            "para_id": "1E85BA83", 
+            "para_index": 510, 
+            "para_string": "The night the curtain went up for Lysistrata, actress Geraldine", 
+            "parent_section_start_content": "Chapter 6: The Young Progressives", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70688320", 
+            "para_id": "482F60D5", 
+            "para_index": 526, 
+            "para_string": "The first week of July 1949, while on summer break", 
+            "parent_section_start_content": "Chapter 7: Mexico", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70689439", 
+            "para_id": "17FC8E69", 
+            "para_index": 539, 
+            "para_string": "There was style of art in Mexico that caught Hansberry\u2019s", 
+            "parent_section_start_content": "Chapter 7: Mexico", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70690832", 
+            "para_id": "2AED8DB9", 
+            "para_index": 550, 
+            "para_string": "The terror of such weapons being used would become a", 
+            "parent_section_start_content": "Chapter 7: Mexico", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70691605", 
+            "para_id": "5068BDEC", 
+            "para_index": 567, 
+            "para_string": "At the LYL chapter meeting Lorraine attended a few weeks", 
+            "parent_section_start_content": "Chapter 7: Mexico", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70691616", 
+            "para_id": "5068BDEC", 
+            "para_index": 567, 
+            "para_string": "At the LYL chapter meeting Lorraine attended a few weeks", 
+            "parent_section_start_content": "Chapter 7: Mexico", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70691683", 
+            "para_id": "113CF9F2", 
+            "para_index": 570, 
+            "para_string": "In 1949, the FBI office in Milwaukee had thirty-six agents", 
+            "parent_section_start_content": "Chapter 7: Mexico", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70693235", 
+            "para_id": "35A1400F", 
+            "para_index": 593, 
+            "para_string": "In October 1947, fire swept through a South Side kitchenette", 
+            "parent_section_start_content": "Chapter 8: \u201cFlag from a Kitchenette Window\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70693309", 
+            "para_id": "121480DD", 
+            "para_index": 595, 
+            "para_string": "When at last Carl Jr. was forced to appear in", 
+            "parent_section_start_content": "Chapter 8: \u201cFlag from a Kitchenette Window\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70694056", 
+            "para_id": "34ADD006", 
+            "para_index": 603, 
+            "para_string": "Twenty-five-year-old Elbein, the only son of working-class Russian-Jewish immigrants, was", 
+            "parent_section_start_content": "Chapter 8: \u201cFlag from a Kitchenette Window\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70695145", 
+            "para_id": "41FD43DF", 
+            "para_index": 640, 
+            "para_string": "With the assistance of the New School\u2019s housing office, she", 
+            "parent_section_start_content": "Chapter 8: \u201cFlag from a Kitchenette Window\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70756710", 
+            "para_id": "67B013AC", 
+            "para_index": 648, 
+            "para_string": "The Harlem Renaissance began with a musical comedy in 1921:", 
+            "parent_section_start_content": "Chapter 8: \u201cFlag from a Kitchenette Window\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70757019", 
+            "para_id": "68EF902A", 
+            "para_index": 649, 
+            "para_string": "The cultural ferment in Harlem contributed to the development of", 
+            "parent_section_start_content": "Chapter 8: \u201cFlag from a Kitchenette Window\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70775744", 
+            "para_id": "5ED55B81", 
+            "para_index": 688, 
+            "para_string": "The address she was given was 53 West 125th Street.", 
+            "parent_section_start_content": "Chapter 9: Freedom", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70775966", 
+            "para_id": "3A245142", 
+            "para_index": 689, 
+            "para_string": "Burnham was born in Barbados in 1915 and raised in", 
+            "parent_section_start_content": "Chapter 9: Freedom", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70775980", 
+            "para_id": "3A245142", 
+            "para_index": 689, 
+            "para_string": "Burnham was born in Barbados in 1915 and raised in", 
+            "parent_section_start_content": "Chapter 9: Freedom", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70841933", 
+            "para_id": "3BBF59B5", 
+            "para_index": 718, 
+            "para_string": "When he spoke, it was in front of the thirteen-story", 
+            "parent_section_start_content": "Chapter 10: \u201cA Young Harriet Tubman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70843161", 
+            "para_id": "76C0843F", 
+            "para_index": 735, 
+            "para_string": "While on the witness stand, Ward was asked by his", 
+            "parent_section_start_content": "Chapter 10: \u201cA Young Harriet Tubman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70843211", 
+            "para_id": "529E629E", 
+            "para_index": 736, 
+            "para_string": "Ward was found guilty of draft evasion and sentenced to", 
+            "parent_section_start_content": "Chapter 10: \u201cA Young Harriet Tubman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70843289", 
+            "para_id": "529E629E", 
+            "para_index": 736, 
+            "para_string": "Ward was found guilty of draft evasion and sentenced to", 
+            "parent_section_start_content": "Chapter 10: \u201cA Young Harriet Tubman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70844805", 
+            "para_id": "34DE5C93", 
+            "para_index": 753, 
+            "para_string": "Black Power as a movement was more than a decade", 
+            "parent_section_start_content": "Chapter 10: \u201cA Young Harriet Tubman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70845273", 
+            "para_id": "499D7D2E", 
+            "para_index": 758, 
+            "para_string": "Bob Nemiroff, the son of Russian-Jewish immigrants, was a graduate", 
+            "parent_section_start_content": "Chapter 10: \u201cA Young Harriet Tubman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70845404", 
+            "para_id": "379139F1", 
+            "para_index": 760, 
+            "para_string": "By coincidence, Kate Weiskopf had known Bob Nemiroff when they", 
+            "parent_section_start_content": "Chapter 10: \u201cA Young Harriet Tubman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70845967", 
+            "para_id": "2B65B7AC", 
+            "para_index": 766, 
+            "para_string": "The evening of November 1, 1951, was a big night.", 
+            "parent_section_start_content": "Chapter 10: \u201cA Young Harriet Tubman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70847754", 
+            "para_id": "6E5E007D", 
+            "para_index": 801, 
+            "para_string": "At Idlewild Airport, she found the gate where the Boeing", 
+            "parent_section_start_content": "Chapter 11: The Passport", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70853371", 
+            "para_id": "0D73561C", 
+            "para_index": 882, 
+            "para_string": "But then Lorraine pushed her luck too far. She escorted", 
+            "parent_section_start_content": "Chapter 12: \u201cI Do Love You\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70856872", 
+            "para_id": "46716A05", 
+            "para_index": 942, 
+            "para_string": "Camp Unity had been founded in 1927 as the \u201cfirst", 
+            "parent_section_start_content": "Chapter 13: Camp Unity", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70857672", 
+            "para_id": "5DC25859", 
+            "para_index": 950, 
+            "para_string": "She became friends with Doris Belack, an actress, and her", 
+            "parent_section_start_content": "Chapter 13: Camp Unity", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70858096", 
+            "para_id": "135EC7F9", 
+            "para_index": 956, 
+            "para_string": "Lorraine agreed to take part in the reading, not only", 
+            "parent_section_start_content": "Chapter 13: Camp Unity", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70858274", 
+            "para_id": "2EB5FD0A", 
+            "para_index": 959, 
+            "para_string": "The social message of Ward\u2019s The Trial of Willie McGee", 
+            "parent_section_start_content": "Chapter 13: Camp Unity", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70859606", 
+            "para_id": "391708BE", 
+            "para_index": 981, 
+            "para_string": "Lorraine and Bob were self-admitted \u201cfolk music addicts.\u201d They went", 
+            "parent_section_start_content": "Chapter 14: \u201cOne Becomes a Woman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70860886", 
+            "para_id": "0D77C650", 
+            "para_index": 1001, 
+            "para_string": "Freedom was pretty much finished as a viable newspaper by", 
+            "parent_section_start_content": "Chapter 14: \u201cOne Becomes a Woman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70861066", 
+            "para_id": "63D93145", 
+            "para_index": 1005, 
+            "para_string": "Malcolm X had arrived in Harlem in 1954 as a", 
+            "parent_section_start_content": "Chapter 14: \u201cOne Becomes a Woman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70861083", 
+            "para_id": "63D93145", 
+            "para_index": 1005, 
+            "para_string": "Malcolm X had arrived in Harlem in 1954 as a", 
+            "parent_section_start_content": "Chapter 14: \u201cOne Becomes a Woman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70928983", 
+            "para_id": "6FFAC2BB", 
+            "para_index": 1074, 
+            "para_string": "For an American leftist like Hansberry, the timing of the", 
+            "parent_section_start_content": "Chapter 15: \u201cI Ain\u2019t Sick\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70932238", 
+            "para_id": "7AAA410E", 
+            "para_index": 1129, 
+            "para_string": "The calypso craze had begun earlier in the year, when", 
+            "parent_section_start_content": "Chapter 15: \u201cI Ain\u2019t Sick\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70945827", 
+            "para_id": "26841FF7", 
+            "para_index": 1302, 
+            "para_string": "In fact, though, it was a favorable time to take", 
+            "parent_section_start_content": "Chapter 18: \u201cGo the Way Your Blood Beats\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70947155", 
+            "para_id": "680F4752", 
+            "para_index": 1332, 
+            "para_string": "In A Raisin in the Sun, Karl Lindner, the white", 
+            "parent_section_start_content": "Chapter 19: \u201cSomething Urgently on Its Way\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70955840", 
+            "para_id": "29B51273", 
+            "para_index": 1369, 
+            "para_string": "From the editor of Ebony magazine came a request to", 
+            "parent_section_start_content": "Chapter 19: \u201cSomething Urgently on Its Way\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk70956035", 
+            "para_id": "43F94C5C", 
+            "para_index": 1371, 
+            "para_string": "At age thirty, Charles R. Swibel was a handsome, faultlessly", 
+            "parent_section_start_content": "Chapter 19: \u201cSomething Urgently on Its Way\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk71031371", 
+            "para_id": "31AA9804", 
+            "para_index": 1507, 
+            "para_string": "Though it\u2019s not known if Lorraine was aware, 112 Waverly", 
+            "parent_section_start_content": "Chapter 21: Chitterlin\u2019 Heights", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk71041304", 
+            "para_id": "74AAD507", 
+            "para_index": 1551, 
+            "para_string": "In early August, Dr. Baldwin sent her to the Lahey", 
+            "parent_section_start_content": "Chapter 21: Chitterlin\u2019 Heights", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk71041840", 
+            "para_id": "74AAD507", 
+            "para_index": 1551, 
+            "para_string": "In early August, Dr. Baldwin sent her to the Lahey", 
+            "parent_section_start_content": "Chapter 21: Chitterlin\u2019 Heights", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk71043692", 
+            "para_id": "546A0E8D", 
+            "para_index": 1574, 
+            "para_string": "Lorraine\u2019s family left the arrangements for internment to Bob. The", 
+            "parent_section_start_content": "Chapter 21: Chitterlin\u2019 Heights", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "empty_section_start_para": [], 
+    "endnote-leading_whitespace_rmd": [
+        {
+            "description": "note ref: 78 (blank run removed)", 
+            "note-or-comment_id": "78", 
+            "para_id": "202BDE9E", 
+            "para_index": "n-a", 
+            "para_string": "Ron Grossman, \u201cChief of City\u2019s 1st Black-Owned Bank Emboldened Community.\u201d", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }, 
+        {
+            "description": "note ref: 130", 
+            "note-or-comment_id": "130", 
+            "para_id": "79FE8BAF", 
+            "para_index": "n-a", 
+            "para_string": "Du Bois, Autobiography.", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }, 
+        {
+            "description": "note ref: 142 (blank run removed)", 
+            "note-or-comment_id": "142", 
+            "para_id": "18D31632", 
+            "para_index": "n-a", 
+            "para_string": "\u201cOpen Letter of Carl A. Hansberry: Setting Forth Program and", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }, 
+        {
+            "description": "note ref: 797", 
+            "note-or-comment_id": "797", 
+            "para_id": "186B036C", 
+            "para_index": "n-a", 
+            "para_string": "Nan Robertson, \u201cDramatist Against Odds,\u201d New York Times, March 8,", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "isbn_spans": [
+        {
+            "description": "9781250205537", 
+            "para_id": "62572D06", 
+            "para_index": 30, 
+            "para_string": "ISBN: 9781250205537", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }
+    ], 
+    "missing_notes_section": [
+        {
+            "description": "Endnotes are present, Notes Section is not", 
+            "para_id": "n-a", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "non-Macmillan_charstyle_removed": [
+        {
+            "description": "Heading 1 Char", 
+            "note-or-comment_id": "455", 
+            "para_id": "039829D7", 
+            "para_index": "n-a", 
+            "para_string": ". Cheney, Lorraine Hansberry, 21\u201322.", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }
+    ], 
+    "note_markers_wrong_style": [
+        {
+            "description": "super_styled ref-mark in endnotes, ref_id: 2", 
+            "note-or-comment_id": "2", 
+            "para_id": "257EDD1B", 
+            "para_index": "n-a", 
+            "para_string": ". Samuel G. Freedman, \u201cYale Marking 25th Anniversary of \u2018Raisin", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }, 
+        {
+            "description": "super_styled ref-mark in endnotes, ref_id: 3", 
+            "note-or-comment_id": "3", 
+            "para_id": "0EF52CA1", 
+            "para_index": "n-a", 
+            "para_string": ". Lorraine Hansberry [hereafter \u201cLH\u201d], \u201cOn Summer,\u201d Playbill, June 27,", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Endnotes"
+        }, 
+        {
+            "description": "restyled endnote ref: no. 78 (was styled as supersup)", 
+            "para_id": "7DAFE11A", 
+            "para_index": 223, 
+            "para_string": "Hansberry intended to exploit this white fear by \u201cblockbusting\u201d in", 
+            "parent_section_start_content": "Chapter 2: \u201cThe King of the Kitchenettes\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "restyled endnote ref: no. 224 (was styled as supersup)", 
+            "para_id": "7EFF3421", 
+            "para_index": 456, 
+            "para_string": "O\u2019Casey\u2019s impact on her was \u201clike that on all of", 
+            "parent_section_start_content": "Chapter 5: Entering into a Romance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "restyled endnote ref: no. 225 (was styled as supersup)", 
+            "para_id": "6EDB1ADC", 
+            "para_index": 457, 
+            "para_string": "Theater-going black Americans like Ward and Hansberry also saw their", 
+            "parent_section_start_content": "Chapter 5: Entering into a Romance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "restyled endnote ref: no. 226 (was styled as supersup)", 
+            "para_id": "795CFA67", 
+            "para_index": 458, 
+            "para_string": "The night Lorraine saw Juno and the Paycock at the", 
+            "parent_section_start_content": "Chapter 5: Entering into a Romance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "restyled endnote ref: no. 292 (was styled as supersup)", 
+            "para_id": "7E55B70A", 
+            "para_index": 587, 
+            "para_string": "Richard Wright came away from meetings of the Marxist John", 
+            "parent_section_start_content": "Chapter 8: \u201cFlag from a Kitchenette Window\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "removed_blank_para": [
+        {
+            "description": "blank para in endnote note with other text; note_id: 363", 
+            "para_id": "77EBECA1", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }, 
+        {
+            "description": "blank para in endnote note with other text; note_id: 855", 
+            "para_id": "4295A877", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "section_start_found": [
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "1A33135B", 
+            "para_index": 0, 
+            "para_string": "Lorraine Hansberry", 
+            "parent_section_start_content": "Lorraine Hansberry", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-Ad-CardSAC", 
+            "para_id": "347A4062", 
+            "para_index": 1, 
+            "para_string": "Ad Card", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "0706C071", 
+            "para_index": 7, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-TitlepageSTI", 
+            "para_id": "1DD4E5FF", 
+            "para_index": 9, 
+            "para_string": "Titlepage", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Section-CopyrightSCR", 
+            "para_id": "26C5B0F9", 
+            "para_index": 15, 
+            "para_string": "Copyright", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Section-DedicationSDE", 
+            "para_id": "4D30839E", 
+            "para_index": 41, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Section-ContentsSTC", 
+            "para_id": "550D5674", 
+            "para_index": 47, 
+            "para_string": "Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Section-Front-Matter-GeneralSFM", 
+            "para_id": "705649C2", 
+            "para_index": 83, 
+            "para_string": "Front Matter General", 
+            "parent_section_start_content": "Front Matter General", 
+            "parent_section_start_type": "Section-Front-Matter-GeneralSFM"
+        }, 
+        {
+            "description": "Section-IntroductionSIC", 
+            "para_id": "28FCA239", 
+            "para_index": 109, 
+            "para_string": "Introduction", 
+            "parent_section_start_content": "Introduction", 
+            "parent_section_start_type": "Section-IntroductionSIC"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "717A2406", 
+            "para_index": 120, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "1E50CF99", 
+            "para_index": 122, 
+            "para_string": "Part I: Chicago", 
+            "parent_section_start_content": "Part I: Chicago", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "76D052C9", 
+            "para_index": 125, 
+            "para_string": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_content": "Chapter 1: Infant of the Spring", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "0F879E68", 
+            "para_index": 170, 
+            "para_string": "Part I: Chicago", 
+            "parent_section_start_content": "Part I: Chicago", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "50580A59", 
+            "para_index": 173, 
+            "para_string": "Chapter 2: \u201cThe King of the Kitchenettes\u201d", 
+            "parent_section_start_content": "Chapter 2: \u201cThe King of the Kitchenettes\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "3E6C37CB", 
+            "para_index": 231, 
+            "para_string": "Part I: Chicago", 
+            "parent_section_start_content": "Part I: Chicago", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "11DBABAC", 
+            "para_index": 234, 
+            "para_string": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_content": "Chapter 3: Stay Where You Belong", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "041B2D74", 
+            "para_index": 334, 
+            "para_string": "Part I: Chicago", 
+            "parent_section_start_content": "Part I: Chicago", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "778A9AD7", 
+            "para_index": 337, 
+            "para_string": "Chapter 4: American Princess", 
+            "parent_section_start_content": "Chapter 4: American Princess", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "5FE35EFE", 
+            "para_index": 391, 
+            "para_string": "Part II: Madison, Wisconsin", 
+            "parent_section_start_content": "Part II: Madison, Wisconsin", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "57AA6E15", 
+            "para_index": 394, 
+            "para_string": "Chapter 5: Entering into a Romance", 
+            "parent_section_start_content": "Chapter 5: Entering into a Romance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "7ED2BD19", 
+            "para_index": 475, 
+            "para_string": "Part II: Madison, Wisconsin", 
+            "parent_section_start_content": "Part II: Madison, Wisconsin", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "5CB191CF", 
+            "para_index": 478, 
+            "para_string": "Chapter 6: The Young Progressives", 
+            "parent_section_start_content": "Chapter 6: The Young Progressives", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "6A138E97", 
+            "para_index": 517, 
+            "para_string": "Part II: Madison, Wisconsin", 
+            "parent_section_start_content": "Part II: Madison, Wisconsin", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6ECB23F9", 
+            "para_index": 520, 
+            "para_string": "Chapter 7: Mexico", 
+            "parent_section_start_content": "Chapter 7: Mexico", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "6A65102B", 
+            "para_index": 576, 
+            "para_string": "Part III: Harlem", 
+            "parent_section_start_content": "Part III: Harlem", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "31B0ADAC", 
+            "para_index": 579, 
+            "para_string": "Chapter 8: \u201cFlag from a Kitchenette Window\u201d", 
+            "parent_section_start_content": "Chapter 8: \u201cFlag from a Kitchenette Window\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "56CC1239", 
+            "para_index": 660, 
+            "para_string": "Part III: Harlem", 
+            "parent_section_start_content": "Part III: Harlem", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "7ECBF1D4", 
+            "para_index": 663, 
+            "para_string": "Chapter 9: Freedom", 
+            "parent_section_start_content": "Chapter 9: Freedom", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "517F76D3", 
+            "para_index": 708, 
+            "para_string": "Part III: Harlem", 
+            "parent_section_start_content": "Part III: Harlem", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "67E3C19D", 
+            "para_index": 711, 
+            "para_string": "Chapter 10: \u201cA Young Harriet Tubman\u201d", 
+            "parent_section_start_content": "Chapter 10: \u201cA Young Harriet Tubman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "73FB8DB2", 
+            "para_index": 785, 
+            "para_string": "Part III: Harlem", 
+            "parent_section_start_content": "Part III: Harlem", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "5AFB6AB1", 
+            "para_index": 788, 
+            "para_string": "Chapter 11: The Passport", 
+            "parent_section_start_content": "Chapter 11: The Passport", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "7F17FB57", 
+            "para_index": 835, 
+            "para_string": "Part III: Harlem", 
+            "parent_section_start_content": "Part III: Harlem", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "2DAD1D03", 
+            "para_index": 838, 
+            "para_string": "Chapter 12: \u201cI Do Love You\u201d", 
+            "parent_section_start_content": "Chapter 12: \u201cI Do Love You\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "67D2148D", 
+            "para_index": 921, 
+            "para_string": "Part IV: Greenwich Village", 
+            "parent_section_start_content": "Part IV: Greenwich Village", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "5D46EAD0", 
+            "para_index": 924, 
+            "para_string": "Chapter 13: Camp Unity", 
+            "parent_section_start_content": "Chapter 13: Camp Unity", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "272F758D", 
+            "para_index": 972, 
+            "para_string": "Part IV: Greenwich Village", 
+            "parent_section_start_content": "Part IV: Greenwich Village", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "4775BE93", 
+            "para_index": 975, 
+            "para_string": "Chapter 14: \u201cOne Becomes a Woman\u201d", 
+            "parent_section_start_content": "Chapter 14: \u201cOne Becomes a Woman\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "54BE4347", 
+            "para_index": 1054, 
+            "para_string": "Part IV: Greenwich Village", 
+            "parent_section_start_content": "Part IV: Greenwich Village", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "286A006C", 
+            "para_index": 1057, 
+            "para_string": "Chapter 15: \u201cI Ain\u2019t Sick\u201d", 
+            "parent_section_start_content": "Chapter 15: \u201cI Ain\u2019t Sick\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "5B3688D6", 
+            "para_index": 1137, 
+            "para_string": "Part IV: Greenwich Village", 
+            "parent_section_start_content": "Part IV: Greenwich Village", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "5F473968", 
+            "para_index": 1140, 
+            "para_string": "Chapter 16: \u201cCindy, Oh Cindy\u201d", 
+            "parent_section_start_content": "Chapter 16: \u201cCindy, Oh Cindy\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "0ABC40D1", 
+            "para_index": 1187, 
+            "para_string": "Part IV: Greenwich Village", 
+            "parent_section_start_content": "Part IV: Greenwich Village", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "31A4F1B1", 
+            "para_index": 1190, 
+            "para_string": "Chapter 17: The Invisible Lesbian", 
+            "parent_section_start_content": "Chapter 17: The Invisible Lesbian", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "63E8F4CC", 
+            "para_index": 1237, 
+            "para_string": "Part V: The Great White Way", 
+            "parent_section_start_content": "Part V: The Great White Way", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "2E98BFA2", 
+            "para_index": 1240, 
+            "para_string": "Chapter 18: \u201cGo the Way Your Blood Beats\u201d", 
+            "parent_section_start_content": "Chapter 18: \u201cGo the Way Your Blood Beats\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "472CD215", 
+            "para_index": 1304, 
+            "para_string": "Part V: The Great White Way", 
+            "parent_section_start_content": "Part V: The Great White Way", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "20A86916", 
+            "para_index": 1307, 
+            "para_string": "Chapter 19: \u201cSomething Urgently on Its Way\u201d", 
+            "parent_section_start_content": "Chapter 19: \u201cSomething Urgently on Its Way\u201d", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "284F5A9F", 
+            "para_index": 1407, 
+            "para_string": "Part V: The Great White Way", 
+            "parent_section_start_content": "Part V: The Great White Way", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6104F3B5", 
+            "para_index": 1410, 
+            "para_string": "Chapter 20: Dismantling the Master\u2019s House", 
+            "parent_section_start_content": "Chapter 20: Dismantling the Master\u2019s House", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "2AB91590", 
+            "para_index": 1486, 
+            "para_string": "Part V: The Great White Way", 
+            "parent_section_start_content": "Part V: The Great White Way", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "25566E74", 
+            "para_index": 1489, 
+            "para_string": "Chapter 21: Chitterlin\u2019 Heights", 
+            "parent_section_start_content": "Chapter 21: Chitterlin\u2019 Heights", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "4B5A12B5", 
+            "para_index": 1579, 
+            "para_string": "Epilogue", 
+            "parent_section_start_content": "Epilogue", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-BibliographySBI", 
+            "para_id": "7F73E6D7", 
+            "para_index": 1593, 
+            "para_string": "Bibliography", 
+            "parent_section_start_content": "Bibliography", 
+            "parent_section_start_type": "Section-BibliographySBI"
+        }, 
+        {
+            "description": "Section-AcknowledgmentsSAK", 
+            "para_id": "2DBB85CC", 
+            "para_index": 1702, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Section-Back-Matter-GeneralSBM", 
+            "para_id": "73365E63", 
+            "para_index": 1713, 
+            "para_string": "Back Matter General", 
+            "parent_section_start_content": "Back Matter General", 
+            "parent_section_start_type": "Section-Back-Matter-GeneralSBM"
+        }, 
+        {
+            "description": "Section-IndexSIN", 
+            "para_id": "4FCABDA6", 
+            "para_index": 1715, 
+            "para_string": "Index", 
+            "parent_section_start_content": "Index", 
+            "parent_section_start_type": "Section-IndexSIN"
+        }, 
+        {
+            "description": "Section-About-AuthorSAA", 
+            "para_id": "6798F9EE", 
+            "para_index": 1717, 
+            "para_string": "About the Author", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }
+    ], 
+    "title_paras": [
+        {
+            "description": "Lorraine Hansberry", 
+            "para_id": "0B883A36", 
+            "para_index": 10, 
+            "para_string": "Lorraine Hansberry", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ]
+}

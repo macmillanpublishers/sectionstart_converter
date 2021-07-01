@@ -211,13 +211,36 @@ def createDummyNotePara(xml_root, testpara_counter, note_stylename, noteref_styl
     #   (whether based on styles.xml, or another endnote, or a standard, any could be wrong)
     return newpara, testpara_counter
 
-def handleBlankParasInNotes(report_dict, xml_root, note_stylename, noteref_stylename, note_name, note_section):
+def checkForNonSeparatorNotes(xml_root, separators, note_name, note_section):
+    searchstring = ".//w:{}".format(note_name)
+    type = '{%s}type' % wnamespace
+    non_separator_note = False
+    for note in xml_root.findall(searchstring, wordnamespaces):
+        # skip separator notes
+        if type in note.attrib and note.attrib[type] in separators:
+            continue
+        # one non-separator note is all we need to set bool
+        non_separator_note = True
+        break
+    return non_separator_note
+
+def checkForNotesSection(doc_root, endnotes_root, report_dict, separators, note_section_stylename):
+    logger.info("* * * commencing checkForNotesSection function")
+    # do we really have notes?
+    notes_bool = checkForNonSeparatorNotes(endnotes_root, separators, "endnote", "Endnotes")
+    if notes_bool == True:
+        paras = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(note_section_stylename), doc_root)
+        if len(paras) == 0:
+            firstpara = doc_root.find(".//*w:p", wordnamespaces)
+            lxml_utils.logForReport(report_dict,doc_root,None,"missing_notes_section","Endnotes are present, Notes Section is not")
+    return report_dict
+
+def handleBlankParasInNotes(report_dict, xml_root, separators, note_stylename, noteref_stylename, note_name, note_section):
     logger.info("* * * commencing handleBlankParasInNotes function, for {}".format(note_section))
     # vars
     testpara_counter = 1
     searchstring = ".//w:{}".format(note_name)
     type = '{%s}type' % wnamespace
-    separators = ['separator', 'continuationSeparator', 'continuationNotice']
     # handle notes objects with no para children
     for note in xml_root.findall(searchstring, wordnamespaces):
         if len(note) == 0: # <== note object has no children (this may not occur naturally, but why not cover?)
@@ -647,9 +670,9 @@ def rsuiteValidations(report_dict):
     #     report_dict = removeBlankParas(report_dict, xml_root)
     report_dict = removeBlankParas(report_dict, doc_root, sectionnames, container_start_styles, container_end_styles, cfg.spacebreakstyles)
     if os.path.exists(cfg.endnotes_xml):
-        report_dict = handleBlankParasInNotes(report_dict, endnotes_root, cfg.endnotestyle, cfg.endnote_ref_style, 'endnote', "Endnotes")
+        report_dict = handleBlankParasInNotes(report_dict, endnotes_root, cfg.note_separator_types, cfg.endnotestyle, cfg.endnote_ref_style, 'endnote', "Endnotes")
     if os.path.exists(cfg.footnotes_xml):
-        report_dict = handleBlankParasInNotes(report_dict, footnotes_root, cfg.footnotestyle, cfg.footnote_ref_style, 'footnote', "Footnotes")
+        report_dict = handleBlankParasInNotes(report_dict, footnotes_root, cfg.note_separator_types, cfg.footnotestyle, cfg.footnote_ref_style, 'footnote', "Footnotes")
 
     # test / verify Container structures
     report_dict = checkContainers(report_dict, doc_root, sectionnames, container_start_styles, container_end_styles)
@@ -669,6 +692,8 @@ def rsuiteValidations(report_dict):
         report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
         report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
         report_dict = fixSuperNoteMarks(endnotes_root, report_dict, cfg.superscriptstyle, cfg.endnote_ref_style, 'endnote')
+        # endnotes only: make sure Notes section is present
+        report_dict = checkForNotesSection(doc_root, endnotes_root, report_dict, cfg.note_separator_types, cfg.notessection_stylename)
     # log custom note markers for report
     refstyle_dict = {"endnote":cfg.endnote_ref_style, "footnote":cfg.footnote_ref_style}
     report_dict = flagCustomNoteMarks(doc_root, report_dict, refstyle_dict)

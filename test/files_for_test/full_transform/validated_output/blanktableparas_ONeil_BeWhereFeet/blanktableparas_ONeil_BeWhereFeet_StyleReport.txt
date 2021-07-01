@@ -1,6 +1,14 @@
-CONGRATULATIONS! YOU PASSED!
+OOPS!
 
-But you're not done yet. Please check the info listed below.
+Problems were found with the styles in your document.
+
+
+------------------------------------ ERRORS ------------------------------------
+** ERROR: Embedded endnotes are present, but there is no paragraph styled: 'Section-Notes (SNT)' in the main body of the document.
+
+
+If you have any questions about how to handle these errors,
+please contact workflows@macmillan.com.
 
 
 ----------------------------------- WARNINGS -----------------------------------

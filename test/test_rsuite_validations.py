@@ -444,7 +444,7 @@ class Tests(unittest.TestCase):
         test_root.append(test_endnote)
 
         # run function
-        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, cfg.note_separator_types, note_stylename, noteref_stylename, note_name, note_section)
         expected_rd = {'found_empty_note': [{'description': "endnote",
                         'para_id': 'p_id-1'}],
                         'removed_blank_para': [{'description': 'excess blank para in empty endnote',
@@ -485,7 +485,7 @@ class Tests(unittest.TestCase):
         test_root.append(test_endnote)
 
         # run function
-        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, cfg.note_separator_types, note_stylename, noteref_stylename, note_name, note_section)
         expected_rd = {'removed_blank_para': \
             [{'description': 'blank para in endnote note with other text; note_id: 3', \
             'para_id': para_id}, \
@@ -511,7 +511,7 @@ class Tests(unittest.TestCase):
         expected_root = copy.deepcopy(test_root)
 
         # run function
-        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, cfg.note_separator_types, note_stylename, noteref_stylename, note_name, note_section)
 
         # assert!
         expected_rd = {'table_blank_para_notes': [{'description': 'blank para in table cell in endnote',
@@ -537,7 +537,7 @@ class Tests(unittest.TestCase):
         empty_note.append(blankpara)
 
         # run function
-        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, cfg.note_separator_types, note_stylename, noteref_stylename, note_name, note_section)
         expected_rd = {'removed_blank_para': [{'description': 'excess blank para in empty endnote',
                         'para_id': 'bp_id1'}],
                         'table_blank_para_notes': [{'description': 'blank para in table cell in endnote',
@@ -571,7 +571,7 @@ class Tests(unittest.TestCase):
         test_root.append(empty_note)
 
         # run function
-        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, note_stylename, noteref_stylename, note_name, note_section)
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, cfg.note_separator_types, note_stylename, noteref_stylename, note_name, note_section)
         expected_rd = {'found_empty_note': \
             [{'description': 'footnote', \
             'para_id': para_id}]}
@@ -604,7 +604,7 @@ class Tests(unittest.TestCase):
         root.append(separator_note)
         expected_root = copy.deepcopy(root)
         # run the function
-        report_dict = rsuite_validations.handleBlankParasInNotes({}, root, 'note_stylename', 'noteref_stylename', note_name, 'note_section')
+        report_dict = rsuite_validations.handleBlankParasInNotes({}, root, cfg.note_separator_types, 'note_stylename', 'noteref_stylename', note_name, 'note_section')
         # assert!
         self.assertEqual(report_dict, {})
         self.assertEqual(etree.tostring(expected_root), etree.tostring(root))
@@ -1369,6 +1369,49 @@ class Tests(unittest.TestCase):
         self.assertEqual(etree.tostring(en_root), etree.tostring(getRoot(en_finalxml)))
         self.assertEqual(report_dict, expected_rd)
 
+    # scans endnotes.xml for endnote_els other than continuationNotice and/or continuationSeparator
+    # returns t/f (t=real notes present)
+    def test_checkForNonSeparatorNotes(self):
+        en_xml_no_notes = os.path.join(testfiles_basepath, 'test_checkForNonSeparatorNotes', 'endnotes_nonotes.xml')
+        en_xml_notes = os.path.join(testfiles_basepath, 'test_checkForNonSeparatorNotes', 'endnotes_notes.xml')
+        en_xml_notes2 = os.path.join(testfiles_basepath, 'test_checkForNonSeparatorNotes', 'endnotes_notes2.xml')
+        fn_xml_no_notes = os.path.join(testfiles_basepath, 'test_checkForNonSeparatorNotes', 'footnotes_nonotes.xml')
+        fn_xml_notes = os.path.join(testfiles_basepath, 'test_checkForNonSeparatorNotes', 'footnotes_notes.xml')
+
+        nonotes_bool = rsuite_validations.checkForNonSeparatorNotes(getRoot(en_xml_no_notes), cfg.note_separator_types, 'endnote', "Endnotes")
+        notes_bool = rsuite_validations.checkForNonSeparatorNotes(getRoot(en_xml_notes), cfg.note_separator_types, 'endnote', "Endnotes")
+        notes2_bool = rsuite_validations.checkForNonSeparatorNotes(getRoot(en_xml_notes2), cfg.note_separator_types, 'endnote', "Endnotes")
+        nofnotes_bool = rsuite_validations.checkForNonSeparatorNotes(getRoot(fn_xml_no_notes), cfg.note_separator_types, 'footnote', "Footnotes")
+        fnotes_bool = rsuite_validations.checkForNonSeparatorNotes(getRoot(fn_xml_notes), cfg.note_separator_types, 'footnote', "Footnotes")
+
+        #assertions
+        self.assertEqual(nonotes_bool, False)
+        self.assertEqual(notes_bool, True)
+        self.assertEqual(notes2_bool, True)
+        self.assertEqual(nofnotes_bool, False)
+        self.assertEqual(fnotes_bool, True)
+
+    def test_checkForNotesSection(self):
+        # reusing test files from above test
+        en_xml_no_notes = os.path.join(testfiles_basepath, 'test_checkForNonSeparatorNotes', 'endnotes_nonotes.xml')
+        en_xml_notes = os.path.join(testfiles_basepath, 'test_checkForNonSeparatorNotes', 'endnotes_notes.xml')
+        en_xml_notes2 = os.path.join(testfiles_basepath, 'test_checkForNonSeparatorNotes', 'endnotes_notes2.xml')
+        doc_xml_notes = os.path.join(testfiles_basepath, 'test_checkForNonSeparatorNotes', 'document_notes.xml')
+        doc_xml_notes2 = os.path.join(testfiles_basepath, 'test_checkForNonSeparatorNotes', 'document_notes2.xml')
+
+        # test endnotes file with no real endnotes
+        report_dict_nonotes = rsuite_validations.checkForNotesSection(None, getRoot(en_xml_no_notes), {}, cfg.note_separator_types, cfg.notessection_stylename)
+        # endnotes present, Section Notes is present
+        report_dict_notes = rsuite_validations.checkForNotesSection(getRoot(doc_xml_notes), getRoot(en_xml_notes), {}, cfg.note_separator_types, cfg.notessection_stylename)
+        # endnotes present, Section Notes not present
+        report_dict_notes2 = rsuite_validations.checkForNotesSection(getRoot(doc_xml_notes2), getRoot(en_xml_notes2), {}, cfg.note_separator_types, cfg.notessection_stylename)
+
+        #assertions
+        self.assertEqual(report_dict_nonotes, {})
+        self.assertEqual(report_dict_notes, {})
+        self.assertEqual(report_dict_notes2, {'missing_notes_section':
+                [{'description': 'Endnotes are present, Notes Section is not',
+                'para_id': 'n-a'}]})
 
 if __name__ == '__main__':
     unittest.main()

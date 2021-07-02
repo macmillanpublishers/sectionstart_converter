@@ -1413,5 +1413,39 @@ class Tests(unittest.TestCase):
                 [{'description': 'Endnotes are present, Notes Section is not',
                 'para_id': 'n-a'}]})
 
+    def test_duplicateSectionCheck(self):
+        sect_style_array = [cfg.booksection_stylename, cfg.notessection_stylename]
+        book_nickname = lxml_utils.transformStylename(cfg.booksection_stylename)
+        notes_nickname = lxml_utils.transformStylename(cfg.notessection_stylename)
+        test_rd_basic = {'section_start_found':[{'description':'DifferentSectionStyle'}]}
+        test_rd_2 = {'section_start_found':[{'description':'DifferentSectionStyle'},
+                                            {'description':notes_nickname},
+                                            {'description':notes_nickname}]}
+        test_rd_3 = {'section_start_found':[{'description':book_nickname},
+                                            {'description':book_nickname},
+                                            {'description':notes_nickname},
+                                            {'description':book_nickname},
+                                            {'description':notes_nickname}]}
+        # results expected
+        rd_2_expected = dict(test_rd_2)
+        rd_2_expected['too_many_section_para']= [{
+            "description": "{}_2".format(cfg.notessection_stylename),
+            "para_id": "n-a"
+        }]
+        rd_3_expected = dict(test_rd_3)
+        rd_3_expected['too_many_section_para']= [{
+            "description": "{}_3".format(cfg.booksection_stylename),
+            "para_id": "n-a"
+        }, {
+            "description": "{}_2".format(cfg.notessection_stylename),
+            "para_id": "n-a"
+        }]
+
+        #assertions
+        self.assertEqual(rsuite_validations.duplicateSectionCheck({}, sect_style_array), {})
+        self.assertEqual(rsuite_validations.duplicateSectionCheck(test_rd_basic, sect_style_array),test_rd_basic)
+        self.assertEqual(rsuite_validations.duplicateSectionCheck(test_rd_2, sect_style_array),rd_2_expected)
+        self.assertEqual(rsuite_validations.duplicateSectionCheck(test_rd_3, sect_style_array),rd_3_expected)
+
 if __name__ == '__main__':
     unittest.main()

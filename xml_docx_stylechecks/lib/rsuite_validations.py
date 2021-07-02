@@ -468,6 +468,25 @@ def verifyListNesting(report_dict, xml_root, li_styles_by_level, li_styles_by_ty
                                     lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
     return report_dict
 
+def duplicateSectionCheck(report_dict, section_array):
+    logger.debug("* * * commencing duplicateSectionCheck function, for %s..." % section_array)
+    # cycle through sections that should occur once only
+    for sectionfullname in section_array:
+        sectionshortname = lxml_utils.transformStylename(sectionfullname)
+        section_count = 0
+        # cycle through report dict sectionstart tally
+        if 'section_start_found' in report_dict:
+            for section_dict in report_dict['section_start_found']:
+                if section_dict["description"] == sectionshortname:
+                    section_count += 1
+            # if we found more than one
+            if section_count > 1:
+                lxml_utils.logForReport(report_dict,None,None,"too_many_section_para","{}_{}".format(sectionfullname, section_count))
+        else:
+            logger.warn("function 'duplicateSectionCheck' did not find a 'section_start_found' list in report_dict")
+
+    return report_dict
+
 def checkEndnoteFootnoteStyles(xml_root, report_dict, note_style, sectionname):
     logger.info("* * * commencing checkEndnoteFootnoteStyles function, for %s..." % sectionname)
     # first check styles of paras
@@ -680,6 +699,8 @@ def rsuiteValidations(report_dict):
     report_dict = verifyListNesting(report_dict, doc_root, li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles)
     # get all Section Starts in the doc:
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "report")
+    # check for sections that should only appear once
+    report_dict = duplicateSectionCheck(report_dict, [cfg.booksection_stylename, cfg.notessection_stylename])
 
     # check footnote / endnote para styles
     # rm footnote / endnote leading whitespace

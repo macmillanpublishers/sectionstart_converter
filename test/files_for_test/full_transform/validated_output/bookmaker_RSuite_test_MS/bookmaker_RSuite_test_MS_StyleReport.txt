@@ -48,6 +48,10 @@ Problems were found with the styles in your document.
 
 ** ERROR: Missing or unsupported file extension for 'Image-Placement (Img)'-styled text: 'TestAI.ai' (located in Section-Chapter (SCP): "Chapter 2"). Your filename must end with a supported file extension (one of ['.jpg', '.pdf', '.png', '.psd', '.tif', '.tiff'])
 
+** ERROR: Too many 'Section-Book (BOOK)' paragraphs detected: 2 were found, only one is allowed.
+
+** ERROR: Too many 'Section-Notes (SNT)' paragraphs detected: 3 were found, only one is allowed.
+
 
 If you have any questions about how to handle these errors,
 please contact workflows@macmillan.com.
@@ -108,6 +112,7 @@ Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are 
 edit the manuscript file to add or remove incorrect Section-Start styles or content.
 
 Section-Book (BOOK).............. "Bookmaker Rsuite Test Document"                         
+Section-Book (BOOK).............. "Second Book Para"                                       
 Section-Halftitle (SHT).......... "Half Title"                                             
 Section-Ad-Card (SAC)............ "Ad Card"                                                
 Section-Titlepage (STI).......... "Title Page"                                             
@@ -125,6 +130,8 @@ Section-Chapter (SCP)............ "Chapter 3a"
 Section-Appendix (SAP)........... "Appendix"                                               
 Section-Back-Ad (SBA)............ "Full-Page Back Ad"                                      
 Section-Bibliography (SBI)....... "Bibliography"                                           
+Section-Notes (SNT).............. "Notes1"                                                 
+Section-Notes (SNT).............. "Notes2"                                                 
 Section-Notes (SNT).............. "NOTES"                                                  
 Section-About-Author (SAA)....... "About the Author"                                       
 
@@ -138,7 +145,7 @@ Body-Text (Tx)............................... "aasdas"
 Author2 (Au2)................................ "asdsadsad"                                                 
 
 * Section-Book (BOOK): "Bookmaker Rsuite Test Document"
-Body-Text (Tx)............................... "aasdasd"                                                   
+Body-Text (Tx)............................... "Aasdasd"                                                   
 
 * Section-Halftitle (SHT): "Half Title"
 Title (Ttl).................................. "Strange Tools"                                             
@@ -268,6 +275,9 @@ Image-Placement (Img)........................ "backad_fullpage.jpg"
 * Section-Bibliography (SBI): "Bibliography"
 Main-Head (MHead)............................ "References"                                                
 Reference-Entry (Ref)........................ "Amior, Michael. “Why Are Higher Skilled Workers More Mobile Geographically?"
+
+* Section-Notes (SNT): "Notes1"
+Reference-Entry (Ref)........................ "Notes TK"                                                  
 
 * Section-Notes (SNT): "NOTES"
 Main-Head (MHead)............................ "Manual Endnotes"                                           

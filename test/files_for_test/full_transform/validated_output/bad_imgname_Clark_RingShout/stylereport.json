@@ -999,5 +999,15 @@
             "parent_section_start_content": "Titlepage", 
             "parent_section_start_type": "Section-TitlepageSTI"
         }
+    ], 
+    "too_many_heading_para": [
+        {
+            "description": "Title (Ttl)_2", 
+            "para_id": "177E5C48", 
+            "para_index": 3, 
+            "para_string": "Titlepage", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
     ]
 }

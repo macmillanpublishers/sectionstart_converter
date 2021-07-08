@@ -915,12 +915,20 @@
             <w:t>Front Matter General</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="39589821" w14:textId="77777777" w:rsidP="007E724E" w:rsidR="00542174" w:rsidRDefault="00542174" w:rsidRPr="007E724E">
+      <w:p w14:paraId="39589821" w14:textId="356B506D" w:rsidP="000B3AF3" w:rsidR="00542174" w:rsidRDefault="00542174">
          <w:pPr>
-            <w:pStyle w:val="TitleTtl"/>
+            <w:pStyle w:val="Main-HeadMHead"/>
          </w:pPr>
          <w:r w:rsidRPr="007E724E">
             <w:t>Chronology</w:t>
+         </w:r>
+      </w:p>
+      <w:p w14:paraId="70F92E80" w14:textId="63A62AA5" w:rsidP="000B3AF3" w:rsidR="000B3AF3" w:rsidRDefault="000B3AF3" w:rsidRPr="000B3AF3">
+         <w:pPr>
+            <w:pStyle w:val="Main-HeadMHead"/>
+         </w:pPr>
+         <w:r>
+            <w:t>Start to finish</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="16D0FF2F" w14:textId="1543FAA8" w:rsidP="00602082" w:rsidR="00542174" w:rsidRDefault="00542174" w:rsidRPr="00587F54">
@@ -1193,7 +1201,11 @@
             <w:t>Freedom</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve"> newspaper in Harlem; also begins writing for several Marxist-</w:t>
+            <w:t xml:space="preserve"> newspaper in Harlem; also begins </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
+            <w:t>writing for several Marxist-</w:t>
          </w:r>
          <w:r w:rsidR="006E7B3A">
             <w:t>s</w:t>
@@ -1213,11 +1225,7 @@
             <w:tab/>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve">Engaged to Roosevelt “Rosie” Jackson, a Harlem street speaker and member of </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t>the Labor Youth League.</w:t>
+            <w:t>Engaged to Roosevelt “Rosie” Jackson, a Harlem street speaker and member of the Labor Youth League.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="6E42C601" w14:textId="2B9013A4" w:rsidP="00602082" w:rsidR="00542174" w:rsidRDefault="00542174" w:rsidRPr="00587F54">
@@ -1538,6 +1546,7 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
             <w:t>1964</w:t>
          </w:r>
          <w:r w:rsidR="00507E3E">
@@ -1559,11 +1568,7 @@
             <w:t xml:space="preserve">pancreatic </w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve">cancer. She enters the hospital </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t>“critically ill” in October.</w:t>
+            <w:t>cancer. She enters the hospital “critically ill” in October.</w:t>
          </w:r>
       </w:p>
       <w:p w14:paraId="389C7CED" w14:textId="4EC315FA" w:rsidP="00602082" w:rsidR="00542174" w:rsidRDefault="00542174" w:rsidRPr="00587F54">
@@ -22707,11 +22712,36 @@
             <w:endnoteReference w:id="327"/>
          </w:r>
       </w:p>
-      <w:p w14:paraId="627740BA" w14:textId="77777777" w:rsidP="00602082" w:rsidR="0004277A" w:rsidRDefault="00542174">
+      <w:p w14:paraId="13E7FC6E" w14:textId="77777777" w:rsidP="00204BEE" w:rsidR="00204BEE" w:rsidRDefault="00204BEE" w:rsidRPr="00204BEE">
+         <w:pPr>
+            <w:pStyle w:val="EXTRACT-BEXT-B"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00204BEE">
+            <w:t>EXTRACT-B</w:t>
+         </w:r>
+      </w:p>
+      <w:p w14:paraId="42527518" w14:textId="622E439C" w:rsidP="00204BEE" w:rsidR="00204BEE" w:rsidRDefault="00204BEE">
+         <w:pPr>
+            <w:pStyle w:val="SubtitleSttl"/>
+         </w:pPr>
+         <w:r>
+            <w:t>Extra Extra</w:t>
+         </w:r>
+      </w:p>
+      <w:p w14:paraId="23E49EB3" w14:textId="06A2A6BA" w:rsidP="00204BEE" w:rsidR="00204BEE" w:rsidRDefault="00204BEE">
+         <w:pPr>
+            <w:pStyle w:val="SubtitleSttl"/>
+         </w:pPr>
+         <w:r>
+            <w:t>Important extract.</w:t>
+         </w:r>
+      </w:p>
+      <w:p w14:paraId="627740BA" w14:textId="203F9561" w:rsidP="00602082" w:rsidR="0004277A" w:rsidRDefault="00542174">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
             <w:t>Lorraine seems not to have let Francine’s self-admitted “rotten bourgeois ideology” bother her much. She was out of the apartment practically every day. In October, it still felt like summer.</w:t>
          </w:r>
       </w:p>
@@ -22720,11 +22750,7 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve">During her hours out and about, she tried seeing things through the eyes of a revolutionary. She despised a “slim woman in a perfect black coat with a bright silk red lining” </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t>coming out of Rockefeller Center. “[S]he had blonde hair</w:t>
+            <w:t>During her hours out and about, she tried seeing things through the eyes of a revolutionary. She despised a “slim woman in a perfect black coat with a bright silk red lining” coming out of Rockefeller Center. “[S]he had blonde hair</w:t>
          </w:r>
          <w:r w:rsidR="0004277A">
             <w:t>—</w:t>
@@ -22827,7 +22853,15 @@
             <w:t xml:space="preserve"> was an official of the Communist Party. “Jones” was an alias to throw off the authorities.</w:t>
          </w:r>
       </w:p>
-      <w:p w14:paraId="7AF2DCA3" w14:textId="735E21E6" w:rsidP="00602082" w:rsidR="0004277A" w:rsidRDefault="00542174">
+      <w:p w14:paraId="57D4F81F" w14:textId="77777777" w:rsidP="00204BEE" w:rsidR="00204BEE" w:rsidRDefault="00204BEE" w:rsidRPr="00204BEE">
+         <w:pPr>
+            <w:pStyle w:val="ENDEND"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00204BEE">
+            <w:t>END EXTRACT-B</w:t>
+         </w:r>
+      </w:p>
+      <w:p w14:paraId="7AF2DCA3" w14:textId="33081330" w:rsidP="00602082" w:rsidR="0004277A" w:rsidRDefault="00542174">
          <w:pPr>
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
@@ -22844,7 +22878,11 @@
             <w:t>,</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve"> and an aunt. They lived in a Harlem slum. Five years later, her mother died of spinal meningitis while bent over her sewing machine in a garment shop, exploited to death, Jones said. “I was later to learn that this was not just an individual matter, but that millions of working-class people and Negro people suffered this lot under capitalism</w:t>
+            <w:t xml:space="preserve"> and an aunt. They lived in a Harlem slum. Five years later, her mother died of spinal meningitis while bent over her sewing machine in a garment shop, exploited to death, Jones said. “I was </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
+            <w:t>later to learn that this was not just an individual matter, but that millions of working-class people and Negro people suffered this lot under capitalism</w:t>
          </w:r>
          <w:r w:rsidR="0004277A">
             <w:t>—</w:t>
@@ -22887,11 +22925,7 @@
             <w:t>,</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve"> was tedious and low-paying. She quit and found a position as a salesperson in a Harlem millinery store. In 1936, she joined </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t xml:space="preserve">the Communist Party and began writing for the </w:t>
+            <w:t xml:space="preserve"> was tedious and low-paying. She quit and found a position as a salesperson in a Harlem millinery store. In 1936, she joined the Communist Party and began writing for the </w:t>
          </w:r>
          <w:r w:rsidRPr="002245C3">
             <w:rPr>
@@ -22982,7 +23016,11 @@
             <w:t xml:space="preserve"> (</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t>a silhouette of a woman in high heels feather dusting</w:t>
+            <w:t xml:space="preserve">a silhouette of </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
+            <w:t>a woman in high heels feather dusting</w:t>
          </w:r>
          <w:r w:rsidR="00EA32E6">
             <w:t xml:space="preserve">) </w:t>
@@ -23016,11 +23054,7 @@
             <w:endnoteReference w:id="331"/>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve"> From her post on the Congress of American Women, she urged the party to take a stronger stand on championing black women’s rights in industry, because the “capitalists know, far better than many progressives seem to know, that once Negro women undertake action, the </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t>militancy of the whole Negro people, and thus of the anti-imperialist coalition, is greatly enhanced.”</w:t>
+            <w:t xml:space="preserve"> From her post on the Congress of American Women, she urged the party to take a stronger stand on championing black women’s rights in industry, because the “capitalists know, far better than many progressives seem to know, that once Negro women undertake action, the militancy of the whole Negro people, and thus of the anti-imperialist coalition, is greatly enhanced.”</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
             <w:rPr>
@@ -23130,6 +23164,7 @@
             <w:pStyle w:val="Extract1Ext1"/>
          </w:pPr>
          <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
             <w:t>For blocks there were the outdoor fish markets on 1</w:t>
          </w:r>
          <w:r w:rsidR="009464F7">
@@ -23148,11 +23183,7 @@
             <w:t>—</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve">But instead she had taken Sydney’s hand and they slipped out into the crowds to a fire escape Claudia had found and then they were free in the splendidness of New York at night. They </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t>walked together, silent and holding hands</w:t>
+            <w:t>But instead she had taken Sydney’s hand and they slipped out into the crowds to a fire escape Claudia had found and then they were free in the splendidness of New York at night. They walked together, silent and holding hands</w:t>
          </w:r>
          <w:r w:rsidR="0004277A">
             <w:t>—</w:t>
@@ -23267,6 +23298,7 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
             <w:t xml:space="preserve">In October, probably through Jones or someone in her circle, Lorraine heard about an opening at a new monthly newspaper called </w:t>
          </w:r>
          <w:r w:rsidRPr="002245C3">
@@ -23307,7 +23339,6 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
             <w:t>The address she was given was 53 West 125</w:t>
          </w:r>
          <w:r w:rsidR="00D01D7A">
@@ -23475,7 +23506,11 @@
             <w:t>Southern Negro Youth Congress</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve">, headquartered in Richmond, Virginia. They organized sit-ins, sharecropper protests, and voter registration drives. During the </w:t>
+            <w:t xml:space="preserve">, headquartered in Richmond, Virginia. They organized sit-ins, sharecropper protests, and voter </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
+            <w:t xml:space="preserve">registration drives. During the </w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
             <w:t xml:space="preserve">Montgomery </w:t>
@@ -23519,11 +23554,7 @@
             <w:t>Burnham’s</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve"> voice, Hansberry said, “was very deep and his language struck my senses immediately, with its profound literacy, constantly punctuated by deliberate and loving poetic </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t>lapses into the beloved color of the speech of the masses of our people.” He was a storyteller, and sometimes, in the middle of a tale, “he just opened his mouth and howled for the joy of it.”</w:t>
+            <w:t xml:space="preserve"> voice, Hansberry said, “was very deep and his language struck my senses immediately, with its profound literacy, constantly punctuated by deliberate and loving poetic lapses into the beloved color of the speech of the masses of our people.” He was a storyteller, and sometimes, in the middle of a tale, “he just opened his mouth and howled for the joy of it.”</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
             <w:rPr>
@@ -23659,7 +23690,14 @@
             <w:rPr>
                <w:rStyle w:val="itali"/>
             </w:rPr>
-            <w:t>re a Great People. They Need a Great Newspaper. Read Freedom, Paul Robeson’s Newspaper</w:t>
+            <w:t xml:space="preserve">re a Great People. They Need a Great Newspaper. Read Freedom, Paul </w:t>
+         </w:r>
+         <w:r w:rsidRPr="007D7911">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:lastRenderedPageBreak/>
+            <w:t>Robeson’s Newspaper</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
             <w:t>.</w:t>
@@ -23712,11 +23750,7 @@
             <w:t>,</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve"> Lorraine had to weave between the small crowd blocking the front door because </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t>Robeson, six feet</w:t>
+            <w:t xml:space="preserve"> Lorraine had to weave between the small crowd blocking the front door because Robeson, six feet</w:t>
          </w:r>
          <w:r w:rsidR="006305C9">
             <w:t>,</w:t>
@@ -23826,7 +23860,11 @@
             <w:endnoteReference w:id="345"/>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve"> When he arrived there on an invitation from the Kremlin in 1934, he was treated like a hero. “Here, I am not a Negro but a human being for the first time in my life,” he told reporters. “I walk in full human dignity.” His performances were interspersed with praise for the Soviet Union, much to the impatience of audiences and the consternation of black activists. “As far as I can see,” Bayard Rustin wrote to a friend in 1947, “he </w:t>
+            <w:t xml:space="preserve"> When he arrived there on an invitation from the Kremlin in 1934, he was treated like a hero. “Here, I am not a Negro but a human being for the first time in my life,” he told reporters. “I walk in full human dignity.” His performances were interspersed with praise for the Soviet Union, much to the impatience of audiences and the consternation of black </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
+            <w:t xml:space="preserve">activists. “As far as I can see,” Bayard Rustin wrote to a friend in 1947, “he </w:t>
          </w:r>
          <w:r w:rsidR="0039686A">
             <w:t xml:space="preserve">[Robeson] </w:t>
@@ -23864,11 +23902,7 @@
             <w:t>—</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve">I can never forget that warm feeling of kindliness and also a </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t>feeling of sureness. Here was one who was wise and good</w:t>
+            <w:t>I can never forget that warm feeling of kindliness and also a feeling of sureness. Here was one who was wise and good</w:t>
          </w:r>
          <w:r w:rsidR="0004277A">
             <w:t>—</w:t>
@@ -24017,7 +24051,11 @@
             <w:t xml:space="preserve"> f</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve">ire in the air. He escorted visitors from all over the country and parts of the world, through the narrow rooms. Occasionally, he would stop to talk about the struggles of black people, not only in the United States but also in colonial Africa. He was an evangelist for black liberation everywhere. Robeson was seen having an animated discussion, “talkin’ and signifyin’” with Burnham and George B. Murphy, editor of the </w:t>
+            <w:t xml:space="preserve">ire in the air. He escorted visitors from all over the country and parts of the world, through the narrow rooms. Occasionally, he would stop to talk about the </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
+            <w:t xml:space="preserve">struggles of black people, not only in the United States but also in colonial Africa. He was an evangelist for black liberation everywhere. Robeson was seen having an animated discussion, “talkin’ and signifyin’” with Burnham and George B. Murphy, editor of the </w:t>
          </w:r>
          <w:r w:rsidRPr="002245C3">
             <w:rPr>
@@ -24026,11 +24064,7 @@
             <w:t>Washington Afro-American</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve">. Burnham was responding to Robeson’s passion by “exploding every now and then with a characteristic, ‘Amen, Amen!’” At her desk was Hansberry, “whose lovely brown face </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t>was illuminated with a serenity which seemed curiously out of place in a loft on 125th Street.”</w:t>
+            <w:t>. Burnham was responding to Robeson’s passion by “exploding every now and then with a characteristic, ‘Amen, Amen!’” At her desk was Hansberry, “whose lovely brown face was illuminated with a serenity which seemed curiously out of place in a loft on 125th Street.”</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
             <w:rPr>
@@ -24105,7 +24139,11 @@
             <w:t xml:space="preserve">. . . . </w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t>I am sick of poverty, lynching, stupid wars and the universal maltreatment of my people and obsessed with a rather desperate desire for a new world for me and my brothers. So dear friend, I must perhaps go to jail. Please at the next red-baiting session you hear</w:t>
+            <w:t xml:space="preserve">I am sick of poverty, lynching, stupid wars and the universal maltreatment of my people </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
+            <w:t>and obsessed with a rather desperate desire for a new world for me and my brothers. So dear friend, I must perhaps go to jail. Please at the next red-baiting session you hear</w:t>
          </w:r>
          <w:r w:rsidR="0004277A">
             <w:t> . . .</w:t>
@@ -24128,11 +24166,7 @@
             <w:t>,</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve"> despite that constant talk of liberation and equality, the atmosphere in the office was heavily male and chauvinist, which she doesn’t seem to have remarked on. Hansberry “was </w:t>
-         </w:r>
-         <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
-            <w:t xml:space="preserve">always trying to think things through,” said Julian Mayfield, and thinking things through was considered, by most men, a “distinctly unsweet and unfemale virtue.” Because she “looked like a coed” and was given to fits of laughter, the men weren’t sure whether she was an intellectual or a Gal Friday who typed speeches for Robeson. They wanted to label her. “She could be so serious and to the point,” said Mayfield, “that her enemies would want to give her a sock on the jaw and say ‘Shut up, girl, we men are talking about serious things now.’” Novelist Sarah Elizabeth Wright, a member of the Harlem Writers Guild along with Lorraine, said it was as if “a virtual wilderness of the human mind” existed among most black men. They couldn’t accept or respect women as “thoughtful” individuals </w:t>
+            <w:t xml:space="preserve"> despite that constant talk of liberation and equality, the atmosphere in the office was heavily male and chauvinist, which she doesn’t seem to have remarked on. Hansberry “was always trying to think things through,” said Julian Mayfield, and thinking things through was considered, by most men, a “distinctly unsweet and unfemale virtue.” Because she “looked like a coed” and was given to fits of laughter, the men weren’t sure whether she was an intellectual or a Gal Friday who typed speeches for Robeson. They wanted to label her. “She could be so serious and to the point,” said Mayfield, “that her enemies would want to give her a sock on the jaw and say ‘Shut up, girl, we men are talking about serious things now.’” Novelist Sarah Elizabeth Wright, a member of the Harlem Writers Guild along with Lorraine, said it was as if “a virtual wilderness of the human mind” existed among most black men. They couldn’t accept or respect women as “thoughtful” individuals </w:t>
          </w:r>
          <w:r w:rsidR="00C47D5C">
             <w:t>or as</w:t>
@@ -24219,7 +24253,11 @@
             <w:endnoteReference w:id="353"/>
          </w:r>
          <w:r w:rsidRPr="00587F54">
-            <w:t xml:space="preserve"> She was at last catching the ineffable spirit of something that had eluded her. “Sometimes in this country maybe just walking down a Southside street, or maybe suddenly up in a Harlem window, or maybe in a flash turning the page of one of those picture books from the South you’ll see it</w:t>
+            <w:t xml:space="preserve"> She was at last catching the ineffable spirit of something that had eluded her. “Sometimes in this country maybe just walking down a Southside street, or </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00587F54">
+            <w:lastRenderedPageBreak/>
+            <w:t>maybe suddenly up in a Harlem window, or maybe in a flash turning the page of one of those picture books from the South you’ll see it</w:t>
          </w:r>
          <w:r w:rsidR="0004277A">
             <w:t>—</w:t>
@@ -24306,14 +24344,7 @@
             <w:rPr>
                <w:rStyle w:val="itali"/>
             </w:rPr>
-            <w:t xml:space="preserve">No </w:t>
-         </w:r>
-         <w:r w:rsidRPr="002245C3">
-            <w:rPr>
-               <w:rStyle w:val="itali"/>
-            </w:rPr>
-            <w:lastRenderedPageBreak/>
-            <w:t>Way Out</w:t>
+            <w:t>No Way Out</w:t>
          </w:r>
          <w:r w:rsidRPr="00587F54">
             <w:t xml:space="preserve"> (1950). Victory over fascism during the war had forged a liberal consensus that America was an exceptional society rooted in class harmony, democratic capitalism, individualism, and abundance. Segregation, interracial dating, and biracialism were regarded as problems that Americans were equal to solving. When Walter White, president of the NAACP, saw </w:t>
@@ -24457,6 +24488,7 @@
             <w:t xml:space="preserve">But </w:t>
          </w:r>
          <w:r w:rsidR="009B769E">
+            <w:lastRenderedPageBreak/>
             <w:t>Hansberry</w:t>
          </w:r>
          <w:r w:rsidR="009B769E" w:rsidRPr="00587F54">
@@ -24496,7 +24528,6 @@
             <w:pStyle w:val="Body-TextTx"/>
          </w:pPr>
          <w:r w:rsidRPr="00587F54">
-            <w:lastRenderedPageBreak/>
             <w:t xml:space="preserve">She was in a good place in her head and in her heart. Coming home on winter nights to the </w:t>
          </w:r>
          <w:r w:rsidR="009B769E" w:rsidRPr="00587F54">

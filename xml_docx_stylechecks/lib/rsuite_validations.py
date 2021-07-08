@@ -487,6 +487,71 @@ def duplicateSectionCheck(report_dict, section_array):
 
     return report_dict
 
+# parse dict from checkMainheadsPerSection and log any multiple heads per section
+def logMainheadMultiples(mainhead_dict, doc_root, report_dict):
+    for stylename in mainhead_dict:
+        for id, stylecount in mainhead_dict[stylename].iteritems():
+            if stylecount > 1:
+                # get the section-para object from para id:
+                searchstring = ".//*w:p[@w14:paraId='{}']".format(id)
+                para = doc_root.find(searchstring, wordnamespaces)
+                lxml_utils.logForReport(report_dict,doc_root,para,"too_many_heading_para","{}_{}".format(stylename, stylecount))
+    return report_dict
+
+def checkMainheadsPerSection(mainheadstyle_list, doc_root, report_dict, section_names, container_start_styles, container_end_styles):
+    logger.info("* * * commencing checkMainheadsPerSection function, for {}...".format(mainheadstyle_list))
+    # check document structure integrity via these previously reported items; skip if these errtypes present:
+    if 'container_error' in report_dict or 'non_section_BOOK_styled_firstpara' in report_dict:
+        logger.warn("Container error or non-section_Book styled first para; without section integrity we have to skip 'checkMainheadsPerSection' function")
+    else:
+        # for each occurence of a mainhead, find the parent section, keeping count per section/style in a dict.
+        #   then we can check the dict for dupes and log to report_dict
+        mainhead_dict = {}
+        for stylename in mainheadstyle_list:
+            mainhead_dict[stylename] = {}
+            for para in lxml_utils.findParasWithStyle(lxml_utils.transformStylename(stylename), doc_root):
+                section_id = getSectionOfNonContainerPara(para, doc_root, section_names, container_start_styles, container_end_styles)
+                if section_id:
+                    if section_id in mainhead_dict[stylename]:
+                        mainhead_dict[stylename][section_id] += 1
+                    else:
+                        mainhead_dict[stylename][section_id] = 1
+        logger.debug('contents of mainhead_dict: {}'.format(mainhead_dict))
+        # separate function to process mainhead_dict
+        report_dict = logMainheadMultiples(mainhead_dict, doc_root, report_dict)
+    return report_dict
+
+# occurences in a container don't count
+def getSectionOfNonContainerPara(para, doc_root, section_names, container_start_styles, container_end_styles):
+    tmp_para = para
+    stylename = lxml_utils.getParaStyle(para)
+    section_id = ''
+    in_container = False
+    no_previous_para = False
+    # move upwards para by para until we find a sectionstart (or find no prev. para, indicating table or other nested p)
+    while no_previous_para == False and stylename not in section_names:
+        # this try helps us stop for nested text, like in a table
+        try:
+            tmp_para = tmp_para.getprevious()
+        except:
+            no_previous_para = True
+        stylename = lxml_utils.getParaStyle(tmp_para)
+        # we found a container start before we found a section-start or container-end; the init. para was in a container
+        if stylename in container_start_styles and in_container == False:
+            in_container = True
+            logger.debug("this main head styled para is in a container, exit / skip")
+            break
+        # we are outside of (below) a container, but passing through one
+        elif stylename in container_end_styles:
+            in_container = True
+        # we're done passing through a container
+        elif stylename in container_start_styles and in_container == True:
+            in_container = False
+    # if we ended in a container then this is a styled para we don't want to count
+    if in_container == False and no_previous_para == False:
+        section_id = lxml_utils.getParaId(tmp_para, doc_root)
+    return section_id
+
 def checkEndnoteFootnoteStyles(xml_root, report_dict, note_style, sectionname):
     logger.info("* * * commencing checkEndnoteFootnoteStyles function, for %s..." % sectionname)
     # first check styles of paras
@@ -738,6 +803,9 @@ def rsuiteValidations(report_dict):
     report_dict, firstpara = stylereports.checkFirstPara(report_dict, doc_root, [booksection_stylename_short], "non_section_BOOK_styled_firstpara")
     # check second para for non-section-startstyle
     report_dict = checkSecondPara(report_dict, doc_root, firstpara, sectionnames)
+
+    # check for more than one title, main head, or subtitle per section (not in containers)
+    report_dict = checkMainheadsPerSection([cfg.titlestyle, cfg.subtitlestyle, cfg.mainheadstyle], doc_root, report_dict, sectionnames, container_start_styles, container_end_styles)
 
     # list all styles used in the doc
     # toggle 'allstyles_call_type' parameter to 'report' or 'validate' as needed:

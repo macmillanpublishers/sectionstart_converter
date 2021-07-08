@@ -6,6 +6,8 @@ Problems were found with the styles in your document.
 ------------------------------------ ERRORS ------------------------------------
 ** ERROR: Embedded endnotes are present, but there is no paragraph styled: 'Section-Notes (SNT)' in the main body of the document.
 
+** ERROR: 2 'Main-Head (MHead)' paragraphs found in Section-Front-Matter-General (SFM): "Front Matter General". Only one 'Main-Head (MHead)' paragraph is allowed per section.
+
 
 If you have any questions about how to handle these errors,
 please contact workflows@macmillan.com.
@@ -139,7 +141,7 @@ TOC-Chapter (Tocch).......................... "Chapter 1: Infant of the Spring"
 TOC-Backmatter (Tocbm)....................... "Notes"                                                     
 
 * Section-Front-Matter-General (SFM): "Front Matter General"
-Title (Ttl).................................. "Chronology"                                                
+Main-Head (MHead)............................ "Chronology"                                                
 Body-Text (Tx)............................... "1819William “Bill” Hansberry, great-grandfather, born at the Salubria plantation in"
 
 * Section-Introduction (SIC): "Introduction"
@@ -171,6 +173,11 @@ Epigraph-Verse (Epiv)........................ "You did not know the Black contin
 * Section-Chapter (SCP): "Chapter 7: Mexico"
 Extract2 (Ext2).............................. "Narrator: We the youth have risen in each age"             
 Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Chapter (SCP): "Chapter 9: Freedom"
+EXTRACT-B > Subtitle (Sttl).................. "Extra Extra"                                               
+EXTRACT-B > Body-Text (Tx)................... "Lorraine seems not to have let Francine’s self-admitted “rotten bourgeois"
+EXTRACT-B > Blank-Space-Break (Bsbrk)........ "[blank]"                                                   
 
 * Section-Bibliography (SBI): "Bibliography"
 Title (Ttl).................................. "Selected Bibliography"                                     

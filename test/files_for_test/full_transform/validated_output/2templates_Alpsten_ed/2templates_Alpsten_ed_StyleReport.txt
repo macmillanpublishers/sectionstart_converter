@@ -109,6 +109,16 @@ Problems were found with the styles in your document.
 
 ** ERROR: Footnote paragraph styled as 'Address (Add)' instead of 'Footnote Text' (Note beginning "").  (< this item is from a table)
 
+** ERROR: 5 'Subtitle (Sttl)' paragraphs found in Section-Front-Matter-General (SFM): "
+            
+                
+            
+            
+                
+                fmg
+            
+        ". Only one 'Subtitle (Sttl)' paragraph is allowed per section.
+
 
 If you have any questions about how to handle these errors,
 please contact workflows@macmillan.com.

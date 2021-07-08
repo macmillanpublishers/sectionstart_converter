@@ -1447,5 +1447,102 @@ class Tests(unittest.TestCase):
         self.assertEqual(rsuite_validations.duplicateSectionCheck(test_rd_2, sect_style_array),rd_2_expected)
         self.assertEqual(rsuite_validations.duplicateSectionCheck(test_rd_3, sect_style_array),rd_3_expected)
 
+    def test_getSectionOfNonContainerPara(self):
+        container_start_styles = ['EXTRACT-AEXT-A', 'LETTER-BLTR-B']
+        container_end_styles = ['ENDEND', 'some text']
+        section_names = [cfg.booksection_stylename, cfg.titlesection_stylename, 'Section-ChapterSCP']
+        doc_root = getRoot(os.path.join(testfiles_basepath, 'test_getSectionOfNonContainerPara', 'document.xml'))
+
+        # find paras
+        para_title = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(cfg.titlestyle), doc_root)
+        para_stitle = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(cfg.subtitlestyle), doc_root)
+        para_mainhead = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(cfg.mainheadstyle), doc_root)
+        para_author = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(cfg.authorstyle), doc_root)
+        para_logo = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(cfg.logostyle), doc_root)
+
+        # run function
+        para_id_title = rsuite_validations.getSectionOfNonContainerPara(para_title[0], doc_root, section_names, container_start_styles, container_end_styles)
+        para_id_stitle = rsuite_validations.getSectionOfNonContainerPara(para_stitle[0], doc_root, section_names, container_start_styles, container_end_styles)
+        para_id_mainhead = rsuite_validations.getSectionOfNonContainerPara(para_mainhead[0], doc_root, section_names, container_start_styles, container_end_styles)
+        para_id_author = rsuite_validations.getSectionOfNonContainerPara(para_author[0], doc_root, section_names, container_start_styles, container_end_styles)
+        para_id_logo = rsuite_validations.getSectionOfNonContainerPara(para_logo[0], doc_root, section_names, container_start_styles, container_end_styles)
+
+        # assertions
+        self.assertEqual(para_id_title, '3BF0BAD8')
+        self.assertEqual(para_id_stitle, '')    # testing in containers
+        self.assertEqual(para_id_mainhead, '57112316')  # testing post-containers
+        self.assertEqual(para_id_author, '')    # testing in tables
+        self.assertEqual(para_id_logo, '57112316')    # testing post-object, post-table
+
+    def test_logMainheadMultiples(self):
+        mainhead_dict_0 = {}
+        mainhead_dict_1 = {'stylename':{'3BF0BAD8':2, '00000001':1}}
+        mainhead_dict_2 = {'stylename':{'3BF0BAD8':100, '00000001':1}, 'stylename2':{'00000002':1, '57112316':3}}
+        doc_root = getRoot(os.path.join(testfiles_basepath, 'test_getSectionOfNonContainerPara', 'document.xml'))
+
+        # run function
+        report_dict_0 = rsuite_validations.logMainheadMultiples(mainhead_dict_0, doc_root, {})
+        report_dict_1 = rsuite_validations.logMainheadMultiples(mainhead_dict_1, doc_root, {})
+        report_dict_2 = rsuite_validations.logMainheadMultiples(mainhead_dict_2, doc_root, {})
+
+        # assertions
+        self.assertEqual(report_dict_0, {})
+        self.assertEqual(report_dict_1, {"too_many_heading_para":[{
+                "description": "stylename_2",
+                "para_id": "3BF0BAD8"
+        }]})
+        self.assertEqual(report_dict_2, {"too_many_heading_para":[{
+                "description": "stylename_100",
+                "para_id": "3BF0BAD8"
+        }, {
+                "description": "stylename2_3",
+                "para_id": "57112316"
+        }]})
+
+    def test_checkMainheadsPerSection(self):
+        container_start_styles = ['EXTRACT-AEXT-A', 'LETTER-BLTR-B']
+        container_end_styles = ['ENDEND', 'some text']
+        section_names = [cfg.booksection_stylename, cfg.titlesection_stylename, 'Section-ChapterSCP']
+        mainheadstyle_list = [cfg.titlestyle, cfg.subtitlestyle, cfg.mainheadstyle]
+        report_dict_ce = {'container_error':[]}
+        doc_root = getRoot(os.path.join(testfiles_basepath, 'test_getSectionOfNonContainerPara', 'document.xml'))
+
+        # run function
+        report_dict_ce_post = rsuite_validations.checkMainheadsPerSection(mainheadstyle_list, doc_root, report_dict_ce, section_names, container_start_styles, container_end_styles)
+        report_dict = rsuite_validations.checkMainheadsPerSection(mainheadstyle_list, doc_root, {}, section_names, container_start_styles, container_end_styles)
+
+        # assertions
+        self.assertEqual(report_dict_ce_post, report_dict_ce)
+        self.assertEqual(report_dict, {"too_many_heading_para":[{
+                "description": "{}_3".format(cfg.mainheadstyle),
+                "para_id": "57112316"
+        }, {
+                "description": "{}_2".format(cfg.titlestyle),
+                "para_id": "3BF0BAD8"
+        }]})
+
+    # same test as above, for a doc where para-ids are not already present
+    #   (manually removing from existing docxml from last test)
+    def test_checkMainheadsPerSection_no_pids(self):
+        container_start_styles = ['EXTRACT-AEXT-A', 'LETTER-BLTR-B']
+        container_end_styles = ['ENDEND', 'some text']
+        section_names = [cfg.booksection_stylename, cfg.titlesection_stylename, 'Section-ChapterSCP']
+        mainheadstyle_list = [cfg.titlestyle, cfg.subtitlestyle, cfg.mainheadstyle]
+        report_dict_ce = {'non_section_BOOK_styled_firstpara':[]}
+        doc_root = getRoot(os.path.join(testfiles_basepath, 'test_getSectionOfNonContainerPara', 'document_no_pids.xml'))
+
+        # run function
+        report_dict_ce_post = rsuite_validations.checkMainheadsPerSection(mainheadstyle_list, doc_root, report_dict_ce, section_names, container_start_styles, container_end_styles)
+        report_dict = rsuite_validations.checkMainheadsPerSection(mainheadstyle_list, doc_root, {}, section_names, container_start_styles, container_end_styles)
+
+        # assertions
+        self.assertEqual(report_dict_ce_post, report_dict_ce)
+        self.assertEqual(len(report_dict["too_many_heading_para"]), 2)
+        self.assertEqual(report_dict["too_many_heading_para"][0]['description'], "{}_3".format(cfg.mainheadstyle))
+        self.assertRegexpMatches(report_dict["too_many_heading_para"][0]['para_id'], '[0-9A-Z]{8}')
+        self.assertEqual(report_dict["too_many_heading_para"][1]['description'], "{}_2".format(cfg.titlestyle))
+        self.assertRegexpMatches(report_dict["too_many_heading_para"][1]['para_id'], '[0-9A-Z]{8}')
+
+
 if __name__ == '__main__':
     unittest.main()

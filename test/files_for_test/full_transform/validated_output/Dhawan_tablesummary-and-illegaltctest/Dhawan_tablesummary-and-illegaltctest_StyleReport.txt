@@ -20,6 +20,10 @@ Problems were found with the styles in your document.
 
 ** ERROR: Found a Container or Section styled paragraph in a table cell: Section-BookBOOK (in Section-Chapter (SCP) "Chapter 4: Value Visibly"). Sections and/or Containers cannot be inside of tables.
 
+** ERROR: 2 'Title (Ttl)' paragraphs found in Section-Appendix (SAP): "Appendix". Only one 'Title (Ttl)' paragraph is allowed per section.
+
+** ERROR: 5 'Subtitle (Sttl)' paragraphs found in Section-Appendix (SAP): "Appendix". Only one 'Subtitle (Sttl)' paragraph is allowed per section.
+
 
 If you have any questions about how to handle these errors,
 please contact workflows@macmillan.com.

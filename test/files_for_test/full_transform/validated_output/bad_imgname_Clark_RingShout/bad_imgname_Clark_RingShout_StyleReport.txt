@@ -28,6 +28,8 @@ Problems were found with the styles in your document.
 
 ** ERROR: Unsupported character(s) in 'cs-image-placement (cimg)'-styled text: 'Mighs*ty.glif' (located in Section-Chapter (SCP): "Epilogue"). Image placement styles may contain only alphanumeric characters, underscores, or hyphens.
 
+** ERROR: 2 'Title (Ttl)' paragraphs found in Section-Titlepage (STI): "Titlepage". Only one 'Title (Ttl)' paragraph is allowed per section.
+
 
 If you have any questions about how to handle these errors,
 please contact workflows@macmillan.com.

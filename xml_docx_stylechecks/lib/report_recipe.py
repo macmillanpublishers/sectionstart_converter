@@ -618,6 +618,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
             "badnews_type": 'error',
             "errstring": "Too many '{descriptionA}' paragraphs detected: {descriptionB} were found, only one is allowed."
     	},
+    	"98.2_too_many_mainhead_para_per_section": {
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "too_many_heading_para",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'error',
+            "errstring": "{descriptionB} '{descriptionA}' paragraphs found in {parent_section_start_type}: {parent_section_start_content}. Only one '{descriptionA}' paragraph is allowed per section."
+    	},
     	"99_no_logo_paras": {
             "include_for": ["reporter"],
     		"dict_category_name": "logo_paras",

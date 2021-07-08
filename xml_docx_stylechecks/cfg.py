@@ -209,6 +209,8 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in
     copyrightsection_stylename = "Section-CopyrightSCR"
     notessection_stylename = "Section-Notes (SNT)"
     titlestyle = "Title (Ttl)"
+    subtitlestyle = "Subtitle (Sttl)"
+    mainheadstyle = "Main-Head (MHead)"
     isbnstyle = "cs-isbn (isbn)"
     authorstyle = "Author1 (Au1)"
     logostyle = "Logo-Placement (Logo)"

@@ -30,21 +30,15 @@ Problems were found with the styles in your document.
 
 ** ERROR: Too many 'Section-Book (BOOK)' paragraphs detected: 2 were found, only one is allowed.
 
-** ERROR: 2 'Title (Ttl)' paragraphs found in Section-Halftitle (SHT): "Halftitle Page". Only one 'Title (Ttl)' paragraph is allowed per section.
-
 ** ERROR: 2 'Title (Ttl)' paragraphs found in Section-Titlepage (STI): "Titlepage". Only one 'Title (Ttl)' paragraph is allowed per section.
+
+** ERROR: 2 'Title (Ttl)' paragraphs found in Section-Halftitle (SHT): "Halftitle Page". Only one 'Title (Ttl)' paragraph is allowed per section.
 
 ** ERROR: 2 'Title (Ttl)' paragraphs found in Section-Halftitle (SHT): "Halftitle Page". Only one 'Title (Ttl)' paragraph is allowed per section.
 
 
 If you have any questions about how to handle these errors,
 please contact workflows@macmillan.com.
-
-
------------------------------------ WARNINGS -----------------------------------
-** WARNING: Too many 'Title (Ttl)' paragraphs detected (11), only one is allowed.
-
-** WARNING: Too many 'Title (Ttl)' paragraphs detected (11), only one is allowed.
 
 
 

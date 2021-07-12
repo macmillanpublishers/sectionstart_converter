@@ -35,12 +35,6 @@ If you have any questions about how to handle these errors,
 please contact workflows@macmillan.com.
 
 
------------------------------------ WARNINGS -----------------------------------
-** WARNING: Too many 'Title (Ttl)' paragraphs detected (11), only one is allowed.
-
-** WARNING: Too many 'Title (Ttl)' paragraphs detected (11), only one is allowed.
-
-
 ------------------------------- PROCESSING NOTES -------------------------------
 ** NOTE: Found and removed non-Macmillan character style from manuscript: 'annotation reference'.
 

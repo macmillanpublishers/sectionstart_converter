@@ -116,15 +116,18 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                                 break
                         tmptextlist =[]
                     if "badnews" in recipe_item and recipe_item["badnews"] == 'one_allowed' and len(report_dict[recipe_item["dict_category_name"]]) > 1:
-                        new_errstring = recipe_item["errstring"].format(count=len(recipe_item["dict_category_name"]))
+                        new_errstring = recipe_item["errstring"].format(count=len(report_dict[recipe_item["dict_category_name"]]))
                         if "badnews_type" in recipe_item and recipe_item["badnews_type"] == 'warning':
                             warninglist.append(new_errstring)
+                            break
                         elif "badnews_type" in recipe_item and recipe_item["badnews_type"] == 'note' and new_errstring not in notelist:
                             # adding provision to conditional to prevent summary items from repeating
                             if new_errstring not in notelist:
                                 notelist.append(new_errstring)
+                                break
                         else:
                             errorlist.append(new_errstring)
+                            break
                         tmptextlist =[]
             else:
                 # if this is required content and is absent from report_dict, we have an error.

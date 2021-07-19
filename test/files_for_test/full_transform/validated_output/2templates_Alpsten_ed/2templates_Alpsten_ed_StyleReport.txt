@@ -4,7 +4,7 @@ Problems were found with the styles in your document.
 
 
 ------------------------------------ ERRORS ------------------------------------
-** ERROR: Embedded endnotes are present, but there is no paragraph styled: 'Section-Notes (SNT)' in the main body of the document.
+** ERROR: File contains embedded endnotes but there is no para styled 'Section-Notes (SNT)' in the main body of the document. This section is required to process notes -- please add.
 
 ** ERROR: Non-Macmillan style 'Dateline - Chapter (dl)' in Section-Chapter (SCP): "
             
@@ -475,5 +475,3 @@ footnote reference
 endnote reference
 footnote reference
 endnote reference
-
-

@@ -4,7 +4,7 @@ Problems were found with the styles in your document.
 
 
 ------------------------------------ ERRORS ------------------------------------
-** ERROR: Embedded endnotes are present, but there is no paragraph styled: 'Section-Notes (SNT)' in the main body of the document.
+** ERROR: File contains embedded endnotes but there is no para styled 'Section-Notes (SNT)' in the main body of the document. This section is required to process notes -- please add.
 
 ** ERROR: 2 'Main-Head (MHead)' paragraphs found in Section-Front-Matter-General (SFM): "Front Matter General". Only one 'Main-Head (MHead)' paragraph is allowed per section.
 
@@ -206,5 +206,3 @@ symbols (sym)
 super (sup)
 bold (b)
 endnote reference
-
-

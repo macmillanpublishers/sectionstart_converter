@@ -364,7 +364,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"dict_category_name": "missing_notes_section",
     		"line_template": "",
     		"badnews": 'any',
-            "errstring": "Embedded endnotes are present, but there is no paragraph styled: '%s' in the main body of the document." % notessection_stylename# (Paragraph {para_index})"
+            "errstring": "File contains embedded endnotes but there is no para styled '%s' in the main body of the document. This section is required to process notes -- please add." % notessection_stylename# (Paragraph {para_index})"
     	},
     	"73_non_macmillan_styles": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["reporter", "rsuitevalidate"],

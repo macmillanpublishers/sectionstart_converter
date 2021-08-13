@@ -30,9 +30,9 @@ Problems were found with the styles in your document.
 
 ** ERROR: Too many 'Section-Book (BOOK)' paragraphs detected: 2 were found, only one is allowed.
 
-** ERROR: 2 'Title (Ttl)' paragraphs found in Section-Titlepage (STI): "Titlepage". Only one 'Title (Ttl)' paragraph is allowed per section.
-
 ** ERROR: 2 'Title (Ttl)' paragraphs found in Section-Halftitle (SHT): "Halftitle Page". Only one 'Title (Ttl)' paragraph is allowed per section.
+
+** ERROR: 2 'Title (Ttl)' paragraphs found in Section-Titlepage (STI): "Titlepage". Only one 'Title (Ttl)' paragraph is allowed per section.
 
 ** ERROR: 2 'Title (Ttl)' paragraphs found in Section-Halftitle (SHT): "Halftitle Page". Only one 'Title (Ttl)' paragraph is allowed per section.
 

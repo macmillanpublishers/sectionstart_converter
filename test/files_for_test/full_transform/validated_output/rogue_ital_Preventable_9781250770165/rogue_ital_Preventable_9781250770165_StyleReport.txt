@@ -170,5 +170,3 @@ bold (b)
 endnote reference
 sub (sub)
 underline (u)
-
-

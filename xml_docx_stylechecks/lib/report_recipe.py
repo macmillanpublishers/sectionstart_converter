@@ -440,6 +440,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
             "badnews_type": 'warning',
             "errstring": "A blank Section-Start paragraph was removed: '{description}'. The removal of a Section-Start paragraph may have led to other errors with your manuscript."# (Paragraph {para_index})"
     	},
+    	"76.5_fm_section_in_body": {
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "fm_section_in_body",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'error',
+            "errstring": "'{description}' found in the body of the MS. This style can only be used in the front matter. Please restyle with a valid section style."
+    	},
     	"77_container_blankpara": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
     		"dict_category_name": "removed_container_blank_para",

@@ -147,5 +147,3 @@ ___________CHARACTER STYLES IN USE___________
 ital (i)
 bold (b)
 super-ital (supi)
-
-

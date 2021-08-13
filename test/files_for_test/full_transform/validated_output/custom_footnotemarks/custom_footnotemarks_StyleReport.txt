@@ -237,5 +237,3 @@ sub (sub)
 underline (u)
 footnote reference
 footnote reference
-
-

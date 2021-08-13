@@ -6,6 +6,8 @@ Problems were found with the styles in your document.
 ------------------------------------ ERRORS ------------------------------------
 ** ERROR: File contains embedded endnotes but there is no para styled 'Section-Notes (SNT)' in the main body of the document. This section is required to process notes -- please add.
 
+** ERROR: 'Section-Halftitle (SHT)' found in the body of the MS. This style can only be used in the front matter. Please restyle with a valid section style.
+
 ** ERROR: 2 'Main-Head (MHead)' paragraphs found in Section-Front-Matter-General (SFM): "Front Matter General". Only one 'Main-Head (MHead)' paragraph is allowed per section.
 
 

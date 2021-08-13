@@ -210,5 +210,3 @@ footnote reference
 symbols (sym)
 footnote reference
 endnote reference
-
-

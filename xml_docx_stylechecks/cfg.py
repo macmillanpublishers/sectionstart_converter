@@ -227,6 +227,21 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in
         'endnote reference',
         'endnote text'
         ]
+    fm_style_list = [
+        "Section-Front-Sales (SFS)",
+        "Section-Halftitle (SHT)",
+        "Section-Ad-Card (SAC)",
+        "Section-Series-Page (SSP)",
+        "Section-Titlepage (STI)",
+        "Section-Copyright (SCR)",
+        "Section-Ebook-Copyright (SECR)",
+        "Section-Dedication (SDE)",
+        "Section-Epigraph (SEP)",
+        "Section-Contents (STC)",
+        "Section-Foreword (SFW)",
+        "Section-Preface (SPF)",
+        "Section-Front-Matter-General (SFM)"
+        ]
 else:
     helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"
     # stylenames

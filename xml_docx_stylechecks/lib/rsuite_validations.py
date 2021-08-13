@@ -487,6 +487,24 @@ def duplicateSectionCheck(report_dict, section_array):
 
     return report_dict
 
+def checkForFMsectionsInBody(report_dict, fm_sectionnames, booksectionname):
+    logger.debug("* * * commencing checkForFMsectionsInBody function")
+    fm_sectionnames.append(booksectionname)
+    # get shortnames of fm_sections
+    fm_section_shortnames = [lxml_utils.transformStylename(x) for x in fm_sectionnames]
+    body_begun = False
+
+    if 'section_start_found' in report_dict:
+        for section_dict in report_dict['section_start_found']:
+            if section_dict["description"] not in fm_section_shortnames and body_begun == False:
+                body_begun = True
+            elif section_dict["description"] in fm_section_shortnames and body_begun == True:
+                section_fullname = lxml_utils.getStyleLongname(section_dict["description"])
+                print "sef", section_fullname
+                lxml_utils.logForReport(report_dict,None,None,"fm_section_in_body",section_fullname,section_dict["para_id"])
+
+    return report_dict
+
 # parse dict from checkMainheadsPerSection and log any multiple heads per section
 def logMainheadMultiples(mainhead_dict, doc_root, report_dict):
     for stylename in mainhead_dict:
@@ -766,6 +784,8 @@ def rsuiteValidations(report_dict):
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "report")
     # check for sections that should only appear once
     report_dict = duplicateSectionCheck(report_dict, [cfg.booksection_stylename, cfg.notessection_stylename])
+    # check for FM sections in main body
+    report_dict = checkForFMsectionsInBody(report_dict, cfg.fm_style_list, cfg.booksection_stylename)
 
     # check footnote / endnote para styles
     # rm footnote / endnote leading whitespace

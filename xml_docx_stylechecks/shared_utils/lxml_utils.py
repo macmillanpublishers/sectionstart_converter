@@ -531,9 +531,12 @@ def autoNumberSectionParaContent(report_dict, section_names, autonumber_sections
     return report_dict
 
 # a method to log paragraph id for style report etc
-def logForReport(report_dict,doc_root,para,category,description):
+def logForReport(report_dict,doc_root,para,category,description, para_id=None):
     para_dict = {}
-    para_dict["para_id"] = getParaId(para, doc_root)
+    if para_id is None:
+        para_dict["para_id"] = getParaId(para, doc_root)
+    else:
+        para_dict["para_id"] = para_id
     para_dict["description"] = description
     if category not in report_dict:
         report_dict[category] = []

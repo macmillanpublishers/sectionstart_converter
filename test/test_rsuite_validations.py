@@ -1543,6 +1543,26 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict["too_many_heading_para"][1]['description'], "{}_2".format(cfg.titlestyle))
         self.assertRegexpMatches(report_dict["too_many_heading_para"][1]['para_id'], '[0-9A-Z]{8}')
 
+    def test_checkForFMsectionsInBody(self):
+        # we are using pre-collected sectionstart list for this, so just mocking up a couple style barebones report_dicts.
+        json_ctrl = os.path.join(testfiles_basepath, 'test_checkFMsectionInBody', 'stylereport_ctrl.json')
+        json_bad = os.path.join(testfiles_basepath, 'test_checkFMsectionInBody', 'stylereport_bad.json')
+        json_bad_expected = os.path.join(testfiles_basepath, 'test_checkFMsectionInBody', 'stylereport_bad_expected.json')
+        report_dict_ctrl = os_utils.readJSON(json_ctrl)
+        report_dict_bad = os_utils.readJSON(json_bad)
+        # function getStyleLongname is skipped for unittests; therefore using shortname in expectd.json description fields
+        rd_bad_expected = os_utils.readJSON(json_bad_expected)
+
+        # run function
+        report_dict_empty = rsuite_validations.checkForFMsectionsInBody({}, cfg.fm_style_list, cfg.booksection_stylename)
+        report_dict_cntrl = rsuite_validations.checkForFMsectionsInBody(report_dict_ctrl, cfg.fm_style_list, cfg.booksection_stylename)
+        report_dict_bad = rsuite_validations.checkForFMsectionsInBody(report_dict_bad, cfg.fm_style_list, cfg.booksection_stylename)
+
+        # assertions
+        self.assertEqual(report_dict_empty, {})
+        self.assertEqual(report_dict_ctrl, report_dict_ctrl)
+        self.assertEqual(report_dict_bad, rd_bad_expected)
+
 
 if __name__ == '__main__':
     unittest.main()

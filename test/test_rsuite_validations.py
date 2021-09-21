@@ -1563,6 +1563,45 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict_ctrl, report_dict_ctrl)
         self.assertEqual(report_dict_bad, rd_bad_expected)
 
+    def test_verifyListNesting(self):
+        doc_root = getRoot(os.path.join(testfiles_basepath, 'test_verifyListNesting', 'testlists', 'word', 'document.xml'))
+        styleconfig_dict = os_utils.readJSON(cfg.styleconfig_json)
+        li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras = rsuite_validations.getListStylenames(styleconfig_dict)
+
+        # run function
+        report_dict = rsuite_validations.verifyListNesting({}, doc_root, li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras)
+
+        # assertions
+        self.assertEqual(report_dict, {
+            'list_change_err': [
+                {'description': u"'Num-Level-2-ListNl2' para, preceded by: 'Bullet-Level-2-ListBl2' para",
+                'para_id': '481B8C08'}, # test 8 'NL2 fail list_change'
+                {'description': u"'Num-Level-3-ListNl3' para, preceded by: 'Bullet-Level-3-ListBl3' para",
+                'para_id': '49525651'} # test 10 'NL3 fail list_change'
+                ],
+            'list_change_warning': [
+                {'description': u"'Num-Level-1-ListNl1' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                'para_id': '4A9EE1B7'} # test 5 'NL1 Warn list_warn'
+                ],
+            'list_nesting_err': [
+                {'description': u"'Alpha-Level-1-List-ParagraphAl1p' para, preceded by: 'Body-TextTx' para",
+                'para_id': '2AF17057'}, # test 16 'AL1p fail list_nesting'
+                {'description': u"'Alpha-Level-1-List-ParagraphAl1p' para, preceded by: 'Extract1Ext1' para",
+                'para_id': '2A1DC130'}, # tesl 17 'AL1p fail list_nesting'
+                {'description': u"'Num-Level-3-List-ParagraphNl3p' para, preceded by: 'Bullet-Level-2-List-ParagraphBl2p' para",
+                'para_id': '59A57963'}, # test 4 'NL3p should fail list_nesting'
+                {'description': u"'Num-Level-1-List-ParagraphNl1p' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                'para_id': '20DDD1A7'}, # test 3, 'NL1p should fail list_nesting'
+                {'description': u"'Num-Level-2-List-ParagraphNl2p' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                'para_id': '75D0DB55'}, # test 14, 'NL2p fail list_nesting'
+                {'description': u"'Bullet-Level-3-ListBl3' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                'para_id': '7B5D1501'}, # test 9 'BL3 fail list_nesting'
+                {'description': u"'Bullet-Level-2-ListBl2' para, preceded by: 'Extract1Ext1' para",
+                'para_id': '68440985'}, # test 11 'BL2 fail list_nesting'
+                {'description': u"'Bullet-Level-1-List-ParagraphBl1p' para, preceded by: 'Unnum-Level-1-List-ParagraphUl1p' para",
+                'para_id': '2B5560A1'} # test 2 'Target: BL1p, fail test2 list_nesting'
+            ]})
+
 
 if __name__ == '__main__':
     unittest.main()

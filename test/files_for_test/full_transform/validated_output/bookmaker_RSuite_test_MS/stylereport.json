@@ -1563,6 +1563,14 @@
     "list_change_err": [
         {
             "description": "'Alpha-Level-2-List (Al2)' para, preceded by: 'Bullet-Level-2-List (Bl2)' para", 
+            "para_id": "747DE394", 
+            "para_index": 329, 
+            "para_string": "2nd level different type Cerror", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "'Alpha-Level-2-List (Al2)' para, preceded by: 'Bullet-Level-2-List (Bl2)' para", 
             "para_id": "1CED3B13", 
             "para_index": 333, 
             "para_string": "2nd level change Derror", 
@@ -1586,33 +1594,17 @@
             "para_string": "I switched gears here", 
             "parent_section_start_content": "Chapter 2", 
             "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "'Bullet-Level-1-List (Bl1)' para, preceded by: 'Alpha-Level-1-List (Al1)' para", 
+            "para_id": "7AB54670", 
+            "para_index": 313, 
+            "para_string": "The fifth and final top level item", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
         }
     ], 
     "list_nesting_err": [
-        {
-            "description": "'Alpha-Level-2-List (Al2)' para, preceded by: 'Bullet-Level-3-List (Bl3)' para", 
-            "para_id": "747DE394", 
-            "para_index": 329, 
-            "para_string": "2nd level different type Cerror", 
-            "parent_section_start_content": "Chapter 2", 
-            "parent_section_start_type": "Section-ChapterSCP"
-        }, 
-        {
-            "description": "'Num-Level-2-List (Nl2)' para, preceded by: 'Num-Level-3-List (Nl3)' para", 
-            "para_id": "5315C8A0", 
-            "para_index": 299, 
-            "para_string": "IA second nested numbered list item I trembled AGGGGAN. One", 
-            "parent_section_start_content": "Chapter 2", 
-            "parent_section_start_type": "Section-ChapterSCP"
-        }, 
-        {
-            "description": "'Num-Level-3-List (Nl3)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para", 
-            "para_id": "379465E5", 
-            "para_index": 298, 
-            "para_string": "A nested numbered list", 
-            "parent_section_start_content": "Chapter 2", 
-            "parent_section_start_type": "Section-ChapterSCP"
-        }, 
         {
             "description": "'Num-Level-3-List-Paragraph (Nl3p)' para, preceded by: 'Num-Level-2-List-Paragraph (Nl2p)' para", 
             "para_id": "6DDE54DA", 
@@ -1622,10 +1614,10 @@
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
         {
-            "description": "'Bullet-Level-2-List (Bl2)' para, preceded by: 'Body-Text (Tx)' para", 
-            "para_id": "1AA8B1C9", 
-            "para_index": 320, 
-            "para_string": "ErrA 2nd level list out of nowhere", 
+            "description": "'Num-Level-3-List (Nl3)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para", 
+            "para_id": "379465E5", 
+            "para_index": 298, 
+            "para_string": "A nested numbered list", 
             "parent_section_start_content": "Chapter 2", 
             "parent_section_start_type": "Section-ChapterSCP"
         }, 
@@ -1642,6 +1634,14 @@
             "para_id": "476487A9", 
             "para_index": 341, 
             "para_string": "3rd level list errorF", 
+            "parent_section_start_content": "Chapter 2", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "'Bullet-Level-2-List (Bl2)' para, preceded by: 'Body-Text (Tx)' para", 
+            "para_id": "1AA8B1C9", 
+            "para_index": 320, 
+            "para_string": "ErrA 2nd level list out of nowhere", 
             "parent_section_start_content": "Chapter 2", 
             "parent_section_start_type": "Section-ChapterSCP"
         }

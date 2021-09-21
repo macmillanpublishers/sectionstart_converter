@@ -534,7 +534,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "badnews_type": 'warning',
-            "errstring": "List type changed in the middle of a list: {description} (in {parent_section_start_type}: {parent_section_start_content})."# (Paragraph {para_index})"
+            "errstring": "List type changed in the middle of a list: {description} in {parent_section_start_type} {parent_section_start_content} (starts with text: {para_string})"
     	},
     	"93_note_markers_wrong_style": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],

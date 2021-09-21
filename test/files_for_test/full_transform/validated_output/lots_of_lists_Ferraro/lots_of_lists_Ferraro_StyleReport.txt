@@ -1,0 +1,253 @@
+OOPS!
+
+Problems were found with the styles in your document.
+
+
+------------------------------------ ERRORS ------------------------------------
+** ERROR: Non-Macmillan style 'VERSE-A (VRS-A)' in Section-Chapter (SCP): "Chapter 14: Manifesting Alchemy Practice 7: Dancing Your Dreams".
+
+** ERROR: Found a Container END para with no corresponding Container Start; in Section-Chapter (SCP): "Chapter 14: Manifesting Alchemy Practice 7: Dancing Your Dreams".
+
+
+If you have any questions about how to handle these errors,
+please contact workflows@macmillan.com.
+
+
+----------------------------------- WARNINGS -----------------------------------
+** WARNING: List type changed in the middle of a list: 'Bullet-Level-1-List (Bl1)' para, preceded by: 'Unnum-Level-1-List (Ul1)' para in Section-Chapter (SCP) "Chapter 15: Manifesting Alchemy Practice 8: Creating a Manifestation Journal (and Gratitude Too!)" (starts with text: "The sunshine today")
+
+
+------------------------------- PROCESSING NOTES -------------------------------
+** NOTE: Fixed 1 Endnote and/or Footnote markers with incorrect character styles applied.
+
+** NOTE: 1 blank paragraph(s) deleted from the manuscript.
+
+** NOTE: 97 bookmark(s) deleted from the manuscript.
+
+
+
+----------------------------------- METADATA -----------------------------------
+If any of the information below is wrong, please fix the associated styles in the manuscript.
+
+** Title (Ttl) **
+"Manifesting"
+
+** Author1 (Au1) **
+"Kris Ferraro"
+
+** cs-isbn (isbn) **
+"ISBN 978-1-250-76955-8 (trade paperback)"
+
+
+------------------------------ ILLUSTRATION LIST -------------------------------
+no illustrations detected.
+
+
+-------------------------------- SECTIONS FOUND --------------------------------
+The Style Report identified the following sections; note that the content of each
+Section-Start paragraph will be used for the ebook TOC/NCX. If any of these are incorrect,
+edit the manuscript file to add or remove incorrect Section-Start styles or content.
+
+Section-Book (BOOK).............. "Manifesting"                                            
+Section-Front-Sales (SFS)........ "Front Sales"                                            
+Section-Halftitle (SHT).......... "Halftitle Page"                                         
+Section-Ad-Card (SAC)............ "Ad Card"                                                
+Section-Titlepage (STI).......... "Titlepage"                                              
+Section-Copyright (SCR).......... "Copyright"                                              
+Section-Dedication (SDE)......... "Dedication"                                             
+Section-Contents (STC)........... "Contents"                                               
+Section-Chapter (SCP)............ "Introduction to Manifesting and Alchemy"                
+Section-Part (SPT)............... "Part I: The 7 Powerful Manifesting Alchemy Principles"  
+Section-Chapter (SCP)............ "Chapter 1: Manifesting Alchemy Principle 1: Focusing on the Good"
+Section-Chapter (SCP)............ "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting"
+Section-Chapter (SCP)............ "Chapter 3: Manifesting Alchemy Principle 3: Deservability and Open Receiving"
+Section-Chapter (SCP)............ "Chapter 4: Manifesting Alchemy Principle 4: Give What You Want to Receive"
+Section-Chapter (SCP)............ "Chapter 5: Manifesting Alchemy Principle 5: Making Room for the New"
+Section-Chapter (SCP)............ "Chapter 6: Manifesting Alchemy Principle 6: There’s What You Want and What the Universe Wants for You"
+Section-Chapter (SCP)............ "Chapter 7: Manifesting Alchemy Principle 7: Surrender and Control"
+Section-Part (SPT)............... "Part II: The 9 Powerful Manifesting Alchemy Practices"  
+Section-Chapter (SCP)............ "Chapter 8: Manifesting Alchemy Practice 1: Affirmations and Scripting"
+Section-Chapter (SCP)............ "Chapter 9: Manifesting Alchemy Practice 2: Prayers and Affirmative Prayer"
+Section-Chapter (SCP)............ "Chapter 10: Manifesting Alchemy Practice 3: Inspired Action and Asking for Signs"
+Section-Chapter (SCP)............ "Chapter 11: Manifesting Alchemy Practice 4: the Art of Lists for Manifestations"
+Section-Chapter (SCP)............ "Chapter 12: Manifesting Alchemy Practice 5: Minding the Monkey Mind"
+Section-Chapter (SCP)............ "Chapter 13: Manifesting Alchemy Practice 6: “Acting as If”—the Power of Faking It Till You Make It"
+Section-Chapter (SCP)............ "Chapter 14: Manifesting Alchemy Practice 7: Dancing Your Dreams"
+Section-Chapter (SCP)............ "Chapter 15: Manifesting Alchemy Practice 8: Creating a Manifestation Journal (and Gratitude Too!)"
+Section-Chapter (SCP)............ "Chapter 16: Manifesting Alchemy Practice 9: Vision Boards"
+Section-Part (SPT)............... "Part III: Bringing Manifesting Alchemy into Every Part of Your Life"
+Section-Chapter (SCP)............ "Chapter 17: Picking a Target—Areas of Life for Manifestation"
+Section-Chapter (SCP)............ "Chapter 18: Levels of Manifestation"                    
+Section-Chapter (SCP)............ "Chapter 19: Money"                                      
+Section-Chapter (SCP)............ "Chapter 20: Career and Achievements"                    
+Section-Chapter (SCP)............ "Chapter 21: Health and Beauty"                          
+Section-Chapter (SCP)............ "Chapter 22: Romantic Relationships"                     
+Section-Part (SPT)............... "Part IV: Bringing Manifesting Alchemy into the World"   
+Section-Chapter (SCP)............ "Chapter 23: The Power of Emotion"                       
+Section-Chapter (SCP)............ "Chapter 24: Dealing with Doubts and Releasing Resistance"
+Section-Chapter (SCP)............ "Chapter 25: Opposites Attracted—Now What? A.k.a. the Other Shoe Has Dropped"
+Section-Chapter (SCP)............ "Chapter 26: What to Do If It’s Not Working (Yet)"     
+Section-Chapter (SCP)............ "Chapter 27: Putting It All Together"                    
+Section-Conclusion (SCL)......... "Conclusion"                                             
+Section-Acknowledgments (SAK).... "Acknowledgments"                                        
+Section-About-Author (SAA)....... "About the Author"                                       
+Section-Index (SIN).............. "Index"                                                  
+
+
+--------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
+
+___PARAGRAPH STYLES IN ORDER OF FIRST USE____ ________________EXCERPT FROM FIRST USE_________________
+
+* Section-Front-Sales (SFS): "Front Sales"
+Design-Note (Dn)............................. "[p. i-front sales]"                                        
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Halftitle (SHT): "Halftitle Page"
+Title (Ttl).................................. "Manifesting"                                               
+
+* Section-Ad-Card (SAC): "Ad Card"
+Title (Ttl).................................. "Also by Kris Ferraro"                                      
+Unnum-Level-1-List (Ul1)..................... "Energy Healing: Simple and Effective Practices to Become Your Own"
+
+* Section-Titlepage (STI): "Titlepage"
+Title (Ttl).................................. "Manifesting"                                               
+Subtitle (Sttl).............................. "The Practical, Simple Guide to Creating the Life You Want" 
+Author1 (Au1)................................ "Kris Ferraro"                                              
+Imprint (Imp)................................ "[place Imprint logo here]"                                 
+Cities (Cit)................................. "New York"                                                  
+
+* Section-Copyright (SCR): "Copyright"
+Body-Text (Tx)............................... "The information in this book is not intended to replace"   
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Dedication (SDE): "Dedication"
+Body-Text (Tx)............................... "For trailblazing misfits, modern mystics, miracle midwives,"
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Contents (STC): "Contents"
+Title (Ttl).................................. "Contents"                                                  
+TOC-Chapter (Tocch).......................... "Introduction to Manifesting and Alchemy"                   
+TOC-Subhead (Tocsub)......................... "About Me"                                                  
+TOC-Part (Tocpt)............................. "Part I: The 7 Powerful Manifesting Alchemy Principles"     
+TOC-Backmatter (Tocbm)....................... "Conclusion"                                                
+
+* Section-Chapter (SCP): "Introduction to Manifesting and Alchemy"
+Title (Ttl).................................. "Introduction to Manifesting and Alchemy"                   
+A-Head (Ahead)............................... "About Me"                                                  
+Epigraph-Non-Verse (Epi)..................... "You belong in the life of your dreams. And you"            
+Epigraph-Source (Episrc)..................... "—Tama Kieves"                                            
+Body-Text (Tx)............................... "I had arrived in Denver with a broken heart. Some"         
+Blank-Space-Break (Bsbrk).................... "[blank]"                                                   
+B-Head (Bhead)............................... "Settling"                                                  
+SIDEBAR-A > A-Head (Ahead)................... "Quick Bit Alchemy List: 5 Powerful Ways to Start Your"     
+SIDEBAR-A > Num-Level-1-List (Nl1)........... "Wake up your energy. Rub under both sides of your"         
+Num-Level-1-List (Nl1)....................... "Why do you believe you are here?"                          
+Unnum-Level-1-List (Ul1)..................... "There is a force of creation. And you can use"             
+Extract1 (Ext1).............................. "“Whatever you’re thinking, you’re attracting.”"    
+Num-Level-1-List-Paragraph (Nl1p)............ "You put aside an hour or free afternoon to tackle"         
+Bullet-Level-2-List (Bl2).................... "Take pictures that arouse the feelings you’d like to experience"
+Bullet-Level-3-List (Bl3).................... "While your experiencing any waiting time at all, like online"
+Alpha-Level-2-List (Al2)..................... "a. Those positions only go to the ___________ (blondes, boss"
+List-Head (Lhead)............................ "Score:"                                                    
+Unnum-Level-1-List-Paragraph (Ul1p).......... "If you scored mostly As, you’re likely a:"               
+BOX-B > A-Head (Ahead)....................... "Manifesting Alchemy Contract"                              
+BOX-B > Body-Text (Tx)....................... "Start Date __________ End Date__________"                  
+BOX-B > Separator (Sep)...................... "[Separator]"                                               
+BOX-B > Body-Text2 (Tx2)..................... "Today, I, ___________________________ (full name), have made a firm decision."
+BOX-B > Unnum-Level-1-List (Ul1)............. "Practice Duration"                                         
+BOX-B > Bullet-Level-2-List (Bl2)............ "○ ________________________________________ _____________________"
+
+* Section-Part (SPT): "Part I: The 7 Powerful Manifesting Alchemy Principles"
+Number (Num)................................. "Part I"                                                    
+Title (Ttl).................................. "The 7 Powerful Manifesting Alchemy Principles"             
+
+* Section-Chapter (SCP): "Chapter 1: Manifesting Alchemy Principle 1: Focusing on the Good"
+Number (Num)................................. "1"                                                         
+Bullet-Level-1-List (Bl1).................... "The right parking space at the perfect time."              
+
+* Section-Chapter (SCP): "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting"
+BOX-A > A-Head (Ahead)....................... "Manifesting Mini Process: What Are You Waiting For?"       
+BOX-A > Body-Text (Tx)....................... "Think of all the areas of creation. Money, career, love,"  
+BOX-A > Separator (Sep)...................... "[Separator]"                                               
+BOX-A > Unnum-Level-1-List (Ul1)............. "When I have _______________________, then I will ____________________."
+BOX-A > Bullet-Level-1-List (Bl1)............ "When I earn more money, then I’ll travel to Bali."       
+
+* Section-Chapter (SCP): "Chapter 3: Manifesting Alchemy Principle 3: Deservability and Open Receiving"
+Unnum-Level-2-List (Ul2)..................... "What do you appreciate about what you’re receiving?"     
+Unnum-Level-2-List-Paragraph (Ul2p).......... "I wrote my book to help people, and it will"               
+SIDEBAR-A > Num-Level-1-List-Paragraph (Nl1p) "And give the increased tip with sincere appreciation. Because if"
+
+* Section-Part (SPT): "Part II: The 9 Powerful Manifesting Alchemy Practices"
+A-Head (Ahead)............................... "Introduction to Practices: Manifesting Alchemy—What to Keep in Mind"
+Body-Text (Tx)............................... "It’s important to remember on this journey: you are more"
+Extract2 (Ext2).............................. "“Change your thinking, change your life.”"             
+B-Head (Bhead)............................... "Temperament"                                               
+Unnum-Level-1-List (Ul1)..................... "Mental Level"                                              
+Unnum-Level-1-List-Paragraph (Ul1p).......... "Changing with thoughts to carve new neural pathways"       
+
+* Section-Chapter (SCP): "Chapter 8: Manifesting Alchemy Practice 1: Affirmations and Scripting"
+Extract3 (Ext3).............................. "Green lights, nothing but green lights,"                   
+
+* Section-Chapter (SCP): "Chapter 9: Manifesting Alchemy Practice 2: Prayers and Affirmative Prayer"
+Design-Note (Dn)............................. "[Insert Affirmative Intention here]"                       
+Separator (Sep).............................. "[Separator]"                                               
+
+* Section-Chapter (SCP): "Chapter 10: Manifesting Alchemy Practice 3: Inspired Action and Asking for Signs"
+BOX-A > Num-Level-1-List (Nl1)............... "1. Hold the potential sign in your mind. Mentally review"  
+
+* Section-Chapter (SCP): "Chapter 11: Manifesting Alchemy Practice 4: the Art of Lists for Manifestations"
+Alpha-Level-2-List-Paragraph (Al2p).......... "I’ll use manifesting a new house as an example."         
+
+* Section-Chapter (SCP): "Chapter 15: Manifesting Alchemy Practice 8: Creating a Manifestation Journal (and Gratitude Too!)"
+Numbered-Paragraph (Np)...................... "1. “I had $3.00 left in my checking account and"         
+
+* Section-Chapter (SCP): "Chapter 17: Picking a Target—Areas of Life for Manifestation"
+BOX-A > B-Head (Bhead)....................... "Money"                                                     
+BOX-A > Extract4 (Ext4)...................... "____pay for housing (rent/mortgage, taxes, utilities, upkeep/repairs)"
+BOX-A > Alpha-Level-2-List (Al2)............. "a. Breathe in and imagine blowing out the frustration onto"
+
+* Section-Chapter (SCP): "Chapter 20: Career and Achievements"
+Main-Head (MHead)............................ "Steps for Manifesting Your Ideal Career, Soul’s Purpose, or Leisure"
+Custom1 (Cust1).............................. "Bonus: If you know this person, interview them about their"
+
+* Section-Chapter (SCP): "Chapter 21: Health and Beauty"
+C-Head (Chead)............................... "Affirmative Prayer for Health"                             
+
+* Section-Chapter (SCP): "Chapter 23: The Power of Emotion"
+BOX-A > Num-Level-1-List-Paragraph (Nl1p).... "You experience emotional highs and lows throughout the day. You’ll"
+BOX-A > Alpha-Level-2-List-Paragraph (Al2p).. "Feel what happens in your body when you think of"          
+
+* Section-Chapter (SCP): "Chapter 24: Dealing with Doubts and Releasing Resistance"
+Alpha-Level-1-List (Al1)..................... "Using your fingertips, begin tapping under each eye, on the"
+Alpha-Level-1-List-Paragraph (Al1p).......... "If you’re cleaning up shards, be sure to do this"        
+
+* Section-Conclusion (SCL): "Conclusion"
+Title (Ttl).................................. "Conclusion"                                                
+Body-Text (Tx)............................... "As I’m completing this manuscript, the spring of 2020 is"
+Epigraph-Non-Verse (Epi)..................... "Do not be dismayed by the brokenness of the world."        
+Epigraph-Source (Episrc)..................... "—I.R. Knost"                                             
+
+* Section-Acknowledgments (SAK): "Acknowledgments"
+Title (Ttl).................................. "Acknowledgments"                                           
+Body-Text (Tx)............................... "To Joel Fotinos, for once again giving me a chance"        
+
+* Section-About-Author (SAA): "About the Author"
+Title (Ttl).................................. "About the Author"                                          
+Body-Text (Tx)............................... "Kris Ferraro is an author, international energy coach, teacher, and"
+Separator (Sep).............................. "[Separator]"                                               
+Design-Note (Dn)............................. "[insert facebook logo] facebook.com/kris.ferraro"          
+
+* Section-Index (SIN): "Index"
+Title (Ttl).................................. "Index [Tk Hold 8 Pp]"                                      
+
+___________CHARACTER STYLES IN USE___________
+ital (i)
+smallcaps (sc)
+cs-isbn (isbn)
+cs-cleanup-exclude (cex)
+bold (b)
+bold-ital (bi)
+underline (u)
+symbols (sym)
+footnote reference
+footnote reference

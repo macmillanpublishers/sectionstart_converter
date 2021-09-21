@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<w:footnotes mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14" xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink" xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d" xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex" xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex" xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex" xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex" xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex" xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex" xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex" xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex" xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+   <w:footnote w:id="-1" w:type="separator">
+      <w:p w14:paraId="16A5CC60" w14:textId="77777777" w:rsidP="006F53BD" w:rsidR="00551162" w:rsidRDefault="00551162">
+         <w:r>
+            <w:separator/>
+         </w:r>
+      </w:p>
+   </w:footnote>
+   <w:footnote w:id="0" w:type="continuationSeparator">
+      <w:p w14:paraId="5CAB1C1E" w14:textId="77777777" w:rsidP="006F53BD" w:rsidR="00551162" w:rsidRDefault="00551162">
+         <w:r>
+            <w:continuationSeparator/>
+         </w:r>
+      </w:p>
+   </w:footnote>
+   <w:footnote w:id="1">
+      <w:p w14:paraId="36D82EE7" w14:textId="710DE9C7" w:rsidP="00E977AF" w:rsidR="00B275DA" w:rsidRDefault="00B275DA">
+         <w:pPr>
+            <w:pStyle w:val="FootnoteText"/>
+         </w:pPr>
+         <w:r w:rsidRPr="00265E85">
+            <w:rPr>
+               <w:rStyle w:val="FootnoteReference"/>
+            </w:rPr>
+            <w:footnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00EA3113">
+            <w:t>A word on parking spaces. These are not always frivolous manifestations. Once, I slipped on black ice and threw out my lower back. Needing to see my acupuncturist ASAP, I manifested a spot directly in front of her office, in the center of a busy downtown area known for its nonexistent parking. I could hardly walk. This spot meant I could get very necessary treatment.</w:t>
+         </w:r>
+      </w:p>
+   </w:footnote>
+   <w:footnote w:id="2">
+      <w:p w14:paraId="725CD5C2" w14:textId="10EC1B0B" w:rsidP="00E977AF" w:rsidR="00B275DA" w:rsidRDefault="00B275DA">
+         <w:pPr>
+            <w:pStyle w:val="FootnoteText"/>
+         </w:pPr>
+         <w:r>
+            <w:rPr>
+               <w:rStyle w:val="FootnoteReference"/>
+            </w:rPr>
+            <w:footnoteRef/>
+         </w:r>
+         <w:r w:rsidRPr="00EA3113">
+            <w:t xml:space="preserve">The concept of </w:t>
+         </w:r>
+         <w:r>
+            <w:t>mastermind groups</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00EA3113">
+            <w:t xml:space="preserve"> was put </w:t>
+         </w:r>
+         <w:r w:rsidR="00F47CC9">
+            <w:t>s</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00EA3113">
+            <w:t>into print with the success principle books by Nap</w:t>
+         </w:r>
+         <w:r>
+            <w:t>o</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00EA3113">
+            <w:t>l</w:t>
+         </w:r>
+         <w:r>
+            <w:t>e</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00EA3113">
+            <w:t xml:space="preserve">on Hill, including his classic </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00265E85">
+            <w:rPr>
+               <w:rStyle w:val="itali"/>
+            </w:rPr>
+            <w:t>Think and Grow Rich.</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00EA3113">
+            <w:t xml:space="preserve"> He wrote</w:t>
+         </w:r>
+         <w:r>
+            <w:t xml:space="preserve">, </w:t>
+         </w:r>
+         <w:r>
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>“</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00EA3113">
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t>The coordination of knowledge and effort of two or more people, who work toward a definite purpose, in the spirit of harmony.</w:t>
+         </w:r>
+         <w:r>
+            <w:rPr>
+               <w:shd w:color="auto" w:fill="FFFFFF" w:val="clear"/>
+            </w:rPr>
+            <w:t xml:space="preserve">” </w:t>
+         </w:r>
+         <w:r w:rsidRPr="00EA3113">
+            <w:t>And also</w:t>
+         </w:r>
+         <w:r>
+            <w:t>,</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00176F80">
+            <w:t xml:space="preserve"> </w:t>
+         </w:r>
+         <w:r>
+            <w:t>“</w:t>
+         </w:r>
+         <w:r w:rsidRPr="00EA3113">
+            <w:t>No two minds ever come together without thereby creating a third, invisible intangible force, which may be likened to a third mind [the mastermind].</w:t>
+         </w:r>
+         <w:r>
+            <w:t>”</w:t>
+         </w:r>
+      </w:p>
+   </w:footnote>
+</w:footnotes>

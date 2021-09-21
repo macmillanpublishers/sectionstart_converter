@@ -131,7 +131,7 @@ else:
     scripts_dir_path = os.path.join(__location__,'..','..')
 
 # rsuite versus macmillan template paths. For now mocking up a separate repo locally for rsuite
-if script_name.startswith("rsuite"):
+if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in script_name:
     templatefiles_path = os.path.join(scripts_dir_path,"RSuite_Word-template","StyleTemplate_auto-generate")
     template_name = "Rsuite"
 else:

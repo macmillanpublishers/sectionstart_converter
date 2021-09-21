@@ -383,27 +383,35 @@ def getListStylenames(styleconfig_dict):
         "alpha": []
     }
     li_styles_by_level = {
-        "level1": [],
-        "level2": [],
-        "level3": []
+        "1": [],
+        "2": [],
+        "3": []
     }
 
     # using list comprehensions to import stylenames, for clearing leading period(s)
     unorderedlistparaslevel1 = [s[1:] for s in styleconfig_dict["unorderedlistparaslevel1"]]
     orderedlistparaslevel1 = [s[1:] for s in styleconfig_dict["orderedlistparaslevel1"]]
-    li_styles_by_level["level1"] = unorderedlistparaslevel1 + orderedlistparaslevel1
+    li_styles_by_level[1] = unorderedlistparaslevel1 + orderedlistparaslevel1
 
     unorderedlistparaslevel2 = [s[1:] for s in styleconfig_dict["unorderedlistparaslevel2"]]
     orderedlistparaslevel2 = [s[1:] for s in styleconfig_dict["orderedlistparaslevel2"]]
-    li_styles_by_level["level2"] = unorderedlistparaslevel2 + orderedlistparaslevel2
+    li_styles_by_level[2] = unorderedlistparaslevel2 + orderedlistparaslevel2
 
     unorderedlistparaslevel3 = [s[1:] for s in styleconfig_dict["unorderedlistparaslevel3"]]
     orderedlistparaslevel3 = [s[1:] for s in styleconfig_dict["orderedlistparaslevel3"]]
-    li_styles_by_level["level3"] = unorderedlistparaslevel3 + orderedlistparaslevel3
+    li_styles_by_level[3] = unorderedlistparaslevel3 + orderedlistparaslevel3
 
+    # get all list styles in 1 dict, with levels as their value for easy access
+    all_list_styles = {i:1 for i in li_styles_by_level[1]}
+    all_list_styles_2 = {i:2 for i in li_styles_by_level[2]}
+    all_list_styles_3 = {i:3 for i in li_styles_by_level[3]}
+    all_list_styles.update(all_list_styles_2)
+    all_list_styles.update(all_list_styles_3)
+
+    # track listparas in their own list
     listparagraphs = [s[1:] for s in styleconfig_dict["listparaparas"]]
-    all_list_styles = li_styles_by_level["level1"] + li_styles_by_level["level2"] + li_styles_by_level["level3"]
 
+    # get groups of list styles by type
     for liststyle in all_list_styles:
         if "bullet" in liststyle.lower():
             li_styles_by_type["bullet"].append(liststyle)
@@ -414,58 +422,74 @@ def getListStylenames(styleconfig_dict):
         elif "num" in liststyle.lower() and "unnum" not in liststyle.lower():
             li_styles_by_type["num"].append(liststyle)
 
-    return li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles
+    # tracking other paras that can interrupt lists without affecting nesting logic
+    #   specifically extracts as per wdv-363
+    nonlist_list_paras = [s[1:] for s in styleconfig_dict["extractparas"]]
 
-def verifyListNesting(report_dict, xml_root, li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles):
+    return li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras
+
+def verifyListNesting(report_dict, xml_root, li_styles_by_level, li_styles_by_type, listparagraphs, list_styles, nonlist_list_paras):
     logger.info("* * * commencing verifyListNesting function...")
-
+    all_list_styles = nonlist_list_paras + list_styles.keys()
     #  cycle through all list styles by type
     for type in li_styles_by_type:
         for style in li_styles_by_type[type]:
-            # # we are checking preceding para styles for compliance for every type of list
-            # search and return matches
+            # search and return every list paragraph
             list_p_elements = lxml_utils.findParasWithStyle(style, xml_root)
-            # cycle through matches, get prev styles
+            # # we are checking preceding para styles for compliance for every type of list
+            # cycle through list paragraphs, get prev styles
             for list_p in list_p_elements:
                 pneighbors = lxml_utils.getNeighborParas(list_p)
                 prevstyle = pneighbors['prevstyle']
-                # # if blank para, log as an error:
-                # paratxt = lxml_utils.getParaTxt(list_p)
-                # if not paratxt.strip():
-                #     lxml_utils.logForReport(report_dict,xml_root,list_p,"blank_list_para","style is %s" % style)
+                # get style level from list_styles dict
+                level = list_styles[style]
 
-                # determine our style's level
-                for level in li_styles_by_level:
-                    if style in li_styles_by_level[level]:
-                        # check preceding parastyles for all listpara instances: if not same style of matching list type/level (para or non-para), log err
-                        if style in listparagraphs:
-                            if prevstyle not in li_styles_by_level[level] or prevstyle not in li_styles_by_type[type]:
-                                lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
-                        # all other checks are for list non-paragraphs
+                # handle Unnested listparas with level > 1 (list nesting error)
+                #   (Level1 list paragraphs (not list-para paragraphs) are valid when preceded by non-list items)
+                #   examples: Body-Text > BL2, Title > NL3p, MainHead > UL1p
+                if (level > 1 or (level == 1 and style in listparagraphs)) and prevstyle not in all_list_styles:
+                    lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                elif prevstyle in all_list_styles:
+                    # calculate diff between current para list-level and preceding para list-level
+                    if prevstyle in list_styles:
+                        leveldiff = level - list_styles[prevstyle]  # < list_styles[prevstyle] = prev. para's level
+                    elif prevstyle not in list_styles:
+                        leveldiff = -1
+                    # if prevstyle is a non_list_liststyle, or leveldiff is negative,
+                    #   we need to traverse upwards till we find a real list style with a leveldiff >= 0 or a non-list style
+                    #   example negative leveldiff: BL3p > NL2 <-- we need context from preceding paras to determine whether its valid
+                    if leveldiff < 0:
+                        para_tmp = list_p
+                        while pneighbors['prevstyle'] and pneighbors['prevstyle'] in all_list_styles and leveldiff < 0:
+                            # increment para upwards
+                            para_tmp = pneighbors['prev']
+                            pneighbors = lxml_utils.getNeighborParas(para_tmp)
+                            # calc leveldiff:
+                            if pneighbors['prevstyle'] and pneighbors['prevstyle'] in list_styles:
+                                leveldiff = level - list_styles[pneighbors['prevstyle']]
+                        # \/ L2 or L3 para never preceded by an L1; a nesting err (obscured by leading non_list_listpara(s))
+                        #       (also pertains to L1, for list-para paragraphs)
+                        if pneighbors['prevstyle'] not in all_list_styles and (level > 1 or (level == 1 and style in listparagraphs)):
+                            lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                            break
                         else:
-                            # if level1 list non-paras preceding paragraph is the same level but different type, issue warning
-                            if level == "level1" and prevstyle in li_styles_by_level[level] and prevstyle not in li_styles_by_type[type]:
-                                lxml_utils.logForReport(report_dict,xml_root,list_p,"list_change_warning","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
-                            # if level2 or level3 list non-paras preceding paragraph is the same level but different type, issue error
-                            elif prevstyle in li_styles_by_level[level] and prevstyle not in li_styles_by_type[type]:
-                                lxml_utils.logForReport(report_dict,xml_root,list_p,"list_change_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
-                            # list level 3 non-para, if preceded by list para, must be preceded by list level 2 or 3 (any)
-                            elif level == "level3" and prevstyle not in li_styles_by_level["level2"] + li_styles_by_level["level3"]:
-                                lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
-                            elif level == "level2" and prevstyle not in li_styles_by_level["level1"] + li_styles_by_level["level2"]:
-                                if prevstyle in li_styles_by_level["level3"]:
-                                    # go back until you find a non-level 3. IF it is a level1 or non list, error
-                                    #   if it is a level 2 of a different kind, error.
-                                    para_tmp = list_p
-                                    while pneighbors['prevstyle'] and pneighbors['prevstyle'] in li_styles_by_level["level3"]:
-                                        # increment para upwards
-                                        para_tmp = pneighbors['prev']
-                                        pneighbors = lxml_utils.getNeighborParas(para_tmp)
-                                    if pneighbors['prevstyle'] not in li_styles_by_level["level2"] or pneighbors['prevstyle'] not in li_styles_by_type[type]:
-                                        lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
-                                else:
-                                    # prevstyle is not a list style at all
-                                    lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                            prevstyle = pneighbors['prevstyle']
+                    # now we take the difference in levels and flag/follow re: any problems:
+                    # examples: BL1 > BL3, BL1 > NL3, BL1 > BL2p
+                    #   (leveldiff == 1 is fine for non-listpara paras, like BL1 > BL2 or BL1p > NL2)
+                    if leveldiff > 1 or (leveldiff == 1 and style in listparagraphs):
+                        lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                    # examples: BL1 > NL1, UL1p > BL1
+                    #   (list change warning: only for list level = 1)
+                    elif leveldiff == 0 and level == 1 and style not in listparagraphs and prevstyle not in li_styles_by_type[type]:
+                        lxml_utils.logForReport(report_dict,xml_root,list_p,"list_change_warning","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                    # examples: BL1 > NL1p, UL3p > NL3
+                    #   (list change error for List paragraphs, nesting error for list-para paragraphs)
+                    elif leveldiff == 0 and prevstyle not in li_styles_by_type[type]:
+                        if style not in listparagraphs:
+                            lxml_utils.logForReport(report_dict,xml_root,list_p,"list_change_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                        else:
+                            lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
     return report_dict
 
 def duplicateSectionCheck(report_dict, section_array):
@@ -500,7 +524,6 @@ def checkForFMsectionsInBody(report_dict, fm_sectionnames, booksectionname):
                 body_begun = True
             elif section_dict["description"] in fm_section_shortnames and body_begun == True:
                 section_fullname = lxml_utils.getStyleLongname(section_dict["description"])
-                print "sef", section_fullname
                 lxml_utils.logForReport(report_dict,None,None,"fm_section_in_body",section_fullname,section_dict["para_id"])
 
     return report_dict
@@ -741,7 +764,7 @@ def rsuiteValidations(report_dict):
     styleconfig_dict = os_utils.readJSON(styleconfig_json)
     container_start_styles = getContainerStarts(styleconfig_dict)
     container_end_styles = [s[1:] for s in styleconfig_dict["containerendparas"]] # <--strip leading period
-    li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles = getListStylenames(styleconfig_dict)
+    li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras = getListStylenames(styleconfig_dict)
     bookmakerstyles = vbastyleconfig_dict["bookmakerstyles"]
     valid_native_word_styles = cfg.valid_native_word_styles
 
@@ -779,7 +802,7 @@ def rsuiteValidations(report_dict):
     # test / verify Container structures
     report_dict = checkContainers(report_dict, doc_root, sectionnames, container_start_styles, container_end_styles)
     # check list nesting
-    report_dict = verifyListNesting(report_dict, doc_root, li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles)
+    report_dict = verifyListNesting(report_dict, doc_root, li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras)
     # get all Section Starts in the doc:
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "report")
     # check for sections that should only appear once

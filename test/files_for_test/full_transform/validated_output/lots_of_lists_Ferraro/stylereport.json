@@ -1,0 +1,2025 @@
+{
+    "Macmillan_charstyle_first_use": [
+        {
+            "description": "ital (i)", 
+            "para_id": "4232F6CB", 
+            "para_index": 11, 
+            "para_string": "Energy Healing: Simple and Effective Practices to Become Your Own", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "smallcaps (sc)", 
+            "para_id": "36EAA560", 
+            "para_index": 24, 
+            "para_string": "manifesting. Copyright  2021 by Kris Ferraro. All rights reserved.", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-isbn (isbn)", 
+            "para_id": "32571604", 
+            "para_index": 30, 
+            "para_string": "ISBN 978-1-250-76955-8 (trade paperback)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "cs-cleanup-exclude (cex)", 
+            "para_id": "44C61181", 
+            "para_index": 37, 
+            "para_string": "10 9 8 7 6 5 4 3 2 1", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "bold (b)", 
+            "para_id": "46F8BD5D", 
+            "para_index": 138, 
+            "para_string": "About Me", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "bold-ital (bi)", 
+            "para_id": "6BF351AD", 
+            "para_index": 179, 
+            "para_string": "Manifesting Is Alchemy: Turn the Lead of Your Life into", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "underline (u)", 
+            "para_id": "6852AD59", 
+            "para_index": 596, 
+            "para_string": "Score:", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "symbols (sym)", 
+            "para_id": "268F3658", 
+            "para_index": 650, 
+            "para_string": "\u25cb ________________________________________ _____________________", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "footnote reference", 
+            "para_id": "6AC31311", 
+            "para_index": 702, 
+            "para_string": "The right parking space at the perfect time.", 
+            "parent_section_start_content": "Chapter 1: Manifesting Alchemy Principle 1: Focusing on the Good", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "footnote reference", 
+            "note-or-comment_id": "1", 
+            "para_id": "36D82EE7", 
+            "para_index": "n-a", 
+            "para_string": "A word on parking spaces. These are not always frivolous", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }
+    ], 
+    "Macmillan_style_first_use": [
+        {
+            "description": "Design-Note (Dn)", 
+            "para_id": "0AC00AB1", 
+            "para_index": 2, 
+            "para_string": "[p. i-front sales]", 
+            "parent_section_start_content": "Front Sales", 
+            "parent_section_start_type": "Section-Front-SalesSFS"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "0466D8C9", 
+            "para_index": 3, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Front Sales", 
+            "parent_section_start_type": "Section-Front-SalesSFS"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "008985DF", 
+            "para_index": 8, 
+            "para_string": "Manifesting", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "02E0702E", 
+            "para_index": 10, 
+            "para_string": "Also by Kris Ferraro", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "4232F6CB", 
+            "para_index": 11, 
+            "para_string": "Energy Healing: Simple and Effective Practices to Become Your Own", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "1FB8797D", 
+            "para_index": 14, 
+            "para_string": "Manifesting", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Subtitle (Sttl)", 
+            "para_id": "0319646A", 
+            "para_index": 15, 
+            "para_string": "The Practical, Simple Guide to Creating the Life You Want", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Author1 (Au1)", 
+            "para_id": "002DEC3C", 
+            "para_index": 16, 
+            "para_string": "Kris Ferraro", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Imprint (Imp)", 
+            "para_id": "7CCC7657", 
+            "para_index": 17, 
+            "para_string": "[place Imprint logo here]", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Cities (Cit)", 
+            "para_id": "4AE4CF73", 
+            "para_index": 18, 
+            "para_string": "New York", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "19925116", 
+            "para_index": 20, 
+            "para_string": "The information in this book is not intended to replace", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "1D3D8858", 
+            "para_index": 21, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "252A40A9", 
+            "para_index": 39, 
+            "para_string": "For trailblazing misfits, modern mystics, miracle midwives,", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "3F008BA5", 
+            "para_index": 41, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "706ACC50", 
+            "para_index": 44, 
+            "para_string": "Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Chapter (Tocch)", 
+            "para_id": "4C2D0F00", 
+            "para_index": 45, 
+            "para_string": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Subhead (Tocsub)", 
+            "para_id": "77A5493D", 
+            "para_index": 46, 
+            "para_string": "About Me", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Part (Tocpt)", 
+            "para_id": "4FCF1A83", 
+            "para_index": 59, 
+            "para_string": "Part I: The 7 Powerful Manifesting Alchemy Principles", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "TOC-Backmatter (Tocbm)", 
+            "para_id": "303B10D5", 
+            "para_index": 133, 
+            "para_string": "Conclusion", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "6F9F226E", 
+            "para_index": 137, 
+            "para_string": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "A-Head (Ahead)", 
+            "para_id": "46F8BD5D", 
+            "para_index": 138, 
+            "para_string": "About Me", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Epigraph-Non-Verse (Epi)", 
+            "para_id": "4F8565BC", 
+            "para_index": 139, 
+            "para_string": "You belong in the life of your dreams. And you", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Epigraph-Source (Episrc)", 
+            "para_id": "4B9CCC0A", 
+            "para_index": 140, 
+            "para_string": "\u2014Tama Kieves", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "594C874E", 
+            "para_index": 141, 
+            "para_string": "I had arrived in Denver with a broken heart. Some", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Blank-Space-Break (Bsbrk)", 
+            "para_id": "601F9F38", 
+            "para_index": 144, 
+            "para_string": "[blank]", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "B-Head (Bhead)", 
+            "para_id": "274FC595", 
+            "para_index": 205, 
+            "para_string": "Settling", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "SIDEBAR-A > A-Head (Ahead)", 
+            "para_id": "5CEC3FE2", 
+            "para_index": 234, 
+            "para_string": "Quick Bit Alchemy List: 5 Powerful Ways to Start Your", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "SIDEBAR-A > Num-Level-1-List (Nl1)", 
+            "para_id": "6E5BB098", 
+            "para_index": 235, 
+            "para_string": "Wake up your energy. Rub under both sides of your", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Num-Level-1-List (Nl1)", 
+            "para_id": "271898F7", 
+            "para_index": 289, 
+            "para_string": "Why do you believe you are here?", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "5C7BE41C", 
+            "para_index": 304, 
+            "para_string": "There is a force of creation. And you can use", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Extract1 (Ext1)", 
+            "para_id": "021556E0", 
+            "para_index": 362, 
+            "para_string": "\u201cWhatever you\u2019re thinking, you\u2019re attracting.\u201d", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Num-Level-1-List-Paragraph (Nl1p)", 
+            "para_id": "023E2144", 
+            "para_index": 374, 
+            "para_string": "You put aside an hour or free afternoon to tackle", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bullet-Level-2-List (Bl2)", 
+            "para_id": "38A8CAE7", 
+            "para_index": 391, 
+            "para_string": "Take pictures that arouse the feelings you\u2019d like to experience", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bullet-Level-3-List (Bl3)", 
+            "para_id": "6D539CBD", 
+            "para_index": 396, 
+            "para_string": "While your experiencing any waiting time at all, like online", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Alpha-Level-2-List (Al2)", 
+            "para_id": "0645F837", 
+            "para_index": 417, 
+            "para_string": "a. Those positions only go to the ___________ (blondes, boss", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "List-Head (Lhead)", 
+            "para_id": "6852AD59", 
+            "para_index": 596, 
+            "para_string": "Score:", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Unnum-Level-1-List-Paragraph (Ul1p)", 
+            "para_id": "52CB6A6E", 
+            "para_index": 603, 
+            "para_string": "If you scored mostly As, you\u2019re likely a:", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B > A-Head (Ahead)", 
+            "para_id": "4A3D6F42", 
+            "para_index": 638, 
+            "para_string": "Manifesting Alchemy Contract", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B > Body-Text (Tx)", 
+            "para_id": "31E21AA2", 
+            "para_index": 639, 
+            "para_string": "Start Date __________ End Date__________", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B > Separator (Sep)", 
+            "para_id": "4A2482A8", 
+            "para_index": 640, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B > Body-Text2 (Tx2)", 
+            "para_id": "75B53DA5", 
+            "para_index": 641, 
+            "para_string": "Today, I, ___________________________ (full name), have made a firm decision.", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B > Unnum-Level-1-List (Ul1)", 
+            "para_id": "55C5F685", 
+            "para_index": 649, 
+            "para_string": "Practice Duration", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-B > Bullet-Level-2-List (Bl2)", 
+            "para_id": "268F3658", 
+            "para_index": 650, 
+            "para_string": "\u25cb ________________________________________ _____________________", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Number (Num)", 
+            "para_id": "07C8A2FA", 
+            "para_index": 673, 
+            "para_string": "Part I", 
+            "parent_section_start_content": "Part I: The 7 Powerful Manifesting Alchemy Principles", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "37210845", 
+            "para_index": 674, 
+            "para_string": "The 7 Powerful Manifesting Alchemy Principles", 
+            "parent_section_start_content": "Part I: The 7 Powerful Manifesting Alchemy Principles", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Number (Num)", 
+            "para_id": "0434F4C1", 
+            "para_index": 676, 
+            "para_string": "1", 
+            "parent_section_start_content": "Chapter 1: Manifesting Alchemy Principle 1: Focusing on the Good", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Bullet-Level-1-List (Bl1)", 
+            "para_id": "6AC31311", 
+            "para_index": 702, 
+            "para_string": "The right parking space at the perfect time.", 
+            "parent_section_start_content": "Chapter 1: Manifesting Alchemy Principle 1: Focusing on the Good", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > A-Head (Ahead)", 
+            "para_id": "54B6297B", 
+            "para_index": 778, 
+            "para_string": "Manifesting Mini Process: What Are You Waiting For?", 
+            "parent_section_start_content": "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Body-Text (Tx)", 
+            "para_id": "6B624280", 
+            "para_index": 779, 
+            "para_string": "Think of all the areas of creation. Money, career, love,", 
+            "parent_section_start_content": "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Separator (Sep)", 
+            "para_id": "339E1B24", 
+            "para_index": 780, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Unnum-Level-1-List (Ul1)", 
+            "para_id": "0B9847BD", 
+            "para_index": 782, 
+            "para_string": "When I have _______________________, then I will ____________________.", 
+            "parent_section_start_content": "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Bullet-Level-1-List (Bl1)", 
+            "para_id": "77115D18", 
+            "para_index": 792, 
+            "para_string": "When I earn more money, then I\u2019ll travel to Bali.", 
+            "parent_section_start_content": "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Unnum-Level-2-List (Ul2)", 
+            "para_id": "0EDC0F88", 
+            "para_index": 868, 
+            "para_string": "What do you appreciate about what you\u2019re receiving?", 
+            "parent_section_start_content": "Chapter 3: Manifesting Alchemy Principle 3: Deservability and Open Receiving", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Unnum-Level-2-List-Paragraph (Ul2p)", 
+            "para_id": "15A4EA09", 
+            "para_index": 874, 
+            "para_string": "I wrote my book to help people, and it will", 
+            "parent_section_start_content": "Chapter 3: Manifesting Alchemy Principle 3: Deservability and Open Receiving", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "SIDEBAR-A > Num-Level-1-List-Paragraph (Nl1p)", 
+            "para_id": "4C67A1C4", 
+            "para_index": 884, 
+            "para_string": "And give the increased tip with sincere appreciation. Because if", 
+            "parent_section_start_content": "Chapter 3: Manifesting Alchemy Principle 3: Deservability and Open Receiving", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "A-Head (Ahead)", 
+            "para_id": "12704032", 
+            "para_index": 1026, 
+            "para_string": "Introduction to Practices: Manifesting Alchemy\u2014What to Keep in Mind", 
+            "parent_section_start_content": "Part II: The 9 Powerful Manifesting Alchemy Practices", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "775B6E1D", 
+            "para_index": 1027, 
+            "para_string": "It\u2019s important to remember on this journey: you are more", 
+            "parent_section_start_content": "Part II: The 9 Powerful Manifesting Alchemy Practices", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Extract2 (Ext2)", 
+            "para_id": "099C5855", 
+            "para_index": 1028, 
+            "para_string": "\u201cChange your thinking, change your life.\u201d", 
+            "parent_section_start_content": "Part II: The 9 Powerful Manifesting Alchemy Practices", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "B-Head (Bhead)", 
+            "para_id": "481BF15F", 
+            "para_index": 1033, 
+            "para_string": "Temperament", 
+            "parent_section_start_content": "Part II: The 9 Powerful Manifesting Alchemy Practices", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Unnum-Level-1-List (Ul1)", 
+            "para_id": "3383B482", 
+            "para_index": 1038, 
+            "para_string": "Mental Level", 
+            "parent_section_start_content": "Part II: The 9 Powerful Manifesting Alchemy Practices", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Unnum-Level-1-List-Paragraph (Ul1p)", 
+            "para_id": "5EB0BD7C", 
+            "para_index": 1039, 
+            "para_string": "Changing with thoughts to carve new neural pathways", 
+            "parent_section_start_content": "Part II: The 9 Powerful Manifesting Alchemy Practices", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Extract3 (Ext3)", 
+            "para_id": "0F9298C3", 
+            "para_index": 1099, 
+            "para_string": "Green lights, nothing but green lights,", 
+            "parent_section_start_content": "Chapter 8: Manifesting Alchemy Practice 1: Affirmations and Scripting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Design-Note (Dn)", 
+            "para_id": "3BB5DD2D", 
+            "para_index": 1164, 
+            "para_string": "[Insert Affirmative Intention here]", 
+            "parent_section_start_content": "Chapter 9: Manifesting Alchemy Practice 2: Prayers and Affirmative Prayer", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "791BF00E", 
+            "para_index": 1183, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "Chapter 9: Manifesting Alchemy Practice 2: Prayers and Affirmative Prayer", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Num-Level-1-List (Nl1)", 
+            "para_id": "543D0148", 
+            "para_index": 1252, 
+            "para_string": "1. Hold the potential sign in your mind. Mentally review", 
+            "parent_section_start_content": "Chapter 10: Manifesting Alchemy Practice 3: Inspired Action and Asking for Signs", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Alpha-Level-2-List-Paragraph (Al2p)", 
+            "para_id": "46528101", 
+            "para_index": 1282, 
+            "para_string": "I\u2019ll use manifesting a new house as an example.", 
+            "parent_section_start_content": "Chapter 11: Manifesting Alchemy Practice 4: the Art of Lists for Manifestations", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Numbered-Paragraph (Np)", 
+            "para_id": "1E3CFE1D", 
+            "para_index": 1455, 
+            "para_string": "1. \u201cI had $3.00 left in my checking account and", 
+            "parent_section_start_content": "Chapter 15: Manifesting Alchemy Practice 8: Creating a Manifestation Journal (and Gratitude Too!)", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > B-Head (Bhead)", 
+            "para_id": "3CC24840", 
+            "para_index": 1502, 
+            "para_string": "Money", 
+            "parent_section_start_content": "Chapter 17: Picking a Target\u2014Areas of Life for Manifestation", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Extract4 (Ext4)", 
+            "para_id": "6B01DCE2", 
+            "para_index": 1507, 
+            "para_string": "____pay for housing (rent/mortgage, taxes, utilities, upkeep/repairs)", 
+            "parent_section_start_content": "Chapter 17: Picking a Target\u2014Areas of Life for Manifestation", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Alpha-Level-2-List (Al2)", 
+            "para_id": "16BDA610", 
+            "para_index": 1662, 
+            "para_string": "a. Breathe in and imagine blowing out the frustration onto", 
+            "parent_section_start_content": "Chapter 17: Picking a Target\u2014Areas of Life for Manifestation", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Main-Head (MHead)", 
+            "para_id": "1EFC47A4", 
+            "para_index": 1797, 
+            "para_string": "Steps for Manifesting Your Ideal Career, Soul\u2019s Purpose, or Leisure", 
+            "parent_section_start_content": "Chapter 20: Career and Achievements", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Custom1 (Cust1)", 
+            "para_id": "76C9FB61", 
+            "para_index": 1805, 
+            "para_string": "Bonus: If you know this person, interview them about their", 
+            "parent_section_start_content": "Chapter 20: Career and Achievements", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "C-Head (Chead)", 
+            "para_id": "4719CD3B", 
+            "para_index": 1867, 
+            "para_string": "Affirmative Prayer for Health", 
+            "parent_section_start_content": "Chapter 21: Health and Beauty", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Num-Level-1-List-Paragraph (Nl1p)", 
+            "para_id": "6F2B63F5", 
+            "para_index": 2019, 
+            "para_string": "You experience emotional highs and lows throughout the day. You\u2019ll", 
+            "parent_section_start_content": "Chapter 23: The Power of Emotion", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "BOX-A > Alpha-Level-2-List-Paragraph (Al2p)", 
+            "para_id": "78574413", 
+            "para_index": 2031, 
+            "para_string": "Feel what happens in your body when you think of", 
+            "parent_section_start_content": "Chapter 23: The Power of Emotion", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Alpha-Level-1-List (Al1)", 
+            "para_id": "45050CB4", 
+            "para_index": 2099, 
+            "para_string": "Using your fingertips, begin tapping under each eye, on the", 
+            "parent_section_start_content": "Chapter 24: Dealing with Doubts and Releasing Resistance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Alpha-Level-1-List-Paragraph (Al1p)", 
+            "para_id": "7A3B6A95", 
+            "para_index": 2149, 
+            "para_string": "If you\u2019re cleaning up shards, be sure to do this", 
+            "parent_section_start_content": "Chapter 24: Dealing with Doubts and Releasing Resistance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "40EF9BF1", 
+            "para_index": 2338, 
+            "para_string": "Conclusion", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "433E30F6", 
+            "para_index": 2339, 
+            "para_string": "As I\u2019m completing this manuscript, the spring of 2020 is", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "Epigraph-Non-Verse (Epi)", 
+            "para_id": "6DDF8D97", 
+            "para_index": 2363, 
+            "para_string": "Do not be dismayed by the brokenness of the world.", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "Epigraph-Source (Episrc)", 
+            "para_id": "32B9C2F1", 
+            "para_index": 2364, 
+            "para_string": "\u2014I.R. Knost", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "25582716", 
+            "para_index": 2366, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "41E03316", 
+            "para_index": 2367, 
+            "para_string": "To Joel Fotinos, for once again giving me a chance", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "1A795F69", 
+            "para_index": 2376, 
+            "para_string": "About the Author", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "Body-Text (Tx)", 
+            "para_id": "3D4DF4A5", 
+            "para_index": 2377, 
+            "para_string": "Kris Ferraro is an author, international energy coach, teacher, and", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "Separator (Sep)", 
+            "para_id": "72AF2BF0", 
+            "para_index": 2378, 
+            "para_string": "[Separator]", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "Design-Note (Dn)", 
+            "para_id": "205B6260", 
+            "para_index": 2384, 
+            "para_string": "[insert facebook logo] facebook.com/kris.ferraro", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "Title (Ttl)", 
+            "para_id": "1746AAAB", 
+            "para_index": 2393, 
+            "para_string": "Index [Tk Hold 8 Pp]", 
+            "parent_section_start_content": "Index", 
+            "parent_section_start_type": "Section-IndexSIN"
+        }
+    ], 
+    "author_paras": [
+        {
+            "description": "Kris Ferraro", 
+            "para_id": "002DEC3C", 
+            "para_index": 16, 
+            "para_string": "Kris Ferraro", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ], 
+    "container_end_error": [
+        {
+            "description": "END (END)", 
+            "para_id": "5670DABD", 
+            "para_index": 1435, 
+            "para_string": "END", 
+            "parent_section_start_content": "Chapter 14: Manifesting Alchemy Practice 7: Dancing Your Dreams", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "deleted_objects-bookmarks": [
+        {
+            "description": "deleted bookmark named _Hlk58599674", 
+            "para_id": "32571604", 
+            "para_index": 30, 
+            "para_string": "ISBN 978-1-250-76955-8 (trade paperback)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58926252", 
+            "para_id": "4C2D0F00", 
+            "para_index": 45, 
+            "para_string": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58927090", 
+            "para_id": "4B9CCC0A", 
+            "para_index": 140, 
+            "para_string": "\u2014Tama Kieves", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58928927", 
+            "para_id": "7D84D52E", 
+            "para_index": 178, 
+            "para_string": "\u2014Sir Richard Branson", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58928956", 
+            "para_id": "0F392483", 
+            "para_index": 181, 
+            "para_string": "\u2014Neville Goddard", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58933354", 
+            "para_id": "509F266F", 
+            "para_index": 199, 
+            "para_string": "\u2014Marcus Aurelius", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58933411", 
+            "para_id": "7D3A6A70", 
+            "para_index": 202, 
+            "para_string": "\u2014Julia Cameron", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58934611", 
+            "para_id": "65450995", 
+            "para_index": 213, 
+            "para_string": "\u2014Oscar Wilde", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58934696", 
+            "para_id": "5DDE591D", 
+            "para_index": 218, 
+            "para_string": "\u2014Emily Dickinson", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58935742", 
+            "para_id": "10CADE6D", 
+            "para_index": 232, 
+            "para_string": "\u2014Gloria Steinem", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58936083", 
+            "para_id": "412496AB", 
+            "para_index": 243, 
+            "para_string": "\u2014Nanette Mathews", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58936302", 
+            "para_id": "528FC53D", 
+            "para_index": 252, 
+            "para_string": "\u2014Anita Moorjani", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58936613", 
+            "para_id": "2169A002", 
+            "para_index": 261, 
+            "para_string": "Gary Craig", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58936721", 
+            "para_id": "3B25E3CD", 
+            "para_index": 267, 
+            "para_string": "Oprah Winfrey", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58936771", 
+            "para_id": "34B338FB", 
+            "para_index": 269, 
+            "para_string": "Myrtle and Charles Fillmore", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58936901", 
+            "para_id": "72AEAFC3", 
+            "para_index": 271, 
+            "para_string": "Nikola Tesla", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58936949", 
+            "para_id": "519D0F16", 
+            "para_index": 273, 
+            "para_string": "Saint Padre Pio", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58936997", 
+            "para_id": "1158A473", 
+            "para_index": 274, 
+            "para_string": "Salvador Dal\u00ed", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58937020", 
+            "para_id": "10A98102", 
+            "para_index": 275, 
+            "para_string": "Wayne Dyer", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58937105", 
+            "para_id": "484E60B2", 
+            "para_index": 279, 
+            "para_string": "\u2014Joseph Campbell", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58937997", 
+            "para_id": "36D23E68", 
+            "para_index": 300, 
+            "para_string": "\u2014William Blake", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58938015", 
+            "para_id": "4F99DB38", 
+            "para_index": 303, 
+            "para_string": "\u2014Neale Donald Walsch", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58938693", 
+            "para_id": "1AC1BB9B", 
+            "para_index": 315, 
+            "para_string": "I\u2019m going to show you how to work with this", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58939962", 
+            "para_id": "4BB42143", 
+            "para_index": 320, 
+            "para_string": "I ended getting oddly traditional about all this. After test-driving", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58940188", 
+            "para_id": "4BB42143", 
+            "para_index": 320, 
+            "para_string": "I ended getting oddly traditional about all this. After test-driving", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58940409", 
+            "para_id": "15ADA563", 
+            "para_index": 330, 
+            "para_string": "\u2014Ernest Holmes", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58940557", 
+            "para_id": "1E01ECDE", 
+            "para_index": 333, 
+            "para_string": "\u201cWe behold what we are, and we are what we", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58940568", 
+            "para_id": "4AE8C9DA", 
+            "para_index": 334, 
+            "para_string": " \u201cJust as rain breaks through an ill-thatched house, so", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58940582", 
+            "para_id": "5F949BCA", 
+            "para_index": 335, 
+            "para_string": " \u201cThose who donate enthusiastically make constant efforts to increase", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58940590", 
+            "para_id": "63298E4A", 
+            "para_index": 336, 
+            "para_string": "\u201cWhat you think, you become. What you feel, you attract.", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58940613", 
+            "para_id": "4C449B07", 
+            "para_index": 337, 
+            "para_string": "\u201cFar beyond your intellect, far beyond your understanding, lies inexhaustible", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58941042", 
+            "para_id": "3E77D9FC", 
+            "para_index": 344, 
+            "para_string": "\u201cStart by doing what\u2019s necessary; then do what\u2019s possible; and", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58941023", 
+            "para_id": "16F27559", 
+            "para_index": 345, 
+            "para_string": "\u201cThis too is for the good.\u201d\u2014Nachum Ish Gamzu, Talmud, Taanit", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58941138", 
+            "para_id": "75A3C991", 
+            "para_index": 349, 
+            "para_string": "\u2014Emmet Fox", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58941696", 
+            "para_id": "0CFD34F6", 
+            "para_index": 353, 
+            "para_string": "Get a cheap, thick notebook, lined or unlined, your choice.", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58941788", 
+            "para_id": "68E5870C", 
+            "para_index": 356, 
+            "para_string": "\u2014Alfred Adler", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58941854", 
+            "para_id": "35696518", 
+            "para_index": 359, 
+            "para_string": "\u2014Robert Louis Stevenson", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58942025", 
+            "para_id": "7E2B49FC", 
+            "para_index": 367, 
+            "para_string": "\u2014Will Durant", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58942729", 
+            "para_id": "0C21A6E1", 
+            "para_index": 383, 
+            "para_string": "I recommend this for your practices, of course, but not", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58943583", 
+            "para_id": "36E81AC6", 
+            "para_index": 399, 
+            "para_string": "Show them to a (trusted, supportive) friend. Manifesting can be", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk58944167", 
+            "para_id": "0CC1A7B8", 
+            "para_index": 404, 
+            "para_string": "\u2014Bruce Lee", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59002373", 
+            "para_id": "4454D3C2", 
+            "para_index": 623, 
+            "para_string": "\u2014Moli\u00e8re", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59002793", 
+            "para_id": "2171626A", 
+            "para_index": 636, 
+            "para_string": "\u2014Vishwas Chavan", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59002987", 
+            "para_id": "5AE89967", 
+            "para_index": 679, 
+            "para_string": "\u2014Zig Ziglar", 
+            "parent_section_start_content": "Chapter 1: Manifesting Alchemy Principle 1: Focusing on the Good", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59004588", 
+            "para_id": "56A3E781", 
+            "para_index": 721, 
+            "para_string": "\u2014Frances Hodgson Burnett", 
+            "parent_section_start_content": "Chapter 1: Manifesting Alchemy Principle 1: Focusing on the Good", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59115405", 
+            "para_id": "298AB227", 
+            "para_index": 746, 
+            "para_string": "\u2014Mark Twain", 
+            "parent_section_start_content": "Chapter 1: Manifesting Alchemy Principle 1: Focusing on the Good", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59118180", 
+            "para_id": "43662E72", 
+            "para_index": 814, 
+            "para_string": "Manifesting Reflection Questions", 
+            "parent_section_start_content": "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59118023", 
+            "para_id": "033DD1FE", 
+            "para_index": 820, 
+            "para_string": "\u2014Robert Kiyosaki", 
+            "parent_section_start_content": "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59118690", 
+            "para_id": "2E9E6C87", 
+            "para_index": 833, 
+            "para_string": "Now I\u2019m going to speak to those of you who", 
+            "parent_section_start_content": "Chapter 3: Manifesting Alchemy Principle 3: Deservability and Open Receiving", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59119014", 
+            "para_id": "66E057E5", 
+            "para_index": 847, 
+            "para_string": "They\u2019re not just for birthdays. A friend passing on that", 
+            "parent_section_start_content": "Chapter 3: Manifesting Alchemy Principle 3: Deservability and Open Receiving", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59119624", 
+            "para_id": "25043983", 
+            "para_index": 902, 
+            "para_string": "\u2014Anne Frank", 
+            "parent_section_start_content": "Chapter 4: Manifesting Alchemy Principle 4: Give What You Want to Receive", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59174260", 
+            "para_id": "34E2ECF7", 
+            "para_index": 911, 
+            "para_string": "This is an act of embodying your enoughness.", 
+            "parent_section_start_content": "Chapter 4: Manifesting Alchemy Principle 4: Give What You Want to Receive", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59174298", 
+            "para_id": "2FCE7A51", 
+            "para_index": 916, 
+            "para_string": "\u2014Wayne L. Misner", 
+            "parent_section_start_content": "Chapter 5: Manifesting Alchemy Principle 5: Making Room for the New", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59175266", 
+            "para_id": "3CDD88FF", 
+            "para_index": 927, 
+            "para_string": "Afterwards I checked out the downtown, treated myself to a", 
+            "parent_section_start_content": "Chapter 5: Manifesting Alchemy Principle 5: Making Room for the New", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59178976", 
+            "para_id": "05588124", 
+            "para_index": 969, 
+            "para_string": "When I worked in social services, there came a time", 
+            "parent_section_start_content": "Chapter 6: Manifesting Alchemy Principle 6: There\u2019s What You Want and What the Universe Wants for You", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59182211", 
+            "para_id": "6E40C95F", 
+            "para_index": 985, 
+            "para_string": "\u2014Lili Taylor", 
+            "parent_section_start_content": "Chapter 6: Manifesting Alchemy Principle 6: There\u2019s What You Want and What the Universe Wants for You", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59183092", 
+            "para_id": "599B86B4", 
+            "para_index": 1022, 
+            "para_string": "\u2014Rumi", 
+            "parent_section_start_content": "Chapter 7: Manifesting Alchemy Principle 7: Surrender and Control", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59186586", 
+            "para_id": "5A055E7F", 
+            "para_index": 1111, 
+            "para_string": "\u2014Terence McKenna", 
+            "parent_section_start_content": "Chapter 8: Manifesting Alchemy Practice 1: Affirmations and Scripting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59186769", 
+            "para_id": "5658DDDB", 
+            "para_index": 1117, 
+            "para_string": "My student Johan was feeling chewed up by the audition", 
+            "parent_section_start_content": "Chapter 8: Manifesting Alchemy Practice 1: Affirmations and Scripting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59187231", 
+            "para_id": "69C5ACD2", 
+            "para_index": 1130, 
+            "para_string": "\u2014Duane Michals", 
+            "parent_section_start_content": "Chapter 8: Manifesting Alchemy Practice 1: Affirmations and Scripting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59187282", 
+            "para_id": "458B256A", 
+            "para_index": 1135, 
+            "para_string": "\u2014Shane DeCreshio", 
+            "parent_section_start_content": "Chapter 9: Manifesting Alchemy Practice 2: Prayers and Affirmative Prayer", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59189098", 
+            "para_id": "0AD4DBBF", 
+            "para_index": 1160, 
+            "para_string": "Here is a layout of an affirmative prayer, also called", 
+            "parent_section_start_content": "Chapter 9: Manifesting Alchemy Practice 2: Prayers and Affirmative Prayer", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59189714", 
+            "para_id": "36F13804", 
+            "para_index": 1186, 
+            "para_string": "\u2014Brian Hardin", 
+            "parent_section_start_content": "Chapter 9: Manifesting Alchemy Practice 2: Prayers and Affirmative Prayer", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59190748", 
+            "para_id": "5A8AC9CC", 
+            "para_index": 1207, 
+            "para_string": "\u2014Anthon St. Maarten", 
+            "parent_section_start_content": "Chapter 10: Manifesting Alchemy Practice 3: Inspired Action and Asking for Signs", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59191152", 
+            "para_id": "43B6F2E6", 
+            "para_index": 1232, 
+            "para_string": "\u2014Christie Purifoy", 
+            "parent_section_start_content": "Chapter 10: Manifesting Alchemy Practice 3: Inspired Action and Asking for Signs", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59457482", 
+            "para_id": "4DE9A266", 
+            "para_index": 1272, 
+            "para_string": "An audiobook narrator, best cr\u00eape maker in California, an advocate", 
+            "parent_section_start_content": "Chapter 11: Manifesting Alchemy Practice 4: the Art of Lists for Manifestations", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59196756", 
+            "para_id": "33C62294", 
+            "para_index": 1339, 
+            "para_string": "I sometimes offer this exercise to clients, but not all", 
+            "parent_section_start_content": "Chapter 12: Manifesting Alchemy Practice 5: Minding the Monkey Mind", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59198213", 
+            "para_id": "45B5EA62", 
+            "para_index": 1356, 
+            "para_string": "There\u2019s a scene from the movie 500 Days of Summer", 
+            "parent_section_start_content": "Chapter 13: Manifesting Alchemy Practice 6: \u201cActing as If\u201d\u2014the Power of Faking It Till You Make It", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59198232", 
+            "para_id": "45B5EA62", 
+            "para_index": 1356, 
+            "para_string": "There\u2019s a scene from the movie 500 Days of Summer", 
+            "parent_section_start_content": "Chapter 13: Manifesting Alchemy Practice 6: \u201cActing as If\u201d\u2014the Power of Faking It Till You Make It", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59198994", 
+            "para_id": "5E807485", 
+            "para_index": 1387, 
+            "para_string": "\u2014Isadora Duncan", 
+            "parent_section_start_content": "Chapter 14: Manifesting Alchemy Practice 7: Dancing Your Dreams", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59199135", 
+            "para_id": "713B67CA", 
+            "para_index": 1390, 
+            "para_string": "When lottery winners are studied, the results are grim. Nearly", 
+            "parent_section_start_content": "Chapter 14: Manifesting Alchemy Practice 7: Dancing Your Dreams", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59200986", 
+            "para_id": "33BADB2A", 
+            "para_index": 1441, 
+            "para_string": "\u2014Elizabeth Gilbert", 
+            "parent_section_start_content": "Chapter 15: Manifesting Alchemy Practice 8: Creating a Manifestation Journal (and Gratitude Too!)", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59203374", 
+            "para_id": "6FFCB796", 
+            "para_index": 1474, 
+            "para_string": "\u2014Melody Beattie", 
+            "parent_section_start_content": "Chapter 15: Manifesting Alchemy Practice 8: Creating a Manifestation Journal (and Gratitude Too!)", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59268031", 
+            "para_id": "792FA133", 
+            "para_index": 1695, 
+            "para_string": "\u2014John Dyer", 
+            "parent_section_start_content": "Chapter 18: Levels of Manifestation", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59268057", 
+            "para_id": "1A539D29", 
+            "para_index": 1700, 
+            "para_string": "\u2014Coco Chanel", 
+            "parent_section_start_content": "Chapter 19: Money", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59268673", 
+            "para_id": "4C1C57E3", 
+            "para_index": 1723, 
+            "para_string": "\u2014Marsha Sinetar", 
+            "parent_section_start_content": "Chapter 19: Money", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59272605", 
+            "para_id": "752A1A11", 
+            "para_index": 1771, 
+            "para_string": "\u2014Frank Lloyd Wright", 
+            "parent_section_start_content": "Chapter 19: Money", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59274306", 
+            "para_id": "4E433C32", 
+            "para_index": 1821, 
+            "para_string": "\u2014Robert Byrne", 
+            "parent_section_start_content": "Chapter 20: Career and Achievements", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59274345", 
+            "para_id": "0557CBD8", 
+            "para_index": 1825, 
+            "para_string": "Everybody needs beauty as well as bread, places to play", 
+            "parent_section_start_content": "Chapter 21: Health and Beauty", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59275114", 
+            "para_id": "0B4D7926", 
+            "para_index": 1839, 
+            "para_string": "Don\u2019t judge the results or yourself for how this manifests.", 
+            "parent_section_start_content": "Chapter 21: Health and Beauty", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59275983", 
+            "para_id": "1490BA54", 
+            "para_index": 1872, 
+            "para_string": "I had been invited to York, United Kingdom, to present", 
+            "parent_section_start_content": "Chapter 21: Health and Beauty", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59276392", 
+            "para_id": "6189ADC4", 
+            "para_index": 1878, 
+            "para_string": "That morning, I took the stage, and I rocked that", 
+            "parent_section_start_content": "Chapter 21: Health and Beauty", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59276528", 
+            "para_id": "1D9C3A0E", 
+            "para_index": 1885, 
+            "para_string": "\u2014Arlen Specter", 
+            "parent_section_start_content": "Chapter 21: Health and Beauty", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59519687", 
+            "para_id": "662D99A1", 
+            "para_index": 1909, 
+            "para_string": "Admittedly, this is an easy hole to fall into. There", 
+            "parent_section_start_content": "Chapter 22: Romantic Relationships", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59283302", 
+            "para_id": "4B6E0E66", 
+            "para_index": 1912, 
+            "para_string": "When manifesting, there are times our inner control freak takes", 
+            "parent_section_start_content": "Chapter 22: Romantic Relationships", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59284689", 
+            "para_id": "17418604", 
+            "para_index": 1960, 
+            "para_string": "4. \u201cEverything\u201d by Alanis Morissette", 
+            "parent_section_start_content": "Chapter 22: Romantic Relationships", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59288246", 
+            "para_id": "3A68C0FE", 
+            "para_index": 2088, 
+            "para_string": "My client Valerie has dreams of becoming a movie scriptwriter.", 
+            "parent_section_start_content": "Chapter 24: Dealing with Doubts and Releasing Resistance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59288981", 
+            "para_id": "7D61EB2B", 
+            "para_index": 2090, 
+            "para_string": "As we tapped, I asked her, \u201cIf you failed, what\u2019s", 
+            "parent_section_start_content": "Chapter 24: Dealing with Doubts and Releasing Resistance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59290666", 
+            "para_id": "1E694B58", 
+            "para_index": 2143, 
+            "para_string": "Find an ideal setting here. Of course, I do not", 
+            "parent_section_start_content": "Chapter 24: Dealing with Doubts and Releasing Resistance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59291648", 
+            "para_id": "190DB587", 
+            "para_index": 2201, 
+            "para_string": "\u2014Paulo Coelho", 
+            "parent_section_start_content": "Chapter 25: Opposites Attracted\u2014Now What? A.k.a. the Other Shoe Has Dropped", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59351892", 
+            "para_id": "13AD76A2", 
+            "para_index": 2353, 
+            "para_string": "After a long day of writing, I realized my refrigerator", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59351927", 
+            "para_id": "6D8752A3", 
+            "para_index": 2354, 
+            "para_string": "A few years ago, I had purchased metal angel wings", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59352158", 
+            "para_id": "017E057E", 
+            "para_index": 2357, 
+            "para_string": "On a particularly lonely day when I was feeling exhausted", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59352613", 
+            "para_id": "5AA5754F", 
+            "para_index": 2358, 
+            "para_string": "I got a text from Venmo. A generous and beloved", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59352647", 
+            "para_id": "1892486E", 
+            "para_index": 2359, 
+            "para_string": "Then there were countless other generosities. My friend Mary Kay", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59352694", 
+            "para_id": "1892486E", 
+            "para_index": 2359, 
+            "para_string": "Then there were countless other generosities. My friend Mary Kay", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "deleted bookmark named _Hlk59352726", 
+            "para_id": "1892486E", 
+            "para_index": 2359, 
+            "para_string": "Then there were countless other generosities. My friend Mary Kay", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }
+    ], 
+    "empty_section_start_para": [], 
+    "footnote-leading_whitespace_rmd": [
+        {
+            "description": "note ref: 1 (blank run removed)", 
+            "note-or-comment_id": "1", 
+            "para_id": "36D82EE7", 
+            "para_index": "n-a", 
+            "para_string": "A word on parking spaces. These are not always frivolous", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }, 
+        {
+            "description": "note ref: 2 (blank run removed)", 
+            "note-or-comment_id": "2", 
+            "para_id": "725CD5C2", 
+            "para_index": "n-a", 
+            "para_string": "The concept of mastermind groups was put sinto print with", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }
+    ], 
+    "isbn_spans": [
+        {
+            "description": "97", 
+            "para_id": "32571604", 
+            "para_index": 30, 
+            "para_string": "ISBN 978-1-250-76955-8 (trade paperback)", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }
+    ], 
+    "list_change_warning": [
+        {
+            "description": "'Bullet-Level-1-List (Bl1)' para, preceded by: 'Unnum-Level-1-List (Ul1)' para", 
+            "para_id": "7EDB9E33", 
+            "para_index": 1466, 
+            "para_string": "The sunshine today", 
+            "parent_section_start_content": "Chapter 15: Manifesting Alchemy Practice 8: Creating a Manifestation Journal (and Gratitude Too!)", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "non-Macmillan_style_used": [
+        {
+            "description": "VERSE-A (VRS-A)", 
+            "para_id": "5A472761", 
+            "para_index": 1403, 
+            "para_string": "VERSE-A", 
+            "parent_section_start_content": "Chapter 14: Manifesting Alchemy Practice 7: Dancing Your Dreams", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }
+    ], 
+    "note_markers_wrong_style": [
+        {
+            "description": "super_styled ref-mark in footnotes, ref_id: 1", 
+            "note-or-comment_id": "1", 
+            "para_id": "36D82EE7", 
+            "para_index": "n-a", 
+            "para_string": "A word on parking spaces. These are not always frivolous", 
+            "parent_section_start_content": "n-a", 
+            "parent_section_start_type": "Footnotes"
+        }
+    ], 
+    "removed_blank_para": [
+        {
+            "description": "blank para in footnote note with other text; note_id: 2", 
+            "para_id": "079B4818", 
+            "para_index": "n-a", 
+            "para_string": "n-a", 
+            "parent_section_start_content": "", 
+            "parent_section_start_type": "n-a"
+        }
+    ], 
+    "section_start_found": [
+        {
+            "description": "Section-BookBOOK", 
+            "para_id": "0722C36E", 
+            "para_index": 0, 
+            "para_string": "Manifesting", 
+            "parent_section_start_content": "Manifesting", 
+            "parent_section_start_type": "Section-BookBOOK"
+        }, 
+        {
+            "description": "Section-Front-SalesSFS", 
+            "para_id": "5BB00516", 
+            "para_index": 1, 
+            "para_string": "Front Sales", 
+            "parent_section_start_content": "Front Sales", 
+            "parent_section_start_type": "Section-Front-SalesSFS"
+        }, 
+        {
+            "description": "Section-HalftitleSHT", 
+            "para_id": "15FC0647", 
+            "para_index": 7, 
+            "para_string": "Halftitle Page", 
+            "parent_section_start_content": "Halftitle Page", 
+            "parent_section_start_type": "Section-HalftitleSHT"
+        }, 
+        {
+            "description": "Section-Ad-CardSAC", 
+            "para_id": "36E178B4", 
+            "para_index": 9, 
+            "para_string": "Ad Card", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }, 
+        {
+            "description": "Section-TitlepageSTI", 
+            "para_id": "5F176632", 
+            "para_index": 13, 
+            "para_string": "Titlepage", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }, 
+        {
+            "description": "Section-CopyrightSCR", 
+            "para_id": "46F7555B", 
+            "para_index": 19, 
+            "para_string": "Copyright", 
+            "parent_section_start_content": "Copyright", 
+            "parent_section_start_type": "Section-CopyrightSCR"
+        }, 
+        {
+            "description": "Section-DedicationSDE", 
+            "para_id": "7D9A57E1", 
+            "para_index": 38, 
+            "para_string": "Dedication", 
+            "parent_section_start_content": "Dedication", 
+            "parent_section_start_type": "Section-DedicationSDE"
+        }, 
+        {
+            "description": "Section-ContentsSTC", 
+            "para_id": "1FE0069F", 
+            "para_index": 43, 
+            "para_string": "Contents", 
+            "parent_section_start_content": "Contents", 
+            "parent_section_start_type": "Section-ContentsSTC"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "4FE3C23B", 
+            "para_index": 136, 
+            "para_string": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_content": "Introduction to Manifesting and Alchemy", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "39C64EC5", 
+            "para_index": 672, 
+            "para_string": "Part I: The 7 Powerful Manifesting Alchemy Principles", 
+            "parent_section_start_content": "Part I: The 7 Powerful Manifesting Alchemy Principles", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "0947026E", 
+            "para_index": 675, 
+            "para_string": "Chapter 1: Manifesting Alchemy Principle 1: Focusing on the Good", 
+            "parent_section_start_content": "Chapter 1: Manifesting Alchemy Principle 1: Focusing on the Good", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "3B212591", 
+            "para_index": 764, 
+            "para_string": "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting", 
+            "parent_section_start_content": "Chapter 2: Manifesting Alchemy Principle 2: Stop Waiting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "75ADBC96", 
+            "para_index": 821, 
+            "para_string": "Chapter 3: Manifesting Alchemy Principle 3: Deservability and Open Receiving", 
+            "parent_section_start_content": "Chapter 3: Manifesting Alchemy Principle 3: Deservability and Open Receiving", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "7647F20C", 
+            "para_index": 898, 
+            "para_string": "Chapter 4: Manifesting Alchemy Principle 4: Give What You Want", 
+            "parent_section_start_content": "Chapter 4: Manifesting Alchemy Principle 4: Give What You Want to Receive", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "00A98B6A", 
+            "para_index": 912, 
+            "para_string": "Chapter 5: Manifesting Alchemy Principle 5: Making Room for the", 
+            "parent_section_start_content": "Chapter 5: Manifesting Alchemy Principle 5: Making Room for the New", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "238E403F", 
+            "para_index": 957, 
+            "para_string": "Chapter 6: Manifesting Alchemy Principle 6: There\u2019s What You Want", 
+            "parent_section_start_content": "Chapter 6: Manifesting Alchemy Principle 6: There\u2019s What You Want and What the Universe Wants for You", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "4662E659", 
+            "para_index": 986, 
+            "para_string": "Chapter 7: Manifesting Alchemy Principle 7: Surrender and Control", 
+            "parent_section_start_content": "Chapter 7: Manifesting Alchemy Principle 7: Surrender and Control", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "5BAD659D", 
+            "para_index": 1023, 
+            "para_string": "Part II: The 9 Powerful Manifesting Alchemy Practices", 
+            "parent_section_start_content": "Part II: The 9 Powerful Manifesting Alchemy Practices", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6DD42CEE", 
+            "para_index": 1048, 
+            "para_string": "Chapter 8: Manifesting Alchemy Practice 1: Affirmations and Scripting", 
+            "parent_section_start_content": "Chapter 8: Manifesting Alchemy Practice 1: Affirmations and Scripting", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "5F83EE92", 
+            "para_index": 1131, 
+            "para_string": "Chapter 9: Manifesting Alchemy Practice 2: Prayers and Affirmative Prayer", 
+            "parent_section_start_content": "Chapter 9: Manifesting Alchemy Practice 2: Prayers and Affirmative Prayer", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "5EFECA2B", 
+            "para_index": 1187, 
+            "para_string": "Chapter 10: Manifesting Alchemy Practice 3: Inspired Action and Asking", 
+            "parent_section_start_content": "Chapter 10: Manifesting Alchemy Practice 3: Inspired Action and Asking for Signs", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "323D58A8", 
+            "para_index": 1262, 
+            "para_string": "Chapter 11: Manifesting Alchemy Practice 4: the Art of Lists", 
+            "parent_section_start_content": "Chapter 11: Manifesting Alchemy Practice 4: the Art of Lists for Manifestations", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "180B333F", 
+            "para_index": 1325, 
+            "para_string": "Chapter 12: Manifesting Alchemy Practice 5: Minding the Monkey Mind", 
+            "parent_section_start_content": "Chapter 12: Manifesting Alchemy Practice 5: Minding the Monkey Mind", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "02C204C3", 
+            "para_index": 1352, 
+            "para_string": "Chapter 13: Manifesting Alchemy Practice 6: \u201cActing as If\u201d\u2014the Power", 
+            "parent_section_start_content": "Chapter 13: Manifesting Alchemy Practice 6: \u201cActing as If\u201d\u2014the Power of Faking It Till You Make It", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "3676B037", 
+            "para_index": 1383, 
+            "para_string": "Chapter 14: Manifesting Alchemy Practice 7: Dancing Your Dreams", 
+            "parent_section_start_content": "Chapter 14: Manifesting Alchemy Practice 7: Dancing Your Dreams", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6C271ACA", 
+            "para_index": 1437, 
+            "para_string": "Chapter 15: Manifesting Alchemy Practice 8: Creating a Manifestation Journal", 
+            "parent_section_start_content": "Chapter 15: Manifesting Alchemy Practice 8: Creating a Manifestation Journal (and Gratitude Too!)", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "4D1BDA32", 
+            "para_index": 1475, 
+            "para_string": "Chapter 16: Manifesting Alchemy Practice 9: Vision Boards", 
+            "parent_section_start_content": "Chapter 16: Manifesting Alchemy Practice 9: Vision Boards", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "3EC8AB74", 
+            "para_index": 1492, 
+            "para_string": "Part III: Bringing Manifesting Alchemy into Every Part of Your", 
+            "parent_section_start_content": "Part III: Bringing Manifesting Alchemy into Every Part of Your Life", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "1E80FF56", 
+            "para_index": 1495, 
+            "para_string": "Chapter 17: Picking a Target\u2014Areas of Life for Manifestation", 
+            "parent_section_start_content": "Chapter 17: Picking a Target\u2014Areas of Life for Manifestation", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "55F799F4", 
+            "para_index": 1667, 
+            "para_string": "Chapter 18: Levels of Manifestation", 
+            "parent_section_start_content": "Chapter 18: Levels of Manifestation", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "33480EC6", 
+            "para_index": 1696, 
+            "para_string": "Chapter 19: Money", 
+            "parent_section_start_content": "Chapter 19: Money", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "6B36E93F", 
+            "para_index": 1772, 
+            "para_string": "Chapter 20: Career and Achievements", 
+            "parent_section_start_content": "Chapter 20: Career and Achievements", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "046919BE", 
+            "para_index": 1822, 
+            "para_string": "Chapter 21: Health and Beauty", 
+            "parent_section_start_content": "Chapter 21: Health and Beauty", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "629404FF", 
+            "para_index": 1895, 
+            "para_string": "Chapter 22: Romantic Relationships", 
+            "parent_section_start_content": "Chapter 22: Romantic Relationships", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-PartSPT", 
+            "para_id": "0F1980A5", 
+            "para_index": 1979, 
+            "para_string": "Part IV: Bringing Manifesting Alchemy into the World", 
+            "parent_section_start_content": "Part IV: Bringing Manifesting Alchemy into the World", 
+            "parent_section_start_type": "Section-PartSPT"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "3B59F60F", 
+            "para_index": 1982, 
+            "para_string": "Chapter 23: The Power of Emotion", 
+            "parent_section_start_content": "Chapter 23: The Power of Emotion", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "2E51BBEF", 
+            "para_index": 2039, 
+            "para_string": "Chapter 24: Dealing with Doubts and Releasing Resistance", 
+            "parent_section_start_content": "Chapter 24: Dealing with Doubts and Releasing Resistance", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "515816F4", 
+            "para_index": 2197, 
+            "para_string": "Chapter 25: Opposites Attracted\u2014Now What? A.k.a. the Other Shoe Has", 
+            "parent_section_start_content": "Chapter 25: Opposites Attracted\u2014Now What? A.k.a. the Other Shoe Has Dropped", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "71BF35FF", 
+            "para_index": 2233, 
+            "para_string": "Chapter 26: What to Do If It\u2019s Not Working (Yet)", 
+            "parent_section_start_content": "Chapter 26: What to Do If It\u2019s Not Working (Yet)", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ChapterSCP", 
+            "para_id": "4AAE5FFB", 
+            "para_index": 2299, 
+            "para_string": "Chapter 27: Putting It All Together", 
+            "parent_section_start_content": "Chapter 27: Putting It All Together", 
+            "parent_section_start_type": "Section-ChapterSCP"
+        }, 
+        {
+            "description": "Section-ConclusionSCL", 
+            "para_id": "3A6E9FA7", 
+            "para_index": 2337, 
+            "para_string": "Conclusion", 
+            "parent_section_start_content": "Conclusion", 
+            "parent_section_start_type": "Section-ConclusionSCL"
+        }, 
+        {
+            "description": "Section-AcknowledgmentsSAK", 
+            "para_id": "1DF04372", 
+            "para_index": 2365, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        }, 
+        {
+            "description": "Section-About-AuthorSAA", 
+            "para_id": "37E2FFBA", 
+            "para_index": 2375, 
+            "para_string": "About the Author", 
+            "parent_section_start_content": "About the Author", 
+            "parent_section_start_type": "Section-About-AuthorSAA"
+        }, 
+        {
+            "description": "Section-IndexSIN", 
+            "para_id": "082F3D13", 
+            "para_index": 2392, 
+            "para_string": "Index", 
+            "parent_section_start_content": "Index", 
+            "parent_section_start_type": "Section-IndexSIN"
+        }
+    ], 
+    "title_paras": [
+        {
+            "description": "Manifesting", 
+            "para_id": "1FB8797D", 
+            "para_index": 14, 
+            "para_string": "Manifesting", 
+            "parent_section_start_content": "Titlepage", 
+            "parent_section_start_type": "Section-TitlepageSTI"
+        }
+    ]
+}

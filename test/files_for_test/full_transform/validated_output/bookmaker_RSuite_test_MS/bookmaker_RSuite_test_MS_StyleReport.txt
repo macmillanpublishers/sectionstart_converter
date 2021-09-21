@@ -24,19 +24,17 @@ Problems were found with the styles in your document.
 
 ** ERROR: No Container END para found for: 'SIDEBAR-A (SIDE-A)', in Section-Chapter (SCP): "Chapter 2".
 
-** ERROR: Improper list nesting: 'Alpha-Level-2-List (Al2)' para, preceded by: 'Bullet-Level-3-List (Bl3)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "2nd level different type Cerror")
-
-** ERROR: Improper list nesting: 'Num-Level-2-List (Nl2)' para, preceded by: 'Num-Level-3-List (Nl3)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "IA second nested numbered list item I trembled AGGGGAN. One")
-
-** ERROR: Improper list nesting: 'Num-Level-3-List (Nl3)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "A nested numbered list")
-
 ** ERROR: Improper list nesting: 'Num-Level-3-List-Paragraph (Nl3p)' para, preceded by: 'Num-Level-2-List-Paragraph (Nl2p)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "This one should error")
 
-** ERROR: Improper list nesting: 'Bullet-Level-2-List (Bl2)' para, preceded by: 'Body-Text (Tx)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "ErrA 2nd level list out of nowhere")
+** ERROR: Improper list nesting: 'Num-Level-3-List (Nl3)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "A nested numbered list")
 
 ** ERROR: Improper list nesting: 'Bullet-Level-3-List (Bl3)' para, preceded by: 'Body-Text (Tx)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "ErrB third level list out of nowhere")
 
 ** ERROR: Improper list nesting: 'Bullet-Level-3-List (Bl3)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "3rd level list errorF")
+
+** ERROR: Improper list nesting: 'Bullet-Level-2-List (Bl2)' para, preceded by: 'Body-Text (Tx)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "ErrA 2nd level list out of nowhere")
+
+** ERROR: List type changed in the middle of a list: 'Alpha-Level-2-List (Al2)' para, preceded by: 'Bullet-Level-2-List (Bl2)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "2nd level different type Cerror")
 
 ** ERROR: List type changed in the middle of a list: 'Alpha-Level-2-List (Al2)' para, preceded by: 'Bullet-Level-2-List (Bl2)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "2nd level change Derror")
 
@@ -64,7 +62,9 @@ please contact workflows@macmillan.com.
 
 ** WARNING: A blank Container paragraph with style 'BOX-A (BOX-A)' was removed from 'Section-Chapter (SCP): "Chapter 1"'. This is being brought to your attention in case it led to other errors with your manuscript.
 
-** WARNING: List type changed in the middle of a list: 'Alpha-Level-1-List (Al1)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para (in Section-Chapter (SCP): "Chapter 2").
+** WARNING: List type changed in the middle of a list: 'Alpha-Level-1-List (Al1)' para, preceded by: 'Bullet-Level-1-List (Bl1)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "I switched gears here")
+
+** WARNING: List type changed in the middle of a list: 'Bullet-Level-1-List (Bl1)' para, preceded by: 'Alpha-Level-1-List (Al1)' para in Section-Chapter (SCP) "Chapter 2" (starts with text: "The fifth and final top level item")
 
 
 ------------------------------- PROCESSING NOTES -------------------------------

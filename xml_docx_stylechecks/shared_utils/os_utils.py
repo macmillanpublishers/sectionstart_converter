@@ -159,7 +159,7 @@ def writeListToFileByLine(text, filename):
         logger.error('Failed write text to file, exiting', exc_info=True)
         sys.exit(1)
 
-def writeAlertstoTxtfile(alerts_json, this_outfolder):
+def writeAlertstoTxtfile(alerts_json, this_outfolder, err_fname, warn_fname, notice_fname):
     alerts_dict = readJSON(alerts_json)
     alerttxt_list = []
     alertfile = ''
@@ -174,11 +174,11 @@ def writeAlertstoTxtfile(alerts_json, this_outfolder):
         if alerttxt_list:
             # figure out appropriate filename
             if "error" in alerts_dict:
-                alertfile = os.path.join(this_outfolder, "ERROR.txt")
+                alertfile = os.path.join(this_outfolder, err_fname)
             elif "warning" in alerts_dict:
-                alertfile = os.path.join(this_outfolder, "WARNING.txt")
+                alertfile = os.path.join(this_outfolder, warn_fname)
             else:
-                alertfile = os.path.join(this_outfolder, "NOTICE.txt")
+                alertfile = os.path.join(this_outfolder, notice_fname)
             # write our file
             writeListToFileByLine(alerttxt_list, alertfile)
     return alerttxt_list, alertfile

@@ -10,21 +10,10 @@ import logging.config
 import time
 
 
-# #	# # # # # # ARGS
+# #	# # # # # # # #	# # # # # # ARGS
 ### Arg 1 - Filename
 script_name = os.path.basename(sys.argv[0]).replace("_main.py","")
 inputfile = sys.argv[1]
-
-### From rsv_exec > 'direct': param definitions
-if sys.argv[2] and sys.argv[2] == 'direct':
-    runtype = 'direct'
-    submitter_email = sys.argv[3]
-    display_name = sys.argv[4]
-    # if sys.argv[5]:
-    #     processwatch_file = sys.argv[5]  #<- probably not going to use this
-else:
-    runtype = 'dropbox'
-
 # strip out surrounding double quotes if passed from batch file.
 if inputfile[0] == '"':
     inputfile = inputfile[1:]
@@ -38,12 +27,26 @@ project_dir = os.path.dirname(os.path.dirname(inputfile))
 original_inputfilename_noext, inputfile_ext = os.path.splitext(original_inputfilename)
 # clean out non-alphanumeric chars
 inputfilename_noext = re.sub('[^\w-]','',original_inputfilename_noext)
-# cut down extraordinarily long filenames to 47 char, + timestamp
-if len(inputfilename_noext) > 60 and not script_name.startswith("validator") and runtype != 'direct':
-    inputfilename_noext = "%s_%s" % (inputfilename_noext[:47],time.strftime("%y%m%d%H%M%S"))
+# add the extension back
 inputfilename = inputfilename_noext + inputfile_ext
 
-### Arg 2 - processwatch file for standalones, or alternate logfile if validator (embedded run)
+### argv2, 3, 4: From rsv_exec > 'direct' runs
+#   ('direct' runs refers to runs invoked directly via Drive api's
+#   - as opposed to a validation process called by another process like egalleymaker)
+if sys.argv[2] and sys.argv[2] == 'direct':
+    runtype = 'direct'
+    if sys.argv[3] and sys.argv[3] == 'local':
+        local_run = True
+        submitter_email = 'testing@test.org'
+        display_name = 'Pat Testperson'
+    else:
+        submitter_email = sys.argv[3]
+        display_name = sys.argv[4]
+else:
+    local_run = False
+    runtype = 'not_direct'
+
+### Arg 2 (non-direct) - processwatch file for standalones, or alternate logfile if validator (embedded run)
 #   Could replace existing logging or could try to add a handler on the fly to log to both places
 validator_logfile = os.path.join(os.path.dirname(inputfile), "{}_{}_{}.txt".format(script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
 processwatch_file = ''
@@ -53,62 +56,56 @@ if sys.argv[2:]:
     else:
         processwatch_file = sys.argv[2]
 
-### Arg 3 - for subprocesses where we want to dictate doctemplatetype
+### Arg 3 (non-direct) - for subprocesses where we want to dictate doctemplatetype
 #   (like isbncheck.py)
 if sys.argv[3:]:
     templatetype = sys.argv[3]
 else:
     templatetype = ''
 
-# # # # # # # # ENV
-loglevel = "INFO"		# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info
-# variables to quickly setup for testing
-disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = False, False, True, False     # <-- comment out for local testing
-# disable_dropboxapi, disable_sendmail, preserve_tmpdir, leave_infile = True, True, True, True      # <-- uncomment for local testing
+
+# # # # # # # # # #	# # # # # # ENV
+# global setting for logging. Options: DEBUG, INFO, WARN, ERROR, CRITICAL.  See defineLogger() below for more info
+loglevel = "INFO"
+# variables to quickly setup for testing / local runs
+if local_run == False:
+    disable_sendmail = False
+    preserve_tmpdir = False
+    leave_infile = False
+    disable_POST = False
+elif local_run == True:
+    disable_sendmail = True
+    preserve_tmpdir = True
+    leave_infile = True
+    disable_POST = True
+# system environment
 hostOS = platform.system()
 currentuser = getpass.getuser()
 # the path of this file: setting '__location__' allows this relative path to adhere to this file, even when invoked from a different path:
 # 	https://stackoverflow.com/questions/4060221/how-to-reliably-open-a-file-in-the-same-directory-as-a-python-script
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-staging_file = os.path.join("C:",os.sep,"staging.txt")
 
 
-# # # # # # # # CONFIGURE BASED ON ENVIRONMENT:
-# The parent tmpdir needs to be manually set.  Everything else here is dynamically spun off based on
-# 	which script is invoked and the location of the dropbox folder
-main_tmpdir = os.path.join("S:",os.sep,"pythonxml_tmp") # debug-change for prod
-scripts_dir = ""	# we use realtive paths based on __location__ of this file (cfg.py) unless scripts_dir has a value
-
-# # # # # # # # PATHS
+# # # # # # # # # #	# # # # # # CONFIGURE BASED ON ENVIRONMENT:
+# Key paths to be manually set.  Everything else here is dynamically spun off based on
+# 	which script is invoked and the location of the drive folder
 ### Top level Folders
-# dropbox folder (for in and out folders)
 if hostOS == "Windows":
-    dropboxfolder = os.path.join("C:",os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
-    drivefolder = os.path.join("G:", os.sep, "My Drive", "Workflow Tools")
+    main_tmpdir = os.path.join("S:",os.sep,"pythonxml_tmp")
+    staging_file = os.path.join("C:",os.sep,"staging.txt")
     direct_logdir = os.path.join("S:", os.sep, "rs_validate_logs")
 else:
-    dropboxfolder = os.path.join(os.sep,"Users",currentuser,"Dropbox (Macmillan Publishers)")
     main_tmpdir = os.path.join(os.sep,"Users",currentuser,"stylecheck_tmp") # debug, for testing on MacOS
     staging_file = os.path.join(os.sep,"Users",currentuser,"staging.txt")
-    drivefolder = os.path.join(os.sep, "Volumes", "GoogleDrive", "My Drive", "Workflow Tools")
     direct_logdir = os.path.join(os.sep,"Users",currentuser,"rs_validate_logs")
 # tmpfolder and outfolder
-if script_name.startswith("validator") or runtype == 'direct':
-    tmpdir = os.path.dirname(inputfile)
-    this_outfolder = tmpdir
-else:
-    tmpdir = os.path.join(main_tmpdir,"%s_%s_%s" % (script_name[0], inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
-    # tmpdir = os.path.join(main_tmpdir,"%s_%s" % (inputfilename_noext, 'debug'))     # for debug
-    # in_folder = os.path.join(project_dir, 'IN')
-    out_folder = os.path.join(project_dir, 'OUT')
-    this_outfolder = os.path.join(out_folder, inputfilename_noext)
+tmpdir = os.path.dirname(inputfile)
+this_outfolder = tmpdir
 # set logdir for non-validator items
 if os.path.basename(project_dir) == "converter" or os.path.basename(project_dir) == "reporter":
     project_parentdir_name = os.path.basename(os.path.dirname(project_dir))
-    logdir = os.path.join(dropboxfolder, "bookmaker_logs", project_parentdir_name, os.path.basename(project_dir))
-elif runtype == 'dropbox':
-    logdir = os.path.join(dropboxfolder, "bookmaker_logs", os.path.basename(project_dir))
-elif runtype == 'direct':
+    logdir = os.path.join(direct_logdir, os.pardir, "bookmaker_logs", project_parentdir_name, os.path.basename(project_dir))
+else:
     logdir = direct_logdir
 
 ### Files
@@ -121,21 +118,21 @@ ziproot = os.path.join(tmpdir, "{}_unzipped".format(inputfilename_noext))		# the
 template_ziproot = os.path.join(tmpdir, "macmillan_template_unzipped")
 stylereport_json = os.path.join(tmpdir, "stylereport.json")
 alerts_json = os.path.join(tmpdir, "alerts.json")
+err_fname = 'ERROR.txt'
+warn_fname = 'WARNING.txt'
+notice_fname = 'NOTICE.txt'
 isbn_check_json = os.path.join(tmpdir, "isbn_check.json")
 
 ### Resources in other Repos
-# use static paths if scripts_dir exists, else try to use relative paths
-if scripts_dir:
-    scripts_dir_path = scripts_dir
-else:
-    scripts_dir_path = os.path.join(__location__,'..','..')
+# we use relative paths based on __location__ of this file (cfg.py)
+scripts_dir_path = os.path.join(__location__,'..','..')
 
 # rsuite versus macmillan template paths. For now mocking up a separate repo locally for rsuite
 if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in script_name:
     templatefiles_path = os.path.join(scripts_dir_path,"RSuite_Word-template","StyleTemplate_auto-generate")
     template_name = "Rsuite"
 else:
-    templatefiles_path = os.path.join(scripts_dir_path,"Word-template_assets","StyleTemplate_auto-generate")
+    templatefiles_path = os.path.join(scripts_dir_path,"RSuite_Word-template","oldStyleTemplate","MacmillanStyleTemplate")
     template_name = "macmillan"
 
 # paths
@@ -143,7 +140,6 @@ api_post_py = os.path.join(scripts_dir_path, "bookmaker_connectors", "api_POST_t
 post_urls_json = os.path.join(scripts_dir_path, "bookmaker_authkeys", "camelPOST_urls.json")
 section_start_rules_json = os.path.join(scripts_dir_path, "bookmaker_validator","section_start_rules.json")
 smtp_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","smtp.txt")
-db_access_token_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","access_token.txt")
 macmillan_template = os.path.join(templatefiles_path, "%s.dotx" % template_name)
 macmillanstyles_json = os.path.join(templatefiles_path, "%s.json" % template_name)
 vbastyleconfig_json = os.path.join(templatefiles_path, "vba_style_config.json")
@@ -161,7 +157,6 @@ rels_relpath = os.path.join("_rels",".rels")
 contenttypes_relpath = os.path.join(".","[Content_Types].xml")
 endnotesxml_relpath = os.path.join("word","endnotes.xml")
 footnotesxml_relpath = os.path.join("word","footnotes.xml")
-
 
 # Template dirs & files
 template_customprops_xml = os.path.join(template_ziproot, custompropsxml_relpath)
@@ -383,9 +378,3 @@ def defineLogger(logfile, loglevel):
 #         return '%s >>> %s' % (self.message, json.dumps(self.kwargs))
 
 # _ = StructuredMessage   # optional, to improve readability
-
-
-# TODO:
-# 2) the validator
-# for stylereporter: got a unicode encoding for special char in authorname
-# commenting out pagebreak logging to json, reinstate depending on macro / pagenumber count speed is good (also custom styles revert)

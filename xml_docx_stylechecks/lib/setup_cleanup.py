@@ -7,9 +7,9 @@ import json
 import sys
 import collections
 import logging
-import dropbox
 import textwrap
 import time
+import imp
 
 
 ######### IMPORT LOCAL MODULES
@@ -19,14 +19,12 @@ if __name__ == '__main__':
     osutilspath = os.path.join(sys.path[0], '..', 'shared_utils', 'os_utils.py')
     unzipDOCXpath = os.path.join(sys.path[0], '..', 'shared_utils', 'unzipDOCX.py')
     sendmailpath = os.path.join(sys.path[0], '..', 'shared_utils', 'sendmail.py')
-    import imp
     cfg = imp.load_source('cfg', cfgpath)
     import generate_report  # this is in the same dir so needs no direction for relative import
     import usertext_templates
     os_utils = imp.load_source('os_utils', osutilspath)
     unzipDOCX = imp.load_source('unzipDOCX', unzipDOCXpath)
     sendmail = imp.load_source('sendmail', sendmailpath)
-    apiPOST = imp.load_source('apiPOST', cfg.api_post_py)
 else:
     import cfg
     import lib.generate_report as generate_report
@@ -34,44 +32,15 @@ else:
     import shared_utils.os_utils as os_utils
     import shared_utils.unzipDOCX as unzipDOCX
     import shared_utils.sendmail as sendmail
-    if not os.environ.get('TRANSFORM_TEST_FLAG'):
-        import imp
-        apiPOST = imp.load_source('apiPOST', cfg.api_post_py)
 
 
 ######### LOCAL DECLARATIONS
 # initialize logger
 logger = logging.getLogger(__name__)
-# get db access token
-with open(cfg.db_access_token_txt) as f:
-    db_access_token = f.readline()
-dropboxfolder = cfg.dropboxfolder
 processwatch_file = cfg.processwatch_file
 
 
 #---------------------  METHODS
-def getSubmitterViaAPI(inputfile):
-    logger.info("Retrieve submitter info via Dropbox api...")
-    time.sleep(5) # pausing to make sure db has synced
-    submitter_email = ""
-    display_name = ""
-    try:
-        # dropbox api requires forward slash in path, and is a relative path (in relation to Dropbox folder)
-        # the decode(cp1252) is to unencode unicode chars that were encoded by the batch file
-        dropbox_relpath = inputfile.replace(dropboxfolder,"").replace("\\","/").decode("cp1252")
-        dbx = dropbox.Dropbox(db_access_token)
-        if cfg.disable_dropboxapi == False:
-            submitter = (dbx.files_get_metadata(dropbox_relpath).sharing_info.modified_by)
-            display_name = dbx.users_get_account(submitter).name.display_name.encode("utf-8")
-            submitter_email = dbx.users_get_account(submitter).email.encode("utf-8")
-        else:   # for local testing
-            submitter_email = 'pretend_address@domain.com'
-            display_name = 'Pat Lastname'
-    except:
-        logger.exception("ERROR with Dropbox api:")
-    finally:
-        return submitter_email, display_name
-
 def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outfolder, inputfile_ext):
     # get submitter name, email
     submitter_email, display_name = getSubmitterViaAPI(inputfile)
@@ -81,8 +50,9 @@ def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outf
     logger.info('Moving input file ({}) and template to tmpdir'.format(inputfilename))
     if cfg.leave_infile == False:
         os_utils.moveFile(inputfile, workingfile)   # cleanup, for production
-    else:
+    elif cfg.leave_infile == True:
         os_utils.copyFiletoFile(inputfile, workingfile) # debug/local testing
+        logger.info("* retaining infile at initial path (running in 'local' mode).")
 
     # cleanup outfolder (archive existing)
     logger.info("Cleaning up existing outfolder")
@@ -109,6 +79,12 @@ def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, 
     os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
     unzipDOCX.unzipDOCX(workingfile, ziproot)
     unzipDOCX.unzipDOCX(macmillan_template, template_ziproot)
+
+    # remove existing alerts_json (really only matters for testing)
+    os_utils.rm_existing_os_object(cfg.alerts_json, 'alerts.json')
+    os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.err_fname), cfg.err_fname)
+    os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.warn_fname), cfg.warn_fname)
+    os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.notice_fname), cfg.notice_fname)
 
 def returnOriginal(this_outfolder, workingfile, inputfilename):
     # Return original file to user
@@ -179,6 +155,8 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
 
 def postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile):
     logger.info("posting files to outfolder for 'direct' run, via camel api...")
+    # load api_post module
+    apiPOST = imp.load_source('apiPOST', cfg.api_post_py)
     # set api url
     dest_folder = os.path.basename(cfg.this_outfolder)
     posturldict = os_utils.readJSON(cfg.post_urls_json)
@@ -214,7 +192,7 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
     # 2 write our alertfile.txt if necessary
     if os.path.exists(alerts_json):
         logger.debug("Writing alerts.txt to outfolder")
-        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
+        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder, cfg.err_fname, cfg.warn_fname, cfg.notice_fname)
     else:
         logger.debug("Skipping write alerts.txt to outfolder (no alerts.json)")
         alerttxt_list, alertfile=[], ''
@@ -235,14 +213,20 @@ def cleanupforReporterOrConverter(scriptname, this_outfolder, workingfile, input
         report_emailed = True
 
     # 4.5 if this is a 'direct' run, sendfiles to true outfolder via api
-    if cfg.runtype == 'direct' and not os.environ.get('TRANSFORM_TEST_FLAG'):
+    if cfg.runtype == 'direct' and not os.environ.get('TRANSFORM_TEST_FLAG') and cfg.disable_POST == False:
         logger.debug("sending files to outfolder for direct run")
         api_success = postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile)
+    else:
+        api_success = True
+        if cfg.disable_POST == True:
+            logger.info("* skipping POST finished files via api (running in 'local' mode).")
 
     # 5 Rm tmpdir
     if cfg.preserve_tmpdir == False or cfg.runtype != 'direct':    # leave tmpdir for debug/testing
         logger.info("deleting tmp folder")
         os_utils.rm_existing_os_object(tmpdir, 'tmpdir')
+    elif cfg.preserve_tmpdir == True:
+        logger.info("* skipping tmpdir cleanup (running in 'local' mode).")
 
     # 6 Rm processwatch_file
     logger.debug("deleting processwatch_file")
@@ -261,7 +245,7 @@ def cleanupforValidator(this_outfolder, workingfile, inputfilename, report_dict,
     # 2 write our alertfile.txt if necessary
     if os.path.exists(alerts_json):
         logger.debug("Writing alerts.txt to outfolder")
-        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
+        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder, cfg.err_fname, cfg.warn_fname, cfg.notice_fname)
     else:
         logger.debug("Skipping write alerts.txt to outfolder (no alerts.json)")
         alerttxt_list=[]
@@ -313,7 +297,7 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
     try:
         errstring = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname.title(), support_email_address=cfg.support_email_address)
         os_utils.logAlerttoJSON(alerts_json, "error", errstring)
-        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder)
+        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder, cfg.err_fname, cfg.warn_fname, cfg.notice_fname)
     except:
         logger.exception("* writing alert to json and posting alertfile Traceback:")
         errs_duringcleanup.append("-write error alert to json, dump json alerts to errfile in OUT folder")

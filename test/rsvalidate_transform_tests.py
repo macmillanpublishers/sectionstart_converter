@@ -71,7 +71,7 @@ def setupFileTest(file, tmpdir_base, transform_testfiles_dir):
     return tmpfile
 
 def runTest(testfile):
-    popen_params = ['python', rsv_main_path, testfile, 'direct', 'test.user@test.com', 'Test User']
+    popen_params = ['python', rsv_main_path, testfile, 'direct', 'local']
     print popen_params
     if debug_diff_only != True:
         p = subprocess.Popen(popen_params)

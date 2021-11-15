@@ -874,6 +874,11 @@ def rsuiteValidations(report_dict):
     # create sorted version of "image_holders" list in reportdict based on para_index; for reports
     if "image_holders" in report_dict:
         report_dict["image_holders__sort_by_index"] = sorted(report_dict["image_holders"], key=lambda x: x['para_index'])
+    # create sorted version of "image_holders" list in reportdict based on para_index; for reports
+    if "too_many_heading_para" in report_dict:
+        report_dict["too_many_heading_para__sort_by_index"] = sorted(report_dict["too_many_heading_para"], key=lambda x: x['para_index'])
+        report_dict["too_many_heading_para"] = []
+
 
 
     # # # # # # Wrap up this parent function

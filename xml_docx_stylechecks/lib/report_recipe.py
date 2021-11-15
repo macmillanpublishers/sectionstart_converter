@@ -628,7 +628,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     	},
     	"98.2_too_many_mainhead_para_per_section": {
             "include_for": ["rsuitevalidate"],
-    		"dict_category_name": "too_many_heading_para",
+    		"dict_category_name": "too_many_heading_para__sort_by_index",
     		"line_template": "",
     		"badnews": 'any',
             "badnews_type": 'error',

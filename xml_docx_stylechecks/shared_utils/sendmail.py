@@ -71,17 +71,20 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
         else:
         	import cfg
 
-        ######### LOCAL DECLARATIONS
-        with open(cfg.smtp_txt) as f:
-            smtp_address = f.readline().strip()
-        port = 25
-        from_email_address = cfg.from_email_address
-        always_bcc_address = cfg.always_bcc_address
-        disable_sendmail = cfg.disable_sendmail
-
-        # send mails unless we disabled via cfg.disable_sendmail for testing
-        if disable_sendmail == False:
-            sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt)
+        # send mails unless we disabled via cfg.disable_sendmail for local run or testing
+        if cfg.disable_sendmail == False:
+            with open(cfg.smtp_txt) as f:
+                smtp_address = f.readline().strip()
+            port = 25
+            sendMailBasic(port, smtp_address, cfg.from_email_address, cfg.always_bcc_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt)
+        elif cfg.disable_sendmail == True:
+            logger.info("* skipping 'sendmail' because we are in 'local' mode.")
+            if cfg.loglevel != 'DEBUG':
+                logger.info("* (set loglevel to DEBUG to see suppressed email addressees, subject, body, attachment list)")
+        logger.debug("    email to: {}".format(to_addr_list))
+        logger.debug("    email cc: {}".format(cc_addr_list))
+        logger.debug("    email subject: {}".format(subject))
+        logger.debug("    email content: {}".format(bodytxt))
 
     except smtplib.SMTPConnectError:
         errstring = "Email send fail: 'SMTPConnectError' -- Email subject: '%s'" % subject
@@ -90,7 +93,7 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
         import os_utils as os_utils
         # write err to file
         os_utils.logAlerttoJSON(cfg.alerts_json, 'warning', errstring)
-        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(cfg.alerts_json, cfg.this_outfolder)
+        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(cfg.alerts_json, cfg.this_outfolder, cfg.err_fname, cfg.warn_fname, cfg.notice_fname)
         # print "LOG THIS EMAIL!: ",to_addr_list, subject, bodytxt # debug only
 
 #---------------------  MAIN

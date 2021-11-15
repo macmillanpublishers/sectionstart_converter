@@ -33,6 +33,7 @@ inputfilename = inputfilename_noext + inputfile_ext
 ### argv2, 3, 4: From rsv_exec > 'direct' runs
 #   ('direct' runs refers to runs invoked directly via Drive api's
 #   - as opposed to a validation process called by another process like egalleymaker)
+local_run = False
 if sys.argv[2] and sys.argv[2] == 'direct':
     runtype = 'direct'
     if sys.argv[3] and sys.argv[3] == 'local':
@@ -43,7 +44,6 @@ if sys.argv[2] and sys.argv[2] == 'direct':
         submitter_email = sys.argv[3]
         display_name = sys.argv[4]
 else:
-    local_run = False
     runtype = 'not_direct'
 
 ### Arg 2 (non-direct) - processwatch file for standalones, or alternate logfile if validator (embedded run)

@@ -9,9 +9,14 @@ ___
 This tool accepts Word manuscripts and validates against a number of criteria, makes small edits not related to content or large errors, and returns a report and the edited document to the user, both in an outfolder and via email.
 Internal documentation available [here](https://confluence.macmillan.com/display/RSUITE/RSuite+Validation).
 #### Dependencies
+Dependencies for tests, local runs:
 * Python 2.7.x is required; this tool is not yet python 3.x compatible.
 * The xml processing requires the lxml library for python, install like so: `pip install lxml`
 * Additionally, git-repo: '[RSuite_Word-template](https://github.com/macmillanpublishers/RSuite_Word-template)' must be cloned locally as a sibling directory to this repo ('sectionstart_converter').
+
+Additional dependencies for production or staging environment:
+* git-repo: '[bookmaker_connectors](https://github.com/macmillanpublishers/bookmaker_connectors)' must be cloned locally as a sibling directory to this repo ('sectionstart_converter').
+* git-repo: '[bookmaker_authkeys](https://github.com/macmillanpublishers/bookmaker_authkeys)' must be cloned locally as a sibling directory to this repo ('sectionstart_converter'). This repo is private and will also require [decryption](https://confluence.macmillan.com/display/PWG/Using+git-crypt+to+encrypt+files+on+github).
 
 #### Running rsuite_validate
 To run this tool directly in the cmd line:

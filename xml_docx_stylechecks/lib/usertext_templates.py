@@ -102,6 +102,21 @@ def emailtxt():
             {alert_text}
             --------------------------------------
             """),
+    	"ns_notify": textwrap.dedent("""\
+            Hello Workflows,
+
+            RSuite_validate could not process this file: '{inputfilename}', due to its unexpected 'w' namespace url ({ns_url}).
+
+            This email is being sent to aid in tracking frequency of our encounters with files like this.
+
+            The submitter ('{submitter}') received an email with these instructions:
+
+            --------------------------------------
+            {alert_text}
+            --------------------------------------
+
+            If you are unsure how to go about fixing the above item(s), try the guide on this Confluence page: {helpurl}, or email '{support_email_address}' to reach out to the workflows team!
+            """),
     	"converter_txt": "You should find the 'converted' version of your .docx attached as well (if not, check the Stylecheck-Converter OUT folder)."
     }
     return templates
@@ -109,7 +124,8 @@ def emailtxt():
 def subjects():
     subjects = {
     	"success": "StyleReport for '{inputfilename}'",
-    	"err": "Error running Stylecheck-{scriptname} for '{inputfilename}'"
+    	"err": "Error running Stylecheck-{scriptname} for '{inputfilename}'",
+        "ns_notify": "rsuite_validate alert: docx with unexpected namespace"
     }
     return subjects
 
@@ -121,6 +137,12 @@ def alerts():
         "notstyled": "This .docx has less than {percent_styled_min}% of paragraphs styled with Macmillan styles, so cannot be processed.",
         # Error - self explanatory
     	"protected": "This .docx has '{protection}' protection enabled. Please disable protection and try again!",
+        # Error - self explanatory
+        "unexpected_namespace": textwrap.dedent("""\
+            This .docx was created by an application other than Microsoft Word, and rsuite_validate cannot process it as is.
+
+            To fix: please save your file down to a '.doc', then resave that .doc back up to a '.docx'.
+            The resulting .docx file should be rsuite_validate-compatible."""),
         # Error - for 'Reporter' only
     	"r_err_oldtemplate": "You must attach the most recent Macmillan 'section-start' style template before running the Style Report: (this .docx's template version: {current_version}, current version: {template_version})",
         # Error - for 'Reporter' only

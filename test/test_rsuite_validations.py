@@ -1602,6 +1602,24 @@ class Tests(unittest.TestCase):
                 'para_id': '2B5560A1'} # test 2 'Target: BL1p, fail test2 list_nesting'
             ]})
 
+    def test_compareNamespace(self):
+        ctrl_xml = os.path.join(testfiles_basepath, 'test_compareNamespace', 'ctrl', 'word', 'document.xml')
+        test_xml = os.path.join(testfiles_basepath, 'test_compareNamespace', 'test', 'word', 'document.xml')
+        no_ns_xml = os.path.join(testfiles_basepath, 'test_compareNamespace', 'no_ns', 'docProps', 'custom.xml')
+
+        # run function
+        ns_url_ctrl = check_docx.compareNamespace(ctrl_xml, 'w')
+        ns_url_test = check_docx.compareNamespace(test_xml, 'w')
+        ns_url_no_ns = check_docx.compareNamespace(no_ns_xml, 'w', False)
+
+        # assertions
+        self.assertEqual(ns_url_ctrl, 'expected')
+        self.assertEqual(ns_url_test, 'http://purl.oclc.org/ooxml/wordprocessingml/main')
+        self.assertEqual(ns_url_no_ns, 'unavailable')
+        # assertions with required namespace prefix not present
+        with self.assertRaises(Exception, msg="test") as context:
+            check_docx.compareNamespace(no_ns_xml, 'w')
+        self.assertEqual(str(context.exception), 'nsprefix "w" not present')
 
 if __name__ == '__main__':
     unittest.main()

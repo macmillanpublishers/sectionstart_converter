@@ -38,6 +38,21 @@ logger = logging.getLogger(__name__)
 
 #---------------------  METHODS
 
+def compareNamespace(xml_file, nsprefix, ns_reqrd=True):
+    logger.debug("running compareNamespace for nsprefix '{}'...".format(nsprefix))
+    ns_url = 'unavailable'
+    xmltree = etree.parse(xml_file)
+    xmlroot = xmltree.getroot()
+    if nsprefix in xmlroot.nsmap:
+        if xmlroot.nsmap['{}'.format(nsprefix)] == wordnamespaces['{}'.format(nsprefix)]:
+            ns_url = 'expected'
+        else:
+            ns_url = xmlroot.nsmap['{}'.format(nsprefix)]
+    elif ns_reqrd == True:
+        logger.error('required namespace "{}" missing during checkdocx.compareNamespace; raising exception'.format(nsprefix))
+        raise Exception('nsprefix "{}" not present'.format(nsprefix))
+    return ns_url
+
 def get_docxVersion(customprops_xml):
     logger.debug("getting docx Version...")
     # default value for version comparison if no version marker exists

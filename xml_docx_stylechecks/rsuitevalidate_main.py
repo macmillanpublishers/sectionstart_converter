@@ -19,6 +19,7 @@ import lib.rsuite_validations as rsuite_validations
 import shared_utils.zipDOCX as zipDOCX
 import shared_utils.os_utils as os_utils
 import shared_utils.check_docx as check_docx
+import shared_utils.sendmail as sendmail
 
 
 ######### LOCAL DECLARATIONS
@@ -57,20 +58,24 @@ if __name__ == '__main__':
         submitter_email = cfg.submitter_email
         display_name = cfg.display_name
         logger.info("passed submitter values: name: {}, email {}".format(display_name, submitter_email))
-        notdocx = False # < this is being policed by the api & rsv_exec
+
         # copy template to tmpdir, unzip infile and tmpdir
+        logger.info("cfg.script_name: %s, template: %s" % (cfg.script_name, macmillan_template)) # DEBUG
         setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
 
-        if notdocx == True:
-            errstring = usertext_templates.alerts()["notdocx"].format(scriptname=cfg.script_name)
+        ########## CHECK DOCUMENT
+        # check if we have the w: namespace url that we expect
+        ns_url = check_docx.compareNamespace(cfg.doc_xml, 'w')
+        if ns_url != 'expected' and ns_url != 'unavailable':
+            errstring = usertext_templates.alerts()["unexpected_namespace"]
             os_utils.logAlerttoJSON(alerts_json, "error", errstring)
             logger.warn("* {}".format(errstring))
-        else:
-            # copy template to tmpdir, unzip infile and tmpdir
-            logger.warn("cfg.script_name: %s, template: %s" % (cfg.script_name, macmillan_template)) # DEBUG
-            setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
-
-            ########## CHECK DOCUMENT
+            # send notification to wf team so we can keep an eye on these
+            subject = usertext_templates.subjects()["ns_notify"]
+            bodytxt = usertext_templates.emailtxt()["ns_notify"].format(inputfilename=inputfilename, ns_url=ns_url, submitter=submitter_email, alert_text=errstring, 
+                support_email_address=cfg.support_email_address, helpurl=cfg.helpurl)
+            sendmail.sendMail([cfg.alert_email_address], subject, bodytxt)
+        elif ns_url == 'expected':
             ### check and compare versions, styling percentage, doc protection
             logger.info('Comparing docx version to template, checking percent styled, checking if protection, trackchanges...')
             version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, doc_version_min, doc_version_max)

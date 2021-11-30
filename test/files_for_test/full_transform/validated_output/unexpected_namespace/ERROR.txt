@@ -1,0 +1,3 @@
+ERROR(s):
+- This .docx was created by an application other than Microsoft Word, and rsuite_validate cannot process it as is. To fix, please save your file down to a '.doc', then resave that .doc back up to a '.docx'. The new .docx file should be rsuite_validate-compatible.
+

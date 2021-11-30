@@ -1804,7 +1804,8 @@
             "parent_section_start_type": "Section-TitlepageSTI"
         }
     ], 
-    "too_many_heading_para": [
+    "too_many_heading_para": [], 
+    "too_many_heading_para__sort_by_index": [
         {
             "description": "Title (Ttl)_2", 
             "para_id": "2DBF116C", 

@@ -236,4 +236,3 @@ cs-head (cshd)
 sub (sub)
 underline (u)
 footnote reference
-footnote reference

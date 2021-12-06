@@ -250,4 +250,3 @@ bold-ital (bi)
 underline (u)
 symbols (sym)
 footnote reference
-footnote reference

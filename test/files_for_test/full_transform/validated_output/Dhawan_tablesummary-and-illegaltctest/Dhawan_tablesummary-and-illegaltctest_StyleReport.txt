@@ -210,5 +210,3 @@ bold-ital (bi)
 underline (u)
 footnote reference
 symbols (sym)
-footnote reference
-endnote reference

@@ -158,4 +158,3 @@ endnote reference
 ital (i)
 super (sup)
 strike (str)
-endnote reference

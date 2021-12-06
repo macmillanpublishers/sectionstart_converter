@@ -153,6 +153,5 @@ bold (b)
 bold-ital (bi)
 symbols (sym)
 Hyperlink
-endnote reference
 super (sup)
 symbols-ital (symi)

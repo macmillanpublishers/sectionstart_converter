@@ -473,5 +473,3 @@ smallcaps (sc)
 cs-isbn (isbn)
 footnote reference
 endnote reference
-footnote reference
-endnote reference

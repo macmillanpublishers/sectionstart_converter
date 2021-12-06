@@ -167,6 +167,5 @@ ital (i)
 super (sup)
 Hyperlink
 bold (b)
-endnote reference
 sub (sub)
 underline (u)

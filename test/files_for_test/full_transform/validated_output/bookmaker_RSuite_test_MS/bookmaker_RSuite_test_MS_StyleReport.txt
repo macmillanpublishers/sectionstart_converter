@@ -312,5 +312,3 @@ bookmaker-keep-together (bkt)
 cs-computer (ccom)
 endnote reference
 footnote reference
-footnote reference
-endnote reference

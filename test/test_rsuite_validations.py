@@ -1621,5 +1621,19 @@ class Tests(unittest.TestCase):
             check_docx.compareNamespace(no_ns_xml, 'w')
         self.assertEqual(str(context.exception), 'nsprefix "w" not present')
 
+    def test_transformStylename(self):
+        style1='Hyperlink'
+        style2='endnote text'
+        style3='footnote reference'
+        style4='Alpha-Level-3-List (Al3)'
+        style5=''
+
+        # assertions
+        self.assertEqual(lxml_utils.transformStylename(style1), 'Hyperlink')
+        self.assertEqual(lxml_utils.transformStylename(style2), 'EndnoteText')
+        self.assertEqual(lxml_utils.transformStylename(style3), 'FootnoteReference')
+        self.assertEqual(lxml_utils.transformStylename(style4), 'Alpha-Level-3-ListAl3')
+        self.assertEqual(lxml_utils.transformStylename(style5), '')
+
 if __name__ == '__main__':
     unittest.main()

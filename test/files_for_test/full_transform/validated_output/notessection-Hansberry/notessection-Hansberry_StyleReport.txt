@@ -207,4 +207,3 @@ endnote reference
 symbols (sym)
 super (sup)
 bold (b)
-endnote reference

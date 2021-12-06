@@ -176,5 +176,4 @@ endnote reference
 symbols (sym)
 bold (b)
 smallcaps (sc)
-endnote reference
 underline (u)

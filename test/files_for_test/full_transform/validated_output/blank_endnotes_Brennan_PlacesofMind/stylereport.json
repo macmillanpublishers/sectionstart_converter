@@ -49,15 +49,6 @@
             "parent_section_start_type": "Section-BibliographySBI"
         }, 
         {
-            "description": "endnote reference", 
-            "note-or-comment_id": "1", 
-            "para_id": "1DAD50C9", 
-            "para_index": "n-a", 
-            "para_string": "Soueif.", 
-            "parent_section_start_content": "n-a", 
-            "parent_section_start_type": "Endnotes"
-        }, 
-        {
             "description": "super (sup)", 
             "note-or-comment_id": "547", 
             "para_id": "60E8CF8A", 
@@ -469,7 +460,7 @@
         {
             "description": "endnote", 
             "note-or-comment_id": "1061", 
-            "para_id": "780BB573", 
+            "para_id": "C3A9728B", 
             "para_index": "n-a", 
             "para_string": "[no text]", 
             "parent_section_start_content": "n-a", 

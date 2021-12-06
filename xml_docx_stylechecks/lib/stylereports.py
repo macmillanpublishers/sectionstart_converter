@@ -166,7 +166,7 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
     # macmillanstyle_shortnames = [lxml_utils.transformStylename(s) for s in macmillanstyledata]
     # get a list of macmillan stylenames from macmillan json, start with native word styles
     # if we want to exclude valid native word styles from report instead, would add them to conditional on line 110
-    macmillanstyles = valid_native_word_styles
+    macmillanstyles = valid_native_word_styles[:] # <- slice the orig. list, to make a shallow copy
     for stylename in macmillanstyledata:
         macmillanstyles.append(stylename)
     macmillan_styles_found = [] # <- non-rsuite Macmillan para styles

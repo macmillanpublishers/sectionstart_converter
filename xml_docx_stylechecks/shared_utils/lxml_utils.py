@@ -56,10 +56,15 @@ def int_to_Roman(num):
    return roman_num
 
 def transformStylename(lngstylename):
-    # matching restrictions for Wordml styleID's (observed): alphanumeric + hyphens ONLY
-    #   (12/20 - switching from manual string of replacements to regex)
-    stylename = re.sub('[^\w-]','',lngstylename)
-    # stylename = stylename.replace(" ","").replace("(",'').replace(")",'').replace("#",'').replace("_",'')
+    # separate rule for our (as of 12/21) 5 native word styles, where shortnames get camelcase
+    if lngstylename in cfg.valid_native_word_styles:
+        ls_split=lngstylename.split(' ')
+        stylename = ''.join([x.capitalize() for x in ls_split])
+    else:
+        # matching restrictions for Wordml styleID's (observed): alphanumeric + hyphens ONLY
+        #   (12/20 - switching from manual string of replacements to regex)
+        stylename = re.sub('[^\w-]','',lngstylename)
+        # stylename = stylename.replace(" ","").replace("(",'').replace(")",'').replace("#",'').replace("_",'')
     return stylename
 
 # return all text from a paragraph (or run)

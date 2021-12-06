@@ -215,6 +215,7 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in
     spacebreakstyles = ['SeparatorSep','Blank-Space-BreakBsbrk','Ornamental-Space-BreakOsbrk']
     superscriptstyle = "supersup"
     # for some reason the long-stylenames for these references are lowercase?
+    #   ^ 12-21: as per wdv-419 adding separate rule for these to lxmlutils.transformStylename function
     valid_native_word_styles = [
         'Hyperlink',
         'footnote reference',

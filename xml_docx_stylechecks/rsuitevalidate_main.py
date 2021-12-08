@@ -78,15 +78,7 @@ if __name__ == '__main__':
                     percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.template_styles_xml)
                     protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml, cfg.footnotes_xml, cfg.endnotes_xml)
 
-                    # note and accept all track changes
-                    if tc_marker_found == True:
-                        setup_cleanup.setAlert('warning', 'v_unaccepted_tcs')
-                        check_docx.acceptTrackChanges(cfg.doc_xml)
-                        if os.path.exists(cfg.footnotes_xml):
-                            check_docx.acceptTrackChanges(cfg.footnotes_xml)
-                        if os.path.exists(cfg.endnotes_xml):
-                            check_docx.acceptTrackChanges(cfg.endnotes_xml)
-                    # create warnings re: track changes:
+                    # create notice re: track changes being enabled:
                     if trackchange_status == True:
                         setup_cleanup.setAlert('notice', 'trackchange_enabled')
                     # \/ \/ temporarily disabling this user-notice as per Jess 03-27-20
@@ -97,6 +89,15 @@ if __name__ == '__main__':
                     ########## RUN VALIDATIONS
                     if (version_result=="newer_template_avail" or version_result=="up_to_date") and percent_styled >= percent_styled_min and protection == "":
                         logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
+
+                        # accept all track changes and add alert/user notice
+                        if tc_marker_found == True:
+                            setup_cleanup.setAlert('warning', 'v_unaccepted_tcs')
+                            check_docx.acceptTrackChanges(cfg.doc_xml)
+                            if os.path.exists(cfg.footnotes_xml):
+                                check_docx.acceptTrackChanges(cfg.footnotes_xml)
+                            if os.path.exists(cfg.endnotes_xml):
+                                check_docx.acceptTrackChanges(cfg.endnotes_xml)
 
                         # handle docs where both style-sets exist, any other cases where Macmillan styleid's are non-std
                         check_docx.checkForDuplicateStyleIDs(cfg.macmillanstyles_json, cfg.legacystyles_json, cfg.styles_xml, cfg.doc_xml, cfg.endnotes_xml, cfg.footnotes_xml)
@@ -124,6 +125,10 @@ if __name__ == '__main__':
                             setup_cleanup.setAlert('error', 'rs_err_nonrsuite_template', {'current_version':current_version, 'template_version':template_version})
                         if protection:
                             setup_cleanup.setAlert('error', 'protected', {'protection':protection})
+                        # warn about unaccepted trackchanges
+                        if tc_marker_found == True:
+                            setup_cleanup.setAlert('warning', 'r_unaccepted_tcs')
+
 
 
         ########## CLEANUP

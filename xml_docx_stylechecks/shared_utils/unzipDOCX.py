@@ -4,7 +4,7 @@ import shutil
 import re
 import logging
 import xml.etree.ElementTree as ET
-from sys import argv
+import sys
 
 
 # # # # # initialize logger
@@ -12,28 +12,37 @@ logger = logging.getLogger(__name__)
 
 
 # # # # # METHODS
-def unzipDOCX(filename, finaldir):
+def unzipDOCX(filename, finaldir, err_dict={}):
+    errmsg=''
     try:
         logger.debug("unzipping '%s' to '%s'" % (filename, finaldir))
         # must be .docx or .docm
         extension = os.path.splitext(filename)[1]
-
         if extension in ('.docx', '.docm', '.doc', '.dotx', '.dotm'):
-            # print "unzipping %s" % filename   # debug
-            # get the contents of the Word file
-            # filenames = zipfile.namelist(filename)
-            # print filenames
             document = zipfile.ZipFile(filename, 'a')
             # print document.namelist(), len(document.namelist()) # debug
-            document.extractall(finaldir)
-            document.close()
+            if document.namelist():
+                document.extractall(finaldir)
+                document.close()
+            else:
+                errmsg = 'cannot unzip; no document namelist'
+                # allow errmsg override from calling function
+                if err_dict and err_dict['no_filelist']:
+                    errmsg = err_dict['no_filelist']
+                logger.error('{}: filename "{}"'.format(errmsg, filename))
+                raise
             return
         else:
-            logger.error("Could not unzip %s, not a Word doctype" % filename)
+            errmsg = 'cannot unzip; not a Word doctype'
+            if err_dict and err_dict['not_docfile']:
+                errmsg = err_dict['not_docfile']
+            logger.error('{}: filename "{}"'.format(errmsg, filename))
             raise
-            sys.exit(1)
-    except Exception, e:
-        logger.error('Failed to unzip .doc', exc_info=True)
+    except:
+        if not errmsg:
+            errmsg = 'unexpected exception during unzip'
+            logger.error('{}: filename "{}", dest_dir: "{}"'.format(errmsg, filename, finaldir), exc_info=True)
+        raise Exception(errmsg)
         sys.exit(1)
 
 
@@ -41,8 +50,8 @@ def unzipDOCX(filename, finaldir):
 # for running this script as a standalone:
 if __name__ == '__main__':
     # handle args as a standalone
-    filename = argv[1]
-    finaldir = argv[2]
+    filename = sys.argv[1]
+    finaldir = sys.argv[2]
 
     # set up debug log to console
     logging.basicConfig(level=logging.DEBUG)

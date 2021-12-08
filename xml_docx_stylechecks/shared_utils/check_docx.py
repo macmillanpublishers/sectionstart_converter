@@ -13,16 +13,25 @@ from distutils.version import StrictVersion as Version
 ######### IMPORT LOCAL MODULES
 
 if __name__ == '__main__':
-    # to go up a level to read cfg when invoking from this script (for testing).
+
+    # need to use imp to import files from outside the dir
     import imp
-    parentpath = os.path.join(sys.path[0], '..', 'cfg.py')
-    cfg = imp.load_source('cfg', parentpath)
-    os_utils = imp.load_source('os_utils', osutilspath)
-    lxml_utils = imp.load_source('lxml_utils', lxmlutilspath)
+    cfgpath = os.path.join(sys.path[0], '..', 'cfg.py')
+    setup_cleanuppath = os.path.join(sys.path[0], '..', 'lib', 'setup_cleanup.py')
+    usertext_templatespath = os.path.join(sys.path[0], '..', 'lib', 'usertext_templates.py')
+    cfg = imp.load_source('cfg', cfgpath)
+    setup_cleanup = imp.load_source('setup_cleanup', setup_cleanuppath)
+    usertext_templates = imp.load_source('setup_cleanup', usertext_templatespath)
+    import os_utils
+    import lxml_utils
+    import sendmail
 else:
     import cfg
+    import shared_utils.sendmail as sendmail
     import shared_utils.os_utils as os_utils
     import shared_utils.lxml_utils as lxml_utils
+    import lib.setup_cleanup as setup_cleanup
+    import lib.usertext_templates as usertext_templates
 
 ######### LOCAL DECLARATIONS
 
@@ -38,6 +47,33 @@ logger = logging.getLogger(__name__)
 
 #---------------------  METHODS
 
+def checkFilenameChars(inputfilename):
+    logger.debug("Verifying valid filename")
+    filename_regex = re.compile(r"[^\w-]")
+    fname_noext = os.path.splitext(inputfilename)[0]
+    badchars = re.findall(filename_regex, fname_noext)
+    return badchars
+
+def filenameChecks(inputfilename):
+    logger.info("Verifying valid filename (Checking fname length, if bad-characters are present)...")
+    fname_check = True
+    fname_toolong = False
+    fname_maxlength = cfg.filename_maxlength
+    # check for badchars
+    badchars = checkFilenameChars(inputfilename)
+    #  log and write alert as needed
+    if badchars and not os.environ.get('TEST_FLAG'): # < skip for unittests
+        setup_cleanup.setAlert('warning', 'bad_filename', {'badchar_array': badchars})
+    # check / report on filename length, alert as needed
+    if len(inputfilename) > fname_maxlength:
+        fname_toolong = True
+        if not os.environ.get('TEST_FLAG'): # < skip for unittests
+            setup_cleanup.setAlert('error', 'fname_toolong', {'filename':inputfilename, 'fname_length':len(inputfilename), 'max_length':fname_maxlength})
+    # we only return false for fname too long; to denote that we cannot process this file
+    if fname_toolong == True:
+        fname_check = False
+    return fname_check
+
 def compareNamespace(xml_file, nsprefix, ns_reqrd=True):
     logger.debug("running compareNamespace for nsprefix '{}'...".format(nsprefix))
     ns_url = 'unavailable'
@@ -52,6 +88,22 @@ def compareNamespace(xml_file, nsprefix, ns_reqrd=True):
         logger.error('required namespace "{}" missing during checkdocx.compareNamespace; raising exception'.format(nsprefix))
         raise Exception('nsprefix "{}" not present'.format(nsprefix))
     return ns_url
+
+def checkRqrdNamespace(xml_file):
+    logger.info('verifying that "w" namespace exists in document.xml')
+    namespace_check = True
+    ns_url = compareNamespace(cfg.doc_xml, 'w')
+    # log alert as needed
+    if ns_url != 'expected' and ns_url != 'unavailable':
+        namespace_check = False
+        setup_cleanup.setAlert('error', 'unexpected_namespace')
+        # send notification to wf team so we can keep an eye on these
+        subject = usertext_templates.subjects()["ns_notify"]
+        bodytxt = usertext_templates.emailtxt()["ns_notify"].format(inputfilename=cfg.inputfilename, ns_url=ns_url,
+            submitter=cfg.submitter_email, alert_text=usertext_templates.alerts()['unexpected_namespace'],
+            support_email_address=cfg.support_email_address, helpurl=cfg.helpurl)
+        sendmail.sendMail([cfg.alert_email_address], subject, bodytxt)
+    return namespace_check
 
 def get_docxVersion(customprops_xml):
     logger.debug("getting docx Version...")
@@ -299,13 +351,6 @@ def acceptTrackChanges(xml_file):
             found_el.getparent().remove(found_el)
 
     os_utils.writeXMLtoFile(xml_root, xml_file)
-
-def checkFilename(inputfilename):
-    logger.debug("Verifying valid filename")
-    filename_regex = re.compile(r"[^\w-]")
-    badchars = re.findall(filename_regex, inputfilename)
-    logger.info("filename badchar check: {} found: {}".format(len(badchars),badchars))
-    return badchars
 
 def getXMLroot(xml_file):
     if os.path.exists(xml_file):

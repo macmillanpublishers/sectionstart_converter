@@ -1,0 +1,7 @@
+ERROR(s):
+- This .docx has less than 90% of paragraphs styled with Macmillan styles, so cannot be processed.
+- This .docx has 'read-only' protection enabled. Please disable protection and try again!
+
+NOTICE(s):
+- 'Track Changes' feature is currently enabled for this document.
+

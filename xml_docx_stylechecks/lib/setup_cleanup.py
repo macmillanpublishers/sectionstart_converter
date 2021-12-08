@@ -38,9 +38,21 @@ else:
 # initialize logger
 logger = logging.getLogger(__name__)
 processwatch_file = cfg.processwatch_file
+alerts_json = cfg.alerts_json
 
 
 #---------------------  METHODS
+# alert level should be 'error', 'warning' or 'notice'
+def setAlert(alertlevel, ut_template_name, format_dict={}, suppress_logger=False):
+    logger.debug('logging alert: "{}" with alerttext template "{}" and format params: {}'.format(alertlevel, ut_template_name, format_dict))
+    alert_string = usertext_templates.alerts()[ut_template_name].format(**format_dict)
+    os_utils.logAlerttoJSON(alerts_json, alertlevel, alert_string)
+    if suppress_logger == False:
+        if alertlevel == 'error':
+            logger.error("* {}".format(alert_string))
+        else:
+            logger.warn("* {}".format(alert_string))
+
 def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outfolder, inputfile_ext):
     # get submitter name, email
     submitter_email, display_name = getSubmitterViaAPI(inputfile)
@@ -66,9 +78,16 @@ def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outf
 
     return submitter_email, display_name, notdocx
 
-def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot):
+def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot, alerts_json):
+    setup_ok = True
     # move template to the tmpdir
     os_utils.copyFiletoFile(macmillan_template, os.path.join(tmpdir, os.path.basename(macmillan_template)))
+
+    # remove existing alerts_json (really only matters for testing)
+    os_utils.rm_existing_os_object(cfg.alerts_json, 'alerts.json')
+    os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.err_fname), cfg.err_fname)
+    os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.warn_fname), cfg.warn_fname)
+    os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.notice_fname), cfg.notice_fname)
 
     # if we're on a direct run & inputfilename had unsupported chars, create a sanitized-fname workingfile in tmpdir
     if cfg.runtype == 'direct' and cfg.inputfile != workingfile:
@@ -77,14 +96,22 @@ def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, 
     ### unzip the manuscript to ziproot, template to template_ziproot
     os_utils.rm_existing_os_object(ziproot, 'ziproot')
     os_utils.rm_existing_os_object(ziproot, 'template_ziproot')
-    unzipDOCX.unzipDOCX(workingfile, ziproot)
-    unzipDOCX.unzipDOCX(macmillan_template, template_ziproot)
-
-    # remove existing alerts_json (really only matters for testing)
-    os_utils.rm_existing_os_object(cfg.alerts_json, 'alerts.json')
-    os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.err_fname), cfg.err_fname)
-    os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.warn_fname), cfg.warn_fname)
-    os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.notice_fname), cfg.notice_fname)
+    # putting a try block here so we can raise proper alert as needed
+    try:
+        errdict = {'no_filelist': 'cannot unzip; no document namelists',
+                    'not_docfile': 'cannot unzip; not a Word doctype'}
+        unzipDOCX.unzipDOCX(workingfile, ziproot, errdict)
+        unzipDOCX.unzipDOCX(macmillan_template, template_ziproot, errdict)
+    except Exception, e:
+        setup_ok = False
+        if str(e) == errdict['no_filelist']:
+            setAlert('error', 'no_unzip_files', {}, True)
+        # this bit should currently be prescreened via th api, shouldn't come up
+        elif str(e) == errdict['not_docfile']:
+            setAlert('error', 'notdocx', {}, True)
+        else:
+            raise
+    return setup_ok
 
 def returnOriginal(this_outfolder, workingfile, inputfilename):
     # Return original file to user
@@ -295,8 +322,7 @@ def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tm
     # 2 write error to alerts json, write alertfile
     logger.info("trying: Writing error to alerts.json, and posting alerts.txt to outfolder")
     try:
-        errstring = usertext_templates.alerts()["processing_alert"].format(scriptname=scriptname.title(), support_email_address=cfg.support_email_address)
-        os_utils.logAlerttoJSON(alerts_json, "error", errstring)
+        setAlert('error', 'processing_alert', {'scriptname':scriptname.title(), 'support_email_address':cfg.support_email_address}, True)
         alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(alerts_json, this_outfolder, cfg.err_fname, cfg.warn_fname, cfg.notice_fname)
     except:
         logger.exception("* writing alert to json and posting alertfile Traceback:")

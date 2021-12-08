@@ -1,0 +1,8 @@
+{
+    "error": [
+        "This .docx has 'track-changes-only' protection enabled. Please disable protection and try again!"
+    ], 
+    "warning": [
+        "We found un-reviewed tracked changes in this document. All tracked-changes were accepted"
+    ]
+}

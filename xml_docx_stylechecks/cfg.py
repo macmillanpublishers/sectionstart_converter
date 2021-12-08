@@ -108,6 +108,12 @@ if os.path.basename(project_dir) == "converter" or os.path.basename(project_dir)
 else:
     logdir = direct_logdir
 
+# max input-filename length for our Windows servers, varies per server:
+if os.path.exists(staging_file):
+    filename_maxlength = 83
+else:
+    filename_maxlength = 85
+
 ### Files
 newdocxfile = os.path.join(this_outfolder,"{}_converted.docx".format(inputfilename_noext))  	# the rebuilt docx post-converter or validator
 stylereport_txt = os.path.join(this_outfolder,"{}_StyleReport.txt".format(inputfilename_noext))

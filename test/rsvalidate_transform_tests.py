@@ -55,18 +55,23 @@ def setupFileTest(file, tmpdir_base, transform_testfiles_dir):
     tmpfile = ''
     file = os.path.basename(file)
     fname_noext, ext = os.path.splitext(file)
-    sanitized_fname_noext = re.sub('[^\w-]','',fname_noext)
-    sanitized_fname = "{}{}".format(sanitized_fname_noext,ext)
+    ## setting exception with sanitizing fnames b/c it is prohibiting testing bad filenames!
+    if not file.startswith('err_'):
+        new_fname_noext = re.sub('[^\w-]','',fname_noext)
+        new_fname = "{}{}".format(new_fname_noext,ext)
+    else:
+        new_fname_noext = fname_noext
+        new_fname = file
     if ext == '.docx':
-        tmpdir = os.path.join(tmpdir_base, sanitized_fname_noext)
-        tmpfile = os.path.join(tmpdir, sanitized_fname)
+        tmpdir = os.path.join(tmpdir_base, new_fname_noext)
+        tmpfile = os.path.join(tmpdir, new_fname)
         if debug_diff_only != True:
             if os.path.exists(tmpdir):
                 shutil.rmtree(tmpdir)
             if not os.path.exists(tmpdir):
                 os.makedirs(tmpdir)
             shutil.copy(os.path.join(transform_testfiles_dir, file), tmpdir)
-            if sanitized_fname_noext != fname_noext:
+            if new_fname_noext != fname_noext:
                 os.rename(os.path.join(tmpdir, file), tmpfile)
     return tmpfile
 

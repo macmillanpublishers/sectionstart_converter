@@ -210,15 +210,15 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict__basic, {'deleted_objects-bad_object': [{'description': 'deleted bad_object of type unwanted_object','para_id': 'test_id'}]})
         self.assertEqual(normalizeXML(xml_root__basic), normalizeXML(self.expected_root))
 
-    def test_checkFilename_allbadchars(self):
-        filename = "a!@#$''[|]/{ ,.<>\"%^'&}*()-\"\\_=+1"
-        badchar_array = check_docx.checkFilename(filename)
-        badchars = filename.replace('a', '').replace('1', '').replace('-', '').replace('_', '')
+    def test_checkFilenameChars_allbadchars(self):
+        filename = "a!@#$''[|]/{ ,.<>\"%^'&}*()-\"\\_=+1?.docx"
+        badchar_array = check_docx.checkFilenameChars(filename)
+        badchars = os.path.splitext(filename)[0].replace('a', '').replace('1', '').replace('-', '').replace('_', '')
         self.assertEqual(list(badchars), badchar_array)
 
-    def test_checkFilename_nobadchars(self):
+    def test_checkFilenameChars_nobadchars(self):
         filename = "Just_a_string-978010928909"
-        badchar_array = check_docx.checkFilename("Just_a_string-978010928909")
+        badchar_array = check_docx.checkFilenameChars("Just_a_string-978010928909")
         self.assertEqual([], badchar_array)
 
     def test_macmillanStyleCount(self):
@@ -228,12 +228,12 @@ class Tests(unittest.TestCase):
         #       - para with old Macmillan-style:
         #       - acceptable built-in styles (e.g. 'Footnote Text')
         #       - styled, unstyled and 'Normal' styled table cells (which should be ignored)
-        # testdocx_root = os.path.join(testfiles_basepath, 'test_stylecount')
         test_folder_root = setupTestFilesinTmp('test_stylecount', os.path.join(testfiles_basepath, 'test_stylecount'))
-        unzipDOCX.unzipDOCX('{}{}'.format(test_folder_root,'.docx'), test_folder_root)
+        tmp_testfile = os.path.join(test_folder_root, 'stylecount.docx')
+        unzipDOCX.unzipDOCX(tmp_testfile, os.path.splitext(tmp_testfile)[0])
         # set paths & run function
         template_styles_xml = os.path.join(self.template_ziproot, 'word', 'styles.xml')
-        doc_xml = os.path.join(test_folder_root, 'word', 'document.xml')
+        doc_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'document.xml')
         percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(doc_xml, template_styles_xml)
         # ASSERTION
         self.assertEqual(total_paras, 8)
@@ -1617,9 +1617,11 @@ class Tests(unittest.TestCase):
         self.assertEqual(ns_url_test, 'http://purl.oclc.org/ooxml/wordprocessingml/main')
         self.assertEqual(ns_url_no_ns, 'unavailable')
         # assertions with required namespace prefix not present
-        with self.assertRaises(Exception, msg="test") as context:
+        logging.disable(logging.CRITICAL) # < - suppress noise from err assertions
+        with self.assertRaises(Exception) as context:
             check_docx.compareNamespace(no_ns_xml, 'w')
         self.assertEqual(str(context.exception), 'nsprefix "w" not present')
+        logging.disable(logging.NOTSET) # reinstate logging
 
     def test_transformStylename(self):
         style1='Hyperlink'
@@ -1634,6 +1636,41 @@ class Tests(unittest.TestCase):
         self.assertEqual(lxml_utils.transformStylename(style3), 'FootnoteReference')
         self.assertEqual(lxml_utils.transformStylename(style4), 'Alpha-Level-3-ListAl3')
         self.assertEqual(lxml_utils.transformStylename(style5), '')
+
+    def test_filenameChecks(self):
+        maxlength=cfg.filename_maxlength
+        maxlength_fname='a' * (maxlength-5) + '.docx'
+        toolong_fname='a' * (maxlength-4) + '.docx'
+        # real filenames, with bad characters (which should have no effect)
+        real_fname='83pre-edited_Springer_Enola_Holm?s_and_ElegantEscapade_9781250822970_converted.docx'
+        real_fname_toolong='84pre-edited_Springer_Eno;a_Holmes_and_ElegantEscapade_9781250822970_converted2.docx'
+
+        # assertions
+        self.assertTrue(check_docx.filenameChecks(real_fname))
+        self.assertTrue(check_docx.filenameChecks(maxlength_fname))
+        self.assertFalse(check_docx.filenameChecks(toolong_fname))
+        self.assertFalse(check_docx.filenameChecks(real_fname_toolong))
+
+    def test_unzipDOCX(self):
+        err_dict = {'no_filelist':'custom errmsg'}
+        test_folder_root = setupTestFilesinTmp('test_unzipDOCX', os.path.join(testfiles_basepath, 'test_unzipDOCX'))
+        protected_file = os.path.join(test_folder_root, 'protected.docx')
+        nondocx_file = os.path.join(test_folder_root, 'nondocx.txt')
+        good_file = os.path.join(test_folder_root, 'good.docx')
+
+        # assertions
+        unzipDOCX.unzipDOCX(good_file, os.path.splitext(good_file)[0]) # <- this is in lieu of a assertDoesNotRaise
+        # suppress noise from err assertions
+        logging.disable(logging.CRITICAL)
+        with self.assertRaises(Exception) as context:
+            unzipDOCX.unzipDOCX(protected_file, os.path.splitext(protected_file)[0], err_dict)
+        self.assertEqual(str(context.exception), 'custom errmsg')
+        with self.assertRaises(Exception) as context:
+            unzipDOCX.unzipDOCX(nondocx_file, os.path.splitext(nondocx_file)[0])
+        self.assertEqual(str(context.exception), 'cannot unzip; not a Word doctype')
+        logging.disable(logging.NOTSET) # reinstate logging
+        # we can add an assertion to catch generic exception handler for the function,
+        #   once product is upgrade to python 3.x and unittest.mock is available
 
 if __name__ == '__main__':
     unittest.main()

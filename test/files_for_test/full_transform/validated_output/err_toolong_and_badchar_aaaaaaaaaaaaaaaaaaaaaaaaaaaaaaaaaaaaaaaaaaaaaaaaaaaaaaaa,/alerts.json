@@ -1,0 +1,8 @@
+{
+    "error": [
+        "The name of your file, 'err_toolong_and_badchar_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,.docx' is 86 characters long; the longest filename this tool can handle is 83 characters. Please shorten your file's name and resubmit it."
+    ], 
+    "warning": [
+        "This document's filename contains characters that will cause RSuite transforms to fail: [',']"
+    ]
+}

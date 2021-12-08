@@ -1,0 +1,3 @@
+ERROR(s):
+- This .docx appears to be password protected. Please remove any document protection settings, re-save, and resubmit your file.
+

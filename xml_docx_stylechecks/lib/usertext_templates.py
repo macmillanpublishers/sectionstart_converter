@@ -138,11 +138,15 @@ def alerts():
         # Error - self explanatory
     	"protected": "This .docx has '{protection}' protection enabled. Please disable protection and try again!",
         # Error - self explanatory
+        "no_unzip_files": "This .docx appears to be password protected. Please remove any document protection settings, re-save, and resubmit your file.",
+        # Error - self explanatory
         "unexpected_namespace": textwrap.dedent("""\
             This .docx was created by an application other than Microsoft Word, and rsuite_validate cannot process it as is.
 
             To fix: please save your file down to a '.doc', then resave that .doc back up to a '.docx'.
             The resulting .docx file should be rsuite_validate-compatible."""),
+        # Error - self explanatory
+        "fname_toolong": "The name of your file, '{filename}' is {fname_length} characters long; the longest filename this tool can handle is {max_length} characters. Please shorten your file's name and resubmit it.",
         # Error - for 'Reporter' only
     	"r_err_oldtemplate": "You must attach the most recent Macmillan 'section-start' style template before running the Style Report: (this .docx's template version: {current_version}, current version: {template_version})",
         # Error - for 'Reporter' only

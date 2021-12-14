@@ -6,15 +6,17 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
-
+import socket
+from decorators import retry
 
 # initialize logger
 logger = logging.getLogger(__name__)
-
+seconds_smtp_timeout = 30
 
 #---------------------  METHODS
 # Note: the to-address, cc-address and attachments need to be list objects.
 # cc_addresses and attachments are optional arguments
+@retry()
 def sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to_addr_list, subject, bodytxt, cc_addr_list, attachfile_list, htmltxt=""):
     try:
         if htmltxt:
@@ -49,13 +51,17 @@ def sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to
                 encoders.encode_base64(part)
                 part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
                 msg.attach(part)
-
-        server = smtplib.SMTP(smtp_address, port)
+        server = smtplib.SMTP(smtp_address, port, timeout=seconds_smtp_timeout)
         text = msg.as_string()
         server.sendmail(from_email_address, to_addr_list, text)
         server.quit()
+    except socket.gaierror, socket.timeout:
+        exc_type, value, traceback = sys.exc_info()
+        logger.error("'sendMailBasic' exception, type: '{}': {}. Reraising".format(exc_type.__name__, value))
+        raise
     except:
-        logger.exception("MAILER ERROR ------------------ :")
+        exc_type, value, traceback = sys.exc_info()
+        logger.error("Unexpected exception with 'sendMailBasic', type: '{}': {}. Reraising".format(exc_type.__name__, value))
         raise
 
 def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=None, htmltxt=""):
@@ -86,15 +92,17 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
         logger.debug("    email subject: {}".format(subject))
         logger.debug("    email content: {}".format(bodytxt))
 
-    except smtplib.SMTPConnectError:
-        errstring = "Email send fail: 'SMTPConnectError' -- Email subject: '%s'" % subject
-        logger.warn(errstring)
-        logger.info("Email info: '%s', '%s'\n  '%s'" % (to_addr_list, subject, bodytxt))
-        import os_utils as os_utils
-        # write err to file
-        os_utils.logAlerttoJSON(cfg.alerts_json, 'warning', errstring)
-        alerttxt_list, alertfile = os_utils.writeAlertstoTxtfile(cfg.alerts_json, cfg.this_outfolder, cfg.err_fname, cfg.warn_fname, cfg.notice_fname)
-        # print "LOG THIS EMAIL!: ",to_addr_list, subject, bodytxt # debug only
+    except:
+        exc_type, value, traceback = sys.exc_info()
+        logger.error("Exception sending email: {}, {}. Reraising\nset log level to DEBUG to see traceback, or review reraised traceback in Main below"
+            .format(exc_type.__name__, value))
+        logger.debug("(Traceback for debug)", exc_info=True)
+        logger.info("  Details of unsent email:")
+        logger.info("    email to: {}".format(to_addr_list))
+        logger.info("    email cc: {}".format(cc_addr_list))
+        logger.info("    email subject: {}".format(subject))
+        logger.info("    email content: {}".format(bodytxt))
+        raise
 
 #---------------------  MAIN
 # only run if this script is being invoked directly
@@ -108,6 +116,6 @@ def sendMail(to_addr_list, subject, bodytxt, cc_addr_list=None, attachfile_list=
     # bodytxt = "Did this work?\n\n\t(I hope?)"
     # cc_addr_list = ["cc address 1", "cc address 2"]
     #
-    # sendmail(to_addr_list, subject, bodytxt)
+    # sendMail(to_addr_list, subject, bodytxt)
     #
-    # sendmail(to_addr_list, subject, bodytxt, cc_addr_list, [cfg.inputfile])
+    # sendMail(to_addr_list, subject, bodytxt, cc_addr_list, [cfg.inputfile])

@@ -303,8 +303,8 @@ def sendAlertEmail(scriptname, logfile, inputfilename, errs_duringcleanup=[]):
             # send the mail!
             sendmail.sendMail([cfg.alert_email_address], subject, bodytxt, None, [logfile])
     except:
-        logger.exception("ERROR sendAlertEmail function :(")
-        raise   # is this necessary?
+        logger.error("ERROR sendAlertEmail function :(")
+        raise
 
 def cleanupException(this_outfolder, workingfile, inputfilename, alerts_json, tmpdir, logdir, inputfilename_noext, scriptname, logfile, report_emailed, submitter_email, display_name, original_inputfilename):
     logger.warn("POST-ERROR: Running cleanup, 'cleanupException'...")

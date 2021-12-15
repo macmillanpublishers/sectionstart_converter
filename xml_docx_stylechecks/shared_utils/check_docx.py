@@ -74,25 +74,43 @@ def filenameChecks(inputfilename):
         fname_check = False
     return fname_check
 
-def compareNamespace(xml_file, nsprefix, ns_reqrd=True):
-    logger.debug("running compareNamespace for nsprefix '{}'...".format(nsprefix))
-    ns_url = 'unavailable'
-    xmltree = etree.parse(xml_file)
-    xmlroot = xmltree.getroot()
-    if nsprefix in xmlroot.nsmap:
-        if xmlroot.nsmap['{}'.format(nsprefix)] == wordnamespaces['{}'.format(nsprefix)]:
-            ns_url = 'expected'
+# compares namespace url for first element found using passed parameter's local-name
+#   Currently in use to check ns-url of 'body' tag.
+def compareElementNamespace(this_xmlfile, template_xmlfile, element_name, ns_reqrd=True):
+    logger.debug("running compareElementNamespace for '{}' element...".format(element_name))
+
+    # get _expected_ ns_url for body element
+    template_xmltree = etree.parse(template_xmlfile)
+    # # \/ use this line instead of the following one to only find element at root of document
+    # template_element_tag = xmltree.xpath("/*[local-name()='document']/*[local-name()='body']")[0].tag
+    template_element_tag = template_xmltree.xpath("//*[local-name()='{}']".format(element_name))[0].tag
+    template_nsurl = template_element_tag.split('}')[0].replace('{', '')
+
+    # get this document's ns_url for body element
+    this_nsurl = ''
+    this_xmltree = etree.parse(this_xmlfile)
+    # # \/ use these 2 lines instead of the following pair to only find element at root of document
+    # if this_xmltree.xpath("/*[local-name()='document']/*[local-name()='{}']".format(element_name)):
+    #     this_element_tag = this_xmltree.xpath("/*[local-name()='document']/*[local-name()='{}']".format(element_name))[0].tag
+    if this_xmltree.xpath("//*[local-name()='{}']".format(element_name)):
+        this_element_tag = this_xmltree.xpath("//*[local-name()='{}']".format(element_name))[0].tag
+        this_nsurl = this_element_tag.split('}')[0].replace('{', '')
+
+    if this_nsurl:
+        if this_nsurl == template_nsurl:
+            return 'expected'
         else:
-            ns_url = xmlroot.nsmap['{}'.format(nsprefix)]
+            return this_nsurl
     elif ns_reqrd == True:
-        logger.error('required namespace "{}" missing during checkdocx.compareNamespace; raising exception'.format(nsprefix))
-        raise Exception('nsprefix "{}" not present'.format(nsprefix))
-    return ns_url
+        logger.error('required element "{}" missing during checkdocx.compareElementNamespace; raising exception'.format(element_name))
+        raise Exception('element "{}" not present'.format(element_name))
+    else:
+        return 'unavailable'
 
 def checkRqrdNamespace(xml_file):
     logger.info('verifying that "w" namespace exists in document.xml')
     namespace_check = True
-    ns_url = compareNamespace(cfg.doc_xml, 'w')
+    ns_url = compareElementNamespace(cfg.doc_xml, cfg.template_document_xml, 'body')
     # log alert as needed
     if ns_url != 'expected' and ns_url != 'unavailable':
         namespace_check = False

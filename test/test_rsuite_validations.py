@@ -1603,14 +1603,15 @@ class Tests(unittest.TestCase):
             ]})
 
     def test_compareNamespace(self):
+        template_xml = os.path.join(testfiles_basepath, 'test_compareNamespace', 'template', 'word', 'document.xml')
         ctrl_xml = os.path.join(testfiles_basepath, 'test_compareNamespace', 'ctrl', 'word', 'document.xml')
         test_xml = os.path.join(testfiles_basepath, 'test_compareNamespace', 'test', 'word', 'document.xml')
         no_ns_xml = os.path.join(testfiles_basepath, 'test_compareNamespace', 'no_ns', 'docProps', 'custom.xml')
 
         # run function
-        ns_url_ctrl = check_docx.compareNamespace(ctrl_xml, 'w')
-        ns_url_test = check_docx.compareNamespace(test_xml, 'w')
-        ns_url_no_ns = check_docx.compareNamespace(no_ns_xml, 'w', False)
+        ns_url_ctrl = check_docx.compareElementNamespace(ctrl_xml, template_xml, 'body')
+        ns_url_test = check_docx.compareElementNamespace(test_xml, template_xml, 'body')
+        ns_url_no_ns = check_docx.compareElementNamespace(no_ns_xml,  template_xml, 'body', False)
 
         # assertions
         self.assertEqual(ns_url_ctrl, 'expected')
@@ -1619,8 +1620,8 @@ class Tests(unittest.TestCase):
         # assertions with required namespace prefix not present
         logging.disable(logging.CRITICAL) # < - suppress noise from err assertions
         with self.assertRaises(Exception) as context:
-            check_docx.compareNamespace(no_ns_xml, 'w')
-        self.assertEqual(str(context.exception), 'nsprefix "w" not present')
+            check_docx.compareElementNamespace(no_ns_xml, template_xml, 'body')
+        self.assertEqual(str(context.exception), 'element "body" not present')
         logging.disable(logging.NOTSET) # reinstate logging
 
     def test_transformStylename(self):

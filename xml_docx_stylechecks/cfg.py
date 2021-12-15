@@ -170,6 +170,7 @@ template_styles_xml = os.path.join(template_ziproot, stylesxml_relpath)
 template_numbering_xml = os.path.join(template_ziproot, numberingxml_relpath)
 template_rels_file = os.path.join(template_ziproot, rels_relpath)
 template_contenttypes_xml = os.path.join(template_ziproot, contenttypes_relpath)
+template_document_xml = os.path.join(template_ziproot, "word", "document.xml")
 
 # doc files
 doc_xml = os.path.join(ziproot, docxml_relpath)

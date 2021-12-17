@@ -6,6 +6,8 @@ Problems were found with the styles in your document.
 ------------------------------------ ERRORS ------------------------------------
 ** ERROR: File contains embedded endnotes but there is no para styled 'Section-Notes (SNT)' in the main body of the document. This section is required to process notes -- please add.
 
+** ERROR: 'Section-Ad-Card (SAC)' found in the body of the MS. This style can only be used in the front matter. Please restyle with a valid section style.
+
 
 If you have any questions about how to handle these errors,
 please contact workflows@macmillan.com.
@@ -74,6 +76,7 @@ Section-Chapter (SCP)............ "Chapter 7: Trust the Process"
 Section-Chapter (SCP)............ "Epilogue"                                               
 Section-Acknowledgments (SAK).... "Acknowledgments"                                        
 Section-Index (SIN).............. "Index"                                                  
+Section-Ad-Card (SAC)............ "Ad Card"                                                
 
 
 --------------------- MACMILLAN STYLES IN USE (BY SECTION) ---------------------
@@ -145,7 +148,9 @@ Body-Text (Tx)............................... "My life has been blessed with an 
 
 * Section-Index (SIN): "Index"
 Title (Ttl).................................. "Index [allow 8-10 pages]"                                  
-Body-Text (Tx)............................... ""                                                          
+
+* Section-Ad-Card (SAC): "Ad Card"
+Body-Text (Tx)............................... "Don’t forget to read this author’s ‘Next Book’!"   
 Table-Head (Tbhd)............................ "Month"                                                     
 Table-Text (Tbtx)............................ "January"                                                   
 

@@ -1,14 +1,6 @@
-OOPS!
+CONGRATULATIONS! YOU PASSED!
 
-Problems were found with the styles in your document.
-
-
------------------------------------- ERRORS ------------------------------------
-** ERROR: 'Section-Front-Matter-General (SFM)' found in the body of the MS. This style can only be used in the front matter. Please restyle with a valid section style.
-
-
-If you have any questions about how to handle these errors,
-please contact workflows@macmillan.com.
+But you're not done yet. Please check the info listed below.
 
 
 ----------------------------------- WARNINGS -----------------------------------

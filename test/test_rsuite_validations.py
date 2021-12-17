@@ -1554,9 +1554,9 @@ class Tests(unittest.TestCase):
         rd_bad_expected = os_utils.readJSON(json_bad_expected)
 
         # run function
-        report_dict_empty = rsuite_validations.checkForFMsectionsInBody({}, cfg.fm_style_list, cfg.booksection_stylename)
-        report_dict_cntrl = rsuite_validations.checkForFMsectionsInBody(report_dict_ctrl, cfg.fm_style_list, cfg.booksection_stylename)
-        report_dict_bad = rsuite_validations.checkForFMsectionsInBody(report_dict_bad, cfg.fm_style_list, cfg.booksection_stylename)
+        report_dict_empty = rsuite_validations.checkForFMsectionsInBody({}, cfg.fm_style_list, cfg.fm_flex_style_list)
+        report_dict_cntrl = rsuite_validations.checkForFMsectionsInBody(report_dict_ctrl, cfg.fm_style_list, cfg.fm_flex_style_list)
+        report_dict_bad = rsuite_validations.checkForFMsectionsInBody(report_dict_bad, cfg.fm_style_list, cfg.fm_flex_style_list)
 
         # assertions
         self.assertEqual(report_dict_empty, {})

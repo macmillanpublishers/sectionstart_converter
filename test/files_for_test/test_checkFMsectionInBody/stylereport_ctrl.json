@@ -57,8 +57,8 @@
             "parent_section_start_type": "Section-HalftitleSHT"
         }, 
         {
-            "description": "Section-ChapterSCP", 
-            "para_id": "6578D10B", 
+            "description": "Section-IntroductionSIC", 
+            "para_id": "6578D10A", 
             "para_index": 50, 
             "para_string": "1", 
             "parent_section_start_content": "1", 
@@ -153,12 +153,12 @@
             "parent_section_start_type": "Section-AcknowledgmentsSAK"
         }, 
         {
-            "description": "Section-AcknowledgmentsSAK", 
+            "description": "Section-PermissionsSPRM", 
             "para_id": "158A8AF8", 
             "para_index": 1314, 
-            "para_string": "About the Author", 
-            "parent_section_start_content": "About the Author", 
-            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+            "para_string": "About the Permissions", 
+            "parent_section_start_content": "About the Permissions", 
+            "parent_section_start_type": "Section-PermissionsSPRM"
         }
     ]
 }

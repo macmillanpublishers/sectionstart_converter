@@ -1086,16 +1086,6 @@
             "parent_section_start_type": "Endnotes"
         }
     ], 
-    "fm_section_in_body": [
-        {
-            "description": "Section-Halftitle (SHT)", 
-            "para_id": "717A2406", 
-            "para_index": 121, 
-            "para_string": "Halftitle Page", 
-            "parent_section_start_content": "Halftitle Page", 
-            "parent_section_start_type": "Section-HalftitleSHT"
-        }
-    ], 
     "isbn_spans": [
         {
             "description": "9781250205537", 

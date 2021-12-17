@@ -388,11 +388,11 @@
         }, 
         {
             "description": "Body-Text (Tx)", 
-            "para_id": "35BEBFA0", 
-            "para_index": "tablecell_para", 
-            "para_string": "", 
-            "parent_section_start_content": "Dedication", 
-            "parent_section_start_type": "Section-DedicationSDE"
+            "para_id": "3D008B6F", 
+            "para_index": 858, 
+            "para_string": "Don\u2019t forget to read this author\u2019s \u2018Next Book\u2019!", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
         }, 
         {
             "description": "Table-Head (Tbhd)", 
@@ -860,6 +860,16 @@
             "parent_section_start_type": "Endnotes"
         }
     ], 
+    "fm_section_in_body": [
+        {
+            "description": "Section-Ad-Card (SAC)", 
+            "para_id": "330200E4", 
+            "para_index": 857, 
+            "para_string": "Ad Card", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
+        }
+    ], 
     "image_holders": [
         {
             "description": "Tshirt_image.png", 
@@ -1080,6 +1090,14 @@
             "para_string": "Index", 
             "parent_section_start_content": "Index", 
             "parent_section_start_type": "Section-IndexSIN"
+        }, 
+        {
+            "description": "Section-Ad-CardSAC", 
+            "para_id": "330200E4", 
+            "para_index": 857, 
+            "para_string": "Ad Card", 
+            "parent_section_start_content": "Ad Card", 
+            "parent_section_start_type": "Section-Ad-CardSAC"
         }
     ], 
     "table_blank_para": [

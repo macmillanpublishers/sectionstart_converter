@@ -108,7 +108,7 @@ def compareElementNamespace(this_xmlfile, template_xmlfile, element_name, ns_req
         return 'unavailable'
 
 def checkRqrdNamespace(xml_file):
-    logger.info('verifying that "w" namespace exists in document.xml')
+    logger.info('verifying that this "body" namespace url in document.xml matches our template')
     namespace_check = True
     ns_url = compareElementNamespace(cfg.doc_xml, cfg.template_document_xml, 'body')
     # log alert as needed

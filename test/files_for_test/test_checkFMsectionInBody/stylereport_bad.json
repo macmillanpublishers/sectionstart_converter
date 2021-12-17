@@ -41,6 +41,14 @@
             "parent_section_start_type": "Section-DedicationSDE"
         }, 
         {
+            "description": "Section-AcknowledgmentsSAK", 
+            "para_id": "14EE2E4E", 
+            "para_index": 42, 
+            "para_string": "Acknowledgments", 
+            "parent_section_start_content": "Source Acknowledgments", 
+            "parent_section_start_type": "Section-AcknowledgmentsSAK"
+        },         
+        {
             "description": "Section-Front-Matter-GeneralSFM", 
             "para_id": "6A3039BB", 
             "para_index": 44, 
@@ -56,6 +64,14 @@
             "parent_section_start_content": "Halftitle Page", 
             "parent_section_start_type": "Section-HalftitleSHT"
         }, 
+        {
+            "description": "Section-EpigraphSEP", 
+            "para_id": "4C84A222", 
+            "para_index": 49, 
+            "para_string": "Middle Epigraph", 
+            "parent_section_start_content": "Opening Epigraph", 
+            "parent_section_start_type": "Section-EpigraphSEP"
+        },
         {
             "description": "Section-ChapterSCP", 
             "para_id": "6578D10B", 
@@ -161,12 +177,20 @@
             "parent_section_start_type": "Section-AcknowledgmentsSAK"
         }, 
         {
-            "description": "Section-AcknowledgmentsSAK", 
+            "description": "Section-About-AuthorSAA", 
             "para_id": "158A8AF8", 
             "para_index": 1314, 
             "para_string": "About the Author", 
             "parent_section_start_content": "About the Author", 
             "parent_section_start_type": "Section-AcknowledgmentsSAK"
-        }
+        },
+        {
+            "description": "Section-Ebook-CopyrightSECR", 
+            "para_id": "158A8AG9", 
+            "para_index": 1320, 
+            "para_string": "EBC", 
+            "parent_section_start_content": "EBC", 
+            "parent_section_start_type": "Section-Ebook-CopyrightSECR"
+        }       
     ]
 }

@@ -511,21 +511,25 @@ def duplicateSectionCheck(report_dict, section_array):
 
     return report_dict
 
-def checkForFMsectionsInBody(report_dict, fm_sectionnames, booksectionname):
+def checkForFMsectionsInBody(report_dict, fm_sectionnames, flex_sectionnames):
     logger.debug("* * * commencing checkForFMsectionsInBody function")
-    fm_sectionnames.append(booksectionname)
     # get shortnames of fm_sections
     fm_section_shortnames = [lxml_utils.transformStylename(x) for x in fm_sectionnames]
+    flex_section_shortnames = [lxml_utils.transformStylename(x) for x in flex_sectionnames]
     body_begun = False
 
     if 'section_start_found' in report_dict:
+        # cycle through sectionstarts found
         for section_dict in report_dict['section_start_found']:
-            if section_dict["description"] not in fm_section_shortnames and body_begun == False:
+            # look for first section not in fm or 'flex' list, to denote start of body
+            if (section_dict["description"] not in fm_section_shortnames
+                and section_dict["description"] not in flex_section_shortnames
+                and body_begun == False):
                 body_begun = True
+            # then log any fm sections that appear once body's begun
             elif section_dict["description"] in fm_section_shortnames and body_begun == True:
                 section_fullname = lxml_utils.getStyleLongname(section_dict["description"])
                 lxml_utils.logForReport(report_dict,None,None,"fm_section_in_body",section_fullname,section_dict["para_id"])
-
     return report_dict
 
 # parse dict from checkMainheadsPerSection and log any multiple heads per section
@@ -808,7 +812,7 @@ def rsuiteValidations(report_dict):
     # check for sections that should only appear once
     report_dict = duplicateSectionCheck(report_dict, [cfg.booksection_stylename, cfg.notessection_stylename])
     # check for FM sections in main body
-    report_dict = checkForFMsectionsInBody(report_dict, cfg.fm_style_list, cfg.booksection_stylename)
+    report_dict = checkForFMsectionsInBody(report_dict, cfg.fm_style_list, cfg.fm_flex_style_list)
 
     # check footnote / endnote para styles
     # rm footnote / endnote leading whitespace

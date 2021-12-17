@@ -230,20 +230,33 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in
         'endnote reference',
         'endnote text'
         ]
+    # this list should be longnames corresponding to Section-names with topic_groups="a_group" indicated here:
+    #   https://github.com/macmillanpublishers/mpg-rsuite-d4p-plugin/blob/master/toolkit_plugins/com.mpg.dita2indesign/xsl/dita2indesign_mappings.xml
     fm_style_list = [
+        "Section-Ad-Card (SAC)",
+        "Section-Book (BOOK)",
+        "Section-Contents (STC)",
+        "Section-Copyright (SCR)",
+        "Section-Dedication (SDE)",
+        "Section-Ebook-Copyright (SECR)",
+        "Section-Foreword (SFW)",
+        "Section-Front-Matter-General (SFM)",
         "Section-Front-Sales (SFS)",
         "Section-Halftitle (SHT)",
-        "Section-Ad-Card (SAC)",
         "Section-Series-Page (SSP)",
         "Section-Titlepage (STI)",
-        "Section-Copyright (SCR)",
-        "Section-Ebook-Copyright (SECR)",
-        "Section-Dedication (SDE)",
+        "Section-Preface (SPF)"
+        ]
+    # this list should be longnames corresponding to Section-names with topic_groups="*_group" indicated here:
+    #   https://github.com/macmillanpublishers/mpg-rsuite-d4p-plugin/blob/master/toolkit_plugins/com.mpg.dita2indesign/xsl/dita2indesign_mappings.xml
+    #   These styles can appear in fm, but may also be found in bm or body.
+    fm_flex_style_list = [
+        "Section-About-Author (SAA)",
+        "Section-Acknowledgments (SAK)",
         "Section-Epigraph (SEP)",
-        "Section-Contents (STC)",
-        "Section-Foreword (SFW)",
-        "Section-Preface (SPF)",
-        "Section-Front-Matter-General (SFM)"
+        "Section-Illustration-Credits (SIC)",
+        "Section-Introduction (SIC)",
+        "Section-Permissions (SPRM)"
         ]
 else:
     helpurl = "https://confluence.macmillan.com/x/U4AYB#Stylecheck-ConverterandStylecheck-Reporter-ReviewingyourStylecheckReport"

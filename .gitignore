@@ -2,5 +2,6 @@
 .DS_Store?
 *.pyc
 test/files_for_test/template_root/*
-test/files_for_test/test_checkdocx/stylecount/*
 test/files_for_test/tmp/*
+test/files_for_test/full_transform/test_docx_files/*
+test/files_for_test/full_transform/validated_output/*

@@ -65,7 +65,7 @@ if __name__ == '__main__':
         if filename_ok == True:
             # copy template to tmpdir, unzip infile and tmpdir
             #   if errors occur during unzipping (whole file protection, file corruption, not a docx) this will not pass
-            setup_ok = setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot, alerts_json)
+            setup_ok = setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
             if setup_ok == True:
                 # check if we have the w: namespace url that we expect
                 namespace_ok = check_docx.checkRqrdNamespace(cfg.doc_xml)

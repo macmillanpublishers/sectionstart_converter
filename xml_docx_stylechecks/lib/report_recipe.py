@@ -430,7 +430,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "badnews_type": 'warning',
             "summary": True,
-            "errstring": "{notes_count} table cell(s) containing only blank paragraph(s) were found in '{parent_section_start_type}'. Please confirm these empty table cells are intended, and if not, remove as needed."
+            "errstring": "{notes_count} table cell(s) containing only blank paragraph(s) were found in '{notes_type}'. Please confirm these empty table cells are intended, and if not, remove as needed."
     	},
     	"76_section_blankpara": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
@@ -446,7 +446,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "badnews_type": 'error',
-            "errstring": "'{description}' found in the body of the MS. This style can only be used in the front matter. Please restyle with a valid section style."
+            "errstring": "'{descriptionA}' found in the body of the MS. This style can only be used in the front matter. Please restyle with a valid section style."
     	},
     	"77_container_blankpara": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],

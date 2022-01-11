@@ -46,7 +46,7 @@ doc_version_max = None
 percent_styled_min = 90
 
 ######### SETUP LOGGING
-logfile = os.path.join(cfg.logdir, "{}_{}.txt".format(cfg.script_name, os.path.basename(cfg.tmpdir)))
+logfile = os.path.join(cfg.logdir, "{}_{}_{}.txt".format(cfg.script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))
 cfg.defineLogger(logfile, cfg.loglevel)
 logger = logging.getLogger(__name__)
 

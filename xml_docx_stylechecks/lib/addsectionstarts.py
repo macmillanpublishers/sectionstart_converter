@@ -305,7 +305,7 @@ def deletePrecedingPageBreak(para, report_dict):
         if len(breaks) == 1 and not pneighbors['prevtext'].strip():  # we need the strip.. apparently a pb carries some whitespace value
             logger.info("empty preceding pb para, deleting it")
             # # optional - log location for debug:  (has to come before removal or the reference fails (para is gone)
-            # report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"removed_pagebreak","rm'd pagebreak para preceding inserted section-start")
+            # report_dict = lxml_utils.logForReport_old(report_dict,doc_root,para,"removed_pagebreak","rm'd pagebreak para preceding inserted section-start")
             # remove pagebreak para
             pneighbors['prev'].getparent().remove(pneighbors['prev'])
         elif len(breaks) > 0 and pneighbors['prevtext'].strip():
@@ -314,7 +314,7 @@ def deletePrecedingPageBreak(para, report_dict):
         elif len(breaks) > 1 and not pneighbors['prevtext'].strip():
             logger.info("multiple pagebreak chars in preceding para: removing the last one")
             # # optional - log location for debug:  (has to come before removal or the reference fails (para is gone)
-            # report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"removed_pagebreak","rm'd preceding pagebreak char preceding inserted section-start")
+            # report_dict = lxml_utils.logForReport_old(report_dict,doc_root,para,"removed_pagebreak","rm'd preceding pagebreak char preceding inserted section-start")
             # remove last pagebreak char from the preceding paragraph
             breaks[len(breaks)-1].getparent().remove(breaks[len(breaks)-1])
         elif len(breaks) == 0:
@@ -383,7 +383,7 @@ def runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sec
                 report_dict = deletePrecedingPageBreak(sectionbegin_para, report_dict)
                 contents = lxml_utils.getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, sectionstylename, sectionnames)
                 lxml_utils.insertPara(sectionstylename, sectionbegin_para, doc_root, contents, "before")
-            report_dict = lxml_utils.logForReport(report_dict,doc_root,sectionbegin_para,"section_start_needed",sectionname)
+            report_dict = lxml_utils.logForReport_old(report_dict,doc_root,sectionbegin_para,"section_start_needed",sectionname)
 
             # break the loop for this rule if 'multiple' value is False
             if section_start_rules[sectionname][cbstring]["multiple"] == False:
@@ -400,7 +400,7 @@ def runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sec
         sectionbegin_para = evalSectionRequired(sectionname, section_start_rules, doc_root, titlestyle)
         #  if we have an insertion point for Section_Required, insert Section Start styled para
         if sectionbegin_para is not None:
-            report_dict = lxml_utils.logForReport(report_dict,doc_root, sectionbegin_para,"section_start_needed","{}".format(sectionname))
+            report_dict = lxml_utils.logForReport_old(report_dict,doc_root, sectionbegin_para,"section_start_needed","{}".format(sectionname))
             if call_type == "insert":
                 report_dict = deletePrecedingPageBreak(sectionbegin_para, report_dict)
                 contents = lxml_utils.getContentsForSectionStart(sectionbegin_para, doc_root, headingstyles, sectionstylename, sectionnames)

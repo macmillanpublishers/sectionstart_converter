@@ -6,6 +6,12 @@ import subprocess
 from xml.dom import minidom
 import time
 
+# append main project path to system path for below import to work
+mainproject_path = os.path.join(sys.path[0],'..')
+sys.path.append(mainproject_path)
+from xml_docx_stylechecks.shared_utils.decorators import benchmark as benchmark
+# import xml_docx_stylechecks.shared_utils.decorators as decorators
+
 # accept arguments
 if len(sys.argv) == 2:
     if sys.argv[1] == 'update_valid_outputs':
@@ -75,6 +81,7 @@ def setupFileTest(file, tmpdir_base, transform_testfiles_dir):
                 os.rename(os.path.join(tmpdir, file), tmpfile)
     return tmpfile
 
+# @benchmark
 def runTest(testfile):
     popen_params = ['python', rsv_main_path, testfile, 'direct', 'local']
     print popen_params

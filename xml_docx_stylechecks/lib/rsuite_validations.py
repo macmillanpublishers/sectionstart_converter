@@ -835,12 +835,12 @@ def rsuiteValidations(report_dict):
     # rm footnote / endnote leading whitespace
     # handle note refs that are styled 'super' wdv-344
     if os.path.exists(cfg.footnotes_xml):
-        report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
         report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")
+        report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
         report_dict = fixSuperNoteMarks(footnotes_root, report_dict, cfg.superscriptstyle, cfg.footnote_ref_style, 'footnote')
     if os.path.exists(cfg.endnotes_xml):
+        report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")        
         report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
-        report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
         report_dict = fixSuperNoteMarks(endnotes_root, report_dict, cfg.superscriptstyle, cfg.endnote_ref_style, 'endnote')
         # endnotes only: make sure Notes section is present
         report_dict = checkForNotesSection(doc_root, endnotes_root, report_dict, cfg.note_separator_types, cfg.notessection_stylename)

@@ -78,7 +78,7 @@ def setupforReporterOrConverter(inputfile, inputfilename, workingfile, this_outf
 
     return submitter_email, display_name, notdocx
 
-def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot, alerts_json):
+def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot):
     setup_ok = True
     # move template to the tmpdir
     os_utils.copyFiletoFile(macmillan_template, os.path.join(tmpdir, os.path.basename(macmillan_template)))

@@ -6,6 +6,11 @@ import subprocess
 from xml.dom import minidom
 import time
 
+# # # append main project path to system path for imports to work
+# mainproject_path = os.path.join(sys.path[0],'..')
+# sys.path.append(mainproject_path)
+# from xml_docx_stylechecks.shared_utils.decorators import benchmark as benchmark
+
 # accept arguments
 if len(sys.argv) == 2:
     if sys.argv[1] == 'update_valid_outputs':

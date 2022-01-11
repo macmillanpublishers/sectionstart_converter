@@ -25,6 +25,8 @@ else:
     import lib.stylereports as stylereports
     import shared_utils.os_utils as os_utils
     import shared_utils.lxml_utils as lxml_utils
+    # # uncomment line below to use 'benchmark' decorator
+    # from shared_utils.decorators import benchmark as benchmark
 
 
 ######### LOCAL DECLARATIONS
@@ -50,7 +52,7 @@ def logTextOfParasWithStyleInSection(report_dict, xml_root, sectionnames, sectio
         current_sectionname = lxml_utils.getSectionName(para, sectionnames)[0]
         if current_sectionname == sectionname:
             paratxt = lxml_utils.getParaTxt(para)
-            report_dict = lxml_utils.logForReport(report_dict,xml_root,para,report_category,paratxt)
+            lxml_utils.logForReport(report_dict, xml_root, para, report_category, paratxt, ['para_string'])
     return report_dict
 
 def logTextOfRunsWithStyleInSection(report_dict, xml_root, sectionnames, sectionname, stylename, report_category):
@@ -71,17 +73,17 @@ def logTextOfRunsWithStyleInSection(report_dict, xml_root, sectionnames, section
                         if x["para_id"] == this_para_id:
                             already_captured = True
             if already_captured == False:
-                report_dict = lxml_utils.logForReport(report_dict,xml_root,para,report_category,runtxt)
+                lxml_utils.logForReport(report_dict, xml_root, para, report_category, runtxt, ['para_id', 'para_string'])
     return report_dict
 
 def checkSecondPara(report_dict, xml_root, firstpara, sectionnames):
     logger.info("* * * commencing checkSecondPara function...")
     pneighbors = lxml_utils.getNeighborParas(firstpara)
     secondpara_style = pneighbors['nextstyle']
-    print "secondpara_style", secondpara_style
+    logger.debug("secondpara_style: {}".format(secondpara_style))
     if secondpara_style not in sectionnames:
         logger.warn("second para style is not a Section Start style, instead is: " + secondpara_style)
-        report_dict = lxml_utils.logForReport(report_dict,xml_root,pneighbors["next"],"non_section_start_styled_secondpara",lxml_utils.getStyleLongname(secondpara_style))
+        lxml_utils.logForReport(report_dict, xml_root, pneighbors["next"], 'non_section_start_styled_secondpara', lxml_utils.getStyleLongname(secondpara_style))
     return report_dict
 
 def getContainerStarts(styleconfig_dict):
@@ -110,7 +112,7 @@ def deleteBookmarks(report_dict, xml_root, bookmark_items):
             #   Note: we are silently deleting bookmarks of 'auto_bookmark' types, that were not inserted by users
             logger.debug("deleted bookmark named '%s'" % w_name)
             if para is not None and w_name not in bookmark_items["autobookmark_names"]:
-                lxml_utils.logForReport(report_dict,xml_root,para,"deleted_objects-bookmarks","deleted bookmark named " + w_name)
+                lxml_utils.logForReport(report_dict, xml_root, para, 'deleted_objects-bookmarks', 'deleted bookmark named {}'.format(w_name))
     # delete any orphaned bookmark_ends silently. (these should not exist, but why not clean-up in case?)
     end_searchstring = ".//{}".format(bookmark_items["bookmarkend_tag"])
     for bookmark_end in xml_root.findall(end_searchstring, wordnamespaces):
@@ -121,10 +123,10 @@ def deleteBookmarks(report_dict, xml_root, bookmark_items):
 
 # table cell (w:tc) elements require at least one w:p
 #   so we cannot bilthely delete
-def handleBlankParasInTables(report_dict, xml_root, para, log_category="table_blank_para", log_description="blank para found in table cell", skip_logging=False):
+def handleBlankParasInTables(report_dict, xml_root, para, sectionnames, log_category="table_blank_para", log_description="blank para found in table cell", skip_logging=False):
     tablepara = False
     # have a provision to flag only _solo_ table paras, so we can aggressively rm any blank para possible.
-    #   looking back at teh original reqrement, that is both an edge case, and possibly overly intrusive
+    #   looking back at the original reqrement, that is both an edge case, and possibly overly intrusive
     #   So leaving provision in place with the following var; but selecting to note all tableparas as protected /
     #       deserving of flagging instead of removal, for now.
     removing_excess_tbl_blankparas = False
@@ -139,14 +141,14 @@ def handleBlankParasInTables(report_dict, xml_root, para, log_category="table_bl
                 # (pneighbors['prev'] is None or pneighbors['prev'].tag != '{{{}}}p'.format(wnamespace)):
                 if skip_logging == False:
                     logger.info("encountered solo-table-para, tagging for report")
-                    lxml_utils.logForReport(report_dict,xml_root,para,log_category,log_description)
+                    lxml_utils.logForReport(report_dict, xml_root, para, log_category, log_description, ['section_info'], sectionnames)
                 tablepara = True
             else:
                 # print len(pneighbors['prev'])
                 logger.debug("blank tablecell para has a neighbor, bouncing back to std blank para handling")
         else:
             if skip_logging == False:
-                lxml_utils.logForReport(report_dict,xml_root,para,log_category,log_description)
+                lxml_utils.logForReport(report_dict, xml_root, para, log_category, log_description, ['section_info'], sectionnames)
             tablepara = True
     return report_dict, tablepara
 
@@ -160,7 +162,7 @@ def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles
         if not lxml_utils.getParaTxt(para).strip(): # or para.text is None:
             # checking for solo tablecell paras first: extremely unlikely in the 1st two cases but possible in the 3rd:
             #   and rm'ing one breaks output doc
-            report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para)
+            report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para, sectionnames)
             if tablepara == False:
                 # log special warnings for the report for 'special' blank paras
                 parastyle = lxml_utils.getParaStyle(para)
@@ -171,14 +173,14 @@ def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles
                     section_info = "'%s: \"%s\"'" % (sectionfullname, sectiontext)
                     # separate warning text for sectionparas versus others:
                     if parastyle in sectionnames.keys():
-                        lxml_utils.logForReport(report_dict,xml_root,para,"removed_section_blank_para", sectionfullname)
+                        lxml_utils.logForReport(report_dict, xml_root, para, 'removed_section_blank_para', sectionfullname)
                     elif parastyle in container_start_styles + container_end_styles:
-                        lxml_utils.logForReport(report_dict,xml_root,para,"removed_container_blank_para","%s_%s" % (lxml_utils.getStyleLongname(parastyle), section_info))
+                        lxml_utils.logForReport(report_dict, xml_root, para, 'removed_container_blank_para', '{}_{}'.format(lxml_utils.getStyleLongname(parastyle), section_info))
                     elif parastyle in spacebreakstyles:
-                        lxml_utils.logForReport(report_dict,xml_root,para,"removed_spacebreak_blank_para","%s_%s" % (lxml_utils.getStyleLongname(parastyle), section_info))
+                        lxml_utils.logForReport(report_dict, xml_root, para, 'removed_spacebreak_blank_para', '{}_{}'.format(lxml_utils.getStyleLongname(parastyle), section_info))
 
                 # all paras are counted again so we gt a total for our count on the report
-                lxml_utils.logForReport(report_dict,xml_root,para,"removed_blank_para","removed %s-styled para" % parastyle)
+                lxml_utils.logForReport(report_dict, xml_root, para, 'removed_blank_para', 'removed {}-styled para'.format(parastyle))
                 # and then the blank para is removed
                 para.getparent().remove(para)
 
@@ -232,7 +234,7 @@ def checkForNotesSection(doc_root, endnotes_root, report_dict, separators, note_
         paras = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(note_section_stylename), doc_root)
         if len(paras) == 0:
             firstpara = doc_root.find(".//*w:p", wordnamespaces)
-            lxml_utils.logForReport(report_dict,doc_root,None,"missing_notes_section","Endnotes are present, Notes Section is not")
+            lxml_utils.logForReport(report_dict, None, None, 'missing_notes_section', 'Endnotes are present, Notes Section is not')
     return report_dict
 
 def handleBlankParasInNotes(report_dict, xml_root, separators, note_stylename, noteref_stylename, note_name, note_section):
@@ -247,7 +249,7 @@ def handleBlankParasInNotes(report_dict, xml_root, separators, note_stylename, n
             dummy_notepara, testpara_counter = createDummyNotePara(xml_root, testpara_counter, note_stylename, noteref_stylename)
             note.append(dummy_notepara)
             note_id = note.get('{%s}id' % wnamespace)
-            lxml_utils.logForReport(report_dict,xml_root,dummy_notepara,"found_empty_note",note_name)
+            lxml_utils.logForReport(report_dict, xml_root, dummy_notepara, 'found_empty_note', note_name, ['para_string'])
         # handle note objects with children but no non-whitespace text
         elif not lxml_utils.getParaTxt(note).strip():
             uniquenote = True
@@ -258,18 +260,18 @@ def handleBlankParasInNotes(report_dict, xml_root, separators, note_stylename, n
             for para in note.findall(".//w:p", wordnamespaces):
                 # check if we are in a table; a table cell (w:tc) element requires at least one w:p
                 #   skipping table para logging here, they will get captured again below in when cycling through paras
-                report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para, '', '', True)
+                report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para, {}, '', '', True)
                 if tablepara == False:
                     para.getparent().remove(para)
                     # make sure we don't re-add dummy text and log for report for multiblank paras in the same note!
                     if uniquenote == True:
                         dummy_notepara, testpara_counter = createDummyNotePara(xml_root, testpara_counter, note_stylename, noteref_stylename)
                         note.append(dummy_notepara)
-                        lxml_utils.logForReport(report_dict,xml_root,dummy_notepara,"found_empty_note",note_name)
+                        lxml_utils.logForReport(report_dict, xml_root, dummy_notepara, 'found_empty_note', note_name, ['para_string'])
                         uniquenote = False
                     else:
                         # log above blank para removal for summary
-                        lxml_utils.logForReport(report_dict,xml_root,para,"removed_blank_para","excess blank para in empty {}".format(note_name))
+                        lxml_utils.logForReport(report_dict, xml_root, para, 'removed_blank_para', 'excess blank para in empty {}'.format(note_name))
                 elif tablepara == True:
                     uniquenote = False
 
@@ -279,7 +281,7 @@ def handleBlankParasInNotes(report_dict, xml_root, separators, note_stylename, n
     for para in allparas:
         if not lxml_utils.getParaTxt(para).strip(): # or para.text is None:
             # check if we are in a table; a table cell (w:tc) element requires at least one w:p
-            report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para, 'table_blank_para_notes', 'blank para in table cell in {}'.format(note_name))
+            report_dict, tablepara = handleBlankParasInTables(report_dict, xml_root, para, {}, 'table_blank_para_notes', 'blank para in table cell in {}'.format(note_name))
             if tablepara == False:
                 # skip separator notes
                 note = para.getparent()
@@ -287,7 +289,7 @@ def handleBlankParasInNotes(report_dict, xml_root, separators, note_stylename, n
                     continue
                 # log discovery
                 note_id = note.get('{%s}id' % wnamespace)
-                lxml_utils.logForReport(report_dict,xml_root,para,"removed_blank_para","blank para in {} note with other text; note_id: {}".format(note_name, note_id))
+                lxml_utils.logForReport(report_dict, xml_root, para, 'removed_blank_para', 'blank para in {} note with other text; note_id: {}'.format(note_name, note_id))
                 # remove para
                 para.getparent().remove(para)
 
@@ -307,7 +309,7 @@ def checkContainers(report_dict, xml_root, sectionnames, container_start_styles,
         for start_para in containerstart_paras:
             # check if we're in a table; if so, log it as an err and 'continue' to next para
             if start_para.getparent().tag == '{{{}}}tc'.format(wnamespace):
-                report_dict = lxml_utils.logForReport(report_dict,xml_root,start_para,"illegal_style_in_table",lxml_utils.getStyleLongname(container_stylename))
+                lxml_utils.logForReport(report_dict, xml_root, start_para, 'illegal_style_in_table', lxml_utils.getStyleLongname(container_stylename), ['section_info'], sectionnames)
                 continue
             # start_para = start_para_pStyle.getparent().getparent()
             pneighbors = lxml_utils.getNeighborParas(start_para)
@@ -323,7 +325,7 @@ def checkContainers(report_dict, xml_root, sectionnames, container_start_styles,
                 logger.debug("found a container end style before section start, container start or document end")
                 matched_cstart_count = matched_cstart_count + 1
             else:
-                lxml_utils.logForReport(report_dict,xml_root,start_para,"container_error",lxml_utils.getStyleLongname(container_stylename))
+                lxml_utils.logForReport(report_dict, xml_root, start_para, 'container_error', lxml_utils.getStyleLongname(container_stylename), ['section_info'], sectionnames)
                 if not pneighbors['nextstyle']:
                     logger.warn("container error - reached end of document before container-END styled para :( logging")
                 elif pneighbors['nextstyle'] and pneighbors['nextstyle'] in sectionnames.keys():
@@ -339,7 +341,7 @@ def checkContainers(report_dict, xml_root, sectionnames, container_start_styles,
         for end_para in container_end_paras:
             # check if we're in a table; if so, log it as an err and 'continue' to next para
             if end_para.getparent().tag == '{{{}}}tc'.format(wnamespace):
-                report_dict = lxml_utils.logForReport(report_dict,xml_root,end_para,"illegal_style_in_table",lxml_utils.getStyleLongname(end_stylename))
+                lxml_utils.logForReport(report_dict, xml_root, end_para, 'illegal_style_in_table', lxml_utils.getStyleLongname(end_stylename), ['section_info'], sectionnames)
             else:
                 c_end_count = c_end_count + 1
     # if the counts don't match, we have an orphan END para somewhere.
@@ -363,7 +365,7 @@ def checkContainers(report_dict, xml_root, sectionnames, container_start_styles,
                     if pneighbors['prevstyle'] and pneighbors['prevstyle'] in container_start_styles:
                         logger.debug("found container start, this END is part of a set")
                     else:
-                        lxml_utils.logForReport(report_dict,xml_root,end_para,"container_end_error",lxml_utils.getStyleLongname(end_stylename))
+                        lxml_utils.logForReport(report_dict, xml_root, end_para, 'container_end_error', lxml_utils.getStyleLongname(end_stylename), ['section_info'], sectionnames)
                         if not pneighbors['prevstyle']:
                             logger.warn("orphaned container END - reached start of document before container-start para")
                         elif pneighbors['prevstyle'] and pneighbors['prevstyle'] in sectionnames.keys():
@@ -428,7 +430,7 @@ def getListStylenames(styleconfig_dict):
 
     return li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras
 
-def verifyListNesting(report_dict, xml_root, li_styles_by_level, li_styles_by_type, listparagraphs, list_styles, nonlist_list_paras):
+def verifyListNesting(report_dict, xml_root, li_styles_by_level, li_styles_by_type, listparagraphs, list_styles, nonlist_list_paras, sectionnames):
     logger.info("* * * commencing verifyListNesting function...")
     all_list_styles = nonlist_list_paras + list_styles.keys()
     #  cycle through all list styles by type
@@ -448,7 +450,9 @@ def verifyListNesting(report_dict, xml_root, li_styles_by_level, li_styles_by_ty
                 #   (Level1 list paragraphs (not list-para paragraphs) are valid when preceded by non-list items)
                 #   examples: Body-Text > BL2, Title > NL3p, MainHead > UL1p
                 if (level > 1 or (level == 1 and style in listparagraphs)) and prevstyle not in all_list_styles:
-                    lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                    lxml_utils.logForReport(report_dict, xml_root, list_p, 'list_nesting_err', \
+                        "'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)), \
+                        ['section_info', 'para_string'], sectionnames)
                 elif prevstyle in all_list_styles:
                     # calculate diff between current para list-level and preceding para list-level
                     if prevstyle in list_styles:
@@ -470,7 +474,9 @@ def verifyListNesting(report_dict, xml_root, li_styles_by_level, li_styles_by_ty
                         # \/ L2 or L3 para never preceded by an L1; a nesting err (obscured by leading non_list_listpara(s))
                         #       (also pertains to L1, for list-para paragraphs)
                         if pneighbors['prevstyle'] not in all_list_styles and (level > 1 or (level == 1 and style in listparagraphs)):
-                            lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                            lxml_utils.logForReport(report_dict, xml_root, list_p, 'list_nesting_err', \
+                                "'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)), \
+                                ['section_info', 'para_string'], sectionnames)
                             break
                         else:
                             prevstyle = pneighbors['prevstyle']
@@ -478,18 +484,27 @@ def verifyListNesting(report_dict, xml_root, li_styles_by_level, li_styles_by_ty
                     # examples: BL1 > BL3, BL1 > NL3, BL1 > BL2p
                     #   (leveldiff == 1 is fine for non-listpara paras, like BL1 > BL2 or BL1p > NL2)
                     if leveldiff > 1 or (leveldiff == 1 and style in listparagraphs):
-                        lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                        lxml_utils.logForReport(report_dict, xml_root, list_p, 'list_nesting_err', \
+                            "'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)), \
+                            ['section_info', 'para_string'], sectionnames)
                     # examples: BL1 > NL1, UL1p > BL1
                     #   (list change warning: only for list level = 1)
                     elif leveldiff == 0 and level == 1 and style not in listparagraphs and prevstyle not in li_styles_by_type[type]:
-                        lxml_utils.logForReport(report_dict,xml_root,list_p,"list_change_warning","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                        lxml_utils.logForReport(report_dict, xml_root, list_p, 'list_change_warning', \
+                            "'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)), \
+                            ['section_info', 'para_string'], sectionnames)
                     # examples: BL1 > NL1p, UL3p > NL3
                     #   (list change error for List paragraphs, nesting error for list-para paragraphs)
                     elif leveldiff == 0 and prevstyle not in li_styles_by_type[type]:
                         if style not in listparagraphs:
-                            lxml_utils.logForReport(report_dict,xml_root,list_p,"list_change_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                            lxml_utils.logForReport(report_dict, xml_root, list_p, 'list_change_err', \
+                                "'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)), \
+                                ['section_info', 'para_string'], sectionnames)
                         else:
-                            lxml_utils.logForReport(report_dict,xml_root,list_p,"list_nesting_err","'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)))
+                            lxml_utils.logForReport(report_dict, xml_root, list_p, 'list_nesting_err', \
+                                "'%s' para, preceded by: '%s' para" % (lxml_utils.getStyleLongname(style), lxml_utils.getStyleLongname(prevstyle)), \
+                                ['section_info', 'para_string'], sectionnames)
+
     return report_dict
 
 def duplicateSectionCheck(report_dict, section_array):
@@ -505,7 +520,7 @@ def duplicateSectionCheck(report_dict, section_array):
                     section_count += 1
             # if we found more than one
             if section_count > 1:
-                lxml_utils.logForReport(report_dict,None,None,"too_many_section_para","{}_{}".format(sectionfullname, section_count))
+                lxml_utils.logForReport(report_dict, None, None, 'too_many_section_para', "{}_{}".format(sectionfullname, section_count))
         else:
             logger.warn("function 'duplicateSectionCheck' did not find a 'section_start_found' list in report_dict")
 
@@ -529,18 +544,20 @@ def checkForFMsectionsInBody(report_dict, fm_sectionnames, flex_sectionnames):
             # then log any fm sections that appear once body's begun
             elif section_dict["description"] in fm_section_shortnames and body_begun == True:
                 section_fullname = lxml_utils.getStyleLongname(section_dict["description"])
-                lxml_utils.logForReport(report_dict,None,None,"fm_section_in_body",section_fullname,section_dict["para_id"])
+                # log section para_id if its present in dict, as part of description
+                para_id = section_dict['para_id'] if 'para_id' in section_dict else ''
+                lxml_utils.logForReport(report_dict, None, None, 'fm_section_in_body', '{}_{}'.format(section_fullname, para_id))
     return report_dict
 
 # parse dict from checkMainheadsPerSection and log any multiple heads per section
-def logMainheadMultiples(mainhead_dict, doc_root, report_dict):
+def logMainheadMultiples(mainhead_dict, doc_root, report_dict, sectionnames):
     for stylename in mainhead_dict:
         for id, stylecount in mainhead_dict[stylename].iteritems():
             if stylecount > 1:
                 # get the section-para object from para id:
                 searchstring = ".//*w:p[@w14:paraId='{}']".format(id)
                 para = doc_root.find(searchstring, wordnamespaces)
-                lxml_utils.logForReport(report_dict,doc_root,para,"too_many_heading_para","{}_{}".format(stylename, stylecount))
+                lxml_utils.logForReport(report_dict, doc_root, para, 'too_many_heading_para', '{}_{}'.format(stylename, stylecount), ['section_info', 'para_index'], sectionnames)
     return report_dict
 
 def checkMainheadsPerSection(mainheadstyle_list, doc_root, report_dict, section_names, container_start_styles, container_end_styles):
@@ -563,7 +580,7 @@ def checkMainheadsPerSection(mainheadstyle_list, doc_root, report_dict, section_
                         mainhead_dict[stylename][section_id] = 1
         logger.debug('contents of mainhead_dict: {}'.format(mainhead_dict))
         # separate function to process mainhead_dict
-        report_dict = logMainheadMultiples(mainhead_dict, doc_root, report_dict)
+        report_dict = logMainheadMultiples(mainhead_dict, doc_root, report_dict, section_names)
     return report_dict
 
 # occurences in a container don't count
@@ -611,13 +628,15 @@ def checkEndnoteFootnoteStyles(xml_root, report_dict, note_style, sectionname):
                 continue
             if not os.environ.get('TEST_FLAG'):
                 parastyle = lxml_utils.getStyleLongname(parastyle)
-            lxml_utils.logForReport(report_dict,xml_root,para,"improperly_styled_%s" % sectionname, parastyle)
+            lxml_utils.logForReport(report_dict, xml_root, para, 'improperly_styled_{}'.format(sectionname), parastyle, ['para_string'])
     return report_dict
 
-def rmEndnoteFootnoteLeadingWhitespace(xml_root, report_dict, sectionname):
-    logger.info("* * * commencing rmEndnoteFootnoteLeadingWhitespace function, for %s..." % sectionname)
+# Logging for these could be optional, though so far in benchmark-tests it hasn't ever taken a full second as is
+# @benchmark
+def rmEndnoteFootnoteLeadingWhitespace(xml_root, report_dict, rootname):
+    logger.info("* * * commencing rmEndnoteFootnoteLeadingWhitespace function, for %s..." % rootname)
     # now check leading text of note.
-    allnotes = xml_root.findall(".//w:%s" % sectionname, wordnamespaces)
+    allnotes = xml_root.findall(".//w:%s" % rootname, wordnamespaces)
     for note in allnotes:
         note_id = note.get('{%s}id' % wnamespace)
         runs = note.findall(".//w:p/w:r", wordnamespaces)
@@ -632,7 +651,7 @@ def rmEndnoteFootnoteLeadingWhitespace(xml_root, report_dict, sectionname):
                     for wtab in wtabs:
                         wr.remove(wtab)
                     # optionally log tab removals:
-                    lxml_utils.logForReport(report_dict,xml_root,para,"%s-leading_whitespace_rmd" % sectionname,"note ref: %s (tab removed)" % note_id)
+                    lxml_utils.logForReport(report_dict, xml_root, para, '{}-leading_whitespace_rmd'.format(rootname), 'note ref: {} (tab removed)'.format(note_id))
                 continue
             para = wr.getparent()
             charcount = len(runtext)
@@ -646,13 +665,13 @@ def rmEndnoteFootnoteLeadingWhitespace(xml_root, report_dict, sectionname):
             elif charcount_diff == 0:
                 #  we may want to comment out some of this logging, if it is logging for EVERY footnote.
                 if run_removed:  # log if we previously removed a whole run
-                    lxml_utils.logForReport(report_dict,xml_root,para,"%s-leading_whitespace_rmd" % sectionname,"note ref: %s (blank run removed)" % note_id)
+                    lxml_utils.logForReport(report_dict, xml_root, para, '{}-leading_whitespace_rmd'.format(rootname), 'note ref: {} (blank run removed)'.format(note_id))
                 break
             # here we have leading whitespace in the w:r/w:t itself that must be removed. re-setting text with lstrip()
             else:
                 wt = wr.find(".//w:t", wordnamespaces)
                 wt.text = wt.text.lstrip()
-                lxml_utils.logForReport(report_dict,xml_root,para,"%s-leading_whitespace_rmd" % sectionname,"note ref: %s" % note_id)
+                lxml_utils.logForReport(report_dict, xml_root, para, '{}-leading_whitespace_rmd'.format(rootname), 'note ref: {}'.format(note_id))
                 break
 
     return report_dict
@@ -680,7 +699,7 @@ def flagCustomNoteMarks(xml_root, report_dict, ref_style_dict):
                 ref_id = customref_el.get(attrib_id_key)
                 para = lxml_utils.getParaParentofElement(ref_run)
                 #log occurence
-                lxml_utils.logForReport(report_dict,xml_root,para,"custom_%s_mark" % note_type,"custom note marker: '%s', %s id: %s" %(reftext, note_type, ref_id))
+                lxml_utils.logForReport(report_dict, xml_root, para, 'custom_{}_mark'.format(note_type), "custom note marker: '{}', {} id: {}".format(reftext, note_type, ref_id))
     return report_dict
 
 # wdv-389 specifies superscript styled ref marks in notes.
@@ -688,7 +707,7 @@ def flagCustomNoteMarks(xml_root, report_dict, ref_style_dict):
 #   could add blanket handling of any non-custom notes not styled with std ref style pretty easily.
 #   (this find skips custom notes, they do not have ref_el)
 def fixSuperNoteMarks(xml_root, report_dict, superstyle, good_ref_style, note_type):
-    logger.info("* * * commencing flagCustomNoteMarks function for %ss..." % note_type)
+    logger.info("* * * commencing fixSuperNoteMarks function for %ss..." % note_type)
     ref_el = '{}Ref'.format(note_type)
 
     ref_searchstring = './/*w:{}'.format(ref_el)
@@ -710,8 +729,7 @@ def fixSuperNoteMarks(xml_root, report_dict, superstyle, good_ref_style, note_ty
                 attrib_id_key = '{%s}id' % wnamespace
                 ref_id = note_el.get(attrib_id_key)
                 # re-using category from main body note mark-check
-                lxml_utils.logForReport(report_dict,xml_root,para,"note_markers_wrong_style","super_styled ref-mark in %ss, ref_id: %s" % (note_type, ref_id))
-
+                lxml_utils.logForReport(report_dict, xml_root, para, 'note_markers_wrong_style', 'super_styled ref-mark in {}s, ref_id: {}'.format(note_type, ref_id))
     return report_dict
 
 def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_category):
@@ -729,10 +747,11 @@ def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_c
                 # and report it to log
                 attrib_id_key = '{%s}id' % wnamespace
                 note_id = noteref.get(attrib_id_key)
-                lxml_utils.logForReport(report_dict, xml_root, note_run.getparent(), "note_markers_wrong_style", \
-                    "restyled %s ref: no. %s (was styled as %s)" % (report_category, note_id, runstyle))
+                lxml_utils.logForReport(report_dict, xml_root, note_run.getparent(), 'note_markers_wrong_style', \
+                    'restyled {} ref: no. {} (was styled as {})'.format(report_category, note_id, runstyle))
     return report_dict
 
+# @benchmark
 def rsuiteValidations(report_dict):
     vbastyleconfig_json = cfg.vbastyleconfig_json
     styleconfig_json = cfg.styleconfig_json
@@ -795,8 +814,6 @@ def rsuiteValidations(report_dict):
 
     # remove blank paras from docxml, endnotes, footnotes -- only if we don't already have a critical blank para err
     # if "blank_container_para" not in report_dict and "blank_list_para" not in report_dict and "empty_section_start_para" not in empty_section_start_para:
-    # for xml_root in xmlfile_dict:
-    #     report_dict = removeBlankParas(report_dict, xml_root)
     report_dict = removeBlankParas(report_dict, doc_root, sectionnames, container_start_styles, container_end_styles, cfg.spacebreakstyles)
     if os.path.exists(cfg.endnotes_xml):
         report_dict = handleBlankParasInNotes(report_dict, endnotes_root, cfg.note_separator_types, cfg.endnotestyle, cfg.endnote_ref_style, 'endnote', "Endnotes")
@@ -806,7 +823,7 @@ def rsuiteValidations(report_dict):
     # test / verify Container structures
     report_dict = checkContainers(report_dict, doc_root, sectionnames, container_start_styles, container_end_styles)
     # check list nesting
-    report_dict = verifyListNesting(report_dict, doc_root, li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras)
+    report_dict = verifyListNesting(report_dict, doc_root, li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras, sectionnames)
     # get all Section Starts in the doc:
     report_dict = lxml_utils.sectionStartTally(report_dict, sectionnames, doc_root, "report")
     # check for sections that should only appear once
@@ -818,12 +835,12 @@ def rsuiteValidations(report_dict):
     # rm footnote / endnote leading whitespace
     # handle note refs that are styled 'super' wdv-344
     if os.path.exists(cfg.footnotes_xml):
-        report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
         report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")
+        report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
         report_dict = fixSuperNoteMarks(footnotes_root, report_dict, cfg.superscriptstyle, cfg.footnote_ref_style, 'footnote')
     if os.path.exists(cfg.endnotes_xml):
+        report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")        
         report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
-        report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
         report_dict = fixSuperNoteMarks(endnotes_root, report_dict, cfg.superscriptstyle, cfg.endnote_ref_style, 'endnote')
         # endnotes only: make sure Notes section is present
         report_dict = checkForNotesSection(doc_root, endnotes_root, report_dict, cfg.note_separator_types, cfg.notessection_stylename)
@@ -841,9 +858,9 @@ def rsuiteValidations(report_dict):
     report_dict = logTextOfRunsWithStyleInSection(report_dict, doc_root, sectionnames, cfg.copyrightsection_stylename, cfg.isbnstyle, "isbn_spans")
 
     # log texts of image_holders-holder paras, also checks for valid imageholder strings
-    report_dict = stylereports.logTextOfParasWithStyle(report_dict, doc_root, cfg.imageholder_style, "image_holders", cfg.script_name)
+    report_dict = stylereports.logTextOfParasWithStyle(report_dict, doc_root, cfg.imageholder_style, "image_holders", sectionnames, cfg.script_name)
     # log texts of inline illustration-holder runs, also checks for valid imageholder strings
-    report_dict = stylereports.logTextOfRunsWithStyle(report_dict, doc_root, cfg.inline_imageholder_style, "image_holders", cfg.script_name)
+    report_dict = stylereports.logTextOfRunsWithStyle(report_dict, doc_root, cfg.inline_imageholder_style, "image_holders", sectionnames, cfg.script_name)
 
     # check first para for non-section-Bookstyle
     booksection_stylename_short = lxml_utils.transformStylename(cfg.booksection_stylename)
@@ -870,10 +887,6 @@ def rsuiteValidations(report_dict):
     report_dict = cleanNoteMarkers(report_dict, doc_root, cfg.footnote_ref_obj, cfg.footnote_ref_style, "footnote")
     #   endnotes
     report_dict = cleanNoteMarkers(report_dict, doc_root, cfg.endnote_ref_obj, cfg.endnote_ref_style, "endnote")
-
-    # # add/update para index numbers
-    logger.debug("Update all report_dict records with para_index")
-    report_dict = lxml_utils.calcLocationInfoForLog(report_dict, doc_root, sectionnames, alt_roots)
 
     # create sorted version of "image_holders" list in reportdict based on para_index; for reports
     if "image_holders" in report_dict:

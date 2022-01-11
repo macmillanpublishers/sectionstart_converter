@@ -12,6 +12,8 @@ from lxml import etree
 
 # ######### IMPORT LOCAL MODULES
 import cfg
+# # for benchmarking during tests:
+# from shared_utils.decorators import benchmark as benchmark
 
 ######### LOCAL DECLARATIONS
 styles_xml = cfg.styles_xml
@@ -169,7 +171,7 @@ def getStyleLongname(styleshortname, stylenamemap={}):
         styles_tree = etree.parse(styles_xml)
         styles_root = styles_tree.getroot()
         if styleshortname == "n-a":
-            stylelongname = "not avaliable"
+            stylelongname = "not available"
         elif styleshortname in stylenamemap:
             stylelongname = stylenamemap[styleshortname]
             # print "in the map!"
@@ -385,11 +387,11 @@ def sectionStartTally(report_dict, section_names, doc_root, call_type, headingst
             section_name = stylename
             # # check if we're in a table; if so, log it as an err and 'continue' to next para
             if para.getparent().tag == '{{{}}}tc'.format(wnamespace):
-                report_dict = logForReport(report_dict,doc_root,para,"illegal_style_in_table",section_name)
+                logForReport(report_dict, doc_root, para, 'illegal_style_in_table', section_name, ['section_info'], section_names)
                 continue
             # log the section start para
             #   (we can run this before content is added to paras, b/c that content is captured later in the 'calcLocationInfoForLog' method
-            report_dict = logForReport(report_dict,doc_root, para, "section_start_found", section_name)
+            logForReport(report_dict, doc_root, para, 'section_start_found', section_name, ['section_info'], section_names)
 
             # check to see ifthe para is empty (no contents) and if so log it, and, if 'call_type' is insert, fix it.
             if not getParaTxt(para).strip():
@@ -400,11 +402,10 @@ def sectionStartTally(report_dict, section_names, doc_root, call_type, headingst
                     # add new content to Para! ()'True' = remove existing run(s) from para that may contain whitespace)
                     addRunToPara(content, para, True)
                     # log it for report
-                    report_dict = logForReport(report_dict,doc_root,para,"wrote_to_empty_section_start_para",section_name)
+                    logForReport(report_dict, doc_root, para, 'wrote_to_empty_section_start_para', section_name, ['section_info'], section_names)
                 else:
                     # log it for report
-                    report_dict = logForReport(report_dict,doc_root,para,"empty_section_start_para",section_name)
-    # logger.warn("finish = %s" % time.strftime("%y%m%d-%H%M%S"))
+                    logForReport(report_dict, doc_root, para, 'empty_section_start_para', section_name, ['section_info'], section_names)
     return report_dict
 
 def createMiscElement(element_name, namespace, attribute_name='', attr_val='', attr_namespace=''):
@@ -531,12 +532,53 @@ def autoNumberSectionParaContent(report_dict, section_names, autonumber_sections
                 # increment autonum
                 autonum += 1
                 # optional logging:
-                logForReport(report_dict,doc_root,para,"autonumbering_applied",sectionlongname)
+                logForReport_old(report_dict,doc_root,para,"autonumbering_applied",sectionlongname)
+
+    return report_dict
+
+def logForReport(report_dict, xml_root, para, category, description='', log_extras=[], section_names={}):#, para_id=None):
+    # create a new dict for this item
+    para_dict = {}
+    if xml_root is not None:
+        para_dict['xml_file'] = etree.QName(xml_root).localname
+    else:
+        para_dict['xml_file'] = 'document'
+
+    # get para_id as needed
+    if cfg.loglevel == 'DEBUG' or 'para_id' in log_extras or os.environ.get('TEST_FLAG'):
+        if para is not None:
+            para_dict["para_id"] = getParaId(para, xml_root)
+        else:
+            para_dict["para_id"] = 'n-a'
+
+    # set description
+    if description:
+        para_dict["description"] = description
+
+    # handle extras
+    if log_extras:
+        lookup_element = para
+        tablecell_tag = '{%s}tc' % wnamespace
+        # if we are in a table, set our top-level lookup for index and ss info to the table
+        if para.getparent().tag == tablecell_tag:
+            para_dict['tablecell_para'] = True
+            lookup_element = para.getparent().getparent().getparent()
+        if 'section_info' in log_extras and para_dict['xml_file'] == 'document':
+            para_dict['parent_section_start_type'], para_dict['parent_section_start_content'] = getSectionName(lookup_element, section_names)
+        if 'para_index' in log_extras:
+            para_dict['para_index'] = getParaIndex(lookup_element)
+        if 'para_string' in log_extras:
+            para_dict['para_string'] = ' '.join(getParaTxt(para).split(' ')[:10])
+
+    # finally, add to category in report_dict
+    if category not in report_dict:
+        report_dict[category] = []
+    report_dict[category].append(para_dict.copy())
 
     return report_dict
 
 # a method to log paragraph id for style report etc
-def logForReport(report_dict,doc_root,para,category,description, para_id=None):
+def logForReport_old(report_dict,doc_root,para,category,description, para_id=None):
     para_dict = {}
     if para_id is None:
         para_dict["para_id"] = getParaId(para, doc_root)

@@ -5,6 +5,8 @@ import sys
 import logging
 # make sure to install lxml: sudo pip install lxml
 from lxml import etree
+# # \/ uncomment to use benchmark decorator
+# from shared_utils.decorators import benchmark as benchmark
 
 
 ######### IMPORT LOCAL MODULES
@@ -37,6 +39,76 @@ logger = logging.getLogger(__name__)
 
 
 # #---------------------  METHODS
+
+def makeReportStrings(base_string, item, recipe_item, report_dict, stylenamemap):
+    # set key items for .format to '' if they or their dependencies are not present in item
+    description = item['description'] if 'description' in item else ''
+    para_string = item['para_string'] if 'para_string' in item else ''
+
+    if 'parent_section_start_content' in item:
+        parent_section_start_content = item['parent_section_start_content']
+        section_count=sum(1 for sectiontxt in report_dict[recipe_item["dict_category_name"]] if sectiontxt['parent_section_start_content'] == item['parent_section_start_content'])
+    else:
+        parent_section_start_content = ''
+        section_count=''
+    if 'parent_section_start_type' in item:
+        parent_section_start_type = lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap)
+    else:
+        parent_section_start_type = ''
+
+    # for complicated descriptions, where we are transferring 2 pieces of info, we have to split them here for the errstring:
+    # if 'description' in item and "_" in item['description']:
+    if '_' in description:
+        descriptionA, descriptionB=item['description'].split("_",1)
+    else:
+        descriptionA, descriptionB = "", ""
+
+    # now we set err strings from report_recipe for toplist items
+    new_string = base_string.format(description=description.encode('utf-8'), \
+        para_string='"'+para_string.encode('utf-8')+'"', \
+        parent_section_start_content='"'+parent_section_start_content.encode('utf-8')+'"', \
+        parent_section_start_type=parent_section_start_type, \
+        count=len(report_dict[recipe_item["dict_category_name"]]), \
+        section_count=section_count, \
+        notes_count=sum(1 for notestype in report_dict[recipe_item["dict_category_name"]] if notestype['xml_file'] == item['xml_file']), \
+        notes_type=item['xml_file'].title(), \
+        descriptionA=descriptionA.encode('utf-8'), \
+        descriptionB=descriptionB.encode('utf-8'), \
+        valid_file_extensions=cfg.imageholder_supported_ext)
+
+    if "badnews" in recipe_item and 'tablecell_para' in item and item['tablecell_para'] == True:# and not("summary" in recipe_item and recipe_item["summary"] == True):
+        if 'suppress_table_note' not in recipe_item or recipe_item['suppress_table_note'] != True:
+            new_string += "  (< this item is from a table)"
+
+    return new_string
+
+def reportMissingItems(recipe_item, errorlist, warninglist):
+    # if this is required content and is absent from report_dict, we have an error.
+    if "required" in recipe_item and recipe_item["required"] == True:
+        errorlist.append(recipe_item["errstring"])
+    # if this is suggested content and is absent from report_dict, we have a warning.
+    if "suggested" in recipe_item and recipe_item["suggested"] == True:
+        warninglist.append(recipe_item["errstring"])
+    # if we have alternate content, add it in (if we continue using this item)
+    if "alternate_content" in recipe_item:
+        tmptextlist = []
+        tmptextlist.append("")
+        if "title" in recipe_item["alternate_content"]:
+            formattedtitle = "\n{:-^80}".format(" "+recipe_item["alternate_content"]["title"]+" ")
+            tmptextlist.append(formattedtitle)
+        # if no alt title listed, get original title
+        elif "title" in recipe_item and recipe_item["title"]:
+            formattedtitle = "\n{:-^80}".format(" "+recipe_item["title"]+" ")
+            tmptextlist.append(formattedtitle)
+        if "text" in recipe_item["alternate_content"]:
+            tmptextlist.append(recipe_item["alternate_content"]["text"])
+        elif "text" in recipe_item and recipe_item["text"]:
+            tmptextlist.append(recipe_item["text"])
+    # if this is not required and there's no output from the file, reset this part of the report.
+    elif "required" not in recipe_item or recipe_item["required"] != True:
+        tmptextlist =[]
+    return errorlist, warninglist, tmptextlist
+
 def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_item, errorlist, warninglist, notelist, validator_warnings):
     # make sure we're not supposed to skip this recipe_item as per "include_for" key
     if "include_for" in recipe_item and scriptname in recipe_item["include_for"]:
@@ -53,44 +125,27 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
         if "dict_category_name" in recipe_item and recipe_item["dict_category_name"]:
             # if the category is in report_dict and has contents, proceed, else, print an alternate & log err as needed
             if recipe_item["dict_category_name"] in report_dict and report_dict[recipe_item["dict_category_name"]]:
+                # apply validator warning banner if present in report_Dict
                 if "v_warning_banner" in recipe_item and recipe_item["v_warning_banner"]:
                     if recipe_item["v_warning_banner"] not in validator_warnings:
                         validator_warnings.append("- %s" % recipe_item['v_warning_banner'])
-                    # validator_warnings = True
+                # cycle through report_recipe categories
                 for item in report_dict[recipe_item["dict_category_name"]]:
+                    # for Macmillan_style_first_use category, write sectionname if new section
                     if recipe_item["dict_category_name"] == "Macmillan_style_first_use":
-                        new_section_text = recipe_item["new_section_text"].format(parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', \
-                            parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap))
+                        new_section_text = makeReportStrings(recipe_item["new_section_text"], item, recipe_item, report_dict, stylenamemap)
                         if new_section_text not in tmptextlist:
                             tmptextlist.append(new_section_text)
-                    # line = "{:<40}:{:>30}".format("parent_section_start_type","'parent_section_start_content'")
-                    newline = recipe_item["line_template"].format(description=item['description'].encode('utf-8'), para_string='"'+item['para_string'].encode('utf-8')+'"', \
-                        parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', \
-                        parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap), para_index=item['para_index'])
-                    # newline = line.replace("zdescription", item['description']).replace("para_string", item['para_string']).replace("parent_section_start_content", item['parent_section_start_content'])
-                    # newline = newline.replace("parent_section_start_type", lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap))
+                    # add line_template for recipe_item
+                    newline = makeReportStrings(recipe_item["line_template"], item, recipe_item, report_dict, stylenamemap)
                     tmptextlist.append(newline)
+
+                    # handle 'badnews=any' categories, (where item's presence in report_dict indicates reportable issue)
                     if "badnews" in recipe_item and recipe_item["badnews"] == 'any':
-                        # for complicated descriptions, where we are transferring 2 pieces of info, we have to split them here for the errstring:
-                        if "_" in item['description']:
-                            descriptionA, descriptionB=item['description'].split("_",1)
-                        else:
-                            descriptionA, descriptionB = "", ""
-                        # now we set err strings from report_recipe for toplist items
-                        new_errstring = recipe_item["errstring"].format(description=item['description'].encode('utf-8'), \
-                            para_string='"'+item['para_string'].encode('utf-8')+'"', \
-                            parent_section_start_content='"'+item['parent_section_start_content'].encode('utf-8')+'"', \
-                            parent_section_start_type=lxml_utils.getStyleLongname(item['parent_section_start_type'], stylenamemap), \
-                            para_index=item['para_index'], \
-                            count=len(report_dict[recipe_item["dict_category_name"]]), \
-                            section_count=sum(1 for sectiontxt in report_dict[recipe_item["dict_category_name"]] if sectiontxt['parent_section_start_content'] == item['parent_section_start_content']), \
-                            notes_count=sum(1 for notestype in report_dict[recipe_item["dict_category_name"]] if notestype['parent_section_start_type'] == item['parent_section_start_type']), \
-                            descriptionA=descriptionA.encode('utf-8'), \
-                            descriptionB=descriptionB.encode('utf-8'), \
-                            valid_file_extensions=cfg.imageholder_supported_ext)
-                        if item['para_index'] == 'tablecell_para':# and not("summary" in recipe_item and recipe_item["summary"] == True):
-                            if 'suppress_table_note' not in recipe_item or recipe_item['suppress_table_note'] != True:
-                                new_errstring += "  (< this item is from a table)"
+                        # for 'badnews=any' recipe items present in report_dict, build err strings
+                        new_errstring = makeReportStrings(recipe_item["errstring"], item, recipe_item, report_dict, stylenamemap)
+
+                        # # # add errstring under appropriate category (err/warning/note)
                         # added 'summary' key so we could specify whether to summarize warnings or notes:
                         #   default is warnings are listed singly, notes are summarized
                         alerttypes = {
@@ -115,6 +170,8 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                                 errorlist.append(new_errstring)
                                 break
                         tmptextlist =[]
+
+                    # handle 'badnews = one_allowed' categories
                     if "badnews" in recipe_item and recipe_item["badnews"] == 'one_allowed' and len(report_dict[recipe_item["dict_category_name"]]) > 1:
                         new_errstring = recipe_item["errstring"].format(count=len(report_dict[recipe_item["dict_category_name"]]))
                         if "badnews_type" in recipe_item and recipe_item["badnews_type"] == 'warning':
@@ -129,32 +186,9 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                             errorlist.append(new_errstring)
                             break
                         tmptextlist =[]
+            # if required item is missing from report_dict, apply related line_template to report
             else:
-                # if this is required content and is absent from report_dict, we have an error.
-                if "required" in recipe_item and recipe_item["required"] == True:
-                    errorlist.append(recipe_item["errstring"])
-                # if this is suggested content and is absent from report_dict, we have a warning.
-                if "suggested" in recipe_item and recipe_item["suggested"] == True:
-                    warninglist.append(recipe_item["errstring"])
-                # if we have alternate content, add it in (if we continue using this item)
-                if "alternate_content" in recipe_item:
-                    tmptextlist = []
-                    tmptextlist.append("")
-                    if "title" in recipe_item["alternate_content"]:
-                        formattedtitle = "\n{:-^80}".format(" "+recipe_item["alternate_content"]["title"]+" ")
-                        tmptextlist.append(formattedtitle)
-                    # if no alt title listed, get original title
-                    elif "title" in recipe_item and recipe_item["title"]:
-                        formattedtitle = "\n{:-^80}".format(" "+recipe_item["title"]+" ")
-                        tmptextlist.append(formattedtitle)
-                    if "text" in recipe_item["alternate_content"]:
-                        tmptextlist.append(recipe_item["alternate_content"]["text"])
-                    elif "text" in recipe_item and recipe_item["text"]:
-                        tmptextlist.append(recipe_item["text"])
-                # if this is not required and there's no output from the file, reset this part of the report.
-                elif "required" not in recipe_item or recipe_item["required"] != True:
-                    tmptextlist =[]
-
+                errorlist, warninglist, tmptextlist = reportMissingItems(recipe_item, errorlist, warninglist)
         textreport_list += tmptextlist
     return validator_warnings
 
@@ -222,6 +256,7 @@ def addBanner(textreport_list, errorlist, warninglist, validator_warnings, scrip
             banner = report_recipe.getBanners()['validator_noerr']
     textreport_list.insert(0,banner)
 
+# @benchmark
 def generateReport(report_dict, outputtxt_path, scriptname):
     logger.info("* * * commencing buildreport function...")
     # # this reports the name of ths script that called this function, capturing so we can customize report output per product
@@ -275,12 +310,7 @@ def generateReport(report_dict, outputtxt_path, scriptname):
 #
 #     report_dict = {}
 #     # for debug:
-#     txtfile = '/Users/matthew.retzer/Documents/programming_projects/1710_1_makereport/etstB.txt'
-#     report_dict = os_utils.readJSON('/Users/matthew.retzer/Documents/programming_projects/1708_2_python_ssconvertertests/tmpdir_validatepy/stylereport.json')
+#     txtfile = '/Users/~/Documents/test.txt'
+#     report_dict = os_utils.readJSON('/Users/Documents/stylereport.json')
 #
 #     generateReport(report_dict, txtfile)
-#
-#     # concerns / next steps.  Will have to look at if we can scrape authors titles and isbns pre combination.
-#     # should add illustration holder spans too
-#     # character styles in use are not in order - check Erica's?. Changed them to separate category.
-#     # could have also sorte so they were mixed in with orig category.

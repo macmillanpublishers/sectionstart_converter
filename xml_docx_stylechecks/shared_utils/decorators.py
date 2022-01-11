@@ -40,16 +40,10 @@ def benchmark(func):
     import time
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        try:
-            print ("s")
-            t = time.clock()
-            p
-            res = func(*args, **kwargs)
-            print (func.__name__, " elapsed: {}".format(time.clock()-t))
-            return res
-        except:
-            print ("q")
-            raise
+        t = time.clock()
+        res = func(*args, **kwargs)
+        print ('BENCHMARK: ', func.__name__, " elapsed: {}".format(time.clock()-t))
+        return res
     return wrapper
 
 def debug_logging(func):

@@ -155,9 +155,14 @@ def setupTestFilesinTmp(test_foldername, badxml_srcdir):
     shutil.copytree(badxml_srcdir, test_tmpdir)
     return test_tmpdir
 
+def findParaWithId(root, para_id):
+    searchstring = ".//*w:p[@w14:paraId='{}']".format(para_id)
+    para = root.find(searchstring, cfg.wordnamespaces)
+    return para
 
 class Tests(unittest.TestCase):
     def setUp(self):
+        logging.basicConfig(level=logging.ERROR)
         # build a basic xml object with lxml.objectify
         myE = objectify.ElementMaker(annotate=False, namespace=cfg.wnamespace, nsmap=cfg.wordnamespaces)
         root = myE.root( myE.body() )
@@ -189,7 +194,13 @@ class Tests(unittest.TestCase):
         report_dict, xml_root = doc_prepare.deleteObjects({}, badxml_root, ['mc:AlternateContent', 'w:drawing'], "shapes")
 
         # # # ASSERTION:  compare report_dict output, xml_strings, with expected
-        self.assertEqual(report_dict, {'deleted_objects-shapes': [{'description': 'deleted shapes of type mc:AlternateContent','para_id': '19599D3D'},{'description': 'deleted shapes of type w:drawing','para_id': '3BED26FA'}]})
+        self.assertEqual(report_dict, {'deleted_objects-shapes': [
+            {'description': 'deleted shapes of type mc:AlternateContent',
+                'para_id': '19599D3D',
+                'xml_file': 'document'},
+            {'description': 'deleted shapes of type w:drawing',
+                'para_id': '3BED26FA',
+                'xml_file': 'document'}]})
         self.assertEqual(normalizeXML(xml_root), normalizeXMLfile(expected_xml))
 
     def test_deleteObjects_targetNotPresent(self):
@@ -207,7 +218,10 @@ class Tests(unittest.TestCase):
         report_dict__basic, xml_root__basic = doc_prepare.deleteObjects({}, self.testroot, ['unwanted_object'], "bad_object")
 
         # # # ASSERTION:  assert for basic run on basic constructed xml object
-        self.assertEqual(report_dict__basic, {'deleted_objects-bad_object': [{'description': 'deleted bad_object of type unwanted_object','para_id': 'test_id'}]})
+        self.assertEqual(report_dict__basic, {'deleted_objects-bad_object': [
+            {'description': 'deleted bad_object of type unwanted_object',
+            'para_id': 'test_id',
+            'xml_file': 'root'}]})
         self.assertEqual(normalizeXML(xml_root__basic), normalizeXML(self.expected_root))
 
     def test_checkFilenameChars_allbadchars(self):
@@ -245,11 +259,14 @@ class Tests(unittest.TestCase):
         # setup
         root, para = createXML_paraWithRun(fullstylename, '', badfilename)
         # run function
-        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename, {})
 
-        expected_rd = {'image_holder_badchar': \
-            [{'description': "{}_{}".format(fullstylename, badfilename), \
-                'para_id': 'test'}]}
+        expected_rd = {'image_holder_badchar': [{
+            'description': "{}_{}".format(fullstylename, badfilename),
+            'para_id': 'test',
+            'parent_section_start_content': '',
+            'parent_section_start_type': 'n-a',
+            'xml_file': 'document'}]}
         self.assertEqual(report_dict, expected_rd)
 
     def test_validateImageHolders_wrongext(self):
@@ -260,11 +277,14 @@ class Tests(unittest.TestCase):
         # setup
         root, para = createXML_paraWithRun(fullstylename, '', badfilename)
         # run function
-        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename, {})
 
-        expected_rd = {'image_holder_ext_error': \
-            [{'description': "{}_{}".format(fullstylename, badfilename), \
-                'para_id': 'test'}]}
+        expected_rd = {'image_holder_ext_error': [{
+            'description': "{}_{}".format(fullstylename, badfilename),
+            'para_id': 'test',
+            'parent_section_start_content': '',
+            'parent_section_start_type': 'n-a',
+            'xml_file': 'document'}]}
         self.assertEqual(report_dict, expected_rd)
 
     def test_validateImageHolders_noext(self):
@@ -273,11 +293,14 @@ class Tests(unittest.TestCase):
         # setup
         root, para = createXML_paraWithRun(fullstylename, '', badfilename)
         # run function
-        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename, {})
 
-        expected_rd = {'image_holder_ext_error': \
-            [{'description': "{}_{}".format(fullstylename, badfilename), \
-                'para_id': 'test'}]}
+        expected_rd = {'image_holder_ext_error': [{
+            'description': "{}_{}".format(fullstylename, badfilename),
+            'para_id': 'test',
+            'parent_section_start_content': '',
+            'parent_section_start_type': 'n-a',
+            'xml_file': 'document'}]}
         self.assertEqual(report_dict, expected_rd)
 
     def test_validateImageHolders_unicodechar(self):
@@ -286,11 +309,14 @@ class Tests(unittest.TestCase):
         # setup
         root, para = createXML_paraWithRun(fullstylename, '', filename)
         # run function
-        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, filename)
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, filename, {})
 
-        expected_rd = {'image_holder_badchar': \
-            [{'description': u'Image-Placement (Img)_\u2014[(\u2014)-].jpg', \
-                'para_id': 'test'}]}
+        expected_rd = {'image_holder_badchar': [{
+            'description': u'Image-Placement (Img)_\u2014[(\u2014)-].jpg',
+            'para_id': 'test',
+            'parent_section_start_content': '',
+            'parent_section_start_type': 'n-a',
+            'xml_file': 'document'}]}
         self.assertEqual(report_dict, expected_rd)
 
     def test_validateImageHolders_inlineholder(self):
@@ -299,11 +325,14 @@ class Tests(unittest.TestCase):
         # setup
         root, para = createXML_paraWithRun('test', fullstylename, badfilename)
         # run function
-        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename, {})
 
-        expected_rd = {'image_holder_badchar': \
-            [{'description': "{}_{}".format(fullstylename, badfilename), \
-                'para_id': 'test'}]}
+        expected_rd = {'image_holder_badchar': [{
+            'description': "{}_{}".format(fullstylename, badfilename),
+            'para_id': 'test',
+            'parent_section_start_content': '',
+            'parent_section_start_type': 'n-a',
+            'xml_file': 'document'}]}
         self.assertEqual(report_dict, expected_rd)
 
     def test_validateImageHolders_badcharANDnoext(self):
@@ -312,14 +341,20 @@ class Tests(unittest.TestCase):
         # setup
         root, para = createXML_paraWithRun(fullstylename, '', badfilename)
         # run function
-        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename)
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename, {})
 
-        expected_rd = {'image_holder_ext_error': \
-            [{'description': "{}_{}".format(fullstylename, badfilename), \
-                'para_id': 'test'}], \
-            'image_holder_badchar': \
-            [{'description': "{}_{}".format(fullstylename, badfilename), \
-                'para_id': 'test'}]}
+        expected_rd = {'image_holder_ext_error': [{
+                'description': "{}_{}".format(fullstylename, badfilename),
+                'para_id': 'test',
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a',
+                'xml_file': 'document'}],
+            'image_holder_badchar': [{
+                'description': "{}_{}".format(fullstylename, badfilename),
+                'para_id': 'test',
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a',
+                'xml_file': 'document'}]}
         self.assertEqual(report_dict, expected_rd)
 
     def test_validateImageHolders_noproblems(self):
@@ -328,31 +363,43 @@ class Tests(unittest.TestCase):
         # setup
         root, para = createXML_paraWithRun(fullstylename, '', filename)
         # run function
-        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, filename)
+        report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, filename, {})
 
-        expected_rd = {}
-        self.assertEqual(report_dict, expected_rd)
+        self.assertEqual(report_dict, {})
 
     def test_logTextOfRunsWithStyle(self):
         runstylename = 'test-style'
+        leadingtxt, trailingtxt = 'leading non sequitur: ', ' , trailing non sequitur.'
         run1txt, run2txt, run3txt = "How are ", "you today ", " the end "
         interloper_el = etree.Element("{%s}proofErr" % cfg.wnamespace) #< these occur between runs in real docx
         interloper_el2 = etree.Element("{%s}proofErr" % cfg.wnamespace) #< these occur between runs in real docx
         interloper_el3 = etree.Element("{%s}proofErr" % cfg.wnamespace) #< these occur between runs in real docx
 
         # setup
-        root, para = createXML_paraWithRun("Pteststyle", '', 'leading non sequitur: ')
+        root, para = createXML_paraWithRun("Pteststyle", '', leadingtxt)
         para.insert(0, interloper_el)
         para = appendRuntoXMLpara(para, runstylename, run1txt)
         para.append(interloper_el2)
         para = appendRuntoXMLpara(para, runstylename, run2txt)
         para.append(interloper_el3)
-        para = appendRuntoXMLpara(para, '', ' , trailing non sequitur.')
+        para = appendRuntoXMLpara(para, '', trailingtxt)
         para = appendRuntoXMLpara(para, runstylename, run3txt)
+
         # run function
-        report_dict = stylereports.logTextOfRunsWithStyle({}, root, runstylename, 'demo_report_category')
-        expected_rd = {'demo_report_category': [{'description': '{}'.format(run1txt + run2txt), 'para_id': 'test'}, \
-        {'description': run3txt, 'para_id': 'test'}]}
+        report_dict = stylereports.logTextOfRunsWithStyle({}, root, runstylename, 'demo_report_category', {})
+        expected_rd = {'demo_report_category': [
+            {'description': '{}'.format(run1txt + run2txt),
+                'para_id': 'test',
+                'para_index': 0,
+                'para_string': ' '.join(lxml_utils.getParaTxt(para).split(' ')[:10]),# < matches logForReport capture
+                'xml_file': 'document'},
+            {'description': run3txt,
+                'para_id': 'test',
+                'para_index': 0,
+                'para_string': ' '.join(lxml_utils.getParaTxt(para).split(' ')[:10]),# < matches logForReport capture
+                'xml_file': 'document'}]}
+
+        # assertion
         self.assertEqual(report_dict, expected_rd)
 
     def test_checkEndnoteFootnoteStyles(self):
@@ -379,9 +426,15 @@ class Tests(unittest.TestCase):
         separator_endnote.append(separator_enpara)
         # run function
         report_dict = rsuite_validations.checkEndnoteFootnoteStyles(root, {}, note_style, note_sectionname)
-        expected_rd = {'improperly_styled_{}'.format(note_sectionname): \
-            [{'para_id': unstyled_id, 'description': 'Normal'}, \
-            {'para_id': bad_id, 'description': bad_pStyle}]}
+        expected_rd = {'improperly_styled_{}'.format(note_sectionname): [
+            {'description': 'Normal',
+                'para_id': 'p_id2',
+                'para_string': 'Pstyle-less Para',
+                'xml_file': 'document'},
+            {'description': bad_pStyle,
+                'para_id': 'p_id3',
+                'para_string': 'Bad-styled para',
+                'xml_file': 'document'}]}
         self.assertEqual(report_dict, expected_rd)
 
     # a duplicate of above test, but with a more accurate nsmap (without w14 ns)
@@ -409,9 +462,15 @@ class Tests(unittest.TestCase):
         separator_endnote.append(separator_enpara)
         # run function
         report_dict = rsuite_validations.checkEndnoteFootnoteStyles(root, {}, note_style, note_sectionname)
-        expected_rd = {'improperly_styled_{}'.format(note_sectionname): \
-            [{'para_id': unstyled_id, 'description': 'Normal'}, \
-            {'para_id': bad_id, 'description': bad_pStyle}]}
+        expected_rd = {'improperly_styled_{}'.format(note_sectionname): [
+            {'para_id': unstyled_id,
+                'para_string': 'Pstyle-less Para',
+                'xml_file': 'document',
+                'description': 'Normal'},
+            {'para_id': bad_id,
+                'para_string': 'Bad-styled para',
+                'xml_file': 'document',
+                'description': bad_pStyle}]}
         self.assertEqual(report_dict, expected_rd)
 
     def test_handleBlankParasInNotes_multiblanks(self):
@@ -445,10 +504,15 @@ class Tests(unittest.TestCase):
 
         # run function
         report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, cfg.note_separator_types, note_stylename, noteref_stylename, note_name, note_section)
-        expected_rd = {'found_empty_note': [{'description': "endnote",
-                        'para_id': 'p_id-1'}],
-                        'removed_blank_para': [{'description': 'excess blank para in empty endnote',
-                        'para_id': 'bp_id2'}]}
+        expected_rd = {'found_empty_note': [{
+                    'description': "endnote",
+                    'para_string': '[no text]',
+                    'xml_file': 'document',
+                    'para_id': 'p_id-1'}],
+                'removed_blank_para': [{
+                    'description': 'excess blank para in empty endnote',
+                    'xml_file': 'document',
+                    'para_id': 'bp_id2'}]}
         # assert!
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(test_root), etree.tostring(after_root))
@@ -486,11 +550,13 @@ class Tests(unittest.TestCase):
 
         # run function
         report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, cfg.note_separator_types, note_stylename, noteref_stylename, note_name, note_section)
-        expected_rd = {'removed_blank_para': \
-            [{'description': 'blank para in endnote note with other text; note_id: 3', \
-            'para_id': para_id}, \
-            {'description': 'blank para in endnote note with other text; note_id: 3', \
-            'para_id': para_id3}]}
+        expected_rd = {'removed_blank_para':
+            [{'description': 'blank para in endnote note with other text; note_id: 3',
+                'para_id': para_id,
+                'xml_file': 'document'},
+            {'description': 'blank para in endnote note with other text; note_id: 3',
+                'para_id': para_id3,
+                'xml_file': 'document'}]}
         # assert!
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(test_root), etree.tostring(after_root))
@@ -514,8 +580,13 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, cfg.note_separator_types, note_stylename, noteref_stylename, note_name, note_section)
 
         # assert!
-        expected_rd = {'table_blank_para_notes': [{'description': 'blank para in table cell in endnote',
-                        'para_id': para_id}]}
+        expected_rd = {'table_blank_para_notes': [{
+                    'description': 'blank para in table cell in endnote',
+                    'xml_file': 'document',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'tablecell_para': True,
+                    'para_id': para_id}]}
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(test_root), etree.tostring(expected_root))
 
@@ -538,9 +609,16 @@ class Tests(unittest.TestCase):
 
         # run function
         report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, cfg.note_separator_types, note_stylename, noteref_stylename, note_name, note_section)
-        expected_rd = {'removed_blank_para': [{'description': 'excess blank para in empty endnote',
+        expected_rd = {'removed_blank_para': [{
+                        'description': 'excess blank para in empty endnote',
+                        'xml_file': 'document',
                         'para_id': 'bp_id1'}],
-                        'table_blank_para_notes': [{'description': 'blank para in table cell in endnote',
+                        'table_blank_para_notes': [{
+                        'parent_section_start_content': '',
+                        'parent_section_start_type': 'n-a',
+                        'tablecell_para': True,
+                        'xml_file': 'document',
+                        'description': 'blank para in table cell in endnote',
                         'para_id': 'table_p1'}]}
         # assert!
         self.assertEqual(report_dict, expected_rd)
@@ -572,8 +650,10 @@ class Tests(unittest.TestCase):
 
         # run function
         report_dict = rsuite_validations.handleBlankParasInNotes({}, test_root, cfg.note_separator_types, note_stylename, noteref_stylename, note_name, note_section)
-        expected_rd = {'found_empty_note': \
-            [{'description': 'footnote', \
+        expected_rd = {'found_empty_note': [{
+            'description': 'footnote',
+            'xml_file': 'document',
+            'para_string': '[no text]',
             'para_id': para_id}]}
         # assert!
         self.assertEqual(report_dict, expected_rd)
@@ -608,93 +688,6 @@ class Tests(unittest.TestCase):
         # assert!
         self.assertEqual(report_dict, {})
         self.assertEqual(etree.tostring(expected_root), etree.tostring(root))
-
-    # testing targeting at new functionality: pulling info from footnotes/endnotes_xml
-    # note: this is a little more of an integration test, b/c a more convoluted function
-    def test_calcLocationInfoForLog(self):
-        logging.basicConfig(level=logging.ERROR)
-        # ^ without this we get a notice about logger handlers being unavailable.
-        #   Can change loglevel to see mssges
-        sectionnames = ["Section-Test (TEST)"]
-        # create main root mockup with no preceding section para, and one with section preceding
-        root, para = createXML_paraWithRun('BodyTextTxt', '', "I'm a para with no section", None, 'p_id0')
-        root, para = createXML_paraWithRun(sectionnames[0], '', "Section Heading", root, 'p_id1')
-        root, para = createXML_paraWithRun('BodyTextTxt', '', "I'm a normal para", root, 'p_id2')
-        # create alt root mockup with endnote, child para
-        altroot = createXMLroot()
-        endnote = createMiscElement('endnote', cfg.wnamespace, 'id', '1', cfg.wnamespace)
-        enpara = createPara('en_p_id1', 'EndnoteText', 'I am endnote txt.')
-        altroot.append(endnote)
-        endnote.append(enpara)
-        # create initial report_dict. Adding a paragraph ref, 'p_id3',which does not exist,
-        #   since some paras get deleted prior to this function
-        report_dict = {'test_category': \
-            [{'para_id': 'p_id0', 'description': 'mainxml'}, \
-            {'para_id': 'p_id2', 'description': 'mainxml'}, \
-            {'para_id': 'en_p_id1', 'description': 'altxml'}, \
-            {'para_id': 'p_id3', 'description': 'mainxml'}]}
-        # run function
-        report_dict = lxml_utils.calcLocationInfoForLog(report_dict, root, sectionnames, {'Endnotes':altroot})
-        #assertion
-        expected_rd =  {'test_category': [{'description': 'mainxml',
-                'para_id': 'p_id0',
-                'para_index': 0,
-                'para_string': "I'm a para with no section",
-                'parent_section_start_content': '',
-                'parent_section_start_type': 'n-a'},
-            {'description': 'mainxml',
-                'para_id': 'p_id2',
-                'para_index': 2,
-                'para_string': "I'm a normal para",
-                'parent_section_start_content': 'Section Heading',
-                'parent_section_start_type': 'Section-Test (TEST)'},
-            {'description': 'altxml',
-                'note-or-comment_id': '1',
-                'para_id': 'en_p_id1',
-                'para_index': 'n-a',
-                'para_string': 'I am endnote txt.',
-                'parent_section_start_content': 'n-a',
-                'parent_section_start_type': 'Endnotes'},
-            {'description': 'mainxml',
-                'para_id': 'p_id3',
-                'para_index': 'n-a',
-                'para_string': 'n-a',
-                'parent_section_start_content': '',
-                'parent_section_start_type': 'n-a'}]}
-        self.assertEqual(report_dict, expected_rd)
-
-    def test_calcLocationInfoForLog_tablepara(self):
-        logging.basicConfig(level=logging.ERROR)
-        # ^ without this we get a notice about logger handlers being unavailable.
-        #   Can change loglevel to see mssges
-        sectionnames = ["Section-Test (TEST)"]
-        para_id = 'table_p_id1'
-        # create alt root mockup with endnote, child para
-        root, para = createXML_paraWithRun(sectionnames[0], '', "Section Heading", None, 'p_id1')
-        table = createMiscElement('table', cfg.wnamespace)
-        tr = createMiscElement('tr', cfg.wnamespace)
-        tc = createMiscElement('tc', cfg.wnamespace)
-        para = createPara(para_id, 'BodyTextTxt', 'I am a para in a table')
-        tc.append(para)
-        tr.append(tc)
-        table.append(tr)
-        root.append(table)
-
-        # create initial report_dict. Adding a paragraph ref, 'p_id3',which does not exist,
-        #   since some paras get deleted prior to this function
-        report_dict = {'test_category': \
-            [{'para_id': para_id, 'description': 'tablecellpara'}]}
-
-        # run function
-        report_dict = lxml_utils.calcLocationInfoForLog(report_dict, root, sectionnames)
-        #assertion
-        expected_rd =  {'test_category': [{'description': 'tablecellpara',
-                'para_id': para_id,
-                'para_index': 'tablecell_para',
-                'para_string': "I am a para in a table",
-                'parent_section_start_content': 'Section Heading',
-                'parent_section_start_type': 'Section-Test (TEST)'}]}
-        self.assertEqual(report_dict, expected_rd)
 
     def test_checkNamespace(self):
         test_nsmap = {'w': cfg.wnamespace, 'tst': 'test_ns_value', 'w14': 'diff_ns_value'}
@@ -762,11 +755,16 @@ class Tests(unittest.TestCase):
         before_root = copy.deepcopy(root)
 
         # run our transform
-        report_dict, solopara_bool = rsuite_validations.handleBlankParasInTables({}, root, tblpara)
+        report_dict, solopara_bool = rsuite_validations.handleBlankParasInTables({}, root, tblpara, {})
 
         #assertions
-        expected_rd = {'table_blank_para': [{'description': 'blank para found in table cell',
-                        'para_id': 'p-id'}]}
+        expected_rd = {'table_blank_para': [{
+                'description': 'blank para found in table cell',
+                'xml_file': 'document',
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a',
+                'tablecell_para': True,
+                'para_id': 'p-id'}]}
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(solopara_bool, True)
 
@@ -809,8 +807,10 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.removeBlankParas({}, root, testsections, testcontainers, test_ends, test_breaks)
 
         #assertions
-        expected_rd = {'removed_blank_para': [{'description': 'removed BodyTextTxt-styled para',
-                        'para_id': 'badtxt_p'}]}
+        expected_rd = {'removed_blank_para': [{
+                'description': 'removed BodyTextTxt-styled para',
+                'xml_file': 'document',
+                'para_id': 'badtxt_p'}]}
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
 
@@ -840,10 +840,14 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.removeBlankParas({}, root, testsections, testcontainers, test_ends, test_breaks)
 
         #assertions
-        expected_rd = {'removed_blank_para': [{'description': 'removed Excerpt1-styled para',
-                        'para_id': 'badcontainer_p'}],
-                        'removed_container_blank_para': [{'description': 'Excerpt1_\'Section2: "Section1!"\'',
-                        'para_id': 'badcontainer_p'}]}
+        expected_rd = {'removed_blank_para': [{
+                    'description': 'removed Excerpt1-styled para',
+                    'xml_file': 'document',
+                    'para_id': 'badcontainer_p'}],
+                'removed_container_blank_para': [{
+                    'description': 'Excerpt1_\'Section2: "Section1!"\'',
+                    'xml_file': 'document',
+                    'para_id': 'badcontainer_p'}]}
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
 
@@ -873,14 +877,21 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.removeBlankParas({}, root_dupe, testsections, testcontainers, test_ends, test_breaks)
 
         #assertions
-        expected_rd = {'removed_blank_para': [{'description': 'removed Section2-styled para',
-                        'para_id': 'test'},
-                        {'description': 'removed Excerpt1-styled para',
-                        'para_id': 'badcontainer_p'}],
-                        'removed_container_blank_para': [{'description': 'Excerpt1_\'n-a: ""\'',
-                        'para_id': 'badcontainer_p'}],
-                        'removed_section_blank_para': [{'description': 'Section2',
-                        'para_id': 'test'}]}
+        expected_rd = {'removed_blank_para': [
+                {'description': 'removed Section2-styled para',
+                    'xml_file': 'document',
+                    'para_id': 'test'},
+                {'description': 'removed Excerpt1-styled para',
+                    'xml_file': 'document',
+                    'para_id': 'badcontainer_p'}],
+            'removed_container_blank_para': [
+                {'description': 'Excerpt1_\'n-a: ""\'',
+                    'xml_file': 'document',
+                    'para_id': 'badcontainer_p'}],
+            'removed_section_blank_para': [
+                {'description': 'Section2',
+                    'xml_file': 'document',
+                    'para_id': 'test'}]}
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
 
@@ -911,11 +922,20 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.removeBlankParas({}, root, testsections, testcontainers, test_ends, test_breaks)
 
         # assertions
-        expected_rd = {'removed_blank_para': [{'description': 'removed break2-styled para',
+        expected_rd = {'removed_blank_para': [
+                        {'description': 'removed break2-styled para',
+                        'xml_file': 'document',
                         'para_id': 'badbreak1_p'}],
-                        'removed_spacebreak_blank_para': [{'description': 'break2_\'Section2: "Section1!"\'',
+                    'removed_spacebreak_blank_para': [
+                        {'description': 'break2_\'Section2: "Section1!"\'',
+                        'xml_file': 'document',
                         'para_id': 'badbreak1_p'}],
-                        'table_blank_para': [{'description': 'blank para found in table cell',
+                    'table_blank_para': [
+                        {'description': 'blank para found in table cell',
+                        'xml_file': 'document',
+                        'parent_section_start_content': 'Section1!',
+                        'parent_section_start_type': 'Section2',
+                        'tablecell_para': True,
                         'para_id': 'badbreak2_p'}]}
         self.assertEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
@@ -968,7 +988,11 @@ class Tests(unittest.TestCase):
         report_dict_noend_s = rsuite_validations.checkContainers({}, root_noend_section, testsections, testcontainers, test_ends)
 
         #assertions
-        expected_rd = {'container_error': [{'para_id': 'container_p',
+        expected_rd = {'container_error': [{
+                        'xml_file': 'document',
+                        'parent_section_start_content': 'Section1!',
+                        'parent_section_start_type': 'Section2',
+                        'para_id': 'container_p',
                         'description': 'Excerpt1'}]}
         self.assertEqual(report_dict_noend, expected_rd)
         self.assertEqual(report_dict_noend_c, expected_rd)
@@ -990,9 +1014,19 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.checkContainers({}, root, testsections, testcontainers, test_ends)
 
         #assertions
-        expected_rd = {'illegal_style_in_table': [{'description': 'Excerpt1',
-                        'para_id': 'cntnrpara'},
-                        {'description': 'END', 'para_id': 'endpara'}]}
+        expected_rd = {'illegal_style_in_table': [
+                    {'description': 'Excerpt1',
+                    'xml_file': 'document',
+                    'parent_section_start_content': 'Section1!',
+                    'parent_section_start_type': 'Section2',
+                    'tablecell_para': True,
+                    'para_id': 'cntnrpara'},
+                    {'description': 'END',
+                    'xml_file': 'document',
+                    'parent_section_start_content': 'Section1!',
+                    'parent_section_start_type': 'Section2',
+                    'tablecell_para': True,
+                    'para_id': 'endpara'}]}
         self.assertEqual(report_dict, expected_rd)
 
     def test_checkContainers_extraends(self):
@@ -1019,10 +1053,28 @@ class Tests(unittest.TestCase):
         report_dict_end_and_sectionend = rsuite_validations.checkContainers({}, root_end_and_sectionend, testsections, testcontainers, test_ends)
 
         #assertions
-        expected_rd_doubleend = {'container_end_error': [{'description': 'END', 'para_id': 'end_p2'},
-                        {'description': 'END2', 'para_id': 'end_p1'}]}
-        expected_rd_end_and_sectionend = {'container_end_error': [{'description': 'END', 'para_id': 'end_p1b'},
-                        {'description': 'END', 'para_id': 'end_p3'}]}
+        expected_rd_doubleend = {'container_end_error': [
+                        {'description': 'END',
+                        'xml_file': 'document',
+                        'parent_section_start_content': 'Section 1!',
+                        'parent_section_start_type': 'Section1',
+                        'para_id': 'end_p2'},
+                        {'description': 'END2',
+                        'xml_file': 'document',
+                        'parent_section_start_content': '',
+                        'parent_section_start_type': 'n-a',
+                        'para_id': 'end_p1'}]}
+        expected_rd_end_and_sectionend = {'container_end_error': [
+                        {'description': 'END',
+                        'xml_file': 'document',
+                        'parent_section_start_content': 'Section 2!',
+                        'parent_section_start_type': 'Section2',
+                        'para_id': 'end_p1b'},
+                        {'description': 'END',
+                        'xml_file': 'document',
+                        'parent_section_start_content': 'Section 2!',
+                        'parent_section_start_type': 'Section2',
+                        'para_id': 'end_p3'}]}
         self.assertEqual(report_dict_doubleend, expected_rd_doubleend)
         self.assertEqual(report_dict_end_and_sectionend, expected_rd_end_and_sectionend)
 
@@ -1335,13 +1387,13 @@ class Tests(unittest.TestCase):
         cntrl_report_dict = rsuite_validations.flagCustomNoteMarks(cntrl_root, {}, refstyle_dict)
 
         expected_rd = {'custom_endnote_mark':
-                [{'description': "custom note marker: '!', endnote id: 2", 'para_id': '4248380B'},
-                {'description': "custom note marker: '!!', endnote id: 3", 'para_id': '1CAB8160'},
-                {'description': "custom note marker: '111', endnote id: 5", 'para_id': '7BDB93ED'}],
+                [{'description': "custom note marker: '!', endnote id: 2", 'para_id': '4248380B', 'xml_file': 'document'},
+                {'description': "custom note marker: '!!', endnote id: 3", 'para_id': '1CAB8160', 'xml_file': 'document'},
+                {'description': "custom note marker: '111', endnote id: 5", 'para_id': '7BDB93ED', 'xml_file': 'document'}],
             'custom_footnote_mark':
-                [{'description': "custom note marker: '*', footnote id: 2", 'para_id': '7838E8E7'},
-                {'description': "custom note marker: '#', footnote id: 4", 'para_id': '739DEFD3'},
-                {'description': "custom note marker: '(custom ref-mark is symbol not text)', footnote id: 6", 'para_id': '72A0B3D3'}]}
+                [{'description': "custom note marker: '*', footnote id: 2", 'para_id': '7838E8E7', 'xml_file': 'document'},
+                {'description': "custom note marker: '#', footnote id: 4", 'para_id': '739DEFD3', 'xml_file': 'document'},
+                {'description': "custom note marker: '(custom ref-mark is symbol not text)', footnote id: 6", 'para_id': '72A0B3D3', 'xml_file': 'document'}]}
 
         #assertions
         self.assertEqual(cntrl_report_dict, {})
@@ -1361,8 +1413,8 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.fixSuperNoteMarks(fn_root, report_dict, superstyle, cfg.footnote_ref_style, 'footnote')
 
         expected_rd = {'note_markers_wrong_style':
-                [{'description': "super_styled ref-mark in endnotes, ref_id: 3", 'para_id': '32E9B737'},
-                {'description': "super_styled ref-mark in footnotes, ref_id: 3", 'para_id': '329170A0'}]}
+                [{'description': "super_styled ref-mark in endnotes, ref_id: 3", 'para_id': '32E9B737', 'xml_file': 'endnotes'},
+                {'description': "super_styled ref-mark in footnotes, ref_id: 3", 'para_id': '329170A0', 'xml_file': 'footnotes'}]}
 
         #assertions
         self.assertEqual(etree.tostring(fn_root), etree.tostring(getRoot(fn_finalxml)))
@@ -1411,6 +1463,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict_notes, {})
         self.assertEqual(report_dict_notes2, {'missing_notes_section':
                 [{'description': 'Endnotes are present, Notes Section is not',
+                'xml_file': 'document',
                 'para_id': 'n-a'}]})
 
     def test_duplicateSectionCheck(self):
@@ -1430,15 +1483,18 @@ class Tests(unittest.TestCase):
         rd_2_expected = dict(test_rd_2)
         rd_2_expected['too_many_section_para']= [{
             "description": "{}_2".format(cfg.notessection_stylename),
-            "para_id": "n-a"
+            "para_id": "n-a",
+            "xml_file": "document"
         }]
         rd_3_expected = dict(test_rd_3)
         rd_3_expected['too_many_section_para']= [{
             "description": "{}_3".format(cfg.booksection_stylename),
-            "para_id": "n-a"
+            "para_id": "n-a",
+            "xml_file": "document"
         }, {
             "description": "{}_2".format(cfg.notessection_stylename),
-            "para_id": "n-a"
+            "para_id": "n-a",
+            "xml_file": "document"
         }]
 
         #assertions
@@ -1481,22 +1537,34 @@ class Tests(unittest.TestCase):
         doc_root = getRoot(os.path.join(testfiles_basepath, 'test_getSectionOfNonContainerPara', 'document.xml'))
 
         # run function
-        report_dict_0 = rsuite_validations.logMainheadMultiples(mainhead_dict_0, doc_root, {})
-        report_dict_1 = rsuite_validations.logMainheadMultiples(mainhead_dict_1, doc_root, {})
-        report_dict_2 = rsuite_validations.logMainheadMultiples(mainhead_dict_2, doc_root, {})
+        report_dict_0 = rsuite_validations.logMainheadMultiples(mainhead_dict_0, doc_root, {}, {})
+        report_dict_1 = rsuite_validations.logMainheadMultiples(mainhead_dict_1, doc_root, {}, {})
+        report_dict_2 = rsuite_validations.logMainheadMultiples(mainhead_dict_2, doc_root, {}, {})
 
         # assertions
         self.assertEqual(report_dict_0, {})
         self.assertEqual(report_dict_1, {"too_many_heading_para":[{
                 "description": "stylename_2",
-                "para_id": "3BF0BAD8"
+                "para_id": "3BF0BAD8",
+                'para_index': 1,
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a',
+                'xml_file': 'document'
         }]})
         self.assertEqual(report_dict_2, {"too_many_heading_para":[{
                 "description": "stylename_100",
-                "para_id": "3BF0BAD8"
+                "para_id": "3BF0BAD8",
+                'para_index': 1,
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a',
+                'xml_file': 'document'
         }, {
                 "description": "stylename2_3",
-                "para_id": "57112316"
+                "para_id": "57112316",
+                'para_index': 8,
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a',
+                'xml_file': 'document'
         }]})
 
     def test_checkMainheadsPerSection(self):
@@ -1515,10 +1583,18 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict_ce_post, report_dict_ce)
         self.assertEqual(report_dict, {"too_many_heading_para":[{
                 "description": "{}_3".format(cfg.mainheadstyle),
-                "para_id": "57112316"
+                "para_id": "57112316",
+                'xml_file': 'document',
+                'para_index': 8,
+                'parent_section_start_content': 'Chapter',
+                'parent_section_start_type': 'Section-ChapterSCP'
         }, {
                 "description": "{}_2".format(cfg.titlestyle),
-                "para_id": "3BF0BAD8"
+                "para_id": "3BF0BAD8",
+                'xml_file': 'document',
+                'para_index': 1,
+                'parent_section_start_content': 'Title',
+                'parent_section_start_type': 'Section-TitlepageSTI'
         }]})
 
     # same test as above, for a doc where para-ids are not already present
@@ -1569,37 +1645,81 @@ class Tests(unittest.TestCase):
         li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras = rsuite_validations.getListStylenames(styleconfig_dict)
 
         # run function
-        report_dict = rsuite_validations.verifyListNesting({}, doc_root, li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras)
+        report_dict = rsuite_validations.verifyListNesting({}, doc_root, li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras, {})
 
         # assertions
         self.assertEqual(report_dict, {
             'list_change_err': [
                 {'description': u"'Num-Level-2-ListNl2' para, preceded by: 'Bullet-Level-2-ListBl2' para",
-                'para_id': '481B8C08'}, # test 8 'NL2 fail list_change'
+                    'para_string': 'NL2, fail test 8 list_change',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '481B8C08'}, # test 8 'NL2 fail list_change'
                 {'description': u"'Num-Level-3-ListNl3' para, preceded by: 'Bullet-Level-3-ListBl3' para",
-                'para_id': '49525651'} # test 10 'NL3 fail list_change'
+                    'para_string': 'NL3 fail test 10 list_change',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '49525651'} # test 10 'NL3 fail list_change'
                 ],
             'list_change_warning': [
                 {'description': u"'Num-Level-1-ListNl1' para, preceded by: 'Bullet-Level-1-ListBl1' para",
-                'para_id': '4A9EE1B7'} # test 5 'NL1 Warn list_warn'
+                    'para_string': 'NL1 Warn, warn test5 list_warn',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '4A9EE1B7'} # test 5 'NL1 Warn list_warn'
                 ],
             'list_nesting_err': [
                 {'description': u"'Alpha-Level-1-List-ParagraphAl1p' para, preceded by: 'Body-TextTx' para",
-                'para_id': '2AF17057'}, # test 16 'AL1p fail list_nesting'
+                    'para_string': 'AL1p fail list_nesting',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '2AF17057'}, # test 16 'AL1p fail list_nesting'
                 {'description': u"'Alpha-Level-1-List-ParagraphAl1p' para, preceded by: 'Extract1Ext1' para",
-                'para_id': '2A1DC130'}, # tesl 17 'AL1p fail list_nesting'
+                    'para_string': 'AL1p fail list_nesting',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '2A1DC130'}, # tesl 17 'AL1p fail list_nesting'
                 {'description': u"'Num-Level-3-List-ParagraphNl3p' para, preceded by: 'Bullet-Level-2-List-ParagraphBl2p' para",
-                'para_id': '59A57963'}, # test 4 'NL3p should fail list_nesting'
+                    'para_string': 'NL3p, fail test4 list_nesting',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '59A57963'}, # test 4 'NL3p should fail list_nesting'
                 {'description': u"'Num-Level-1-List-ParagraphNl1p' para, preceded by: 'Bullet-Level-1-ListBl1' para",
-                'para_id': '20DDD1A7'}, # test 3, 'NL1p should fail list_nesting'
+                    'para_string': 'NL1p should fail test3 list_nesting',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '20DDD1A7'}, # test 3, 'NL1p should fail list_nesting'
                 {'description': u"'Num-Level-2-List-ParagraphNl2p' para, preceded by: 'Bullet-Level-1-ListBl1' para",
-                'para_id': '75D0DB55'}, # test 14, 'NL2p fail list_nesting'
+                    'para_string': 'NL2p fail test 13 list_nesting',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '75D0DB55'}, # test 14, 'NL2p fail list_nesting'
                 {'description': u"'Bullet-Level-3-ListBl3' para, preceded by: 'Bullet-Level-1-ListBl1' para",
-                'para_id': '7B5D1501'}, # test 9 'BL3 fail list_nesting'
+                    'para_string': 'BL3 fail test 9 list_nesting',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '7B5D1501'}, # test 9 'BL3 fail list_nesting'
                 {'description': u"'Bullet-Level-2-ListBl2' para, preceded by: 'Extract1Ext1' para",
-                'para_id': '68440985'}, # test 11 'BL2 fail list_nesting'
+                    'para_string': 'BL2 fail test 11 list_nesting',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '68440985'}, # test 11 'BL2 fail list_nesting'
                 {'description': u"'Bullet-Level-1-List-ParagraphBl1p' para, preceded by: 'Unnum-Level-1-List-ParagraphUl1p' para",
-                'para_id': '2B5560A1'} # test 2 'Target: BL1p, fail test2 list_nesting'
+                    'para_string': 'Target: BL1p, fail test2 list_nesting',
+                    'parent_section_start_content': '',
+                    'parent_section_start_type': 'n-a',
+                    'xml_file': u'document',
+                    'para_id': '2B5560A1'} # test 2 'Target: BL1p, fail test2 list_nesting'
             ]})
 
     def test_compareNamespace(self):
@@ -1672,6 +1792,66 @@ class Tests(unittest.TestCase):
         logging.disable(logging.NOTSET) # reinstate logging
         # we can add an assertion to catch generic exception handler for the function,
         #   once product is upgrade to python 3.x and unittest.mock is available
+
+    def test_logForReport(self):
+        sectionnames = lxml_utils.getAllSectionNamesFromVSC(os_utils.readJSON(cfg.vbastyleconfig_json))
+
+        doc_root = getRoot(os.path.join(testfiles_basepath, 'test_logForReport', 'document.xml'))
+        en_root = getRoot(os.path.join(testfiles_basepath, 'test_logForReport', 'endnotes.xml'))
+
+        std_para_id='33816C1F'
+        table_para_id='535B38C3'
+        notes_para_id='17EE1A18'
+        table_notes_para_id='70416364'
+        para = findParaWithId(doc_root, std_para_id)
+        table_para = findParaWithId(doc_root, table_para_id)
+        notes_para = findParaWithId(en_root, notes_para_id)
+        table_notes_para = findParaWithId(en_root, table_notes_para_id)
+
+        # # # run function(s)
+        # testing bare minimum
+        report_dict_minimum = lxml_utils.logForReport({}, None, None, 'category', '')
+        # testing document non-table para with all log_extras
+        report_dict_std = lxml_utils.logForReport({}, doc_root, para, 'category', 'description here', ['para_string', 'section_info', 'para_index'], sectionnames)
+        # testing document table para with all log_extras
+        report_dict_table = lxml_utils.logForReport({}, doc_root, table_para, 'category', 'description here', ['para_string', 'section_info', 'para_index'], sectionnames)
+        # testing notes non-table para with all log_extras
+        report_dict_notes = lxml_utils.logForReport({}, en_root, notes_para, 'category', 'description here', ['para_string', 'section_info', 'para_index'], sectionnames)
+        # # testing notes table para with all log_extras
+        report_dict_notes_table = lxml_utils.logForReport({}, en_root, table_notes_para, 'category', 'description here', ['para_string', 'section_info', 'para_index'], sectionnames)
+
+        # assertions
+        self.assertEqual(report_dict_minimum, {'category': [{'para_id':'n-a', 'xml_file':'document'}]})
+        self.assertEqual(report_dict_std, {'category': [{
+                'description': 'description here',
+                'para_id': std_para_id,
+                'para_index': 1,
+                'parent_section_start_content': 'Chapter 1',
+                'parent_section_start_type': 'Section-ChapterSCP',
+                'para_string': 'My first test paragraph lorem ipsum dolor sit amet, consectetuer',
+                'xml_file':'document'}]})
+        self.assertEqual(report_dict_table, {'category': [{
+                'description': 'description here',
+                'para_id': table_para_id,
+                'para_index': 6,
+                'parent_section_start_content': 'Interlude',
+                'parent_section_start_type': 'Section-Chapter2SCP2',
+                'para_string': 'Test paragraph-table',
+                'tablecell_para': True,
+                'xml_file':'document'}]})
+        self.assertEqual(report_dict_notes, {'category': [{
+                'description': 'description here',
+                'para_id': notes_para_id,
+                'para_index': 1,
+                'para_string': 'And here is my standard endnote test para.',
+                'xml_file': 'endnotes'}]})
+        self.assertEqual(report_dict_notes_table, {'category': [{
+                'description': 'description here',
+                'para_id': table_notes_para_id,
+                'para_index': 1,
+                'para_string': 'Test table para: notes',
+                'tablecell_para': True,
+                'xml_file':'endnotes'}]})
 
 if __name__ == '__main__':
     unittest.main()

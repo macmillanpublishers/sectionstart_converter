@@ -44,7 +44,7 @@ logger = logging.getLogger(__name__)
 
 # #---------------------  METHODS
 # this is invoked for rsuitevalidate runs only
-def validateImageHolders(report_dict, xml_root, stylename, para, image_string):
+def validateImageHolders(report_dict, xml_root, stylename, para, image_string, sectionnames):
     logger.info("* * * commencing validateImageHolders function")
     imagestring_regex = re.compile(r"[^\w-]")
     valid_file_extensions = cfg.imageholder_supported_ext
@@ -57,13 +57,13 @@ def validateImageHolders(report_dict, xml_root, stylename, para, image_string):
     if badchars:
         # note: not using 'format' string interpolation below b/c it threw error for unicode chars
         #   using string concat here allows us to centralize utf-8 encoding at generate/build report
-        lxml_utils.logForReport(report_dict, xml_root, para, "image_holder_badchar", stylename + "_" + image_string)
+        lxml_utils.logForReport(report_dict, xml_root, para, 'image_holder_badchar', stylename + "_" + image_string, ['section_info'], sectionnames)
     # report separate error for no file extension
     if not image_ext or image_ext not in valid_file_extensions:
-        lxml_utils.logForReport(report_dict, xml_root, para, "image_holder_ext_error", stylename + "_" + image_string)
+        lxml_utils.logForReport(report_dict, xml_root, para, 'image_holder_ext_error', stylename + "_" + image_string, ['section_info'], sectionnames)
     return report_dict
 
-def logTextOfRunsWithStyle(report_dict, doc_root, stylename, report_category, scriptname=""):
+def logTextOfRunsWithStyle(report_dict, doc_root, stylename, report_category, sectionnames, scriptname=""):
     logger.info("Logging runs styled as %s to report_dict['%s']" % (stylename, report_category))
     runs = lxml_utils.findRunsWithStyle(lxml_utils.transformStylename(stylename), doc_root)
     for run in runs:
@@ -80,32 +80,32 @@ def logTextOfRunsWithStyle(report_dict, doc_root, stylename, report_category, sc
         para = run.getparent()
         # if we're running this for rsuitevalidate & have an imageholder style, need to do extra checks:
         if stylename in cfg.imageholder_styles and scriptname == 'rsuitevalidate':
-            validateImageHolders(report_dict, doc_root, stylename, para, runtxt)
-        report_dict = lxml_utils.logForReport(report_dict,doc_root,para,report_category,runtxt)
+            validateImageHolders(report_dict, doc_root, stylename, para, runtxt, sectionnames)
+        lxml_utils.logForReport(report_dict, doc_root, para, report_category, runtxt, ['para_string', 'para_index'])
     return report_dict
 
 # logging each paratxt individually, this is th emost flexible for managing at time of report generation
-def logTextOfParasWithStyle(report_dict, doc_root, stylename, report_category, scriptname=""):
+def logTextOfParasWithStyle(report_dict, doc_root, stylename, report_category, sectionnames, scriptname=""):
     logger.info("Logging paras styled as '%s' to report_dict['%s']" % (stylename, report_category))
     paras = lxml_utils.findParasWithStyle(lxml_utils.transformStylename(stylename), doc_root)
     for para in paras:
         paratxt = lxml_utils.getParaTxt(para)
         # if we're running this for rsuitevalidate & have an imageholder style, need to do extra checks:
         if stylename in cfg.imageholder_styles and scriptname == 'rsuitevalidate':
-            validateImageHolders(report_dict, doc_root, stylename, para, paratxt)
-        report_dict = lxml_utils.logForReport(report_dict,doc_root,para,report_category,paratxt)
+            validateImageHolders(report_dict, doc_root, stylename, para, paratxt, sectionnames)
+        lxml_utils.logForReport(report_dict, doc_root, para, report_category, paratxt, ['para_string', 'para_index'])
     return report_dict
 
-def checkFirstPara(report_dict, doc_root, sectionnames, description):
+def checkFirstPara(report_dict, doc_root, sectionnames, report_category):
     logger.info("Checking first para style to make sure it is a SectionStart..")
     firstpara = doc_root.find(".//*w:p", wordnamespaces)
     stylename = lxml_utils.getParaStyle(firstpara)
     if stylename not in sectionnames:
         logger.warn("first para style is not a required style, instead is: " + stylename)
-        report_dict = lxml_utils.logForReport(report_dict,doc_root,firstpara,description,lxml_utils.getStyleLongname(stylename))
+        lxml_utils.logForReport(report_dict, doc_root, firstpara, report_category, lxml_utils.getStyleLongname(stylename))
     return report_dict, firstpara
 
-def getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para, run_style=None):
+def getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para, sectionnames, run_style=None):
     macmillanstyle_shortnames = [lxml_utils.transformStylename(s) for s in macmillanstyles]
     basedon_element = stylematch.getparent().find(".//w:basedOn", wordnamespaces)
     if basedon_element is not None:
@@ -117,17 +117,17 @@ def getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_
                 attrib_style_key = '{%s}val' % wnamespace
                 para.find(".//*w:pStyle", wordnamespaces).set(attrib_style_key, basedonstyle)
             # optionally, log to json:
-            report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"changed_custom_style_to_Macmillan_basestyle", "'%s', based on '%s'" % (stylename_full, basedonstyle))
+            lxml_utils.logForReport(report_dict, doc_root, para, 'changed_custom_style_to_Macmillan_basestyle', "'{}', based on '{}'".format(stylename_full, basedonstyle))
         else:
             if run_style is not None:
                 # log char styles
-                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_used",stylename_full)
+                lxml_utils.logForReport(report_dict, doc_root, para, 'non-Macmillan_charstyle_used', stylename_full)
             # log para styles not reverted to base; separate categories for table-paras...
             elif para.getparent().tag == '{{{}}}tc'.format(wnamespace):
-                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used_in_table",stylename_full)
+                lxml_utils.logForReport(report_dict, doc_root, para, 'non-Macmillan_style_used_in_table', stylename_full, ['section_info'], sectionnames)
             # and regular paras:
             else:
-                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
+                lxml_utils.logForReport(report_dict, doc_root, para, 'non-Macmillan_style_used', stylename_full, ['section_info'], sectionnames)
     return report_dict
 
 def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_root, macmillanstyles, sectionnames, found_para_context, container_styles, container_prefix, macmillan_styles_found_dict, macmillan_styles_found, para, call_type, bookmakerstyles):
@@ -142,21 +142,22 @@ def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_r
             macmillan_styles_found_dict.append(found_para_context)
             macmillan_styles_found.append(stylename)
             fullstylename_with_container = container_prefix + stylename_full
-            report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_style_first_use",fullstylename_with_container)
+            # log style
+            lxml_utils.logForReport(report_dict, doc_root, para, 'Macmillan_style_first_use', fullstylename_with_container, ['section_info', 'para_string'], sectionnames)
         # skipping this check for rsuitevalidate - since it is moot. Testing by presence of container styles.
         if not container_styles:
             if stylename_full not in bookmakerstyles:
-                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non_bookmaker_macmillan_style",stylename_full)
+                lxml_utils.logForReport(report_dict, doc_root, para, 'non_bookmaker_macmillan_style', stylename_full, ['section_info'], sectionnames)
     else:
         # if we're "validating", revert custom_styles based on Macmillan styles to base_style (for _non_ rsuite styled)
         if call_type == "validate" and not container_styles:
-            report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para)
+            report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para, sectionnames)
         # else log non-Macmillan style used; separate categories for table-paras...
         elif para.getparent().tag == '{{{}}}tc'.format(wnamespace):
-            report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used_in_table",stylename_full)
+            lxml_utils.logForReport(report_dict, doc_root, para, 'non-Macmillan_style_used_in_table', stylename_full, ['section_info'], sectionnames)
         # versus regular paras:
         else:
-            report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_style_used",stylename_full)
+            lxml_utils.logForReport(report_dict, doc_root, para, 'non-Macmillan_style_used', stylename_full, ['section_info'], sectionnames)
     return report_dict
 
 def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, call_type, valid_native_word_styles, container_starts=[], container_ends=[], runs_only=False):
@@ -259,17 +260,17 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
             # First encounter of Macmillan charstyle, logging for report and appending to 'found' list
             if stylename_full in macmillanstyles:
                 charstyles_found.append(stylename)
-                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"Macmillan_charstyle_first_use",stylename_full)
+                lxml_utils.logForReport(report_dict, doc_root, para, 'Macmillan_charstyle_first_use', stylename_full)
             # First encounter of non-Macmillan style, NOT 'validate' call-type
             elif call_type != "validate" and container_starts:
                 # log for report
-                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_used",stylename_full)
+                lxml_utils.logForReport(report_dict, doc_root, para, 'non-Macmillan_charstyle_used', stylename_full)
                 # add to the list of found charstyles so we don't reprocess:
                 charstyles_found.append(stylename)
             # First encounter of non-Macmillan style, for RSuite-styled docs, with 'validate' call-type
             elif call_type == "validate" and container_starts:
                 # report first encounter for each, then add to list of found charstyles so we don't re-log
-                report_dict = lxml_utils.logForReport(report_dict,doc_root,para,"non-Macmillan_charstyle_removed",stylename_full)
+                lxml_utils.logForReport(report_dict, doc_root, para, 'non-Macmillan_charstyle_removed', stylename_full)
                 charstyles_found.append(stylename)
                 # then delete the runstyle!
                 run_style.getparent().remove(run_style)
@@ -277,7 +278,7 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
             elif call_type == "validate" and not container_starts:
                 # for non-RSuite styles, try to revert all non-Macmillan charstyles
                 para = run_style.getparent().getparent().getparent()
-                report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para, run_style)
+                report_dict = getAllStylesUsed_RevertToBase(stylematch, macmillanstyles, report_dict, doc_root, stylename_full, para, sectionnames, run_style)
 
     return report_dict
 

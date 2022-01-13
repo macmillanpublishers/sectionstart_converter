@@ -134,20 +134,21 @@ isbn_check_json = os.path.join(tmpdir, "isbn_check.json")
 scripts_dir_path = os.path.join(__location__,'..','..')
 
 # rsuite versus macmillan template paths. For now mocking up a separate repo locally for rsuite
+templatefiles_path = os.path.join(scripts_dir_path,"RSuite_Word-template","StyleTemplate_auto-generate")
 if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in script_name:
-    templatefiles_path = os.path.join(scripts_dir_path,"RSuite_Word-template","StyleTemplate_auto-generate")
-    template_name = "Rsuite"
+    templatefile_path = templatefiles_path
+    template_name = "Rsuite.dotx"
 else:
-    templatefiles_path = os.path.join(scripts_dir_path,"RSuite_Word-template","oldStyleTemplate","MacmillanStyleTemplate")
-    template_name = "macmillan"
+    templatefile_path = os.path.join(scripts_dir_path,"RSuite_Word-template","oldStyleTemplate","MacmillanStyleTemplate")
+    template_name = "macmillan.dotm"
 
 # paths
 api_post_py = os.path.join(scripts_dir_path, "bookmaker_connectors", "api_POST_to_camel.py")
 post_urls_json = os.path.join(scripts_dir_path, "bookmaker_authkeys", "camelPOST_urls.json")
 section_start_rules_json = os.path.join(scripts_dir_path, "bookmaker_validator","section_start_rules.json")
 smtp_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","smtp.txt")
-macmillan_template = os.path.join(templatefiles_path, "%s.dotx" % template_name)
-macmillanstyles_json = os.path.join(templatefiles_path, "%s.json" % template_name)
+macmillan_template = os.path.join(templatefile_path, template_name)
+macmillanstyles_json = os.path.join(templatefiles_path, "%s.json" % os.path.splitext(template_name)[0])
 vbastyleconfig_json = os.path.join(templatefiles_path, "vba_style_config.json")
 styleconfig_json = os.path.join(templatefiles_path, "style_config.json")
 legacystyles_json = os.path.join(__location__, "legacy_styles.json") # same dir as this file

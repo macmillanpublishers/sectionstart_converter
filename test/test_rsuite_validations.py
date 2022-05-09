@@ -1853,5 +1853,38 @@ class Tests(unittest.TestCase):
                 'tablecell_para': True,
                 'xml_file':'endnotes'}]})
 
+    def test_removeNonISBNsfromISBNspans(self):
+        doc_root = getRoot(os.path.join(testfiles_basepath, 'test_removeNonISBNsfromISBNspans', 'testdoc', 'word', 'document.xml'))
+
+        # run function
+        isbn_dict, isbn_dict["styled_isbns"] = doc_prepare.removeNonISBNsfromISBNspans({}, doc_root, lxml_utils.transformStylename(cfg.isbnstyle), cfg.isbnspanregex)
+        valid_docxml = os.path.join(testfiles_basepath, 'test_removeNonISBNsfromISBNspans', 'testdoc_expected.xml')
+        # os_utils.writeXMLtoFile(doc_root, valid_docxml) # <- for writing new xml
+
+        # assertions
+        self.assertEqual(isbn_dict['styled_isbns'], ['9780 123456789', '9787123456789'])
+        self.assertEqual(len(isbn_dict['rmd_nonisbn_from_isbnspan']), 23)
+        self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(valid_docxml)))
+
+
+    def test_styleLooseISBNs(self):
+        doc_root = getRoot(os.path.join(testfiles_basepath, 'test_styleLooseISBNs', 'testdoc2', 'word', 'document.xml'))
+
+        # run function
+        isbn_dict, isbn_dict["programatically_styled_isbns"] = doc_prepare.styleLooseISBNs({}, cfg.isbnregex, cfg.isbnspanregex, doc_root, lxml_utils.transformStylename(cfg.isbnstyle), lxml_utils.transformStylename(cfg.hyperlinkstyle))
+        # get valid pre-edited xml for diff
+        valid_docxml = os.path.join(testfiles_basepath, 'test_styleLooseISBNs', 'testdoc2_expected.xml')
+        # os_utils.writeXMLtoFile(doc_root, valid_docxml) # <- for writing new xml
+
+        # assertions
+        self.assertEqual(isbn_dict['programatically_styled_isbns'], ['978-0 123-4-5-6789',
+                                    '9-787-12-345678-9',
+                                    '97-9112-3-4-5-6789',
+                                    '978-1-250-18618-8',
+                                    u'978-1-250\u201482407-3',
+                                    u'978-1-250\u201382411-0'])
+        self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(valid_docxml)))
+
+
 if __name__ == '__main__':
     unittest.main()

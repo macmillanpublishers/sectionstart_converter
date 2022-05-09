@@ -194,9 +194,9 @@ alert_email_address = "Publishing Workflows <workflows@macmillan.com>"
 support_email_address = "workflows@macmillan.com" # if the display name is present it comes out weird in user-messaging.. and not required for emails via smtplib
 from_email_address = "Publishing Workflows <workflows@macmillan.com>"
 always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
-# regex for finding ISBNS
-isbnregex = re.compile(r"(97[89](\D?\d){10})")
-isbnspanregex = re.compile(r"(^.*?)(97[89](\D?\d){10})(.*?$)")
+# regex for finding ISBNS - for validator_isbncheck, so we are being generous with hyphen rules
+isbnregex = re.compile(r"(9\-?7\-?[89]([^\w]?\d){10})")
+isbnspanregex = re.compile(r"(^.*?)(9\-?7\-?[89]([^\w]?\d){10})(.*?$)")
 
 # # # Hardcoded stylenames & helpurl -- some by script/template-type
 footnotestyle = "FootnoteText" #/ "Footnote Text"

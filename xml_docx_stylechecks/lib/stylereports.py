@@ -160,14 +160,14 @@ def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_r
             lxml_utils.logForReport(report_dict, doc_root, para, 'non-Macmillan_style_used', stylename_full, ['section_info'], sectionnames)
     return report_dict
 
-def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, call_type, valid_native_word_styles, container_starts=[], container_ends=[], runs_only=False):
+def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, call_type, valid_native_word_styles, decommissioned_styles, container_starts=[], container_ends=[], runs_only=False):
     logger.info("** running function 'getAllStylesUsed'")
     styles_tree = etree.parse(styles_xml)
     styles_root = styles_tree.getroot()
     # macmillanstyle_shortnames = [lxml_utils.transformStylename(s) for s in macmillanstyledata]
     # get a list of macmillan stylenames from macmillan json, start with native word styles
     # if we want to exclude valid native word styles from report instead, would add them to conditional on line 110
-    macmillanstyles = valid_native_word_styles[:] # <- slice the orig. list, to make a shallow copy
+    macmillanstyles = valid_native_word_styles[:] + decommissioned_styles[:] # <- slice the orig. lists, to make a shallow copy
     for stylename in macmillanstyledata:
         macmillanstyles.append(stylename)
     macmillan_styles_found = [] # <- non-rsuite Macmillan para styles
@@ -193,7 +193,6 @@ def getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillans
         for para in doc_root.findall(".//*w:p", wordnamespaces):
             # get stylename from each para
             stylename = lxml_utils.getParaStyle(para)
-
             # track current section & container as we loop through styles
             if stylename in sectionnames:
                 this_section = stylename

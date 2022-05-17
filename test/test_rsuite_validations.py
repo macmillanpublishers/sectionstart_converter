@@ -242,6 +242,7 @@ class Tests(unittest.TestCase):
         #       - para with old Macmillan-style:
         #       - acceptable built-in styles (e.g. 'Footnote Text')
         #       - styled, unstyled and 'Normal' styled table cells (which should be ignored)
+        #       - decommissioned RSuite style
         test_folder_root = setupTestFilesinTmp('test_stylecount', os.path.join(testfiles_basepath, 'test_stylecount'))
         tmp_testfile = os.path.join(test_folder_root, 'stylecount.docx')
         unzipDOCX.unzipDOCX(tmp_testfile, os.path.splitext(tmp_testfile)[0])
@@ -250,8 +251,8 @@ class Tests(unittest.TestCase):
         doc_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'document.xml')
         percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(doc_xml, template_styles_xml)
         # ASSERTION
-        self.assertEqual(total_paras, 8)
-        self.assertEqual(macmillan_styled_paras, 5)
+        self.assertEqual(total_paras, 9)
+        self.assertEqual(macmillan_styled_paras, 6)
 
     def test_validateImageHolders_badchar_basename(self):
         fullstylename = 'Image-Placement (Img)'

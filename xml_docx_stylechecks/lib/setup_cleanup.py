@@ -102,7 +102,7 @@ def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, 
                     'not_docfile': 'cannot unzip; not a Word doctype'}
         unzipDOCX.unzipDOCX(workingfile, ziproot, errdict)
         unzipDOCX.unzipDOCX(macmillan_template, template_ziproot, errdict)
-    except Exception, e:
+    except Exception as e:
         setup_ok = False
         if str(e) == errdict['no_filelist']:
             setAlert('error', 'no_unzip_files', {}, True)

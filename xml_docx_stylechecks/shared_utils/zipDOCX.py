@@ -24,7 +24,7 @@ def getZipFiles(ziproot):
                     # get the path of file (relative to ziproot) and add to zip manifest
                     zipmanifest.append(os.path.relpath(fullpath, ziproot))
         return zipmanifest
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed to get zip manifest', exc_info=True)
         sys.exit(1)
 
@@ -40,7 +40,7 @@ def zipFiles(ziproot, zipmanifest, finaldocx):
                     docx.write(os.path.join(ziproot,filename), filename)
                 else:
                     docx.write(filename, os.path.basename(filename))
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed to zip-up .docx', exc_info=True)
         sys.exit(1)
 

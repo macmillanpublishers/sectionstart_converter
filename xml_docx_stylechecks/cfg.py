@@ -34,9 +34,9 @@ inputfilename = inputfilename_noext + inputfile_ext
 #   ('direct' runs refers to runs invoked directly via Drive api's
 #   - as opposed to a validation process called by another process like egalleymaker)
 local_run = False
-if sys.argv[2] and sys.argv[2] == 'direct':
+if len(sys.argv)>2 and sys.argv[2] == 'direct':
     runtype = 'direct'
-    if sys.argv[3] and sys.argv[3] == 'local':
+    if len(sys.argv)>3 and sys.argv[3] == 'local':
         local_run = True
         submitter_email = 'testing@test.org'
         display_name = 'Pat Testperson'
@@ -45,7 +45,6 @@ if sys.argv[2] and sys.argv[2] == 'direct':
         display_name = sys.argv[4]
 else:
     runtype = 'not_direct'
-
 ### Arg 2 (non-direct) - processwatch file for standalones, or alternate logfile if validator (embedded run)
 #   Could replace existing logging or could try to add a handler on the fly to log to both places
 validator_logfile = os.path.join(os.path.dirname(inputfile), "{}_{}_{}.txt".format(script_name, inputfilename_noext, time.strftime("%y%m%d-%H%M%S")))

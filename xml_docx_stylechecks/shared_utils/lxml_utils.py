@@ -40,7 +40,7 @@ def generate_para_id(doc_root):
     iduniq = generate_id()
     idsearchstring = './/*w:p[@w14:paraId="%s"]' % iduniq
     while len(doc_root.findall(idsearchstring, wordnamespaces)) > 0:
-        print iduniq + " already exists, generating another id"
+        print (iduniq + " already exists, generating another id")
         iduniq = generate_id()
         idsearchstring = './/*w:p[@w14:paraId="%s"]' % iduniq
     logger.debug("generated unique para-id: '%s'" % iduniq)
@@ -82,7 +82,7 @@ def getParaTxt(para):
 def addNamespace(xmlroot, new_nsprefix, new_nsuri):
     nsmap_prefixes = [new_nsprefix]
     # get current nsmap prefixes
-    for k, v in xmlroot.nsmap.iteritems():
+    for k, v in xmlroot.nsmap.items():
         nsmap_prefixes.append(k)
     # get unique values
     nsmap_prefixes = list(set(nsmap_prefixes))
@@ -111,7 +111,7 @@ def verifyOrAddNamespace(xmlroot, ns_prefix, ns_uri):
                 filename = re.sub('{.*}','',root_tag)
             else:
                 filename = '<unknown>'
-            logger.warn("Had to add required global namespace '{}' to {}.xml file".format(ns_prefix, filename))
+            logger.warning("Had to add required global namespace '{}' to {}.xml file".format(ns_prefix, filename))
         # if ns is not present after adding, exit ungracefully (user will get std processing err, wf-mail will get alert)
         else:
             logger.error("EXITING: Unsuccessful at adding required global namespace '{}' to xmlroot".format(ns_prefix))
@@ -129,7 +129,7 @@ def getParaId(para, doc_root):
             verifyOrAddNamespace(doc_root, 'w14', cfg.w14namespace)
             # create a new para_id and set it for the para!
             new_para_id = generate_para_id(doc_root)
-            logger.warn("no para_id: making & setting our own: %s" % new_para_id)
+            logger.warning("no para_id: making & setting our own: %s" % new_para_id)
             para.attrib["{%s}paraId" % w14namespace] = new_para_id
             para_id = new_para_id
     else:
@@ -167,16 +167,16 @@ def getStyleLongname(styleshortname, stylenamemap={}):
     if os.environ.get('TEST_FLAG'):
         return styleshortname
     else:
-        # print styleshortname#, stylenamemap
+        # print (styleshortname#, stylenamemap)
         styles_tree = etree.parse(styles_xml)
         styles_root = styles_tree.getroot()
         if styleshortname == "n-a":
             stylelongname = "not available"
         elif styleshortname in stylenamemap:
             stylelongname = stylenamemap[styleshortname]
-            # print "in the map!"
+            # print ("in the map!")
         else:
-            # print "not in tht emap!"
+            # print ("not in tht emap!")
             searchstring = ".//w:style[@w:styleId='%s']/w:name" % styleshortname
             stylematch = styles_root.find(searchstring, wordnamespaces)
             # get fullname value and test against Macmillan style list
@@ -376,7 +376,7 @@ def sectionStartTally(report_dict, section_names, doc_root, call_type, headingst
     report_dict["section_start_found"] = []
     report_dict["empty_section_start_para"] = []
     # report_dict["empty_section_start_para"] = []
-    # logger.warn("start = %s" % time.strftime("%y%m%d-%H%M%S"))
+    # logger.warning("start = %s" % time.strftime("%y%m%d-%H%M%S"))
     if call_type == "insert":
         logger.info("writing contents to any empty sectionstart paras")
     for pstyle in doc_root.findall(".//*w:pStyle", wordnamespaces):
@@ -515,7 +515,7 @@ def autoNumberSectionParaContent(report_dict, section_names, autonumber_sections
     logger.debug("autonumber_section_counts: %s" % autonumber_section_counts) # debug
 
     # apply autonumbering for each section in "autonumber_section_counts" as applicable
-    for sectionlongname, count in autonumber_section_counts.iteritems():
+    for sectionlongname, count in autonumber_section_counts.items():
         if count > 1:
             logger.info("Found %s '%s's with generic names in ssparas, adding autonumbering to sspara contents" % (count, sectionlongname))
             autonum = 1
@@ -616,7 +616,7 @@ def getCalculatedParaInfo(report_dict_entry, root, section_names, para, category
         # # # Get para index
         entry['para_index'] = getParaIndex(para)
         if entry['para_index'] == 'n-a':
-            logger.warn("couldn't get para-index for %s para (value was set to n-a)" % category)
+            logger.warning("couldn't get para-index for %s para (value was set to n-a)" % category)
 
         # check if we have a tablecell_paras, get section info accordingly
         if para is not None and para.getparent().tag == tablecell_tag:
@@ -629,11 +629,11 @@ def getCalculatedParaInfo(report_dict_entry, root, section_names, para, category
             entry['parent_section_start_type'], entry['parent_section_start_content'] = getSectionName(para, section_names)
 
         if entry['parent_section_start_type'] == 'n-a' or entry['parent_section_start_content'] == 'n-a':
-            logger.warn("couldn't get section start info for %s para (value was set to n-a)" % category)
+            logger.warning("couldn't get section start info for %s para (value was set to n-a)" % category)
     # # # Get 1st 10 words of para text
     entry['para_string'] = ' '.join(getParaTxt(para).split(' ')[:10])
     if entry['para_string'] == 'n-a':
-        logger.warn("couldn't get para_string for %s para (value was set to n-a)" % category)
+        logger.warning("couldn't get para_string for %s para (value was set to n-a)" % category)
 
     return entry
 
@@ -643,7 +643,7 @@ def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
     try:
         # make sure we have contents in the dict
         if report_dict:
-            for category, entries in report_dict.iteritems():
+            for category, entries in report_dict.items():
                 # exclude hard-coded 'marker' attributes for validator_main
                 if category != 'validator_py_complete' and category != 'percent_styled':
                     for entry in entries:
@@ -657,7 +657,7 @@ def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
                                 if para is None:
                                     logger.debug("found a para not in main doc_xml")
                                     if alt_roots:
-                                        for rootname, alt_root in alt_roots.iteritems():
+                                        for rootname, alt_root in alt_roots.items():
                                             logger.debug("checking {}, searchstring {}".format(rootname, searchstring))
                                             para = alt_root.find(searchstring, wordnamespaces)
                                             if para is not None:
@@ -667,8 +667,8 @@ def calcLocationInfoForLog(report_dict, root, section_names, alt_roots=[]):
                                 if entry_calc_done == False:
                                     entry = getCalculatedParaInfo(entry, root, section_names, para, category)
         else:
-            logger.warn("report_dict is empty")
+            logger.warning("report_dict is empty")
         return report_dict
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed calculating para_indexes for para_ids, exiting', exc_info=True)
         sys.exit(1)

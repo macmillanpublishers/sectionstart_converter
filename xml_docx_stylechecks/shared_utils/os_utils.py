@@ -27,7 +27,7 @@ def moveFile(pathtofile, dest):
     # Move the file
     try:
         shutil.move(pathtofile, dest)
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed to move file, exiting', exc_info=True)
         sys.exit(1)
 
@@ -36,7 +36,7 @@ def copyFiletoFile(pathtofile, dest_file):
         os.makedirs(os.path.dirname(dest_file))
     try:
         shutil.copyfile(pathtofile, dest_file)
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed copyfile, exiting', exc_info=True)
         sys.exit(1)
 
@@ -45,7 +45,7 @@ def copyDir(pathtodir, dest_dir):
         dest_dir="%s_%s" % (dest_dir, time.strftime("%y%m%d-%H%M%S"))
     try:
         shutil.copytree(pathtodir, dest_dir)
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed copydir, exiting', exc_info=True)
         sys.exit(1)
 
@@ -91,7 +91,7 @@ def readJSON(filename):
             d = json.load(json_data)
             logger.debug("reading in json file %s" % filename)
             return d
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed read JSON file, exiting', exc_info=True)
         sys.exit(1)
 
@@ -103,7 +103,7 @@ def rm_existing_os_object(path, obj_name):
                 shutil.rmtree(path)
             else:
                 os.remove(path)
-        except Exception, e:
+        except Exception as e:
             logger.error('Failed remove os_object, exiting', exc_info=True)
             sys.exit(1)
 
@@ -111,10 +111,12 @@ def writeXMLtoFile(root, filename):
     try:
         newfile = open(filename, 'w')
         with newfile as f:
-            f.write(etree.tostring(root, xml_declaration=True, encoding="utf-8", standalone="yes"))
+            # f.write(etree.tostring(root, xml_declaration=True, encoding="utf-8", standalone="yes"))
+            # f.write(etree.tostring(root, encoding="unicode", standalone="yes"))
+            f.write(etree.tostring(root, xml_declaration=True, encoding="utf-8", standalone="yes").decode("utf8"))
             f.close()
         logger.info("wrote xml to file '%s'" % filename)
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed write xml to file, exiting', exc_info=True)
         sys.exit(1)
 
@@ -126,7 +128,7 @@ def dumpJSON(dictname, filename):
         with open(filename, 'w') as outfile:
             json.dump(dictname, outfile, sort_keys=True, indent=4)
         logger.info("wrote dict to json file '%s'" % filename)
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed write JSON file, exiting', exc_info=True)
         sys.exit(1)
 
@@ -155,7 +157,7 @@ def writeListToFileByLine(text, filename):
                 # f.write(line)
             f.close()
         logger.info("wrote text to file '%s'" % filename)
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed write text to file, exiting', exc_info=True)
         sys.exit(1)
 
@@ -165,7 +167,7 @@ def writeAlertstoTxtfile(alerts_json, this_outfolder, err_fname, warn_fname, not
     alertfile = ''
     if os.path.exists(alerts_json):
         # get all the alert text in a list
-        for alert_category, alerts in sorted(alerts_dict.iteritems()):
+        for alert_category, alerts in sorted(alerts_dict.items()):
             alerttxt_list.append("{}(s):".format(alert_category.upper()))
             for alert in alerts:
                 alerttxt_list.append("- {}".format(alert))

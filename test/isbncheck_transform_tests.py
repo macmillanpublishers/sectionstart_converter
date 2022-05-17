@@ -74,7 +74,7 @@ def setupFileTest(file, tmpdir_base, transform_testfiles_dir):
 
 def runTest(testfile):
     popen_params = ['python', v_isbncheck_path, testfile, 'direct', 'local']
-    print popen_params
+    print (popen_params)
     if debug_diff_only != True:
         p = subprocess.Popen(popen_params)
         exitcode = p.wait()
@@ -112,7 +112,8 @@ def getPrettyXml(xml_fname):
     if not os.path.isfile(pretty_filename):
         xmlstr = minidom.parse(xml_fname).toprettyxml(indent="   ")
         with open(pretty_filename, "w") as f:
-            f.write(xmlstr.encode('utf-8'))
+            print (type(xmlstr), type(xmlstr.encode('utf-8')))
+            f.write(xmlstr.encode('utf-8').decode)
     return pretty_filename
 
 def diffFiles(diff_file_list, testfile, validfiles_basedir, diff_outputdir):
@@ -139,14 +140,14 @@ def diffFiles(diff_file_list, testfile, validfiles_basedir, diff_outputdir):
             f.write('\n--------- < = VALIDATED file | {} | NEW file = > ---------\n\n'.format(df_shortname))
             f.close()
             f = open(diff_outfile,'a')
-            # run a diff and print results to file
+            # run a diff and print (results to file)
             diff_val = subprocess.call(['diff', '-I', '"para_id":', '-I', '"para_index":', '-I', 'w14:paraId=', valid_file, new_file], stdout=f)
             # \/ optional different diff: unified, with 2 lines of context
             # diff_val = subprocess.call(['diff', '-U', '2', '-I', '"para_id":', '-I', '"para_index":', '-I', 'w14:paraId=', valid_file, new_file], stdout=f)
             f.close()
 
             # wrap up
-            print "xml diff {} exit code: {}".format(df_shortname, diff_val)
+            print ("xml diff {} exit code: {}".format(df_shortname, diff_val))
             if diff_val != 0:
                 files_with_diffs.append(df_shortname)
     return files_with_diffs
@@ -170,9 +171,9 @@ if __name__ == '__main__':
     # run tests
     for testfile in testfiles:
         exitcode = runTest(testfile)
-        print "exitcode: ", exitcode
+        print ("exitcode: ", exitcode)
         if exitcode != 0:
-            print "Fatal Error occurred during transform for {}".format(testfile)
+            print ("Fatal Error occurred during transform for {}".format(testfile))
             err_testfiles.append(testfile)
             break
         else:
@@ -188,22 +189,22 @@ if __name__ == '__main__':
                 all_files_with_diffs[os.path.basename(testfile)] = files_with_diffs
     # TEST OUTPUT
     if validated_files_updated:
-        print "\n\n * * Updated Validated files for testfile(s):"
+        print ("\n\n * * Updated Validated files for testfile(s):")
         for file in validated_files_updated:
-            print "\t- {}".format(file)
+            print ("\t- {}".format(file))
     if not all_files_with_diffs and not err_testfiles:
-        print "\n\n * * * TESTS PASSED SUCCESSFULLY * * *\n"
-        print ".docx files tested:"
+        print ("\n\n * * * TESTS PASSED SUCCESSFULLY * * *\n")
+        print (".docx files tested:")
         for file in testfiles:
-            print "\t- {}".format(os.path.basename(file))
+            print ("\t- {}".format(os.path.basename(file)))
         # remove our diff folder, just for general cleanup
         shutil.rmtree(diff_outputdir)
     else:
-        print "\n\n * * *  TESTS FAILED  * * * \n"
+        print ("\n\n * * *  TESTS FAILED  * * * \n")
         if err_testfiles:
-            print "Errors occurred running tests for the following testfiles:\n\t{}\n".format(err_testfiles)
+            print ("Errors occurred running tests for the following testfiles:\n\t{}\n".format(err_testfiles))
         if all_files_with_diffs:
-            print "Diffs in output were found for testfiles listed below; detailed diff output here: \n\t{}).\n".format(diff_outputdir)
+            print ("Diffs in output were found for testfiles listed below; detailed diff output here: \n\t{}).\n".format(diff_outputdir))
             for testfile in all_files_with_diffs:
-                print "- testfile: {}\n\tfiles with differences: {}".format(testfile, all_files_with_diffs[testfile])
-    print "\n"
+                print ("- testfile: {}\n\tfiles with differences: {}".format(testfile, all_files_with_diffs[testfile]))
+    print ("\n")

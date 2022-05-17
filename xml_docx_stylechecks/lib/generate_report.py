@@ -23,7 +23,7 @@ else:
     import cfg
     import shared_utils.os_utils as os_utils
     import shared_utils.lxml_utils as lxml_utils
-import report_recipe
+from . import report_recipe
 
 
 ######### LOCAL DECLARATIONS
@@ -123,7 +123,7 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
             tmptextlist.append(recipe_item["text"])
         # see if "dict_category_name" is present
         if "dict_category_name" in recipe_item and recipe_item["dict_category_name"]:
-            # if the category is in report_dict and has contents, proceed, else, print an alternate & log err as needed
+            # if the category is in report_dict and has contents, proceed, else, print (an alternate & log err as needed)
             if recipe_item["dict_category_name"] in report_dict and report_dict[recipe_item["dict_category_name"]]:
                 # apply validator warning banner if present in report_Dict
                 if "v_warning_banner" in recipe_item and recipe_item["v_warning_banner"]:
@@ -288,9 +288,9 @@ def generateReport(report_dict, outputtxt_path, scriptname):
     # add success/fail banner based script & presence of alerts
     addBanner(textreport_list, errorlist, warninglist, validator_warnings, scriptname)
 
-    # print report to console
+    # print (report to console)
     for line in textreport_list:    # for debug
-        print line
+        print (line)
 
     # create email_ready string
     email_text = "\n".join(textreport_list)

@@ -1886,6 +1886,57 @@ class Tests(unittest.TestCase):
                                     u'978-1-250\u201382411-0'])
         self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(valid_docxml)))
 
+    # testing specifically: 'validate' mode, fpr RSuite-styled docs
+    def test_getAllStylesUsed(self):
+        # # # items tested via testdoc
+        # - good Macmillan pstyle, cstyle
+        # - valid pstyles with unique contexts picked up as first uses, both in terms of section and container
+        # - valid pstyles with new instances of already-introduced contexts are not picked up
+        # - valid pstyles in tables picked up
+        # - valid native style (Hyperlink)
+        # - decommissioned style picked up (TextMessageTmg)
+        # - bad native pstyle, bad non-native pstyle: recorded,
+        # - bad native and non-native cstyle: removed: from docxml, footnotes, table
+        # - Section-book, Container-End styles ignored
+        # - Footntes scan (runs-only mode: True)
+
+        # setup params
+        styleconfig_dict = os_utils.readJSON(cfg.styleconfig_json)
+        container_starts = rsuite_validations.getContainerStarts(styleconfig_dict)
+        container_ends = ["ENDEND"]
+        vbastyleconfig_dict = os_utils.readJSON(cfg.vbastyleconfig_json)
+        sectionnames = lxml_utils.getAllSectionNamesFromVSC(vbastyleconfig_dict)
+        decommissioned_styles = ['Text-Message (Tmg)']
+        macmillanstyledata = os_utils.readJSON(cfg.macmillanstyles_json)
+        # setup test
+        test_folder_root = setupTestFilesinTmp('test_getAllStylesUsed', os.path.join(testfiles_basepath, 'test_getAllStylesUsed'))
+        tmp_testfile = os.path.join(test_folder_root, 'test_getAllStylesUsed.docx')
+        unzipDOCX.unzipDOCX(tmp_testfile, os.path.splitext(tmp_testfile)[0])
+        # set paths & run function
+        styles_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'styles.xml')
+        doc_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'document.xml')
+        doc_root = getRoot(doc_xml)
+        fn_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'footnotes.xml')
+        fn_root = getRoot(fn_xml)
+        expected_doc_xml = os.path.join(testfiles_basepath, 'test_getAllStylesUsed', 'expected_doc.xml')
+        expected_fn_xml = os.path.join(testfiles_basepath, 'test_getAllStylesUsed', 'expected_fn.xml')
+
+        #  run function
+        report_dict = stylereports.getAllStylesUsed({}, doc_root, styles_xml, sectionnames, macmillanstyledata, [], "validate", cfg.valid_native_word_styles, decommissioned_styles, container_starts, container_ends)
+        report_dict_fn = stylereports.getAllStylesUsed(report_dict, fn_root, styles_xml, sectionnames, macmillanstyledata, [], "validate", cfg.valid_native_word_styles, decommissioned_styles, container_starts, container_ends, True)
+        ### \/ useful for troubleshooting, when diff-ing xml outputs
+        # os_utils.writeXMLtoFile(fn_root, expected_fn_xml)
+
+        # assert
+        self.assertEqual(len(report_dict_fn['Macmillan_charstyle_first_use']), 4)
+        self.assertEqual(['207A4D37', '58CE783D'], [x['para_id'] for x in report_dict['non-Macmillan_style_used_in_table']])
+        self.assertEqual(['3BE31213', '48108791', '5B72505E', '7C380C52'], [x['para_id'] for x in report_dict['non-Macmillan_style_used']])
+        self.assertEqual(['46D9EA20', '6A9A0A07', '6A9A0A07'], [x['para_id'] for x in report_dict['non-Macmillan_charstyle_removed']])
+        self.assertEqual(['3A8D07F8', '5046DE97', '092D3D6D', '26FAD927'], [x['para_id'] for x in report_dict['Macmillan_charstyle_first_use']])
+        self.assertEqual(['0E63F210', '3A8D07F8', '3F5D2BDD', '46D9EA20', '1A5BBBFB', '5404D504', '3124B69D', '1130CF0F', '6C043943', '74999F64', '1CC72F9D'],
+            [x['para_id'] for x in report_dict['Macmillan_style_first_use']])
+        self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(expected_doc_xml)))
+        self.assertEqual(etree.tostring(fn_root), etree.tostring(getRoot(expected_fn_xml)))
 
 if __name__ == '__main__':
     unittest.main()

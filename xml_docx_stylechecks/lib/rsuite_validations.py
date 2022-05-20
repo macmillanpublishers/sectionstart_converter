@@ -763,18 +763,14 @@ def rsuiteValidations(report_dict):
     xmlfile_dict = {
         doc_root:doc_xml
         }
-    # alt_roots is for inclusion in log calculations, as needed
-    alt_roots = {}
     if os.path.exists(cfg.endnotes_xml):
         endnotes_tree = etree.parse(cfg.endnotes_xml)
         endnotes_root = endnotes_tree.getroot()
         xmlfile_dict[endnotes_root]=cfg.endnotes_xml
-        alt_roots['Endnotes']=endnotes_root
     if os.path.exists(cfg.footnotes_xml):
         footnotes_tree = etree.parse(cfg.footnotes_xml)
         footnotes_root = footnotes_tree.getroot()
         xmlfile_dict[footnotes_root]=cfg.footnotes_xml
-        alt_roots['Footnotes']=footnotes_root
 
     # get Section Start names & styles from vbastyleconfig_json
     #    Could pull styles from macmillan.json  with "Section-" if I don't want to use vbastyleconfig_json
@@ -799,6 +795,13 @@ def rsuiteValidations(report_dict):
     report_dict, doc_root = doc_prepare.deleteObjects(report_dict, doc_root, cfg.shape_objects, "shapes")
     # delete bookmarks:
     report_dict = deleteBookmarks(report_dict, doc_root, cfg.bookmark_items)
+    #  delete shapes and bookmarks from notes xml if present
+    if os.path.exists(cfg.endnotes_xml):
+        report_dict, endnotes_root = doc_prepare.deleteObjects(report_dict, endnotes_root, cfg.shape_objects, "shapes")
+        report_dict = deleteBookmarks(report_dict, endnotes_root, cfg.bookmark_items)
+    if os.path.exists(cfg.footnotes_xml):
+        report_dict, footnotes_root = doc_prepare.deleteObjects(report_dict, footnotes_root, cfg.shape_objects, "shapes")
+        report_dict = deleteBookmarks(report_dict, footnotes_root, cfg.bookmark_items)
 
     # delete any comments from docxml:
     report_dict, doc_root = doc_prepare.deleteObjects(report_dict, doc_root, cfg.comment_objects, "comment_ranges")

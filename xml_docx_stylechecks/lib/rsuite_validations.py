@@ -790,6 +790,9 @@ def rsuiteValidations(report_dict):
     li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras = getListStylenames(styleconfig_dict)
     bookmakerstyles = vbastyleconfig_dict["bookmakerstyles"]
     valid_native_word_styles = cfg.valid_native_word_styles
+    # get decommissioned styles
+    styleconfig_legacy_list = os_utils.readJSON(cfg.styleconfig_json)['legacy']
+    decommissioned_styles = [lxml_utils.getStyleLongname(x[1:]) for x in styleconfig_legacy_list]
 
     # These need to come first - otherwise contents (shapes) may keep blank paras from being blank
     # delete shapes, pictures, clip art etc
@@ -839,7 +842,7 @@ def rsuiteValidations(report_dict):
         report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
         report_dict = fixSuperNoteMarks(footnotes_root, report_dict, cfg.superscriptstyle, cfg.footnote_ref_style, 'footnote')
     if os.path.exists(cfg.endnotes_xml):
-        report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")        
+        report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
         report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
         report_dict = fixSuperNoteMarks(endnotes_root, report_dict, cfg.superscriptstyle, cfg.endnote_ref_style, 'endnote')
         # endnotes only: make sure Notes section is present
@@ -875,12 +878,12 @@ def rsuiteValidations(report_dict):
     # toggle 'allstyles_call_type' parameter to 'report' or 'validate' as needed:
     #   for rsuite styled docs, this means deleting non-Macmillan char styles or not
     allstyles_call_type = "validate"  # "report"
-    report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles)
+    report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, decommissioned_styles, container_start_styles, container_end_styles)
     # running getAllStylesUsed on footnotes_root with 'runs_only = True' just to capture charstyles
     if os.path.exists(cfg.footnotes_xml):
-        report_dict = stylereports.getAllStylesUsed(report_dict, footnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles, True)
+        report_dict = stylereports.getAllStylesUsed(report_dict, footnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, decommissioned_styles, container_start_styles, container_end_styles, True)
     if os.path.exists(cfg.endnotes_xml):
-        report_dict = stylereports.getAllStylesUsed(report_dict, endnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles, True)
+        report_dict = stylereports.getAllStylesUsed(report_dict, endnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, decommissioned_styles, container_start_styles, container_end_styles, True)
 
     # removing any charstyles incorrectly / additionally applied to footnote / endnote reference markers in docxml
     #   footnotes

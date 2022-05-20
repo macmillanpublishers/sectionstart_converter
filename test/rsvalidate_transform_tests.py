@@ -12,10 +12,13 @@ import time
 # from xml_docx_stylechecks.shared_utils.decorators import benchmark as benchmark
 
 # accept arguments
-if len(sys.argv) == 2:
+if len(sys.argv) >= 2:
     if sys.argv[1] == 'update_valid_outputs':
         update_valid_outputs = True
-        single_infile = ''
+        if len(sys.argv) == 3:
+            single_infile = sys.argv[2]
+        else:
+            single_infile = ''
     elif sys.argv[1]:
         update_valid_outputs = False
         single_infile = sys.argv[1]
@@ -94,6 +97,7 @@ def runTest(testfile):
 
 def udpateValidFiles(testfile, validfiles_basedir, update_valid_outputs, diff_file_list):
     udpated_testfile_name = ''
+    missing_reqrd_files = []
     tmpdir = os.path.dirname(testfile)
     fname_noext, ext = os.path.splitext(os.path.basename(testfile))
     validfiles_dir = os.path.join(validfiles_basedir, fname_noext)
@@ -107,12 +111,14 @@ def udpateValidFiles(testfile, validfiles_basedir, update_valid_outputs, diff_fi
             v_file = os.path.join(tmpdir, valid_file.format(fname_noext=fname_noext))
             v_file_dest = os.path.join(validfiles_dir, valid_file.format(fname_noext=fname_noext))
             # required files should be present, and copied. nonrequired we check if they exist first
-            if valid_file in required_diff_files:
+            if valid_file in required_diff_files and os.path.exists(v_file):
                 shutil.copy(v_file, v_file_dest)
+            elif valid_file in required_diff_files and not os.path.exists(v_file):
+                missing_reqrd_files.append(valid_file)
             elif valid_file in nonrequired_diff_files and os.path.exists(v_file):
                 shutil.copy(v_file, v_file_dest)
         udpated_testfile_name = os.path.basename(testfile)
-    return udpated_testfile_name
+    return udpated_testfile_name, missing_reqrd_files
 
 def getPrettyXml(xml_fname):
     filename_noext = os.path.splitext(xml_fname)[0]
@@ -165,7 +171,7 @@ if __name__ == '__main__':
     testfiles = []
     all_files_with_diffs = {}
     err_testfiles = []
-    validated_files_updated = []
+    validated_files_updated = {}
     # setup tests
     if single_infile:
         testfile = setupFileTest(single_infile, tmpdir_base, transform_testfiles_dir)
@@ -185,9 +191,9 @@ if __name__ == '__main__':
             break
         else:
             # update validated output
-            updated_tf_name = udpateValidFiles(testfile, validfiles_basedir, update_valid_outputs, diff_file_list)
+            updated_tf_name, vf_missing = udpateValidFiles(testfile, validfiles_basedir, update_valid_outputs, diff_file_list)
             if updated_tf_name:
-                validated_files_updated.append(updated_tf_name)
+                validated_files_updated[updated_tf_name]=vf_missing
             # run diffs
             if not os.path.exists(diff_outputdir):
                 os.mkdir(diff_outputdir)
@@ -197,8 +203,11 @@ if __name__ == '__main__':
     # TEST OUTPUT
     if validated_files_updated:
         print "\n\n * * Updated Validated files for testfile(s):"
-        for file in validated_files_updated:
-            print "\t- {}".format(file)
+        for file, missing_reqrd_files in validated_files_updated.items():
+            if not missing_reqrd_files:
+                print "\t- {}".format(file)
+            else:
+                print "\t- {} \n\t^^^ tmp output was missing REQUIRED valid files({}). Pls verify this is as expected".format(file, missing_reqrd_files)    
     if not all_files_with_diffs and not err_testfiles:
         print "\n\n * * * TESTS PASSED SUCCESSFULLY * * *\n"
         print ".docx files tested:"

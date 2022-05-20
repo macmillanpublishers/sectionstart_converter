@@ -47,6 +47,9 @@ Validated files are stored in 'test/files_for_test/full_transform/test_docx_file
 Once you've verified the output changes are as expected,
   there are three ways to update validated files with tmp files from a new run:
 
+--- Update validated files for ALL testfiles:
 - On a Mac, double-click the file:  "sh_update_valid_files.command"
 - Run via cmd line with parameter: `python rsvalidate_transform_tests.py update_valid_outputs`
+--- Update validated files for one specific testfile:
+- Run via cmd line with parameter: `python rsvalidate_transform_tests.py update_valid_outputs (filename of file in test_docxfiles)` 
 - Drag 'n' drop files from 'test/files_for_test/tmp' to relative 'validated_output' dir.

@@ -121,7 +121,7 @@ if __name__ == '__main__':
                         logger.warn("* * Skipping Style Report:")
                         if percent_styled < percent_styled_min:
                             setup_cleanup.setAlert('error', 'notstyled', {'percent_styled_min':percent_styled_min})
-                        elif version_result != "up_to_date":
+                        elif not (version_result=="newer_template_avail" or version_result=="up_to_date"):
                             setup_cleanup.setAlert('error', 'rs_err_nonrsuite_template', {'current_version':current_version, 'template_version':template_version})
                         if protection:
                             setup_cleanup.setAlert('error', 'protected', {'protection':protection})

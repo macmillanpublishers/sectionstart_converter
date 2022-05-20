@@ -238,20 +238,19 @@ class Tests(unittest.TestCase):
         expected_en_xml = os.path.join(testfiles_basepath, 'test_deleteBookmarks', 'expected_en.xml')
 
         # run function
-        report_dict  = {}
-        # report_dict = rsuite_validations.deleteBookmarks({}, doc_root, cfg.bookmark_items)
+        report_dict = rsuite_validations.deleteBookmarks({}, doc_root, cfg.bookmark_items)
         report_dict = rsuite_validations.deleteBookmarks(report_dict, fn_root, cfg.bookmark_items)
-        # report_dict = rsuite_validations.deleteBookmarks(report_dict, en_root, cfg.bookmark_items)
-        # report_dict2 = rsuite_validations.deleteBookmarks({}, doc_root, cfg.bookmark_items)
+        report_dict = rsuite_validations.deleteBookmarks(report_dict, en_root, cfg.bookmark_items)
+        report_dict2 = rsuite_validations.deleteBookmarks({}, doc_root, cfg.bookmark_items)
         ### \/ useful for troubleshooting, when diff-ing xml outputs
         # os_utils.writeXMLtoFile(en_root, expected_en_xml)
 
         #  assertions
         self.assertEqual(4, len(report_dict['deleted_objects-bookmarks']))
-        # self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(expected_doc_xml)))
-        # self.assertEqual(etree.tostring(fn_root), etree.tostring(getRoot(expected_fn_xml)))
-        # self.assertEqual(etree.tostring(en_root), etree.tostring(getRoot(expected_en_xml)))
-        # self.assertEqual({}, report_dict2)
+        self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(expected_doc_xml)))
+        self.assertEqual(etree.tostring(fn_root), etree.tostring(getRoot(expected_fn_xml)))
+        self.assertEqual(etree.tostring(en_root), etree.tostring(getRoot(expected_en_xml)))
+        self.assertEqual({}, report_dict2)
 
     def test_checkFilenameChars_allbadchars(self):
         filename = "a!@#$''[|]/{ ,.<>\"%^'&}*()-\"\\_=+1?.docx"

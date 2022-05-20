@@ -224,6 +224,35 @@ class Tests(unittest.TestCase):
             'xml_file': 'root'}]})
         self.assertEqual(normalizeXML(xml_root__basic), normalizeXML(self.expected_root))
 
+    def test_deleteBookmarks(self):
+        # setup test
+        test_folder_root = setupTestFilesinTmp('test_deleteBookmarks', os.path.join(testfiles_basepath, 'test_deleteBookmarks'))
+        tmp_testfile = os.path.join(test_folder_root, 'test_deleteBookmarks.docx')
+        unzipDOCX.unzipDOCX(tmp_testfile, os.path.splitext(tmp_testfile)[0])
+        # set paths, get roots
+        fn_root = getRoot(os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'footnotes.xml'))
+        en_root = getRoot(os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'endnotes.xml'))
+        doc_root = getRoot(os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'document.xml'))
+        expected_doc_xml = os.path.join(testfiles_basepath, 'test_deleteBookmarks', 'expected_doc.xml')
+        expected_fn_xml = os.path.join(testfiles_basepath, 'test_deleteBookmarks', 'expected_fn.xml')
+        expected_en_xml = os.path.join(testfiles_basepath, 'test_deleteBookmarks', 'expected_en.xml')
+
+        # run function
+        report_dict  = {}
+        # report_dict = rsuite_validations.deleteBookmarks({}, doc_root, cfg.bookmark_items)
+        report_dict = rsuite_validations.deleteBookmarks(report_dict, fn_root, cfg.bookmark_items)
+        # report_dict = rsuite_validations.deleteBookmarks(report_dict, en_root, cfg.bookmark_items)
+        # report_dict2 = rsuite_validations.deleteBookmarks({}, doc_root, cfg.bookmark_items)
+        ### \/ useful for troubleshooting, when diff-ing xml outputs
+        # os_utils.writeXMLtoFile(en_root, expected_en_xml)
+
+        #  assertions
+        self.assertEqual(4, len(report_dict['deleted_objects-bookmarks']))
+        # self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(expected_doc_xml)))
+        # self.assertEqual(etree.tostring(fn_root), etree.tostring(getRoot(expected_fn_xml)))
+        # self.assertEqual(etree.tostring(en_root), etree.tostring(getRoot(expected_en_xml)))
+        # self.assertEqual({}, report_dict2)
+
     def test_checkFilenameChars_allbadchars(self):
         filename = "a!@#$''[|]/{ ,.<>\"%^'&}*()-\"\\_=+1?.docx"
         badchar_array = check_docx.checkFilenameChars(filename)

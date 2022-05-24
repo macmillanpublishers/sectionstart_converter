@@ -1966,5 +1966,18 @@ class Tests(unittest.TestCase):
         self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(expected_doc_xml)))
         self.assertEqual(etree.tostring(fn_root), etree.tostring(getRoot(expected_fn_xml)))
 
+    def test_getElementCount(self):
+        xmlroot, para = createXML_paraWithRun('pstylename', 'rstylename', 'runtxt')
+        tbl, tblpara = createTableWithPara('paraid', 'pstyle')
+        xmlroot.append(tbl)
+        #  run function
+        count2 = lxml_utils.getElementCount(xmlroot, "w:p")
+        count1 = lxml_utils.getElementCount(xmlroot, "w:tc")
+        count0 = lxml_utils.getElementCount(xmlroot, "w:drawing")
+        # assert
+        self.assertEqual(count2, 2)
+        self.assertEqual(count1, 1)
+        self.assertEqual(count0, 0)
+
 if __name__ == '__main__':
     unittest.main()

@@ -373,6 +373,12 @@ def acceptTrackChanges(xml_file):
 
     os_utils.writeXMLtoFile(xml_root, xml_file)
 
+def checkCoverPage(xml_root):
+    coverpage = False
+    if lxml_utils.getElementCount(getXMLroot(xml_root), 'w:sdt') > 0:
+        coverpage = True
+    return coverpage
+
 def getXMLroot(xml_file):
     if os.path.exists(xml_file):
         xml_tree = etree.parse(xml_file)

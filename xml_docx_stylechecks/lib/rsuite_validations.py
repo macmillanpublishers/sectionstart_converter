@@ -751,6 +751,21 @@ def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_c
                     'restyled {} ref: no. {} (was styled as {})'.format(report_category, note_id, runstyle))
     return report_dict
 
+def checkSymFonts(report_dict, xml_root, valid_symfonts):
+    invalid_symfonts = []
+    searchstring = './/w:sym/@w:font'
+    sym_fontnames = xml_root.xpath(searchstring, namespaces=wordnamespaces)
+    for fontname in sym_fontnames:
+        if fontname not in valid_symfonts and fontname not in invalid_symfonts:
+            invalid_symfonts.append(fontname)
+    if invalid_symfonts:
+        for sf in invalid_symfonts:
+            # log only first occurence of this symfont
+            if 'invalid_symfonts' not in report_dict or sf not in ([x['description'] for x in report_dict['invalid_symfonts']]):
+                lxml_utils.logForReport(report_dict, xml_root, None, 'invalid_symfonts', sf)
+    return report_dict
+
+
 # @benchmark
 def rsuiteValidations(report_dict):
     vbastyleconfig_json = cfg.vbastyleconfig_json
@@ -893,6 +908,14 @@ def rsuiteValidations(report_dict):
     report_dict = cleanNoteMarkers(report_dict, doc_root, cfg.footnote_ref_obj, cfg.footnote_ref_style, "footnote")
     #   endnotes
     report_dict = cleanNoteMarkers(report_dict, doc_root, cfg.endnote_ref_obj, cfg.endnote_ref_style, "endnote")
+
+    # check everywhere for invalid symfonts
+    report_dict = checkSymFonts(report_dict, doc_root, cfg.valid_symfonts)
+    if os.path.exists(cfg.footnotes_xml):
+        report_dict = checkSymFonts(report_dict, footnotes_root, cfg.valid_symfonts)
+    if os.path.exists(cfg.endnotes_xml):
+        report_dict = checkSymFonts(report_dict, endnotes_root, cfg.valid_symfonts)
+
 
     # create sorted version of "image_holders" list in reportdict based on para_index; for reports
     if "image_holders" in report_dict:

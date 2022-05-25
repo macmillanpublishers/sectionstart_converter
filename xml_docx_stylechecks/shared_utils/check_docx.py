@@ -373,9 +373,9 @@ def acceptTrackChanges(xml_file):
 
     os_utils.writeXMLtoFile(xml_root, xml_file)
 
-def checkCoverPage(xml_root):
+def checkCoverPage(xml_file):
     coverpage = False
-    if lxml_utils.getElementCount(getXMLroot(xml_root), 'w:sdt') > 0:
+    if lxml_utils.getElementCount(getXMLroot(xml_file), 'w:sdt') > 0:
         coverpage = True
     return coverpage
 

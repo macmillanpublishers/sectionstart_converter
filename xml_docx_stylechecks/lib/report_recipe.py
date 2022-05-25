@@ -533,7 +533,7 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"dict_category_name": "invalid_symfonts",
     		"line_template": "",
     		"badnews": 'any',
-            "errstring": "Encountered use(s) of unsupported symbol font '{description}'. Please email %s for assistance resolving this issue." % support_email_address
+            "errstring": "Encountered use(s) of unsupported symbol-font: '{description}'. Please email %s for assistance resolving this issue." % support_email_address
     	},
     	"90_list_change_warning": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],

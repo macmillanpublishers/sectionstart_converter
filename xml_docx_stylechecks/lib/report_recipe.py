@@ -55,7 +55,7 @@ def getBanners():
 # This method defines what goes in the StyleReport txt and mail outputs, in what order, + formatting.
 # See the commented "SAMPLE RECIPE ENTRY" below for details on each field.  All fields should be optional,
 #   though text, title or dict_category_name must be present for something to print
-def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_stylename, notessection_stylename):
+def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_stylename, notessection_stylename, support_email_address):
     report_recipe = {
         # # # # # # # # # # # # #  SAMPLE RECIPE ENTRY:
         # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -527,6 +527,13 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"line_template": "",
     		"badnews": 'any',
             "errstring": "Unsupported character(s) in '{descriptionA}'-styled text: '{descriptionB}' (located in {parent_section_start_type}: {parent_section_start_content}). Image placement styles may contain only alphanumeric characters, underscores, or hyphens."
+    	},
+        "86_invalid_symfonts": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "invalid_symfonts",
+    		"line_template": "",
+    		"badnews": 'any',
+            "errstring": "Encountered use(s) of unsupported symbol font '{description}'. Please email %s for assistance resolving this issue." % support_email_address
     	},
     	"90_list_change_warning": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],

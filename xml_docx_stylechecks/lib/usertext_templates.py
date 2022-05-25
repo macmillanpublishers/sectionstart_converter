@@ -140,6 +140,8 @@ def alerts():
         # Error - self explanatory
         "no_unzip_files": "This .docx appears to be password protected. Please remove any document protection settings, re-save, and resubmit your file.",
         # Error - self explanatory
+        "coverpage": "This .docx contains a 'Cover Page' element, which will cause RSuite transforms to fail. Please email {support_email_address} for assistance resolving this issue.",
+        # Error - self explanatory
         "unexpected_namespace": textwrap.dedent("""\
             This .docx was created by an application other than Microsoft Word, and rsuite_validate cannot process it as is.
 

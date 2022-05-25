@@ -97,6 +97,7 @@ def createRun(runtxt, rstylename=''):
     return run
 
 def createPara(para_id, pstylename='', runtxt='', rstylename=''):
+    run = None
     # create para
     new_para = etree.Element("{%s}p" % cfg.wnamespace)
     new_para.attrib["{%s}paraId" % cfg.w14namespace] = para_id
@@ -112,13 +113,13 @@ def createPara(para_id, pstylename='', runtxt='', rstylename=''):
     if runtxt or rstylename:
         run = createRun(runtxt, rstylename='')
         new_para.append(run)
-    return new_para
+    return new_para, run
 
 def createTableWithPara(paratxt, parastyle, paraId="p-id"):
     tbl = createMiscElement('tbl', cfg.wnamespace)
     tr = createMiscElement('tr', cfg.wnamespace)
     tc = createMiscElement('tc', cfg.wnamespace)
-    para = createPara(paraId, pstylename=parastyle, runtxt=paratxt)
+    para, run = createPara(paraId, pstylename=parastyle, runtxt=paratxt)
     tc.append(para)
     tr.append(tc)
     tbl.append(tr)
@@ -134,9 +135,9 @@ def createXML_paraWithRun(pstylename, rstylename, runtxt, root=None, para_id='te
     else:
         body = root.find(".//{%s}body" % cfg.wnamespace)
     # create para with run
-    para = createPara(para_id, pstylename, runtxt, rstylename)
+    para, run = createPara(para_id, pstylename, runtxt, rstylename)
     body.append(para)
-    return root, para
+    return root, para, run
 
 # this function helps with comparing xmldata that was prettified or manually prepared:
 # reads xml from file and passes to function above
@@ -225,6 +226,34 @@ class Tests(unittest.TestCase):
             'xml_file': 'root'}]})
         self.assertEqual(normalizeXML(xml_root__basic), normalizeXML(self.expected_root))
 
+    def test_deleteBookmarks(self):
+        # setup test
+        test_folder_root = setupTestFilesinTmp('test_deleteBookmarks', os.path.join(testfiles_basepath, 'test_deleteBookmarks'))
+        tmp_testfile = os.path.join(test_folder_root, 'test_deleteBookmarks.docx')
+        unzipDOCX.unzipDOCX(tmp_testfile, os.path.splitext(tmp_testfile)[0])
+        # set paths, get roots
+        fn_root = getRoot(os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'footnotes.xml'))
+        en_root = getRoot(os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'endnotes.xml'))
+        doc_root = getRoot(os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'document.xml'))
+        expected_doc_xml = os.path.join(testfiles_basepath, 'test_deleteBookmarks', 'expected_doc.xml')
+        expected_fn_xml = os.path.join(testfiles_basepath, 'test_deleteBookmarks', 'expected_fn.xml')
+        expected_en_xml = os.path.join(testfiles_basepath, 'test_deleteBookmarks', 'expected_en.xml')
+
+        # run function
+        report_dict = rsuite_validations.deleteBookmarks({}, doc_root, cfg.bookmark_items)
+        report_dict = rsuite_validations.deleteBookmarks(report_dict, fn_root, cfg.bookmark_items)
+        report_dict = rsuite_validations.deleteBookmarks(report_dict, en_root, cfg.bookmark_items)
+        report_dict2 = rsuite_validations.deleteBookmarks({}, doc_root, cfg.bookmark_items)
+        ### \/ useful for troubleshooting, when diff-ing xml outputs
+        # os_utils.writeXMLtoFile(en_root, expected_en_xml)
+
+        #  assertions
+        self.assertEqual(4, len(report_dict['deleted_objects-bookmarks']))
+        self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(expected_doc_xml)))
+        self.assertEqual(etree.tostring(fn_root), etree.tostring(getRoot(expected_fn_xml)))
+        self.assertEqual(etree.tostring(en_root), etree.tostring(getRoot(expected_en_xml)))
+        self.assertEqual({}, report_dict2)
+
     def test_checkFilenameChars_allbadchars(self):
         filename = "a!@#$''[|]/{ ,.<>\"%^'&}*()-\"\\_=+1?.docx"
         badchar_array = check_docx.checkFilenameChars(filename)
@@ -243,6 +272,7 @@ class Tests(unittest.TestCase):
         #       - para with old Macmillan-style:
         #       - acceptable built-in styles (e.g. 'Footnote Text')
         #       - styled, unstyled and 'Normal' styled table cells (which should be ignored)
+        #       - decommissioned RSuite style
         test_folder_root = setupTestFilesinTmp('test_stylecount', os.path.join(testfiles_basepath, 'test_stylecount'))
         tmp_testfile = os.path.join(test_folder_root, 'stylecount.docx')
         unzipDOCX.unzipDOCX(tmp_testfile, os.path.splitext(tmp_testfile)[0])
@@ -251,14 +281,14 @@ class Tests(unittest.TestCase):
         doc_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'document.xml')
         percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(doc_xml, template_styles_xml)
         # ASSERTION
-        self.assertEqual(total_paras, 8)
-        self.assertEqual(macmillan_styled_paras, 5)
+        self.assertEqual(total_paras, 9)
+        self.assertEqual(macmillan_styled_paras, 6)
 
     def test_validateImageHolders_badchar_basename(self):
         fullstylename = 'Image-Placement (Img)'
         badfilename = "file,.!@#*<: name-_3.jpg"
         # setup
-        root, para = createXML_paraWithRun(fullstylename, '', badfilename)
+        root, para, run = createXML_paraWithRun(fullstylename, '', badfilename)
         # run function
         report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename, {})
 
@@ -276,7 +306,7 @@ class Tests(unittest.TestCase):
         filebasename = "filename-_3"
         badfilename = '{}{}'.format(filebasename, bad_ext)
         # setup
-        root, para = createXML_paraWithRun(fullstylename, '', badfilename)
+        root, para, run = createXML_paraWithRun(fullstylename, '', badfilename)
         # run function
         report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename, {})
 
@@ -292,7 +322,7 @@ class Tests(unittest.TestCase):
         fullstylename = 'Image-Placement (Img)'
         badfilename = "filename-_3"
         # setup
-        root, para = createXML_paraWithRun(fullstylename, '', badfilename)
+        root, para, run = createXML_paraWithRun(fullstylename, '', badfilename)
         # run function
         report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename, {})
 
@@ -308,7 +338,7 @@ class Tests(unittest.TestCase):
         fullstylename = 'Image-Placement (Img)'
         filename = u'—[(—)-].jpg'
         # setup
-        root, para = createXML_paraWithRun(fullstylename, '', filename)
+        root, para, run = createXML_paraWithRun(fullstylename, '', filename)
         # run function
         report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, filename, {})
 
@@ -324,7 +354,7 @@ class Tests(unittest.TestCase):
         fullstylename = 'cs-image-placement (cimg)'
         badfilename = "file,![ ]@#*<: name-_3.jpg"#"file,.!@#*<: name-_3.jpg"
         # setup
-        root, para = createXML_paraWithRun('test', fullstylename, badfilename)
+        root, para, run = createXML_paraWithRun('test', fullstylename, badfilename)
         # run function
         report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename, {})
 
@@ -340,7 +370,7 @@ class Tests(unittest.TestCase):
         fullstylename = 'Image-Placement (Img)'
         badfilename = "file,!@#*<: name-_3"
         # setup
-        root, para = createXML_paraWithRun(fullstylename, '', badfilename)
+        root, para, run = createXML_paraWithRun(fullstylename, '', badfilename)
         # run function
         report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, badfilename, {})
 
@@ -362,7 +392,7 @@ class Tests(unittest.TestCase):
         fullstylename = 'Image-Placement (Img)'
         filename = "filename-_3.jpg"
         # setup
-        root, para = createXML_paraWithRun(fullstylename, '', filename)
+        root, para, run = createXML_paraWithRun(fullstylename, '', filename)
         # run function
         report_dict = stylereports.validateImageHolders({}, root, fullstylename, para, filename, {})
 
@@ -377,7 +407,7 @@ class Tests(unittest.TestCase):
         interloper_el3 = etree.Element("{%s}proofErr" % cfg.wnamespace) #< these occur between runs in real docx
 
         # setup
-        root, para = createXML_paraWithRun("Pteststyle", '', leadingtxt)
+        root, para, run = createXML_paraWithRun("Pteststyle", '', leadingtxt)
         para.insert(0, interloper_el)
         para = appendRuntoXMLpara(para, runstylename, run1txt)
         para.append(interloper_el2)
@@ -412,9 +442,9 @@ class Tests(unittest.TestCase):
         # build xml with 3 types of paras (good, unstyled, and wrong-styled)
         root = createXMLroot()
         endnote = createMiscElement('endnote', cfg.wnamespace, 'id', '7', cfg.wnamespace)
-        goodpara = createPara('p_id1', note_style, 'I am a styled para.')
-        unstyled_para = createPara(unstyled_id, '', 'Pstyle-less Para', 'demo_runstyle')
-        badstyled_para = createPara(bad_id, bad_pStyle, 'Bad-styled para')
+        goodpara, run = createPara('p_id1', note_style, 'I am a styled para.')
+        unstyled_para, run = createPara(unstyled_id, '', 'Pstyle-less Para', 'demo_runstyle')
+        badstyled_para, run = createPara(bad_id, bad_pStyle, 'Bad-styled para')
         # put items together:
         root.append(endnote)
         endnote.append(goodpara)
@@ -422,7 +452,7 @@ class Tests(unittest.TestCase):
         endnote.append(badstyled_para)
         # add a separator type endnote with non-styled child para (should be ignored):
         separator_endnote = createMiscElement('endnote', cfg.wnamespace, 'type', 'continuationSeparator', cfg.wnamespace)
-        separator_enpara = createPara('p_id4', '', 'I am separator placeholder para.')
+        separator_enpara, run = createPara('p_id4', '', 'I am separator placeholder para.')
         root.append(separator_endnote)
         separator_endnote.append(separator_enpara)
         # run function
@@ -448,9 +478,9 @@ class Tests(unittest.TestCase):
         # build xml with 3 types of paras (good, unstyled, and wrong-styled)
         root = createXMLroot(notes_nsmap)
         endnote = createMiscElement('endnote', cfg.wnamespace, 'id', '7', cfg.wnamespace)
-        goodpara = createPara('p_id1', note_style, 'I am a styled para.')
-        unstyled_para = createPara(unstyled_id, '', 'Pstyle-less Para', 'demo_runstyle')
-        badstyled_para = createPara(bad_id, bad_pStyle, 'Bad-styled para')
+        goodpara, run = createPara('p_id1', note_style, 'I am a styled para.')
+        unstyled_para, run = createPara(unstyled_id, '', 'Pstyle-less Para', 'demo_runstyle')
+        badstyled_para, run = createPara(bad_id, bad_pStyle, 'Bad-styled para')
         # put items together:
         root.append(endnote)
         endnote.append(goodpara)
@@ -458,7 +488,7 @@ class Tests(unittest.TestCase):
         endnote.append(badstyled_para)
         # add a separator type endnote with non-styled child para (should be ignored):
         separator_endnote = createMiscElement('endnote', cfg.wnamespace, 'type', 'continuationSeparator', cfg.wnamespace)
-        separator_enpara = createPara('p_id4', '', 'I am separator placeholder para.')
+        separator_enpara, run = createPara('p_id4', '', 'I am separator placeholder para.')
         root.append(separator_endnote)
         separator_endnote.append(separator_enpara)
         # run function
@@ -482,7 +512,7 @@ class Tests(unittest.TestCase):
         para_id = 'p_id-1'
 
         # build after xml; first build elements
-        dummy_note_para = createPara(para_id, note_stylename, '', noteref_stylename)
+        dummy_note_para, run = createPara(para_id, note_stylename, '', noteref_stylename)
         noteref_el = createMiscElement('endnoteRef', cfg.wnamespace)
         after_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '2', cfg.wnamespace)
         after_root = createXMLroot()
@@ -496,8 +526,8 @@ class Tests(unittest.TestCase):
         # now build test root
         test_root = createXMLroot()
         test_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '2', cfg.wnamespace)
-        blankpara1 = createPara('bp_id1', note_stylename)
-        blankpara2 = createPara('bp_id2', note_stylename)
+        blankpara1, run = createPara('bp_id1', note_stylename)
+        blankpara2, run = createPara('bp_id2', note_stylename)
         # etree.SubElement(test_endnote, blankpara1)
         test_endnote.append(blankpara1)
         test_endnote.append(blankpara2)
@@ -529,8 +559,8 @@ class Tests(unittest.TestCase):
         para_id4 = 'p_id-4'
         # build test xml
         # finish building after_root:
-        after_content_p1 = createPara(para_id2, '', "I am a paragraph with content")
-        after_content_p2 = createPara(para_id4, note_stylename, "I am too, I have some words")
+        after_content_p1, run = createPara(para_id2, '', "I am a paragraph with content")
+        after_content_p2, run = createPara(para_id4, note_stylename, "I am too, I have some words")
         after_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '3', cfg.wnamespace)
         after_root = createXMLroot()
         after_endnote.append(after_content_p1)
@@ -539,9 +569,9 @@ class Tests(unittest.TestCase):
         #   now test root
         test_root = createXMLroot()
         test_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '3', cfg.wnamespace)
-        blankpara1 = createPara(para_id, note_stylename)
+        blankpara1, run = createPara(para_id, note_stylename)
         test_content_p1 = copy.deepcopy(after_content_p1)
-        blankpara2 = createPara(para_id3)
+        blankpara2, run = createPara(para_id3)
         test_content_p2 = copy.deepcopy(after_content_p2)
         test_endnote.append(blankpara1)
         test_endnote.append(test_content_p1)
@@ -605,7 +635,7 @@ class Tests(unittest.TestCase):
         tbl, blanktblpara = createTableWithPara('', 'BodyTextTxt', 'table_p1')
         empty_note.append(tbl)
         expected_root = copy.deepcopy(test_root)
-        blankpara = createPara('bp_id1', note_stylename)
+        blankpara, run = createPara('bp_id1', note_stylename)
         empty_note.append(blankpara)
 
         # run function
@@ -633,7 +663,7 @@ class Tests(unittest.TestCase):
         para_id = 'p_id-1'
 
         # build after xml; first build elements
-        dummy_note_para = createPara(para_id, note_stylename, '', noteref_stylename)
+        dummy_note_para, run = createPara(para_id, note_stylename, '', noteref_stylename)
         noteref_el = createMiscElement('endnoteRef', cfg.wnamespace)
         after_endnote = createMiscElement(note_name, cfg.wnamespace, 'id', '1', cfg.wnamespace)
         after_root = createXMLroot()
@@ -666,7 +696,7 @@ class Tests(unittest.TestCase):
         root = createXMLroot()
         cseparator_note = createMiscElement(note_name, cfg.wnamespace, 'type', 'continuationSeparator', cfg.wnamespace)
         cseparator_note.attrib["{{{}}}{}".format(cfg.wnamespace, 'id')] = '0'
-        cseparator_para = createPara('p_id-1')
+        cseparator_para, run = createPara('p_id-1')
         cseparator_run = createRun('')
         cseparator = createMiscElement('continuationSeparator', cfg.wnamespace)
         cseparator_run.append(cseparator)
@@ -676,7 +706,7 @@ class Tests(unittest.TestCase):
         # build separator:
         separator_note = createMiscElement(note_name, cfg.wnamespace, 'type', 'separator', cfg.wnamespace)
         separator_note.attrib["{{{}}}{}".format(cfg.wnamespace, 'id')] = '0'
-        separator_para = createPara('p_id-1')
+        separator_para, run = createPara('p_id-1')
         separator_run = createRun('')
         separator = createMiscElement('separator', cfg.wnamespace)
         separator_run.append(separator)
@@ -731,8 +761,8 @@ class Tests(unittest.TestCase):
         new_nsuri = cfg.w14namespace
 
         # create dummy roots
-        root_good, para = createXML_paraWithRun('BodyTextTxt', '', "I'm a normal para", None, 'p_id2', test_nsmap_good)
-        root_bad, para2 = createXML_paraWithRun('BodyTextTxt', '', "I'm a normal para", None, 'p_id2', test_nsmap_bad)
+        root_good, para, run = createXML_paraWithRun('BodyTextTxt', '', "I'm a normal para", None, 'p_id2', test_nsmap_good)
+        root_bad, para2, run = createXML_paraWithRun('BodyTextTxt', '', "I'm a normal para", None, 'p_id2', test_nsmap_bad)
         root_good_before = copy.deepcopy(root_good)
         root_bad_before = copy.deepcopy(root_bad)
 
@@ -750,7 +780,7 @@ class Tests(unittest.TestCase):
 
     def test_handleBlankParasInTables_soloblankpara(self):
         # create root with soloblanktablepara, table
-        root, para = createXML_paraWithRun('BodyTextTxt', '', '', None)
+        root, para, run = createXML_paraWithRun('BodyTextTxt', '', '', None)
         tbl, tblpara = createTableWithPara('', 'BodyTextTxt', 'p-id')
         para.addnext(tbl)
         before_root = copy.deepcopy(root)
@@ -772,9 +802,9 @@ class Tests(unittest.TestCase):
     ## test for setting: "removing_excess_tbl_blankparas" to "True" in "handleBlankParasInTables"
     # def test_handleBlankParasInTables_multiblankparas(self):
     #     # create root with blank para preceding other para
-    #     root, para = createXML_paraWithRun('BodyTextTxt', '', '', None)
+    #     root, para, run = createXML_paraWithRun('BodyTextTxt', '', '', None)
     #     tbl, tblpara = createTableWithPara('A', 'BodyTextTxt', 'p-id')
-    #     xtrapara = createPara('p-id2', '', 'I have text.')
+    #     xtrapara, run = createPara('p-id2', '', 'I have text.')
     #     tblpara.addnext(xtrapara)
     #     para.addnext(tbl)
     #     before_root = copy.deepcopy(root)
@@ -794,15 +824,15 @@ class Tests(unittest.TestCase):
         test_ends = ['END','END2']
         test_breaks = ['break1','break2']
         # create root and init (Section) para
-        root, para = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
+        root, para, run = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
         # append subsequent paras
-        root, goodcontainer_p = createXML_paraWithRun(testcontainers[0], '', 'Container1Starter', root, 'goodcontainer_p')
-        root, goodbreak_p = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
+        root, goodcontainer_p, run = createXML_paraWithRun(testcontainers[0], '', 'Container1Starter', root, 'goodcontainer_p')
+        root, goodbreak_p, run = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
         # dupe root so we can mock up ideal outcome, by not adding badtxt to dupe, but everything else to both
         root_dupe = copy.deepcopy(root)
-        root, badtxt_p = createXML_paraWithRun('BodyTextTxt', '', '   ', root, 'badtxt_p')
-        root, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
-        root_dupe, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
+        root, badtxt_p, run = createXML_paraWithRun('BodyTextTxt', '', '   ', root, 'badtxt_p')
+        root, goodend_p, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
+        root_dupe, goodend_p, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
 
         # run our transform
         report_dict = rsuite_validations.removeBlankParas({}, root, testsections, testcontainers, test_ends, test_breaks)
@@ -826,13 +856,13 @@ class Tests(unittest.TestCase):
         # append subsequent paras
         # dupe root so we can mock up ideal outcome, by not adding badtxt to dupe, but everything else to both
         root_dupe = copy.deepcopy(root)
-        root, badcontainer_p = createXML_paraWithRun(testcontainers[0], '', '', root, 'badcontainer_p')
-        root, goodbreak_p = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
-        root, goodtxt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'badtxt_p')
-        root, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
-        root_dupe, goodbreak_p = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
-        root_dupe, goodtxt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'goodtxt_p')
-        root_dupe, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
+        root, badcontainer_p, run = createXML_paraWithRun(testcontainers[0], '', '', root, 'badcontainer_p')
+        root, goodbreak_p, run = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
+        root, goodtxt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'badtxt_p')
+        root, goodend_p, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
+        root_dupe, goodbreak_p, run = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
+        root_dupe, goodtxt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'goodtxt_p')
+        root_dupe, goodend_p, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
         # with patch("xml_docx_stylechecks.shared_utils.lxml_utils.getStyleLongname") as getlongname_mock:
         #     getlongname_mock.return_value = "foo"
         # test = lxml_utils.getStyleLongname('sdsd')
@@ -865,15 +895,15 @@ class Tests(unittest.TestCase):
         # append subsequent paras
         # dupe root so we can mock it up as ideal outcome, then run function on root_dupe
         root_dupe = copy.deepcopy(root)
-        root_dupe, badcontainer_p = createXML_paraWithRun(testcontainers[0], '', '', root_dupe, 'badcontainer_p')
-        root_dupe, goodbreak_p = createXML_paraWithRun(test_breaks[1], '', '-break text-', root_dupe, 'goodbreak_p')
-        root_dupe, goodtxt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_dupe, 'goodtxt_p')
-        root_dupe, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
+        root_dupe, badcontainer_p, run = createXML_paraWithRun(testcontainers[0], '', '', root_dupe, 'badcontainer_p')
+        root_dupe, goodbreak_p, run = createXML_paraWithRun(test_breaks[1], '', '-break text-', root_dupe, 'goodbreak_p')
+        root_dupe, goodtxt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_dupe, 'goodtxt_p')
+        root_dupe, goodend_p, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
         # mock up root as expected outcome
         para.getparent().remove(para)
-        root, goodbreak_p = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
-        root, goodtxt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'goodtxt_p')
-        root, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
+        root, goodbreak_p, run = createXML_paraWithRun(test_breaks[1], '', '-break text-', root, 'goodbreak_p')
+        root, goodtxt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'goodtxt_p')
+        root, goodend_p, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
 
         # run our transform
         report_dict = rsuite_validations.removeBlankParas({}, root_dupe, testsections, testcontainers, test_ends, test_breaks)
@@ -907,16 +937,16 @@ class Tests(unittest.TestCase):
         # create root and init (Section) para
         root, para = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
         # append subsequent paras
-        root, goodcontainer_p = createXML_paraWithRun(testcontainers[0], '', 'Container1Starter', root, 'goodcontainer_p')
-        root, goodtxt_p = createXML_paraWithRun('BodyTextTxt', '', 'Im a para with text', root, 'goodtxt_p')
+        root, goodcontainer_p, run = createXML_paraWithRun(testcontainers[0], '', 'Container1Starter', root, 'goodcontainer_p')
+        root, goodtxt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'Im a para with text', root, 'goodtxt_p')
         # dupe root so we can mock up ideal outcome, by not adding badtxt to dupe, but everything else to both
         root_dupe = copy.deepcopy(root)
-        root, badbreak1_p = createXML_paraWithRun(test_breaks[1], '', '', root, 'badbreak1_p')
-        root, goodend_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
+        root, badbreak1_p, run = createXML_paraWithRun(test_breaks[1], '', '', root, 'badbreak1_p')
+        root, goodend_p, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'goodend_p')
         tbl, badbreak2_p = createTableWithPara('', test_breaks[0], 'badbreak2_p')
         goodend_p.addnext(tbl)
         # now add only items that should not be removed, to the root_dupe
-        root_dupe, goodend_p_dupe = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
+        root_dupe, goodend_p_dupe, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root_dupe, 'goodend_p')
         tbl2, badbreak2_p_dupe = createTableWithPara('', test_breaks[0], 'badbreak2_p')
         goodend_p_dupe.addnext(tbl2)
 
@@ -948,15 +978,15 @@ class Tests(unittest.TestCase):
         test_ends = ['END','END2']
 
         # create root and init (Section) para
-        root, para = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1 Head', None)
+        root, para, run = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1 Head', None)
         # dupe root so we can mock up mutliple outcomes,
         root_dupe = copy.deepcopy(root)
         # append subsequent paras
-        root, container_p = createXML_paraWithRun(testcontainers[0], '', 'Excerpt Cntnr', root, 'container_p')
-        root, txt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'txt_p')
-        root, end_p = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'end_p')
+        root, container_p, run = createXML_paraWithRun(testcontainers[0], '', 'Excerpt Cntnr', root, 'container_p')
+        root, txt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root, 'txt_p')
+        root, end_p, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root, 'end_p')
         # append subsequent paras to dupe
-        root_dupe, txt_p2 = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_dupe, 'txt_p')
+        root_dupe, txt_p2, run = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_dupe, 'txt_p')
 
         # run our check(s)
         report_dict = rsuite_validations.checkContainers({}, root, testsections, testcontainers, test_ends)
@@ -974,8 +1004,8 @@ class Tests(unittest.TestCase):
         # create root and init (Section) para
         root_noend, para = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
         # append subsequent paras
-        root_noend, container_p = createXML_paraWithRun(testcontainers[0], '', 'Excerpt Cntnr', root_noend, 'container_p')
-        root_noend, txt_p = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_noend, 'txt_p')
+        root_noend, container_p, run = createXML_paraWithRun(testcontainers[0], '', 'Excerpt Cntnr', root_noend, 'container_p')
+        root_noend, txt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_noend, 'txt_p')
         # dupe root so we can mock up ideal outcome, by not adding badtxt to dupe, but everything else to both
         root_noend_container = copy.deepcopy(root_noend)
         root_noend_section = copy.deepcopy(root_noend)
@@ -1038,7 +1068,7 @@ class Tests(unittest.TestCase):
         test_ends = ['END','END2']
 
         # create root and init para
-        root_doubleend, end_p1 = createXML_paraWithRun(test_ends[1], '', 'C. End', None, 'end_p1')
+        root_doubleend, end_p1, run = createXML_paraWithRun(test_ends[1], '', 'C. End', None, 'end_p1')
         # append subsequent paras
         root_doubleend, sectionp = createXML_paraWithRun(list(testsections)[1], '', 'Section 1!', root_doubleend, 'section1')
         root_doubleend, end_p2 = createXML_paraWithRun(test_ends[0], '', 'C. End again', root_doubleend, 'end_p2')
@@ -1046,10 +1076,10 @@ class Tests(unittest.TestCase):
         # create different root for variation
         root_end_and_sectionend, para = createXML_paraWithRun(list(testsections)[0], '', 'Section 2!', None)
         # append subsequent paras
-        root_end_and_sectionend, end_p1b = createXML_paraWithRun(test_ends[0], '', 'C. End', root_end_and_sectionend, 'end_p1b')
-        root_end_and_sectionend, container_p = createXML_paraWithRun(testcontainers[1], '', 'Excerpt Cntnr', root_end_and_sectionend, 'container_p1')
-        root_end_and_sectionend, end_p2b = createXML_paraWithRun(test_ends[1], '', 'C. End again', root_end_and_sectionend, 'end_p2b')
-        root_end_and_sectionend, end_p3 = createXML_paraWithRun(test_ends[0], '', 'C. End again again', root_end_and_sectionend, 'end_p3')
+        root_end_and_sectionend, end_p1b, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root_end_and_sectionend, 'end_p1b')
+        root_end_and_sectionend, container_p, run = createXML_paraWithRun(testcontainers[1], '', 'Excerpt Cntnr', root_end_and_sectionend, 'container_p1')
+        root_end_and_sectionend, end_p2b, run = createXML_paraWithRun(test_ends[1], '', 'C. End again', root_end_and_sectionend, 'end_p2b')
+        root_end_and_sectionend, end_p3, run = createXML_paraWithRun(test_ends[0], '', 'C. End again again', root_end_and_sectionend, 'end_p3')
 
         # run our check(s)
         report_dict_doubleend = rsuite_validations.checkContainers({}, root_doubleend, testsections, testcontainers, test_ends)
@@ -1951,6 +1981,97 @@ class Tests(unittest.TestCase):
                                     u'978-1-250\u201382411-0'])
         self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(valid_docxml)))
 
+    # testing specifically: 'validate' mode, fpr RSuite-styled docs
+    def test_getAllStylesUsed(self):
+        # # # items tested via testdoc
+        # - good Macmillan pstyle, cstyle
+        # - valid pstyles with unique contexts picked up as first uses, both in terms of section and container
+        # - valid pstyles with new instances of already-introduced contexts are not picked up
+        # - valid pstyles in tables picked up
+        # - valid native style (Hyperlink)
+        # - decommissioned style picked up (TextMessageTmg)
+        # - bad native pstyle, bad non-native pstyle: recorded,
+        # - bad native and non-native cstyle: removed: from docxml, footnotes, table
+        # - Section-book, Container-End styles ignored
+        # - Footntes scan (runs-only mode: True)
+
+        # setup params
+        styleconfig_dict = os_utils.readJSON(cfg.styleconfig_json)
+        container_starts = rsuite_validations.getContainerStarts(styleconfig_dict)
+        container_ends = ["ENDEND"]
+        vbastyleconfig_dict = os_utils.readJSON(cfg.vbastyleconfig_json)
+        sectionnames = lxml_utils.getAllSectionNamesFromVSC(vbastyleconfig_dict)
+        decommissioned_styles = ['Text-Message (Tmg)']
+        macmillanstyledata = os_utils.readJSON(cfg.macmillanstyles_json)
+        # setup test
+        test_folder_root = setupTestFilesinTmp('test_getAllStylesUsed', os.path.join(testfiles_basepath, 'test_getAllStylesUsed'))
+        tmp_testfile = os.path.join(test_folder_root, 'test_getAllStylesUsed.docx')
+        unzipDOCX.unzipDOCX(tmp_testfile, os.path.splitext(tmp_testfile)[0])
+        # set paths & run function
+        styles_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'styles.xml')
+        doc_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'document.xml')
+        doc_root = getRoot(doc_xml)
+        fn_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'footnotes.xml')
+        fn_root = getRoot(fn_xml)
+        expected_doc_xml = os.path.join(testfiles_basepath, 'test_getAllStylesUsed', 'expected_doc.xml')
+        expected_fn_xml = os.path.join(testfiles_basepath, 'test_getAllStylesUsed', 'expected_fn.xml')
+
+        #  run function
+        report_dict = stylereports.getAllStylesUsed({}, doc_root, styles_xml, sectionnames, macmillanstyledata, [], "validate", cfg.valid_native_word_styles, decommissioned_styles, container_starts, container_ends)
+        report_dict_fn = stylereports.getAllStylesUsed(report_dict, fn_root, styles_xml, sectionnames, macmillanstyledata, [], "validate", cfg.valid_native_word_styles, decommissioned_styles, container_starts, container_ends, True)
+        ### \/ useful for troubleshooting, when diff-ing xml outputs
+        # os_utils.writeXMLtoFile(fn_root, expected_fn_xml)
+
+        # assert
+        self.assertEqual(len(report_dict_fn['Macmillan_charstyle_first_use']), 4)
+        self.assertEqual(['207A4D37', '58CE783D'], [x['para_id'] for x in report_dict['non-Macmillan_style_used_in_table']])
+        self.assertEqual(['3BE31213', '48108791', '5B72505E', '7C380C52'], [x['para_id'] for x in report_dict['non-Macmillan_style_used']])
+        self.assertEqual(['46D9EA20', '6A9A0A07', '6A9A0A07'], [x['para_id'] for x in report_dict['non-Macmillan_charstyle_removed']])
+        self.assertEqual(['3A8D07F8', '5046DE97', '092D3D6D', '26FAD927'], [x['para_id'] for x in report_dict['Macmillan_charstyle_first_use']])
+        self.assertEqual(['0E63F210', '3A8D07F8', '3F5D2BDD', '46D9EA20', '1A5BBBFB', '5404D504', '3124B69D', '1130CF0F', '6C043943', '74999F64', '1CC72F9D'],
+            [x['para_id'] for x in report_dict['Macmillan_style_first_use']])
+        self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(expected_doc_xml)))
+        self.assertEqual(etree.tostring(fn_root), etree.tostring(getRoot(expected_fn_xml)))
+
+    def test_getElementCount(self):
+        xmlroot, para, run = createXML_paraWithRun('pstylename', 'rstylename', 'runtxt')
+        tbl, tblpara = createTableWithPara('paraid', 'pstyle')
+        xmlroot.append(tbl)
+        #  run function
+        count2 = lxml_utils.getElementCount(xmlroot, "w:p")
+        count1 = lxml_utils.getElementCount(xmlroot, "w:tc")
+        count0 = lxml_utils.getElementCount(xmlroot, "w:drawing")
+        # assert
+        self.assertEqual(count2, 2)
+        self.assertEqual(count1, 1)
+        self.assertEqual(count0, 0)
+
+    def test_checkSymFonts(self):
+        root, testp1, run1 = createXML_paraWithRun('pstylename', 'rstylename', 'testp1')
+        root, testp2, run2 = createXML_paraWithRun('pstylename', 'rstylename', 'testp2', root)
+        root, testp3, run3 = createXML_paraWithRun('pstylename', 'rstylename', 'testp3', root)
+        plainroot = copy.deepcopy(root)
+        sym1 = createMiscElement('sym', cfg.wnamespace, 'font', 'WP TypographicSymbols', cfg.wnamespace)
+        sym2 = createMiscElement('sym', cfg.wnamespace, 'font', 'Wingdings2', cfg.wnamespace)
+        sym3 = createMiscElement('sym', cfg.wnamespace, 'font', 'WP TypographicSymbols', cfg.wnamespace)
+        sym4 = createMiscElement('sym', cfg.wnamespace, 'code', 'WP TypographicSymbols', cfg.wnamespace)
+        sym5 = createMiscElement('sym', cfg.wnamespace, 'font', 'WPSomethingElse', cfg.wnamespace)
+        run1.append(sym1)
+        run2.append(sym2)
+        run2.append(sym3)
+        run3.append(sym4)
+        run3.append(sym5)
+
+        # run function
+        report_dict_ctrl = rsuite_validations.checkSymFonts({}, plainroot, cfg.valid_symfonts)
+        report_dict = rsuite_validations.checkSymFonts({}, root, cfg.valid_symfonts)
+        report_dict2 = rsuite_validations.checkSymFonts(report_dict, root, cfg.valid_symfonts)
+        # os_utils.writeXMLtoFile(root, os.path.join(tmpdir_basepath, 'testxml.xml'))
+
+        # assert
+        self.assertEqual(report_dict_ctrl, {})
+        self.assertEqual(['WP TypographicSymbols', 'WPSomethingElse'], [x['description'] for x in report_dict['invalid_symfonts']])
+        self.assertEqual(report_dict, report_dict2)
 
 if __name__ == '__main__':
     unittest.main()

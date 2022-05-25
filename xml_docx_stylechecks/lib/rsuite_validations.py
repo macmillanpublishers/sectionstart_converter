@@ -751,6 +751,21 @@ def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_c
                     'restyled {} ref: no. {} (was styled as {})'.format(report_category, note_id, runstyle))
     return report_dict
 
+def checkSymFonts(report_dict, xml_root, valid_symfonts):
+    invalid_symfonts = []
+    searchstring = './/w:sym/@w:font'
+    sym_fontnames = xml_root.xpath(searchstring, namespaces=wordnamespaces)
+    for fontname in sym_fontnames:
+        if fontname not in valid_symfonts and fontname not in invalid_symfonts:
+            invalid_symfonts.append(fontname)
+    if invalid_symfonts:
+        for sf in invalid_symfonts:
+            # log only first occurence of this symfont
+            if 'invalid_symfonts' not in report_dict or sf not in ([x['description'] for x in report_dict['invalid_symfonts']]):
+                lxml_utils.logForReport(report_dict, xml_root, None, 'invalid_symfonts', sf)
+    return report_dict
+
+
 # @benchmark
 def rsuiteValidations(report_dict):
     vbastyleconfig_json = cfg.vbastyleconfig_json
@@ -763,18 +778,14 @@ def rsuiteValidations(report_dict):
     xmlfile_dict = {
         doc_root:doc_xml
         }
-    # alt_roots is for inclusion in log calculations, as needed
-    alt_roots = {}
     if os.path.exists(cfg.endnotes_xml):
         endnotes_tree = etree.parse(cfg.endnotes_xml)
         endnotes_root = endnotes_tree.getroot()
         xmlfile_dict[endnotes_root]=cfg.endnotes_xml
-        alt_roots['Endnotes']=endnotes_root
     if os.path.exists(cfg.footnotes_xml):
         footnotes_tree = etree.parse(cfg.footnotes_xml)
         footnotes_root = footnotes_tree.getroot()
         xmlfile_dict[footnotes_root]=cfg.footnotes_xml
-        alt_roots['Footnotes']=footnotes_root
 
     # get Section Start names & styles from vbastyleconfig_json
     #    Could pull styles from macmillan.json  with "Section-" if I don't want to use vbastyleconfig_json
@@ -790,12 +801,22 @@ def rsuiteValidations(report_dict):
     li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras = getListStylenames(styleconfig_dict)
     bookmakerstyles = vbastyleconfig_dict["bookmakerstyles"]
     valid_native_word_styles = cfg.valid_native_word_styles
+    # get decommissioned styles
+    styleconfig_legacy_list = os_utils.readJSON(cfg.styleconfig_json)['legacy']
+    decommissioned_styles = [lxml_utils.getStyleLongname(x[1:]) for x in styleconfig_legacy_list]
 
     # These need to come first - otherwise contents (shapes) may keep blank paras from being blank
     # delete shapes, pictures, clip art etc
     report_dict, doc_root = doc_prepare.deleteObjects(report_dict, doc_root, cfg.shape_objects, "shapes")
     # delete bookmarks:
     report_dict = deleteBookmarks(report_dict, doc_root, cfg.bookmark_items)
+    #  delete shapes and bookmarks from notes xml if present
+    if os.path.exists(cfg.endnotes_xml):
+        report_dict, endnotes_root = doc_prepare.deleteObjects(report_dict, endnotes_root, cfg.shape_objects, "shapes")
+        report_dict = deleteBookmarks(report_dict, endnotes_root, cfg.bookmark_items)
+    if os.path.exists(cfg.footnotes_xml):
+        report_dict, footnotes_root = doc_prepare.deleteObjects(report_dict, footnotes_root, cfg.shape_objects, "shapes")
+        report_dict = deleteBookmarks(report_dict, footnotes_root, cfg.bookmark_items)
 
     # delete any comments from docxml:
     report_dict, doc_root = doc_prepare.deleteObjects(report_dict, doc_root, cfg.comment_objects, "comment_ranges")
@@ -875,18 +896,26 @@ def rsuiteValidations(report_dict):
     # toggle 'allstyles_call_type' parameter to 'report' or 'validate' as needed:
     #   for rsuite styled docs, this means deleting non-Macmillan char styles or not
     allstyles_call_type = "validate"  # "report"
-    report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles)
+    report_dict = stylereports.getAllStylesUsed(report_dict, doc_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, decommissioned_styles, container_start_styles, container_end_styles)
     # running getAllStylesUsed on footnotes_root with 'runs_only = True' just to capture charstyles
     if os.path.exists(cfg.footnotes_xml):
-        report_dict = stylereports.getAllStylesUsed(report_dict, footnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles, True)
+        report_dict = stylereports.getAllStylesUsed(report_dict, footnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, decommissioned_styles, container_start_styles, container_end_styles, True)
     if os.path.exists(cfg.endnotes_xml):
-        report_dict = stylereports.getAllStylesUsed(report_dict, endnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, container_start_styles, container_end_styles, True)
+        report_dict = stylereports.getAllStylesUsed(report_dict, endnotes_root, styles_xml, sectionnames, macmillanstyledata, bookmakerstyles, allstyles_call_type, valid_native_word_styles, decommissioned_styles, container_start_styles, container_end_styles, True)
 
     # removing any charstyles incorrectly / additionally applied to footnote / endnote reference markers in docxml
     #   footnotes
     report_dict = cleanNoteMarkers(report_dict, doc_root, cfg.footnote_ref_obj, cfg.footnote_ref_style, "footnote")
     #   endnotes
     report_dict = cleanNoteMarkers(report_dict, doc_root, cfg.endnote_ref_obj, cfg.endnote_ref_style, "endnote")
+
+    # check everywhere for invalid symfonts
+    report_dict = checkSymFonts(report_dict, doc_root, cfg.valid_symfonts)
+    if os.path.exists(cfg.footnotes_xml):
+        report_dict = checkSymFonts(report_dict, footnotes_root, cfg.valid_symfonts)
+    if os.path.exists(cfg.endnotes_xml):
+        report_dict = checkSymFonts(report_dict, endnotes_root, cfg.valid_symfonts)
+
 
     # create sorted version of "image_holders" list in reportdict based on para_index; for reports
     if "image_holders" in report_dict:

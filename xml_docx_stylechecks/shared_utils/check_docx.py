@@ -192,7 +192,7 @@ def checkIfMacmillanStyle(stylename, template_styles_root):
     return is_macmillan_style
 
 
-def getParaStyleSummary(xml_file, template_styles_root, valid_native_pstyles, total_paras=0, macmillan_styled_paras=0):
+def getParaStyleSummary(xml_file, template_styles_root, valid_native_pstyles, decommissioned_styles, total_paras=0, macmillan_styled_paras=0):
     xml_tree = etree.parse(xml_file)
     total_paras += len(xml_tree.xpath(".//w:p", namespaces=wordnamespaces))
     # subtract tablecell paras from total
@@ -205,13 +205,13 @@ def getParaStyleSummary(xml_file, template_styles_root, valid_native_pstyles, to
         # lets not count valid native styles as 'styled' or 'not-styled'
         if stylename in valid_native_pstyles:
             total_paras -= 1
-        elif checkIfMacmillanStyle(stylename, template_styles_root):
+        elif stylename in decommissioned_styles or checkIfMacmillanStyle(stylename, template_styles_root):
             macmillan_styled_paras += 1
 
     # now subtract macmillan styled table cell paras
     for para_style in xml_root.findall(".//w:tc//w:pStyle", wordnamespaces):
         stylename = para_style.get('{%s}val' % wnamespace)
-        if checkIfMacmillanStyle(stylename, template_styles_root):
+        if stylename in decommissioned_styles or checkIfMacmillanStyle(stylename, template_styles_root):
             macmillan_styled_paras -= 1
     return total_paras, macmillan_styled_paras
 
@@ -221,16 +221,19 @@ def macmillanStyleCount(doc_xml, template_styles_xml):
     template_styles_tree = etree.parse(template_styles_xml)
     template_styles_root = template_styles_tree.getroot()
     valid_native_pstyles = [cfg.footnotestyle, cfg.endnotestyle]
+    # get decommissioned styles
+    styleconfig_legacy_list = os_utils.readJSON(cfg.styleconfig_json)['legacy']
+    decommissioned_styles = [x[1:] for x in styleconfig_legacy_list]
 
     # main document
-    total_paras, macmillan_styled_paras = getParaStyleSummary(doc_xml, template_styles_root, valid_native_pstyles)
+    total_paras, macmillan_styled_paras = getParaStyleSummary(doc_xml, template_styles_root, valid_native_pstyles, decommissioned_styles)
     # footnotes
     if os.path.exists(cfg.footnotes_xml):
-        total_paras, macmillan_styled_paras = getParaStyleSummary(cfg.footnotes_xml, template_styles_root, valid_native_pstyles, total_paras, macmillan_styled_paras)
+        total_paras, macmillan_styled_paras = getParaStyleSummary(cfg.footnotes_xml, template_styles_root, valid_native_pstyles, decommissioned_styles, total_paras, macmillan_styled_paras)
         total_paras -= 2 # for built-in separator paras
     # endnotes
     if os.path.exists(cfg.endnotes_xml):
-        total_paras, macmillan_styled_paras = getParaStyleSummary(cfg.endnotes_xml, template_styles_root, valid_native_pstyles, total_paras, macmillan_styled_paras)
+        total_paras, macmillan_styled_paras = getParaStyleSummary(cfg.endnotes_xml, template_styles_root, valid_native_pstyles, decommissioned_styles, total_paras, macmillan_styled_paras)
         total_paras -= 2 # for built-in separator paras
 
     # the multiplying by a factor with '.0' in the numerator forces the result to be a float for python 2.x
@@ -369,6 +372,12 @@ def acceptTrackChanges(xml_file):
             found_el.getparent().remove(found_el)
 
     os_utils.writeXMLtoFile(xml_root, xml_file)
+
+def checkCoverPage(xml_file):
+    coverpage = False
+    if lxml_utils.getElementCount(getXMLroot(xml_file), 'w:sdt') > 0:
+        coverpage = True
+    return coverpage
 
 def getXMLroot(xml_file):
     if os.path.exists(xml_file):

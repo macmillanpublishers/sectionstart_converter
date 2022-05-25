@@ -77,6 +77,7 @@ if __name__ == '__main__':
                     version_result, current_version, template_version = check_docx.version_test(cfg.customprops_xml, cfg.template_customprops_xml, doc_version_min, doc_version_max)
                     percent_styled, macmillan_styled_paras, total_paras = check_docx.macmillanStyleCount(cfg.doc_xml, cfg.template_styles_xml)
                     protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml, cfg.footnotes_xml, cfg.endnotes_xml)
+                    coverpage = check_docx.checkCoverPage(cfg.doc_xml)
 
                     # create notice re: track changes being enabled:
                     if trackchange_status == True:
@@ -87,7 +88,7 @@ if __name__ == '__main__':
                         # setup_cleanup.setAlert('notice', 'rs_notice_oldtemplate', {'current_version':current_version, 'template_version':template_version, 'support_email_address':cfg.support_email_address})
 
                     ########## RUN VALIDATIONS
-                    if (version_result=="newer_template_avail" or version_result=="up_to_date") and percent_styled >= percent_styled_min and protection == "":
+                    if (version_result=="newer_template_avail" or version_result=="up_to_date") and percent_styled >= percent_styled_min and protection == "" and coverpage == False:
                         logger.info("Proceeding! (version='%s', percent_styled='%s', protection='%s')" % (version_result, percent_styled, protection))
 
                         # accept all track changes and add alert/user notice
@@ -121,8 +122,10 @@ if __name__ == '__main__':
                         logger.warn("* * Skipping Style Report:")
                         if percent_styled < percent_styled_min:
                             setup_cleanup.setAlert('error', 'notstyled', {'percent_styled_min':percent_styled_min})
-                        elif version_result != "up_to_date":
+                        elif not (version_result=="newer_template_avail" or version_result=="up_to_date"):
                             setup_cleanup.setAlert('error', 'rs_err_nonrsuite_template', {'current_version':current_version, 'template_version':template_version})
+                        if coverpage == True:
+                            setup_cleanup.setAlert('error', 'coverpage', {'support_email_address':cfg.support_email_address})                            
                         if protection:
                             setup_cleanup.setAlert('error', 'protected', {'protection':protection})
                         # warn about unaccepted trackchanges

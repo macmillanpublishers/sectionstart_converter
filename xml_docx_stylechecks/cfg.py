@@ -196,6 +196,8 @@ always_bcc_address = "Workflows Notifications <wfnotifications@macmillan.com>"
 # regex for finding ISBNS - for validator_isbncheck, so we are being generous with hyphen rules
 isbnregex = re.compile(r"(9\-?7\-?[89]([^\w]?\d){10})")
 isbnspanregex = re.compile(r"(^.*?)(9\-?7\-?[89]([^\w]?\d){10})(.*?$)")
+# symfonts with maps in mpg-rsuite-d4p-plugin
+valid_symfonts = ['Symbol', 'Webdings', 'Wingdings', 'Wingdings2', 'Wingdings3']
 
 # # # Hardcoded stylenames & helpurl -- some by script/template-type
 footnotestyle = "FootnoteText" #/ "Footnote Text"

@@ -46,6 +46,11 @@ def generate_para_id(doc_root):
     logger.debug("generated unique para-id: '%s'" % iduniq)
     return str(iduniq)
 
+def getElementCount(xml_root, element_string):
+    searchstring = './/{}'.format(element_string)
+    results = xml_root.findall(searchstring, wordnamespaces)
+    return len(results)
+
 # taken from: https://stackoverflow.com/questions/42875103/integer-to-roman-number
 def int_to_Roman(num):
    val = (1000, 900,  500, 400, 100,  90, 50,  40, 10,  9,   5,  4,   1)

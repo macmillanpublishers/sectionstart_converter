@@ -852,7 +852,7 @@ class Tests(unittest.TestCase):
         test_ends = ['END','END2']
         test_breaks = ['break1','break2']
         # create root and init (Section) para
-        root, para = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
+        root, para, run = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
         # append subsequent paras
         # dupe root so we can mock up ideal outcome, by not adding badtxt to dupe, but everything else to both
         root_dupe = copy.deepcopy(root)
@@ -891,7 +891,7 @@ class Tests(unittest.TestCase):
         test_ends = ['END','END2']
         test_breaks = ['break1','break2']
         # create root and init (Section) para
-        root, para = createXML_paraWithRun(list(testsections)[0], '', '', None)
+        root, para, run = createXML_paraWithRun(list(testsections)[0], '', '', None)
         # append subsequent paras
         # dupe root so we can mock it up as ideal outcome, then run function on root_dupe
         root_dupe = copy.deepcopy(root)
@@ -935,7 +935,7 @@ class Tests(unittest.TestCase):
         test_ends = ['END','END2']
         test_breaks = ['break1','break2']
         # create root and init (Section) para
-        root, para = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
+        root, para, run = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
         # append subsequent paras
         root, goodcontainer_p, run = createXML_paraWithRun(testcontainers[0], '', 'Container1Starter', root, 'goodcontainer_p')
         root, goodtxt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'Im a para with text', root, 'goodtxt_p')
@@ -1002,7 +1002,7 @@ class Tests(unittest.TestCase):
         test_ends = ['END','END2']
 
         # create root and init (Section) para
-        root_noend, para = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
+        root_noend, para, run = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
         # append subsequent paras
         root_noend, container_p, run = createXML_paraWithRun(testcontainers[0], '', 'Excerpt Cntnr', root_noend, 'container_p')
         root_noend, txt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_noend, 'txt_p')
@@ -1010,9 +1010,9 @@ class Tests(unittest.TestCase):
         root_noend_container = copy.deepcopy(root_noend)
         root_noend_section = copy.deepcopy(root_noend)
         # append subsequent paras to dupes
-        root_noend_container, container_p2 = createXML_paraWithRun(testcontainers[1], '', 'Excerpt Cntnr again', root_noend_container, 'container_p2')
-        root_noend_container, end_p = createXML_paraWithRun(test_ends[1], '', 'C. End', root_noend_container, 'end_p')
-        root_noend_section, section2 = createXML_paraWithRun(list(testsections.keys())[1], '', 'Section2!', root_noend_section, 'section2')
+        root_noend_container, container_p2, run = createXML_paraWithRun(testcontainers[1], '', 'Excerpt Cntnr again', root_noend_container, 'container_p2')
+        root_noend_container, end_p, run = createXML_paraWithRun(test_ends[1], '', 'C. End', root_noend_container, 'end_p')
+        root_noend_section, section2, run = createXML_paraWithRun(list(testsections.keys())[1], '', 'Section2!', root_noend_section, 'section2')
         # testfile = os.path.join(testfiles_basepath, 'p2.xml')
         # os_utils.writeXMLtoFile(root_noend, testfile) # <- for writing new xml
         # run our check(s)
@@ -1037,7 +1037,7 @@ class Tests(unittest.TestCase):
         test_ends = ['END','END2']
 
         # create root and init (Section) para
-        root, para = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
+        root, para, run = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
         tbl1, cntnrpara = createTableWithPara('Start Extract1', testcontainers[0], 'cntnrpara')
         tbl2, endpara = createTableWithPara('Container End', test_ends[0], 'endpara')
         para.addnext(tbl1)
@@ -1070,11 +1070,11 @@ class Tests(unittest.TestCase):
         # create root and init para
         root_doubleend, end_p1, run = createXML_paraWithRun(test_ends[1], '', 'C. End', None, 'end_p1')
         # append subsequent paras
-        root_doubleend, sectionp = createXML_paraWithRun(list(testsections)[1], '', 'Section 1!', root_doubleend, 'section1')
-        root_doubleend, end_p2 = createXML_paraWithRun(test_ends[0], '', 'C. End again', root_doubleend, 'end_p2')
+        root_doubleend, sectionp, run = createXML_paraWithRun(list(testsections)[1], '', 'Section 1!', root_doubleend, 'section1')
+        root_doubleend, end_p2, run = createXML_paraWithRun(test_ends[0], '', 'C. End again', root_doubleend, 'end_p2')
 
         # create different root for variation
-        root_end_and_sectionend, para = createXML_paraWithRun(list(testsections)[0], '', 'Section 2!', None)
+        root_end_and_sectionend, para, run = createXML_paraWithRun(list(testsections)[0], '', 'Section 2!', None)
         # append subsequent paras
         root_end_and_sectionend, end_p1b, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root_end_and_sectionend, 'end_p1b')
         root_end_and_sectionend, container_p, run = createXML_paraWithRun(testcontainers[1], '', 'Excerpt Cntnr', root_end_and_sectionend, 'container_p1')

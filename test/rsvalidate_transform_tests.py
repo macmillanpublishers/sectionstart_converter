@@ -5,6 +5,7 @@ import shutil
 import subprocess
 from xml.dom import minidom
 import time
+import platform
 
 # # # append main project path to system path for imports to work
 # mainproject_path = os.path.join(sys.path[0],'..')
@@ -154,7 +155,10 @@ def diffFiles(diff_file_list, testfile, validfiles_basedir, diff_outputdir):
             f.close()
             f = open(diff_outfile,'a')
             # run a diff and print (results to file)
-            diff_val = subprocess.call(['diff', '-b', '-I', '"para_id":', '-I', '"para_index":', '-I', 'w14:paraId=', valid_file, new_file], stdout=f)
+            if platform.system() == "Windows":
+                diff_val = subprocess.call(['diff', '-b', valid_file, new_file], stdout=f)
+            else:
+                diff_val = subprocess.call(['diff', '-b', '-I', '"para_id":', '-I', '"para_index":', '-I', 'w14:paraId=', valid_file, new_file], stdout=f)
             # \/ optional different diff: unified, with 2 lines of context
             # diff_val = subprocess.call(['diff', '-U', '2', '-I', '"para_id":', '-I', '"para_index":', '-I', 'w14:paraId=', valid_file, new_file], stdout=f)
             f.close()

@@ -111,9 +111,8 @@ def getPrettyXml(xml_fname):
     pretty_filename = '{}_pretty.xml'.format(filename_noext)
     if not os.path.isfile(pretty_filename):
         xmlstr = minidom.parse(xml_fname).toprettyxml(indent="   ")
-        with open(pretty_filename, "w") as f:
-            print (type(xmlstr), type(xmlstr.encode('utf-8')))
-            f.write(xmlstr.encode('utf-8').decode)
+        with open(pretty_filename, "wb") as f:
+            f.write(xmlstr.encode('utf-8'))
     return pretty_filename
 
 def diffFiles(diff_file_list, testfile, validfiles_basedir, diff_outputdir):

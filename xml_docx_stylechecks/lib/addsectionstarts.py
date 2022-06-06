@@ -374,7 +374,7 @@ def runRule(sectionname, section_start_rules, doc_root, versatileblockparas, sec
             if "previous_until" in section_start_rules[sectionname][cbstring]:
                 prev_until_results = evalPrevUntil(sectionname, section_start_rules, cbstring, sectionbegin_para)
                 if prev_until_results == False:
-                    print "disqualified: prev_until criteria not met. next match!"
+                    print ("disqualified: prev_until criteria not met. next match!")
                     continue
 
             # if we made it this far, go ahead and insert our section start &/or log it for style report!

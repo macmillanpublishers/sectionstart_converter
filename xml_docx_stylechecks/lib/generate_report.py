@@ -1,5 +1,4 @@
 ######### IMPORT PY LIBRARIES
-
 import os
 import sys
 import logging
@@ -64,17 +63,30 @@ def makeReportStrings(base_string, item, recipe_item, report_dict, stylenamemap)
         descriptionA, descriptionB = "", ""
 
     # now we set err strings from report_recipe for toplist items
-    new_string = base_string.format(description=description.encode('utf-8'), \
-        para_string='"'+para_string.encode('utf-8')+'"', \
-        parent_section_start_content='"'+parent_section_start_content.encode('utf-8')+'"', \
-        parent_section_start_type=parent_section_start_type, \
-        count=len(report_dict[recipe_item["dict_category_name"]]), \
-        section_count=section_count, \
-        notes_count=sum(1 for notestype in report_dict[recipe_item["dict_category_name"]] if notestype['xml_file'] == item['xml_file']), \
-        notes_type=item['xml_file'].title(), \
-        descriptionA=descriptionA.encode('utf-8'), \
-        descriptionB=descriptionB.encode('utf-8'), \
-        valid_file_extensions=cfg.imageholder_supported_ext)
+    if sys.version_info[0] < 3:
+        new_string = base_string.format(description='{}'.format(description.encode('utf-8')), \
+            para_string='"{}"'.format(para_string.encode('utf-8')), \
+            parent_section_start_content='"{}"'.format(parent_section_start_content.encode('utf-8')), \
+            parent_section_start_type=parent_section_start_type, \
+            count=len(report_dict[recipe_item["dict_category_name"]]), \
+            section_count=section_count, \
+            notes_count=sum(1 for notestype in report_dict[recipe_item["dict_category_name"]] if notestype['xml_file'] == item['xml_file']), \
+            notes_type=item['xml_file'].title(), \
+            descriptionA=descriptionA.encode('utf-8'), \
+            descriptionB=descriptionB.encode('utf-8'), \
+            valid_file_extensions=cfg.imageholder_supported_ext)
+    else:
+        new_string = base_string.format(description=description, \
+            para_string='"{}"'.format(para_string), \
+            parent_section_start_content='"{}"'.format(parent_section_start_content), \
+            parent_section_start_type=parent_section_start_type, \
+            count=len(report_dict[recipe_item["dict_category_name"]]), \
+            section_count=section_count, \
+            notes_count=sum(1 for notestype in report_dict[recipe_item["dict_category_name"]] if notestype['xml_file'] == item['xml_file']), \
+            notes_type=item['xml_file'].title(), \
+            descriptionA=descriptionA, \
+            descriptionB=descriptionB, \
+            valid_file_extensions=cfg.imageholder_supported_ext)#.encode('utf-8')
 
     if "badnews" in recipe_item and 'tablecell_para' in item and item['tablecell_para'] == True:# and not("summary" in recipe_item and recipe_item["summary"] == True):
         if 'suppress_table_note' not in recipe_item or recipe_item['suppress_table_note'] != True:
@@ -138,6 +150,7 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                             tmptextlist.append(new_section_text)
                     # add line_template for recipe_item
                     newline = makeReportStrings(recipe_item["line_template"], item, recipe_item, report_dict, stylenamemap)
+                    # print (newline)
                     tmptextlist.append(newline)
 
                     # handle 'badnews=any' categories, (where item's presence in report_dict indicates reportable issue)
@@ -153,7 +166,7 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                             'warning': warninglist,
                             'error': errorlist
                         }
-                        for alertname, alertlist in alerttypes.iteritems():
+                        for alertname, alertlist in alerttypes.items():
                             if "badnews_type" in recipe_item:
                                 if recipe_item["badnews_type"] == alertname:
                                     # 'notes' are expected to summarize by default

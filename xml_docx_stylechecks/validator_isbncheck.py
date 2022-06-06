@@ -1,6 +1,7 @@
 ######### IMPORT SOME STANDARD PY LIBRARIES
 import sys
 import os
+import platform
 import zipfile
 import logging
 import time
@@ -45,6 +46,7 @@ logger = logging.getLogger(__name__)
 ######### RUN!
 # only run if this script is being invoked directly
 if __name__ == '__main__':
+    logger.info("cfg.script_name: %s, template: %s, python version: %s" % (cfg.script_name, macmillan_template, platform.python_version())) # DEBUG
     try:
         ########## SETUP
         # copy template to tmpdir, unzip infile and tmpdir

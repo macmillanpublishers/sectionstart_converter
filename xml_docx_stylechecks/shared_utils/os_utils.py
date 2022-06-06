@@ -1,5 +1,5 @@
 ######### IMPORT SOME STANDARD PY LIBRARIES
-
+from __future__ import print_function
 import sys
 import os
 import shutil
@@ -109,11 +109,9 @@ def rm_existing_os_object(path, obj_name):
 
 def writeXMLtoFile(root, filename):
     try:
-        newfile = open(filename, 'w')
+        newfile = open(filename, 'wb')
         with newfile as f:
-            # f.write(etree.tostring(root, xml_declaration=True, encoding="utf-8", standalone="yes"))
-            # f.write(etree.tostring(root, encoding="unicode", standalone="yes"))
-            f.write(etree.tostring(root, xml_declaration=True, encoding="utf-8", standalone="yes").decode("utf8"))
+            f.write(etree.tostring(root, xml_declaration=True, encoding="utf-8", standalone="yes"))
             f.close()
         logger.info("wrote xml to file '%s'" % filename)
     except Exception as e:
@@ -126,7 +124,7 @@ def dumpJSON(dictname, filename):
     # # and write json to file
     try:
         with open(filename, 'w') as outfile:
-            json.dump(dictname, outfile, sort_keys=True, indent=4)
+            json.dump(dictname, outfile, sort_keys=True, indent=4, separators=(', ', ': '))
         logger.info("wrote dict to json file '%s'" % filename)
     except Exception as e:
         logger.error('Failed write JSON file, exiting', exc_info=True)
@@ -150,11 +148,8 @@ def writeListToFileByLine(text, filename):
     try:
         newfile = open(filename, 'w')
         with newfile as f:
-            # for line in text:
-            #     f.write("%s\n" % line)
             for item in text:
-                print>>f, item
-                # f.write(line)
+                print(item, file=f)
             f.close()
         logger.info("wrote text to file '%s'" % filename)
     except Exception as e:

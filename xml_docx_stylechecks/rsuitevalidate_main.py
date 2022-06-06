@@ -1,6 +1,7 @@
 ######### IMPORT SOME STANDARD PY LIBRARIES
 import sys
 import os
+import platform
 import zipfile
 import shutil
 import re
@@ -57,7 +58,7 @@ if __name__ == '__main__':
     try:
         ########## SETUP & CHECK DOCUMENT:
         #   filename, that it unzips ok, that it has reqrd namespace to parse
-        logger.info("cfg.script_name: %s, template: %s" % (cfg.script_name, macmillan_template)) # DEBUG
+        logger.info("cfg.script_name: %s, template: %s, python version %s" % (cfg.script_name, macmillan_template, platform.python_version())) # DEBUG
         logger.info("submitter values: name: {}, email {}".format(display_name, submitter_email))
 
         # run filename checks (if fname is too long, this will not pass; also checks for bad-chars)
@@ -125,7 +126,7 @@ if __name__ == '__main__':
                         elif not (version_result=="newer_template_avail" or version_result=="up_to_date"):
                             setup_cleanup.setAlert('error', 'rs_err_nonrsuite_template', {'current_version':current_version, 'template_version':template_version})
                         if coverpage == True:
-                            setup_cleanup.setAlert('error', 'coverpage', {'support_email_address':cfg.support_email_address})                            
+                            setup_cleanup.setAlert('error', 'coverpage', {'support_email_address':cfg.support_email_address})
                         if protection:
                             setup_cleanup.setAlert('error', 'protected', {'protection':protection})
                         # warn about unaccepted trackchanges

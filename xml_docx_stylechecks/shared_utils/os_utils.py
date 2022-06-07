@@ -146,7 +146,10 @@ def logAlerttoJSON(alerts_json, alert_category, new_errtext):
 # https://stackoverflow.com/questions/10821083/writing-nicely-formatted-text-in-python - we'll see if we need to write line by line
 def writeListToFileByLine(text, filename):
     try:
-        newfile = open(filename, 'w')
+        if sys.version_info[0] < 3:
+            newfile = open(filename, 'w')
+        else:
+            newfile = open(filename, 'w', encoding='utf-8')
         with newfile as f:
             for item in text:
                 print(item, file=f)

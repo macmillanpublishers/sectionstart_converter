@@ -10,8 +10,8 @@ This tool accepts Word manuscripts and validates against a number of criteria, m
 Internal documentation available [here](https://confluence.macmillan.com/display/RSUITE/RSuite+Validation).
 #### Dependencies
 Dependencies for tests, local runs:
-* Python 2.7.x is required; this tool is not yet python 3.x compatible.
-* The xml processing requires the lxml library for python, install like so: `pip install lxml`
+* Python 2.7.x and python > 3.8.x are supported.
+* Some supplemental python libraries are required, install via pip like so: `pip install lxml requests six`
 * Additionally, git-repo: '[RSuite_Word-template](https://github.com/macmillanpublishers/RSuite_Word-template)' must be cloned locally as a sibling directory to this repo ('sectionstart_converter').
 
 Additional dependencies for production or staging environment:

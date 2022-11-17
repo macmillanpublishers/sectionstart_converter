@@ -69,7 +69,7 @@ def logTextOfRunsWithStyleInSection(report_dict, xml_root, sectionnames, section
             this_para_id = lxml_utils.getParaId(para, xml_root)
             if report_category in report_dict:
                 for x in report_dict[report_category]:
-                    for key,value in x.iteritems():
+                    for key,value in x.items():
                         if x["para_id"] == this_para_id:
                             already_captured = True
             if already_captured == False:
@@ -82,7 +82,7 @@ def checkSecondPara(report_dict, xml_root, firstpara, sectionnames):
     secondpara_style = pneighbors['nextstyle']
     logger.debug("secondpara_style: {}".format(secondpara_style))
     if secondpara_style not in sectionnames:
-        logger.warn("second para style is not a Section Start style, instead is: " + secondpara_style)
+        logger.warning("second para style is not a Section Start style, instead is: " + secondpara_style)
         lxml_utils.logForReport(report_dict, xml_root, pneighbors["next"], 'non_section_start_styled_secondpara', lxml_utils.getStyleLongname(secondpara_style))
     return report_dict
 
@@ -155,7 +155,7 @@ def handleBlankParasInTables(report_dict, xml_root, para, sectionnames, log_cate
 # def removeBlankParas(xml_root, report_dict):
 def removeBlankParas(report_dict, xml_root, sectionnames, container_start_styles, container_end_styles, spacebreakstyles):
     logger.info("* * * commencing removeBlankParas function...")
-    specialparas = sectionnames.keys() + container_start_styles + container_end_styles + spacebreakstyles
+    specialparas = list(sectionnames) + container_start_styles + container_end_styles + spacebreakstyles
     allparas = xml_root.findall(".//w:p", wordnamespaces)
     for para in allparas:
         # get paras with no content
@@ -297,7 +297,7 @@ def handleBlankParasInNotes(report_dict, xml_root, separators, note_stylename, n
 
 def checkContainers(report_dict, xml_root, sectionnames, container_start_styles, container_end_styles):
     logger.info("* * * commencing checkContainers function...")
-    search_until_styles = sectionnames.keys() + container_start_styles + container_end_styles
+    search_until_styles = list(sectionnames) + container_start_styles + container_end_styles
     # adding counters to help determine if we need to check for orphan ENDS
     matched_cstart_count = 0
     # loop through searching for different container start styles
@@ -327,11 +327,11 @@ def checkContainers(report_dict, xml_root, sectionnames, container_start_styles,
             else:
                 lxml_utils.logForReport(report_dict, xml_root, start_para, 'container_error', lxml_utils.getStyleLongname(container_stylename), ['section_info'], sectionnames)
                 if not pneighbors['nextstyle']:
-                    logger.warn("container error - reached end of document before container-END styled para :( logging")
+                    logger.warning("container error - reached end of document before container-END styled para :( logging")
                 elif pneighbors['nextstyle'] and pneighbors['nextstyle'] in sectionnames.keys():
-                    logger.warn("container error - reached section-start style '%s' before container END styled para :(" % pneighbors['nextstyle'])
+                    logger.warning("container error - reached section-start style '%s' before container END styled para :(" % pneighbors['nextstyle'])
                 else:
-                    logger.warn("container error - reached container-start style '%s' before container END styled para :(" % pneighbors['nextstyle'])
+                    logger.warning("container error - reached container-start style '%s' before container END styled para :(" % pneighbors['nextstyle'])
     # doublecheck that no container Ends live in tables, or are orphaned:
     c_end_count = 0
     for end_stylename in container_end_styles:
@@ -346,7 +346,7 @@ def checkContainers(report_dict, xml_root, sectionnames, container_start_styles,
                 c_end_count = c_end_count + 1
     # if the counts don't match, we have an orphan END para somewhere.
     if c_end_count != matched_cstart_count:
-        logger.warn("found %s matched start containers, but %s Container_ends, indicating orphaned END" % (matched_cstart_count, c_end_count))
+        logger.warning("found %s matched start containers, but %s Container_ends, indicating orphaned END" % (matched_cstart_count, c_end_count))
         for end_stylename in container_end_styles:
             # the below loop is identical to teh one above, except reversed (scanning upwards from end paras for valid starts)
             logger.info("looping through container ends and scanning upwards, searching for orphan(s)")
@@ -367,11 +367,11 @@ def checkContainers(report_dict, xml_root, sectionnames, container_start_styles,
                     else:
                         lxml_utils.logForReport(report_dict, xml_root, end_para, 'container_end_error', lxml_utils.getStyleLongname(end_stylename), ['section_info'], sectionnames)
                         if not pneighbors['prevstyle']:
-                            logger.warn("orphaned container END - reached start of document before container-start para")
+                            logger.warning("orphaned container END - reached start of document before container-start para")
                         elif pneighbors['prevstyle'] and pneighbors['prevstyle'] in sectionnames.keys():
-                            logger.warn("orphaned container END - reached section-start style '%s' before container START styled para" % pneighbors['prevstyle'])
+                            logger.warning("orphaned container END - reached section-start style '%s' before container START styled para" % pneighbors['prevstyle'])
                         else:
-                            logger.warn("orphaned container END - reached another container-END para before container START para")
+                            logger.warning("orphaned container END - reached another container-END para before container START para")
 
     return report_dict
 
@@ -432,7 +432,7 @@ def getListStylenames(styleconfig_dict):
 
 def verifyListNesting(report_dict, xml_root, li_styles_by_level, li_styles_by_type, listparagraphs, list_styles, nonlist_list_paras, sectionnames):
     logger.info("* * * commencing verifyListNesting function...")
-    all_list_styles = nonlist_list_paras + list_styles.keys()
+    all_list_styles = nonlist_list_paras + list(list_styles)
     #  cycle through all list styles by type
     for type in li_styles_by_type:
         for style in li_styles_by_type[type]:
@@ -522,7 +522,7 @@ def duplicateSectionCheck(report_dict, section_array):
             if section_count > 1:
                 lxml_utils.logForReport(report_dict, None, None, 'too_many_section_para', "{}_{}".format(sectionfullname, section_count))
         else:
-            logger.warn("function 'duplicateSectionCheck' did not find a 'section_start_found' list in report_dict")
+            logger.warning("function 'duplicateSectionCheck' did not find a 'section_start_found' list in report_dict")
 
     return report_dict
 
@@ -552,7 +552,7 @@ def checkForFMsectionsInBody(report_dict, fm_sectionnames, flex_sectionnames):
 # parse dict from checkMainheadsPerSection and log any multiple heads per section
 def logMainheadMultiples(mainhead_dict, doc_root, report_dict, sectionnames):
     for stylename in mainhead_dict:
-        for id, stylecount in mainhead_dict[stylename].iteritems():
+        for id, stylecount in mainhead_dict[stylename].items():
             if stylecount > 1:
                 # get the section-para object from para id:
                 searchstring = ".//*w:p[@w14:paraId='{}']".format(id)
@@ -564,7 +564,7 @@ def checkMainheadsPerSection(mainheadstyle_list, doc_root, report_dict, section_
     logger.info("* * * commencing checkMainheadsPerSection function, for {}...".format(mainheadstyle_list))
     # check document structure integrity via these previously reported items; skip if these errtypes present:
     if 'container_error' in report_dict or 'non_section_BOOK_styled_firstpara' in report_dict:
-        logger.warn("Container error or non-section_Book styled first para; without section integrity we have to skip 'checkMainheadsPerSection' function")
+        logger.warning("Container error or non-section_Book styled first para; without section integrity we have to skip 'checkMainheadsPerSection' function")
     else:
         # for each occurence of a mainhead, find the parent section, keeping count per section/style in a dict.
         #   then we can check the dict for dupes and log to report_dict
@@ -678,7 +678,7 @@ def rmEndnoteFootnoteLeadingWhitespace(xml_root, report_dict, rootname):
 
 def flagCustomNoteMarks(xml_root, report_dict, ref_style_dict):
     logger.info("* * * commencing flagCustomNoteMarks function...")
-    for note_type, ref_style in ref_style_dict.iteritems():
+    for note_type, ref_style in ref_style_dict.items():
         ref_el_name = ref_style[0].lower() + ref_style[1:]
         searchstring = './/*w:{}[@w:customMarkFollows="1"]'.format(ref_el_name)
         customref_els = xml_root.findall(searchstring, wordnamespaces)
@@ -826,7 +826,7 @@ def rsuiteValidations(report_dict):
         'commentsExtended_xml':cfg.commentsExtended_xml,
         'commentsIds_xml':cfg.commentsIds_xml
     }
-    for filename, filexml in comments_xmlfiles.iteritems():
+    for filename, filexml in comments_xmlfiles.items():
         if os.path.exists(filexml):
             comments_tree = etree.parse(filexml)
             comments_root = comments_tree.getroot()

@@ -290,14 +290,14 @@ def styleLooseISBNs(report_dict, isbnregex, isbnspanregex, doc_root, isbnstyle, 
                     #   and deleting previous versions of runs with same content
                     if match == True:
                         # append run for following text
-                        appendRunWithEditedCopy(isbndict.keys()[-1], followingtxt, True, '')
+                        appendRunWithEditedCopy(list(isbndict)[-1], followingtxt, True, '')
                         # append new run for just the isbn
                         appendRunWithEditedCopy(run, isbn_string, False, isbnstyle)
                         # append run for leading text
-                        appendRunWithEditedCopy(isbndict.keys()[0], leadingtxt, True, '')
+                        appendRunWithEditedCopy(list(isbndict)[0], leadingtxt, True, '')
 
                         # remove the original run(s)
-                        for key, value in isbndict.iteritems():
+                        for key, value in isbndict.items():
                             key.getparent().remove(key)
 
                         # add this isbn to list for report

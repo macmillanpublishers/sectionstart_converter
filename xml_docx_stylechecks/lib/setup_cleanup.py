@@ -102,7 +102,7 @@ def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, 
                     'not_docfile': 'cannot unzip; not a Word doctype'}
         unzipDOCX.unzipDOCX(workingfile, ziproot, errdict)
         unzipDOCX.unzipDOCX(macmillan_template, template_ziproot, errdict)
-    except Exception, e:
+    except Exception as e:
         setup_ok = False
         if str(e) == errdict['no_filelist']:
             setAlert('error', 'no_unzip_files', {}, True)
@@ -200,7 +200,7 @@ def postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile):
             apipost_result['newdocxfile'] = apiPOST.apiPOST(newdocxfile, api_POSTurl)
         if os.path.exists(alertfile):
             apipost_result['alertfile'] = apiPOST.apiPOST(alertfile, api_POSTurl)
-        for k, v in apipost_result.iteritems():
+        for k, v in apipost_result.items():
             if v != 'Success':
                 api_success = False
         if api_success == False:

@@ -2,12 +2,16 @@ import smtplib
 import os
 import sys
 import logging
-from email.MIMEMultipart import MIMEMultipart
-from email.MIMEText import MIMEText
-from email.MIMEBase import MIMEBase
+# from email.MIMEMultipart import MIMEMultipart # < python 2
+# from email.MIMEText import MIMEText
+# from email.MIMEBase import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email.mime.text import MIMEText
+
 from email import encoders
 import socket
-from decorators import retry
+from .decorators import retry
 
 # initialize logger
 logger = logging.getLogger(__name__)
@@ -55,7 +59,7 @@ def sendMailBasic(port, smtp_address, from_email_address, always_bcc_address, to
         text = msg.as_string()
         server.sendmail(from_email_address, to_addr_list, text)
         server.quit()
-    except socket.gaierror, socket.timeout:
+    except (socket.gaierror, socket.timeout):
         exc_type, value, traceback = sys.exc_info()
         logger.error("'sendMailBasic' exception, type: '{}': {}. Reraising".format(exc_type.__name__, value))
         raise

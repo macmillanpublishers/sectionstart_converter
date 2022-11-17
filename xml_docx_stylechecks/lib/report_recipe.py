@@ -662,4 +662,4 @@ if __name__ == '___':
     authorstyle = "Titlepage Author Name (au)"
 
     report_recipe = getReportRecipe(titlestyle, authorstyle, isbnstyle)
-    print report_recipe["metadata_heading"]
+    print (report_recipe["metadata_heading"])

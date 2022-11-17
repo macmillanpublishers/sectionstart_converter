@@ -172,7 +172,7 @@ def compare_docxVersions(document_version, template_version, doc_version_min, do
 
         logger.info("version_compare value: '%s'" %  version_compare)
         return version_compare
-    except Exception, e:
+    except Exception as e:
         logger.error('Failed version compare, exiting', exc_info=True)
         sys.exit(1)
 
@@ -351,19 +351,19 @@ def acceptTrackChanges(xml_file):
                 if run_check is None and run_checkB is None:
                     parent_el.getparent().remove(parent_el)
             else:
-                print parent_el.tag, "{%s}p" % wnamespace
+                print (parent_el.tag, "{%s}p" % wnamespace)
 
     # 'collapse' parent element, raising child elements (where there are any printing contents), then delete parent element
     for tag in collapse_trackchange_tags:
         searchstring = ".//*w:{}".format(tag)
         for found_el in xml_root.findall(searchstring, wordnamespaces):
             logger.debug("found collapse_trackchange_tag!")
-            # print found_el    # debug
+            # print (found_el    # debug)
             # see if we have any children to move up a level
             run_check = found_el.find(".//w:r", wordnamespaces)
             run_checkB = found_el.find(".//*w:r", wordnamespaces)
             if run_check is not None or run_checkB is not None:
-                # print "babies present"    # debug
+                # print ("babies present"    # debug)
                 child_els = found_el.getchildren()
                 # move children out of collapse_tag_el
                 for child in list(child_els):
@@ -439,7 +439,7 @@ def updateStyleidInAllXML(oldstyle_id, newstyle_id, styles_root, doc_root, endno
 def verifyStyleIDs(macmillanstyle_dict, legacystyle_dict, styles_root, doc_root, endnotes_root, footnotes_root):
     stylenames_updated = False
     xmls_updated = {'docxml': False, 'footnotes': False, 'endnotes': False}
-    for lng_stylename, shrt_stylename in macmillanstyle_dict.iteritems():
+    for lng_stylename, shrt_stylename in macmillanstyle_dict.items():
         searchstring = ".//w:style/w:name[@w:val='%s']" % lng_stylename
         rsuite_name_el = styles_root.find(searchstring, wordnamespaces)
         # proceed if we found our style long name in current styles.xml (do nothing)
@@ -455,7 +455,7 @@ def verifyStyleIDs(macmillanstyle_dict, legacystyle_dict, styles_root, doc_root,
                     + shrt_stylename_downcase + "']", namespaces=wordnamespaces)
                 # if not, rename the style shortname, and rename all occurences in body xml, notes xmls to match new shortname
                 if len(target_rs_style_els) == 0:
-                    logging.warn("style '%s' had unexpected styleID '%s', expected styleID available ('%s'), updating all xml" \
+                    logging.warning("style '%s' had unexpected styleID '%s', expected styleID available ('%s'), updating all xml" \
                         % (lng_stylename, current_style_id, shrt_stylename))
                     current_rs_style_el.attrib["{%s}styleId" % wnamespace] = shrt_stylename
                     xmls_updated = updateStyleidInAllXML(current_style_id, shrt_stylename, styles_root, doc_root, endnotes_root, footnotes_root, xmls_updated)
@@ -471,7 +471,7 @@ def verifyStyleIDs(macmillanstyle_dict, legacystyle_dict, styles_root, doc_root,
                     # if this _is_ a legacy style, we merge the new with the old
                     #   (since the longnames are almost identical, old-style uses can be presumed to be unintentional misstylings, and corrected)
                     if target_stylename in legacystyle_dict:
-                        logging.warn("style '%s' had unexpected styleID '%s', expected styleID in use by legacy style ('%s'), merging the two under styleid: '%s'" \
+                        logging.warning("style '%s' had unexpected styleID '%s', expected styleID in use by legacy style ('%s'), merging the two under styleid: '%s'" \
                             % (lng_stylename, current_style_id, target_stylename, shrt_stylename))
                         # delete the legacy style_el ...
                         parent_el = target_rs_style_el.getparent()
@@ -491,7 +491,7 @@ def verifyStyleIDs(macmillanstyle_dict, legacystyle_dict, styles_root, doc_root,
                             new_target_style_id = '{}{}'.format(target_styleID, current_suffix)
                         else:
                             new_target_style_id = current_style_id
-                        logging.warn("style '%s' had unexpected styleID '%s', expected styleID ('%s') used by non-legacy style: ('%s'), swapping style ID's in all XML" \
+                        logging.warning("style '%s' had unexpected styleID '%s', expected styleID ('%s') used by non-legacy style: ('%s'), swapping style ID's in all XML" \
                             % (lng_stylename, current_style_id, shrt_stylename, target_stylename))
                         # swap styleid's in styles_root
                         current_rs_style_el.attrib["{%s}styleId" % wnamespace] = shrt_stylename

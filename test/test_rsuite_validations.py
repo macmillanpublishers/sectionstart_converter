@@ -4,6 +4,7 @@ import unittest
 import sys, os, copy, re, shutil
 from lxml import etree, objectify
 import logging
+import six
 
 # key local paths
 mainproject_path = os.path.join(sys.path[0],'xml_docx_stylechecks')
@@ -39,14 +40,14 @@ def getRoot(xmlfile):
 # this function helps with comparing xmldata that was prettified or manually prepared
 def normalizeXML(xmldata):
     # convert passed xml object to string as needed
-    if not isinstance(xmldata, basestring):
+    if not isinstance(xmldata, six.string_types):
         xmldata = etree.tostring(xmldata)
     # 'objectify' xml string, which helps normalize xml
     object = objectify.fromstring(xmldata)
     # convert back to string
     xml_string_raw = etree.tostring(object)
     # remove newline chars and their trailing whitespace
-    xml_string = re.sub(r'\n\s*', '', xml_string_raw, flags=re.MULTILINE)
+    xml_string = re.sub(br'\n\s*', '', xml_string_raw, flags=re.MULTILINE)
     return xml_string
 
 def appendRuntoXMLpara(para, rstylename, runtxt):
@@ -152,7 +153,7 @@ def setupTestFilesinTmp(test_foldername, badxml_srcdir):
     try:
         shutil.rmtree(test_tmpdir)
     except:
-        print "SETUP NOTE: srcdir not yet present in tmp, cannot be deleted"
+        print ("SETUP NOTE: srcdir not yet present in tmp, cannot be deleted")
     shutil.copytree(badxml_srcdir, test_tmpdir)
     return test_tmpdir
 
@@ -846,12 +847,12 @@ class Tests(unittest.TestCase):
 
     # This blank container para should be removed, and reported in two separate categories
     def test_removeBlankParas_blankcontainerpara(self):
-        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testsections = {'Section2':'Section 2', 'Section1':'Section 1'}
         testcontainers = ['Excerpt1','Excerpt2']
         test_ends = ['END','END2']
         test_breaks = ['break1','break2']
         # create root and init (Section) para
-        root, para, run = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
+        root, para, run = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
         # append subsequent paras
         # dupe root so we can mock up ideal outcome, by not adding badtxt to dupe, but everything else to both
         root_dupe = copy.deepcopy(root)
@@ -870,26 +871,27 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.removeBlankParas({}, root, testsections, testcontainers, test_ends, test_breaks)
 
         #assertions
-        expected_rd = {'removed_blank_para': [{
+        expected_rd1 = {
                     'description': 'removed Excerpt1-styled para',
                     'xml_file': 'document',
-                    'para_id': 'badcontainer_p'}],
-                'removed_container_blank_para': [{
+                    'para_id': 'badcontainer_p'}
+        expected_rd2 = {
                     'description': 'Excerpt1_\'Section2: "Section1!"\'',
                     'xml_file': 'document',
-                    'para_id': 'badcontainer_p'}]}
-        self.assertEqual(report_dict, expected_rd)
+                    'para_id': 'badcontainer_p'}
+        self.assertDictEqual(report_dict['removed_blank_para'][0], expected_rd1)
+        self.assertDictEqual(report_dict['removed_container_blank_para'][0], expected_rd2)
         self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
 
     # This blank section & container paras should be removed, and reported in two separate categories
     #   Also notable, with no parent section; container description should contain default value
     def test_removeBlankParas_blankSectionAndContainerParas(self):
-        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testsections = {'Section2':'Section 2', 'Section1':'Section 1'}
         testcontainers = ['Excerpt1','Excerpt2']
         test_ends = ['END','END2']
         test_breaks = ['break1','break2']
         # create root and init (Section) para
-        root, para, run = createXML_paraWithRun(list(testsections.keys())[0], '', '', None)
+        root, para, run = createXML_paraWithRun(list(testsections)[0], '', '', None)
         # append subsequent paras
         # dupe root so we can mock it up as ideal outcome, then run function on root_dupe
         root_dupe = copy.deepcopy(root)
@@ -922,18 +924,18 @@ class Tests(unittest.TestCase):
                 {'description': 'Section2',
                     'xml_file': 'document',
                     'para_id': 'test'}]}
-        self.assertEqual(report_dict, expected_rd)
+        self.assertDictEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
 
     # adding two blank spacebreak paras, including one in a table
     # the one in the table should be reported, not removed; the other should be reported in 2 separate categories
     def test_removeBlankParas_blankBreakAndTableParas(self):
-        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testsections = {'Section2':'Section 2', 'Section1':'Section 1'}
         testcontainers = ['Excerpt1','Excerpt2']
         test_ends = ['END','END2']
         test_breaks = ['break1','break2']
         # create root and init (Section) para
-        root, para, run = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
+        root, para, run = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
         # append subsequent paras
         root, goodcontainer_p, run = createXML_paraWithRun(testcontainers[0], '', 'Container1Starter', root, 'goodcontainer_p')
         root, goodtxt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'Im a para with text', root, 'goodtxt_p')
@@ -967,7 +969,7 @@ class Tests(unittest.TestCase):
                         'parent_section_start_type': 'Section2',
                         'tablecell_para': True,
                         'para_id': 'badbreak2_p'}]}
-        self.assertEqual(report_dict, expected_rd)
+        self.assertDictEqual(report_dict, expected_rd)
         self.assertEqual(etree.tostring(root), etree.tostring(root_dupe))
 
     def test_checkContainers_goodcases(self):
@@ -995,12 +997,12 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict2, {})  # good container
 
     def test_checkContainers_badcases(self):
-        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testsections = {'Section2':'Section 2', 'Section1':'Section 1'}
         testcontainers = ['Excerpt1','Excerpt2']
         test_ends = ['END','END2']
 
         # create root and init (Section) para
-        root_noend, para, run = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
+        root_noend, para, run = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
         # append subsequent paras
         root_noend, container_p, run = createXML_paraWithRun(testcontainers[0], '', 'Excerpt Cntnr', root_noend, 'container_p')
         root_noend, txt_p, run = createXML_paraWithRun('BodyTextTxt', '', 'I have text', root_noend, 'txt_p')
@@ -1011,7 +1013,8 @@ class Tests(unittest.TestCase):
         root_noend_container, container_p2, run = createXML_paraWithRun(testcontainers[1], '', 'Excerpt Cntnr again', root_noend_container, 'container_p2')
         root_noend_container, end_p, run = createXML_paraWithRun(test_ends[1], '', 'C. End', root_noend_container, 'end_p')
         root_noend_section, section2, run = createXML_paraWithRun(list(testsections.keys())[1], '', 'Section2!', root_noend_section, 'section2')
-
+        # testfile = os.path.join(testfiles_basepath, 'p2.xml')
+        # os_utils.writeXMLtoFile(root_noend, testfile) # <- for writing new xml
         # run our check(s)
         report_dict_noend = rsuite_validations.checkContainers({}, root_noend, testsections, testcontainers, test_ends)
         report_dict_noend_c = rsuite_validations.checkContainers({}, root_noend_container, testsections, testcontainers, test_ends)
@@ -1024,17 +1027,17 @@ class Tests(unittest.TestCase):
                         'parent_section_start_type': 'Section2',
                         'para_id': 'container_p',
                         'description': 'Excerpt1'}]}
-        self.assertEqual(report_dict_noend, expected_rd)
-        self.assertEqual(report_dict_noend_c, expected_rd)
-        self.assertEqual(report_dict_noend_s, expected_rd)
+        self.assertDictEqual(report_dict_noend, expected_rd)
+        self.assertDictEqual(report_dict_noend_c, expected_rd)
+        self.assertDictEqual(report_dict_noend_s, expected_rd)
 
     def test_checkContainers_tableparas(self):
-        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testsections = {'Section2':'Section 2', 'Section1':'Section 1'}
         testcontainers = ['Excerpt1','Excerpt2']
         test_ends = ['END','END2']
 
         # create root and init (Section) para
-        root, para, run = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section1!', None)
+        root, para, run = createXML_paraWithRun(list(testsections)[0], '', 'Section1!', None)
         tbl1, cntnrpara = createTableWithPara('Start Extract1', testcontainers[0], 'cntnrpara')
         tbl2, endpara = createTableWithPara('Container End', test_ends[0], 'endpara')
         para.addnext(tbl1)
@@ -1057,21 +1060,21 @@ class Tests(unittest.TestCase):
                     'parent_section_start_type': 'Section2',
                     'tablecell_para': True,
                     'para_id': 'endpara'}]}
-        self.assertEqual(report_dict, expected_rd)
+        self.assertDictEqual(report_dict, expected_rd)
 
     def test_checkContainers_extraends(self):
-        testsections = {'Section1':'Section 1', 'Section2':'Section 2'}
+        testsections = {'Section2':'Section 2', 'Section1':'Section 1'}
         testcontainers = ['Excerpt1','Excerpt2']
         test_ends = ['END','END2']
 
         # create root and init para
         root_doubleend, end_p1, run = createXML_paraWithRun(test_ends[1], '', 'C. End', None, 'end_p1')
         # append subsequent paras
-        root_doubleend, sectionp, run = createXML_paraWithRun(list(testsections.keys())[1], '', 'Section 1!', root_doubleend, 'section1')
+        root_doubleend, sectionp, run = createXML_paraWithRun(list(testsections)[1], '', 'Section 1!', root_doubleend, 'section1')
         root_doubleend, end_p2, run = createXML_paraWithRun(test_ends[0], '', 'C. End again', root_doubleend, 'end_p2')
 
         # create different root for variation
-        root_end_and_sectionend, para, run = createXML_paraWithRun(list(testsections.keys())[0], '', 'Section 2!', None)
+        root_end_and_sectionend, para, run = createXML_paraWithRun(list(testsections)[0], '', 'Section 2!', None)
         # append subsequent paras
         root_end_and_sectionend, end_p1b, run = createXML_paraWithRun(test_ends[0], '', 'C. End', root_end_and_sectionend, 'end_p1b')
         root_end_and_sectionend, container_p, run = createXML_paraWithRun(testcontainers[1], '', 'Excerpt Cntnr', root_end_and_sectionend, 'container_p1')
@@ -1105,8 +1108,8 @@ class Tests(unittest.TestCase):
                         'parent_section_start_content': 'Section 2!',
                         'parent_section_start_type': 'Section2',
                         'para_id': 'end_p3'}]}
-        self.assertEqual(report_dict_doubleend, expected_rd_doubleend)
-        self.assertEqual(report_dict_end_and_sectionend, expected_rd_end_and_sectionend)
+        self.assertDictEqual(report_dict_doubleend, expected_rd_doubleend)
+        self.assertDictEqual(report_dict_end_and_sectionend, expected_rd_end_and_sectionend)
 
     def test_getXMLroot(self):
         # quick test, borrowing another function's xml
@@ -1610,22 +1613,30 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.checkMainheadsPerSection(mainheadstyle_list, doc_root, {}, section_names, container_start_styles, container_end_styles)
 
         # assertions
-        self.assertEqual(report_dict_ce_post, report_dict_ce)
-        self.assertEqual(report_dict, {"too_many_heading_para":[{
-                "description": "{}_3".format(cfg.mainheadstyle),
-                "para_id": "57112316",
-                'xml_file': 'document',
-                'para_index': 8,
-                'parent_section_start_content': 'Chapter',
-                'parent_section_start_type': 'Section-ChapterSCP'
-        }, {
+        rp_dict0 = {
                 "description": "{}_2".format(cfg.titlestyle),
                 "para_id": "3BF0BAD8",
                 'xml_file': 'document',
                 'para_index': 1,
                 'parent_section_start_content': 'Title',
                 'parent_section_start_type': 'Section-TitlepageSTI'
-        }]})
+        }
+        rp_dict1 = {
+                "description": "{}_3".format(cfg.mainheadstyle),
+                "para_id": "57112316",
+                'xml_file': 'document',
+                'para_index': 8,
+                'parent_section_start_content': 'Chapter',
+                'parent_section_start_type': 'Section-ChapterSCP'
+        }
+        self.assertDictEqual(report_dict_ce_post, report_dict_ce)
+        if sys.version_info[:3] > (3,0):
+            self.assertDictEqual(report_dict["too_many_heading_para"][1], rp_dict1)
+            self.assertDictEqual(report_dict["too_many_heading_para"][0], rp_dict0)
+        else:
+            self.assertDictEqual(report_dict["too_many_heading_para"][0], rp_dict1)
+            self.assertDictEqual(report_dict["too_many_heading_para"][1], rp_dict0)
+
 
     # same test as above, for a doc where para-ids are not already present
     #   (manually removing from existing docxml from last test)
@@ -1642,12 +1653,16 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.checkMainheadsPerSection(mainheadstyle_list, doc_root, {}, section_names, container_start_styles, container_end_styles)
 
         # assertions
-        self.assertEqual(report_dict_ce_post, report_dict_ce)
+        self.assertDictEqual(report_dict_ce_post, report_dict_ce)
         self.assertEqual(len(report_dict["too_many_heading_para"]), 2)
-        self.assertEqual(report_dict["too_many_heading_para"][0]['description'], "{}_3".format(cfg.mainheadstyle))
-        self.assertRegexpMatches(report_dict["too_many_heading_para"][0]['para_id'], '[0-9A-Z]{8}')
-        self.assertEqual(report_dict["too_many_heading_para"][1]['description'], "{}_2".format(cfg.titlestyle))
-        self.assertRegexpMatches(report_dict["too_many_heading_para"][1]['para_id'], '[0-9A-Z]{8}')
+        six.assertRegex(self, report_dict["too_many_heading_para"][0]['para_id'], '[0-9A-Z]{8}')
+        six.assertRegex(self, report_dict["too_many_heading_para"][1]['para_id'], '[0-9A-Z]{8}')
+        if sys.version_info[:3] > (3,0):
+            self.assertEqual(report_dict["too_many_heading_para"][1]['description'], "{}_3".format(cfg.mainheadstyle))
+            self.assertEqual(report_dict["too_many_heading_para"][0]['description'], "{}_2".format(cfg.titlestyle))
+        else:
+            self.assertEqual(report_dict["too_many_heading_para"][0]['description'], "{}_3".format(cfg.mainheadstyle))
+            self.assertEqual(report_dict["too_many_heading_para"][1]['description'], "{}_2".format(cfg.titlestyle))
 
     def test_checkForFMsectionsInBody(self):
         # we are using pre-collected sectionstart list for this, so just mocking up a couple style barebones report_dicts.
@@ -1678,79 +1693,130 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.verifyListNesting({}, doc_root, li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras, {})
 
         # assertions
-        self.assertEqual(report_dict, {
-            'list_change_err': [
-                {'description': u"'Num-Level-2-ListNl2' para, preceded by: 'Bullet-Level-2-ListBl2' para",
-                    'para_string': 'NL2, fail test 8 list_change',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '481B8C08'}, # test 8 'NL2 fail list_change'
-                {'description': u"'Num-Level-3-ListNl3' para, preceded by: 'Bullet-Level-3-ListBl3' para",
-                    'para_string': 'NL3 fail test 10 list_change',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '49525651'} # test 10 'NL3 fail list_change'
-                ],
-            'list_change_warning': [
-                {'description': u"'Num-Level-1-ListNl1' para, preceded by: 'Bullet-Level-1-ListBl1' para",
-                    'para_string': 'NL1 Warn, warn test5 list_warn',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '4A9EE1B7'} # test 5 'NL1 Warn list_warn'
-                ],
-            'list_nesting_err': [
-                {'description': u"'Alpha-Level-1-List-ParagraphAl1p' para, preceded by: 'Body-TextTx' para",
-                    'para_string': 'AL1p fail list_nesting',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '2AF17057'}, # test 16 'AL1p fail list_nesting'
-                {'description': u"'Alpha-Level-1-List-ParagraphAl1p' para, preceded by: 'Extract1Ext1' para",
-                    'para_string': 'AL1p fail list_nesting',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '2A1DC130'}, # tesl 17 'AL1p fail list_nesting'
-                {'description': u"'Num-Level-3-List-ParagraphNl3p' para, preceded by: 'Bullet-Level-2-List-ParagraphBl2p' para",
-                    'para_string': 'NL3p, fail test4 list_nesting',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '59A57963'}, # test 4 'NL3p should fail list_nesting'
-                {'description': u"'Num-Level-1-List-ParagraphNl1p' para, preceded by: 'Bullet-Level-1-ListBl1' para",
-                    'para_string': 'NL1p should fail test3 list_nesting',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '20DDD1A7'}, # test 3, 'NL1p should fail list_nesting'
-                {'description': u"'Num-Level-2-List-ParagraphNl2p' para, preceded by: 'Bullet-Level-1-ListBl1' para",
-                    'para_string': 'NL2p fail test 13 list_nesting',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '75D0DB55'}, # test 14, 'NL2p fail list_nesting'
-                {'description': u"'Bullet-Level-3-ListBl3' para, preceded by: 'Bullet-Level-1-ListBl1' para",
-                    'para_string': 'BL3 fail test 9 list_nesting',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '7B5D1501'}, # test 9 'BL3 fail list_nesting'
-                {'description': u"'Bullet-Level-2-ListBl2' para, preceded by: 'Extract1Ext1' para",
-                    'para_string': 'BL2 fail test 11 list_nesting',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '68440985'}, # test 11 'BL2 fail list_nesting'
-                {'description': u"'Bullet-Level-1-List-ParagraphBl1p' para, preceded by: 'Unnum-Level-1-List-ParagraphUl1p' para",
-                    'para_string': 'Target: BL1p, fail test2 list_nesting',
-                    'parent_section_start_content': '',
-                    'parent_section_start_type': 'n-a',
-                    'xml_file': u'document',
-                    'para_id': '2B5560A1'} # test 2 'Target: BL1p, fail test2 list_nesting'
-            ]})
+        self.assertEqual(report_dict['list_change_err'], [
+            {'description': u"'Num-Level-2-ListNl2' para, preceded by: 'Bullet-Level-2-ListBl2' para",
+                'para_string': 'NL2, fail test 8 list_change',
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a',
+                'xml_file': u'document',
+                'para_id': '481B8C08'}, # test 8 'NL2 fail list_change'
+            {'description': u"'Num-Level-3-ListNl3' para, preceded by: 'Bullet-Level-3-ListBl3' para",
+                'para_string': 'NL3 fail test 10 list_change',
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a',
+                'xml_file': u'document',
+                'para_id': '49525651'} # test 10 'NL3 fail list_change'
+            ])
+        self.assertEqual(report_dict['list_change_warning'], [
+            {'description': u"'Num-Level-1-ListNl1' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                'para_string': 'NL1 Warn, warn test5 list_warn',
+                'parent_section_start_content': '',
+                'parent_section_start_type': 'n-a',
+                'xml_file': u'document',
+                'para_id': '4A9EE1B7'} # test 5 'NL1 Warn list_warn'
+            ])
+        if sys.version_info[:3] > (3,0):
+            self.assertEqual(report_dict['list_nesting_err'], [
+                    {'description': u"'Bullet-Level-1-List-ParagraphBl1p' para, preceded by: 'Unnum-Level-1-List-ParagraphUl1p' para",
+                        'para_string': 'Target: BL1p, fail test2 list_nesting',
+                        'parent_section_start_content': '',
+                        'parent_section_start_type': 'n-a',
+                        'xml_file': u'document',
+                        'para_id': '2B5560A1'}, # test 2 'Target: BL1p, fail test2 list_nesting'
+                    {'description': u"'Bullet-Level-2-ListBl2' para, preceded by: 'Extract1Ext1' para",
+                        'para_string': 'BL2 fail test 11 list_nesting',
+                        'parent_section_start_content': '',
+                        'parent_section_start_type': 'n-a',
+                        'xml_file': u'document',
+                        'para_id': '68440985'}, # test 11 'BL2 fail list_nesting'
+                    {'description': u"'Bullet-Level-3-ListBl3' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                        'para_string': 'BL3 fail test 9 list_nesting',
+                        'parent_section_start_content': '',
+                        'parent_section_start_type': 'n-a',
+                        'xml_file': u'document',
+                        'para_id': '7B5D1501'}, # test 9 'BL3 fail list_nesting'
+                    {'description': u"'Num-Level-1-List-ParagraphNl1p' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                        'para_string': 'NL1p should fail test3 list_nesting',
+                        'parent_section_start_content': '',
+                        'parent_section_start_type': 'n-a',
+                        'xml_file': u'document',
+                        'para_id': '20DDD1A7'}, # test 3, 'NL1p should fail list_nesting'
+                    {'description': u"'Num-Level-2-List-ParagraphNl2p' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                        'para_string': 'NL2p fail test 13 list_nesting',
+                        'parent_section_start_content': '',
+                        'parent_section_start_type': 'n-a',
+                        'xml_file': u'document',
+                        'para_id': '75D0DB55'}, # test 14, 'NL2p fail list_nesting'
+                    {'description': u"'Num-Level-3-List-ParagraphNl3p' para, preceded by: 'Bullet-Level-2-List-ParagraphBl2p' para",
+                        'para_string': 'NL3p, fail test4 list_nesting',
+                        'parent_section_start_content': '',
+                        'parent_section_start_type': 'n-a',
+                        'xml_file': u'document',
+                        'para_id': '59A57963'}, # test 4 'NL3p should fail list_nesting'
+                    {'description': u"'Alpha-Level-1-List-ParagraphAl1p' para, preceded by: 'Body-TextTx' para",
+                        'para_string': 'AL1p fail list_nesting',
+                        'parent_section_start_content': '',
+                        'parent_section_start_type': 'n-a',
+                        'xml_file': u'document',
+                        'para_id': '2AF17057'}, # test 16 'AL1p fail list_nesting'
+                    {'description': u"'Alpha-Level-1-List-ParagraphAl1p' para, preceded by: 'Extract1Ext1' para",
+                        'para_string': 'AL1p fail list_nesting',
+                        'parent_section_start_content': '',
+                        'parent_section_start_type': 'n-a',
+                        'xml_file': u'document',
+                        'para_id': '2A1DC130'} # tesl 17 'AL1p fail list_nesting'
+                ])
+        else:
+            self.assertEqual(report_dict['list_nesting_err'], [
+               {'description': u"'Alpha-Level-1-List-ParagraphAl1p' para, preceded by: 'Body-TextTx' para",
+                   'para_string': 'AL1p fail list_nesting',
+                   'parent_section_start_content': '',
+                   'parent_section_start_type': 'n-a',
+                   'xml_file': u'document',
+                   'para_id': '2AF17057'}, # test 16 'AL1p fail list_nesting'
+               {'description': u"'Alpha-Level-1-List-ParagraphAl1p' para, preceded by: 'Extract1Ext1' para",
+                   'para_string': 'AL1p fail list_nesting',
+                   'parent_section_start_content': '',
+                   'parent_section_start_type': 'n-a',
+                   'xml_file': u'document',
+                   'para_id': '2A1DC130'}, # tesl 17 'AL1p fail list_nesting'
+               {'description': u"'Num-Level-3-List-ParagraphNl3p' para, preceded by: 'Bullet-Level-2-List-ParagraphBl2p' para",
+                   'para_string': 'NL3p, fail test4 list_nesting',
+                   'parent_section_start_content': '',
+                   'parent_section_start_type': 'n-a',
+                   'xml_file': u'document',
+                   'para_id': '59A57963'}, # test 4 'NL3p should fail list_nesting'
+               {'description': u"'Num-Level-1-List-ParagraphNl1p' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                   'para_string': 'NL1p should fail test3 list_nesting',
+                   'parent_section_start_content': '',
+                   'parent_section_start_type': 'n-a',
+                   'xml_file': u'document',
+                   'para_id': '20DDD1A7'}, # test 3, 'NL1p should fail list_nesting'
+               {'description': u"'Num-Level-2-List-ParagraphNl2p' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                   'para_string': 'NL2p fail test 13 list_nesting',
+                   'parent_section_start_content': '',
+                   'parent_section_start_type': 'n-a',
+                   'xml_file': u'document',
+                   'para_id': '75D0DB55'}, # test 14, 'NL2p fail list_nesting'
+               {'description': u"'Bullet-Level-3-ListBl3' para, preceded by: 'Bullet-Level-1-ListBl1' para",
+                   'para_string': 'BL3 fail test 9 list_nesting',
+                   'parent_section_start_content': '',
+                   'parent_section_start_type': 'n-a',
+                   'xml_file': u'document',
+                   'para_id': '7B5D1501'}, # test 9 'BL3 fail list_nesting'
+               {'description': u"'Bullet-Level-2-ListBl2' para, preceded by: 'Extract1Ext1' para",
+                   'para_string': 'BL2 fail test 11 list_nesting',
+                   'parent_section_start_content': '',
+                   'parent_section_start_type': 'n-a',
+                   'xml_file': u'document',
+                   'para_id': '68440985'}, # test 11 'BL2 fail list_nesting'
+               {'description': u"'Bullet-Level-1-List-ParagraphBl1p' para, preceded by: 'Unnum-Level-1-List-ParagraphUl1p' para",
+                   'para_string': 'Target: BL1p, fail test2 list_nesting',
+                   'parent_section_start_content': '',
+                   'parent_section_start_type': 'n-a',
+                   'xml_file': u'document',
+                   'para_id': '2B5560A1'} # test 2 'Target: BL1p, fail test2 list_nesting'
+           ])
 
     def test_compareNamespace(self):
         template_xml = os.path.join(testfiles_basepath, 'test_compareNamespace', 'template', 'word', 'document.xml')

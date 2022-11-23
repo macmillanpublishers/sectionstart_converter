@@ -82,6 +82,19 @@ def getParaTxt(para):
         paratext = "n-a"
     return paratext
 
+# for wdv-397, occasionally a doc.xml's xml is prettified already, leading to a stylereport with extraneous newlines and whitespace
+def getXmlRootfromFile(xmlfile, xmlfile_name):
+    xmltree = etree.parse(xmlfile)
+    xmlstr = etree.tostring(xmltree)
+    nl = xmlstr.count('\n')
+    if nl:
+        logger.info("{} xml had {} newlines: converting to string and back to minify xml".format(xmlfile_name, nl))
+        parser = etree.XMLParser(remove_blank_text=True)
+        xmlroot = etree.XML(xmlstr, parser)
+    else:
+        xmlroot = xmltree.getroot()
+    return xmlroot
+
 # note: if new nsprefix already exists, with different uri, the old uri is preserved.
 #   for our current purposes this is fine, we are only adding new ns if existing one is not present
 def addNamespace(xmlroot, new_nsprefix, new_nsuri):

@@ -109,7 +109,7 @@ else:
     logdir = direct_logdir
 
 # max input-filename length for our Windows servers, varies per server:
-if os.path.exists(staging_file):
+if os.path.exists(staging_file) or "unittest" in script_name:
     filename_maxlength = 83
 else:
     filename_maxlength = 85

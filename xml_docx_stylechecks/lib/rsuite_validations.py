@@ -772,19 +772,16 @@ def rsuiteValidations(report_dict):
     styleconfig_json = cfg.styleconfig_json
     styles_xml = cfg.styles_xml
     doc_xml = cfg.doc_xml
-    doc_tree = etree.parse(doc_xml)
-    doc_root = doc_tree.getroot()
+    doc_root = lxml_utils.getXmlRootfromFile(doc_xml, 'doc.xml')
     # this is for writing out to any file where the xml_root is edited
     xmlfile_dict = {
         doc_root:doc_xml
         }
     if os.path.exists(cfg.endnotes_xml):
-        endnotes_tree = etree.parse(cfg.endnotes_xml)
-        endnotes_root = endnotes_tree.getroot()
+        endnotes_root = lxml_utils.getXmlRootfromFile(cfg.endnotes_xml, 'endnotes.xml')
         xmlfile_dict[endnotes_root]=cfg.endnotes_xml
     if os.path.exists(cfg.footnotes_xml):
-        footnotes_tree = etree.parse(cfg.footnotes_xml)
-        footnotes_root = footnotes_tree.getroot()
+        footnotes_root = lxml_utils.getXmlRootfromFile(cfg.footnotes_xml, 'footnotes.xml')
         xmlfile_dict[footnotes_root]=cfg.footnotes_xml
 
     # get Section Start names & styles from vbastyleconfig_json

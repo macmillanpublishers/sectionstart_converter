@@ -17,18 +17,21 @@ if __name__ == '__main__':
     # to go up a level to read cfg (and other files) when invoking from this script (for testing).
     cfgpath = os.path.join(sys.path[0], '..', 'cfg.py')
     osutilspath = os.path.join(sys.path[0], '..', 'shared_utils', 'os_utils.py')
+    apiPOSTpath = os.path.join(sys.path[0], '..', 'shared_utils', 'api_POST_to_camel.py')
     unzipDOCXpath = os.path.join(sys.path[0], '..', 'shared_utils', 'unzipDOCX.py')
     sendmailpath = os.path.join(sys.path[0], '..', 'shared_utils', 'sendmail.py')
     cfg = imp.load_source('cfg', cfgpath)
     import generate_report  # this is in the same dir so needs no direction for relative import
     import usertext_templates
     os_utils = imp.load_source('os_utils', osutilspath)
+    apiPOST = imp.load_source('os_utils', apiPOSTpath)
     unzipDOCX = imp.load_source('unzipDOCX', unzipDOCXpath)
     sendmail = imp.load_source('sendmail', sendmailpath)
 else:
     import cfg
     import lib.generate_report as generate_report
     import lib.usertext_templates as usertext_templates
+    import shared_utils.api_POST_to_camel as apiPOST
     import shared_utils.os_utils as os_utils
     import shared_utils.unzipDOCX as unzipDOCX
     import shared_utils.sendmail as sendmail
@@ -89,8 +92,8 @@ def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, 
     os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.warn_fname), cfg.warn_fname)
     os_utils.rm_existing_os_object(os.path.join(tmpdir, cfg.notice_fname), cfg.notice_fname)
 
-    # if we're on a direct run & inputfilename had unsupported chars, create a sanitized-fname workingfile in tmpdir
-    if cfg.runtype == 'direct' and cfg.inputfile != workingfile:
+    # if inputfilename had unsupported chars, create a sanitized-fname workingfile in tmpdir
+    if cfg.inputfile != workingfile:
         os_utils.copyFiletoFile(cfg.inputfile, workingfile)
 
     ### unzip the manuscript to ziproot, template to template_ziproot
@@ -182,8 +185,6 @@ def emailStyleReport(submitter_email, display_name, report_string, stylereport_t
 
 def postFilesToOutfolder(stylereport_txt, newdocxfile, alertfile):
     logger.info("posting files to outfolder for 'direct' run, via camel api...")
-    # load api_post module
-    apiPOST = imp.load_source('apiPOST', cfg.api_post_py)
     # set api url
     dest_folder = os.path.basename(cfg.this_outfolder)
     posturldict = os_utils.readJSON(cfg.post_urls_json)

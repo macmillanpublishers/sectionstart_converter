@@ -1,0 +1,25 @@
+# docker compose run --rm rsv
+
+version: "3"
+
+services:
+  rsv: 
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    image: rsv_i:1.4
+    container_name: "rsv_c"
+    working_dir: /opt/rsv  
+    volumes:
+      - ./conf:/opt/rsv/conf
+      - ./docs:/mnt/docs
+      - ./logs:/opt/rsv/logs
+      - ./test/tmp:/opt/rsv/test/files_for_test/tmp
+      - ./test/docs:/opt/rsv/test/files_for_test/full_transform/test_docx_files
+      - ./test/validated_output:/opt/rsv/test/files_for_test/full_transform/validated_output
+      - ./test/vi_validated_output:/opt/rsv/test/files_for_test/full_transform/vi_validated_output
+    # \/ if 'command' is commented, "tty: true" will leaves the container running upxwon `docker-compose up -d`
+    #     (then connect to ttys with: `docker exec -it rsv_c /bin/sh`)
+    tty: true  
+    # run unit tests by default, on up or run:
+    command: python -m unittest discover -v

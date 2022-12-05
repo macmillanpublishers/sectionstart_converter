@@ -93,10 +93,14 @@ if hostOS == "Windows":
     main_tmpdir = os.path.join("S:",os.sep,"pythonxml_tmp")
     staging_file = os.path.join("C:",os.sep,"staging.txt")
     direct_logdir = os.path.join("S:", os.sep, "rs_validate_logs")
-else:
+elif hostOS == "Darwin":    # MacOS
     main_tmpdir = os.path.join(os.sep,"Users",currentuser,"stylecheck_tmp") # debug, for testing on MacOS
     staging_file = os.path.join(os.sep,"Users",currentuser,"staging.txt")
     direct_logdir = os.path.join(os.sep,"Users",currentuser,"rs_validate_logs")
+else:  # docker hostos is "Linux"
+    main_tmpdir = os.path.join(os.sep,"opt","rsv","stylecheck_tmp") # debug, for testing on MacOS
+    staging_file = os.path.join(os.sep,"opt","rsv","conf","staging.txt")
+    direct_logdir = os.path.join(os.sep,"opt","rsv","logs")
 # tmpfolder and outfolder
 tmpdir = os.path.dirname(inputfile)
 this_outfolder = tmpdir
@@ -108,7 +112,7 @@ else:
     logdir = direct_logdir
 
 # max input-filename length for our Windows servers, varies per server:
-if os.path.exists(staging_file):
+if os.path.exists(staging_file) or "unittest" in script_name:
     filename_maxlength = 83
 else:
     filename_maxlength = 85
@@ -136,21 +140,23 @@ scripts_dir_path = os.path.join(__location__,'..','..')
 templatefiles_path = os.path.join(scripts_dir_path,"RSuite_Word-template","StyleTemplate_auto-generate")
 if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in script_name:
     templatefile_path = templatefiles_path
-    template_name = "Rsuite.dotx"
+    template_name = "RSuite.dotx"
 else:
     templatefile_path = os.path.join(scripts_dir_path,"RSuite_Word-template","oldStyleTemplate","MacmillanStyleTemplate")
     template_name = "macmillan.dotm"
 
 # paths
-api_post_py = os.path.join(scripts_dir_path, "bookmaker_connectors", "api_POST_to_camel.py")
 post_urls_json = os.path.join(scripts_dir_path, "bookmaker_authkeys", "camelPOST_urls.json")
-section_start_rules_json = os.path.join(scripts_dir_path, "bookmaker_validator","section_start_rules.json")
+# section_start_rules_json = os.path.join(scripts_dir_path, "bookmaker_validator","section_start_rules.json")
 smtp_txt = os.path.join(scripts_dir_path, "bookmaker_authkeys","smtp.txt")
 macmillan_template = os.path.join(templatefile_path, template_name)
 macmillanstyles_json = os.path.join(templatefiles_path, "%s.json" % os.path.splitext(template_name)[0])
 vbastyleconfig_json = os.path.join(templatefiles_path, "vba_style_config.json")
 styleconfig_json = os.path.join(templatefiles_path, "style_config.json")
 legacystyles_json = os.path.join(__location__, "legacy_styles.json") # same dir as this file
+# updates for docker image:
+post_urls_json = os.path.join(os.sep,"opt","rsv","conf","camelPOST_urls.json")
+smtp_txt = os.path.join(os.sep,"opt","rsv","conf","smtp.txt")
 
 # # # # # # # # RELATIVE PATHS for unzipping and zipping docx files
 ### xml filepaths relative to ziproot

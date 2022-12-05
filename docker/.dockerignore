@@ -1,0 +1,7 @@
+# # # docker, please ignore:
+**/*.pyc
+**/.DS_Store
+**/__pycache__
+
+*/test/files_for_test/tmp/*
+*/test/files_for_test/full_transform/*/*

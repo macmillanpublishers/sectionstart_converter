@@ -1,0 +1,7 @@
+# # # Ignore subdirectories and their contents ...
+*/*
+
+# # # ... except for these
+!/conf/smtp.txt
+!/conf/camelPOST_urls.json
+!/conf/staging.txt

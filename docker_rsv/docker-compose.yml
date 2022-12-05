@@ -3,13 +3,13 @@
 version: "3"
 
 services:
-  rsv: 
+  rsv:
     build:
       context: ../
-      dockerfile: ./docker/Dockerfile
-    image: rsv_i:1.4
+      dockerfile: ./docker_rsv/Dockerfile
+    image: rsv_i:1.5
     container_name: "rsv_c"
-    working_dir: /opt/rsv  
+    working_dir: /opt/rsv
     volumes:
       - ./conf:/opt/rsv/conf
       - ./docs:/mnt/docs
@@ -20,6 +20,6 @@ services:
       - ./test/vi_validated_output:/opt/rsv/test/files_for_test/full_transform/vi_validated_output
     # \/ if 'command' is commented, "tty: true" will leaves the container running upxwon `docker-compose up -d`
     #     (then connect to ttys with: `docker exec -it rsv_c /bin/sh`)
-    tty: true  
+    tty: true
     # run unit tests by default, on up or run:
     command: python -m unittest discover -v

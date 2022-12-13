@@ -203,9 +203,9 @@ def findRunsWithStyle(stylename, doc_root):
     return runs
 
 # gets returns para of selected element
-def getParaParentofElement(element):
-    tmp_element = element
-    while tmp_element.tag != '{%s}p' % wnamespace and tmp_element.tag != '{%s}body' % wnamespace and tmp_element.getparent() is not None:
+def getSpecifiedParentofElement(current_element, target_parent):
+    tmp_element = current_element
+    while tmp_element.tag != '{%s}%s' % (wnamespace, target_parent) and tmp_element.tag != '{%s}body' % wnamespace and tmp_element.getparent() is not None:
         tmp_element = tmp_element.getparent()
     if tmp_element.tag == '{%s}body' % wnamespace:
         para = None

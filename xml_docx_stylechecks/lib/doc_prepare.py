@@ -167,7 +167,7 @@ def removeNonISBNsfromISBNspans(report_dict, doc_root, isbnstyle, isbnspanregex)
         result = isbnspanregex.findall(runtxt)
         logger.debug ("result: %s " % result)
         # capture the para number before we remove or edit:
-        para = lxml_utils.getParaParentofElement(run)
+        para = lxml_utils.getSpecifiedParentofElement(run, 'p')
 
         # if isbn is found but there are extra chars, we need to yank them out
         if result:
@@ -321,7 +321,7 @@ def removeTextWithCharacterStyle(report_dict, doc_root, style):
     styled_runs = lxml_utils.findRunsWithStyle(style, doc_root)
     for run in styled_runs:
         # get para for log
-        para = lxml_utils.getParaParentofElement(run)
+        para = lxml_utils.getSpecifiedParentofElement(run, 'p')
         text = lxml_utils.getParaTxt(run)
         # remove the run with this style
         run.getparent().remove(run)
@@ -399,7 +399,7 @@ def deleteObjects(report_dict, xml_root, objects_to_delete, object_name):
         searchstring = ".//{}".format(object)
         for element in xml_root.findall(searchstring, wordnamespaces):
             # get para for report (before we delete theelement!):
-            para = lxml_utils.getParaParentofElement(element)
+            para = lxml_utils.getSpecifiedParentofElement(element, 'p')
             # remove element
             element.getparent().remove(element)
             # optional - log to report_dict

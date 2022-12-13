@@ -104,7 +104,7 @@ def deleteBookmarks(report_dict, xml_root, bookmark_items):
             end_id_searchstring = ".//{}[@w:id='{}']".format(bookmark_items["bookmarkend_tag"], w_id)
             bookmark_end = xml_root.find(end_id_searchstring, wordnamespaces)
             # remove element(s) (get para first for logging)
-            para = lxml_utils.getParaParentofElement(bookmark_start)
+            para = lxml_utils.getSpecifiedParentofElement(bookmark_start, 'p')
             bookmark_start.getparent().remove(bookmark_start)
             if bookmark_end is not None:
                 bookmark_end.getparent().remove(bookmark_end)
@@ -676,9 +676,9 @@ def rmEndnoteFootnoteLeadingWhitespace(xml_root, report_dict, rootname):
 
     return report_dict
 
-def flagCustomNoteMarks(xml_root, report_dict, ref_style_dict):
+def flagCustomNoteMarks(xml_root, report_dict, refstyle_dict):
     logger.info("* * * commencing flagCustomNoteMarks function...")
-    for note_type, ref_style in ref_style_dict.items():
+    for note_type, ref_style in refstyle_dict.items():
         ref_el_name = ref_style[0].lower() + ref_style[1:]
         searchstring = './/*w:{}[@w:customMarkFollows="1"]'.format(ref_el_name)
         customref_els = xml_root.findall(searchstring, wordnamespaces)
@@ -697,9 +697,43 @@ def flagCustomNoteMarks(xml_root, report_dict, ref_style_dict):
                         reftext = "(custom ref-mark is not symbol or text)"
                 attrib_id_key = '{%s}id' % wnamespace
                 ref_id = customref_el.get(attrib_id_key)
-                para = lxml_utils.getParaParentofElement(ref_run)
+                para = lxml_utils.getSpecifiedParentofElement(ref_run, 'p')
                 #log occurence
                 lxml_utils.logForReport(report_dict, xml_root, para, 'custom_{}_mark'.format(note_type), "custom note marker: '{}', {} id: {}".format(reftext, note_type, ref_id))
+                # log custom note id:
+                if 'custom_{}_ids'.format(note_type) not in report_dict:
+                    report_dict['custom_{}_ids'.format(note_type)]=[]
+                report_dict['custom_{}_ids'.format(note_type)].append(ref_id)
+    return report_dict
+
+# wdv-470 to rm noteref styles from content other than noteref objects
+def rmExtraNoteMarkStyle(xmlroot, report_dict, refstyle_dict, xml_notetype, docxml = False):
+    logger.info("* * * commencing rmExtraNoteMarkStyle function for {}s...".format(xml_notetype))
+    for note_type, ref_stylename in refstyle_dict.items():
+        # get all rStyle nodes with refstyle
+        style_searchstring = ".//*w:rStyle[@w:val='{}']".format(ref_stylename)
+        ref_style_els = xmlroot.findall(style_searchstring, wordnamespaces)
+        for rs_el in ref_style_els:
+            # see if there's a refobject present
+            run_el = rs_el.getparent().getparent()
+            ref_object_name = ref_stylename[0].lower() + ref_stylename[1:]
+            # NOTE objectname differs in docxml from either notes xml file
+            if docxml == False:
+                ref_object_name = ref_object_name.replace('erence', '')
+            obj_searchstring = ".//w:{}".format(ref_object_name)
+            ref_obj = run_el.find(obj_searchstring, wordnamespaces)
+            if ref_obj is None:
+                # if we are in not in doc_xml, get note id to make sure its not a custom note
+                #   (skip custom notes)
+                if docxml == False:
+                    note_el = lxml_utils.getSpecifiedParentofElement(run_el, xml_notetype)
+                    attrib_id_key = '{%s}id' % wnamespace
+                    note_id = note_el.get(attrib_id_key)
+                    if 'custom_{}_ids'.format(xml_notetype) in report_dict and note_id in report_dict['custom_{}_ids'.format(xml_notetype)]:
+                        continue
+                # remove the rstyle el and log the removal:
+                lxml_utils.logForReport(report_dict, xmlroot, run_el.getparent(), 'rogue_noteref_style_use', 'deleted unneeded {}ref style'.format(note_type))
+                rs_el.getparent().remove(rs_el)
     return report_dict
 
 # wdv-389 specifies superscript styled ref marks in notes.
@@ -724,12 +758,11 @@ def fixSuperNoteMarks(xml_root, report_dict, superstyle, good_ref_style, note_ty
                 attrib_style_key = '{%s}val' % wnamespace
                 refstyle_el.set(attrib_style_key, good_ref_style)
                 # log replacement
-                para = lxml_utils.getParaParentofElement(ref_el_run)
-                note_el = para.getparent()
+                note_el = lxml_utils.getSpecifiedParentofElement(ref_el_run, note_type)
                 attrib_id_key = '{%s}id' % wnamespace
                 ref_id = note_el.get(attrib_id_key)
                 # re-using category from main body note mark-check
-                lxml_utils.logForReport(report_dict, xml_root, para, 'note_markers_wrong_style', 'super_styled ref-mark in {}s, ref_id: {}'.format(note_type, ref_id))
+                lxml_utils.logForReport(report_dict, xml_root, ref_el_run.getparent(), 'note_markers_wrong_style', 'super_styled ref-mark in {}s, ref_id: {}'.format(note_type, ref_id))
     return report_dict
 
 def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_category):
@@ -852,6 +885,9 @@ def rsuiteValidations(report_dict):
     # check for FM sections in main body
     report_dict = checkForFMsectionsInBody(report_dict, cfg.fm_style_list, cfg.fm_flex_style_list)
 
+    # log custom note markers for report
+    refstyle_dict = {"endnote": cfg.endnote_ref_style, "footnote": cfg.footnote_ref_style}
+    report_dict = flagCustomNoteMarks(doc_root, report_dict, refstyle_dict)
     # check footnote / endnote para styles
     # rm footnote / endnote leading whitespace
     # handle note refs that are styled 'super' wdv-344
@@ -859,15 +895,14 @@ def rsuiteValidations(report_dict):
         report_dict = rmEndnoteFootnoteLeadingWhitespace(footnotes_root, report_dict, "footnote")
         report_dict = checkEndnoteFootnoteStyles(footnotes_root, report_dict, cfg.footnotestyle, "footnote")
         report_dict = fixSuperNoteMarks(footnotes_root, report_dict, cfg.superscriptstyle, cfg.footnote_ref_style, 'footnote')
+        report_dict = rmExtraNoteMarkStyle(footnotes_root, report_dict, refstyle_dict, 'footnote')
     if os.path.exists(cfg.endnotes_xml):
         report_dict = rmEndnoteFootnoteLeadingWhitespace(endnotes_root, report_dict, "endnote")
         report_dict = checkEndnoteFootnoteStyles(endnotes_root, report_dict, cfg.endnotestyle, "endnote")
         report_dict = fixSuperNoteMarks(endnotes_root, report_dict, cfg.superscriptstyle, cfg.endnote_ref_style, 'endnote')
+        report_dict = rmExtraNoteMarkStyle(endnotes_root, report_dict, refstyle_dict, 'endnote')
         # endnotes only: make sure Notes section is present
         report_dict = checkForNotesSection(doc_root, endnotes_root, report_dict, cfg.note_separator_types, cfg.notessection_stylename)
-    # log custom note markers for report
-    refstyle_dict = {"endnote":cfg.endnote_ref_style, "footnote":cfg.footnote_ref_style}
-    report_dict = flagCustomNoteMarks(doc_root, report_dict, refstyle_dict)
 
     # # log texts of titlepage-title paras
     report_dict = logTextOfParasWithStyleInSection(report_dict, doc_root, sectionnames, cfg.titlesection_stylename, cfg.titlestyle, "title_paras")
@@ -908,6 +943,8 @@ def rsuiteValidations(report_dict):
     report_dict = cleanNoteMarkers(report_dict, doc_root, cfg.footnote_ref_obj, cfg.footnote_ref_style, "footnote")
     #   endnotes
     report_dict = cleanNoteMarkers(report_dict, doc_root, cfg.endnote_ref_obj, cfg.endnote_ref_style, "endnote")
+    # rm extraneous noteref styles in docxml
+    report_dict = rmExtraNoteMarkStyle(doc_root, report_dict, refstyle_dict, 'doc.xml note', True)
 
     # check everywhere for invalid symfonts
     report_dict = checkSymFonts(report_dict, doc_root, cfg.valid_symfonts)

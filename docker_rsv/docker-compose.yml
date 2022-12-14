@@ -9,6 +9,7 @@ services:
       dockerfile: ./docker_rsv/Dockerfile
     image: rsv_i:1.5
     container_name: "rsv_c"
+    hostname: "rsv_c"
     working_dir: /opt/rsv
     volumes:
       - ./conf:/opt/rsv/conf

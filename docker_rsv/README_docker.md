@@ -1,13 +1,24 @@
 # rsuite_validate container
 
-## Setup container
+## Dependencies
+The below external (Macmillan) repo is added to this repo as a submodule:
+_https://github.com/macmillanpublishers/RSuite_Word-template_
+It's checked out at a release tag, currently:
+_*v6.5.0*_
+#### cloning submodule
+To initialize and update the submodule the first time after cloning or pulling the _sectionstart_converter_ repo, run:
+`git submodule update --init --recursive`
+#### Update/Edit submodule
+To peg the submodule HEAD to a new tag, first pull/update it with:
+`git submodule update RSuite_Word-template`
+Then cd into the submodule dir, checkout the new tag, and commit your changes.
 
+## Setup container
 * To create container (and invoke unittests), cd to this dir and run:
    `docker-compose up`
 
-
 ## Running the tool(s)
-\*Note: If you need to run any of these cmds from a dir beside this one, add flag f and path to docker-compose file to your command, like: -f /path/to/docker-compose.yml
+\*Note: If you need to run any of these cmds from a dir besides ./docker_rsv, add flag '-f' and path to docker-compose file to your command, like: -f /path/to/docker-compose.yml
 
 ### run files through the tool(s)
 
@@ -23,7 +34,7 @@
 	2. put a .docx file in a new folder in ./docs folder (example: ./docs/_testdir/testfile.docx_)
 	3. run: `docker compose run --rm rsv python ./xml_docx_stylechecks/rsuitevalidate_main.py "/mnt/docs/testdir/testfile.docx" direct user@email.com "User Display Name"`
 	4. You will see output in the terminal as well as style_report and testfile_converted.docx being created in your _testdir_ (and hopefully emails and api run too)
- 
+
 #### running isbncheck
 * to run validator_isbncheck on a file:
 	1. put a .docx file in a new folder in ./docs folder (example: ./docs/_testdir/testfile.docx_)
@@ -36,9 +47,9 @@
 * run rs_validate transform tests (these do detailed diffs on output against "validated" output):
 	1. Put some test .docx files in ./test/docs
 	2. If you don't have validated files, they will be generated on first run. If you have them from another environment you can drop them in "./test/validated_output"
-	3. run `docker compose run --rm rsv python ./test/rsvalidate_transform_tests.py` 
+	3. run `docker compose run --rm rsv python ./test/rsvalidate_transform_tests.py`
 	(for more options re: running these tests look at this repo's test/README.md)
 	4. diffs will be available in ./test/tmp
 
-* run isbncheck transform checks: all instructions from rsv transform tests above apply, except validated files go in: "./test/vi_validated_output", and the command to run has a different executable: 
+* run isbncheck transform checks: all instructions from rsv transform tests above apply, except validated files go in: "./test/vi_validated_output", and the command to run has a different executable:
 	`docker compose run --rm rsv python ./test/isbncheck_transform_tests.py`

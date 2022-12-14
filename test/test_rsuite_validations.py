@@ -1419,10 +1419,12 @@ class Tests(unittest.TestCase):
         report_dict = rsuite_validations.flagCustomNoteMarks(root, {}, refstyle_dict)
         cntrl_report_dict = rsuite_validations.flagCustomNoteMarks(cntrl_root, {}, refstyle_dict)
 
-        expected_rd = {'custom_endnote_mark':
+        expected_rd = { 'custom_endnote_ids': ['2','3','5'],
+            'custom_endnote_mark':
                 [{'description': "custom note marker: '!', endnote id: 2", 'para_id': '4248380B', 'xml_file': 'document'},
                 {'description': "custom note marker: '!!', endnote id: 3", 'para_id': '1CAB8160', 'xml_file': 'document'},
                 {'description': "custom note marker: '111', endnote id: 5", 'para_id': '7BDB93ED', 'xml_file': 'document'}],
+            'custom_footnote_ids': ['2','4','6'],
             'custom_footnote_mark':
                 [{'description': "custom note marker: '*', footnote id: 2", 'para_id': '7838E8E7', 'xml_file': 'document'},
                 {'description': "custom note marker: '#', footnote id: 4", 'para_id': '739DEFD3', 'xml_file': 'document'},
@@ -1431,6 +1433,52 @@ class Tests(unittest.TestCase):
         #assertions
         self.assertEqual(cntrl_report_dict, {})
         self.assertEqual(report_dict, expected_rd)
+
+    def test_rmExtraNoteMarkStyle(self):
+        refstyle_dict = {"endnote":cfg.endnote_ref_style, "footnote":cfg.footnote_ref_style}
+        doc_xml_expected = os.path.join(testfiles_basepath, 'test_rmExtraNoteMarkStyle', 'document_expected.xml')
+        en_xml_expected = os.path.join(testfiles_basepath, 'test_rmExtraNoteMarkStyle', 'endnotes_expected.xml')
+        fn_xml_expected = os.path.join(testfiles_basepath, 'test_rmExtraNoteMarkStyle', 'footnotes_expected.xml')
+        doc_xml = os.path.join(testfiles_basepath, 'test_rmExtraNoteMarkStyle', 'document.xml')
+        en_xml = os.path.join(testfiles_basepath, 'test_rmExtraNoteMarkStyle', 'endnotes.xml')
+        fn_xml = os.path.join(testfiles_basepath, 'test_rmExtraNoteMarkStyle', 'footnotes.xml')
+        root = getRoot(doc_xml)
+        en_root = getRoot(en_xml)
+        fn_root = getRoot(fn_xml)
+        en_reportdict = {'custom_endnote_ids': ['2','3']}
+
+        # run functions:
+        reportdict = rsuite_validations.rmExtraNoteMarkStyle(root, {}, refstyle_dict, 'doc.xml', True)
+        # test unwanted style in a table
+        fn_reportdict = rsuite_validations.rmExtraNoteMarkStyle(fn_root, {}, refstyle_dict, 'footnote')
+        # test skipping a custom note mark
+        en_reportdict = rsuite_validations.rmExtraNoteMarkStyle(en_root, en_reportdict, refstyle_dict, 'endnote')
+
+        # assert
+        self.assertEqual(reportdict, {'rogue_noteref_style_use':
+            [{'description': 'deleted unneeded endnoteref style',
+            'para_id': '5AF7A2BD',
+            'xml_file': 'document'},
+            {'description': 'deleted unneeded footnoteref style',
+            'para_id': '21DAF05C',
+            'xml_file': 'document'}]})
+        self.assertEqual(fn_reportdict, {'rogue_noteref_style_use':
+            [{'description': 'deleted unneeded endnoteref style',
+            'para_id': '5EE75C9B',
+            'xml_file': 'footnotes'},
+            {'description': 'deleted unneeded footnoteref style',
+            'para_id': '0B198BE2',
+            'xml_file': 'footnotes'}]})
+        self.assertEqual(en_reportdict, {'custom_endnote_ids': ['2','3'], 'rogue_noteref_style_use':
+            [{'description': 'deleted unneeded endnoteref style',
+            'para_id': '2AB86588',
+            'xml_file': 'endnotes'},
+            {'description': 'deleted unneeded footnoteref style',
+            'para_id': '2AB86588',
+            'xml_file': 'endnotes'}]})
+        self.assertEqual(etree.tostring(fn_root), etree.tostring(getRoot(fn_xml_expected)))
+        self.assertEqual(etree.tostring(en_root), etree.tostring(getRoot(en_xml_expected)))
+        self.assertEqual(etree.tostring(root), etree.tostring(getRoot(doc_xml_expected)))
 
     def test_fixSuperNoteMarks(self):
         superstyle = "supersup" # cfg.superscriptstyle # < testing with rsuite style; this test is picking up pre-rsuite

@@ -82,19 +82,6 @@ def getParaTxt(para):
         paratext = "n-a"
     return paratext
 
-# for wdv-397, occasionally a doc.xml's xml is prettified already, leading to a stylereport with extraneous newlines and whitespace
-def getXmlRootfromFile(xmlfile, xmlfile_name):
-    xmltree = etree.parse(xmlfile)
-    xmlstr = etree.tostring(xmltree)
-    nl = xmlstr.count('\n')
-    if nl:
-        logger.info("{} xml had {} newlines: converting to string and back to minify xml".format(xmlfile_name, nl))
-        parser = etree.XMLParser(remove_blank_text=True)
-        xmlroot = etree.XML(xmlstr, parser)
-    else:
-        xmlroot = xmltree.getroot()
-    return xmlroot
-
 # note: if new nsprefix already exists, with different uri, the old uri is preserved.
 #   for our current purposes this is fine, we are only adding new ns if existing one is not present
 def addNamespace(xmlroot, new_nsprefix, new_nsuri):
@@ -216,9 +203,9 @@ def findRunsWithStyle(stylename, doc_root):
     return runs
 
 # gets returns para of selected element
-def getParaParentofElement(element):
-    tmp_element = element
-    while tmp_element.tag != '{%s}p' % wnamespace and tmp_element.tag != '{%s}body' % wnamespace and tmp_element.getparent() is not None:
+def getSpecifiedParentofElement(current_element, target_parent):
+    tmp_element = current_element
+    while tmp_element.tag != '{%s}%s' % (wnamespace, target_parent) and tmp_element.tag != '{%s}body' % wnamespace and tmp_element.getparent() is not None:
         tmp_element = tmp_element.getparent()
     if tmp_element.tag == '{%s}body' % wnamespace:
         para = None

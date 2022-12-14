@@ -551,6 +551,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
             "badnews_type": 'note',
             "errstring": "Fixed {count} Endnote and/or Footnote markers with incorrect character styles applied."
     	},
+    	"93.5_rogue_noteref_style_use": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "rogue_noteref_style_use",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'note',
+            "errstring": "Removed {count} extraneous instance(s) of 'Endnote Ref' and/or 'Footnote Ref' character styles."
+    	},
     	"94_deleted_generic_blankpara": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
     		"dict_category_name": "removed_blank_para",

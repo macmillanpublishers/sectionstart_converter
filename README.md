@@ -5,7 +5,7 @@ The 'validator_isbncheck' tool is also used, as part of the [egalleymaker](https
 See more about legacy products originally served via this repo at the bottom of the README ('Legacy products')
 
 ### Docker implementation
-For information on using the 'containerized' version of this tool, refer instead to this readme: ./docker_rsv/[README_docker.txt](https://github.com/macmillanpublishers/sectionstart_converter/blob/master/docker_rsv/README_docker.txt)
+For information on using the 'containerized' version of this tool, refer instead to this readme: ./docker_rsv/[README_docker.md](https://github.com/macmillanpublishers/sectionstart_converter/blob/master/docker_rsv/README_docker.md)
 ___
 # Dependencies
 * Python is required, versions 2.7.x and 3.9.x are supported.

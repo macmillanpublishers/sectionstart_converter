@@ -1,24 +1,11 @@
 # rsuite_validate container
 
-## Dependencies
-The below external (Macmillan) repo is added to this repo as a submodule:
-_https://github.com/macmillanpublishers/RSuite_Word-template_
-It's checked out at a release tag, currently:
-_*v6.5.0*_
-#### cloning submodule
-To initialize and update the submodule the first time after cloning or pulling the _sectionstart_converter_ repo, run:
-`git submodule update --init --recursive`
-#### Update/Edit submodule
-To peg the submodule HEAD to a new tag, first pull/update it with:
-`git submodule update RSuite_Word-template`
-Then cd into the submodule dir, checkout the new tag, and commit your changes.
-
 ## Setup container
 * To create container (and invoke unittests), cd to this dir and run:
    `docker-compose up`
 
 ## Running the tool(s)
-\*Note: If you need to run any of these cmds from a dir besides ./docker_rsv, add flag '-f' and path to docker-compose file to your command, like: -f /path/to/docker-compose.yml
+\*Note: If you need to run any of these cmds from a dir besides ./docker_rsv, add flag '-f' and the path to docker-compose file to your command, like: -f /path/to/docker-compose.yml
 
 ### run files through the tool(s)
 

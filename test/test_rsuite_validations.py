@@ -10,7 +10,7 @@ import six
 mainproject_path = os.path.join(sys.path[0],'xml_docx_stylechecks')
 testfiles_basepath = os.path.join(sys.path[0], 'test', 'files_for_test')
 tmpdir_basepath = os.path.join(sys.path[0], 'test', 'files_for_test', 'tmp')
-rsuite_template_path = os.path.join(sys.path[0], '..', 'RSuite_Word-template', 'StyleTemplate_auto-generate', 'RSuite.dotx')
+rsuite_template_path = os.path.join(sys.path[0], 'RSuite_Word-template', 'StyleTemplate_auto-generate', 'RSuite.dotx')
 
 # append main project path to system path for below imports to work
 sys.path.append(mainproject_path)

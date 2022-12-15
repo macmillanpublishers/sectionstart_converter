@@ -1,5 +1,5 @@
 # docker compose run --rm rsv
-
+# docker compose build --no-cache
 version: "3"
 
 services:
@@ -7,7 +7,7 @@ services:
     build:
       context: ../
       dockerfile: ./docker_rsv/Dockerfile
-    image: rsv_i:1.5
+    image: rsv_i:1.6
     container_name: "rsv_c"
     hostname: "rsv_c"
     working_dir: /opt/rsv

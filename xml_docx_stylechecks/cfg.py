@@ -134,17 +134,18 @@ warn_fname = 'WARNING.txt'
 notice_fname = 'NOTICE.txt'
 isbn_check_json = os.path.join(tmpdir, "isbn_check.json")
 
-### Resources in other Repos
+### Resources in other Repos/Dirs
 # we use relative paths based on __location__ of this file (cfg.py)
 scripts_dir_path = os.path.join(__location__,'..','..')
+template_submodule_path = os.path.join(__location__,'..','RSuite_Word-template')
 
 # rsuite versus macmillan template paths. For now mocking up a separate repo locally for rsuite
-templatefiles_path = os.path.join(scripts_dir_path,"RSuite_Word-template","StyleTemplate_auto-generate")
+templatefiles_path = os.path.join(template_submodule_path,"StyleTemplate_auto-generate")
 if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in script_name:
     templatefile_path = templatefiles_path
     template_name = "RSuite.dotx"
 else:
-    templatefile_path = os.path.join(scripts_dir_path,"RSuite_Word-template","oldStyleTemplate","MacmillanStyleTemplate")
+    templatefile_path = os.path.join(template_submodule_path,"oldStyleTemplate","MacmillanStyleTemplate")
     template_name = "macmillan.dotm"
 
 # paths

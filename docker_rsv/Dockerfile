@@ -12,7 +12,7 @@ RUN mkdir /opt/rsv
 
 COPY ./xml_docx_stylechecks /opt/rsv/xml_docx_stylechecks
 COPY ./test /opt/rsv/test
-COPY ./RSuite_Word-template /opt/RSuite_Word-template
+COPY ./RSuite_Word-template /opt/rsv/RSuite_Word-template
 
 # CMD [ "python", "./your-daemon-or-script.py" ]
 # ENTRYPOINT ["top", "-b"]

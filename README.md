@@ -3,18 +3,30 @@ This repo was originally intended to host several interrelated tools, all for pa
 Currently only one standalone product is in use: 'rsuite_validate'.
 The 'validator_isbncheck' tool is also used, as part of the [egalleymaker](https://confluence.macmillan.com/display/EB/Egalleys) toolchain.
 See more about legacy products originally served via this repo at the bottom of the README ('Legacy products')
+
+### Docker implementation
+For information on using the 'containerized' version of this tool, refer instead to this readme: ./docker_rsv/[README_docker.txt](https://github.com/macmillanpublishers/sectionstart_converter/blob/master/docker_rsv/README_docker.txt)
+___
+# Dependencies
+* Python is required, versions 2.7.x and 3.9.x are supported.
+* Requires the lxml library for python, install like so: `pip install lxml`
+### Dependency: git submodule
+External (Macmillan) git repo [RSuite_Word-template](https://github.com/macmillanpublishers/RSuite_Word-template) is added here as a submodule. It's checked out at a release tag, currently: _*v6.5.0*_
+#### Initialize submodule
+To initialize and update the submodule the first time after cloning or pulling the _sectionstart_converter_ repo, run: `git submodule update --init --recursive`
+#### Update submodule
+To update the submodule when pulling or switching branches (as needed), run: `git submodule update RSuite_Word-template`
+#### Edit submodule checked-out commit
+To peg the submodule HEAD to a new tag, first update it with the above command. Then cd into the submodule dir, checkout the new tag, and commit your changes.
 ___
 # Products
 ## rsuite_validate
 This tool accepts Word manuscripts and validates against a number of criteria, makes small edits not related to content or large errors, and returns a report and the edited document to the user, both in an outfolder and via email.
 Internal documentation available [here](https://confluence.macmillan.com/display/RSUITE/RSuite+Validation).
-#### Dependencies
+#### Product-specific Dependencies
 Dependencies for tests, local runs:
-* Python 2.7.x and python > 3.8.x are supported.
-* Some supplemental python libraries are required, install via pip like so: `pip install lxml requests six`
-* Additionally, git-repo: '[RSuite_Word-template](https://github.com/macmillanpublishers/RSuite_Word-template)' must be cloned locally as a sibling directory to this repo ('sectionstart_converter').
-
-Additional dependencies for production or staging environment:
+* Supplemental python libraries are required, install via pip like so: `pip install requests six`
+Additional dependencies for production or staging environment (unless running via Docker):
 * git-repo: '[bookmaker_connectors](https://github.com/macmillanpublishers/bookmaker_connectors)' must be cloned locally as a sibling directory to this repo ('sectionstart_converter').
 * git-repo: '[bookmaker_authkeys](https://github.com/macmillanpublishers/bookmaker_authkeys)' must be cloned locally as a sibling directory to this repo ('sectionstart_converter'). This repo is private and will also require [decryption](https://confluence.macmillan.com/display/PWG/Using+git-crypt+to+encrypt+files+on+github).
 
@@ -22,23 +34,16 @@ Additional dependencies for production or staging environment:
 To run this tool directly in the cmd line:
 
 `python /path/to/rsuitevalidate_main.py '/path/to/file.docx' 'direct' 'local'`
-
- * Running with the 'local' parameter above skips sending notification emails, skips posting final files to the OUTfolder via api, and preserves the tmpfolder contents for troubleshooting (working tmpfiles and dirs will be created in the same directory as testfile.docx)
-
+* Running with the 'local' parameter above skips sending notification emails, skips posting final files to the OUTfolder via api, and preserves the tmpfolder contents for troubleshooting (working tmpfiles and dirs will be created in the same directory as testfile.docx)
 * You can change loglevel from INFO to DEBUG etc. in _xml_docx_stylechecks/cfg.py_
-
 * To run rsuite_validate with emails and api, the call looks like this instead:
 `python /path/to/rsuitevalidate_main.py /path/to/file.docx 'direct' 'user.email@domain.com' 'User Name'`
 
-
 #### Tests
-Unit and integration tests for rsuite_validate are documented in ./test/[README.txt](https://github.com/macmillanpublishers/sectionstart_converter/blob/master/test/README.txt)
+Unit and integration tests for rsuite_validate are documented in ./test/[README_tests.txt](https://github.com/macmillanpublishers/sectionstart_converter/blob/master/test/README_tests.txt)
 ___
 ## validator_isbncheck
 This tool is run as part of the egalleymaker process, to capture styled ISBNs, and style & capture unstyled ISBN's where needed. It logs them to a JSON where the rest of the egalleymaker process can use them.
-#### Dependencies
-* Python 2.7.x is required; this tool is not yet python 3.x compatible.
-* The xml processing requires the lxml library for python, install like so: `pip install lxml`
 
 #### Running validator_isbncheck.py
 This command takes two args: the manuscript to be edited and the existing logfile in use by bookmaker_validator, so we can append to it instead of writing our own.

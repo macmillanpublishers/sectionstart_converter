@@ -234,8 +234,8 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in
     superscriptstyle = "supersup"
     # for some reason the long-stylenames for these references are lowercase?
     #   ^ 12-21: as per wdv-419 adding separate rule for these to lxmlutils.transformStylename function
+    # 12-22: as per wdv-471, removing "Hyperlink" from valid native word style list
     valid_native_word_styles = [
-        'Hyperlink',
         'footnote reference',
         'footnote text',
         'endnote reference',

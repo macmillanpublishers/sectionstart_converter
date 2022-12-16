@@ -2036,7 +2036,7 @@ class Tests(unittest.TestCase):
         # - valid pstyles with unique contexts picked up as first uses, both in terms of section and container
         # - valid pstyles with new instances of already-introduced contexts are not picked up
         # - valid pstyles in tables picked up
-        # - valid native style (Hyperlink)
+        # - valid native style (Hyperlink) < as of 12-22, wdv-471: Hyperlink no longer valid!
         # - decommissioned style picked up (TextMessageTmg)
         # - bad native pstyle, bad non-native pstyle: recorded,
         # - bad native and non-native cstyle: removed: from docxml, footnotes, table
@@ -2071,11 +2071,11 @@ class Tests(unittest.TestCase):
         # os_utils.writeXMLtoFile(fn_root, expected_fn_xml)
 
         # assert
-        self.assertEqual(len(report_dict_fn['Macmillan_charstyle_first_use']), 4)
+        self.assertEqual(len(report_dict_fn['Macmillan_charstyle_first_use']), 3)
         self.assertEqual(['207A4D37', '58CE783D'], [x['para_id'] for x in report_dict['non-Macmillan_style_used_in_table']])
         self.assertEqual(['3BE31213', '48108791', '5B72505E', '7C380C52'], [x['para_id'] for x in report_dict['non-Macmillan_style_used']])
-        self.assertEqual(['46D9EA20', '6A9A0A07', '6A9A0A07'], [x['para_id'] for x in report_dict['non-Macmillan_charstyle_removed']])
-        self.assertEqual(['3A8D07F8', '5046DE97', '092D3D6D', '26FAD927'], [x['para_id'] for x in report_dict['Macmillan_charstyle_first_use']])
+        self.assertEqual(['5046DE97', '46D9EA20', '6A9A0A07', '6A9A0A07'], [x['para_id'] for x in report_dict['non-Macmillan_charstyle_removed']])
+        self.assertEqual(['3A8D07F8', '092D3D6D', '26FAD927'], [x['para_id'] for x in report_dict['Macmillan_charstyle_first_use']])
         self.assertEqual(['0E63F210', '3A8D07F8', '3F5D2BDD', '46D9EA20', '1A5BBBFB', '5404D504', '3124B69D', '1130CF0F', '6C043943', '74999F64', '1CC72F9D'],
             [x['para_id'] for x in report_dict['Macmillan_style_first_use']])
         self.assertEqual(etree.tostring(doc_root), etree.tostring(getRoot(expected_doc_xml)))

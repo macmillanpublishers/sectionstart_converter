@@ -13,7 +13,8 @@ ___
 ### Dependency: git submodule
 External (Macmillan) git repo [RSuite_Word-template](https://github.com/macmillanpublishers/RSuite_Word-template) is added here as a submodule. It's checked out at a release tag, currently: _*v6.5.0*_
 #### Initialize submodule
-To initialize and update the submodule the first time after cloning or pulling the _sectionstart_converter_ repo, run: `git submodule update --init --recursive`
+To initialize and update the submodule the first time after cloning or pulling the _sectionstart_converter_ repo, run:
+`git submodule update --init --recursive`
 #### Update submodule
 To update the submodule when pulling or switching branches (as needed), run: `git submodule update RSuite_Word-template`
 #### Edit submodule checked-out commit

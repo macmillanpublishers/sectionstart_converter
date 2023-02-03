@@ -1,11 +1,18 @@
 # rsuite_validate container
 
+## Dependencies
+The docker container should take care of most of this, just make sure the template submodule is initialized as described [here](https://github.com/macmillanpublishers/sectionstart_converter#initialize-submodule).
+
 ## Setup container
-* To create container (and invoke unittests), cd to this dir and run:
-   `docker-compose up`
+* To build container, cd to this dir and run:
+  `docker-compose build`
 
 ## Running the tool(s)
 \*Note: If you need to run any of these cmds from a dir besides ./docker_rsv, add flag '-f' and the path to docker-compose file to your command, like: -f /path/to/docker-compose.yml
+
+### run unit tests
+* Unit tests run by default with cmd:
+  `docker-compose up`
 
 ### run files through the tool(s)
 
@@ -28,8 +35,7 @@
 	2. run: `docker compose run --rm rsv python ./xml_docx_stylechecks/validator_isbncheck.py "/mnt/docs/testdir/testfile.docx"`
 	3. You will see output in the terminal as well as style_report being created in your _testdir_
 
-### run Tests
-* unit tests run by default upon: `docker-compose up`
+### run Transform/Integration Tests
 
 * run rs_validate transform tests (these do detailed diffs on output against "validated" output):
 	1. Put some test .docx files in ./test/docs

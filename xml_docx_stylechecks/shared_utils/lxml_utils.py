@@ -86,7 +86,7 @@ def getParaTxt(para):
 def getXmlRootfromFile(xmlfile, xmlfile_name):
     xmltree = etree.parse(xmlfile)
     xmlstr = etree.tostring(xmltree)
-    nl = xmlstr.count('\n')
+    nl = xmlstr.count(b'\n')
     if nl:
         logger.info("{} xml had {} newlines: converting to string and back to minify xml".format(xmlfile_name, nl))
         parser = etree.XMLParser(remove_blank_text=True)

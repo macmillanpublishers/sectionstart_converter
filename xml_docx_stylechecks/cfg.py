@@ -57,8 +57,10 @@ if sys.argv[2:]:
 
 ### Arg 3 (non-direct) - for subprocesses where we want to dictate doctemplatetype
 #   (like isbncheck.py)
-if sys.argv[3:]:
+if sys.argv[3:] and runtype != 'direct':
     templatetype = sys.argv[3]
+elif local_run == True and sys.argv[4:]:
+    templatetype = sys.argv[4]
 else:
     templatetype = ''
 

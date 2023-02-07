@@ -94,8 +94,12 @@ if __name__ == '__main__':
         # Doc is not styled or has protection enabled, skip python validation
             else:
                 logger.warning("Skipped writing xml!: protection='%s')" % (protection))
-                errstring = usertext_templates.alerts()["protected_notice"].format(protection=protection)
-                os_utils.logAlerttoJSON(alerts_json, "notice", errstring)
+                if cfg.templatetype == "rsuite":
+                    errstring = usertext_templates.alerts()["protected_notice"].format(protection=protection)
+                    os_utils.logAlerttoJSON(alerts_json, "notice", errstring)
+                else:
+                    errstring = usertext_templates.alerts()["protected"].format(protection=protection)
+                    os_utils.logAlerttoJSON(alerts_json, "error", errstring)
                 logger.warning("* {}".format(errstring))
 
             ########## CLEANUP

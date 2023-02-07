@@ -74,7 +74,7 @@ def setupFileTest(file, tmpdir_base, transform_testfiles_dir):
     return tmpfile
 
 def runTest(testfile):
-    popen_params = ['python', v_isbncheck_path, testfile, 'direct', 'local']
+    popen_params = ['python', v_isbncheck_path, testfile, 'direct', 'local', 'rsuite']
     print (popen_params)
     if debug_diff_only != True:
         p = subprocess.Popen(popen_params)
@@ -99,7 +99,10 @@ def udpateValidFiles(testfile, validfiles_basedir, update_valid_outputs, diff_fi
         for valid_file in diff_file_list:
             v_file = os.path.join(tmpdir, valid_file.format(fname_noext=fname_noext))
             v_file_dest = os.path.join(validfiles_dir, valid_file.format(fname_noext=fname_noext))
-            if valid_file in nonrequired_diff_files and os.path.exists(v_file):
+            # required files should be present, and copied. nonrequired we check if they exist first
+            if valid_file in required_diff_files and os.path.exists(v_file):
+                shutil.copy(v_file, v_file_dest)
+            elif valid_file in nonrequired_diff_files and os.path.exists(v_file):
                 shutil.copy(v_file, v_file_dest)
         udpated_testfile_name = os.path.basename(testfile)
     return udpated_testfile_name
@@ -137,8 +140,12 @@ def diffFiles(diff_file_list, testfile, validfiles_basedir, diff_outputdir):
             f.write('\n--------- < = VALIDATED file | {} | NEW file = > ---------\n\n'.format(df_shortname))
             f.close()
             f = open(diff_outfile,'a')
+            # if new file not present, write that
+            if not os.path.exists(new_file):
+                diff_val = "could not run diff, newfile not present"
+                f.write('\n\tNEW FILE is not present in tmpdir!')
             # run a diff and print (results to file)
-            if platform.system() == "Windows":
+            elif platform.system() == "Windows":
                 diff_val = subprocess.call(['diff', '-b', valid_file, new_file], stdout=f)
             else:
                 diff_val = subprocess.call(['diff', '-b', '-I', '"para_id":', '-I', '"para_index":', '-I', 'w14:paraId=', valid_file, new_file], stdout=f)

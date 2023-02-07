@@ -99,10 +99,7 @@ def udpateValidFiles(testfile, validfiles_basedir, update_valid_outputs, diff_fi
         for valid_file in diff_file_list:
             v_file = os.path.join(tmpdir, valid_file.format(fname_noext=fname_noext))
             v_file_dest = os.path.join(validfiles_dir, valid_file.format(fname_noext=fname_noext))
-            # required files should be present, and copied. nonrequired we check if they exist first
-            if valid_file in required_diff_files:
-                shutil.copy(v_file, v_file_dest)
-            elif valid_file in nonrequired_diff_files and os.path.exists(v_file):
+            if valid_file in nonrequired_diff_files and os.path.exists(v_file):
                 shutil.copy(v_file, v_file_dest)
         udpated_testfile_name = os.path.basename(testfile)
     return udpated_testfile_name

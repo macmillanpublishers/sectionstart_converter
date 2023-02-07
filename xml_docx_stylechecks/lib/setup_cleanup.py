@@ -108,7 +108,7 @@ def copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, 
     except Exception as e:
         setup_ok = False
         if str(e) == errdict['no_filelist']:
-            setAlert('error', 'no_unzip_files', {}, True)
+            setAlert('error', 'no_unzip_files', {})
         # this bit should currently be prescreened via th api, shouldn't come up
         elif str(e) == errdict['not_docfile']:
             setAlert('error', 'notdocx', {}, True)

@@ -176,6 +176,8 @@ def alerts():
         # Notice: trackchange_enabled
         "trackchange_enabled": "'Track Changes' feature is currently enabled for this document.",
         # Notice - Validator only
+    	"protected_notice": "This .docx has '{protection}' protection enabled.",
+        # Notice - self explanatory
         "v_newertemplate_avail": "There was a newer version of the macmillan style template available, attached during processing (this .docx's version: {current_version}, latest version: {template_version})",
         # Fatal error (untrapped crash)
         "processing_alert": textwrap.dedent("""\

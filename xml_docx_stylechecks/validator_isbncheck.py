@@ -50,21 +50,20 @@ if __name__ == '__main__':
     try:
         ########## SETUP
         # copy template to tmpdir, unzip infile and tmpdir
-        setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
+        setup_ok = setup_cleanup.copyTemplateandUnzipFiles(macmillan_template, tmpdir, workingfile, ziproot, template_ziproot)
 
-        ########## CHECK DOCUMENT
-        ### check doc protection
-        logger.info('Checking doc protection, trackchanges...')
-        protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml, cfg.footnotes_xml, cfg.endnotes_xml)
+        # setup_ok is false for encrypted focs or non-docx: in either case error is flagged in-method
+        if setup_ok == True:
+            ########## CHECK DOCUMENT
+            ### check doc protection
+            logger.info('Checking doc protection, trackchanges...')
+            protection, tc_marker_found, trackchange_status = check_docx.getProtectionAndTrackChangesStatus(cfg.doc_xml, cfg.settings_xml, cfg.footnotes_xml, cfg.endnotes_xml)
 
-        # log for the rest o the validator suite:
-        isbn_dict["password_protected"] = protection
+            # log for the rest o the validator suite:
+            isbn_dict["password_protected"] = protection
 
-        ########## RUN STUFF
-        # Basic requirements passed, proceed with validation & cleanup
-        if protection == "":
-            logger.info("Proceeding with isbn_check! protection='%s')" % (protection))
-
+            ########## RUN STUFF
+            # Basic requirements passed, proceed with validation & cleanup
             # get doc_root
             doc_xml = cfg.doc_xml
             doc_tree = etree.parse(doc_xml)
@@ -81,29 +80,33 @@ if __name__ == '__main__':
             # # # run it again, to clean up any isbn-styled leading/trailing txt created incidentally from the last method
             isbn_dict, isbn_dict["manuscript_isbns"] = doc_prepare.removeNonISBNsfromISBNspans(isbn_dict, doc_root, isbnstyle, cfg.isbnspanregex)
 
-            ### write updated stuff to file:
-            os_utils.writeXMLtoFile(doc_root, doc_xml)
+            if protection == "":
+                ### write updated stuff to file:
+                os_utils.writeXMLtoFile(doc_root, doc_xml)
 
-            ### zip ziproot up as a docx
-            logger.info("Zipping updated xml to replace workingfile .docx in the tmpfolder")
-            # os_utils.rm_existing_os_object(newdocxfile, 'validated_docx') <-- shouldnt be necessary, zipfile.py should overwrite
-            zipDOCX.zipDOCX(ziproot, workingfile) # < for prod
-            # zipDOCX.zipDOCX(ziproot, newdocxfile)  # < for testing
+                ### zip ziproot up as a docx
+                logger.info("Zipping updated xml to replace workingfile .docx in the tmpfolder")
+                # os_utils.rm_existing_os_object(newdocxfile, 'validated_docx') <-- shouldnt be necessary, zipfile.py should overwrite
+                zipDOCX.zipDOCX(ziproot, workingfile) # < for prod
+                # zipDOCX.zipDOCX(ziproot, newdocxfile)  # < for testing
 
         ########## SKIP RUNNING STUFF, LOG ALERTS
         # Doc is not styled or has protection enabled, skip python validation
-        else:
-            logger.warn("* * Skipping ISBN_check:")
-            if protection:
-                errstring = usertext_templates.alerts()["protected"].format(protection=protection)
-                os_utils.logAlerttoJSON(alerts_json, "error", errstring)
-                logger.warn("* {}".format(errstring))
+            else:
+                logger.warning("Skipped writing xml!: protection='%s')" % (protection))
+                if cfg.templatetype == "rsuite":
+                    errstring = usertext_templates.alerts()["protected_notice"].format(protection=protection)
+                    os_utils.logAlerttoJSON(alerts_json, "notice", errstring)
+                else:
+                    errstring = usertext_templates.alerts()["protected"].format(protection=protection)
+                    os_utils.logAlerttoJSON(alerts_json, "error", errstring)
+                logger.warning("* {}".format(errstring))
 
-        ########## CLEANUP
-        # write our json for style report to tmpdir
-        logger.debug("Writing isbn_check.json")
-        isbn_dict["completed"] = True
-        os_utils.dumpJSON(isbn_dict, cfg.isbn_check_json)
+            ########## CLEANUP
+            # write our json for style report to tmpdir
+            logger.debug("Writing isbn_check.json")
+            isbn_dict["completed"] = True
+            os_utils.dumpJSON(isbn_dict, cfg.isbn_check_json)
 
         setup_cleanup.cleanupforValidator(this_outfolder, workingfile, cfg.inputfilename, '', cfg.stylereport_txt, alerts_json, cfg.script_name)
 

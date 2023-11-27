@@ -142,12 +142,14 @@ def buildReport(report_dict, textreport_list, scriptname, stylenamemap, recipe_i
                     if recipe_item["v_warning_banner"] not in validator_warnings:
                         validator_warnings.append("- %s" % recipe_item['v_warning_banner'])
                 # cycle through report_recipe categories
+                last_section = ""
                 for item in report_dict[recipe_item["dict_category_name"]]:
                     # for Macmillan_style_first_use category, write sectionname if new section
                     if recipe_item["dict_category_name"] == "Macmillan_style_first_use":
                         new_section_text = makeReportStrings(recipe_item["new_section_text"], item, recipe_item, report_dict, stylenamemap)
-                        if new_section_text not in tmptextlist:
+                        if new_section_text not in tmptextlist or last_section != new_section_text:
                             tmptextlist.append(new_section_text)
+                            last_section = new_section_text
                     # add line_template for recipe_item
                     newline = makeReportStrings(recipe_item["line_template"], item, recipe_item, report_dict, stylenamemap)
                     # print (newline)

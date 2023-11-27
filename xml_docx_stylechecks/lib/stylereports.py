@@ -143,7 +143,7 @@ def getAllStylesUsed_ProcessParaStyle(report_dict, stylename, styles_root, doc_r
             macmillan_styles_found.append(stylename)
             fullstylename_with_container = container_prefix + stylename_full
             # log style
-            lxml_utils.logForReport(report_dict, doc_root, para, 'Macmillan_style_first_use', fullstylename_with_container, ['section_info', 'para_string'], sectionnames)
+            lxml_utils.logForReport(report_dict, doc_root, para, 'Macmillan_style_first_use', fullstylename_with_container, ['section_info', 'para_string', 'para_index'], sectionnames)
         # skipping this check for rsuitevalidate - since it is moot. Testing by presence of container styles.
         if not container_styles:
             if stylename_full not in bookmakerstyles:

@@ -765,6 +765,44 @@ def fixSuperNoteMarks(xml_root, report_dict, superstyle, good_ref_style, note_ty
                 lxml_utils.logForReport(report_dict, xml_root, ref_el_run.getparent(), 'note_markers_wrong_style', 'super_styled ref-mark in {}s, ref_id: {}'.format(note_type, ref_id))
     return report_dict
 
+def getNoteContent(note_type, note_id, endnotes_root, footnotes_root):
+    if note_type == 'endnote':
+        xml_root = endnotes_root
+    elif note_type == 'footnote':
+        xml_root = footnotes_root
+    note_id_searchstring = ".//w:{}[@w:id='{}']".format(note_type, note_id)
+    note_el = xml_root.find(note_id_searchstring, wordnamespaces)
+    firstpara = note_el.find(".//w:p", wordnamespaces)
+    fp_text = lxml_utils.getParaTxt(firstpara)
+    fp_word_count = len(fp_text.split(' '))
+    bnt_suffix = ''
+    text_words = 6
+    if fp_word_count > text_words:
+        bnt_suffix = '...'
+    beginning_note_text = '{}{}'.format(' '.join(fp_text.split(' ')[:text_words]), bnt_suffix)
+    return beginning_note_text
+
+def reportNonprintingNoteMarker(report_dict, xml_root, ref_object_dict, noncontent_parastyles, endnotes_root, footnotes_root):
+    logger.info("* * * commencing reportNonprintingNoteMarker function...")
+    # search endnotes and footnotes
+    for note_type, ref_object in ref_object_dict.items():
+        ref_searchstring = './/*{}'.format(ref_object)
+        # ref_searchstring2 = './/{}'.format(ref_object)
+        ref_els = xml_root.findall(ref_searchstring, wordnamespaces)
+        # cycle through each ref
+        for ref_el in ref_els:
+            # get parastyle
+            ref_para = ref_el.getparent().getparent()
+            ref_parastyle = lxml_utils.getParaStyle(ref_para)
+            if ref_parastyle in noncontent_parastyles:
+                attrib_id_key = '{%s}id' % wnamespace
+                note_id = ref_el.get(attrib_id_key)
+                # note_Content is needed because if footnotes are set to view without consecutive numbering, the ref id will not be of any use in tracking it down
+                note_content = getNoteContent(note_type, note_id, endnotes_root, footnotes_root)
+                lxml_utils.logForReport(report_dict, xml_root, ref_para, 'noteref_in_noncontent_pstyle', \
+                    '{} {} (Note beginning: "{}")_{}'.format(note_type, note_id, note_content, lxml_utils.getStyleLongname(ref_parastyle)))
+    return report_dict
+
 def cleanNoteMarkers(report_dict, xml_root, noteref_object, note_style, report_category):
     logger.info("* * * commencing cleanNoteMarkers function, for %s..." % report_category)
     noteref_objects = xml_root.findall(".//%s" % noteref_object, wordnamespaces)
@@ -950,6 +988,11 @@ def rsuiteValidations(report_dict):
     if os.path.exists(cfg.endnotes_xml):
         report_dict = checkSymFonts(report_dict, endnotes_root, cfg.valid_symfonts)
 
+    # wdv-487 warn for noterefs in non-printing para types
+    if os.path.exists(cfg.endnotes_xml) or os.path.exists(cfg.footnotes_xml):
+        ref_object_dict = {"endnote": cfg.endnote_ref_obj, "footnote": cfg.footnote_ref_obj}
+        noncontent_parastyles = [s[1:] for s in styleconfig_dict["noncontentparas"]] # <--strip leading period
+        report_dict = reportNonprintingNoteMarker(report_dict, doc_root, ref_object_dict, noncontent_parastyles, endnotes_root, footnotes_root)
 
     # create sorted version of "image_holders" list in reportdict based on para_index; for reports
     if "image_holders" in report_dict:

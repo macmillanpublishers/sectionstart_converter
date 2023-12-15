@@ -720,6 +720,29 @@ class Tests(unittest.TestCase):
         self.assertEqual(report_dict, {})
         self.assertEqual(etree.tostring(expected_root), etree.tostring(root))
 
+    def test_reportNonprintingNoteMarker(self):
+        # setup params
+        styleconfig_dict = os_utils.readJSON(cfg.styleconfig_json)
+        ref_object_dict = {"endnote": cfg.endnote_ref_obj, "footnote": cfg.footnote_ref_obj}
+        noncontent_parastyles = [s[1:] for s in styleconfig_dict["noncontentparas"]]
+
+        # setup test
+        test_folder_root = setupTestFilesinTmp('test_reportNonprintingNoteMarker', os.path.join(testfiles_basepath, 'test_reportNonprintingNoteMarker'))
+        tmp_testfile = os.path.join(test_folder_root, 'test.docx')
+        unzipDOCX.unzipDOCX(tmp_testfile, os.path.splitext(tmp_testfile)[0])
+
+        # set paths & run function
+        doc_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'document.xml')
+        doc_root = getRoot(doc_xml)
+        en_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'endnotes.xml')
+        en_root = getRoot(en_xml)
+        fn_xml = os.path.join(os.path.splitext(tmp_testfile)[0], 'word', 'footnotes.xml')
+        fn_root = getRoot(fn_xml)
+        report_dict = rsuite_validations.reportNonprintingNoteMarker({}, doc_root, ref_object_dict, noncontent_parastyles, en_root, fn_root)
+
+        # assertions
+        self.assertEqual(len(report_dict["noteref_in_noncontent_pstyle"]), 5)
+
     def test_checkNamespace(self):
         test_nsmap = {'w': cfg.wnamespace, 'tst': 'test_ns_value', 'w14': 'diff_ns_value'}
         good_ns = 'w'       # defined in our own wordnamespaces, and in target xml_root

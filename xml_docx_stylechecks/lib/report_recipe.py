@@ -602,6 +602,14 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
             "summary": True,
             "errstring": "{count} custom Footnote mark(s) found. These are not supported by RSuite and must be replaced with standard Footnote mark(s)."
     	},
+    	"95.8_noteref_in_noncontent_pstyle": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "noteref_in_noncontent_pstyle",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'error',
+            "errstring": "The reference mark for {descriptionA} is located in a paragraph that is styled with a non-printing paragraph-style: '{descriptionB}'. This will cause RSuite transforms to fail."
+    	},
     	"96_deleted_bookmark_summary": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
     		"dict_category_name": "deleted_objects-bookmarks",

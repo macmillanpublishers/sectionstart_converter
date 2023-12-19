@@ -9,9 +9,9 @@ For information on using the 'containerized' version of this tool, refer instead
 ___
 # Dependencies
 * Python is required, versions 2.7.x and 3.9.x are supported.
-* Requires the lxml library for python, install like so: `pip install lxml`
+* Requires 3 libraries for python, install like so: `pip install lxml requests six`
 ### Dependency: git submodule
-External (Macmillan) git repo [RSuite_Word-template](https://github.com/macmillanpublishers/RSuite_Word-template) is added here as a submodule. It's checked out at a release tag, currently: _*v6.5.0*_
+External (Macmillan) git repo [RSuite_Word-template](https://github.com/macmillanpublishers/RSuite_Word-template) is added here as a submodule. It's checked out at a release tag, currently: _*v6.5.2*_
 #### Initialize submodule
 To initialize and update the submodule the first time after cloning or pulling the _sectionstart_converter_ repo, run:
 `git submodule update --init --recursive`

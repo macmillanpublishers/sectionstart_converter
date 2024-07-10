@@ -743,6 +743,32 @@ class Tests(unittest.TestCase):
         # assertions
         self.assertEqual(len(report_dict["noteref_in_noncontent_pstyle"]), 5)
 
+    def test_precedingSeparatorCheck(self):
+        # setup params
+        styleconfig_dict = os_utils.readJSON(cfg.styleconfig_json)
+        li_styles_by_level, li_styles_by_type, listparagraphs, all_list_styles, nonlist_list_paras = rsuite_validations.getListStylenames(styleconfig_dict)
+        container_starts = rsuite_validations.getContainerStarts(styleconfig_dict)
+        vbastyleconfig_dict = os_utils.readJSON(cfg.vbastyleconfig_json)
+        sectionnames = lxml_utils.getAllSectionNamesFromVSC(vbastyleconfig_dict)
+
+        # setup test
+        test_folder_root = setupTestFilesinTmp('test_precedingSeparatorCheck', os.path.join(testfiles_basepath, 'test_precedingSeparatorCheck'))
+        doc_xml = os.path.join(test_folder_root, 'document.xml')
+        doc_root = getRoot(doc_xml)
+
+        # run function
+        report_dict = rsuite_validations.precedingSeparatorCheck({}, doc_root, cfg.separatorstyle, all_list_styles, container_starts, sectionnames)
+        c1_lists = [x for x in report_dict['separator_preceding'] if x['description']=='lists' and x['parent_section_start_content']=='Chapter 1']
+        c2_lists = [x for x in report_dict['separator_preceding'] if x['description']=='lists' and x['parent_section_start_content']=='Chapter 2']
+        c1_containers = [x for x in report_dict['separator_preceding'] if x['description']=='containers' and x['parent_section_start_content']=='Chapter 1']
+        c2_containers = [x for x in report_dict['separator_preceding'] if x['description']=='containers' and x['parent_section_start_content']=='Chapter 2']
+
+        # assertions
+        self.assertEqual(len(c1_lists), 1)
+        self.assertEqual(len(c2_lists), 2)
+        self.assertEqual(len(c1_containers), 3)
+        self.assertEqual(len(c2_containers), 1)
+
     def test_checkNamespace(self):
         test_nsmap = {'w': cfg.wnamespace, 'tst': 'test_ns_value', 'w14': 'diff_ns_value'}
         good_ns = 'w'       # defined in our own wordnamespaces, and in target xml_root

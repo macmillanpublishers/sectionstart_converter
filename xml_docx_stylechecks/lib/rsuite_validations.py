@@ -549,6 +549,32 @@ def checkForFMsectionsInBody(report_dict, fm_sectionnames, flex_sectionnames):
                 lxml_utils.logForReport(report_dict, None, None, 'fm_section_in_body', '{}_{}'.format(section_fullname, para_id))
     return report_dict
 
+# wdv-490
+def precedingSeparatorCheck(report_dict, xml_root, separatorstyle, all_list_styles, container_start_styles, sectionnames):
+    logger.debug("* * * commencing precedingSeparatorCheck function")
+    sep_paras = lxml_utils.findParasWithStyle(separatorstyle, xml_root)
+
+    for sep_para in sep_paras:
+        sep_para_neighbors_dict = lxml_utils.getNeighborParas(sep_para)
+
+        # check for lists directly after sep_para
+        if sep_para_neighbors_dict['nextstyle'] in all_list_styles:
+            tmp_neighbors_dict = sep_para_neighbors_dict.copy()
+
+            # make sure you get the parastyle preceding any consecutive separator paras
+            while tmp_neighbors_dict['prev'] is not None and tmp_neighbors_dict['prevstyle'] == separatorstyle:
+                tmp_neighbors_dict = lxml_utils.getNeighborParas(tmp_neighbors_dict['prev'])
+
+            # make sure you skip separators that are just breaks in a list
+            if not tmp_neighbors_dict['prevstyle'] in all_list_styles:
+                lxml_utils.logForReport(report_dict, xml_root, sep_para, 'separator_preceding', 'lists', ['section_info'], sectionnames)
+
+        # check for containers directly after sep_para
+        elif sep_para_neighbors_dict['nextstyle'] in container_start_styles:
+            lxml_utils.logForReport(report_dict, xml_root, sep_para, 'separator_preceding', 'containers', ['section_info'], sectionnames)
+
+    return report_dict
+
 # parse dict from checkMainheadsPerSection and log any multiple heads per section
 def logMainheadMultiples(mainhead_dict, doc_root, report_dict, sectionnames):
     for stylename in mainhead_dict:
@@ -919,6 +945,8 @@ def rsuiteValidations(report_dict):
     report_dict = duplicateSectionCheck(report_dict, [cfg.booksection_stylename, cfg.notessection_stylename])
     # check for FM sections in main body
     report_dict = checkForFMsectionsInBody(report_dict, cfg.fm_style_list, cfg.fm_flex_style_list)
+    # warn about separators preceding containers and list_styles
+    report_dict = precedingSeparatorCheck(report_dict, doc_root, cfg.separatorstyle, all_list_styles, container_start_styles, sectionnames)
 
     # log custom note markers for report
     refstyle_dict = {"endnote": cfg.endnote_ref_style, "footnote": cfg.footnote_ref_style}

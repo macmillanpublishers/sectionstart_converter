@@ -233,6 +233,7 @@ if script_name.startswith("rsuite") or templatetype == 'rsuite' or "unittest" in
     inline_imageholder_style = "cs-image-placement (cimg)"
     hyperlinkstyle = "Hyperlink"
     spacebreakstyles = ['SeparatorSep','Blank-Space-BreakBsbrk','Ornamental-Space-BreakOsbrk']
+    separatorstyle = "SeparatorSep"
     superscriptstyle = "supersup"
     # for some reason the long-stylenames for these references are lowercase?
     #   ^ 12-21: as per wdv-419 adding separate rule for these to lxmlutils.transformStylename function

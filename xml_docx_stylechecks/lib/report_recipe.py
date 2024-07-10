@@ -535,6 +535,15 @@ def getReportRecipe(titlestyle, authorstyle, isbnstyle, logostyle, booksection_s
     		"badnews": 'any',
             "errstring": "Encountered use(s) of unsupported symbol-font: '{description}'. Please email %s for assistance resolving this issue." % support_email_address
     	},
+    	"87_separator_preceding": {
+            "include_for": ["rsuitevalidate"],
+    		"dict_category_name": "separator_preceding",
+    		"line_template": "",
+    		"badnews": 'any',
+            "badnews_type": 'warning',
+            "summary": True,
+            "errstring": "{section_count} unnecessary Separator line(s) preceding {description} were found in {parent_section_start_type}: {parent_section_start_content}. Please confirm these separators are intended, and if not, remove as needed."
+        },
     	"90_list_change_warning": {   # using high digits for "error only" items; since they're order agnostic & we may have to renumber the others
             "include_for": ["rsuitevalidate"],
     		"dict_category_name": "list_change_warning",
